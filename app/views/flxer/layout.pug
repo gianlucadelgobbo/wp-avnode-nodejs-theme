@@ -1,0 +1,99 @@
+doctype html
+html(lang=sessions.current_lang)
+  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' :'/'+sessions.current_lang)
+  head
+    title=page_data.title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //- //console.log(config.meta)
+    meta(property='fb:admins', content=config.meta.fb_admin)
+    meta(property='fb:app_id', content=config.meta.fb_appId)
+    meta(property='og:image', content=page_data.image_src)
+    meta(property='og:title', content=page_data.title)
+    meta(property='og:description', content=page_data.description)
+    meta(property='og:site_name', content=config.project_name)
+    meta(property='og:url', content=config.domain + page_data.url)
+    link(rel='canonical', href=config.domain + page_data.url)
+    meta(property='og:type', content='website')
+    meta(name='description', content=page_data.description)
+    meta(name='keywords', content=config.meta.keywords)
+    meta(name='google-site-verification', content=config.meta.google_webmasterstools)
+    link(rel='shortcut icon', href=config.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
+    // CSS
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
+  body
+    .container
+      header#myHeader.hidden-xs
+        .row
+          .col-sm-8
+            h2
+              a(href='/', title=config.project_name)
+                img.img-fluid(src='/wam/images/wam_logo.svg', alt=config.project_name)
+          .col-sm-4
+            h3.text-right=config.meta.headline[sessions.current_lang]
+      include includes/menu
+      #result
+        block content
+      include includes/footer
+    include ../_common/modal-full
+    include ../_common/modal-search
+    include includes/modal-resize
+
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    script(type="text/javascript").
+      shaderback.setDebug(true);
+      window.onload = shaderback.loadURL('/flxer/shaders/lt23Dt.txt');
+    if form
+      script(type='text/javascript', src='/_common/js/validator.min.js')
+    include ../_common/inc_cookielawinfo
+
+    if include_gallery
+      #fb-root
+      script.
+        (function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{config.meta.fb_appId}";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      script(type="text/javascript").
+        var sgp_config = {
+          "sgp_selT": "2",
+          "sgp_sel": ".thumbnail",
+          "sgp_bT": "#{config.project_name}",
+          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
+          "sgp_bU": "#{global.config.domain}",
+          "sgp_bg": "000000",
+          "sgp_bgo": "0.8",
+          "sgp_bb": "1",
+          "sgp_hb": "1",
+          "sgp_hbt": "1",
+          "sgp_ch": "",
+          "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
+          "sgp_desc": "1",
+          "sgp_fb": "1",
+          "sgp_fbf": "1",
+          "sgp_fbc": "1",
+          "sgp_nav": "1",
+          "sgp_hon": "",
+          "sgp_usf": "1.2",
+          "sgp_mb": "10",
+          "sgp_theme": "classic",
+          /*"sgp_theme_root": "http://flyer.it/wp-content/plugins/flyer-social-gallery/themes/",*/
+          "sgp_iLoadR": '/_common/images/social-gallery-loading.gif',
+          "sgp_iR": '/_common/images/social-gallery-r.png',
+          "sgp_iL": '/_common/images/social-gallery-l.png'
+        };
+        var sgp_ie = false;var sgp_ie7 = false;
+      script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
+
+    include ../_common/inc_analytics

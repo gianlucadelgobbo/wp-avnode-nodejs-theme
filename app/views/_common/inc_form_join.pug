@@ -1,0 +1,55 @@
+form#join-form(method='post', action=page_data.url, role='form')
+  h2
+    b=__("Membership request")
+    !=" form"
+  .messages
+  .controls
+    .row
+      .col-md-6
+        .form-group
+          label(for='form_organization_name')=__("Organization Name")+" *"
+          input#form_organization_name.form-control(type='text', value=result.body.organization_name, name='organization_name', placeholder=__("Please enter your organization name")+" *", required='required', data-error=__("Organization name is required"))
+          .help-block.with-errors
+      .col-md-6
+        .form-group
+          label(for='organization_country')=__("Organization country") + " *"
+          select#organization_country.form-control(name="organization_country", required='required', data-error=__("Organization country is required"))
+            option(value="")= __("Please select a country")
+            each item in result.countries
+              option(selected=item.name == result.body.organization_country, value=item.name)=item.name
+          .help-block.with-errors
+    .row
+      .col-md-6
+        .form-group
+          label(for='form_name')=__("Your Name")+" *"
+          input#form_name.form-control(type='text', value=result.body.name, name='name', placeholder=__("Please enter your name")+" *", required='required', data-error=__("Your name is required"))
+          .help-block.with-errors
+      .col-md-6
+        .form-group
+          label(for='form_email')=__("Your Email")+" *"
+          input#form_email.form-control(type='email', value=result.body.email, name='email', placeholder=__("Please enter your email")+" *", required='required', data-error=__("Valid email is required"))
+          .help-block.with-errors
+    .row
+      .col-md-12
+        .form-group
+          label(for='form_activity_description')=__("Organization activity description")+" *"
+          textarea#form_activity_description.form-control(name='activity_description', placeholder=__("Please enter your organization activity description")+" *", required='required', rows='6', data-error=__("Organization activity description is required"))=result.body.activity_description
+          .help-block.with-errors
+    .row
+      .col-md-12
+        .form-group
+          label(for='form_activity_list')=__("Activities name list (just the title one per line, ex: Sonar Festival, AV Sessions, etc)") + " *"
+          textarea#form_activity_list.form-control(name='activity_list', placeholder=__("Please enter your organization activities name list") + " *", required='required', rows='6', data-error=__("Activities name list is required"))=result.body.activity_list
+          .help-block.with-errors
+    .row
+      .col-md-12
+        if result.captcha
+          p!=result.captcha
+    .row
+      .col-md-4
+        input.btn.btn-success.btn-send(type='hidden', name='formtype', value='join')
+        input.btn.btn-success.btn-send(type='submit', value=__("Join"))
+      .col-md-8
+        p.text-muted.text-right
+          strong *
+          !=__("These fields are required.")

@@ -1,0 +1,28 @@
+//pre=JSON.stringify(opts, null, 2)
+//pre=JSON.stringify(body, null, 2)
+//pre=JSON.stringify(data, null, 2)
+- var users
+if opts.filter == "PRODUCTION"
+  - users = body.users
+else 
+  each item, i in body.partners
+    //- console.log(opts.filter)
+    //- console.log(item.category.name)
+    if item.category.name == opts.filter
+      - users = item.users
+if users && users.length
+  .lists
+    each item, i in users
+      .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem', class=opts.cols == '1' ? 'col-md-3' : undefined)
+        meta(itemprop='position', content=i)
+        .row.partners(itemprop='item', itemscope='', itemtype='http://schema.org/Organization')
+          .col-xs-5.col-md-5.col-sm-12
+            a(itemprop='url', href=item.web && item.web.length ? item.web[0].url : undefined, target='_blank', title=item.stagename)
+              img.img-fluid(itemprop='image', src=item.imageFormats.small, alt=item.stagename, class=item.imageFormats.small.substring(item.imageFormats.small.lastIndexOf(".")+1)
+)
+          .col-xs-7.col-md-7.col-sm-12
+            h2.media-heading(itemprop='name')
+              a(href=item.web && item.web.length ? item.web[0].url : undefined, title=item.stagename, target='_blank')=item.stagename
+            if item.web && item.web.length
+              p.stit=item.web[0].url
+

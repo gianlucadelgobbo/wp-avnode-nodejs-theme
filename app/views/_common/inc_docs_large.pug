@@ -1,0 +1,14 @@
+if result['attachments'].length
+  h3=global.__("Downloads")
+  .docsLarge
+    each attach in result['attachments']
+      .media
+        .media-left
+          a(href=attach.file, download=attach.title, title=attach.title)
+            - var ext = attach.file.substring(attach.file.lastIndexOf(".")+1)
+            i(class=ext=="zip" ? "icon-file-archive" : ext=="pdf" ? "icon-file-pdf" : "icon-doc")
+        .media-body
+          a(href=attach.file, download=attach.title, title=attach.title)
+            !=" "+attach.title
+          br
+          small!="("+attach.file+" - "+attach.size+")"

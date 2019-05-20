@@ -1,0 +1,13 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .News(itemprop="item", itemscope, itemtype="http://schema.org/Article")
+    .box-list
+      .box-list-cnt
+        include ../../_common/inc_datemonth
+        h3.list_title
+          a.ajaxloader(itemprop='url', href=lang_preurl+'/network/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+        .text-muted.small.excerpt
+          if result.excerpt && result.excerpt.rendered
+            div(itemprop='description')!=result.excerpt.rendered
+        .sr-only
+          include ../../_common/inc_capauthors_box

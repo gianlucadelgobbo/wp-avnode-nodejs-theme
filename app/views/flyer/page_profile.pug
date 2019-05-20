@@ -1,0 +1,26 @@
+extends layout
+block content
+  .container
+    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/'+itemtype)
+      .row
+        .col-sm-9
+          header
+            h1.entry-title(itemprop='name')!=result.post_title
+          .rientro
+            div(itemprop='description')!=result.post_content
+            .text-muted
+              .dates
+                .date=result.data_evento
+                meta(itemprop="dateModified", content=result.dateModified)
+            include ../_common/inc_share
+        .col-sm-3
+          img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+      .row.sameheightcnt
+        .col-md-3.sameheight.boxItem
+          !=result['wpcf-row-1-col-1-html-box']
+        .col-md-3.sameheight.boxItem
+          !=result['wpcf-row-1-col-2-html-box']
+        .col-md-3.sameheight.boxItem
+          !=result['wpcf-row-1-col-3-html-box']
+        .col-md-3.sameheight.boxItem
+          !=result['wpcf-row-1-col-4-html-box']

@@ -1,0 +1,95 @@
+&opera01=Animus&
+&autore01=BugZ - Italia&
+&lancia01=javascript:popupwindow('FULL','FULL','animus/home.htm')&
+&descrizione01=The project intends stimolate emotions in different directions. The efforts it requires are proportional to the therapeutic effects it bring.&
+&w01=800&
+&h01=600&
+&sito01=www.bugzone.it&
+
+&opera02=MUSTANGUE DXTX&
+&autore02=Gmunk - England&
+&descrizione02=The viewer is the only witness on a crime scene in which a stronger sense of cynism is genereted by the fact that the actors are puppets.&
+&lancia02=javascript:popupwindow('FULL','FULL','gmunk/home.htm')&
+&sito02=www.gmunk.com&
+
+&opera03=Untitled&
+&autore03=Ines Iglesias - Spain, Chiara Molon - Italy&
+&descrizione03=A cyclic and disturbed path into image's impressions. It reminds a diary of memories open on a casual page, where the figures appear random as anonimous portraits, revealing a rough grain as serigraphic print can produce.&
+&lancia03=javascript:popupwindow('FULL','FULL','ines/home.htm')&
+&w03=800&
+&h03=500&
+
+&opera04=Dreams&
+&autore04=IoResearch, Shannon Rankin - USA&
+&descrizione04=FThe power of deciding which direction the private oniric trip of a human must take, united to the chance of sharing that dream and get involved in it&
+&lancia04=javascript:popupwindow('FULL','FULL','dreams/home.htm')&
+&w04=720&
+&h04=480&
+&sito04=www.ioresearch.com&
+
+&opera05=Peeling the onion: first step.&
+&autore05=Fabio Lattanzi Antinori - Italy&
+&descrizione05=Fluxus of thoughts in animation combined with phisical body as synthesis of alphabetic code and image code, of social reality and personal states of minds&
+&lancia05=javascript:popupwindow('FULL','FULL','toxic/home.htm')&
+&w05=1024&
+&h05=768&
+&sito05=www.toxicdesignstudio.com&
+
+&opera06=Simian - Journey Inwards&
+&autore06=Ross Mawdsley&
+&lancia06=javascript:popupwindow('FULL','FULL','simian/home.htm')&
+&w06=800&
+&h06=650&
+&descrizione06=A social commentary on todays world. A personal space, free from any critical restraint and deadlines
+&sito06=www.simian.nu&
+
+&opera07=Flxer 2.0pro&
+&autore07=Meta2, DocG, Nikky, B_Muvis, Cool79 - Italy&
+&descrizione07=A flash video mixer. The connection between analogic and digital originates hypnotic video emotions and mediatic games, searching for "the bug": error as a new frontiere of the expression&
+&lancia07=javascript:popupwindow('FULL','FULL','flxer/home.htm')&
+&w07=800&
+&h07=600&
+&sito07=www.flxer.net&
+
+&opera08=[[[ aleart production ]]&
+&autore08=Alessandro Orlandi - Italy&
+&lancia08=javascript:popupwindow('FULL','FULL','aleart/home.htm')&
+&descrizione08=The project intends stimolate emotions in different directions. The efforts it requires are proportional to the therapeutic effects it bring.&
+&w08=1024&
+&h08=768&
+&sito08=www.aleart.net&
+
+&opera09=Double #2&
+&autore09=Stefano Savi Scarponi&
+&descrizione09=An intimate journey through emotions, thoughts and desires. Poetic images and words describe different moments of a day.&
+&lancia09=javascript:popupwindow('FULL','FULL','saviscarponi/home.htm')&
+&w09=740&
+&h09=480&
+&sito09=www.saviscarponi.com&
+
+&opera10=ABC&
+&autore10=Niko Stumpo&
+&lancia10=javascript:popupwindow('FULL','FULL','abc/home.htm')&
+&w09=1024&
+&h09=768&
+&descrizione10=Childhood as the state of extreme freedom and innocence to feel and to transmit emotions. Extra-delicate images and colors spread tought allarm messages&
+&sito10=www.abnormalbehaviorchild.com&
+
+&opera11=Santo Lorenzo dreaming&
+&autore11=Wladimir Vinciguerra&
+&descrizione11=A journey in the mixed athmosphere of the urban multicultural area of San Lorenzo, Rome, turns into a visionary and surrealisthic narration of the every-day-people intimacy&
+&lancia11=javascript:popupwindow('FULL','FULL','wlad/home.htm')&
+&w11=640&
+&h11=320&
+&sito11=www.venusia.org&
+
+
+&opera12=Pablo&
+&autore12=The Revolution - Australia&
+&lancia12=javascript:popupwindow('FULL','FULL','pablo/home.htm')&
+&w11=600&
+&h11=400&
+&descrizione12=Interactive timeline experiment, dealing with inspiration and the way it effects the decision making process&
+&sito12=www.therevolution.com.au&
+
+&load_ok=1

@@ -1,0 +1,22 @@
+extends layout
+block content
+  .container-fluid
+    article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+      .row
+        .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
+          .header
+            header
+              .text-center
+                h1.entry-title(itemprop="name")=posttype.post_title+(tag ? ": #"+tag : "")
+                p(itemprop="description")!=posttype.post_content
+            aside
+              .text-center
+                include ../_common/inc_tags
+            .text-center
+              include ../_common/inc_share
+      if results
+        .row.isotope.results
+          each result, position in results
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
+              include boxes/box_event
+        include ../_common/inc_pagination

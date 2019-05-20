@@ -1,0 +1,17 @@
+article#container(itemscope, itemtype='http://schema.org/'+itemtype)
+  .text-center
+      header.header
+        h1.entry-title(itemprop='name')=global.__("Content NOT found")
+      .rientro
+        div(itemprop='description')!=global.__("The content you requested was not found on our server, please try to search for it")
+        br
+        form.form-inline(action=lang_preurl+'/search/', method='get')
+          input(type='hidden', name='cx', value=config.meta.google_search)
+          input(type='hidden', name='cof', value='FORID:10')
+          input(type='hidden', name='ie', value='UTF-8')
+          .input-group
+            input.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+            span.input-group-btn
+              button.btn.btn-primary(type='submit')
+                i.glyphicon.glyphicon-search
+                  .sr-only=global.__("Search")

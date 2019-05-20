@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<TITLE>Bienal de Valencia</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var str = "left=0,screenX=0,top=0,screenY=0,fullscreen";
+
+if (window.screen) {
+  var ah = screen.availHeight - 30;
+  var aw = screen.availWidth - 10;
+  str += ",height=" + ah;
+  str += ",innerHeight=" + ah;
+  str += ",width=" + aw;
+  str += ",innerWidth=" + aw;
+} else {
+  str += ",resizable"; // so the user can resize the window manually
+}
+
+function launchFull(url, name) {
+  return window.open(url, name, str);
+}
+
+
+// -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY onload="launchFull('cd.htm', 'center')">
+
+</BODY>
+</HTML>

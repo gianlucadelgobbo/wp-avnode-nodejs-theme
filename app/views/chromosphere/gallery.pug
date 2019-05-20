@@ -1,0 +1,25 @@
+extends layout
+block content
+  article#container(itemscope='', itemtype='http://schema.org/Event')
+    header.row
+      .col-xs-10
+        h1.entry-title(itemprop="name")=result.post_title
+      .col-xs-2.text-right
+        include ../_common/inc_share_span
+    ul#listItems.row
+      each gall in result.post_gallery
+        li.col-xs-12.col-md-4.col-lg-3.col-xl-2(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+          meta(itemprop='position', content=index)
+          div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+            a(itemprop='url', href='/gallery/'+gall.performers[0].login+'/'+gall.permalink+'/', title='Gallery image of '+gall.titolo)
+              img.img-fluid(itemprop='image', src='https://flxer.net'+gall.img_arr, alt='')
+            .caption(style='padding-right:15px;padding-left:15px;')
+              .caption-body
+                h2.caption-title(itemprop='name')=gall.titolo
+                .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                  b(itemprop='name')=gall.performers[0].nomearte
+                  each stat, k  in gall.stats
+                    !="<br />"+k+": "+stat
+
+
+

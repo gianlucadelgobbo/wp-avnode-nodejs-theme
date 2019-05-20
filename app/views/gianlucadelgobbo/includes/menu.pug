@@ -1,0 +1,45 @@
+#myAffix.affix-top(data-spy='affix', data-offset-top='90')
+  nav.navbar.navbar-inverse(role='navigation')
+    .container-fluid
+      // Brand and toggle get grouped for better mobile display
+      .navbar-header
+        // .navbar-toggle is used as the toggle for collapsed navbar content
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-navbar')
+          span.sr-only Toggle navigation
+          i.icon-bar
+          i.icon-bar
+          i.icon-bar
+        // Be sure to leave the brand out there if you want it shown
+        a.navbar-brand.visible-xs(href='/', title=config.project_name)
+          i.icon-wam
+          .sr-only=config.project_name
+      // Place everything within .navbar-collapse to hide it until above 768px
+      #main-navbar.collapse.navbar-collapse
+        ul#menu-main-menu.nav.navbar-nav
+          li(class=page_data.url=="/" || page_data.url=="/it/" ? "active" : undefined)
+            a(href=lang_preurl+'/')=global.__("Home")
+          li(class=page_data.url.indexOf('/project') >= 0 ? "active" : undefined)
+            a(href=lang_preurl+'/project/')=global.__("Project")
+          li(class=page_data.url.indexOf('/presentation-to-the-city') >= 0 ? "active" : undefined)
+            a(href=lang_preurl+'/presentation-to-the-city/')=global.__("Presentation to the city")
+          li(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/events/')=global.__("Events")
+          li(class=page_data.url.indexOf('/news/') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/news/')=global.__("News")
+          li(class=page_data.url.indexOf('/partners') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/partners/') Partners
+          li(class=page_data.url.indexOf('/prenatal') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/prenatal/') Prenatal
+          li(class=page_data.url.indexOf('/newsletter') >= 0 ? "active" : undefined)
+            a(href=lang_preurl+'/newsletter/') Newsletter
+          li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
+            a(href=lang_preurl+'/contacts/')=global.__("Contacts")
+        ul.nav.navbar-nav.navbar-right
+          li.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+            a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+          li.menu-spacer-after.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+            a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+          li.menu-spacer-after.hidden-xs
+            a#searchModalButton(href="/search/")
+              i.glyphicon.glyphicon-search
+              .sr-only=global.__("Search")

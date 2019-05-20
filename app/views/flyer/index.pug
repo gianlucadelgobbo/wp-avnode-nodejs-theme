@@ -1,0 +1,186 @@
+extends layout
+block content
+  #carousel.carousel.slide(data-ride='carousel')
+    // Indicators
+    ol.carousel-indicators
+      li.active(data-target='#carousel', data-slide-to='0')
+      li(data-target='#carousel', data-slide-to='1')
+      li(data-target='#carousel', data-slide-to='2')
+      li(data-target='#carousel', data-slide-to='3')
+    // Wrapper for slides
+    .carousel-inner(role='listbox')
+      .item.active
+        a(href=lang_preurl+"/portfolio/live-visuals/video-mapping-maxxi-spring-attitude-2016/", title="Video Mapping MAXXI Spring Attitude 2016")
+          img(src='https://flyer.dev.flyer.it/files/2016/12/event-mapping-SA.jpg', alt=global.__('Image for')+': '+'Video Mapping MAXXI Spring Attitude 2016')
+      .item
+        a(href=lang_preurl + "/portfolio/web-and-mobile/funder35/", title="Funder35")
+          img(src='https://flyer.dev.flyer.it/files/2015/06/Flyer-slider-Europe.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+      .item
+        a(href=lang_preurl + "/portfolio/awards-and-grants/european-union-avnode-lpm-2015-2018-creative-europe-large-scale-cooperation/", title="Funder35")
+          img(src='https://flyer.dev.flyer.it/files/2016/11/wm_funder35.jpg', alt=global.__('Image for') + ': ' + 'Funder35')
+      .item
+        a(href=lang_preurl + "/portfolio/videos/live-cinema-festival-2016-video-report/", title="Live Cinema Festival 2016 Video Report")
+          img(src='https://flyer.dev.flyer.it/files/2016/11/LCF2016_report-thumb.jpg', alt=global.__('Image for') + ': ' + 'Live Cinema Festival 2016 Video Report')
+
+
+    // Controls
+    a.left.carousel-control(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next
+  article.home
+    .text-center(style="padding-top: 20px;")
+      h1.entry-title
+        span.sr-only=config.project_name+" "
+        !=config.meta.headline[sessions.current_lang]
+    section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .home-services(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .sr-only(itemprop="name")=global.__("Services")
+        .container-fluid
+          .row.sameheightcnt
+            .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="1")
+              !=profile['wpcf-row-1-col-1-html-box']
+            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="2")
+              !=profile['wpcf-row-1-col-2-html-box']
+            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="3")
+              !=profile['wpcf-row-1-col-3-html-box']
+            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+              meta(itemprop="position", content="4")
+              !=profile['wpcf-row-1-col-4-html-box']
+
+            
+            
+            
+    section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        header.text-center
+          h2.entry-title(itemprop="name")=global.__("Live Visuals")
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_events.post_content
+        .row.isotope.results
+          each result, position in results.events
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
+              include boxes/box_event
+        .text-center.read-more
+          a(href=lang_preurl+'/portfolio/live-visuals/', title=global.__("See all Events"))
+            !=global.__("See all Events")
+            !=" "
+            i.icon-right
+            
+            
+            
+    section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        header.text-center
+          h2.entry-title(itemprop="name")=posttype_lab.post_title
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_lab.post_content
+        .row.isotope.results
+          each result, position in results.lab
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
+              include boxes/box_lab
+        .text-center.read-more
+          a(href=lang_preurl+'/portfolio/lab/', title=global.__("See all Lab"))
+            !=global.__("See all Lab")
+            !=" "
+            i.icon-right
+
+
+
+    section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        header.text-center
+          h2.entry-title(itemprop="name")=posttype_web.post_title
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_web.post_content
+        .row.isotope.results
+          each result, position in results.web
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
+              include boxes/box_web
+        .text-center.read-more
+          a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("See all Web & Mobile"))
+            !=global.__("See all Web & Mobile")
+            !=" "
+            i.icon-right
+
+
+
+    .home-learning(itemprop="owns", itemscope, itemtype = 'http://schema.org/OwnershipInfo')
+      section
+        .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+          .row
+            .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
+              h2.entry-title.boxItem(itemprop="name")=global.__("Learning")
+              each result, position in results.learning
+                  include boxes/box_learning_home
+              .read-more.inverse
+                a(href=lang_preurl+'/portfolio/learning/', title=global.__("See all Learnings"))
+                  !=global.__("See all Learnings")
+                  !=" "
+                  i.icon-right
+
+
+
+    section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        header.text-center
+          h2.entry-title(itemprop="name")=posttype_video.post_title
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_video.post_content
+        .row
+          each result, position in results.videos
+            .col-md-3.col-sm-12
+              include boxes/box_video_home
+        .text-center.read-more
+          a(href=lang_preurl+'/portfolio/videos/', title=global.__("See all Videos"))
+            !=global.__("See all Videos")
+            !=" "
+            i.icon-right
+
+
+
+    section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        header.text-center
+          h2.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_awards.post_content
+        .row
+          each result, position in results.awards
+            .col-xl-2.col-lg-3.col-md-3(class=(!position ? "col-xl-offset-2" : ""))
+              include boxes/box_award
+        .text-center.read-more
+          a(href=lang_preurl+'/portfolio/awards-and-grants/', title=global.__("See all Awards and Grants"))
+            !=global.__("See all Awards and Grants")
+            !=" "
+            i.icon-right
+
+    section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        header.text-center
+          h2.entry-title.boxItem(itemprop="name")=global.__("Extra")
+          .row
+            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+              .col-xs-12!=posttype_news.post_content
+        .row.isotope.results
+          each result, position in results.news
+            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "visible-md hidden-lg visible-xl" : "")
+              include boxes/box_news
+        .text-center.read-more
+          a(href=lang_preurl + '/extra/', title=global.__("See all Extras"))
+            !=global.__("See all Extras")
+            !=" "
+            i.icon-right
+
+
+

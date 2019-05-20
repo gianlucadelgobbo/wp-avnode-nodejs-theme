@@ -1,0 +1,6 @@
+if result.tags
+  p.tags
+    each tag, index in result.tags
+      span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
+      if index + 1 < result.tags.length
+        !=" · "

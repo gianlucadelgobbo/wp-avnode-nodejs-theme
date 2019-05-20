@@ -1,0 +1,380 @@
+extends layout_local
+block content
+  //
+    Info.plist
+    <key>LSUIPresentationMode</key>
+    <integer>3</integer>
+
+    sudo node app -site shockart
+
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --app=http://shockart.net/exhibitions/fotonica/
+
+    # Hide Dock
+    defaults write com.apple.dock autohide -bool true && killall Dock
+    defaults write com.apple.dock autohide-delay -float 1000 && killall Dock
+    defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock
+
+    # Restore Dock
+    defaults write com.apple.dock autohide -bool false && killall Dock
+    defaults delete com.apple.dock autohide-delay && killall Dock
+    defaults write com.apple.dock no-bouncing -bool FALSE && killall Dock
+
+
+  article#container(itemscope='', itemtype='http://schema.org/Event')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') Net Paintings
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/peam2005/flash.htm', onclick="openWindow('Net Paintings','/peam2005/flash.htm','1030','697');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2005-10-22T17:09:00+01:00') October, 22nd 2005, 5:09 pm
+                !="|"
+                span(itemprop='endDate', content='2005-10-23T00:00:00+01:00') October, 23rd 2005, 12:00 am
+              .date
+                i.icon-calendar-check-o
+                !="|  October 22 - 23, 2005"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Ecoteca
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='42.461907')
+                    meta(itemprop='longitude', content='14.217749000000026')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') Pescara
+                    span.addressCountry(itemprop='addressCountry') Italy
+                    !=" | "
+                span.city Pescara,
+                span.country Italy
+          div(itemprop='description')
+            p Shockart.net takes to PEAM 2005 a selection of digital paintings that could decorate our homes for free, all of course can be found on Internet."
+            p “Net paintings” aims to give visibility to that form of non-interactive web art , more easily able to bring the uninitiated and to enter in the houses of the most passionate,at the same time."
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='/shockart/images/DSCN2128-400x270.jpg', alt='Net Paintings', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') PEAM Web Art section
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/peam2004/flash.htm', onclick="openWindow('PEAM Web Art section','/peam2004/flash.htm','1030','647');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2004-05-19T15:00:00+01:00') May, 19th 2004, 3:00 pm
+                !="|"
+                span(itemprop='endDate', content='2004-05-23T23:00:00+01:00') May, 23rd 2004, 11:00 pm
+              .date
+                i.icon-calendar-check-o
+                !="|  May 19 - 23, 2004"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Ecoteca
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='42.461907')
+                    meta(itemprop='longitude', content='14.217749000000026')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') Pescara
+                    span.addressCountry(itemprop='addressCountry') Italy
+                    !=" | "
+                span.city Pescara,
+                span.country Italy
+          div(itemprop='description')
+            p The selection made for Peam 2004 compound the projects of 8 artists who use the web as artistic platform, able to conciliate different expressive channels (audio, video, text, photography).
+            p The aim is to create a language wich can interpret, in an absolutely harmonic way, the rhythm of the contemporaneousness.
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='/shockart/images/peam2004-480x270.jpg', alt='PEAM Web Art section', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') Artecnologie
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/artecnologie/flash.htm', onclick="openWindow('Artecnologie','/artecnologie/flash.htm','1030','647');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2003-09-23T10:00:00+01:00') September, 23rd 2003, 10:00 am
+                !="|"
+                span(itemprop='endDate', content='2003-09-25T23:00:00+01:00') September, 25th 2003, 11:00 pm
+              .date
+                i.icon-calendar-check-o
+                !="|  September 23 - 25, 2003"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Castel Sant'Angelo
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='41.903063')
+                    meta(itemprop='longitude', content='12.466275999999993')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') Rome
+                    span.addressCountry(itemprop='addressCountry') Italy
+                    !=" | "
+                span.city Rome,
+                span.country Italy
+          div(itemprop='description')
+            p The exhibition and the congress Artecnologie, that took place in Castel Sant’Angelo in Rome and to which Shockart was invited to take part, embodies how strong and inevitable today has become the need of investigating the relationship between art and new media.
+            p Taking, always more as a consolitated assertion, the fact that this conjunction, by giving several ways of mixing languages (video, photography, sound, drawing, etc.), conferes to the expression a natural development of possibilities, of paths and an unlimitated expansion of the message.
+            p We already knew it, but maybe even somebody else is going to get conviced about how quickly the global approach to reality and to visual art change, how real is the need of finding new codes to unzip, of spending time to indagate and discover the differences among thousand of similar voices, or simply how natural is to communicate by short and synthetized deeds.
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='/shockart/images/peeling-480x270.jpg', alt='Artecnologie', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') Flash Forward NYC
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/flashforward2002/flash.htm', onclick="openWindow('Flash Forward NYC','/flashforward2002/flash.htm','1024','768');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2002-07-10T10:00:00+01:00') July, 10th 2002, 10:00 am
+                !="|"
+                span(itemprop='endDate', content='2002-07-12T21:00:00+01:00') July, 12th 2002, 9:00 pm
+              .date
+                i.icon-calendar-check-o
+                !="|  July 10 - 12, 2002"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') The New Yorker
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='40.752703')
+                    meta(itemprop='longitude', content='-73.99347799999998')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') New York
+                    span.addressCountry(itemprop='addressCountry') United States
+                    !=" | "
+                span.city New York,
+                span.country United States
+          div(itemprop='description')
+            p Shockart.net will present a selectioned review of web_Art works created by several international artists, almost already wellknown and apprechiated and who have already taken part to important web_Art exhibitions throught Europe (Bienal de Valencia – Valencia, Convento del Carmen; Vector Lounge – Paris, Centre George Pompidou; Web Wizards: Designers Who Define The Web – London, Design Museum Exhibition).
+            p This great task follows the partecipation of Shockart.net, as ideator and curator of the web_Art section, at the first Valencia Biennial of the Art (Spain, summer 2001 –
+              a(href='http://www.shockart.net/bienaldevalencia/flash.htm', target='_blank') www.shockart.net/bienaldevalencia/flash.htm
+              !="|"
+            p The new selection has been realized with the will of presenting some of the most interesting aspects and products of non-commercial web_design today. Each work that will be shown at shockart@flashforward will be integrated into an innovative AI engine which guides the user trought the different artworks.
+              br
+              !="| This is based upon an experimental technology that Shockart.net is developing in collaboration with the Engineering Faculty of the University of Study of Sannio (Italy). The AI interface technology is a new way to help the user surfing the Internet, matching the opportunities offered by CODING, ARTIFICIAL INTELLIGENCE and ADVANCED COMMUNICATION."
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='https://flyer.dev.flyer.it/files/2002/07/photo_02-480x270.jpg', alt='Flash Forward NYC', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') Flash Forward SF
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/flashforward2002/flash.htm', onclick="openWindow('Flash Forward SF','/flashforward2002/flash.htm','1034','798');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2002-04-02T10:00:00+01:00') April, 2nd 2002, 10:00 am
+                !="|"
+                span(itemprop='endDate', content='2002-04-03T22:00:00+01:00') April, 3rd 2002, 10:00 pm
+              .date
+                i.icon-calendar-check-o
+                !="|  April 2 – 3, 2002"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Herbst Theatre
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='37.779534')
+                    meta(itemprop='longitude', content='-122.421017')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') San Francisco
+                    span.addressCountry(itemprop='addressCountry') United States
+                    !=" | "
+                span.city San Francisco,
+                span.country United States
+          div(itemprop='description')
+            p In occasion of San Francisco Flashforward (San Francisco, Herbst Theatre, April 2nd – 3rd 2002 (http://www.flashforward2002.com), Shockart.net will present a selectioned review of web_Art works created by several international artists, almost already wellknown and apprechiated and who have already taken part to important web_Art exhibitions throught Europe (Bienal de Valencia – Valencia, Convento del Carmen; Vector Lounge – Paris, Centre George Pompidou; Web Wizards: Designers Who Define The Web – London, Design Museum Exhibition).
+            p This great task follows the partecipation of Shockart.net, as ideator and curator of the web_Art section, at the first Valencia Biennial of the Art (Spain, summer 2001 – http://www.shockart.net/bienaldevalencia/flash.htm).
+            p The new selection has been realized with the will of presenting some of the most interesting aspects and products of non-commercial web_design today. Each work that will be shown at shockart@flashforward will be integrated into an innovative AI engine which guides the user trought the different artworks. This is based upon an experimental technology that Shockart.net is developing in collaboration with the Engineering Faculty of the University of Study of Sannio (Italy). The AI interface technology is a new way to help the user surfing the Internet, matching the opportunities offered by CODING, ARTIFICIAL INTELLIGENCE and ADVANCED COMMUNICATION.
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='https://flyer.dev.flyer.it/files/2002/04/g_munk-480x270.jpg', alt='Flash Forward SF', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') Net Chisel
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/biennaledicarrara/flash.htm', onclick="openWindow('Net Chisel','/biennaledicarrara/flash.htm','930','645');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2002-02-27T10:00:00+01:00') February, 27th 2002, 10:00 am
+                !="|"
+                span(itemprop='endDate', content='2002-09-27T23:00:00+01:00') September, 27th 2002, 11:00 pm
+              .date
+                i.icon-calendar-check-o
+                !="|  February 27 - September 27, 2002"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Chiesa del Suffragio
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='43.84283')
+                    meta(itemprop='longitude', content='10.50619000000006')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') Carrara
+                    span.addressCountry(itemprop='addressCountry') Italy
+                    !=" | "
+                span.city Carrara,
+                span.country Italy
+          div(itemprop='description')
+            p In occasion of the International Sculpture Biennial in Carrara, the city of Michelangelo marble, will be presented a selection of web_artworks inspired to the idea of looking at the construction process of a web_artwork, as an act of “taking off materia”, as a way to obtain a new concept of sculpture, by scalping the bit.
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='/shockart/images/immagine_4-480x270.png', alt='Net Chisel', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') El Mundo Nuevo
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/bienaldevalencia/flash.htm', onclick="openWindow('El Mundo Nuevo','/bienaldevalencia/flash.htm','1020','617');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2001-06-10T20:00:00+01:00') June, 10th 2001, 8:00 pm
+                !="|"
+                span(itemprop='endDate', content='2001-12-08T23:00:00+01:00') December, 8th 2001, 11:00 pm
+              .date
+                i.icon-calendar-check-o
+                !="|  June 10 - December 8, 2001"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Centro Cultural El Carmen
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='39.479563')
+                    meta(itemprop='longitude', content='-0.3791200000000572')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') Valencia
+                    span.addressCountry(itemprop='addressCountry') Spain
+                    !=" | "
+                  span.city Valencia,
+                  span.country  Spain
+          div(itemprop='description')
+            p On the 13th of June 2001 there was the great opening of Valencia Art Biennial Exhibition. A section of this event, called “El Mundo Nuevo” (“The New World”) was entirely dedicated to the contemporary culture and to the new languages by means of which, at present, the creativity finds expression and on which it settles its revolutionary communication codes.
+            p It’s a section that runs through the virtual, cared by KwArt (www.kwart.com) the Art gate of Kataweb, that has entrusted Shockart.net with the task of picking out new artists operating into the web. Among them, thirty was selected by KwArt and Shockart.net and presented in Valencia in an area, called “El Mundo Nuevo”, entirely dedicated to them besides the Biennial and KwArt sites.
+            p The operation has already been set up by Shockart.net, who’s spotting works aiming at spreading and informing about the present energy that runs across, still in a too silent way, data communication channels, claiming the communicative effectiveness of artistic expressions in continuous evolution whose prerogative is that of transmitting a thought without ever looking away from the most innovative formal and structural solutions. KwArt and Shockart.net propose themselves as vehicles of these languages.
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='https://flyer.dev.flyer.it/files/2013/07/emundonuevo-480x270.png', alt='El Mundo Nuevo', itemprop='image')
+    .row
+        .col-sm-9
+          header
+            h1.entry-title(itemprop='name') KwArt SMAU
+          nav.hidden-xs(role='navigation')
+            ul.pulsa.pull-right
+              li.btn-group
+                a.btn.btn-primary.btn-lg(href='/kwartsmau2000/flash.htm', onclick="openWindow('KwArt SMAU','/kwartsmau2000/flash.htm','800','385');return false;") VIEW THE EXHIBITION NOW !!!
+          .rientro
+            .type.d-none Exhibitions
+            .dateplace
+              .dates
+                span.sr-only
+                  span(itemprop='startDate', content='2000-10-19T09:00:00+01:00') October, 19th 2000, 9:00 am
+                  !="|"
+                  span(itemprop='endDate', content='2000-10-23T21:00:00+01:00') October, 23rd 2000, 9:00 pm
+                .date
+                  i.icon-calendar-check-o
+                  !="|  October 19 - 23, 2000"
+              .places
+                p.place
+                  i.icon-location
+                  span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                    span.venue(itemprop='name') Fiera Di Milano
+                    !=" | "
+                    span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                      meta(itemprop='latitude', content='45.48006')
+                      meta(itemprop='longitude', content='9.159729999999968')
+                    span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                      span.addressLocality(itemprop='addressLocality') Milan
+                      span.addressCountry(itemprop='addressCountry') Italy
+                      !=" | "
+                  span.city Milan,
+                  span.country Italy
+            div(itemprop='description')
+              p On the occasion of Smau2000, Italian New Technologies Exhibition, held in Milan from 19th to 23rd of October, KwArt (Kataweb section entirely dedicated to Art) presented a review of web-art works edited by Shockart. Properly designed for SMAU Exhibition event, KwArtsmau2000 showed a selection of 20 web-art works , presented to the guests with an unusual graphical interface which will guide the viewer along the gallery’s exploration through a sensorial path, inspired by the basic elements Water and Fire. Every element drives the visitors in an exiting journey of imagines, sounds and words which prelude the discovery of the art-works projects.
+        .col-sm-3
+          img.img-fluid.wp-post-image(src='https://flyer.dev.flyer.it/files/2000/10/kwart-454x270.jpg', alt='KwArt SMAU', itemprop='image')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name') Shockart @ Bluecheese
+        nav.hidden-xs(role='navigation')
+          ul.pulsa.pull-right
+            li.btn-group
+              a.btn.btn-primary.btn-lg(href='/shockart@bluecheese/flash.htm', onclick="openWindow('Shockart @ Bluecheese','/shockart@bluecheese/flash.htm','710','320');return false;") VIEW THE EXHIBITION NOW !!!
+        .rientro
+          .type.d-none Exhibitions
+          .dateplace
+            .dates
+              span.sr-only
+                span(itemprop='startDate', content='2000-03-11T19:00:00+01:00') March, 11th 2000, 7:00 pm
+                !="|"
+                span(itemprop='endDate', content='2000-03-12T06:00:00+01:00') March, 12th 2000, 6:00 am
+              .date
+                i.icon-calendar-check-o
+                !="|  March 11, 2000"
+            .places
+              p.place
+                i.icon-location
+                span.location(itemprop='location', itemscope='', itemtype='http://schema.org/Place')
+                  span.venue(itemprop='name') Bluecheese Factory
+                  !=" | "
+                  span.lnglat(itemprop='geo', itemscope='', itemtype='http://schema.org/GeoCoordinates')
+                    meta(itemprop='latitude', content='41.876307')
+                    meta(itemprop='longitude', content='12.479506000000015')
+                  span.d-none.address(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                    span.addressLocality(itemprop='addressLocality') Rome
+                    span.addressCountry(itemprop='addressCountry') Italy
+                    !=" | "
+                span.city Rome,
+                span.country Italy
+          div(itemprop='description')
+            p First informal presentation of THE SHOCKART MOVEMENT; a selection of 16 operas is showed at the public for the first time on april 1999. The selected art-works were displayed in large size format from 21.00 through 24.00. After 24.00 web_art imagines and animations were to form the background of the DJ consoles. The Exhibition had a lot of eco and Shockart.net is taken for the first time as reference point for the web_art.
+            p BLUECHEESE – Via di Monte Testaccio, Roma.
+      .col-sm-3
+        img.img-fluid.wp-post-image(src='https://flyer.dev.flyer.it/files/2000/03/bc1-400x270.jpg', alt='Shockart @ Bluecheese', itemprop='image')

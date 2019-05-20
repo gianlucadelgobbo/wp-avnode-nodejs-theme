@@ -1,0 +1,44 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Learning(itemscope, itemprop="item", itemtype='http://schema.org/EducationEvent')
+    .thumb-cnt
+      //.catlabel=result.type
+      a.ajaxloader(href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
+        img.img-fluid(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='contentUrl')
+    .box-list
+      if result["wpcf-schedule"]
+        .text-muted
+          .dates
+              .date=global.__("Programming")+": "
+                b=result["wpcf-schedule"]
+      meta(itemprop="position" content=position+1)
+      h3.list_title(itemprop='name')
+        a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+      .text-muted.small.excerpt
+        if result.excerpt && result.excerpt.rendered
+          div(itemprop='headline')!=result.excerpt.rendered
+        if result.tags
+          p.tags
+            each tag in result.tags
+              span.label.label-primary=tag.name
+              !=" "
+      .text-muted
+        !=global.__("Duration")+": "
+        span(itemprop='duration')
+          b=result["wpcf-duration"]
+        br
+        - var auth = []
+        each capauthor in result.capauthors
+          if (config.users_by_id[capauthor.ID] && config.users_by_id[capauthor.ID][config.prefix + "-sez"])
+            - auth.push(capauthor.display_name)
+        if auth.length
+          if auth.length == 1
+            !=global.__("Teacher") + ": "
+          else
+            !=global.__("Teachers") + ": "
+          span(itemprop='performer')
+          b=auth.join(", ")
+        br
+        !=global.__("Price")+": "
+        span(itemprop='offers')
+          b=result["wpcf-price"] + " €"

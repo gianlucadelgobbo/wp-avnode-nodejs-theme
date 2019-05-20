@@ -1,0 +1,14 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+    .row
+      .col-sm-9
+        header
+          h1.hidden(itemprop="name")=result.post_title
+        .rientro
+          div(itemprop='description')!=result.post_content
+          include ../_common/inc_docs_large
+          .dateModified(itemprop='dateModified', content=result.date)=result.dateModifiedHR
+      .col-sm-3
+        img.img-fluid.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+

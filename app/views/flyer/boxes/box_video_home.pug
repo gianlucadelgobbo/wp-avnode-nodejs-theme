@@ -1,0 +1,10 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Video(itemscope, itemprop="item", itemtype='http://schema.org/CreativeWork')
+    .thumb-cnt
+      a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/videos/' + result.slug + "/", rel='bookmark', title!=result.post_title)
+        span.play-cnt
+          i.icon-play
+        img.img-fluid(src=result.featured.thumbnail, alt!=global.__('Image for')+': ' + result.post_title, itemprop='image')
+      //.embed-responsive.embed-responsive-16by9
+        iframe.embed-responsive-item(src=result.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")

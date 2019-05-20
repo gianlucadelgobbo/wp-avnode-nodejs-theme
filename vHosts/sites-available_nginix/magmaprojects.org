@@ -1,0 +1,113 @@
+# Expires map
+map $sent_http_content_type $expires {
+    default                    off;
+    text/html                  epoch;
+    text/css                   max;
+    application/javascript     max;
+    ~image/                    max;
+}
+
+server {
+  listen   80;
+  listen   [::]:80;
+  server_name www.magmaprojects.org magmaprojects.wp.flyer.it;
+  return 301 http://magmaprojects.org$request_uri;
+}
+
+map $http_host $blogid {
+  default -999;
+  #Ref: http://wordpress.org/extend/plugins/nginx-helper/
+  #include /var/www/wordpress/wp-content/plugins/nginx-helper/map.conf ;
+}
+
+map $uri $blogname{
+    ~^(?P<blogpath>/[^/]+/)files/(.*)       $blogpath ;
+}
+
+server {
+  listen   80;
+  listen   [::]:80;
+
+  #listen 443 ssl;
+  #ssl    on;
+  #ssl_certificate  /etc/letsencrypt/live/magmaprojects.org/fullchain.pem ;
+  #ssl_certificate_key /etc/letsencrypt/live/magmaprojects.org/privkey.pem ;
+
+  server_name magmaprojects.org;
+
+  root /sites/wp.flyer;
+  index index.php;
+
+  access_log /var/log/nginx/magmaprojects.org.access.log;
+  error_log /var/log/nginx/magmaprojects.org.error.log;
+
+  # Enable HSTS. This forces SSL on clients that respect it, most modern browsers. The includeSubDomains flag is optional.
+  #add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+
+  # Set caches, protocols, and accepted ciphers. This config will merit an A+ SSL Labs score as of Sept 2015.
+  #ssl_session_cache shared:SSL:20m;
+  #ssl_session_timeout 10m;
+  #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  #ssl_prefer_server_ciphers on;
+  #ssl_ciphers 'ECDH+AESGCM:ECDH+AES256:ECDH+AES128:DH+3DES:!ADH:!AECDH:!MD5';
+
+  #WPMU Files
+  location ~ ^/files/(.*)$ {
+    try_files /wp-content/blogs.dir/$blogid/$uri /wp-includes/ms-files.php?file=$1 ;
+    access_log off; log_not_found off;    expires max;
+  }
+
+  #WPMU x-sendfile to avoid php readfile()
+  location ^~ /blogs.dir {
+    internal;
+    alias /sites/wp.flyer/wp-content/blogs.dir;
+    access_log off;
+    log_not_found off;
+    expires max;
+  }
+
+  if (!-e $request_filename) {
+    rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+    rewrite ^(/[^/]+)?(/wp-.*) $2 last;
+    rewrite ^(/[^/]+)?(/.*\.php) $2 last;
+  }
+
+#  location ~ \.php$ {
+#    try_files $uri =404;
+#    include fastcgi_params;
+#    fastcgi_pass php;
+#  }
+
+  location = /favicon.ico {
+    log_not_found off;
+    access_log off;
+  }
+
+  location = /robots.txt {
+    try_files $uri $uri/ /index.php?$args;
+#    allow all;
+    log_not_found off;
+    access_log off;
+  }
+
+  location / {
+    # This is cool because no php is touched for static content.
+    # include the "?$args" part so non-default permalinks doesn't break when using query string
+    try_files $uri $uri/ /index.php?$args;
+  }
+
+  location ~ \.php$ {
+    #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+    include fastcgi.conf;
+    fastcgi_intercept_errors on;
+    #fastcgi_pass php;
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+  }
+
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+    expires max;
+    log_not_found off;
+  }
+}
+
+

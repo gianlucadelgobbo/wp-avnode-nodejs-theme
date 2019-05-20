@@ -1,0 +1,41 @@
+#myAffix.affix-top(data-spy='affix', data-offset-top='90')
+  nav.navbar.navbar-inverse(role='navigation')
+    .container-fluid
+      // Brand and toggle get grouped for better mobile display
+      .navbar-header
+        // .navbar-toggle is used as the toggle for collapsed navbar content
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-navbar')
+          span.sr-only Toggle navigation
+          i.icon-bar
+          i.icon-bar
+          i.icon-bar
+        // Be sure to leave the brand out there if you want it shown
+        a.navbar-brand.visible-xs(href='/', title=config.project_name)
+          i.icon-linuxclub
+          .sr-only=config.project_name
+      // Place everything within .navbar-collapse to hide it until above 768px
+      #main-navbar.collapse.navbar-collapse
+        ul#menu-main-menu.nav.navbar-nav
+          li(class=page_data.url=="/" || page_data.url=="/it/" ? "active" : undefined)
+            a(href=lang_preurl+'/')=global.__("Home")
+          li(class=page_data.url.indexOf('/linux-club-italia') >= 0 ? "active" : undefined)
+            a(href=lang_preurl+'/linux-club-italia/') Linux Club Italia
+          li(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/events/')=global.__("Eventi")
+          li(class=page_data.url.indexOf('/news/') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/news/')=global.__("News")
+          li(class=page_data.url.indexOf('/network') >= 0 ? "active" : undefined)
+            a(href=lang_preurl+'/network/')=global.__("Network")
+          li(class=page_data.url.indexOf('/contatti') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/contacts/')=global.__("Contatti")
+          li(class=page_data.url.indexOf('/newsletter') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/newsletter/')=global.__("Newsletter")
+          li(class=page_data.url.indexOf('/diventa-membro') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/join/')=global.__("Diventa membro")
+          li(class=page_data.url.indexOf('/amici') >= 0 ? "active" : undefined)
+            a(href=lang_preurl + '/amici/')=global.__("Amici")
+        ul.nav.navbar-nav.navbar-right
+          li.menu-spacer-after.hidden-xs
+            a#searchModalButton(href="/search/")
+              i.glyphicon.glyphicon-search
+              .sr-only=global.__("Search")

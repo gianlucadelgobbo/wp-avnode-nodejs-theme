@@ -1,0 +1,21 @@
+.boxItem.swiper-slide(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .News(itemprop="item", itemscope, itemtype="http://schema.org/Article")
+    .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+
+      a.ajaxloader(href='/news/'+result.slug+"/", rel='bookmark', title!=result.title, itemprop='url')
+        if result.video_thumbnail
+          span.play-cnt
+            i.icon-play
+        img.img-fluid(src=result.imageFormats.small, alt!=global.__('Image for')+': '+result.title, itemprop='contentUrl')
+        meta(itemprop="width" content="480")
+        meta(itemprop="height" content="270")
+
+    .box-list
+      .box-list-cnt
+        //include ../../_common/inc_datemonth
+        h3.list_title
+          a.ajaxloader(itemprop='url', href='/news/'+result.slug+"/", rel='bookmark', title=result.title)!=result.title
+        .text-muted.small.excerpt
+          if result.excerpt && result.excerpt.rendered
+            div(itemprop='description')!=result.excerpt.rendered

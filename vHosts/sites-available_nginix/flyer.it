@@ -1,0 +1,68 @@
+# Expires map
+map $sent_http_content_type $expires {
+    default                    off;
+    text/html                  epoch;
+    text/css                   max;
+    application/javascript     max;
+    ~image/                    max;
+}
+
+server {
+  listen   80;
+  listen   [::]:80;
+  server_name flyer.it www.flyer.it;
+  return 301 https://flyer.it$request_uri;
+}
+
+server {
+  listen   443 ssl;
+
+  ssl_certificate    /etc/letsencrypt/live/flyer.it/fullchain.pem;
+  ssl_certificate_key  /etc/letsencrypt/live/flyer.it/privkey.pem;
+  
+  server_name www.flyer.it;
+  return 301 https://flyer.it$request_uri;
+}
+
+server {
+  listen   80;
+  listen   [::]:80;
+  listen   443 ssl;
+
+  ssl_certificate    /etc/letsencrypt/live/learning.flyer.it/fullchain.pem;
+  ssl_certificate_key  /etc/letsencrypt/live/learning.flyer.it/privkey.pem;
+
+  server_name learning.flyer.it;
+  return 301 https://flyer.it/profile/learning/;
+}
+
+#server {
+#  listen   80;
+#  listen   [::]:80;
+#  listen   443 ssl;
+#
+#  ssl_certificate    /etc/letsencrypt/live/flyer.it/fullchain.pem;
+#  ssl_certificate_key  /etc/letsencrypt/live/flyer.it/privkey.pem;
+#
+#  server_name wp.flyer.it;
+#  return 301 https://flyer.it/portfolio/web-and-mobile/tags/wordpress/;
+#}
+
+server {
+  listen   443 ssl;
+  server_name flyer.it;
+
+  ssl_certificate    /etc/letsencrypt/live/flyer.it/fullchain.pem;
+  ssl_certificate_key  /etc/letsencrypt/live/flyer.it/privkey.pem;
+
+  expires $expires;
+
+  location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}

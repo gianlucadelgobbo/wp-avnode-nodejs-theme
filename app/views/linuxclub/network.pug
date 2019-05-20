@@ -1,0 +1,11 @@
+extends layout
+block content
+  article#container(itemscope, itemtype='http://schema.org/Article')
+    header
+      h1.entry-title(itemprop='name')=result.post_title
+    include ../_common/inc_type_hidden
+    include ../_common/inc_datemonth
+    br
+    div(itemprop='description')!=result.post_content
+    br
+    include ../_common/inc_share

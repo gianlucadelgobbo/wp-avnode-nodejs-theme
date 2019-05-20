@@ -1,0 +1,14 @@
+$bootstrap-sass-asset-helper: false !default;
+$brand-primary:         #1abc9c !default
+$icon-font-path: "../../_common/fonts/" !default;
+
+@import "../_common/fontello";
+@import "../_common/fontello-animation";
+@import "../_common/socialGalleryPluginLite";
+@import "../_common/cookielawinfo";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../_common/bootstrapXL";
+@import "../_common/swiper";
+@import "../_common/style";
+@import "./css/style.lpm";
+@import "./css/style.lpm.2017-amsterdam";

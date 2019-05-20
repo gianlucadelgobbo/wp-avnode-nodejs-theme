@@ -1,0 +1,10 @@
+span.sr-only
+    if result.startdateHR
+        span(itemprop='startDate', content=result.startdateISO)=result.startdateHR
+        !=" | "
+    if result.enddateHR
+        span(itemprop='endDate', content=result.enddateISO)=result.enddateHR
+if result.data_evento
+    .date
+        i.icon-calendar-check-o
+        !=" "+result.data_evento

@@ -1,0 +1,10 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Award(itemscope, itemprop="item", itemtype='http://schema.org/CreativeWork')
+    .text-center.boxItem(itemprop="award")
+      a.ajaxloader(href=lang_preurl+'/portfolio/awards-and-grants/' + result.slug + "/", rel='bookmark', title!=result.post_title)
+        img(src=result.featured.full, alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
+      a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/awards-and-grants/' + result.slug + "/", rel='bookmark', title!=result.post_title)
+        h3!=result.post_title.replace(" | ", "<br />").replace(" | ", "<br />")
+        meta(itemprop="position" content=position+1)
+      !=result.excerpt.rendered

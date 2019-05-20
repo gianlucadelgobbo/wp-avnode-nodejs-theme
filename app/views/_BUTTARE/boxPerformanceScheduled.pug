@@ -1,0 +1,41 @@
+.performance_item_wrapper
+  if item.schedule
+    div.time_schedule
+      span=item.schedule.starttimeTime 
+      span.lnr.lnr-chevron-right
+      span=item.schedule.endtimeTime
+
+  if item.performance.imageFormats
+    a(href="/editions/"+result.slug+"/program/"+item.performance.slug+"/", title=item.performance.title)
+      img.img-fluid(
+        src=item.performance.imageFormats.small
+        alt=item.performance.title
+      )
+  .performance_item_info_wrapper
+    a(href="/events/"+result.slug+"/program/"+item.performance.slug+"/", title=item.performance.title)
+      h4.performance_item_title=item.performance.title
+    if item.performance.categories
+      ul.list-inline.category_performance_item
+        each category in item.performance.categories
+          li.list-inline-item=category.name
+    if item.performance.users
+      .performance_users_item_wrapper
+        .flex_left      
+          if (item.performance.users.length > 1)
+            div
+              img.img-fluid(src="/images/more_users.svg")
+            div
+              p.users_performance_item_name=item.performance.users.length+" "+global.__("authors")
+              p.users_performance_item_views=item.performance.stats.visits+" "+global.__("views")
+          else              
+            each user in item.performance.users
+              div
+                img(src=user.imageFormats.small, alt=user.stagename)
+              div
+                p.users_performance_item_name=user.stagename
+                p.users_performance_item_views=item.performance.stats.visits+" "+global.__("views")
+        .flex_right      
+          .users_performance_item_likes
+            span.color2.lnr.lnr-heart
+            br
+            span=item.performance.stats.likes+" "+global.__("likes")

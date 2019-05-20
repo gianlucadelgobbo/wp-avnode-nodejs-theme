@@ -1,0 +1,80 @@
+ 
+<html>
+<head>
+<title>Shockart - Bienal de Valencia</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<SCRIPT LANGUAGE="JavaScript" type="text/Javascript">
+function popupwindow(LarghezzaCont,AltezzaCont,Pagina,nome,scrol,stat) {
+	var lsBrowser = navigator.appName;
+	var navInfo = navigator.userAgent;
+	if (scrol == "yes") {
+		if (navInfo == "Mac" && lsBrowser.indexOf("Microsoft") >= 0) {
+				aw = 0;
+		} else {
+		aw = 17;
+		}		
+	} else {
+	aw = 0;
+	}		
+	
+    var iMyWidth;
+    var iMyHeight;
+    var LarghezzaPagina;
+    var AltezzaPagina;
+    LarghezzaPagina = screen.availWidth;
+    AltezzaPagina = screen.availHeight;
+    LarghezzaCont=LarghezzaCont.toUpperCase()
+    AltezzaCont=AltezzaCont.toUpperCase()
+				
+    if (LarghezzaCont == "FULL") {
+            LarghezzaWindow = screen.availWidth;
+        } else {
+            LarghezzaWindow = parseInt(LarghezzaCont) + aw;
+        }
+    if (AltezzaCont == "FULL") {
+            AltezzaWindow = screen.availHeight;
+        } else {
+            AltezzaWindow = AltezzaCont;
+        }
+    iMyWidth = (LarghezzaPagina/2) - (LarghezzaWindow/2);
+    iMyHeight = (AltezzaPagina/2) - (AltezzaWindow/2);
+    win = window.open(Pagina,nome,"height=" + AltezzaWindow + ",width="	+ LarghezzaWindow 
+	+ ",menubar=0,resizable=0,scrollbars=" + scrol + ",status=" + stat + ",titlebar=0,toolbar=0,left=0,top=0,screenX=0,screenY=0");
+    win.focus();
+	}
+function reload(){window.location.reload();} 
+</script> 
+</head>
+
+<body bgcolor="#242424" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+
+<table  onFocus="reload()" border="0" cellpadding="0" cellspacing="0" width="1024">
+  <tr> 
+    <td><img src="images/shim.gif" width="2" height="1" border="0"></td>
+    <td><img src="images/shim.gif" width="1020" height="1" border="0"></td>
+    <td><img src="images/shim.gif" width="2" height="1" border="0"></td>
+    <td><img src="images/shim.gif" width="1" height="1" border="0"></td>
+  </tr>
+  <tr valign="top"> 
+    <td colspan="3"><img name="screen_r1_c1" src="images/screen_r1_c1.gif" width="1024" height="129" border="0"></td>
+    <td><img src="images/shim.gif" width="1" height="129" border="0"></td>
+  </tr>
+  <tr valign="top"> 
+    <td rowspan="2"><img name="screen_r2_c1" src="images/screen_r2_c1.gif" width="2" height="639" border="0"></td>
+    <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="1020" height="617">
+      <param name="movie" value="index.swf"><param name="quality" value="high"><param name="menu" value="false">
+      <embed src="index.swf" width="1020" height="617" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" menu="false"></embed>
+    </object></td>
+    <td rowspan="2"><img name="screen_r2_c3" src="images/screen_r2_c3.gif" width="2" height="639" border="0"></td>
+    <td><img src="images/shim.gif" width="1" height="617" border="0"></td>
+  </tr>
+  <tr valign="top"> 
+    <td><img name="screen_r3_c2" src="images/screen_r3_c2.gif" width="1020" height="22" border="0"></td>
+    <td><img src="images/shim.gif" width="1" height="22" border="0"></td>
+  </tr>
+</table>
+</body>
+</html>
+
+

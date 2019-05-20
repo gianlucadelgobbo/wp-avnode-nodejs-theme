@@ -1,0 +1,58 @@
+<HTML><HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+
+var exit=true; 
+var index = 0;
+var Colors = new Array("#ffffff","#000000");
+
+function jodit( ) {
+
+window.setTimeout( "jodit()", 1); 
+
+      changeBG();
+}
+
+function changeBG() {
+      index = Math.round(Math.random() * (Colors.length-1) );
+      document.bgColor = Colors[index];
+}
+
+
+function move(){ 
+
+if((parseInt(navigator.appVersion) >= 4 )) { 
+
+window.moveTo(100,400); window.moveTo(200,300); window.moveTo(100,200);
+window.moveTo(500,100); window.moveTo(400,100); window.moveTo(300,100);
+window.moveTo(200,100); window.moveTo(100,100); window.moveTo(0,100);
+window.moveTo(100,400); window.moveTo(200,400); window.moveTo(300,400);
+window.moveTo(400,400); window.moveTo(500,300); window.moveTo(100,300); 
+window.moveTo(200,300); window.moveTo(300,400); window.moveTo(100,100); 
+window.moveTo(100,100); window.moveTo(100,200); window.moveTo(100,300);
+window.moveTo((screen.width/2),(screen.height/2)-100);
+
+} 
+
+setTimeout('move()', 1000);}
+
+
+</SCRIPT>
+
+<TITLE>%50hacked </TITLE></HEAD>
+<BODY  BGCOLOR="000000" onLoad="move();jodit();" onblur="close();">
+
+<TABLE BORDER=0 WIDTH=100% HEIGHT=100% CELLPADDING=0 CELLSPACING=0>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=MIDDLE>
+
+<FONT SIZE="4"><TT><B>
+%50hacked antiorp
+</B></TT></FONT>
+
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+extends layout
+block content
+  .container
+    article.pagepaddingtop#container(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
+      .row
+        .col-sm-9
+          header
+            h1.entry-title(itemprop='name')=result.display_name
+          .rientro
+            p(itemprop='jobTitle')
+              i=result.role_label
+              if result.auth_contents
+                p
+                  each auth_content,key in result.auth_contents
+                    if auth_content
+                      !=config.posttypes_labels[key]+": "+auth_content.length
+                      br
+            if (result.description)
+              hr
+              div(itemprop='description')!=result.description
+            include ../_common/inc_share
+        .col-sm-3
+          img.img-fluid.main-image(src=result.img, alt=result.display_name, itemprop='image')
+      if result.auth_contents
+        each auth_content,key in result.auth_contents
+          if auth_content.length
+            section(itemscope, itemtype="https://schema.org/ItemList")
+              h3(itemprop="name")=config.posttypes_labels[key]
+              .row.isotope.results
+                each result, position in auth_content
+                  if result.post_type == 'events'
+                    .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                      include boxes/box_event
+                  if result.post_type == 'videos'
+                    .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                      include boxes/box_video
+                  if result.post_type == 'web-and-mobile'
+                    .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                      include boxes/box_web
+                  if result.post_type == 'lab'
+                    .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                      include boxes/box_lab
+                  if result.post_type == 'learning'
+                    .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                      include boxes/box_learning
+                  if result.post_type == 'awards-and-grants'
+                    .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                      include boxes/box_award
+
+
+
+
+          //
+
+        //

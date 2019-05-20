@@ -1,0 +1,49 @@
+extends layout
+block content
+  article.pagepaddingtop#container(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
+    .row
+      .col-sm-9
+        img.img-fluid.main-image(src=result.img, alt=result.display_name, itemprop='image')
+
+        div(itemprop='description')!=result.description
+      .col-sm-3
+        header
+          h1.entry-title(itemprop='name')=result.display_name
+        .rientro
+          p(itemprop='jobTitle')
+            i=result.role_label
+            p
+              if result.auth_contents.exhibitions && result.auth_contents.exhibitions.posts.length
+                !=result.auth_contents.exhibitions.labels.name + ": " + result.auth_contents.exhibitions.posts.length
+                br
+              if result.auth_contents.events && result.auth_contents.events.posts.length
+                !=config.posttypes_labels.events + ": " + result.auth_contents.events.posts.length
+                br
+              if result.auth_contents.news && result.auth_contents.news.posts.length
+                !=config.posttypes_labels.news + ": " + result.auth_contents.news.posts.length
+                br
+          include ../_common/inc_share
+    if result.auth_contents.exhibitions && result.auth_contents.exhibitions.posts.length
+      - var res = result.auth_contents.exhibitions
+        section(itemscope, itemtype="https://schema.org/ItemList")
+          h3(itemprop="name")=res.labels.name
+          .row.isotope.results
+            each result, position in res.posts
+              .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_exhibition
+    if result.auth_contents.events && result.auth_contents.events.posts.length
+      - var res = result.auth_contents.events
+        section(itemscope, itemtype="https://schema.org/ItemList")
+          h3(itemprop="name")=res.labels.name
+          .row.isotope.results
+            each result, position in res.posts
+              .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_event
+    if result.auth_contents.news && result.auth_contents.news.posts.length
+      - var res = result.auth_contents.news
+      section(itemscope, itemtype="https://schema.org/ItemList")
+        h3(itemprop="name")=res.labels.name
+        .row.isotope.results
+          each result, position in res.posts
+            .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_news

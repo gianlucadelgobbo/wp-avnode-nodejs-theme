@@ -1,0 +1,30 @@
+- var basepath = req_params.page ? "" : "/editions/"+req_params.edition
+if body.videos && body.videos.length
+  ul#listItems.row
+    each item, i in body.videos
+      li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+        meta(itemprop='position', content=i)
+        div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+          a.thumbnail(itemprop='url', href=basepath+"/videos/"+item.slug+"/", title=item.title)
+            span.cntGallImgOver
+              img.cntGallImgImg(itemprop='image', src=item.imageFormats.small, alt=item.title)
+            span.cntDida(itemprop='name')=item.title
+            //each user in item.users
+              .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+                b(itemprop='name')=user.stagename
+          - var clientitem = JSON.stringify(item)
+          script.
+            if (typeof glink==='undefined') var glink = [];
+            glink.push(!{JSON.stringify(item)});
+
+
+if body.media && body.media.file
+  .container
+    .row
+      .col-md-8
+        .embed-responsive.embed-responsive-16by9
+          video.embed-responsive-item#my-video.video-js(controls='', preload='auto', width='640', height='264', poster=body.imageFormats.large, data-setup='{aspectRatio:"16:9", fluid: true}')
+            source(src="https://avnode.net"+body.media.file, type='video/mp4')
+            p.vjs-no-js
+              !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+              a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")

@@ -1,0 +1,83 @@
+extends layout
+block content
+  #carousel.carousel.slide(data-ride='carousel')
+    // Indicators
+    ol.carousel-indicators
+      li.active(data-target='#carousel', data-slide-to='0')
+      li(data-target='#carousel', data-slide-to='1')
+      li(data-target='#carousel', data-slide-to='2')
+      //li(data-target='#carousel', data-slide-to='3')
+    // Wrapper for slides
+    .carousel-inner(role='listbox')
+      .item.active
+        a(href="/activities/lpm-2015-2018/", title='European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+          img(src='/avnode/images/home-lpm2015-2018.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+      .item
+        a(href="/join/", title='Join AVnode')
+          img(src='/avnode/images/home-join.jpg', alt=global.__('Image for') + ': ' + 'Join AVnode')
+      .item
+        a(href="/activities/social-media/", title='Social Media')
+          img(src='/avnode/images/home-social-media.jpg', alt=global.__('Image for') + ': ' + 'Social Media')
+      //.item.active
+        a(href="/portfolio/live-visuals/video-mapping-maxxi-spring-attitude-2016/", title="Video Mapping MAXXI Spring Attitude 2016")
+          img(src='https://flyer.dev.flyer.it/files/2016/12/event-mapping-SA.jpg', alt=global.__('Image for') + ': ' + 'Video Mapping MAXXI Spring Attitude 2016')
+        .item
+          a(href="/portfolio/web-and-mobile/funder35/", title="Funder35")
+            img(src='https://flyer.dev.flyer.it/files/2015/06/Flyer-slider-Europe.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+        .item
+          a(href="/portfolio/videos/live-cinema-festival-2016-video-report/", title="Live Cinema Festival 2016 Video Report")
+            img(src='https://flyer.dev.flyer.it/files/2016/11/LCF2016_report-thumb.jpg', alt=global.__('Image for') + ': ' + 'Live Cinema Festival 2016 Video Report')
+
+
+    // Controls
+    a.left.carousel-control(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next
+  article
+    .text-center
+      h1.home-title
+        span.sr-only=config.project_name + " "
+        !=config.meta.headline[sessions.current_lang]
+    .row(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+      .col-xl-3.col-lg-4.col-md-6.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .home-col-1
+          h2.entry-title.boxItem(itemprop="name") News
+          .row.isotope.results
+            each result, position in results.news
+              .col-sm-12.isotopeitem
+                include boxes/box_news
+          .text-right.boxItem
+            a.btn.btn-primary(href="/news/", title=global.__("See all News"))=global.__("See all News")
+      .col-xl-6.col-lg-5.col-md-6.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .home-col-2
+          h2.entry-title.boxItem(itemprop="name")=global.__("Members Events")
+          .row.isotope.results
+            each result, position in results.events
+              .col-xl-6.col-md-12.col-sm-12.isotopeitem(class=position+1>=config.sez.home.events.limit/2 ? "visible-xl hidden-lg" : undefined)
+                include boxes/box_event
+          .text-right.boxItem
+            a.btn.btn-primary(href="/events/", title=global.__("See all Events"))=global.__("See all Events")
+      .col-lg-3.col-md-12.col-sm-6(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
+        .home-col-3
+          h2.entry-title.boxItem(itemprop="name")=global.__("Activities")
+          .row.isotope.results
+            each result, position in results.activities
+              .col-sm-12.isotopeitem
+                include boxes/box_activity
+          .text-right.boxItem
+            a.btn.btn-primary(href="/activities/", title=global.__("See all Activities"))=global.__("See all Activities")
+          //br
+            h2.entry-title.boxItem(itemprop="name")
+              i.icon-instagram
+              !=" "
+              !=global.__("Instagram")
+            .row.isotope.results
+              each result, position in insta
+                .col-sm-6.isotopeitem(style="margin-bottom:30px;")
+                  a(href=result.link, target="_blank")
+                    img.img-fluid(src=result.img.url)
+            .text-right.boxItem
+              a.btn.btn-primary(href="https://www.instagram.com/avnodenet/", target="_blank", title=global.__("See all on Instagram"))=global.__("See all on Instagram")

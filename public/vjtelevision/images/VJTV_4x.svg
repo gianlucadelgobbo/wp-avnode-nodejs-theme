@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 320 84" style="enable-background:new 0 0 320 84;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FF0000;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#00FF00;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#0000FF;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;}
+</style>
+<g>
+	<rect x="144" class="st0" width="50" height="50"/>
+	<rect x="208" class="st1" width="50" height="50"/>
+	<rect x="270" class="st2" width="50" height="50"/>
+</g>
+<rect y="0" class="st3" width="12" height="24"/>
+<rect x="12" y="24" class="st3" width="12" height="24"/>
+<rect x="24" y="48" class="st3" width="12" height="24"/>
+<rect x="48" y="48" class="st3" width="12" height="24"/>
+<rect x="60" y="24" class="st3" width="12" height="24"/>
+<rect x="72" y="0" class="st3" width="12" height="24"/>
+<rect x="72" y="60" class="st3" width="12" height="12"/>
+<rect x="120" class="st3" width="12" height="72"/>
+<rect x="84" y="72" class="st3" width="36" height="12"/>
+<rect x="36" y="72" class="st3" width="12" height="12"/>
+<g>
+	<path d="M156,64v4h-4v16h-4V68h-4v-4h4v-8h4v8H156z"/>
+	<path d="M164,68v-4h12v4h4v8h-16v4h12v4h-12v-4h-4V68H164z M176,68.2h-12V72h12V68.2z"/>
+	<path d="M184,56h4v28h-4V56z"/>
+	<path d="M196,68v-4h12v4h4v8h-16v4h12v4h-12v-4h-4V68H196z M208,68.2h-12V72h12V68.2z"/>
+	<path d="M232,64h4v8h-4v8h-4v4h-4v-4h-4v-8h-4v-8h4v8h4v8h4v-8h4V64z"/>
+	<path d="M240,56h4v4h-4V56z M240,84V64h4v20H240z"/>
+	<path d="M264,68h-12v4h8v4h4v4h-4v4h-12v-4h12v-4h-8v-4h-4v-4h4v-4h12V68z"/>
+	<path d="M268,56h4v4h-4V56z M268,84V64h4v20H268z"/>
+	<path d="M292,64v4h4v12h-4v4h-12v-4h-4V68h4v-4H292z M280,68.2v11.7h12V68.2H280z"/>
+	<path d="M300,64h16v4h4v16h-4V68h-12v16h-4V64z"/>
+</g>
+</svg>

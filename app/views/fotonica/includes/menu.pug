@@ -1,0 +1,71 @@
+nav#top-menu.navbar.navbar-inverse
+  // Brand and toggle get grouped for better mobile display
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-MainMenu')
+      span.sr-only Toggle navigation
+      i.icon-bar
+      i.icon-bar
+      i.icon-bar
+    a.navbar-brand(href='/', title=config.project_name)
+      i.icon-fotonica
+      .sr-only=config.project_name
+      //img.img-fluid(src=config.meta.logo_bar, alt=config.project_name)
+  // Collect the nav links, forms, and other content for toggling
+  #menu-MainMenu.collapse.navbar-collapse
+    ul.nav.navbar-nav
+      li(class=page_data.url.indexOf('/concept') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/concept/') Concept
+      li(class=page_data.url.indexOf('/news') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/news/') News
+      li(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/events/')=global.__("Events")
+      li(class=page_data.url.indexOf('/gallery') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/gallery/') Gallery
+      li(class=page_data.url.indexOf('/videos') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/videos/') Videos
+      li(class=page_data.url.indexOf('/editions') >= 0 ? "active" : undefined)
+        a.dropdown-toggle(href='#', data-toggle='dropdown')!=global.__("Editions")+"&nbsp;"
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(href=lang_preurl+'/editions/2018-rome/') 2018 Rome
+          li
+            a(href=lang_preurl+'/editions/2017-rome/') 2017 Rome
+      //li(class=page_data.url.indexOf('/concept') >= 0 ? "active" : undefined)
+        a.dropdown-toggle(href='#', data-toggle='dropdown')!=global.__("Editions")+"&nbsp;"
+          span.caret
+        ul.dropdown-menu(role='menu')
+          li
+            a(href=lang_preurl+'/editions/nye-2016-rome/') 2016 Rome
+      li(class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/press/') Press
+      li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/contacts/')=global.__("Contacts")
+      //li(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+        a(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+      li(class=page_data.url.indexOf('/search') >= 0 ? "active" : undefined)
+        a#searchModalButton(href="/search/")
+          i.glyphicon.glyphicon-search
+          .sr-only=global.__("Search")
+    ul.nav.navbar-nav.navbar-right
+      li.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+        a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+      li.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+        a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+
+
+
+    //form#subscribe.navbar-form.navbar-right(method='post', action='/signup')
+      .pull-right
+        .input-group.input-group-sm
+          input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+          label.sr-only(for='email') Email
+          span.input-group-btn
+            button.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+        .loading.d-none
+          i.icon-spin3.animate-spin
+          span.sr-only=" Loading..."
+        .alert.d-none
+          button(type="button",class="close",onclick="jQuery('#subscribe').show();jQuery('#subscribe_res').d-none();")!="×"
+          span.msg
+

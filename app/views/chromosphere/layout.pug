@@ -1,0 +1,149 @@
+doctype html
+html(lang=sessions.current_lang)
+  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
+  head
+    title=page_data.title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(property='fb:admins', content=config.meta.fb_admin)
+    meta(property='fb:app_id', content=config.meta.fb_appId)
+    meta(property='og:image', content=page_data.image_src)
+    meta(property='og:title', content=page_data.title)
+    meta(property='og:description', content=page_data.description)
+    meta(property='og:site_name', content=config.project_name)
+    meta(property='og:url', content=config.domain + page_data.url)
+    link(rel='canonical', href=config.domain + page_data.url)
+    meta(property='og:type', content='website')
+    meta(name='description', content=page_data.description)
+    meta(name='keywords', content=config.meta.keywords)
+    meta(name='google-site-verification', content=config.meta.google_webmasterstools)
+    link(rel='shortcut icon', href=config.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
+    // CSS
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
+    
+    if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
+      style(type='text/css').
+        body {
+          background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
+        }
+  body
+    .cnt(itemscope, itemtype='http://schema.org/Event')
+      include includes/menu
+      //div(class=page_data.url == "/" ? "container-fluid" : "container")
+      .container
+        header
+          .row
+            .col-md-4
+              #logo
+                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
+                  img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
+                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+            .col-md-4
+            .col-md-4(itemprop='disambiguatingDescription')
+              img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
+              .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+              .sr-only
+                include ../_common/inc_eventdateplace_meta
+        br
+        nav.hidden-xs
+          ul.pulsa
+            each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+              li.btn-group
+                a.btn.btn-primary.btn-lg.btn.btn-primary.btn-lg(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+                if menu.childs.length
+                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+                    span.caret
+                    span.sr-only Toggle Dropdown
+                  ul.dropdown-menu
+                    each child in menu.childs
+                      li(class=child.post_status == 'publish' ? undefined : "disabled")
+                        a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
+
+
+
+        nav.visible-xs.navbar.navbar-default
+          // Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')
+              span.sr-only Toggle navigation
+              i.icon-bar
+              i.icon-bar
+              i.icon-bar
+            a.navbar-brand(href='/', title="Home")
+          #menu-edition-menu.collapse.navbar-collapse
+            // Collect the nav links, forms, and other content for toggling
+            ul.nav.navbar-nav
+              each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+                li
+                  a(href=lang_preurl+menu.permalink, data-toggle=menu.childs.length>0 ? 'dropdown' : undefined, title=menu.post_title)=menu.post_title
+                    - if (menu.childs.length>0)
+                      span.caret
+                  - if (menu.childs.length>0)
+                    ul.dropdown-menu
+                      each child in menu.childs
+                        li
+                          a(href=lang_preurl+child.permalink, title=child.post_title)=child.post_title
+        br
+        #result
+          block content
+        include includes/footer
+    #twCnt
+      #tw
+    include ../_common/modal-full
+    include ../_common/modal-search
+
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    if form
+      script(type='text/javascript', src='/_common/js/validator.min.js')
+    include ../_common/inc_cookielawinfo
+
+    if include_gallery
+      #fb-root
+      script.
+        (function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{config.meta.fb_appId}";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      script(type="text/javascript").
+        var sgp_config = {
+          "sgp_selT": "2",
+          "sgp_sel": ".thumbnail",
+          "sgp_bT": "#{config.project_name}",
+          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
+          "sgp_bU": "#{global.config.domain}",
+          "sgp_bg": "000000",
+          "sgp_bgo": "0.8",
+          "sgp_bb": "1",
+          "sgp_hb": "1",
+          "sgp_hbt": "1",
+          "sgp_ch": "",
+          "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
+          "sgp_desc": "1",
+          "sgp_fb": "1",
+          "sgp_fbf": "1",
+          "sgp_fbc": "1",
+          "sgp_nav": "1",
+          "sgp_hon": "",
+          "sgp_usf": "1.2",
+          "sgp_mb": "10",
+          "sgp_theme": "images",
+          "sgp_theme_root": "/_common/",
+          "sgp_iLoadR": 'social-gallery-loading.gif',
+          "sgp_iR": 'social-gallery-r.png',
+          "sgp_iL": 'social-gallery-l.png'
+        };
+        var sgp_ie = false;var sgp_ie7 = false;
+      script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.min.js')
+
+    include ../_common/inc_analytics

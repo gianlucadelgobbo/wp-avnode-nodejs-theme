@@ -1,0 +1,7 @@
+if result.web_site.length && result.web_site[0].length
+  ul.nav.nav-pills.nav-stacked.links
+    each web_site in result.web_site
+      li
+        a(href=web_site, itemprop='url', target="_blank", rel="nofollow", title=web_site)
+          i.glyphicon.glyphicon-new-window
+          !=" " + web_site

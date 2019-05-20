@@ -1,0 +1,8 @@
+extends layout
+block content
+  .container
+    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/'+itemtype)
+      header
+        h1.entry-title(itemprop='name')!=data.title.rendered
+      !=data.content.rendered
+      include ../_common/inc_share

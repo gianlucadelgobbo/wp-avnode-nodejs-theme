@@ -1,0 +1,19 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="eventStatus" content="confirmed")
+  meta(itemprop="position", content=position+1)
+  .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
+    .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+      .thumb-cnt-cnt
+        a.ajaxloader(href='/partnerships/'+result.slug+"/", rel='bookmark', title!=result.title, itemprop='url')
+          img.img-fluid(src=result.imageFormats.small, alt!=global.__('Image for')+': '+result.title, itemprop='contentUrl')
+          meta(itemprop="width" content="480")
+          meta(itemprop="height" content="270")
+    .box-list
+      .text-center
+        .text-muted.supText
+          include ../../_common/inc_eventdateplace
+        h3.list_title(itemprop='name')!=result.title.replace(" | ","<br />")
+      .read-more-box
+        a.ajaxloader(href='/partnerships/'+result.slug+"/", rel='bookmark', title!=result.title, itemprop='url')
+          .sr-only=__("Read More")
+          i.icon-right

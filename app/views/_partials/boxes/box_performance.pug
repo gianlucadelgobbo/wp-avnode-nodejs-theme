@@ -1,0 +1,27 @@
+li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+  div(style='position:relative', itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+    a(itemprop='url', href=basepath+performance.slug+'/', title=performance.title)
+      img.img-fluid(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
+    .caption
+      if performance.schedule
+        .caption-time.schedule
+          span.d-none(itemprop='datePublished')=""
+          span.stit=performance.schedule.starttimeTime+" > "+performance.schedule.endtimeTime
+      .caption-body
+        h2.caption-title(itemprop='name')=performance.title
+        each user in performance.users
+          .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+            b(itemprop='name')=user.stagename
+            if user.addresses && user.addresses.length && user.addresses[0] && user.addresses[0].country
+              span.caption-location.caption-location-block
+              span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                b(itemprop='addressCountry')=user.addresses[0].country
+                if user.addresses[0].locality
+                  !=", " 
+                  span(itemprop='addressLocality')=user.addresses[0].locality
+      .caption-type
+        .caption-type-cnt
+          span.glyphicon.glyphicon-eye-open
+          //!=" "+performance.stats.visits+" | "+performance.type.name
+

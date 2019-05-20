@@ -1,0 +1,14 @@
+body {background-color:#b1cfdc; color:#333333; background-repeat:no-repeat;background-position: center 236px;}
+.entry-title, .grid-title{color:#FFF; background-color:#8eb4c8;padding:5px 10px;}
+.rientro{background: rgba(255,255,255,.8);margin-bottom:20px;}
+/*
+h1 a{color:#FFF;}
+#logo{margin:-20px 0 0 0;padding:0px;max-width: none;}
+#logo img{max-width: none;}
+#site-description {max-width: 240px;float: right;}
+#next-edition{margin:10px 0 65px 0;font-size: 20px;}
+h3{color:#FFF; background-color:#8eb4c8;}
+*/
+@media (min-width: 1200px) {
+	.container {width: 1010px;}
+}

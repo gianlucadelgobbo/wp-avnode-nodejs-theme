@@ -1,0 +1,52 @@
+article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
+  .row
+    .col-sm-8
+      img.img-fluid.main-image(src=result.performance.imageFormats.large, alt=result.performance.title, itemprop='image')
+      .rientro.hidden-xs!=result.performance.aboutFull
+      include ../_common/inc_videos
+      - //console.log(result)
+    .col-sm-4
+      header
+        h1.entry-title(itemprop='name')!=result.performance.title
+      .rientro
+        p.subtitle=result.performance.subtitle && result.performance.subtitle!= "Text is missing" ? result.performance.subtitle : result.performance.boxDate
+        .row
+          .col-lg-9
+            if result.performance.boxVenue
+              p.boxVenue=result.performance.boxVenue
+              p
+                a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
+              #fullSchedule.collapse
+                ul
+                  each fullSchedule in result.performance.fullSchedule
+                    li=fullSchedule
+          .col-lg-3
+            if result.performance.type
+              p.text-right
+                i(class="fa fa-cube")
+                =" "
+                !=result.performance.type.name
+        .visible-xs(itemprop='description')!=result.performance.aboutFull
+        .partners_event_wrapper_bkg
+          .container
+            section.row.partners_event_wrapper
+              .col-lg-8
+                h2.main_title.indented_title.color1!=global.__('Production')
+              .col-lg-4
+                img.img-fluid(src="/images/logo_avnode_symbol_dark.svg")
+              .col-sm-12
+                .row.partners_list_wrapper
+                  each partner in result.performance.users
+                    .col-sm-2
+                      .partner_box_wrapper
+                        a(href="/"+partner.slug+"/", title=partner.stagename)
+                          if partner.imageFormats                          
+                            img.card-img-top.img-fluid(
+                              class=partner.imageFormats.small.substring(partner.imageFormats.small.lastIndexOf(".")+1)
+                              src=partner.imageFormats.small
+                              alt=partner.title
+                            )
+                        p.partner_stagename
+                          a(href="/"+partner.slug+"/", title=partner.stagename)
+                            span=partner.stagename
+        include ../_common/inc_share

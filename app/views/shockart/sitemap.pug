@@ -1,0 +1,25 @@
+doctype xml
+- var now = new Date()
+- now.setHours(now.getHours() - 4)
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance', xsi:schemalocation='http://www.sitemaps.org/schemas/sitemap/0.9\ http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd')
+  sitemap
+    loc=config.domain+"/sitemap-home.xml"
+    lastmod=now.toISOString()
+  sitemap
+    loc=config.domain+"/sitemap-pages.xml"
+    lastmod=now.toISOString()
+  sitemap
+    loc=config.domain+"/sitemap-posttype-news.xml"
+    lastmod=now.toISOString()
+  sitemap
+    loc=config.domain+"/sitemap-posttype-events.xml"
+    lastmod=now.toISOString()
+  sitemap
+    loc=config.domain + "/sitemap-posttype-exhibitions.xml"
+    lastmod=now.toISOString()
+  sitemap
+    loc=config.domain + "/sitemap-users-backstage.xml"
+    lastmod=now.toISOString()
+  sitemap
+    loc=config.domain + "/sitemap-users-partners.xml"
+    lastmod=now.toISOString()

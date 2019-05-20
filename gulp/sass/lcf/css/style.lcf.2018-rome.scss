@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body,h1,h2,h3,h4,h5,h6,h7 {font-family: 'Montserrat', sans-serif;}
+body {
+    color: #000;
+    background-color: #fff200;
+}
+footer.navbar-inverse {
+    background-color: #000000;
+    border-color: #000000;
+}
+.pulsa .active a, .pulsa a:hover {
+	color: #fff200
+}
+#logo {
+	margin-bottom: 20px;
+}
+
+@media (min-width: 768px){
+
+	#logo {
+		margin-bottom: 0;
+	}
+}

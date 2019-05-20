@@ -1,0 +1,16 @@
+//pre=JSON.stringify(opts, null, 2)
+//pre=JSON.stringify(body, null, 2)
+//pre=JSON.stringify(data, null, 2)
+if opts.params && body
+each day in body
+  if opts.days.indexOf(day.day)!=-1
+    ul.lists.row
+      each room in day.rooms
+        if opts.rooms.indexOf(room.room)!=-1
+          each performance in room.performances
+            if opts.params.indexOf(performance.performance.type.name)!=-1
+              - performance.performance.schedule = performance.schedule
+              - var performance = performance.performance
+              - var basepath = '/editions/'+req_params.edition+'/program/detail/'
+              - var css = "col-md-12"
+              include ../boxes/box_performance

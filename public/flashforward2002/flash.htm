@@ -1,0 +1,50 @@
+ 
+<html>
+<head>
+<title>Shockart.net - FLASHFORWARD2002</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<SCRIPT LANGUAGE="JavaScript" type="text/Javascript">
+function popupwindow(LarghezzaWindow,AltezzaWindow,Pagina) {
+	
+	var iMyWidth;
+	var iMyHeight;
+	var LarghezzaPagina;
+	var AltezzaPagina;
+	
+	LarghezzaPagina = screen.availWidth;
+	AltezzaPagina = screen.availHeight;
+
+	LarghezzaWindow=LarghezzaWindow.toUpperCase()
+	AltezzaWindow=AltezzaWindow.toUpperCase()	
+
+	if (LarghezzaWindow == "FULL") {
+			LarghezzaWindow = screen.availWidth;
+		}
+	if (AltezzaWindow == "FULL") {
+			AltezzaWindow = screen.availHeight;
+		}
+	iMyWidth = (LarghezzaPagina/2) - (LarghezzaWindow/2); 
+	iMyHeight = (AltezzaPagina/2) - (AltezzaWindow/2);
+	win = window.open(Pagina,"","height=" + (AltezzaWindow - 30) + ",width=" + (LarghezzaWindow - 10) + ",menubar=0,resizable=no,scrollbars=no,status=0,titlebar=0,toolbar=0,left=" + iMyWidth + ",top=" + iMyHeight + ",screenX=" + iMyWidth + ",screenY=" + iMyHeight + "");
+	win.focus();
+}
+</SCRIPT>
+</head>
+<BODY bgcolor="#000000" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+  <tr>
+    <td valign="middle" align="center"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="1024" height="768">
+        <param name=movie value="swf/index.swf">
+        <param name=quality value=high>
+        <param name=menu value=false>
+        <param name="BGCOLOR" value="#370032">
+        <embed src="swf/index.swf" quality=high menu=false  pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="1024" height="768" bgcolor="#370032">
+        </embed> 
+      </object></td>
+  </tr>
+</table>
+</body>
+</html>
+
+

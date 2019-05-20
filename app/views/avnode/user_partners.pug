@@ -1,0 +1,79 @@
+extends layout
+block content
+  article.pagepaddingtop#container(itemprop=itemprop, itemscope, itemtype='http://schema.org/Person')
+    .row
+      .col-sm-9
+        header
+          h1.entry-title(itemprop='name')!=result.display_name
+        if result.organisationtype
+          p
+            i=result.organisationtype
+        p(itemprop='jobTitle')
+          i=result.role_label
+        div(itemprop='description')!=result.description
+      .col-sm-3
+        img.img-fluid.main-image.svg-image(src=result.img, alt=result.display_name, itemprop='image')
+        .rientro
+          if result.auth_contents
+            p
+              if result.auth_contents.activities && result.auth_contents.activities.length
+                !=config.posttypes_labels.activities + ": " + result.auth_contents.activities.length
+                br
+              if result.auth_contents["member-activities"] && result.auth_contents["member-activities"].length
+                !=config.posttypes_labels["member-activities"] + ": " + result.auth_contents["member-activities"].length
+                br
+              if result.auth_contents.events && result.auth_contents.events.length
+                !=config.posttypes_labels.events + ": " + result.auth_contents.events.length
+                br
+              if result.auth_contents.news && result.auth_contents.news.length
+                !=config.posttypes_labels.news + ": " + result.auth_contents.news.length
+          if result.organisationurl
+            p
+              a(href=result.organisationurl, target="_blank")
+                i.glyphicon.glyphicon-globe
+                !=" "
+                !=result.organisationurl
+          if result.organisationemail
+            p
+              a(href="mailto:"+result.organisationemail)
+                i.glyphicon.glyphicon-envelope
+                !=" "
+                !=result.organisationemail
+          if result.organisationgeolocation && result.organisationgeolocation.length
+            p
+              img.img-fluid(src="https://maps.googleapis.com/maps/api/staticmap?size=370x200&maptype=roadmap&markers=color:red%7Clabel:A%7C"+result.organisationgeolocation[0]+","+result.organisationgeolocation[1]+"&sensor=false&key=AIzaSyBJ_PEUV1D4Uw6TktDxQp-ErObMyRQuvm4")
+          include ../_common/inc_share
+
+    if result.auth_contents
+      if result.auth_contents.activities && result.auth_contents.activities.length
+        - var res = result.auth_contents.activities
+        section(itemscope, itemtype="https://schema.org/ItemList")
+          h3(itemprop="name")=config.posttypes_labels.activities
+          .row.isotope.results
+            each result, position in res
+              .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_activity
+      if result.auth_contents["member-activities"] && result.auth_contents["member-activities"].length
+        - var res = result.auth_contents["member-activities"]
+        section(itemscope, itemtype="https://schema.org/ItemList")
+          h3(itemprop="name")=config.posttypes_labels['member-activities']
+          .row.isotope.results
+            each result, position in res
+              .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_member_activity
+      if result.auth_contents.events && result.auth_contents.events.length
+        - var res = result.auth_contents.events
+        section(itemscope, itemtype="https://schema.org/ItemList")
+          h3(itemprop="name")=__("Member")+" "+config.posttypes_labels['events']
+          .row.isotope.results
+            each result, position in res
+              .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_event
+      if result.auth_contents.news && result.auth_contents.news.length
+        - var res = result.auth_contents.news
+        section(itemscope, itemtype="https://schema.org/ItemList")
+          h3(itemprop="name")=__("Member")+" "+config.posttypes_labels['news']
+          .row.isotope.results
+            each result, position in res
+              .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
+                include boxes/box_news

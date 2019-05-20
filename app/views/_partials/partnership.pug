@@ -1,0 +1,83 @@
+article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
+  .row
+    .col-sm-8
+      img.img-fluid.main-image(src=result.partnership.imageFormats.large, alt=result.partnership.title, itemprop='image')
+      .rientro.hidden-xs!=result.partnership.aboutFull
+      include ../_common/inc_videos
+      - //console.log(result)
+    .col-sm-4
+      header
+        h1.entry-title(itemprop='name')!=result.partnership.title
+      .rientro
+        p.subtitle=result.partnership.subtitle && result.partnership.subtitle!= "Text is missing" ? result.partnership.subtitle : result.partnership.boxDate
+        .row
+          .col-lg-9
+            if result.partnership.boxVenue
+              p.boxVenue=result.partnership.boxVenue
+              p
+                a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
+              #fullSchedule.collapse
+                ul
+                  each fullSchedule in result.partnership.fullSchedule
+                    li=fullSchedule
+          .col-lg-3
+            if result.partnership.type
+              p.text-right
+                i(class="fa fa-cube")
+                =" "
+                !=result.partnership.type.name
+        .visible-xs(itemprop='description')!=result.partnership.aboutFull
+        ul.event_social_list.list-inline
+          each item in result.partnership.web
+            li.list-inline-item.mb-3
+              a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=item.url.replace("http://","").replace("https://",""))
+                span.lnr.lnr-link.about_button=item.url.replace("http://","").replace("https://","")
+          each item in result.partnership.social
+            if item.url.indexOf('instagram.com/')!=-1
+              li.list-inline-item.mb-3
+                - var tooltip = item.url.replace("http://","").replace("https://","").split("/")
+                a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=tooltip[0]+"/"+tooltip[1])
+                  i.fa.fa-instagram.about_button=item.url.replace("http://","").replace("https://","")
+            else if item.url.indexOf('twitter.com/')!=-1
+              li.list-inline-item.mb-3
+                a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=item.url.replace("http://","").replace("https://",""))
+                  i.fa.fa-twitter.about_button=item.url.replace("http://","").replace("https://","")
+            else if item.url.indexOf('facebook.com/')!=-1 || item.url.indexOf('fb.com/')!=-1
+              li.list-inline-item.mb-3
+                a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=item.url.replace("http://","").replace("https://",""))
+                  i.fa.fa-facebook.about_button=item.url.replace("http://","").replace("https://","")
+            else if item.url.indexOf('vimeo.com/')!=-1
+              li.list-inline-item.mb-3
+                a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=item.url.replace("http://","").replace("https://",""))
+                  i.fa.fa-vimeo.about_button=item.url.replace("http://","").replace("https://","")
+            else if item.url.indexOf('youtube.com/')!=-1
+              li.list-inline-item.mb-3
+                a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=item.url.replace("http://","").replace("https://",""))
+                  i.fa.fa-youtube.about_button=item.url.replace("http://","").replace("https://","")
+            else
+              li.list-inline-item.mb-3
+                a(href=item.url target="_blank" data-toggle="tooltip" data-placement="top" title=item.url.replace("http://","").replace("https://",""))
+                  span.lnr.lnr-link.about_button=item.url.replace("http://","").replace("https://","")
+        .partners_event_wrapper_bkg
+          .container
+            section.row.partners_event_wrapper
+              .col-lg-8
+                h2.main_title.indented_title.color1!=global.__('Production')
+              .col-lg-4
+                img.img-fluid(src="/images/logo_avnode_symbol_dark.svg")
+              .col-sm-12
+                .row.partners_list_wrapper
+                  each partner in result.partnership.users
+                    .col-sm-2
+                      .partner_box_wrapper
+                        a(href="/"+partner.slug+"/", title=partner.stagename)
+                          if partner.imageFormats                          
+                            img.card-img-top.img-fluid(
+                              class=partner.imageFormats.small.substring(partner.imageFormats.small.lastIndexOf(".")+1)
+                              src=partner.imageFormats.small
+                              alt=partner.title
+                            )
+                        p.partner_stagename
+                          a(href="/"+partner.slug+"/", title=partner.stagename)
+                            span=partner.stagename
+        include ../_common/inc_share

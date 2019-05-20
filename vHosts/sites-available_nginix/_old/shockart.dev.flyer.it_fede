@@ -1,0 +1,59 @@
+# WordPress single site rules.
+# Designed to be included in any server {} block.
+# Upstream to abstract backend connection(s) for php
+
+map $http_host $blogid {
+    default       -999;
+
+    #Ref: http://wordpress.org/extend/plugins/nginx-helper/
+    #include /var/www/wordpress/wp-content/plugins/nginx-helper/map.conf ;
+
+}
+
+server {
+
+	listen 80;
+   	listen 443 default_server ssl;
+
+    	ssl    on;
+    	ssl_certificate  /etc/letsencrypt/live/shockart.net/cert.pem ;
+    	ssl_certificate_key /etc/letsencrypt/live/shockart.net/privkey.pem ;
+
+    	server_name shockart.dev.flyer.it shockart.net www.shockart.net www.shockart.dev.flyer.it ;
+
+    	root /sites/dev.flyer;
+    	index index.php;
+    
+    	access_log /var/log/nginx/shockart.access.log;
+    	error_log /var/log/nginx/shockart.error.log;
+
+     	location = /favicon.ico {
+                log_not_found off;
+                access_log off;
+        }
+
+        location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+        location / {
+                # This is cool because no php is touched for static content.
+                # include the "?$args" part so non-default permalinks doesn't break when using query string
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location ~ \.php$ {
+                #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+                include fastcgi.conf;
+                fastcgi_intercept_errors on;
+                #fastcgi_pass php;
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+}

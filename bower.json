@@ -1,0 +1,21 @@
+{
+  "name": "wp-nodejs-theme",
+  "description": "A nodejs theme for WordPress",
+  "main": "app.js",
+  "authors": [
+    "Gianluca Del Gobbo <g.delgobbo@flyer.it>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/gianlucadelgobbo/wp-nodejs-theme",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "swiper": "^4.1.0"
+  }
+}

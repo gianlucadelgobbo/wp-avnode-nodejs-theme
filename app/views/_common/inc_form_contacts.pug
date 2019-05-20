@@ -1,0 +1,36 @@
+form#contact-form(method='post', action=page_data.url, role='form')
+  h2
+    b=__("Contact")
+    !=" form"
+  .messages
+  .controls
+    .row
+      .col-md-6
+        .form-group
+          label(for='form_name')=__("Name")+" *"
+          input#form_name.form-control(type='text', value=result.body.name, name='name', placeholder=__("Please enter your name")+" *", required='required', data-error=__("Name is required"))
+          .help-block.with-errors
+      .col-md-6
+        .form-group
+          label(for='form_email')=__("Email")+" *"
+          input#form_email.form-control(type='email', value=result.body.email, name='email', placeholder=__("Please enter your email")+" *", required='required', data-error=__("Valid email is required"))
+          .help-block.with-errors
+    .row
+      .col-md-12
+        .form-group
+          label(for='form_message')=__("Message")+" *"
+          textarea#form_message.form-control(name='message', placeholder=__("Message for me")+" *", rows='6', required='required', data-error=__("Please,leave us a message"))=result.body.message
+          .help-block.with-errors
+    .row
+      .col-md-12
+        if result.captcha
+          p!=result.captcha
+
+    .row
+      .col-md-4
+        input.btn.btn-success.btn-send(type='hidden', name='formtype', value='email')
+        input.btn.btn-success.btn-send(type='submit', value=__("Send message"))
+      .col-md-8
+        p.text-muted.text-right
+          strong *
+          !=__("These fields are required.")

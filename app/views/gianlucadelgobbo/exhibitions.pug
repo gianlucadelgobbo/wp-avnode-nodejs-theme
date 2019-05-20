@@ -1,0 +1,14 @@
+extends layout
+block content
+  article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+    .row
+      .col-xs-10
+        h1.entry-title(itemprop="name")=posttype.post_title
+      .col-xs-2
+        .pull-right
+          include ../_common/inc_share_span
+    .row.isotope.results
+      each result, position in results
+        .col-md-4.col-sm-6.col.isotopeitem
+          include boxes/box_exhibition
+    include ../_common/inc_pagination

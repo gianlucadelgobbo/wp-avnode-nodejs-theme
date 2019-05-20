@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>NET_CHISEL - IX Biennale di Scultura</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<SCRIPT LANGUAGE="JavaScript" type="text/Javascript">
+function popupwindow(LarghezzaWindow,AltezzaWindow,Pagina) {
+	
+	var iMyWidth;
+	var iMyHeight;
+	var LarghezzaPagina;
+	var AltezzaPagina;
+	
+	LarghezzaPagina = screen.availWidth;
+	AltezzaPagina = screen.availHeight;
+
+	LarghezzaWindow=LarghezzaWindow.toUpperCase()
+	AltezzaWindow=AltezzaWindow.toUpperCase()	
+
+	if (LarghezzaWindow == "FULL") {
+			LarghezzaWindow = screen.availWidth;
+		}
+	if (AltezzaWindow == "FULL") {
+			AltezzaWindow = screen.availHeight;
+		}
+	iMyWidth = (LarghezzaPagina/2) - (LarghezzaWindow/2); 
+	iMyHeight = (AltezzaPagina/2) - (AltezzaWindow/2);
+	win = window.open(Pagina,"net_chisel","height=" + (AltezzaWindow - 30) + ",width=" + (LarghezzaWindow - 10) + ",menubar=0,resizable=no,scrollbars=no,status=0,titlebar=0,toolbar=0,left=" + iMyWidth + ",top=" + iMyHeight + ",screenX=" + iMyWidth + ",screenY=" + iMyHeight + "");
+	win.focus();
+}
+</SCRIPT>
+
+
+
+<link href="css.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY bgcolor="#333333" text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<MAP NAME="new">
+</MAP>
+<script language="JavaScript"><!--
+self.moveTo(0,1);
+self.resizeTo(screen.availWidth,screen.availHeight);
+//--></script>
+<SCRIPT LANGUAGE=JavaScript1.1>
+<!--
+var MM_contentVersion = 6;
+var plugin = (navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"]) ? navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin : 0;
+if ( plugin ) {
+		var words = navigator.plugins["Shockwave Flash"].description.split(" ");
+	    for (var i = 0; i < words.length; ++i)
+	    {
+		if (isNaN(parseInt(words[i])))
+		continue;
+		var MM_PluginVersion = words[i]; 
+	    }
+	var MM_FlashCanPlay = MM_PluginVersion >= MM_contentVersion;
+}
+else if (navigator.userAgent && navigator.userAgent.indexOf("MSIE")>=0 
+   && (navigator.appVersion.indexOf("Win") != -1)) {
+	document.write('<SCR' + 'IPT LANGUAGE=VBScript\> \n'); //FS hide this from IE4.5 Mac by splitting the tag
+	document.write('on error resume next \n');
+	document.write('MM_FlashCanPlay = ( IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash." & MM_contentVersion)))\n');
+	document.write('</SCR' + 'IPT\> \n');
+}
+if ( MM_FlashCanPlay ) {
+		document.write('<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%"><tr><td align="center" valign="middle"> <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"');
+	document.write('  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" ');
+	document.write(' ID="index" WIDTH="1024" HEIGHT="768" ALIGN="">');
+	document.write(' <PARAM NAME=movie VALUE="swf/index_local.swf"> <PARAM NAME=quality VALUE=high><PARAM NAME=menu VALUE=false> <PARAM NAME=bgcolor VALUE=#999999>  '); 
+	document.write(' <EMBED src="swf/index_local.swf" menu=false quality=high bgcolor=#999999  ');
+	document.write(' swLiveConnect=FALSE WIDTH="1024" HEIGHT="768" NAME="index" ALIGN=""');
+	document.write(' TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">');
+	document.write(' </EMBED>');
+	document.write(' </OBJECT>      </td>  </tr></table>');
+} else{
+	document.write('<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">  <tr>    <td align="center" valign="middle">       <p class="testo">NET_CHISEL - Biennale di Carrara</p>      <table border="0" cellspacing="0" cellpadding="0">        <tr valign="middle">           <td><img src="images/icon_fl.gif" width="55" height="45" align="top"></td>          <td class="testo12"><a href="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">Get             Macromedia<br>            FlashPlayer&#153; 6</a></td>        </tr>      </table>      </td>  </tr></table>');
+}
+//-->
+</SCRIPT><NOSCRIPT><table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+  <tr>
+    <td align="center" valign="middle"> 
+      <p class="testo">NET_CHISEL - Biennale di Carrara</p>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr valign="middle"> 
+          <td><img src="images/icon_fl.gif" width="55" height="45" align="top"></td>
+          <td class="testo12"><a href="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">Get 
+            Macromedia<br>
+            FlashPlayer&#153; 6</a></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table></NOSCRIPT>
+</BODY>
+</HTML>
+

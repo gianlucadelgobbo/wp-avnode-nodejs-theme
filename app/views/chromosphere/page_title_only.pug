@@ -1,0 +1,9 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+    header.row
+      .col-xs-10
+        h1.entry-title(itemprop="name")=result.post_title
+      .col-xs-2.text-right
+        include ../_common/inc_share_span
+    !=result.post_content

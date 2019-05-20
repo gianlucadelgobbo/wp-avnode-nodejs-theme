@@ -1,0 +1,13 @@
+extends layout
+block content
+  article#container(itemscope, itemtype='http://schema.org/ItemList')
+    .row
+      .col-xs-10
+        h1.entry-title(itemprop="name")=title
+      .col-xs-2
+        .pull-right
+          include ../_common/inc_share_span
+    .row.isotope.results
+      each result, position in results
+        .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(itemscope, itemprop='itemListElement')
+          include boxes/box_user

@@ -1,0 +1,7 @@
+if result['wpcf-video'] && result['wpcf-video'].length
+  - //console.log(result['wpcf-video'])
+  h3=global.__("Videos")
+  each video in result['wpcf-video']
+    .embed-responsive.embed-responsive-16by9
+      iframe.embed-responsive-item(src=video)
+    br

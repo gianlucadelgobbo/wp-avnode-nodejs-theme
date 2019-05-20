@@ -1,0 +1,12 @@
+.modal.modal-resize.fade#resizeModal(tabindex='-1', role='dialog')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4.modal-title
+      .modal-body
+        span.loadingcnt
+          span.loading
+            i.icon-spin3.animate-spin
+            span.sr-only=" Loading..."

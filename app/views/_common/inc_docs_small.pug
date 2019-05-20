@@ -1,0 +1,9 @@
+if result['attachments'].length
+  ul.nav.nav-pills.nav-stacked
+    li.nav-header
+      h3=global.__("Downloads")
+    each attach in result['attachments']
+      li
+        a(href=attach.file, download=attach.file, title=attach.title)
+          .glyphicon.glyphicon-file
+          !=" "+attach.title

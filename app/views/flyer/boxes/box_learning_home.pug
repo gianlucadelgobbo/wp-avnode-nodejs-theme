@@ -1,0 +1,38 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Learning(itemscope, itemprop="item", itemtype='http://schema.org/EducationEvent')
+    if result["wpcf-schedule"]
+      .text-muted
+        .dates
+          .date
+            !=global.__("Programming")
+            !=": "
+            b=result["wpcf-schedule"]
+          .sr-only
+            include ../../_common/inc_eventdateplace
+    h3.list_title(itemprop='name')
+      a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/learning/' + result.slug+"/", rel='bookmark', title=result.post_title)
+        !=result.post_title+" "
+        i.icon-right
+    .text-muted.small.excerpt
+      !=global.__("Duration")+": "
+      span(itemprop='duration')
+        b=result["wpcf-duration"]
+      br
+      - var auth = []
+      each capauthor in result.capauthors
+        - auth.push("<span itemprop='performer' itemscope itemtype='http://schema.org/Person'><span itemprop='name'>"+capauthor.display_name+"</span></span>")
+      if auth.length
+        if auth.length == 1
+          !=global.__("Teacher") + ": "
+        else
+          !=global.__("Teachers") + ": "
+        b!=auth.join(", ")
+      br
+      !=global.__("Price")+": "
+      span(itemprop='offers', itemscope, itemtype="http://schema.org/Offer")
+        b
+          span(itemprop='price', content=parseInt(result["wpcf-price"]))=result["wpcf-price"]
+          !=" "
+          span(itemprop='priceCurrency', content="EURO")="€"
+        a.d-none(itemprop='url', title=result.post_title, href=lang_preurl+'/portfolio/learning/' + result.slug+"/")

@@ -1,0 +1,59 @@
+form#newsletter-form(method='post', action=page_data.url, role='form')
+  h2
+    b=__("Subscription")
+    !=" form"
+  .messages
+  .controls
+    .row
+      .col-md-6
+        .form-group
+          label(for='form_name')=__("Name")+" *"
+          input#form_name.form-control(type='text', value=result.body.name, name='name', placeholder=__("Please enter your name")+" *", required='required', data-error=__("Name is required"))
+          .help-block.with-errors
+      .col-md-6
+        .form-group
+          label(for='form_surname')=__("Surame")+" *"
+          input#form_surname.form-control(type='text', value=result.body.surname, name='surname', placeholder=__("Please enter your surname")+" *", required='required', data-error=__("Surame is required"))
+          .help-block.with-errors
+    .row
+      .col-md-6
+        .form-group
+          label(for='form_email')=__("Email")+" *"
+          input#form_email.form-control(type='email', value=result.body.email, name='email', placeholder=__("Please enter your email")+" *", required='required', data-error=__("Valid email is required"))
+          .help-block.with-errors
+      .col-md-6
+        .form-group
+          label(for='country')=__("Country")+" *"
+          select#country.form-control(name="country", required='required', data-error=__("Country is required"))
+            option(value="")= __("Please select a country")
+            each item in result.countries
+              option(selected=item.name == result.body.country, value=item.name)=item.name
+          .help-block.with-errors
+    .row
+      .col-md-6
+        .form-group
+          label=__("Main topic") + " *"
+          each item, index in config.accounts.newsletter.interests
+            .radio
+              label(for='maintopics' + index)
+                input(type='radio', checked=result.body.topics && result.body.topics.length && result.body.topics[0]==index ? "checked" : undefined, name='topics', required='required', id='maintopics' + index, value=index, data-atleastone="topics", data-error=__("Main topic is required"))
+                !=" " + item
+              .help-block.with-errors
+      .col-md-6
+        .form-group
+          label=__("Other topics")
+          each item, index in config.accounts.newsletter.interests
+            .checkbox
+              label(for='topics' + index)
+                input(type='checkbox', checked=result.body.topics && result.body.topics.indexOf(index)>0 ? "checked" : undefined, name='topics', id='topics' + index, value=index)
+                !=" " + item
+              .help-block.with-errors
+    .row
+      .col-md-4
+        input.btn.btn-success.btn-send(type='hidden', name='topics', value='4742751cda')
+        input.btn.btn-success.btn-send(type='hidden', name='formtype', value='newsletter')
+        input.btn.btn-success.btn-send(type='submit', value=__("Subscribe"))
+      .col-md-8
+        p.text-muted.text-right
+          strong *
+          !=__("These fields are required.")

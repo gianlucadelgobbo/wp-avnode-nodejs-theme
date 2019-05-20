@@ -1,0 +1,113 @@
+// NODE_ENV=production forever start -l /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/out.log -e /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/err.log /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/forever.json
+[
+  {
+    "uid": "flyer",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_flyer_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_flyer_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_flyer_err.log",
+    "args": ["-site", "flyer"]
+  },
+  {
+    "uid": "lpm",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_lpm_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_lpm_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_lpm_err.log",
+    "args": ["-site", "lpm"]
+  },
+  {
+    "uid": "shockart",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_shockart_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_shockart_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_shockart_err.log",
+    "args": ["-site", "shockart"]
+  },
+  {
+    "uid": "avnode",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_avnode_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_avnode_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_avnode_err.log",
+    "args": ["-site", "avnode"]
+  },
+  {
+    "uid": "lcf",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_lcf_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_lcf_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_lcf_err.log",
+    "args": ["-site", "lcf"]
+  },
+  {
+    "uid": "linuxclub",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_linuxclub_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_linuxclub_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_linuxclub_err.log",
+    "args": ["-site", "linuxclub"]
+  },
+  {
+    "uid": "chromosphere",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_chromosphere_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_chromosphere_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_chromosphere_err.log",
+    "args": ["-site", "chromosphere"]
+  },
+  {
+    "uid": "fotonica",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_fotonica_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_fotonica_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_fotonica_err.log",
+    "args": ["-site", "fotonica"]
+  },
+  {
+    "uid": "vjtelevision",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_vjtelevision_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_vjtelevision_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_vjtelevision_err.log",
+    "args": ["-site", "vjtelevision"]
+  },
+  {
+    "uid": "wam",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/./",
+    "logFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_wam_forever.log",
+    "outFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_wam_out.log",
+    "errFile": "/Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/node_wam_err.log",
+    "args": ["-site", "wam"]
+  }
+]

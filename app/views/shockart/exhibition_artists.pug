@@ -1,0 +1,69 @@
+extends layout
+block content
+  - var itemtype
+  - if (page_data.url.indexOf("/performances/")>0) {
+  -    itemtype = 'http://schema.org/CreativeWork'
+  - } else if (page_data.url.indexOf("/artists/")<page_data.url.length-9) {
+  -    itemtype = 'http://schema.org/Person'
+  - } else if (page_data.url.indexOf("/artists/")==page_data.url.length-9) {
+  -    itemtype = 'http://schema.org/ItemList'
+  - }
+  article#container(itemprop='performer', itemscope, itemtype=itemtype)
+    header
+      h1.entry-title.hidden
+
+    if result.avnode && result.avnode.performer
+      .row.artist-dett
+        .col-sm-9
+          .row
+            .col-sm-2
+              img.img-fluid(itemprop='image', alt=result.avnode.performer.stagename, src=result.avnode.performer.imageFormats.small)
+            .col-sm-10
+              h1.entry-title(itemprop='name')!=result.avnode.performer.stagename
+              .rientro
+                p!=result.avnode.performer.addressesFormatted
+                .d-none
+                  each address in result.avnode.performer.addresses
+                    span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                      span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                        b(itemprop='addressCountry')=address.country
+                        !=", "
+                        span(itemprop='addressLocality')=address.locality
+                div(itemprop='description')!=result.avnode.performer.about
+                if result.avnode.performer.web && result.avnode.performer.web.length
+                  p
+                    strong LINKS
+                  ul.squared10
+                    each web in result.avnode.performer.web
+                      li
+                        a(itemprop='url', target='_blank', href=web.url)=web.url
+                if result.avnode.performer.social && result.avnode.performer.social.length
+                  p
+                    strong SOCIAL
+                  ul.squared10
+                    each social in result.avnode.performer.social
+                      li
+                        a(itemprop='url', target='_blank', href=social.url)=social.url
+        .col-sm-3(itemprop='owns', itemscope='', itemtype='http://schema.org/ItemList')
+          h2.grid-title.h1like(itemprop='name') Performance
+          div
+            ul.lists
+              each performance, i in result.avnode.performer.performances
+                li.rientro(style='margin-bottom: 10px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+                  meta(itemprop='position', content=i)
+                  div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+                    a(itemprop='url', href='/exhibitions/'+req_params.exhibition+'/program/detail/'+performance.slug+"/", title=performance.title)
+                      img.img-fluid(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
+                    p
+                    h3(itemprop='name')
+                      a(href='/exhibitions/'+req_params.exhibition+'/program/detail/'+performance.slug+"/", title=performance.title)!=performance.title
+                    //p.type=performance.type.name
+                    each booking in performance.bookings
+                      each schedule in booking.schedule
+                        p.stit.schedule
+                          span(itemprop='contentLocation')=schedule.venue.room
+                          !=" | "
+                          !=schedule.boxDate+" > "+schedule.endtimeTime
+
+    else if result.post_content
+      !=result.post_content

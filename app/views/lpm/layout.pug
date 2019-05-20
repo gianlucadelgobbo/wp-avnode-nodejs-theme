@@ -1,0 +1,130 @@
+doctype html
+html(lang='en')
+  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
+  head
+    title!=page_data.headtitle
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(property='fb:admins', content=config.meta.fb_admin)
+    meta(property='fb:app_id', content=config.meta.fb_appId)
+    meta(property='og:image', content=page_data.image_src)
+    meta(property='og:title', content!=page_data.title)
+    meta(property='og:description', content=page_data.description)
+    meta(property='og:site_name', content=config.project_name)
+    meta(property='og:url', content=config.domain + page_data.url)
+    link(rel='canonical', href=config.domain + page_data.url)
+    meta(property='og:type', content='website')
+    meta(name='description', content=page_data.description)
+    meta(name='keywords', content=config.meta.keywords)
+    meta(name='google-site-verification', content=config.meta.google_webmasterstools)
+    link(rel='shortcut icon', href=config.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
+    // CSS
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
+
+    if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
+      style(type='text/css').
+        body {
+          background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
+        }
+  body(class=page_data.url == "/" ? "body-home" : "body-common")
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top.navbar-edition(class=page_data.url == "/" ? "" : "navbar-fixed-top")
+      // Brand and toggle get grouped for better mobile display
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu')
+        span.navbar-toggler-icon
+        i.icon-bar
+        i.icon-bar
+        i.icon-bar
+      a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title, style="width:49px")
+        img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
+        .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+      #menu.collapse.navbar-collapse
+        .accordion.mr-auto
+          #menu-edition.menu-edition-main.collapse.show
+            include includes/menu-edition
+          #menu-main.menu-edition-main.collapse
+            include includes/menu-main
+        a(href='#', onclick="$(this).html($('#menu-main').hasClass('show') ? 'Switch to Main menu' : 'Switch to Edition menu')", data-toggle='collapse', data-target='.menu-edition-main')="Switch to Main menu"
+    block home
+    .header-bar.pt-5.pr-5.pb-5.pl-5
+      div(class=page_data.url == "/" ? "container-fluid" : "container")
+        header
+          .row
+            .col-md-6
+              if result
+                h1.d-inline!=page_data.title
+                include ../_partials/components/share_span
+            .col-md-6(itemscope, itemtype='http://schema.org/Event')
+              .event-card.text-right
+                .d-none(itemprop='name')!=config.project_name+" "+config.meta.editions[sessions.current_edition]['title']
+                div(itemprop='disambiguatingDescription')
+                  #next-edition-cnt
+                    #next-edition!=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+                  #site-description-cnt
+                    #site-description=config.meta.headline[sessions.current_lang]
+                .sr-only
+                  include ../_partials/components/eventdateplace_meta
+    .cnt(class=page_data.url == "/" ? "" : "container")
+      #result
+        block content
+      include includes/footer
+    include ../_partials/components/modal-full
+    include ../_partials/components/modal-search
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    if form
+      script(type='text/javascript', src='/_common/js/validator.min.js')
+    include ../_partials/components/cookielawinfo
+
+    // TICKER
+    #twCnt
+      #tw
+    script(type='text/javascript').
+      (function () {
+        var ticker = document.createElement('script');
+        ticker.type = 'text/javascript';
+        ticker.async = true;
+        ticker.src = '//twitcker.com/ticker/liveperformers.js?background=000000&tweet=000000&open=true&appearance=typewriter&container=own-container&own-container=tw';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ticker);
+      })();
+    if include_gallery
+      #fb-root
+      script(async='', defer='', crossorigin='anonymous', src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId='+config.meta.fb_appId+'&autoLogAppEvents=1')
+
+      script(type="text/javascript").
+        var sgp_config = {
+          "sgp_selT": "2",
+          "sgp_sel": ".thumbnail",
+          "sgp_bT": "#{config.project_name}",
+          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
+          "sgp_bU": "#{global.config.domain}",
+          "sgp_bg": "000000",
+          "sgp_bgo": "0.8",
+          "sgp_bb": "1",
+          "sgp_hb": "1",
+          "sgp_hbt": "1",
+          "sgp_ch": "",
+          "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
+          "sgp_desc": "1",
+          "sgp_fb": "1",
+          "sgp_fbf": "1",
+          "sgp_fbc": "1",
+          "sgp_nav": "1",
+          "sgp_hon": "",
+          "sgp_usf": "1.2",
+          "sgp_mb": "10",
+          "sgp_theme": "images",
+          "sgp_theme_root": "/_common/",
+          "sgp_iLoadR": 'social-gallery-loading.gif',
+          "sgp_iR": 'social-gallery-r.png',
+          "sgp_iL": 'social-gallery-l.png'
+        };
+        var sgp_ie = false;var sgp_ie7 = false;
+      script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.js')
+
+    include ../_partials/components/analytics

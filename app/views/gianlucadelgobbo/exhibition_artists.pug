@@ -1,0 +1,17 @@
+extends layout
+block content
+  - var itemtype
+  - //console.log("indexOf")
+  - //console.log(page_data.url.indexOf("/artists/"))
+  - //console.log(page_data.url.length-9)
+  - if (page_data.url.indexOf("/performances/")>0) {
+  -    itemtype = 'http://schema.org/CreativeWork'
+  - } else if (page_data.url.indexOf("/artists/")<page_data.url.length-9) {
+  -    itemtype = 'http://schema.org/Person'
+  - } else if (page_data.url.indexOf("/artists/")==page_data.url.length-9) {
+  -    itemtype = 'http://schema.org/ItemList'
+  - }
+  article#container(itemprop='performer', itemscope, itemtype=itemtype)
+    header
+      h1.entry-title(itemprop='name')=result.post_title
+    !=result.post_content

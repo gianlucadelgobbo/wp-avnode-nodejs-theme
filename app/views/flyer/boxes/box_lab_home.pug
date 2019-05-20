@@ -1,0 +1,21 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .LabHome(itemprop="item", itemscope, itemtype='http://schema.org/Organization')
+    .row
+      .col-lg-3
+        .thumb-cnt
+          //.catlabel=result.type
+          a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/lab/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+            img.img-fluid(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
+      .col-lg-9
+        .box-list
+          .box-list-cnt
+            h3(itemprop='name')
+              a.ajaxloader(href=lang_preurl+'/portfolio/lab/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+            if result.data_month
+              .text-muted
+                .dates
+                  .date=result.data_month
+            .text-muted.small.excerpt
+              if result.excerpt && result.excerpt.rendered
+                div(itemprop='description')!=result.excerpt.rendered

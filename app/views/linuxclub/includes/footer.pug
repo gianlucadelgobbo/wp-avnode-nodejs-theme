@@ -1,0 +1,16 @@
+footer.navbar-inverse
+  .container-fluid
+    .row.links-horizontal
+      .col-sm-3
+        include address
+      .col-sm-2.hidden-print
+        p Corporate
+        include menu-corporate
+      .col-sm-2.hidden-print
+        p=global.__("Social Networks")
+        include socials
+      .col-sm-5.hidden-print
+        p=global.__("Projects")
+        include ../../_common/inc_projects
+    br
+    include ../../_common/inc_copy-and-flyer

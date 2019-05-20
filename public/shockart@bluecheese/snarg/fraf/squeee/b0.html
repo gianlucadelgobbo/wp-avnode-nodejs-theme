@@ -1,0 +1,110 @@
+<HTML><HEAD>
+
+<SCRIPT language="JavaScript">
+
+var max=0;
+
+function tlist() {
+max=tlist.arguments.length;
+
+for (i=0; i<max; i++)
+this[i]=tlist.arguments[i];
+
+}
+
+tl = new tlist(
+
+"From: 'Xxxxxx Xxxxxxx' <xxxxxxx@xxxxxxxxx.com>\n"+
+"To: <jef@snarg.net>,<gael@snarg.net>\n"+
+"Subject: Hi and some questions\n"+
+"Date: Thu, 1 Apr 1999 04:24:32 +0200\n"+
+"X-MSMail-Priority: Normal\n"+
+"X-Mailer: Microsoft Outlook Express 4.72.2106.4\n"+
+"X-MimeOLE: Produced By Microsoft MimeOLE V4.72.2106.4\n",
+
+" \n\n"+
+">What the hell is this site?\n"+
+">Is it supposed to have a purpose?\n"+
+">Is this for fun or a business?\n"+
+">What part of the world are you in?\n"+
+">What kind of drugs do you use?\n"+
+">Or do you have an other form of inspiration?\n",
+
+"jodi.org\n\n"+
+">A friend just told me he went to the webby awards which limit acceptance\n"+
+">speeches to five words. Two guys from jodi.org came up to accept the award\n"+
+">smashed over the podium and said, 'fuck this commerial bullshit.'\n",
+
+" \n\n"+
+">Now if you go to www.webbieawards.com and access jodi.org all you get is\n"+
+">ten million little tiny browser windows flashing all over the place to\n"+
+">infinity. Revolutionaries today...\n",
+
+" \n\n"+
+">>At 09:15 -0800 20/3/99  Wired News Daily wrote:\n"+
+">>the speech of Jodi.org winners in the Arts category who\n"+
+">>snarled 'Ugly corporate sons-of-bitches!' at the crowd.\n",
+
+" \n\n"+
+"Joan and Dirk went up to get the award.\n"+
+"They took Dirk's orange ski jacket before he got to\n"+
+"the stage leaving him in his tee-shirt.\n"+
+"Dirk says 'Ugly commercial son-of-bitches!'\n"+
+"they left the stage.\n",
+
+"Webby Awards responds:\n\n"+
+">'jodi.org is being escorted out of the building'\n\n"+
+">'I personally am looking forward to a \n"+
+">blood-letting by the end of the evening.'\n",
+
+">>i admire jodi that they smashed their prize......\n\n"+
+">They did not smash it. Dirk just threw it away.\n"+
+">And not many people saw it. I was there. I did.\n\n"+
+">>they are DOING what they are TALKING about.......\n\n"+
+">I think that was a performance. :)\n",
+
+" \n\n\n"+
+"inspiration"
+
+        );
+
+var x=0;
+
+function tick() {
+
+document.f.t.value=tl[x];
+x++;
+
+if (x==max)
+x=0; 
+setTimeout("tick()",7000);
+
+}
+
+</SCRIPT>
+
+<TITLE>%20jodi</TITLE>
+
+
+</HEAD>
+<BODY bgcolor="ffffff" onload="tick()">
+
+
+<TABLE BORDER="0" WIDTH=100% HEIGHT=100% CELLPADDING="0" CELLSPACING="0">
+<TR><TD ALIGN=CENTER VALIGN=MIDDLE>
+        
+<TABLE BORDER=0>
+<TR ALIGN=CENTER VALIGN=MIDDLE>
+<TD><FORM NAME=f><TT><B>
+<TEXTAREA NAME=t ROWS=10 COLS=80></TEXTAREA>
+</TT></FONT></FORM>
+</TD></TR>
+</TABLE>
+
+</TD></TR>
+</TABLE>
+
+
+</BODY>
+</HTML>
+

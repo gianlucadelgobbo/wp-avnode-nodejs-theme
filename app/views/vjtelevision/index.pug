@@ -1,0 +1,22 @@
+extends layout
+block content
+  article#container(itemscope, itemtype='http://schema.org/Event')
+    .row
+      .col-xl-3.col-md-4
+        h1.entry-title.boxItem News
+        each result, position in results.news
+          include boxes/box_news
+        .text-right.boxItem
+          a.btn.btn-primary(href="/news/")=global.__("See all News")
+      .col-xl-6.col-md-4
+        h1.entry-title.boxItem=global.__("Satellite Events")
+        .row.isotope.results
+          each result, position in results.events
+            .col-xl-6.col-xs-12.isotopeitem(class=position+1>=config.sez.home.events.limit/2 ? "visible-xl hidden-lg" : undefined)
+              include boxes/box_event
+        .text-right.boxItem
+          a.btn.btn-primary(href="/events/")=global.__("See all Events")
+      .col-xl-3.col-md-4
+        h1.entry-title.boxItem=global.__("Watch")+"!!!"
+        iframe(width="100",height="270",style="border:0;width:100%;",src="https://dev.vjtelevision.com/_swf/")
+

@@ -1,0 +1,30 @@
+article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
+  .row
+    .col-sm-8
+      img.img-fluid.main-image(src=result.member.imageFormats.large, alt=result.member.stagename, itemprop='image')
+      .rientro.hidden-xs!=result.member.aboutFull
+      include ../_common/inc_videos
+      - //console.log(result)
+    .col-sm-4
+      header
+        h1.entry-title(itemprop='name')!=result.member.stagename
+      .rientro
+        p.subtitle=result.member.subtitle && result.member.subtitle!= "Text is missing" ? result.member.subtitle : result.member.boxDate
+        .row
+          .col-lg-9
+            if result.member.boxVenue
+              p.boxVenue=result.member.boxVenue
+              p
+                a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
+              #fullSchedule.collapse
+                ul
+                  each fullSchedule in result.member.fullSchedule
+                    li=fullSchedule
+          .col-lg-3
+            if result.member.type
+              p.text-right
+                i(class="fa fa-cube")
+                =" "
+                !=result.member.type.name
+        .visible-xs(itemprop='description')!=result.member.aboutFull
+        include ../_common/inc_share

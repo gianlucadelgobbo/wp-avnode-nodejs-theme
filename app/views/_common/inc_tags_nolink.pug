@@ -1,0 +1,6 @@
+if posttype.tags
+  p.tags
+    each tag, index in posttype.tags
+      span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
+      if index + 1 < posttype.tags.length
+        !=" · "

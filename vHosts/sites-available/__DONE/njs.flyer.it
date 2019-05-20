@@ -1,0 +1,32 @@
+<VirtualHost *:443>
+   ServerAdmin webmaster@localhost
+   ServerName njs.flyer.it
+    
+   DocumentRoot /sites/wp-nodejs-theme
+   <Directory />
+      Options -Indexes +FollowSymLinks
+      AllowOverride None
+      Require all granted
+   </Directory>
+ 
+   ProxyRequests Off
+   ProxyPreserveHost On
+   ProxyVia Full
+   <Proxy *>
+      Require all granted
+   </Proxy>
+ 
+   <Location /sites/wp-nodejs-theme>
+      ProxyPass http://127.0.0.1:3000
+      ProxyPassReverse http://1127.0.0.1:3000
+   </Location>
+ 
+   ErrorLog /var/log/apache2/www_flyer_it-error.log
+ 
+   # Possible values include: debug, info, notice, warn, error, crit,
+   # alert, emerg.
+   LogLevel warn
+ 
+   CustomLog /var/log/apache2/www_flyer_it-access.log combined
+ 
+</VirtualHost>

@@ -1,0 +1,141 @@
+nav#top-menu.navbar.navbar-inverse
+  .container-fluid
+    // Brand and toggle get grouped for better mobile display
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mainmenu',aria-expanded="false")
+        span.sr-only Toggle navigation
+        span.flyer-expanding-icon
+          span.flyer-line
+          span.flyer-line
+          span.flyer-line
+      a.navbar-brand(href=lang_preurl+'/', title=config.project_name)
+        i.icon-flyer
+        .sr-only=config.project_name
+    // Collect the nav links, forms, and other content for toggling
+    #mainmenu.collapse.navbar-collapse
+      .nav.navbar-nav.navbar-right.flyer-expanding-icon-holder
+        .flyer-expanding-icon-holder-inner
+          a.flyer-menu-appear(href="#", title=global.__("Open menu"))
+            span.flyer-expanding-icon
+              span.flyer-line
+              span.flyer-line
+              span.flyer-line
+      form.navbar-form.visible-xs(action='/search/', method='get')
+        .input-group
+          input(type='hidden', name='cx', value=config.meta.google_search)
+          input(type='hidden', name='cof', value='FORID:10')
+          input(type='hidden', name='ie', value='UTF-8')
+
+          input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+          span.input-group-btn
+            button.btn.btn-default(type='submit', name='sa')=global.__("Search")
+
+      form.flyer-search-cover.hidden-xs(action=lang_preurl+'/search/', method='get')
+        .flyer-form-holder-outer
+          .flyer-search-submit-holder
+            button(type='submit', name='sa')
+              i.glyphicon.glyphicon-search
+              span.sr-only=global.__("Search")
+          .flyer-form-holder
+            .flyer-form-holder-inner
+              input(type='hidden', name='cx', value=config.meta.google_search)
+              input(type='hidden', name='cof', value='FORID:10')
+              input(type='hidden', name='ie', value='UTF-8')
+              input.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+              a.flyer-search-close(href='#', title=global.__("Close")) &times;
+      ul.nav.navbar-nav.navbar-right.menu-hide.border-right
+        li(class=page_data.url == '/' ? "active" : undefined)
+          a(href=lang_preurl+'/', title=global.__("Home"))
+            span.flyer-item-inner
+              i.icon-right
+              | Home
+        li(class=page_data.url.indexOf('/profile') >= 0 ? "active" : undefined)
+          a(href=lang_preurl+'/profile/', title=global.__("Profile"))
+            span.flyer-item-inner
+              i.icon-right
+              !=global.__("Profile")
+        li.dropdown(class=page_data.url.indexOf('/portfolio') >= 0 ? "active" : undefined)
+          a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true', title=global.__("Portfolio"))
+            span.flyer-item-inner
+              i.icon-right
+              !=global.__("Portfolio")
+              !=" "
+              span.caret
+          ul.dropdown-menu(role='menu')
+            li(class=page_data.url.indexOf('/portfolio/web-and-mobile') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("Web & Mobile"))
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Web & Mobile")
+            li(class=page_data.url.indexOf('/portfolio/live-visuals') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/live-visuals/', title=global.__("Live Visuals"))
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Live Visuals")
+            li(class=page_data.url.indexOf('/portfolio/videos/') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/videos/', title=global.__("Videos"))
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Videos")
+            li(class=page_data.url.indexOf('/portfolio/learning') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/learning/', title=global.__("Learning"))
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Learning")
+            li(class=page_data.url.indexOf('/portfolio/lab') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/lab/', title=global.__("Lab"))
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Lab")
+            li(class=page_data.url.indexOf('/portfolio/awards-and-grants') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/awards-and-grants/', title=global.__("Awards and Grants"))
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Awards and Grants")
+            //li(class=page_data.url.indexOf('/tags') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/portfolio/tags/')
+                span.flyer-item-inner
+                  i.icon-right
+                  !=global.__("Tags")
+        li(class=page_data.url.indexOf('/customers') >= 0 ? "active" : undefined)
+          a(href=lang_preurl+'/customers/', title=global.__("Customers"))
+            span.flyer-item-inner
+              i.icon-right
+              !=global.__("Customers")
+        li(class=page_data.url.indexOf('/extra') >= 0 ? "active" : undefined)
+          a(href=lang_preurl+'/extra/', title=global.__("Extra"))
+            span.flyer-item-inner
+              i.icon-right
+              !=global.__("Extra")
+        li(class=page_data.url.indexOf('/people') >= 0 ? "active" : undefined)
+          a(href=lang_preurl+'/people/', title=global.__("People"))
+            span.flyer-item-inner
+              i.icon-right
+              !=global.__("People")
+        li.menu-spacer-after(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
+          a(href=lang_preurl+'/contacts/', title=global.__("Contacts"))
+            span.flyer-item-inner
+              i.icon-right
+              !=global.__("Contacts")
+        li.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+          a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+        li.menu-spacer-after.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+          a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+        li.menu-spacer-after.hidden-xs
+          a(href='#', title=global.__("Search")).flyer-search-opener
+            i.glyphicon.glyphicon-search
+            span.sr-only=global.__("Search")
+
+
+
+      //form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
+          #nl_cnt
+            .input-group.input-group-sm
+              input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+              label.sr-only(for='email') Email
+              span.input-group-btn
+                button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED
+            input(type='hidden', name='lang', value='EN')
+            input(type='hidden', name='topic', value='livevisuals')
+          #nl_res.d-none
+    .menu-expand-bkg

@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+bower_components
+files
+localLogs
+config/default*
+tmp/*
+package-lock.json
+logs/*

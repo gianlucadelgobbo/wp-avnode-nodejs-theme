@@ -1,0 +1,14 @@
+.event_item_wrapper
+  if category 
+    .time_schedule=category.name
+  a(href="/events/"+item.slug+"/", title=item.title)
+    img.img-fluid(
+      src=item.imageFormats.small
+      alt=item.title
+    )
+  .event_item_info_wrapper
+    a(href="/events/"+item.slug+"/", title=item.title)
+      h4.event_item_title!=item.title
+    ul.event_item_date_and_locality.list-inline
+      li.list-inline-item.event_item_date=item.boxDate
+      li.list-inline-item.event_item_locality_paese=item.boxVenue               

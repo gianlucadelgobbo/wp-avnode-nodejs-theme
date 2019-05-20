@@ -1,0 +1,19 @@
+extends layout
+block content
+  .container
+    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/'+itemtype)
+      header
+        h1.entry-title(itemprop='name')!=result.post_title
+      .row
+        .col-sm-6.col-sm-offset-3
+          script.
+            var cx = "#{config.meta.google_search}";
+          form#cse-search-box(action='#')
+            input(type='hidden', name='cx', value=config.meta.google_search)
+            input(type='hidden', name='cof', value='FORID:10')
+            input(type='hidden', name='ie', value='UTF-8')
+            .input-group
+              input.form-control(type='text', name='q', size='31',value=q)
+              span.input-group-btn
+                button.btn(type='submit', name='sa') Search
+      .rientro.searchresults

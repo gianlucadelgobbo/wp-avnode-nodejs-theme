@@ -1,0 +1,70 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+    .container-fluid
+      style.
+        .row.bkgCnt:before {
+          background-image: url(#{result.featured.full});
+        }
+      .row.bkgCnt
+        .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2.col-xs-12
+          header.header
+            .text-center
+              h1.entry-title(itemprop='name')!=result.post_title
+              div(itemprop='headline')!=result.post_excerpt
+              include ../_common/inc_share
+    .container
+      .row
+        .col-sm-8
+          h3(itemprop='name')!=result.post_title+" Profile"
+          .rientro(itemprop='description')
+            !=result.post_content
+          .text-muted
+            .date
+              !=result.data_evento
+              meta(itemprop="dateModified", content=result.dateModified)
+
+        .col-sm-4
+          h3=global.__("Portfolio")
+          if result.posts && result.posts.length
+            - var data = result
+            - var posts = result.posts
+            if posts[0].post_type == "events"
+              each result, position in posts
+                if position   < 10
+                  include boxes/box_event
+              .text-center.read-more
+                a(href=lang_preurl + '/portfolio/live-visuals/', title=global.__("See all Events"))
+                  !=global.__("See all Events")
+                  !=" "
+                  i.icon-right
+            if posts[0].post_type == "web-and-mobile"
+              each result, position in posts
+                if position < 3
+                  include boxes/box_web
+              .text-center.read-more
+                a(href=lang_preurl + '/portfolio/web-and-mobile/', title=global.__("See all Web & Mobile"))
+                  !=global.__("See all Web & Mobile")
+                  !=" "
+                  i.icon-right
+            if posts[0].post_type == "lab"
+              each result, position in posts
+                include boxes/box_lab
+              .text-center.read-more
+                a(href=lang_preurl + '/portfolio/lab/', title)=global.__("See all Lab")
+                  !=global.__("See all Lab")
+                  !=" "
+                  i.icon-right
+            if posts[0].post_type == "learning"
+              each result, position in posts
+                if position   < 2
+                  include boxes/box_learning
+              .text-center.read-more
+                a(href=lang_preurl + '/portfolio/learning/', title)=global.__("See all Learning")
+                  !=global.__("See all Learning")
+                  !=" "
+                  i.icon-right
+            - result = data
+
+
+      include ../_common/inc_grid

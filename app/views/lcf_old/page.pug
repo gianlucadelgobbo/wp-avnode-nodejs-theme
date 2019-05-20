@@ -1,0 +1,24 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+    .row
+      .col-sm-9
+        header.row
+          .col-xs-9
+            h1.entry-title(itemprop="name")=result.post_title
+          .col-xs-3
+            .pull-right
+              include ../_common/inc_share_span
+        .rientro
+          div(itemprop='description')!=result.post_content
+          if (form == "contacts")
+            include ../_common/inc_form_contacts
+          if (form == "newsletter")
+            include ../_common/inc_form_newsletter
+          if (form == "join")
+            include ../_common/inc_form_join
+          include ../_common/inc_docs_large
+          .dateModified(itemprop='dateModified', content=result.date)=result.dateModifiedHR
+      .col-sm-3
+        img.img-fluid.wp-post-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+

@@ -1,0 +1,24 @@
+if result['wpcf-location']
+  each val, country in result['wpcf-location']
+    p.place
+      i.icon-location
+      !=" "
+      each valcity, city in result['wpcf-location'][country]
+        each val, venue in result['wpcf-location'][country][city]
+          span.location(itemprop='location', itemscope, itemtype='http://schema.org/Place')
+            if venue
+              span.venue(itemprop='name')=venue
+              !=", "
+            if val.lng
+              span.lnglat(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
+                meta(itemprop='latitude', content=val.lng)
+                meta(itemprop='longitude', content=val.lat)
+            if city
+              span.d-none.address(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
+                span.addressLocality(itemprop='addressLocality')=city
+                !=" "
+                span.addressCountry(itemprop='addressCountry')=country
+                !=", "
+        span.city=city
+          !=", "
+      span.country=country

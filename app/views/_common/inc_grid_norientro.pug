@@ -1,0 +1,31 @@
+if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
+  - var rowsN = result['wpcf-rows']+1;
+  - var columnsN = result['wpcf-columns']+1;
+  //if rowsN>0 && columnsN>0
+  //- //console.log(result.grid)
+  
+  if result['wpcf-same-rows-height']==1
+    //- //console.log(result.grid)
+    each row in result.grid
+      if row
+        .row
+          - var conta = 0
+          each col in row
+            - if (col.tit) conta++
+          - var span = 12/conta
+          each col in row
+            if col.tit && col.tit!="."
+              div(class="col-sm-"+span, itemprop="performer", itemscope, itemtype="http://schema.org/ItemList")
+                h3(itemprop="name")!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
+                !=col.box
+  else
+    if result.grid
+      .row
+        - span = 12/result.grid.length
+        each col in result.grid
+          if col
+            div(class="col-sm-"+span, itemprop="performer", itemscope, itemtype="http://schema.org/ItemList")
+              each row in col
+                if row.tit && col.tit != "."
+                  h3(itemprop="name")!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
+                  !=row.box

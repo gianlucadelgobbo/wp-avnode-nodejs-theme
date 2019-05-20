@@ -1,0 +1,19 @@
+Hi Gianluca.
+
+START.swf is the first file................
+
+The first file is.... start.swf (this is level 3).
+This is the start movie. All subsequent movies load on top of this.
+
+All important buttons have had _root.click = _root.click + 1; added to the code.
+
+
+The size of the movie is.... 750 wide by 615 high (very important).
+
+
+Thanks,
+and good luck.
+
+Ross Mawdsley.
+www.simian.nu
+www.ikda.co.uk

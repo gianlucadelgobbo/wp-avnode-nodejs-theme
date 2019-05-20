@@ -1,0 +1,21 @@
+div(class="rowTimeline rowTimeline-"+result.post_type, itemscope, itemprop="itemListElement", itemtype='http://schema.org/Event')
+  meta(itemprop="eventStatus" content="confirmed")
+  .row
+    div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
+      .timelineDate
+        .dates
+          include ../../_common/inc_eventdate
+          meta(itemprop="position" content=position+1)
+        .places
+          if result['wpcf-location']
+            include ../../_common/inc_place
+    div(class="col-sm-"+(result.post_type=="editions" ? 4 :2), itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+      a(class=result.post_type=="editions" ? undefined : "ajaxloader", href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title, itemprop='url')
+        if result.featured
+          img.img-fluid(src=result.featured.thumbnail, alt!='Image for: ' + result.post_title, itemprop='contentUrl')
+    div(class="col-sm-"+(result.post_type=="editions" ? 3 :4))
+      h2.timelineTitle(itemprop='name')
+        a(class=result.post_type=="editions" ? undefined : "ajaxloader", itemprop='url', href='/'+result.post_type+'/' + result.slug+'/', rel='bookmark', title=result.post_title)!=result.post_title
+      .text-muted.small!=result.excerpt.rendered
+    .col-sm-2
+      //include ../inc_staticmap

@@ -1,0 +1,27 @@
+section.performers_event_wrapper
+  h3.performers_infos
+    b=body.performersN
+    !=" "+global.__('performers')+" ("+body.performersCount + " " + global.__('peoples') +") "
+    !=global.__('from') + " " + body.countries.join(', ')+ " " + global.__('playing')+ " "
+    b=body.actsN
+    !=" " + body.acts.join(', ') + "."      
+  .row.lists
+    each item, i in body.performers
+      .col-sm-3
+        .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+          meta(itemprop='position', content=i)
+          div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
+            div
+              - var url = req_params.edition ? '/editions/'+req_params.edition+"/artists/"+item.slug+"/" : prefix=="wam" ? '/prenatal/'+req_params.exhibition+"/artists/"+item.slug+"/" : '/exhibitions/'+req_params.exhibition+"/artists/"+item.slug+"/"
+              a(itemprop='url', href=url, title=item.stagename)
+                img.img-fluid(itemprop='image', src=item.imageFormats.large, alt=item.stagename, class=item.imageFormats.large.substring(item.imageFormats.large.lastIndexOf(".")+1))
+            .caption
+              .caption-body
+                h2.caption-title(itemprop='name')=item.stagename
+                .caption-location-artists
+                  each address in item.addresses
+                    span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                      span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                        b(itemprop='addressCountry')=address.country
+                        | , 
+                        span(itemprop='addressLocality')=address.locality

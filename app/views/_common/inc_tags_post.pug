@@ -1,0 +1,7 @@
+if result.tags
+  p.tags
+    each tag, index in result.tags
+      a(href=lang_preurl + '/'+baseurl+'/tags/' + tag.slug + "/", title=tag.name)
+        span.tagandcount!="#" + tag.name + " (" + tag.count + ")"
+      if index + 1 < result.tags.length
+        !=" · "

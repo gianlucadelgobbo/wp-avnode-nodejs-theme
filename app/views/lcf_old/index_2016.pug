@@ -1,0 +1,79 @@
+extends layout
+block content
+  section#container
+    #carousel-example-generic.carousel.slide(data-ride='carousel')
+      //
+        Indicators
+        <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="8"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="9"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="10"></li>
+        </ol>
+      // Wrapper for slides
+      .carousel-inner
+        .item.active
+          img(src='/lcf/images/carusel_img_2016/LCF2016_city.jpg', alt='LCF2016_city')
+        .item
+          img(src='/lcf/images/carusel_img_2016/LCF2016_road.jpg', alt='LCF2016_road')
+        .item
+          img(src='/lcf/images/carusel_img_2016/LCF2016_strip.jpg', alt='LCF2016_strip')
+        .item
+          a(href='/en/event/2016-rome/artists/GregPope/performances/scoreline/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-scoreline.jpg', alt='Scoreline | Greg Pope United Kingdom, London')
+        .item
+          a(href='/en/event/2016-rome/artists/1024Architecture/performances/recession/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-recession.jpg', alt='Recession | 1024 Architecture France, Paris')
+        .item
+          a(href='/en/event/2016-rome/artists/glimgrill/performances/living-is-mostly-wasting-time/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-glimgrill.jpg', alt='living is mostly wasting time | glimgrill Austria, Vienna')
+        .item
+          a(href='/en/event/2016-rome/artists/HenkNijman/performances/entropic-love/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-entropicLove.jpg', alt='Entropic Love | Henk Nijman Julian Theelen Netherlands, Amsterdam')
+        .item
+          a(href='/en/event/2016-rome/artists/Ojoboca/performances/new-museum-of-mankind/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-momk.jpg', alt='New Museum of Mankind | Ojoboca Germany, Berlin')
+        .item
+          a(href='/en/event/2016-rome/artists/GaborKitzinger/performances/phase-alternating-line/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-flowmata.jpg', alt='Phase Alternating Line | Gábor Kitzinger (Glowing Bulbs) + S Olbricht | Hungary, Budapest')
+        .item
+          a(href='/en/event/2016-rome/artists/MartinBlazicek/performances/live-av/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-live.jpg', alt='Live a/v | Martin Blažíček Michal Zbořil Czech Republic, Praha')
+        .item
+          a(href='/en/event/2016-rome/artists/albagcorral/performances/dimension-n/')
+            img(src='/lcf/images/carusel_img_2016/LCF2016-slideshow-dimension.jpg', alt='Dimension N | Alba G Corral Spain, Barcellona Dariusz Makaruk Poland, Warsaw')
+      // Controls
+      a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left
+      a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right
+
+    .row
+      .col-xl-3.col-lg-4.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
+        h1.entry-title(itemprop="name") News
+        each result, position in results.news
+          include boxes/box_news
+        .text-right.boxItem
+          a.btn.btn-primary(href=lang_preurl+"/news/", title=global.__("See all News"))=global.__("See all News")
+      .col-xl-6.col-lg-4.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
+        h1.entry-title(itemprop="name")=global.__("Satellite Events")
+        .row.isotope.results
+          each result, position in results.events
+            .col-xl-6.col-lg-12.col-md-12.col-sm-12.isotopeitem
+              include boxes/box_event
+        .text-right.boxItem
+          a.btn.btn-primary(href=lang_preurl+"/events/", title=global.__("See all Events"))=global.__("See all Events")
+
+      .col-xl-3.col-lg-4.col-md-4.col-sm-6(itemscope, itemtype='http://schema.org/ItemList')
+        h1.entry-title(itemprop="name")=global.__("Editions")
+        each result, position in results.editions
+          include boxes/box_edition
+        .text-right.boxItem
+          a.btn.btn-primary(href=lang_preurl+"/editions/", title=global.__("See all Editions"))=global.__("See all Editions")
