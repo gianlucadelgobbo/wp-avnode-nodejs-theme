@@ -55,7 +55,7 @@ html(lang=sessions.current_lang)
               .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
               .sr-only
                 include ../_common/inc_eventdateplace_meta
-        nav.hidden-xs
+        nav.d-none-xs
           ul.pulsa
             each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
               li.btn-group.gradient-ghost-btn-lg.live.gradient-color-palette2
@@ -71,7 +71,7 @@ html(lang=sessions.current_lang)
 
 
 
-        nav.visible-xs.navbar.navbar-default
+        nav.d-none.d-sm-block.navbar.navbar-default
           // Brand and toggle get grouped for better mobile display
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')

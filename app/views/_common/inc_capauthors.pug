@@ -18,7 +18,7 @@ if result.capauthors
   if publishers.length
     ul.authors
       li
-        i.glyphicon.glyphicon-user
+        i.icon-user
         !=" "+config.posttypes_authors[result.post_type].publisher.label_multi
       each capauthor in publishers
         if (config.users_by_id[capauthor.ID] && config.users_by_id[capauthor.ID][config.prefix + "-sez"])
@@ -39,7 +39,7 @@ if result.capauthors
   if authors.length
     ul.authors(class=authors.length == 1 && config.posttypes_authors[result.post_type].authors.default && authors[0].ID == config.posttypes_authors[result.post_type].authors.default.ID ? "sr-only" : undefined)
       li
-        i.glyphicon.glyphicon-user
+        i.icon-user
         !=" "+config.posttypes_authors[result.post_type].authors.label_multi
       each capauthor in authors
         if (config.users_by_id[capauthor.ID] && config.users_by_id[capauthor.ID][config.prefix + "-sez"])

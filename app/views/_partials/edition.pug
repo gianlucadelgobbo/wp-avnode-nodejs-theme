@@ -2,14 +2,17 @@ article#container
   if result.post_content!=""
     .row
       .col-sm-9
-        .rientro
-          //include ../_common/inc_dateplace
-          div(itemprop='description')!=result.post_content
+        .main-cnt
+          header.post_title.mb-4
+            h1(itemprop="name")=page_data.title
+          .rientro
+            div(itemprop='description')!=result.post_content
       .col-sm-3
-        img.img-fluid.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
-  //else
-    header
-      h1.entry-title(itemprop='name')=result.post_title
+        .main-image
+          img.img-fluid(src=result.featured.thumbnail, alt=page_data.title, itemprop='image')
+  else
+    header.post_title.mb-4
+      h1(itemprop='name')=page_data.title
   if (sessions.current_edition == config.last_edition && page_data.url.indexOf("/program/")!==-1)
     if(config.last_edition_status == "call")
       style.
@@ -45,8 +48,8 @@ article#container
         br
         .alert.alert-danger!="<b>ATTENTION!!!</b> We are still programming the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
 
-
-  include ../_common/inc_grid
+  .pt-3
+    include ../_common/inc_grid
 
 
 //if result.data.advanced.programmebydayvenue

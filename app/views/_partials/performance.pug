@@ -2,7 +2,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
   .row
     .col-sm-8
       img.img-fluid.main-image(src=result.performance.imageFormats.large, alt=result.performance.title, itemprop='image')
-      .rientro.hidden-xs!=result.performance.aboutFull
+      .rientro.d-none-xs!=result.performance.aboutFull
       include ../_common/inc_videos
       - //console.log(result)
     .col-sm-4
@@ -26,7 +26,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
                 i(class="fa fa-cube")
                 =" "
                 !=result.performance.type.name
-        .visible-xs(itemprop='description')!=result.performance.aboutFull
+        .d-none.d-sm-block(itemprop='description')!=result.performance.aboutFull
         .partners_event_wrapper_bkg
           .container
             section.row.partners_event_wrapper

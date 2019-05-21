@@ -15,12 +15,11 @@ if users && users.length
     each item, i in users
       .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem', class=opts.cols == '1' ? 'col-md-3' : undefined)
         meta(itemprop='position', content=i)
-        .row.partners(itemprop='item', itemscope='', itemtype='http://schema.org/Organization')
-          .col-xs-5.col-md-5.col-sm-12
-            a(itemprop='url', href=item.web && item.web.length ? item.web[0].url : undefined, target='_blank', title=item.stagename)
-              img.img-fluid(itemprop='image', src=item.imageFormats.small, alt=item.stagename, class=item.imageFormats.small.substring(item.imageFormats.small.lastIndexOf(".")+1)
+        .media.partner(itemprop='item', itemscope='', itemtype='http://schema.org/Organization')
+          a.mr-3(itemprop='url', href=item.web && item.web.length ? item.web[0].url : undefined, target='_blank', title=item.stagename)
+            img.img-fluid(itemprop='image', src=item.imageFormats.small, alt=item.stagename, class=item.imageFormats.small.substring(item.imageFormats.small.lastIndexOf(".")+1)
 )
-          .col-xs-7.col-md-7.col-sm-12
+          .media-body
             h2.media-heading(itemprop='name')
               a(href=item.web && item.web.length ? item.web[0].url : undefined, title=item.stagename, target='_blank')=item.stagename
             if item.web && item.web.length

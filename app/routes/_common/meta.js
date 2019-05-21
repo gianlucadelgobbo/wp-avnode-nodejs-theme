@@ -27,7 +27,7 @@ exports.get = function get(req, res) {
             if (req.query.check){
               res.render("_common/meta_test", {meta:meta});
             } else {
-              require('jsonfile').writeFile(config.root+'/config/'+config.prefix+'_editions.json', meta, function(err) {
+              require('jsonfile').writeFile(config.root+'/cache/'+config.prefix+'_editions.json', meta, function(err) {
                 config.meta.editions = meta;
                 res.render("_common/meta_test", {meta:config.meta.editions});
               });

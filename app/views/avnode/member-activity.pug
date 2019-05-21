@@ -4,7 +4,7 @@ block content
     .row
       .col-sm-8
         img.img-fluid.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
-        .hidden-xs(itemprop='description')!=result.post_content
+        .d-none-xs(itemprop='description')!=result.post_content
         include ../_common/inc_videos
       .col-sm-4
         header
@@ -15,7 +15,7 @@ block content
         if result['wpcf-public-email']
           p
             a(href="mailto:"+result['wpcf-public-email'])
-              i.glyphicon.glyphicon-envelope
+              i.icon-mail
               !=" " + result['wpcf-public-email']
         if result['wpcf-website-url']
           p
@@ -50,7 +50,7 @@ block content
         if result['wpcf-other-url']
           p
             a(href=result['wpcf-other-url'], target="_blank")
-              i.glyphicon.glyphicon-new-window
+              i.icon-link-ext
               !=" " + result['wpcf-other-url'].replace("https://", "").replace("http://", "")
         p
           i.glyphicon.glyphicon-globe
@@ -60,7 +60,7 @@ block content
         if result['wpcf-location']
           .places
             include ../_common/inc_place
-        .visible-xs!=result.post_content
+        .d-none.d-sm-block!=result.post_content
         //include ../_common/inc_websites
         include ../_common/inc_capauthors
         include ../_common/inc_share

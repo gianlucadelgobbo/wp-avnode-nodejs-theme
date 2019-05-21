@@ -3,8 +3,8 @@ ul.navbar-nav
     if menu.childs.length>0
       li.nav-item.dropdown(class=menu.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
         .btn-group
-          a.nav-link(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
-          a.nav-link.dropdown-toggle.dropdown-toggle-split(data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+          a.nav-link.pr-1(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+          a.nav-link.pl-1.dropdown-toggle.dropdown-toggle-split(data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
             span.sr-only Toggle Dropdown
           .dropdown-menu
             each child in menu.childs

@@ -1,13 +1,13 @@
 ul.navbar-nav
-  li.nav-item(class=page_data.url.indexOf('/idea') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/idea') == 0 ? "active" : undefined)
     a.nav-link(href='/idea/') Idea
-  li.nav-item(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/events') == 0 ? "active" : undefined)
     a.nav-link(href='/events/') Productions
-  li.nav-item(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/partnerships') == 0 ? "active" : undefined)
     a.nav-link(href='/partnerships/') Satellite Events
-  li.nav-item(class=page_data.url.indexOf('/news') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/news') == 0 ? "active" : undefined)
     a.nav-link(href='/news/') News
-  li.nav-item.dropdown(class=page_data.url.indexOf('/gallery') >= 0 ? "active" : undefined)
+  li.nav-item.dropdown
     a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
     .dropdown-menu(role='menu')
       a.dropdown-item(href='/editions/2019-rome/gallery/') 2019 Rome
@@ -31,7 +31,7 @@ ul.navbar-nav
       a.dropdown-item(href='/editions/2006-rome/gallery/') 2006 Rome
       a.dropdown-item(href='/editions/2005-rome/gallery/') 2005 Rome
       a.dropdown-item(href='/editions/2004-rome/gallery/') 2004 Rome
-  li.nav-item.dropdown(class=page_data.url.indexOf('/videos') >= 0 ? "active" : undefined)
+  li.nav-item.dropdown
     a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Videos"
     .dropdown-menu(role='menu')
       a.dropdown-item(href='/editions/2019-rome/videos/') 2019 Rome
@@ -55,7 +55,7 @@ ul.navbar-nav
       a.dropdown-item(href='/editions/2006-rome/videos/') 2006 Rome
       a.dropdown-item(href='/editions/2005-rome/videos/') 2005 Rome
       a.dropdown-item(href='/editions/2004-rome/videos/') 2004 Rome
-  li.nav-item.dropdown(class=page_data.url.indexOf('/editions') >= 0 ? "active" : undefined)
+  li.nav-item.dropdown
     a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Editions"
     .dropdown-menu(role='menu')
       a.dropdown-item(href='/editions/2019-rome/') 2019 Rome
@@ -79,15 +79,15 @@ ul.navbar-nav
       a.dropdown-item(href='/editions/2006-rome/') 2006 Rome
       a.dropdown-item(href='/editions/2005-rome/') 2005 Rome
       a.dropdown-item(href='/editions/2004-rome/') 2004 Rome
-  li.nav-item(class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/press') == 0 ? "active" : undefined)
     a.nav-link(href='/press/') Press
-  li.nav-item(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/contacts') == 0 ? "active" : undefined)
     a.nav-link(href='/contacts/') Contacts
-  li.nav-item(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+  //li.nav-item(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
     a.nav-link(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-  li.nav-item(class=page_data.url.indexOf('/search') >= 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf('/search') == 0 ? "active" : undefined)
     a.nav-link#searchModalButton(href="/search/")
-      i.glyphicon.glyphicon-search
+      i.icon-search
       .sr-only=global.__("Search")
 
   li.nav-item

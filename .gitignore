@@ -3,7 +3,6 @@ node_modules
 bower_components
 files
 localLogs
-config/default*
-tmp/*
+config/*
 package-lock.json
 logs/*

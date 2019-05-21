@@ -10,7 +10,7 @@
           i.icon-bar
           i.icon-bar
         // Be sure to leave the brand out there if you want it shown
-        a.navbar-brand.visible-xs(href='/', title=config.project_name)
+        a.navbar-brand.d-none.d-sm-block(href='/', title=config.project_name)
           i.icon-wam
           .sr-only=config.project_name
       // Place everything within .navbar-collapse to hide it until above 768px
@@ -39,7 +39,7 @@
             a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
           li.menu-spacer-after.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
             a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
-          li.menu-spacer-after.hidden-xs
+          li.menu-spacer-after.d-none-xs
             a#searchModalButton(href="/search/")
-              i.glyphicon.glyphicon-search
+              i.icon-search
               .sr-only=global.__("Search")

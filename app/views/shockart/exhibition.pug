@@ -6,7 +6,7 @@ block content
       .col-sm-9
         header
           h1.entry-title(itemprop='name')=result.post_title
-        nav.hidden-xs(role='navigation')
+        nav.d-none-xs(role='navigation')
           ul.pulsa.pull-right
             - //console.log(result);
             each menu,index in result.menu_exhibition
@@ -25,7 +25,7 @@ block content
           include ../_common/inc_websites
           include ../_common/inc_capauthors
       .col-sm-3
-        img.img-fluid.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
+        img.img-fluid.main-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
         include ../_common/inc_docs_small
     include ../_common/inc_grid
 

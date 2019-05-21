@@ -1,34 +1,54 @@
 /*!
 CSS COMMON
 */
+a:hover img{
+  opacity: .7;
+}
 .list_title {
   margin-top: 0;
 }
-.svg {
-  background-color: #FFF;
+a:hover {
+  text-decoration: none;
 }
-.partners .svg {
-  max-width: 100px;
+#menu-main .form-inline {
+  padding-right: .5rem;
+  padding-left: .5rem;
 }
-.subfooter .madeby a{
-  display: block;
-  margin: -15px -7px 0 0;
-  color:#f0ad4e;
+#listItems {
+  padding-left: 0;
 }
-.subfooter .madeby a:hover{
+/* FOOTER */
+.footer-nav.corporate li{
+  padding-left: 10px;
+}
+footer a:link, footer a:visited, footer a:active{
+  color: #ccc;
+}
+footer a:hover {
+  color: #FFF;
+}
+footer .projects i {
+  font-size: 60px;
+}
+footer .projects {
+  line-height: 1.5;
+}
+.subfooter .madeby {
+  margin-bottom: -21px;
+}
+.subfooter .madeby a i {
+  margin-top: -13px;
+  display: inline-block;
+}
+.subfooter .madeby a:hover i{
   color:#FFF;
-}
-a:hover img{
-  opacity: .7;
 }
 .subfooter .madeby .icon-flyer{
   font-size: 30px;
 }
-.footer-nav-inline a{
-  display: block;
-}
+
 /* MODAL PORTFOLIO*/
-.modal-fullscreen .modal-title {
+/* .modal-fullscreen .modal-title {
   color: #FFF;
 }
 .modal-fullscreen .modal-header{
@@ -55,19 +75,7 @@ a:hover img{
   padding: 15px 15px 61px 15px;
   margin-top: 56px;
 }
-.modal-fullscreen .modal-body .loadingcnt{
-  position: absolute;
-  top: 40%;
-  left: 50%;
-}
-.modal-fullscreen .modal-body .loadingcnt .loading {
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  font-size: 72px;
-  width: 100px;
-  height: 100px;
-}
+
 .modal-fullscreen .modal-open .modal{
   overflow-x: initial;
   overflow-y: initial;
@@ -115,58 +123,58 @@ a:hover img{
   .modal-body, .modal-body .container{
     padding:0;
   }
+} */
+.modal-fullscreen {
+  padding-right:0 !important;
+  z-index: 3000;
 }
-
-/* FOOTER */
-.footer-nav{
-  list-style: none;
-  padding-left: 0;
-  line-height: 2;
+.modal-fullscreen .modal-dialog {
+  display: flex;
+  align-items: top;
+  height: 100%;
+  max-height: 100%;
+  min-height: 100%;
 }
-.footer-nav.corporate li{
-  padding-left: 10px;
+.modal-fullscreen .modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
-footer a:link, footer a:visited, footer a:active{
-  color: #ccc;
-}
-a:hover {
-  text-decoration: none;
-}
-.footer-nav-inline{
-  list-style: none;
-}
-.footer-nav-inline li{
-  display: inline-block;
-}
-.footer-nav-inline li img{
-  height: 40px;
-}
-footer .tooltip.bottom .tooltip-inner, footer .tooltip.left .tooltip-inner{
-  background-color:#ccc;
-  color: #000;
-}
-footer .tooltip.bottom .tooltip-arrow{border-bottom-color:#ccc}
-footer .tooltip.left .tooltip-arrow{border-left-color:#ccc}
-.footer-nav i{
-  font-size: 30px;
-}
-footer.navbar-inverse {
-  margin: 20px 0 0 0;
-  padding: 15px 0;
+.modal-fullscreen .modal-content {
+  height: 100%;
   color: #FFF;
+  background-color:#000;
 }
-footer .projects i {
-  font-size: 60px;
-}
-footer .projects {
-  line-height: 1.5;
-}
-footer .socials {
+.modal-title {
+  margin: 0;
+  padding: 0;
   line-height: 1;
 }
 
+.modal-fullscreen .close {
+  color: #FFF;
+}
+.modal-fullscreen .modal-body .loadingcnt{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+.modal-fullscreen .modal-body .loadingcnt .loading {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  font-size: 72px;
+  width: 100px;
+  height: 100px;
+}
+@media (min-width: 576px){
+  .modal-fullscreen .modal-dialog {
+    max-width: none;
+    margin: 0;
+  }
+}
 
-/* NAVBAR AFFIX*/
+/* NAVBAR AFFIX
 .affix {
   top: 0;
   left: 0;
@@ -182,8 +190,8 @@ footer .socials {
 }
 .affix-top .navbar-nav>li:first-child{
   margin-left: -15px;
-}
-/* READ MORE */
+}*/
+/* READ MORE 
 .read-more{
   margin-top: 20px;
 }
@@ -233,10 +241,6 @@ span.share a:hover{
   line-height: 1.2;
 }
 
-.nav-pills>li>a {
-  border-radius: 4px;
-  background-color: #EEE;
-}
 .authors,.links, .dateplace{
   list-style: none;
   padding-left: 0;
@@ -282,8 +286,8 @@ ul.authors,ul.links, div.share{
   padding-top: 10px;
 }
 .dateModified{margin-top: 30px}
-
-/* AVNODE GALLERY */
+*/
+/* AVNODE GALLERY
 ul.row.thumbnails{
   list-style: none;
   padding: 0;
@@ -301,7 +305,6 @@ ul.row.thumbnails .cntGallImgOver{
   max-width: 100%;
 }
 .thumbnail .cntDida{text-align: center;height: 25px;padding-top: 5px;display: block;overflow: hidden;}
-/* END AVNODE GALLERY */
 
 
 .play-cnt .icon-play:before{
@@ -322,4 +325,4 @@ ul.row.thumbnails .cntGallImgOver{
 }
 .thumb-cnt{
   position: relative;
-}
+} */

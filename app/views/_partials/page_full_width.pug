@@ -1,4 +1,4 @@
 article(itemscope, itemtype='http://schema.org/'+itemtype)
-  header
-    h1.d-none(itemprop="name")=result.post_title
-  page_full_width!=result.post_content
+  header.post_title.mb-4
+    h1(itemprop="name")=page_data.title
+  .pt-4!=result.post_content

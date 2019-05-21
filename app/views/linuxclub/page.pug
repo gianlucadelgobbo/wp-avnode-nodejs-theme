@@ -38,7 +38,7 @@ block content
       .col-sm-3
         img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
         include ../_common/inc_docs_small
-
+    - console.log(result)
     if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
       include ../_common/inc_grid
         

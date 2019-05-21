@@ -5,7 +5,7 @@ block content
       .row
         .col-sm-8
           img.img-fluid.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
-          .rientro.hidden-xs!=result.post_content
+          .rientro.d-none-xs!=result.post_content
           include ../_common/inc_videos
           - //console.log(result)
         .col-sm-4
@@ -14,7 +14,7 @@ block content
           .rientro
             include ../_common/inc_type_hidden
             include ../_common/inc_eventdateplace
-            .visible-xs(itemprop='description')!=result.post_content
+            .d-none.d-sm-block(itemprop='description')!=result.post_content
             include ../_common/inc_websites
             include ../_common/inc_capauthors
             include ../_common/inc_share

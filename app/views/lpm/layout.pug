@@ -32,30 +32,32 @@ html(lang='en')
         body {
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
-  body(class=page_data.url == "/" ? "body-home" : "body-common")
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top.navbar-edition(class=page_data.url == "/" ? "" : "navbar-fixed-top")
+  //body(class=page_data.url == "/" ? "body-home" : "body-common")
+  body.body-common
+    nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
       // Brand and toggle get grouped for better mobile display
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu')
         span.navbar-toggler-icon
         i.icon-bar
         i.icon-bar
         i.icon-bar
-      a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title, style="width:49px")
+      a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
         img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
       #menu.collapse.navbar-collapse
         .accordion.mr-auto
-          #menu-edition.menu-edition-main.collapse.show
+          - var showmain = page_data.url.indexOf('/idea') == 0 || page_data.url.indexOf('/events') == 0 || page_data.url.indexOf('/partnerships') == 0 || page_data.url.indexOf('/news') == 0 || page_data.url.indexOf('/press') == 0 || page_data.url.indexOf('/contacts') == 0 || page_data.url.indexOf('/search') == 0
+          #menu-edition.menu-edition-main.collapse(class=!showmain ? "show" : "")
             include includes/menu-edition
-          #menu-main.menu-edition-main.collapse
+          #menu-main.menu-edition-main.collapse(class=showmain ? "show" : "")
             include includes/menu-main
-        a(href='#', onclick="$(this).html($('#menu-main').hasClass('show') ? 'Switch to Main menu' : 'Switch to Edition menu')", data-toggle='collapse', data-target='.menu-edition-main')="Switch to Main menu"
+        a.mr-3(href='#', onclick="$(this).html($('#menu-main').hasClass('show') ? 'Switch to Main menu' : 'Switch to Edition menu')", data-toggle='collapse', data-target='.menu-edition-main')=showmain ? "Switch to Edition menu" : "Switch to Main menu"
     block home
-    .header-bar.pt-5.pr-5.pb-5.pl-5
+    .header-bar.pt-4.pb-4
       div(class=page_data.url == "/" ? "container-fluid" : "container")
         header
           .row
-            .col-md-6
+            .col-md-6.pt-1
               if result
                 h1.d-inline!=page_data.title
                 include ../_partials/components/share_span
@@ -77,11 +79,11 @@ html(lang='en')
     include ../_partials/components/modal-search
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form
-      script(type='text/javascript', src='/_common/js/validator.min.js')
+      script(type='text/javascript', src='/_js/validator.min.js')
     include ../_partials/components/cookielawinfo
 
     // TICKER
-    #twCnt
+    #twCnt.fixed-bottom
       #tw
     script(type='text/javascript').
       (function () {
@@ -117,14 +119,14 @@ html(lang='en')
           "sgp_hon": "",
           "sgp_usf": "1.2",
           "sgp_mb": "10",
-          "sgp_theme": "images",
-          "sgp_theme_root": "/_common/",
+          "sgp_theme": "_images",
+          "sgp_theme_root": "/",
           "sgp_iLoadR": 'social-gallery-loading.gif',
           "sgp_iR": 'social-gallery-r.png',
           "sgp_iL": 'social-gallery-l.png'
         };
         var sgp_ie = false;var sgp_ie7 = false;
-      script(type='text/javascript', src='/_common/js/jquery-migrate.min.js')
-      script(type='text/javascript', src='/_common/js/socialGalleryPluginLite.js')
+      script(type='text/javascript', src='/_js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/_js/socialGalleryPluginLite.min.js')
 
     include ../_partials/components/analytics

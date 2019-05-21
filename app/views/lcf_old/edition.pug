@@ -14,7 +14,7 @@ block content
             //include ../_common/inc_dateplace
             div(itemprop='description')!=result.post_content
         .col-sm-3
-          img.img-fluid.wp-post-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
+          img.img-fluid.main-image(src=result.featured.thumbnail, alt=result.post_title, itemprop='image')
           br
     else
       header

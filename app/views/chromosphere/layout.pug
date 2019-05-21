@@ -51,7 +51,7 @@ html(lang=sessions.current_lang)
               .sr-only
                 include ../_common/inc_eventdateplace_meta
         br
-        nav.hidden-xs
+        nav.d-none-xs
           ul.pulsa
             each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
               li.btn-group
@@ -67,7 +67,7 @@ html(lang=sessions.current_lang)
 
 
 
-        nav.visible-xs.navbar.navbar-default
+        nav.d-none.d-sm-block.navbar.navbar-default
           // Brand and toggle get grouped for better mobile display
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#menu-edition-menu')

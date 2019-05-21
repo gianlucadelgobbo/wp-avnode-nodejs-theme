@@ -1,7 +1,7 @@
-$bootstrap-sass-asset-helper: false !default;
-$brand-primary:         #000000 !default
-$link-hover-color:		#faa61a !default
-$icon-font-path: "../../_common/fonts/" !default;
+
+$primary:         #000000 !default;
+$link-hover-color:		#faa61a !default;
+
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 @import "../_common/fontello";
@@ -9,6 +9,6 @@ $icon-font-path: "../../_common/fonts/" !default;
 @import "../_common/socialGalleryPluginLite";
 @import "../_common/cookielawinfo";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-@import "../_common/bootstrapXL";
+
 @import "../_common/style";
 @import "./css/style";

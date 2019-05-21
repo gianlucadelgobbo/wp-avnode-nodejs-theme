@@ -1,6 +1,6 @@
-$bootstrap-sass-asset-helper: false !default;
-$brand-primary:         #428bca !default
-$icon-font-path: "../../_common/fonts/" !default;
+
+$primary:         #428bca !default;
+
 
 
 @import "../_common/fontello";
@@ -8,7 +8,7 @@ $icon-font-path: "../../_common/fonts/" !default;
 @import "../_common/socialGalleryPluginLite";
 @import "../_common/cookielawinfo";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-@import "../_common/bootstrapXL";
+
 @import "../_common/swiper";
 @import "../_common/style";
 @import "./css/style.lpm";

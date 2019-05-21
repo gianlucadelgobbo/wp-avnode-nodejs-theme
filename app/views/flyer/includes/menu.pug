@@ -20,7 +20,7 @@ nav#top-menu.navbar.navbar-inverse
               span.flyer-line
               span.flyer-line
               span.flyer-line
-      form.navbar-form.visible-xs(action='/search/', method='get')
+      form.navbar-form.d-none.d-sm-block(action='/search/', method='get')
         .input-group
           input(type='hidden', name='cx', value=config.meta.google_search)
           input(type='hidden', name='cof', value='FORID:10')
@@ -30,11 +30,11 @@ nav#top-menu.navbar.navbar-inverse
           span.input-group-btn
             button.btn.btn-default(type='submit', name='sa')=global.__("Search")
 
-      form.flyer-search-cover.hidden-xs(action=lang_preurl+'/search/', method='get')
+      form.flyer-search-cover.d-none-xs(action=lang_preurl+'/search/', method='get')
         .flyer-form-holder-outer
           .flyer-search-submit-holder
             button(type='submit', name='sa')
-              i.glyphicon.glyphicon-search
+              i.icon-search
               span.sr-only=global.__("Search")
           .flyer-form-holder
             .flyer-form-holder-inner
@@ -121,9 +121,9 @@ nav#top-menu.navbar.navbar-inverse
           a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
         li.menu-spacer-after.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
           a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
-        li.menu-spacer-after.hidden-xs
+        li.menu-spacer-after.d-none-xs
           a(href='#', title=global.__("Search")).flyer-search-opener
-            i.glyphicon.glyphicon-search
+            i.icon-search
             span.sr-only=global.__("Search")
 
 

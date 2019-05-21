@@ -1,13 +1,13 @@
 article#container(itemprop='performer', itemscope='', itemtype='http://schema.org/CreativeWork')
-  header
-    h1.entry-title.hidden
+  header.post_title.mb-4
+    h1(itemprop="name")=page_data.title
   .row.performance-dett
     .col-sm-9
       .row
         .col-sm-3
           img.img-fluid(itemprop='image', alt=result.avnode.performance.title+' MAIN IMAGE', src=result.avnode.performance.imageFormats.small)
         .col-sm-9
-          h1.entry-title(itemprop='name')=result.avnode.performance.title
+          h1.mt-3.entry-title(itemprop='name')=result.avnode.performance.title
           .rientro
             p.type=result.avnode.performance.type.name
             each booking in result.avnode.performance.bookings
@@ -65,7 +65,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                           .caption-body
                             h2.caption-title(itemprop='name')=video.title
     .col-sm-3
-      h2.grid-title.h1like=global.__("Author")
+      h2.grid-title.mt-3=global.__("Author")
       .rientro
         ul.lists(itemprop='author', itemscope='', itemtype='http://schema.org/ItemList')
           each user, index in result.avnode.performance.users
@@ -73,9 +73,8 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
               meta(itemprop='position', content=index+1)
               div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
                 .media
-                  .media-left
-                    a.pull-left(itemprop='url', href='/editions/'+page_data.edition+"/artists/"+user.slug, title=user.stagename)
-                      img.media-object(itemprop='image', src=user.imageFormats.small, alt=user.stagename)
+                  a.mr-3(itemprop='url', href='/editions/'+page_data.edition+"/artists/"+user.slug, title=user.stagename)
+                    img.media-object(itemprop='image', src=user.imageFormats.small, alt=user.stagename)
                   .media-body
                     h2.media-heading(itemprop='name')
                       a(href='/editions/'+page_data.edition+"/artists/"+user.slug, title=user.stagename)=user.stagename
@@ -90,7 +89,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                                   b(itemprop='addressCountry')=address.country
                                   !=", "
                                   span(itemprop='addressLocality')=address.locality
-              div(itemprop='description')!=user.about
+              .mt-3.mb-3(itemprop='description')!=user.about
               if user.web && user.web.length
                 p
                   strong=global.__("LINKS")

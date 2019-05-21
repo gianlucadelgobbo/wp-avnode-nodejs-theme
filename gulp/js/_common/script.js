@@ -189,7 +189,7 @@ $(function() {
     $('#cntModal').modal();
     history.pushState({}, title, url);
     $(document).prop('title',title);
-    $( "#cntModal .modal-body" ).load( url+" #result" , function(response) {
+    $( "#cntModal .modal-body .container" ).load( url+" #result" , function(response) {
       $( "#cntModal .modal-title" ).html($(response).find(".type").html())
     });
 

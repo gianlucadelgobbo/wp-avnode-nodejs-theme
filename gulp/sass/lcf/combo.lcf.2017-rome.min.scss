@@ -1,13 +1,13 @@
-$bootstrap-sass-asset-helper: false !default;
-$brand-primary:         #22359b !default
-$icon-font-path: "../../_common/fonts/" !default;
+
+$primary:         #22359b !default;
+
 
 @import "../_common/fontello";
 @import "../_common/fontello-animation";
 @import "../_common/socialGalleryPluginLite";
 @import "../_common/cookielawinfo";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-@import "../_common/bootstrapXL";
+
 @import "../_common/style";
 @import "./css/style.lcf";
 @import "./css/style.lcf.2017-rome";

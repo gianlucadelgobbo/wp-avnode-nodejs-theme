@@ -1,6 +1,6 @@
 article#container(itemprop='performer', itemscope, itemtype='http://schema.org/Person')
   header
-    h1.entry-title.hidden
+    h1.entry-title.d-none
   //if (sessions.current_edition == config.last_edition && config.last_edition_status == "call")
     style.
       .schedule {
@@ -23,10 +23,10 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
   .row.artist-dett
     .col-sm-9
       .row
-        .col-sm-2
-          img.img-fluid(itemprop='image', alt=result.avnode.performer.stagename, src=result.avnode.performer.imageFormats.small)
-        .col-sm-10
-          h1.entry-title(itemprop='name')!=result.avnode.performer.stagename
+        .col-sm-3
+          img.img-fluid(itemprop='image', alt=result.avnode.performer.stagename, src=result.avnode.performer.imageFormats.large)
+        .col-sm-9
+          h1.mt-3.entry-title(itemprop='name')!=result.avnode.performer.stagename
           .rientro
             p!=result.avnode.performer.addressesFormatted
             .d-none
@@ -52,7 +52,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                   li
                     a(itemprop='url', target='_blank', href=social.url)=social.url
     .col-sm-3(itemprop='owns', itemscope='', itemtype='http://schema.org/ItemList')
-      h2.grid-title.h1like(itemprop='name') Performance
+      h2.grid-title.mt-3(itemprop='name') Performance
       div
         ul.lists
           each performance, i in result.avnode.performer.performances

@@ -138,35 +138,35 @@ exports.shortcodify = function shortcodify(prefix, data, body, req_params, cb) {
         });
         opts.day = undefined;
       }
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body.advanced.programmebydayvenue});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body.advanced.programmebydayvenue});      
     }
     if (opts.view === "performers") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body.advanced.performers});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body.advanced.performers});      
     }
     if (opts.view === "partners") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "gallery") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "videos") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     // Users
     if (opts.view === "performances_by_user") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "events") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "partnerships") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "news") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "members") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, opts: opts, req_params:req_params, result:data, body:body});      
     }
     return html;
   });

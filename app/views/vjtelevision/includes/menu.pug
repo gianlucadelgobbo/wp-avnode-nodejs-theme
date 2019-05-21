@@ -10,7 +10,7 @@
           i.icon-bar
           i.icon-bar
         // Be sure to leave the brand out there if you want it shown
-        a.navbar-brand.visible-xs(href='/', title=config.project_name)
+        a.navbar-brand.d-none.d-sm-block(href='/', title=config.project_name)
           i.icon-vjtelevision
           .sr-only=config.project_name
       // Place everything within .navbar-collapse to hide it until above 768px
@@ -29,7 +29,7 @@
           li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
             a(href=lang_preurl+'/contacts/')=global.__("Contacts")
         ul.nav.navbar-nav.navbar-right
-          li.menu-spacer-after.hidden-xs
+          li.menu-spacer-after.d-none-xs
             a#searchModalButton(href="/search/")
-              i.glyphicon.glyphicon-search
+              i.icon-search
               .sr-only=global.__("Search")

@@ -11,7 +11,7 @@
 	"Write to": "Write to",
 	"Social Networks": "Social Networks",
 	"Projects": "Projects",
-	"This website is made by Flyer Communication": "This website is made by Flyer Communication",
+	"This website is made by Flyer new media": "This website is made by Flyer new media",
 	"This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.": "This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.",
 	"Accept": "Accept",
 	"Read More": "Read More",
@@ -63,5 +63,10 @@
 	"Author": "Author",
 	"LINKS": "LINKS",
 	"To view this video please enable JavaScript, and consider upgrading to a web browser that": "To view this video please enable JavaScript, and consider upgrading to a web browser that",
-	"supports HTML5 video": "supports HTML5 video"
+	"supports HTML5 video": "supports HTML5 video",
+	"Previous slide": "Previous slide",
+	"Nexts slide": "Nexts slide",
+	"Corporate": "Corporate",
+	"Views": "Views",
+	"Likes": "Likes"
 }

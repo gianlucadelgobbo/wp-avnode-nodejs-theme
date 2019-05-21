@@ -5,5 +5,5 @@ if result['attachments'].length
     each attach in result['attachments']
       li
         a(href=attach.file, download=attach.file, title=attach.title)
-          .glyphicon.glyphicon-file
+          .icon-doc
           !=" "+attach.title

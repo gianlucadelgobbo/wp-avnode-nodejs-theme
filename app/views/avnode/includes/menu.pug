@@ -36,7 +36,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           a(href=lang_preurl + '/contact/', title=global.__("Contact"))=global.__("Contact")
         li(class=page_data.url.indexOf('/login') >= 0 ? "active" : undefined)
           a(href='https://tools.avnode.net/', target="_blank", title=global.__("Login"))=global.__("Login")
-        li.menu-spacer-after.hidden-xs
+        li.menu-spacer-after.d-none-xs
           a#searchModalButton(href="/search/", title=global.__("Search"))
-            i.glyphicon.glyphicon-search
+            i.icon-search
             .sr-only=global.__("Search")

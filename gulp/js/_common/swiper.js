@@ -4563,8 +4563,8 @@ var Navigation$1 = {
         !$$1(e.target).is($prevEl) &&
         !$$1(e.target).is($nextEl)
       ) {
-        if ($nextEl) { $nextEl.toggleClass(swiper.params.navigation.hiddenClass); }
-        if ($prevEl) { $prevEl.toggleClass(swiper.params.navigation.hiddenClass); }
+        if ($nextEl) { $nextEl.toggleClass(swiper.params.navigation.d-noneClass); }
+        if ($prevEl) { $prevEl.toggleClass(swiper.params.navigation.d-noneClass); }
       }
     },
   },
@@ -4757,7 +4757,7 @@ var Pagination = {
     if (!params.el || !swiper.pagination.el || !swiper.pagination.$el || swiper.pagination.$el.length === 0) { return; }
     var $el = swiper.pagination.$el;
 
-    $el.removeClass(params.hiddenClass);
+    $el.removeClass(params.d-noneClass);
     $el.removeClass(params.modifierClass + params.type);
     if (swiper.pagination.bullets) { swiper.pagination.bullets.removeClass(params.bulletActiveClass); }
     if (params.clickable) {
@@ -4850,7 +4850,7 @@ var Pagination$1 = {
         swiper.pagination.$el.length > 0 &&
         !$$1(e.target).hasClass(swiper.params.pagination.bulletClass)
       ) {
-        swiper.pagination.$el.toggleClass(swiper.params.pagination.hiddenClass);
+        swiper.pagination.$el.toggleClass(swiper.params.pagination.d-noneClass);
       }
     },
   },

@@ -16,11 +16,15 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
           each col in row
             if col && col.tit && col.tit!="."
               div(class="col-sm-"+span, itemprop=col.box && col.box.indexOf("itemListElement")>0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement")>0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement")>0 ? "http://schema.org/ItemList" : undefined)
-                h3.grid-title(itemprop="name")!=col.tit+(col.stit ? "<br /><small>"+col.stit+"</small>" : "")
-                if col.box.indexOf("itemListElement")>0
-                  !=col.box
-                else
-                  .rientro(itemprop="description")!=col.box
+                .mb-4
+                  .grid-title.mb-3
+                    h3.mb-0(itemprop="name")!=col.tit
+                    if col.stit
+                      .text-muted!=col.stit
+                  if col.box.indexOf("itemListElement")>0
+                    !=col.box
+                  else
+                    .rientro(itemprop="description")!=col.box
   else
     if result.grid
       .row
@@ -30,8 +34,12 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
             div(class="col-sm-" + span, itemprop=col.box && col.box.indexOf("itemListElement") > 0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement") > 0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement") > 0 ? "http://schema.org/ItemList" : undefined)
               each row in col
                 if row.tit && col.tit != "."
-                  h3.grid-title(itemprop="name")!=row.tit + (row.stit ? "<br /><small>"+row.stit+"</small>" : "")
-                  if row.box.indexOf("itemListElement")>0
-                    !=row.box
-                  else
-                    .rientro(itemprop="description")!=row.box
+                  .mb-4
+                    .grid-title.mb-3
+                      h3.mb-0(itemprop="name")!=row.tit
+                      if row.stit
+                        .text-muted!=row.stit
+                    if row.box.indexOf("itemListElement")>0
+                      !=row.box
+                    else
+                      .rientro(itemprop="description")!=row.box

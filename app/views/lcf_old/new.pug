@@ -7,14 +7,14 @@ block content
           .embed-responsive.embed-responsive-16by9
             iframe.embed-responsive-item(src=result.video_thumbnail ,webkitAllowFullScreen="webkitAllowFullScreen", mozallowfullscreen="mozallowfullscreen", allowFullScreen="allowFullScreen")
           br
-          .rientro.hidden-xs(itemprop='description')!=result.post_content
+          .rientro.d-none-xs(itemprop='description')!=result.post_content
           include ../_common/inc_videos
         .col-sm-4
           header
             h1.entry-title(itemprop='name')!=result.post_title
           include ../_common/inc_type_hidden
           include ../_common/inc_datemonth
-          .visible-xs!=result.post_content
+          .d-none.d-sm-block!=result.post_content
           include ../_common/inc_websites
           include ../_common/inc_capauthors
           include ../_common/inc_share

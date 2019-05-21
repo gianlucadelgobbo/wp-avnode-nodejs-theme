@@ -15,7 +15,18 @@ footer.navbar-inverse {
 #logo {
 	margin-bottom: 20px;
 }
+.modal-fullscreen .modal-content {
+	color: #ababab;
+}
 
+.modal-fullscreen .modal-content a {
+	text-decoration: underline;
+	font-weight: bold;
+	color: #FFF;
+}
+.modal-fullscreen .modal-content a:hover {
+	text-decoration: underline;
+}
 @media (min-width: 768px){
 
 	#logo {

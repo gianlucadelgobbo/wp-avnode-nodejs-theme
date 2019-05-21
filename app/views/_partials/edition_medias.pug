@@ -1,1 +1,4 @@
-div(itemprop='description')!=result.post_content
+article(itemscope, itemtype='http://schema.org/ItemPage')
+    header.post_title.mb-4
+        h1(itemprop="name")=page_data.title
+        !=result.post_content

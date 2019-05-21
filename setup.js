@@ -25,7 +25,7 @@ module.exports = function(app, exp) {
   app.set('view engine', 'pug');
   //app.set('view options', { layout: false });
   app.use(session({
-    secret: 'wp-nodejs-theme',
+    secret: 'wp-avnode-nodejs-theme',
     store: new MongoStore({ url: 'mongodb://localhost/SessionStore' }),
     resave: false,
     saveUninitialized: true,
@@ -45,7 +45,7 @@ module.exports = function(app, exp) {
     //console.log("env "+env);
     app.set('view cache', true);
     //app.set('view options', { doctype : 'html', pretty : true });
-  } else {
+  } /*else {
     var errorhandler = require('errorhandler');
     app.locals.pretty = true;
     var stylus = require('stylus');
@@ -64,8 +64,8 @@ module.exports = function(app, exp) {
       // Do logging and user-friendly error message display
       console.error(err);
       res.status(500).send({status:500, message: 'internal error', type:'internal'});
-    })/**/
-  }
+    })
+  }*/
   app.use(exp.static(app.root + '/public'));
   app.use(exp.static(app.root + '/files'));
 };

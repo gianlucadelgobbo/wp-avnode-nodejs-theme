@@ -22,6 +22,8 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
                   span(itemprop='addressLocality')=user.addresses[0].locality
       .caption-type
         .caption-type-cnt
-          span.glyphicon.glyphicon-eye-open
-          //!=" "+performance.stats.visits+" | "+performance.type.name
+          span.icon-eye
+          !=" "+performance.stats.visits
+          if performance.type.name
+            !=" | "+performance.type.name
 
