@@ -222,6 +222,7 @@ const compress_js_lcf = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/lcf/script.js',
   ])

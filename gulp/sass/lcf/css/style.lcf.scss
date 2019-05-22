@@ -34,6 +34,37 @@ body {
     //padding: 1.5rem .6rem;
   }
 }
+// SWIPER
+
+.swiper-container, .swiper-container a {
+  cursor: url("/_images/slider-cursor.svg") 30 30,default;
+}
+@media (max-width: 767px) {
+  .swiper-slide {
+    width:80%
+  }
+}
+@media (min-width: 768px) {
+  .event-card{text-align: right;}
+  .swiper-slide {
+    width:250px
+  }
+}
+@media (min-width: 992px) {
+  .swiper-slide {
+    width:300px
+  }
+}
+@media (min-width: 1200px) {
+  .swiper-slide {
+    width:392px
+  }
+}
+@media (min-width: 1400px) {
+  .swiper-slide {
+    width:392px
+  }
+}
 
 a:hover {
   opacity: .6;

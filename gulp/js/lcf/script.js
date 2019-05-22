@@ -34,7 +34,19 @@ $(function() {
     });
     return false;
   });
-	/*jQuery("#loadmore").click(function() {
+  if ($( ".swiper-container" ).length) {
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      direction: 'horizontal',
+      grabCursor: false,
+      spaceBetween: 30
+      //   pagination: {
+      //     el: '.swiper-pagination',
+      //     clickable: true,
+      //   }
+    });
+  }
+  	/*jQuery("#loadmore").click(function() {
 		jQuery.ajax({
 			method: "POST",
 			url: "/timeline/" + year + "/",
