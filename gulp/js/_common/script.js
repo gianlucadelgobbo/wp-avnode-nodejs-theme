@@ -22,7 +22,7 @@ $(window).on("popstate", function(e) {
   };
 })(history.pushState);
 
-$("#container > .read-more a").click(function() {
+/* $("#container > .read-more a").click(function() {
   infiniteScroll(this);
   return false;
 });
@@ -47,7 +47,7 @@ function infiniteScroll(t) {
       if ($("#container .results.isotope").length) $containerappend.isotope("appended", $newItems );
     });
   });
-}
+} */
 
 
 $(function() {
@@ -156,8 +156,6 @@ $(function() {
       }
     });
   }
-  $(function() {
-
   if (typeof(cx) !== "undefined") {
     console.log("append gcse:searchresults-only")
     jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
@@ -201,7 +199,5 @@ $(function() {
     history.pushState({}, onclose_title, onclose_url);
     $(document).prop('title',onclose_title);
   });
-  });
-
 });
 

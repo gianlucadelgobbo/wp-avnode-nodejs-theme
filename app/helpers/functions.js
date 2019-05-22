@@ -174,8 +174,6 @@ exports.shortcodify = function shortcodify(prefix, data, body, req_params, cb) {
   var out = shortcode.parse(str);
   //console.log(out); */
   if (data.post_content_original) {
-    console.log("stocazzo");
-    console.log(data.post_content_original);
     data.post_content = shortcode.parse(data.post_content_original.replace("<p>[","[").replace("]</p>","]").replace(new RegExp("source=", 'g'),"source='").replace(new RegExp(" view=", 'g'),"' view="));
   }
   for (item in data.grid) {
