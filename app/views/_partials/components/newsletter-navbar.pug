@@ -1,0 +1,12 @@
+form#subscribe.form-inline(method='post', action='/signup')
+  .input-group.input-group-sm.mt-1
+    input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+    label.sr-only(for='email') Email
+    span.input-group-append
+      button.btn.btn-secondary(type='submit', name='email-button') KEEP ME INFORMED
+  .loading.nav-link.mr-5.ml-5.pr-5.pl-5.loading.d-none
+    i.icon-spin3.animate-spin
+    span.sr-only=" Loading..."
+  .alert.d-none.mb-0
+    button(type="button",class="close")!="×"
+    span.msg

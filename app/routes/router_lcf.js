@@ -75,7 +75,7 @@ module.exports = function(app) {
   app.get('/news/', newsRoutes.getAll);
   app.get('/news/page/(:page)', newsRoutes.getAll);
   app.get('/news/(:new)', newsRoutes.get);
- app.get('/team', usersRoutes.getUsers);
+  app.get('/team', usersRoutes.getUsers);
   app.get('/team/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get); */
@@ -94,8 +94,8 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
   
-  app.post('/(:page)', pagesRoutes.post);
   app.post('/signup', signupRoutes.post);
+  //app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 };

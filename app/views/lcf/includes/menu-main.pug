@@ -46,18 +46,7 @@ ul.navbar-nav.mr-auto
       .sr-only=global.__("Search")
 
   li.nav-item
-    form#subscribe.form-inline(method='post', action='/signup')
-      .input-group.input-group-sm.mt-1
-        input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
-        label.sr-only(for='email') Email
-        span.input-group-append
-          button.btn.btn-secondary(type='submit', name='email-button') KEEP ME INFORMED
-      .loading.d-none
-        i.icon-spin3.animate-spin
-        span.sr-only=" Loading..."
-      .alert.d-none
-        button(type="button",class="close",onclick="jQuery('#subscribe').show();jQuery('#subscribe_res').d-none();")!="×"
-        span.msg
+    include ../../_partials/components/newsletter-navbar
   li.nav-item
     a.nav-link(target='_blank', href='https://www.facebook.com/livecinemafestival/', style='font-size: 20px;')
       i.icon-facebook-squared

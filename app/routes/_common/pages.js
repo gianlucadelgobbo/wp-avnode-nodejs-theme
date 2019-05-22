@@ -31,6 +31,7 @@ exports.get = function get(req, res) {
     });
   });
 };
+
 exports.post = function post(req, res) {
   var request = require("request");
   if (req.body.formtype == "join") {

@@ -70,32 +70,50 @@ exports.get = function(req, res){
     }
   );
 };
-
 exports.post = function(req, res){
-  var interests = {};
-  for (var item in config.accounts.newsletter.interests) interests[item] = true;
-  interests[config.accounts.newsletter.site_from] = true;
-  request({
-      method: 'POST',
-      url: config.accounts.newsletter.url+"/members",
-      body: JSON.stringify({
-        "email_address": req.body.email,
-        "status": "subscribed",
-        "double_optin": false,
-        "interests" : interests
-      }),
-      headers: {
-        Authorization: 'apikey '+config.accounts.newsletter.apikey,
-        'Content-Type': 'application/json'
-      }
-    },
-    function(error, response, body){
-      if(error) {
-        res.send(error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        res.send(bodyObj);
-      }
+  let formData = req.body;
+  formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
+  formData.SiteFrom = config.prefix;
+  formData.boolean = true;
+
+  var https = require('https');
+  var querystring = require('querystring');
+  
+  // form data
+  var postData = querystring.stringify(formData);
+  
+  // request option
+  var options = {
+    host: 'ml.avnode.net',
+    port: 443,
+    method: 'POST',
+    path: '/subscribe',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': postData.length
     }
-  );
-};
+  };
+  
+  // request object
+  var req = https.request(options, function (resres) {
+    var result = '';
+    resres.on('data', function (chunk) {
+      result += chunk;
+    });
+    resres.on('end', function (msg) {
+      res.json(true);
+    });
+    resres.on('error', function (err) {
+      res.json(false);
+    })
+  });
+  
+  // req error
+  req.on('error', function (err) {
+    res.json(false);
+  });
+  
+  //send request witht the postData form
+  req.write(postData);
+  req.end();
+}

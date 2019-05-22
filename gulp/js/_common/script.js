@@ -22,6 +22,36 @@ $(window).on("popstate", function(e) {
   };
 })(history.pushState);
 
+$("#subscribe .close").click(function(event) {
+  $("#subscribe .input-group").removeClass("d-none");
+  $('#subscribe .loading').addClass("d-none");
+  $('#subscribe .alert').addClass("d-none");
+  $("#subscribe .alert").removeClass("alert-danger");
+  $("#subscribe .alert").removeClass("alert-success");
+});
+$("#subscribe").submit(function(event) {
+  event.preventDefault();
+  $("#subscribe .input-group").addClass("d-none");
+  $('#subscribe .loading').removeClass("d-none");
+  jQuery.ajax({
+    method: "POST",
+    url: "/signup",
+    data: $("#subscribe").serialize()
+  }).done(function (data) {
+    if (data) {
+      $("#subscribe .alert").addClass("alert-success");
+      $('#subscribe .alert .msg').html("<strong>Congratulations!</strong> Your subscription was successful&nbsp;&nbsp;&nbsp;");
+    } else {
+      $("#subscribe .alert").addClass("alert-danger");
+      $('#subscribe .alert .msg').html("<strong>Warning!</strong> "+data.title+"&nbsp;&nbsp;&nbsp;");
+    }
+    $('#subscribe .loading').addClass("d-none");
+    $('#subscribe .alert').removeClass("d-none");
+
+  });
+  return false;
+});
+
 /* $("#container > .read-more a").click(function() {
   infiniteScroll(this);
   return false;
