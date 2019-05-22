@@ -7,7 +7,7 @@ article(itemscope, itemtype='http://schema.org/'+itemtype)
         .rientro
           div(itemprop='description')!=result.post_content
           include ../_common/inc_docs_large
-          .dateModified(itemprop='dateModified', content=result.date)=result.dateModifiedHR
+          .dateModified.d-none(itemprop='dateModified', content=result.date)=result.dateModifiedHR
     .col-sm-3
       .main-image
         img.img-fluid(src=result.featured.thumbnail, alt!=page_data.title, itemprop='image')

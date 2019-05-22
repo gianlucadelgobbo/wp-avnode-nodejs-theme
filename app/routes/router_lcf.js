@@ -61,6 +61,7 @@ module.exports = function(app) {
   app.get('/en/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
   app.get('/en/signup', signupRoutes.get);
+  app.get('/en/(:page)/page/:paging', pagesRoutes.get);
   app.get('/en/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/en/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/en/(:page)', pagesRoutes.get);
@@ -88,6 +89,7 @@ module.exports = function(app) {
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
 
   app.get('/signup', signupRoutes.get);
+  app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);

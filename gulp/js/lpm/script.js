@@ -3,9 +3,9 @@ var mySvgPanZoom;
 $(function() {
   function resize() {
     console.log("resize()");
-    $('.body-common').css("padding-top", $('#navbar-top').height()+"px");
+    $('.body-common').css("padding-top", $('#navbar-top').outerHeight()+"px");
     if ($('#carousel')) {
-      $('#carousel').height(window.innerHeight-($('#navbar-top').height()+$('#twCnt').height()));
+      $('#carousel').height(window.innerHeight-($('#navbar-top').outerHeight()+$('#twCnt').outerHeight()));
       var ratio = $('#carousel').width()/$('#carousel').height();
       if (ratio>(16/9)) {
         var top = ($('#carousel').width()/16)*9;
