@@ -6,8 +6,6 @@ if opts.filter == "PRODUCTION"
   - users = body.users
 else 
   each item, i in body.partners
-    //- console.log(opts.filter)
-    //- console.log(item.category.name)
     if item.category.name == opts.filter
       - users = item.users
 if users && users.length

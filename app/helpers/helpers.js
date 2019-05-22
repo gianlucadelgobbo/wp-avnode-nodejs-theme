@@ -143,10 +143,11 @@ exports.getAllUsers = function getAllUsers(req, user_sez, callback) {
  //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
+    console.log(req.params);
+
   var A = ["performances","gallery","videos","news","events","members","partnerships",""];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
-  console.log(url);
   request({
     url: url,
     json: true
@@ -154,18 +155,28 @@ exports.getPage = function getPage(req,callback) {
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
       var A = ["performances","gallery","videos","news","events","members","partnerships",""];
-      if (A.indexOf(req.params.page) !== -1 && req.params.subpage) data['sources'] = ["https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage))];
       if (data) data = fnz.fixResult(data);
       /* if (data.posts){
         data.posts = fnz.fixResults(data.posts);
       } */
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      console.log(data['sources']);
-      if (data['sources']) {
+      if (data['sources'] && data['sources'][0]) {
+        let avnodeurl = data['sources'][0];
+        if (A.indexOf(req.params.page) !== -1 && req.params.subpage) avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
+        if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
+        console.log(avnodeurl);
         request({
-          url: data['sources'][0],
+          url: avnodeurl,
           json: true
         }, function(error, response, body) {
+          if (body.pages) {
+            for (var item in body.pages) {
+              body.pages[item].link = body.pages[item].link.split("/");
+              body.pages[item].link.splice(0, 2);
+              body.pages[item].link = "/"+body.pages[item].link.join("/");
+            };
+          }
+          console.log(body.pages);
           if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
             if (req.params.page == "events") data.event = body;
             if (req.params.page == "performances") data.performance = body;

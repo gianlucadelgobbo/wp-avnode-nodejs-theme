@@ -1,13 +1,11 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
-var Recaptcha = require('express-recaptcha').Recaptcha;
  
-var recaptcha = new Recaptcha('6Lex1mQUAAAAAF6YSwUiw_mRGBiW2JSVlS3jYApT', '6Lex1mQUAAAAAOauaj1rxyENLvrnvHEMt7_RTnJq');
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
-      console.log(result);
+      //console.log(result);
       var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
@@ -17,9 +15,9 @@ exports.get = function get(req, res) {
         if (result.member) pug = config.prefix+'/member';
         if (result.partnership) pug = config.prefix+'/partnership';
         var check = pug.split("/")[1];
-        console.log(req.params.page);
-        console.log(pug);
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
+          var Recaptcha = require('express-recaptcha').Recaptcha;
+          var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
           result.countries = require('../../helpers/country-list');
           result.body = {};
           result.captcha = recaptcha.render()

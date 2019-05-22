@@ -2,7 +2,7 @@
    ServerAdmin webmaster@localhost
    ServerName njs.flyer.it
     
-   DocumentRoot /sites/wp-nodejs-theme
+   DocumentRoot /sites/wp-avnode-nodejs-theme
    <Directory />
       Options -Indexes +FollowSymLinks
       AllowOverride None
@@ -16,7 +16,7 @@
       Require all granted
    </Proxy>
  
-   <Location /sites/wp-nodejs-theme>
+   <Location /sites/wp-avnode-nodejs-theme>
       ProxyPass http://127.0.0.1:3000
       ProxyPassReverse http://1127.0.0.1:3000
    </Location>

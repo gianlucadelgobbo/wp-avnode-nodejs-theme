@@ -1,7 +1,5 @@
 if config.meta.editions[sessions.current_edition]['wpcf-location']
   .places
-    //- //console.log("--------------------")
-    - //console.log(config.meta.editions[sessions.current_edition]['wpcf-location'])
     each val, country in config.meta.editions[sessions.current_edition]['wpcf-location']
         each valcity, city in config.meta.editions[sessions.current_edition]['wpcf-location'][country]
           each val, venue in config.meta.editions[sessions.current_edition]['wpcf-location'][country][city]

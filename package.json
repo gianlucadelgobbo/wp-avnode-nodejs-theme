@@ -1,5 +1,5 @@
 {
-  "name": "wp-nodejs-theme",
+  "name": "wp-avnode-nodejs-theme",
   "version": "1.0.0",
   "description": "A nodejs theme for WordPress",
   "main": "app.js",
@@ -44,8 +44,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startall": "NODE_ENV=production forever start -l /sites/wp-nodejs-theme/forever.log -o /sites/wp-nodejs-theme/out.log -e /sites/wp-nodejs-theme/err.log /sites/wp-nodejs-theme/forever.json",
-    "startallloc": "NODE_ENV=dev forever start -l /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/out.log -e /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/localLogs/err.log /Users/gianlucadelgobbo/GitHub/wp-nodejs-theme/foreverLocal.json",
+    "startall": "NODE_ENV=production forever start -l /sites/wp-avnode-nodejs-theme/forever.log -o /sites/wp-avnode-nodejs-theme/out.log -e /sites/wp-avnode-nodejs-theme/err.log /sites/wp-avnode-nodejs-theme/forever.json",
+    "startallloc": "NODE_ENV=dev forever start -l /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/out.log -e /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/err.log /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/foreverLocal.json",
     "flyer": "NODE_ENV=dev nodemon app.js -site flyer",
     "lpm": "NODE_ENV=dev nodemon app -site lpm",
     "lcf": "NODE_ENV=dev nodemon app -site lcf",
@@ -61,17 +61,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gianlucadelgobbo/wp-nodejs-theme.git"
+    "url": "git+https://github.com/gianlucadelgobbo/wp-avnode-nodejs-theme.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gianlucadelgobbo/wp-nodejs-theme/issues"
+    "url": "https://github.com/gianlucadelgobbo/wp-avnode-nodejs-theme/issues"
   },
   "nodemonConfig": {
     "ignore": [
       "cache/*"
     ]
   },
-  "homepage": "https://github.com/gianlucadelgobbo/wp-nodejs-theme#readme"
+  "homepage": "https://github.com/gianlucadelgobbo/wp-avnode-nodejs-theme#readme"
 }

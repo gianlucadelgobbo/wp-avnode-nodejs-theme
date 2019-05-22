@@ -1,33 +1,33 @@
-// NODE_ENV=production forever start -l /sites/wp-nodejs-theme/forever.log -o /sites/wp-nodejs-theme/out.log -e /sites/wp-nodejs-theme/err.log /sites/wp-nodejs-theme/forever.json
+// NODE_ENV=production forever start -l /sites/wp-avnode-nodejs-theme/forever.log -o /sites/wp-avnode-nodejs-theme/out.log -e /sites/wp-avnode-nodejs-theme/err.log /sites/wp-avnode-nodejs-theme/forever.json
 [
-  {
+  /* {
     "uid": "flyer",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_flyer_forever.log",
     "outFile": "/var/log/nginx/node_flyer_out.log",
     "errFile": "/var/log/nginx/node_flyer_err.log",
     "args": ["-site", "flyer"]
-  },
+  }, */
   {
     "uid": "lpm",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_lpm_forever.log",
     "outFile": "/var/log/nginx/node_lpm_out.log",
     "errFile": "/var/log/nginx/node_lpm_err.log",
     "args": ["-site", "lpm"]
   },
-  {
+  /* {
     "uid": "shockart",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_shockart_forever.log",
     "outFile": "/var/log/nginx/node_shockart_out.log",
     "errFile": "/var/log/nginx/node_shockart_err.log",
@@ -38,29 +38,29 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_avnode_forever.log",
     "outFile": "/var/log/nginx/node_avnode_out.log",
     "errFile": "/var/log/nginx/node_avnode_err.log",
     "args": ["-site", "avnode"]
-  },
+  }, */
   {
     "uid": "lcf",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_lcf_forever.log",
     "outFile": "/var/log/nginx/node_lcf_out.log",
     "errFile": "/var/log/nginx/node_lcf_err.log",
     "args": ["-site", "lcf"]
-  },
+  }/* ,
   {
     "uid": "linuxclub",
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_linuxclub_forever.log",
     "outFile": "/var/log/nginx/node_linuxclub_out.log",
     "errFile": "/var/log/nginx/node_linuxclub_err.log",
@@ -71,7 +71,7 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_chromosphere_forever.log",
     "outFile": "/var/log/nginx/node_chromosphere_out.log",
     "errFile": "/var/log/nginx/node_chromosphere_err.log",
@@ -82,7 +82,7 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_fotonica_forever.log",
     "outFile": "/var/log/nginx/node_fotonica_out.log",
     "errFile": "/var/log/nginx/node_fotonica_err.log",
@@ -93,7 +93,7 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_vjtelevision_forever.log",
     "outFile": "/var/log/nginx/node_vjtelevision_out.log",
     "errFile": "/var/log/nginx/node_vjtelevision_err.log",
@@ -104,7 +104,7 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_wam_forever.log",
     "outFile": "/var/log/nginx/node_wam_out.log",
     "errFile": "/var/log/nginx/node_wam_err.log",
@@ -115,7 +115,7 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_flxer_forever.log",
     "outFile": "/var/log/nginx/node_flxer_out.log",
     "errFile": "/var/log/nginx/node_flxer_err.log",
@@ -126,10 +126,10 @@
     "append": true,
     "watch": true,
     "script": "app.js",
-    "sourceDir": "/sites/wp-nodejs-theme/./",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
     "logFile": "/var/log/nginx/node_gianlucadelgobbo_forever.log",
     "outFile": "/var/log/nginx/node_gianlucadelgobbo_out.log",
     "errFile": "/var/log/nginx/node_gianlucadelgobbo_err.log",
     "args": ["-site", "gianlucadelgobbo"]
-  }
+  } */
 ]
