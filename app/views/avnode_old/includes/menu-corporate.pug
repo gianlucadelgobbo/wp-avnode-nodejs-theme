@@ -1,0 +1,10 @@
+nav
+  ul.footer-nav.corporate
+    li(class=page_data.url.indexOf('/manifesto') >= 0 ? "active" : undefined)
+      a(href=lang_preurl + '/manifesto/', title=global.__("Manifesto"))=global.__("Manifesto")
+    li(class=page_data.url.indexOf('/members') >= 0 ? "active" : undefined)
+      a(href=lang_preurl + '/members/', title=global.__("Members"))=global.__("Members")
+    li(class=page_data.url.indexOf('/join') >= 0 ? "active" : undefined)
+      a(href=lang_preurl + '/join/', title=global.__("Join"))=global.__("Join")
+    li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
+      a(href=lang_preurl + '/contacts/', title=global.__("Contacts"))=global.__("Contacts")

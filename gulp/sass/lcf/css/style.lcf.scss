@@ -1,5 +1,8 @@
-body {
+.body-common {
   padding-top: 56px;
+}
+a:hover {
+  opacity: .6;
 }
 
 // FOOTER
@@ -64,10 +67,6 @@ body {
   .swiper-slide {
     width:392px
   }
-}
-
-a:hover {
-  opacity: .6;
 }
 
 // LISTS
@@ -227,12 +226,4 @@ a:hover img {
   padding-bottom: 16px;
   font-size: 20px;
   color: #FFF;
-}
-
-
-/* CAROUSEL HACK FIT DESKTOP */
-.carousel-item  {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }

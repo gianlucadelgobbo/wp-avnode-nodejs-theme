@@ -1,13 +1,11 @@
-ul.footer-nav
-  li(class=page_data.url.indexOf('/project') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/project/')=global.__("Project")
-  li(class=page_data.url.indexOf('/presentation-to-the-city') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/presentation-to-the-city/')=global.__("Presentation to the city")
-  li(class=page_data.url.indexOf('/partners') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/partners/') Partners
-  li(class=page_data.url.indexOf('/prenatal') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/prenatal/') Prenatal
-  li(class=page_data.url.indexOf('/newsletter') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/newsletter/') Newsletter
-  li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/contacts/')=global.__("Contacts")
+ul.nav.flex-column.nav-pills
+  li.nav-item
+    a.nav-link(href='/idea/', class=page_data.url.indexOf('/idea') >= 0 ? "active" : undefined) Idea
+  li.nav-item
+    a.nav-link(href='/events/', class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined) Productions
+  li.nav-item
+    a.nav-link(href='/partnerships/', class=page_data.url.indexOf('/partnerships') >= 0 ? "active" : undefined) Satellite Events
+  li.nav-item
+    a.nav-link(href='/press/', class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined) Press
+  li.nav-item
+    a.nav-link(href='/contacts/', class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined) Contacts

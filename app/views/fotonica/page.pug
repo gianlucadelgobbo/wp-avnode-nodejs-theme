@@ -1,23 +1,4 @@
 extends layout
 block content
-  article(itemscope, itemtype='http://schema.org/'+itemtype)
-    .row
-      .col-sm-9
-        header.row
-          .col-xs-10
-            h1.entry-title(itemprop="name")=result.post_title
-          .col-xs-2.text-right
-              include ../_common/inc_share_span
-        .rientro
-          div(itemprop='description')!=result.post_content
-          if (form == "contacts")
-            include ../_common/inc_form_contacts
-          if (form == "newsletter")
-            include ../_common/inc_form_newsletter
-          if (form == "join")
-            include ../_common/inc_form_join
-          include ../_common/inc_docs_large
-          .dateModified(itemprop='dateModified', content=result.date)=result.dateModifiedHR
-      .col-sm-3
-        img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+  include ../_partials/page
 

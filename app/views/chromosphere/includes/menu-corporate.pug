@@ -1,11 +1,9 @@
-ul.footer-nav
-  li(class=page_data.url.indexOf('/concept') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/concept/')=global.__("Concept")
-  li(class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/events/')=global.__("Events")
-  li(class=page_data.url.indexOf('/news') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/news/')=global.__("News")
-  li(class=page_data.url.indexOf('/newsletter') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/newsletter/')=global.__("Newsletter")
-  li(class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)
-    a(href=lang_preurl + '/contacts/')=global.__("Contacts")
+ul.nav.flex-column.nav-pills
+  li.nav-item
+    a.nav-link(href='/concept/', class=page_data.url.indexOf('/concept') >= 0 ? "active" : undefined) Concept
+  li.nav-item
+    a.nav-link(href='/partnerships/', class=page_data.url.indexOf('/partnerships') >= 0 ? "active" : undefined) Satellite Events
+  li.nav-item
+    a.nav-link(href='/press/', class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined) Press
+  li.nav-item
+    a.nav-link(href='/contacts/', class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined) Contacts

@@ -1,0 +1,20 @@
+extends layout
+block content
+  article#container(itemscope, itemtype='http://schema.org/Event')
+    .row
+      .col-sm-8
+        img.img-fluid.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
+        .d-none-xs(itemprop='description')!=result.post_content
+        include ../_common/inc_videos
+      .col-sm-4
+        header
+          h1.entry-title(itemprop='name')!=result.post_title
+        //include ../_common/inc_tags_post
+        include ../_common/inc_type_hidden
+        include ../_common/inc_eventdateplace
+        .d-none.d-sm-block!=result.post_content
+        include ../_common/inc_websites
+        include ../_common/inc_capauthors
+        include ../_common/inc_share
+
+    include ../_common/inc_grid

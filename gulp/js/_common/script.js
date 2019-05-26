@@ -196,6 +196,18 @@ $(function() {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   }
+  if ($( ".swiper-container" ).length) {
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      direction: 'horizontal',
+      grabCursor: false,
+      spaceBetween: 30
+      //   pagination: {
+      //     el: '.swiper-pagination',
+      //     clickable: true,
+      //   }
+    });
+  }
   $(".tooltips").tooltip();
   $container = $('.isotope');
   $container.imagesLoaded( function(){

@@ -1,0 +1,14 @@
+ul.navbar-nav
+  each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+    if menu.childs.length>0
+      li.nav-item.dropdown(class=menu.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
+        .btn-group
+          a.nav-link(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+          a.nav-link.dropdown-toggle.dropdown-toggle-split(data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+            span.sr-only Toggle Dropdown
+          .dropdown-menu
+            each child in menu.childs
+              a.dropdown-item(class=child.post_status == 'publish' ? (page_data.url == lang_preurl+child.permalink ? "active" : undefined) : "disabled" href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)!=child.post_title
+    else
+      li.nav-item(class=menu.post_status == 'publish' ? (page_data.url == menu.permalink ? "active" : undefined) : "disabled")
+        a.nav-link(href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", style=menu.post_status == 'publish' ? undefined : "opacity:.65", title=menu.post_title)=menu.post_title

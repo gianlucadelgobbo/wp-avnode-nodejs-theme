@@ -1,44 +1,4 @@
 extends layout
 block content
-  article#container(itemscope, itemtype='http://schema.org/'+itemtype)
-    .row
-      .col-sm-9
-        header.row
-          .col-xs-9
-            h1.entry-title(itemprop='name')!=result.post_title
-          .col-xs-3
-            .pull-right
-              include ../_common/inc_share_span
-        .rientro
-          - if (typeof msg !== "undefined" && typeof msg.e !== "undefined" && msg.e.length)
-            .alert.alert-danger
-              h4=__("There are some errors")
-              ul
-                - for(a=0;a<msg.e.length;a++)
-                  li=msg.e[a].m
-          - if (typeof msg !== "undefined" && typeof msg.c !== "undefined" && msg.c.length)
-            .alert.alert-success
-              h4=__("There are some messages")
-              ul
-                - for(a=0;a<msg.c.length;a++)
-                  li=msg.c[a].m
-          div(itemprop='description')!=result.post_content
-          if (form == "contacts")
-            include ../_common/inc_form_contacts
-          if (form == "newsletter")
-            include ../_common/inc_form_newsletter
-          if (form == "join")
-            include ../_common/inc_form_join
-          include ../_common/inc_videos
-          br
-          .text-muted
-            .dates
-              .date=result.data_evento
-              meta(itemprop="dateModified", content=result.dateModified)
-      .col-sm-3
-        img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
-        include ../_common/inc_docs_small
+  include ../_partials/page
 
-    if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
-      include ../_common/inc_grid
-        

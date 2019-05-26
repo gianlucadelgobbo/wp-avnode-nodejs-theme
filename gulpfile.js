@@ -157,6 +157,7 @@ const compress_js_avnode = () => {
       './gulp/js/_common/jquery.isotope.min.js',
       './gulp/js/_common/imagesloaded.pkgd.min.js',
       './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
       './gulp/js/_common/script.js',
       './gulp/js/avnode/map.js',
       './gulp/js/avnode/script.js'
@@ -174,6 +175,7 @@ const compress_js_chromosphere = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/chromosphere/script.js',
   ])
@@ -190,6 +192,7 @@ const compress_js_fotonica = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/fotonica/script.js',
   ])
@@ -206,6 +209,7 @@ const compress_js_flyer = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/flyer/script.js',
   ])
@@ -239,6 +243,7 @@ const compress_js_linuxclub = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/linuxclub/script.js',
   ])
@@ -273,6 +278,7 @@ const compress_js_shockart = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/shockart/script.js',
   ])
@@ -289,6 +295,7 @@ const compress_js_vjtelevision = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/vjtelevision/script.js',
   ])
@@ -305,6 +312,7 @@ const compress_js_wam = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/wam/script.js',
   ])
@@ -321,6 +329,7 @@ const compress_js_flxer = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/flxer/script.js',
     './gulp/js/flxer/shaderback.js'
@@ -338,6 +347,7 @@ const compress_js_gianlucadelgobbo = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/gianlucadelgobbo/script.js',
   ])
@@ -347,5 +357,5 @@ const compress_js_gianlucadelgobbo = () => {
 }
 
 
-//gulp.task('default', gulp.series(css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
-gulp.task('default', gulp.series(css_lcf_bs, css_lpm_bs, compress_js_lcf, compress_js_lpm));
+gulp.task('default', gulp.series(css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
+//gulp.task('default', gulp.series(css_lcf_bs, css_lpm_bs, css_chromosphere_bs, css_fotonica_bs, compress_js_lcf, compress_js_lpm));
