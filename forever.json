@@ -1,6 +1,6 @@
 // NODE_ENV=production forever start -l /sites/wp-avnode-nodejs-theme/forever.log -o /sites/wp-avnode-nodejs-theme/out.log -e /sites/wp-avnode-nodejs-theme/err.log /sites/wp-avnode-nodejs-theme/forever.json
 [
-  /* {
+/*   {
     "uid": "flyer",
     "append": true,
     "watch": true,
@@ -10,8 +10,19 @@
     "outFile": "/var/log/nginx/node_flyer_out.log",
     "errFile": "/var/log/nginx/node_flyer_err.log",
     "args": ["-site", "flyer"]
-  }, */
+  },
   {
+    "uid": "avnode",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
+    "logFile": "/var/log/nginx/node_avnode_forever.log",
+    "outFile": "/var/log/nginx/node_avnode_out.log",
+    "errFile": "/var/log/nginx/node_avnode_err.log",
+    "args": ["-site", "avnode"]
+  },
+ */  {
     "uid": "lpm",
     "append": true,
     "watch": true,
@@ -33,17 +44,6 @@
     "errFile": "/var/log/nginx/node_shockart_err.log",
     "args": ["-site", "shockart"]
   },
-    /* {
-    "uid": "avnode",
-    "append": true,
-    "watch": true,
-    "script": "app.js",
-    "sourceDir": "/sites/wp-avnode-nodejs-theme/./",
-    "logFile": "/var/log/nginx/node_avnode_forever.log",
-    "outFile": "/var/log/nginx/node_avnode_out.log",
-    "errFile": "/var/log/nginx/node_avnode_err.log",
-    "args": ["-site", "avnode"]
-  }, */
   {
     "uid": "lcf",
     "append": true,
@@ -110,7 +110,7 @@
     "errFile": "/var/log/nginx/node_wam_err.log",
     "args": ["-site", "wam"]
   },
-/*    {
+  {
     "uid": "flxer",
     "append": true,
     "watch": true,
@@ -131,5 +131,5 @@
     "outFile": "/var/log/nginx/node_gianlucadelgobbo_out.log",
     "errFile": "/var/log/nginx/node_gianlucadelgobbo_err.log",
     "args": ["-site", "gianlucadelgobbo"]
-  } */
+  }
 ]
