@@ -28,7 +28,7 @@ module.exports = function(app) {
   app.get('/edition/*', function(req, res) {res.redirect(301, req.url.replace('/edition/','/editions/'))});
 
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
-  app.get('/it', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
+  app.get('/it*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
   app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
 
   app.get('/', indexRoutes.get);
