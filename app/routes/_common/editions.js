@@ -1,8 +1,6 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
 
-var sez = config.sez.editions;
-
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     helpers.getEdition(req, function( result ) {
@@ -32,17 +30,6 @@ exports.get = function get(req, res) {
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
-    });
-  });
-};
-
-exports.getAll = function getAll(req, res) {
-  helpers.setSessions(req, function() {
-    helpers.getContainerPage(req, sez.post_type, function( posttype ) {
-      helpers.getAllEditionsByYear(req, null, config.sez.editions.limit, 1, function( results ) {
-        var page_data = fnz.setPageData(req, posttype);
-        res.render(config.prefix+'/'+'editions', {results: results, page_data:page_data, sessions:req.session.sessions, posttype:posttype});
-      });
     });
   });
 };

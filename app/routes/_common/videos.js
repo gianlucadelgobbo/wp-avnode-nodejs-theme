@@ -8,7 +8,7 @@ exports.get = function get(req, res) {
     helpers.getVideo(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
-        res.render(config.prefix+'/'+sez.pugdett, {result: result, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(config.prefix+'/'+sez.pugdett, {result: result, page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, include_gallery:true});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, baseurl:sez.baseurl, itemtype:"WebPage"});
       }

@@ -1,0 +1,74 @@
+extends layout
+block content
+  #carousel.carousel.slide(data-ride='carousel')
+    //
+      Indicators
+      <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+      <li data-target="#carousel" data-slide-to="3"></li>
+      <li data-target="#carousel" data-slide-to="4"></li>
+      <li data-target="#carousel" data-slide-to="5"></li>
+      <li data-target="#carousel" data-slide-to="6"></li>
+      <li data-target="#carousel" data-slide-to="7"></li>
+      <li data-target="#carousel" data-slide-to="8"></li>
+      <li data-target="#carousel" data-slide-to="9"></li>
+      <li data-target="#carousel" data-slide-to="10"></li>
+      </ol>
+    // Wrapper for slides
+    .carousel-inner
+      .carousel-item.active
+        img.img-fluid(src='https://fotonicafestival.com/files/2018/10/F2018-main-img.jpg', alt='fotonica 2018')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-1.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-2.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-3.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-4.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-5.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-6.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-7.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-8.jpg', alt='fotonica 2017')
+      .carousel-item
+        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-9.jpg', alt='fotonica 2017')
+    // Controls
+    a.carousel-control-prev(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+      
+  section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+    .container-fluid
+      h1.entry-title(itemprop="name") News
+    .swiper-container
+      !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+    .container-fluid
+      .text-right.boxItem
+        a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
+        
+  section.home(itemscope, itemtype='http://schema.org/ItemList')
+    .container-fluid
+      h1.entry-title(itemprop="name") Satellite Events
+    .swiper-container
+      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+    .container-fluid
+      .text-right.boxItem
+        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+
+  section.home(itemscope, itemtype='http://schema.org/ItemList')
+    .container-fluid
+      h1.entry-title(itemprop="name") Productions
+    .swiper-container
+      !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+    .container-fluid
+      .text-right.boxItem
+        a.btn.btn-primary.btn-sm(href="/events/", title="See all Editions") See all Productions

@@ -1,0 +1,10 @@
+span.sr-only
+    if result.schedule[0].starttime
+        span(itemprop='startDate', content=result.schedule[0].starttime)=result.schedule[0].starttime
+        !=" | "
+    if result.schedule[result.schedule.length-1].endtime
+        span(itemprop='endDate', content=result.schedule[result.schedule.length-1].endtime)=result.schedule[result.schedule.length-1].endtime
+if result.boxDate
+    .date
+        i.icon-calendar-check-o
+        !=" "+result.boxDate

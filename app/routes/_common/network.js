@@ -1,5 +1,5 @@
-var helpers = require('../../helpers');
-var fnz = require('../../functions');
+var helpers = require('../../helpers/helpers');
+var fnz = require('../../helpers/functions');
 
 var sez = config.sez.network;
 

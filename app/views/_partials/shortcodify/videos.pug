@@ -1,4 +1,4 @@
-- var basepath = req_params.page ? "" : "/editions/"+req_params.edition
+- var basepath = req_params.page ? "" : (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition
 .pt-4
   if body.videos && body.videos.length
     ul#listItems.row

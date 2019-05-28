@@ -12,7 +12,7 @@ section.performers_event_wrapper
           meta(itemprop='position', content=i)
           div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
             div
-              - var url = req_params.edition ? '/editions/'+req_params.edition+"/artists/"+item.slug+"/" : prefix=="wam" ? '/prenatal/'+req_params.exhibition+"/artists/"+item.slug+"/" : '/exhibitions/'+req_params.exhibition+"/artists/"+item.slug+"/"
+              - var url = req_params.edition ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+"/artists/"+item.slug+"/" : prefix=="wam" ? '/prenatal/'+req_params.exhibition+"/artists/"+item.slug+"/" : '/exhibitions/'+req_params.exhibition+"/artists/"+item.slug+"/"
               a(itemprop='url', href=url, title=item.stagename)
                 img.img-fluid(itemprop='image', src=item.imageFormats.large, alt=item.stagename, class=item.imageFormats.large.substring(item.imageFormats.large.lastIndexOf(".")+1))
             .caption

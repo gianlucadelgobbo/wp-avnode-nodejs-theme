@@ -1,7 +1,7 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
 
-var sez = config.sez["awards-and-grants"];
+//var sez = config.sez["awards-and-grants"];
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {

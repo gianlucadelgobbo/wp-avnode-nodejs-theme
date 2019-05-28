@@ -22,7 +22,7 @@
     "errFile": "/var/log/nginx/node_lpm_err.log",
     "args": ["-site", "lpm"]
   },
-  /* {
+  {
     "uid": "shockart",
     "append": true,
     "watch": true,
@@ -33,7 +33,7 @@
     "errFile": "/var/log/nginx/node_shockart_err.log",
     "args": ["-site", "shockart"]
   },
-  {
+    /* {
     "uid": "avnode",
     "append": true,
     "watch": true,
@@ -54,7 +54,7 @@
     "outFile": "/var/log/nginx/node_lcf_out.log",
     "errFile": "/var/log/nginx/node_lcf_err.log",
     "args": ["-site", "lcf"]
-  }/* ,
+  },
   {
     "uid": "linuxclub",
     "append": true,
@@ -76,7 +76,7 @@
     "outFile": "/var/log/nginx/node_chromosphere_out.log",
     "errFile": "/var/log/nginx/node_chromosphere_err.log",
     "args": ["-site", "chromosphere"]
-  },*/
+  },
   {
     "uid": "fotonica",
     "append": true,
@@ -88,7 +88,7 @@
     "errFile": "/var/log/nginx/node_fotonica_err.log",
     "args": ["-site", "fotonica"]
   },
-/*  {
+{
     "uid": "vjtelevision",
     "append": true,
     "watch": true,
@@ -110,7 +110,7 @@
     "errFile": "/var/log/nginx/node_wam_err.log",
     "args": ["-site", "wam"]
   },
-  {
+/*    {
     "uid": "flxer",
     "append": true,
     "watch": true,

@@ -1,0 +1,17 @@
+nav.text-right.mt-5.mb-5
+  ul.pl-0.mb-0
+    each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+      li.btn-group.mb-3.ml-3
+        a.btn.btn-primary(title=menu.post_title, href=(menu.post_status == 'publish' ? lang_preurl+menu.permalink.replace("/editions/", "/exhibitions/") : "#"), class=(menu.post_status == 'publish' ? undefined : "disabled"))=menu.post_title
+        if menu.childs.length
+          button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+            span.caret
+            span.sr-only Toggle Dropdown
+          ul.dropdown-menu
+            each child in menu.childs
+              li(class=(child.post_status == 'publish' ? undefined : "disabled"))
+                a(href=(child.post_status == 'publish' ? lang_preurl+child.permalink.replace("/editions/", "/exhibitions/") : "#"), title=child.post_title)=child.post_title
+    if result['wpcf-exhibition-url'] && result['wpcf-exhibition-height'] && result['wpcf-exhibition-width']
+      li.btn-group.mb-3.ml-3
+        a.btn.btn-primary.btn-lg(href=lang_preurl+result['wpcf-exhibition-url'], onclick="openWindow('"+result.post_title+"','"+result['wpcf-exhibition-url']+"','"+result['wpcf-exhibition-width']+"','"+result['wpcf-exhibition-height']+"');return false;")=global.__("VIEW THE EXHIBITION NOW !!!")
+

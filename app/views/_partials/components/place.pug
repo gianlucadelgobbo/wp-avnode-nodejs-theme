@@ -1,0 +1,24 @@
+- var venues = []
+each val in result.schedule
+  if venues.indexOf(val.venue.name) == -1
+    p.place
+      i.icon-location
+      !=" "
+      - venues.push(val.venue.name)
+      span.location(itemprop='location', itemscope, itemtype='http://schema.org/Place')
+        if val.venue.name
+          span.venue(itemprop='name')=val.venue.name
+          !=", "
+        if val.venue.location && val.venue.location.geometry && val.venue.location.geometry.lng
+          span.lnglat(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
+            meta(itemprop='latitude', content=val.venue.location.geometry.lat)
+            meta(itemprop='longitude', content=val.venue.location.geometry.lng)
+        if val.venue.location.locality
+          span.d-none.address(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
+            span.addressLocality(itemprop='addressLocality')=val.venue.location.locality
+            !=" "
+            span.addressCountry(itemprop='addressCountry')=val.venue.location.country
+            !=", "
+        span.city=val.venue.location.locality
+          !=", "
+        span.country=val.venue.location.country

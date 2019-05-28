@@ -61,6 +61,20 @@ exports.validateFormJoin = function validateFormJoin(o,callback) {
   callback(e, o);
 };
 
+//////// NETWORK
+
+exports.getNetwork = function getNetwork(req,callback) {
+  //console.log("//// Eventoooo");
+  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
+  wp.myCustomResource = wp.registerRoute('wp/v2', '/posts/(?P<sluggg>)' );
+  wp.myCustomResource().sluggg(req.params.network).get(function( err, data ) {
+    //
+    //console.log(data);
+    if (data && data.ID) data = fnz.fixResult(data);
+    //console.log("//// Event");
+    callback(data);
+  });
+};
 
 /* POST TYPE */
 exports.getPostType = function getPostType(req,posttype,callback) {
@@ -89,7 +103,7 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
  //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
-  var A = ["performances","gallery","videos","news","events","members","partnerships",""];
+  var A = ["performances","gallery","videos","news","events","members","partnerships","exhibitions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
   request({
@@ -98,7 +112,7 @@ exports.getPage = function getPage(req,callback) {
   }, function(error, response, data) {
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
-      var A = ["performances","gallery","videos","news","events","members","partnerships",""];
+      var A = ["performances","gallery","videos","news","events","members","partnerships","exhibitions"];
       if (data) data = fnz.fixResult(data);
       /* if (data.posts){
         data.posts = fnz.fixResults(data.posts);
@@ -274,10 +288,12 @@ exports.getEdition = function getEdition(req,callback) {
   if (req.params.artist)        endpoint+="artists/";
   if (req.params.subedition)    endpoint+=req.params.subedition+'/';
   if (req.params.subsubedition) endpoint+=req.params.subsubedition+'/';
+  console.log("endpoint "+endpoint);
   request({
     url: endpoint,
     json: true
   }, function(error, response, data) {
+    console.log("endpoint success");
     let avnodeurl;
     if (req.params.subsubedition) {
       if (req.params.image) {
@@ -299,11 +315,13 @@ exports.getEdition = function getEdition(req,callback) {
     }
     if (data && data.ID) data = fnz.fixResult(data);
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+    console.log("avnodeurl "+avnodeurl);
     if (avnodeurl) {
       request({
         url: avnodeurl,
         json: true
       }, function(error, response, body) {
+        console.log("avnodeurl success");
         data.avnode = body;
         if (req.params.performance || req.params.artist) {
           callback(data);

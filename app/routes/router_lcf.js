@@ -28,6 +28,8 @@ module.exports = function(app) {
   app.get('/edition/*', function(req, res) {res.redirect(301, req.url.replace('/edition/','/editions/'))});
 
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
+  app.get('/it', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
+  app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
 
   app.get('/', indexRoutes.get);
 
@@ -51,8 +53,8 @@ module.exports = function(app) {
   app.get('/en/team', usersRoutes.getUsers);
   app.get('/en/team/(:user)', usersRoutes.get);
   app.get('/en/partners', usersRoutes.getUsers);
-  app.get('/en/partners/(:user)', usersRoutes.get); */
-  app.get('/en/editions/', editionsRoutes.getAll);
+  app.get('/en/partners/(:user)', usersRoutes.get);
+  app.get('/en/editions/', editionsRoutes.getAll); */
   app.get('/en/editions/(:edition)', editionsRoutes.get);
   //app.get('/en/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
@@ -78,8 +80,8 @@ module.exports = function(app) {
   app.get('/team', usersRoutes.getUsers);
   app.get('/team/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
-  app.get('/partners/(:user)', usersRoutes.get); */
-  app.get('/editions/', editionsRoutes.getAll);
+  app.get('/partners/(:user)', usersRoutes.get);
+  app.get('/editions/', editionsRoutes.getAll); */
   app.get('/editions/(:edition)', editionsRoutes.get);
   //app.get('/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
