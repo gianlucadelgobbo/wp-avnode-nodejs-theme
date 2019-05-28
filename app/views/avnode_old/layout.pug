@@ -2,7 +2,7 @@ doctype html
 html(lang=sessions.current_lang)
   - var lang_preurl = (sessions.current_lang == config.default_lang ? '' :'/'+sessions.current_lang)
   head
-    title=page_data.title
+    title=page_data.headtitle
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     //- //console.log(config.meta)
