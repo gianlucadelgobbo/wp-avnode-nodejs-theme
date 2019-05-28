@@ -67,7 +67,7 @@ exports.setPageData = function setPageData(req, result) {
     /* if (result.avnode && result.avnode.title) {
       page_data.headtitle+= " | "+result.avnode.title;
     } */
-    page_data.headtitle+=" | "+config.project_name;
+    page_data.headtitle+= page_data.headtitle ? " | "+config.project_name : config.project_name;
     if (page_data.headtitle==config.project_name && config.meta.headline) page_data.headtitle+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
   } else {
     page_data.title = "404 "+__("Content NOT found");
