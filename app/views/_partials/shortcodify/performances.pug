@@ -8,6 +8,6 @@ if opts.params && body
               if opts.params.indexOf(performance.performance.type.name)!=-1
                 - performance.performance.schedule = performance.schedule
                 - var performance = performance.performance
-                - var basepath = '/editions/'+req_params.edition+'/program/detail/'
+                - var basepath = (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'
                 - var css = "col-md-12"
                 include ../boxes/box_performance

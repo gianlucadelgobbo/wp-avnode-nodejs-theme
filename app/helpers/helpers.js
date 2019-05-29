@@ -293,7 +293,6 @@ exports.getEdition = function getEdition(req,callback) {
     url: endpoint,
     json: true
   }, function(error, response, data) {
-    console.log("endpoint success");
     let avnodeurl;
     if (req.params.subsubedition) {
       if (req.params.image) {
@@ -315,13 +314,11 @@ exports.getEdition = function getEdition(req,callback) {
     }
     if (data && data.ID) data = fnz.fixResult(data);
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-    console.log("avnodeurl "+avnodeurl);
     if (avnodeurl) {
       request({
         url: avnodeurl,
         json: true
       }, function(error, response, body) {
-        console.log("avnodeurl success");
         data.avnode = body;
         if (req.params.performance || req.params.artist) {
           callback(data);
