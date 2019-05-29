@@ -11,21 +11,39 @@ exports.get = function get(req, res) {
       req.params.page = "news";
       helpers.getPage(req, function(result_news) {
         //console.log("getAll events");
-        req.params.page = "partnerships";
-        helpers.getPage(req, function(result_events) {
-          //console.log("getAll editions");
-          req.params.page = "events";
-          helpers.getPage(req, function(result_editions) {
-            var page_data = fnz.setPageData(req, {'ID':'100'});
-            var obj = {
-              results: {news:result_news.post_content,events:result_events.post_content,editions:result_editions.post_content},
-              page_data:page_data,
-              sessions:req.session.sessions
-            };
-            jsonfile.writeFile(file, obj, function (err) {
-              console.log("writeFile: "+file);
-              //if(err) console.log(err);
-              res.render(config.prefix+'/'+'index',obj);
+        req.params.page = "performances";
+        helpers.getPage(req, function(result_performances) {
+          req.params.page = "workshops";
+          helpers.getPage(req, function(result_workshops) {
+            //console.log("getAll editions");
+            req.params.page = "installations";
+            helpers.getPage(req, function(result_installations) {
+              //console.log("getAll editions");
+              req.params.page = "partnerships";
+              helpers.getPage(req, function(result_partnerships) {
+                //console.log("getAll editions");
+                req.params.page = "events";
+                helpers.getPage(req, function(result_events) {
+                  var page_data = fnz.setPageData(req, {'ID':'100'});
+                  var obj = {
+                    results: {
+                      news:result_news.post_content,
+                      performances:result_performances.post_content,
+                      workshops:result_workshops.post_content,
+                      installations:result_installations.post_content,
+                      events:result_events.post_content,
+                      partnerships:result_partnerships.post_content
+                    },
+                    page_data:page_data,
+                    sessions:req.session.sessions
+                  };
+                  jsonfile.writeFile(file, obj, function (err) {
+                    console.log("writeFile: "+file);
+                    //if(err) console.log(err);
+                    res.render(config.prefix+'/'+'index',obj);
+                  });
+                });
+              });
             });
           });
         });

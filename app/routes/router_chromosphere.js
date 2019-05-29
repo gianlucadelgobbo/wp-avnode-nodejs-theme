@@ -25,7 +25,6 @@ module.exports = function(app) {
 
   app.get('/en/', indexRoutes.get);
 
-  app.get('/en/editions/', editionsRoutes.getAll);
   app.get('/en/editions/(:edition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)', editionsRoutes.get);
@@ -39,7 +38,6 @@ module.exports = function(app) {
 
   app.post('/en/signup', signupRoutes.post);
 
-  app.get('/editions/', editionsRoutes.getAll);
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);

@@ -25,65 +25,28 @@ html(lang=sessions.current_lang)
     link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
     link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
     // CSS
-    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
-
-    if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
-      style(type='text/css').
-        body {
-          background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
-        }
-  body
-    .cnt(itemscope, itemtype='http://schema.org/Event')
-      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
+  body.body-common
+    nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
         // Brand and toggle get grouped for better mobile display
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
           span.navbar-toggler-icon
           i.icon-bar
           i.icon-bar
           i.icon-bar
-        a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
-          i(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
-          .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+        a.navbar-brand(href='/', title=config.project_name)
+          i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
+          .sr-only(itemprop='name')=config.project_name
         #menu-main.collapse.navbar-collapse
           include includes/menu-main
-      //div(class=page_data.url == "/" ? "container-fluid" : "container")
-      .container
-        header.mt-4
-          .row
-            .col-md-4
-              #logo
-                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
-                  img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
-                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-            .col-md-4
-            .col-md-4(itemprop='disambiguatingDescription')
-              img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
-              .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
-              .sr-only
-                include ../_partials/components/eventdateplace_meta
-        nav.text-right.mt-5.mb-5
-          ul.pl-0
-            each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-              li.btn-group(class=page_data.url === lang_preurl+menu.permalink ? "active" : undefined)
-                a.btn.btn-primary.btn-lg.ml-3(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
-                if menu.childs.length
-                  button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
-                    span.caret
-                    span.sr-only Toggle Dropdown
-                  ul.dropdown-menu
-                    each child in menu.childs
-                      li(class=child.post_status == 'publish' ? undefined : "disabled")
-                        a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
 
-
-
-        #result
-          block content
-        include includes/footer
-    #twCnt
-      #tw
+    .container-fluid
+      #result
+        block content
+    include includes/footer
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search
+    include includes/modal-resize
 
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form

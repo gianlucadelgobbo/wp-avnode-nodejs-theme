@@ -83,7 +83,7 @@ module.exports = function(app) {
   app.get('/team/(:user)', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
   app.get('/partners/(:user)', usersRoutes.get);
-  app.get('/editions/', editionsRoutes.getAll); */
+   */
   app.get('/editions/(:edition)', editionsRoutes.get); 
   //app.get('/editions/(:edition)/artists', editionsRoutes.get);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
