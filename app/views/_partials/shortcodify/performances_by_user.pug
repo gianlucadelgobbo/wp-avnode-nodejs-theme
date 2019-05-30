@@ -1,5 +1,6 @@
 ul.lists.row
   each performance in body.performances
     - var basepath = '/performances/'
-    - var css = "col-md-3"
-    include ../boxes/box_performance
+    - var css = "col-md-4"
+    if (opts.params && performance.type.slug==opts.params) || !opts.params
+      include ../boxes/box_performance

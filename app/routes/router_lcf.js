@@ -3,9 +3,6 @@ var indexRoutes = require('./index_lcf');
 var sitemapRoutes = require('./_common/sitemap');
 var signupRoutes = require('./_common/signup');
 var editionsRoutes = require('./_common/editions');
-/* var eventsRoutes = require('./_common/events');
-var usersRoutes = require('./_common/users');
-var newsRoutes = require('./_common/news'); */
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
@@ -44,58 +41,34 @@ module.exports = function(app) {
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/en/', indexRoutes.get);
-/*   app.get('/en/events/', eventsRoutes.getAll);
-  app.get('/en/events/page/(:page)', eventsRoutes.getAll);
-  app.get('/en/events/(:event)', eventsRoutes.get);
-  app.get('/en/news/', newsRoutes.getAll);
-  app.get('/en/news/page/(:page)', newsRoutes.getAll);
-  app.get('/en/news/(:new)', newsRoutes.get);
-  app.get('/en/team', usersRoutes.getUsers);
-  app.get('/en/team/(:user)', usersRoutes.get);
-  app.get('/en/partners', usersRoutes.getUsers);
-  app.get('/en/partners/(:user)', usersRoutes.get);
   app.get('/en/editions/(:edition)', editionsRoutes.get);
-  //app.get('/en/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
-  app.get('/en/signup', signupRoutes.get);
   app.get('/en/(:page)/page/:paging', pagesRoutes.get);
   app.get('/en/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/en/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/en/(:page)', pagesRoutes.get);
 
-  app.post('/en/(:page)', pagesRoutes.post);
   app.post('/en/signup', signupRoutes.post);
+  app.post('/en/(:page)', pagesRoutes.post);
 
- /*   app.get('/events/', eventsRoutes.getAll);
-  app.get('/events/page/(:page)', eventsRoutes.getAll);
-  app.get('/events/(:event)', eventsRoutes.get);
-  app.get('/news/', newsRoutes.getAll);
-  app.get('/news/page/(:page)', newsRoutes.getAll);
-  app.get('/news/(:new)', newsRoutes.get);
-  app.get('/team', usersRoutes.getUsers);
-  app.get('/team/(:user)', usersRoutes.get);
-  app.get('/partners', usersRoutes.getUsers);
-  app.get('/partners/(:user)', usersRoutes.get); */
   app.get('/editions/(:edition)', editionsRoutes.get);
-  //app.get('/editions/(:edition)/artists', editionsRoutes.getArtist);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
 
-  app.get('/signup', signupRoutes.get);
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
   
   app.post('/signup', signupRoutes.post);
-  //app.post('/(:page)', pagesRoutes.post);
+  app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 };

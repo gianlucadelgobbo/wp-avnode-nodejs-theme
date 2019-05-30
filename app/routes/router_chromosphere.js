@@ -3,14 +3,14 @@ var indexRoutes = require('./index_chromosphere');
 var sitemapRoutes = require('./_common/sitemap');
 var signupRoutes = require('./_common/signup');
 var editionsRoutes = require('./_common/editions');
-/* var eventsRoutes = require('./_common/events');
-var usersRoutes = require('./_common/users');
-var newsRoutes = require('./_common/news'); */
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
 
 module.exports = function(app) {
+  app.get('/it', function(req, res) {res.redirect(301, '/')});
+  app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
+
   app.get('/', indexRoutes.get);
 
   app.get('/meta/', metaRoutes.get);
@@ -24,7 +24,6 @@ module.exports = function(app) {
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/en/', indexRoutes.get);
-
   app.get('/en/editions/(:edition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)', editionsRoutes.get);
@@ -37,6 +36,7 @@ module.exports = function(app) {
   app.get('/en/(:page)', pagesRoutes.get);
 
   app.post('/en/signup', signupRoutes.post);
+  app.post('/en/(:page)', pagesRoutes.post);
 
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
