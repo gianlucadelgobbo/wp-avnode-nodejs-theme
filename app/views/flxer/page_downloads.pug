@@ -1,0 +1,737 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/'+itemtype)
+  .row
+    .col-sm-9
+      .main-cnt
+        header.post_title.mb-4
+          h1(itemprop="name")=page_data.title
+        .rientro
+          div(itemprop='description')!=result.post_content
+          include ../_partials/components/avnode_login
+          h3=global.__("Downloads")
+          #accordion
+            #subSezTit21.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt21', aria-expanded='true', aria-controls='subSezCnt21')
+                .row
+                  .col!="FLxER 6.3"
+                  .col.ml-auto.text-right="2016-03-27"
+            #subSezCnt21.collapse.show(aria-labelledby='subSezTit21', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Here is the REAL upgrade to the Flash Player 8.2 of the final version of FLxER 5.3"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.3-MAC-PC.air", download=sessions.user ? "FLxER-AV-Mixer-6.3-MAC-PC.air" : undefined, title="FLxER AV Mixer 6.3 MAC PC")="FLxER AV Mixer 6.3 MAC PC"
+                    br
+                    !="6.6M"
+            #subSezTit20.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt20', aria-expanded='false', aria-controls='subSezCnt20')
+                .row
+                  .col!="FLxER 6.2"
+                  .col.ml-auto.text-right="2014-06-15"
+            #subSezCnt20.collapse(aria-labelledby='subSezTit20', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Here is the REAL upgrade to the Flash Player 8.2 of the final version of FLxER 5.3"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.2-MAC.dmg", download=sessions.user ? "FLxER-AV-Mixer-6.2-MAC.dmg" : undefined, title="FLxER AV Mixer 6.2 MAC")="FLxER AV Mixer 6.2 MAC"
+                    br
+                    !="7.6M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.2-PC-exe.zip", download=sessions.user ? "FLxER-AV-Mixer-6.2-PC-exe.zip" : undefined, title="FLxER AV Mixer 6.2 PC")="FLxER AV Mixer 6.2 PC"
+                    br
+                    !="7.8M"
+            #subSezTit19.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt19', aria-expanded='false', aria-controls='subSezCnt19')
+                .row
+                  .col!="FLxER 6.0"
+                  .col.ml-auto.text-right="2014-06-15"
+            #subSezCnt19.collapse(aria-labelledby='subSezTit19', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Here is the REAL upgrade to the Flash Player 8.2 of the final version of FLxER 5.3"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.0-MAC.dmg", download=sessions.user ? "FLxER-AV-Mixer-6.0-MAC.dmg" : undefined, title="FLxER AV Mixer 6.0 MAC")="FLxER AV Mixer 6.0 MAC"
+                    br
+                    !="7.6M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.0-PC-exe.zip", download=sessions.user ? "FLxER-AV-Mixer-6.0-PC-exe.zip" : undefined, title="FLxER AV Mixer 6.0 PC")="FLxER AV Mixer 6.0 PC"
+                    br
+                    !="7.8M"
+            #subSezTit18.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt18', aria-expanded='false', aria-controls='subSezCnt18')
+                .row
+                  .col!="FLxER 5.3"
+                  .col.ml-auto.text-right="2011-07-18"
+            #subSezCnt18.collapse(aria-labelledby='subSezTit18', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Here is the REAL upgrade to the Flash Player 8.2 of the final version of FLxER 5.3"
+                  br
+                  br
+                  !="Major changes"
+                ul
+                  li="Flash Player 10.2 (Major performances + Windows 7 FullScreen solved)"
+                  li="3D Rotations optimized"
+                  li
+                    !="Some small  bug fixed"
+                    br
+                p="The Pakage contains:"
+                ol
+                  li="FLxER 5 (Application)"
+                  li="FLxER 5 MonitorOut"
+                  li="FLxER 5 RemoteOut"
+                  li="FLxEReasyPlaylistsBuilder.jar"
+                  li="FLxERremoteServer.jar"
+                  li="FLxERmidiManager.jar"
+                  li="OaxoaTiles"
+                  li="SVGwipesDrawer"
+                  li="Oscillator"
+                  li="Default Library"
+                  li="Sources files for Wipes, PlugIn and DV-IN"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.3-Linux.zip" : undefined, title="FLxER AV Mixer 5.3 Linux")="FLxER AV Mixer 5.3 Linux"
+                    br
+                    !="11M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.3-MAC.zip" : undefined, title="FLxER AV Mixer 5.3 MAC")="FLxER AV Mixer 5.3 MAC"
+                    br
+                    !="42M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.3-PC.zip" : undefined, title="FLxER AV Mixer 5.3 PC")="FLxER AV Mixer 5.3 PC"
+                    br
+                    !="26M"
+            #subSezTit17.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt17', aria-expanded='false', aria-controls='subSezCnt17')
+                .row
+                  .col!="FLxER 5.2"
+                  .col.ml-auto.text-right="2011-03-14"
+            #subSezCnt17.collapse(aria-labelledby='subSezTit17', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Here is the upgrade to the Flash Player 10.2 of the final version of FLxER 5."
+                  br
+                  br
+                  !="Major changes"
+                ul
+                  li="Flash Player 10.2 (Major performances + Windows 7 FullScreen solved)"
+                  li="3D Rotations optimized"
+                  li
+                    !="Some small  bug fixed"
+                    br
+                p="The Pakage contains:"
+                ol
+                  li="FLxER 5 (Application)"
+                  li="FLxER 5 MonitorOut"
+                  li="FLxER 5 RemoteOut"
+                  li="FLxEReasyPlaylistsBuilder.jar"
+                  li="FLxERremoteServer.jar"
+                  li="FLxERmidiManager.jar"
+                  li="OaxoaTiles"
+                  li="SVGwipesDrawer"
+                  li="Oscillator"
+                  li="Default Library"
+                  li="Sources files for Wipes, PlugIn and DV-IN"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.2-Linux.zip" : undefined, title="FLxER AV Mixer 5.2 Linux")="FLxER AV Mixer 5.2 Linux"
+                    br
+                    !="12M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.2-MAC.zip" : undefined, title="FLxER AV Mixer 5.2 MAC")="FLxER AV Mixer 5.2 MAC"
+                    br
+                    !="42M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.2-PC.zip" : undefined, title="FLxER AV Mixer 5.2 PC")="FLxER AV Mixer 5.2 PC"
+                    br
+                    !="28M"
+            #subSezTit14.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt14', aria-expanded='false', aria-controls='subSezCnt14')
+                .row
+                  .col!="FLxER 5.1 alpha VERSION (iphone too!!!)"
+                  .col.ml-auto.text-right="2010-06-22"
+            #subSezCnt14.collapse(aria-labelledby='subSezTit14', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="New version based on version 5.0 and finally an FLV, H.264 and SWF player for iPhone and iPad (maybe more... a AV mixer)."
+                  br
+                  br
+                  !="Updates:"
+                ol
+                  li
+                    !="New version for iPhone and iPad, now you can add your files in the library only  with ssh (jailbreak) or you can upload files directly from the Web by  typing the URL"
+                  li="New Recorder, you can now save your set on a xml file like all programs!"
+                  li
+                    !="New manager of the resize, not only on the larger side but also on the narrow one, ideal for adapting old 4:3 movies to 16:9"
+                  li="New DV-IN"
+                  li="New external application for Mapping (SVGwipesDrawer)"
+                  li
+                    !="New application External Oscillator (not to be missed! thx to "
+                    a(title='Visualizza il dettaglio di vj ²', href='https://avnode.net/quadro')="vj ²"
+                    !=")"
+                  li="Many bug fixes in particular MIDI, TXT EDITOR, etc."
+                p="The Pakage contains:"
+                ol
+                  li="FLxER5.1alpha (Application)"
+                  li="FLxER5.1alphaMonitorOut"
+                  li="FLxER5.1alphaRemoteOut"
+                  li="FLxEReasyPlaylistsBuilder.jar"
+                  li="FLxERremoteServer.jar"
+                  li="FLxERmidiManager.jar"
+                  li="OaxoaTiles"
+                  li="SVGwipesDrawer"
+                  li="Default Library"
+                  li="Sources files for Wipes, PlugIn and DV-IN"
+                p
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 5.1.alpha Linux")="FLxER AV Mixer 5.1.alpha Linux"
+                    br
+                    !="11M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 5.1.alpha MAC")="FLxER AV Mixer 5.1.alpha MAC"
+                    br
+                    !="38M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha-PC.zip" : undefined, title="FLxER AV Mixer 5.1.alpha PC")="FLxER AV Mixer 5.1.alpha PC"
+                    br
+                    !="22M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha.ipa", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha.ipa" : undefined, title="FLxER AV Mixer 5.1.alpha")="FLxER AV Mixer 5.1.alpha"
+                    br
+                    !="11M"
+            #subSezTit16.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt16', aria-expanded='false', aria-controls='subSezCnt16')
+                .row
+                  .col!="FLxER 5 Final"
+                  .col.ml-auto.text-right="2010-12-27"
+            #subSezCnt16.collapse(aria-labelledby='subSezTit16', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Here is The final version of FLxER 5."
+                  br
+                  br
+                  !="Major changes"
+                ul
+                  li="New Mapping utility"
+                  li="Linux bug fixed"
+                  li
+                    !="Some small  bug fixed"
+                    br
+                p="The Pakage contains:"
+                ol
+                  li="FLxER 5 (Application)"
+                  li="FLxER 5 MonitorOut"
+                  li="FLxER 5 RemoteOut"
+                  li="FLxEReasyPlaylistsBuilder.jar"
+                  li="FLxERremoteServer.jar"
+                  li="FLxERmidiManager.jar"
+                  li="OaxoaTiles"
+                  li="SVGwipesDrawer"
+                  li="Oscillator"
+                  li="Default Library"
+                  li="Sources files for Wipes, PlugIn and DV-IN"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5-Linux.zip" : undefined, title="FLxER AV Mixer 5 Linux")="FLxER AV Mixer 5 Linux"
+                    br
+                    !="9.8M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5-MAC.zip" : undefined, title="FLxER AV Mixer 5 MAC")="FLxER AV Mixer 5 MAC"
+                    br
+                    !="52M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5-PC.zip" : undefined, title="FLxER AV Mixer 5 PC")="FLxER AV Mixer 5 PC"
+                    br
+                    !="24M"
+            #subSezTit15.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt15', aria-expanded='false', aria-controls='subSezCnt15')
+                .row
+                  .col!="iFLxERplayer 1.0"
+                  .col.ml-auto.text-right="2010-12-14"
+            #subSezCnt15.collapse(aria-labelledby='subSezTit15', data-parent='#accordion')
+              .cntPadd
+                .text-right
+                  a(target='itunes_store', href='http://itunes.apple.com/us/app/iflxer-player/id380303990?mt=8&uo=4')
+                    img(alt='iFLxER player - Flyer new media', style='border: 0;', src='http://ax.phobos.apple.com.edgesuite.net/images/web/linkmaker/badge_appstore-lrg.gif')
+                p
+                  br
+                  br
+                  !="iFLxER player let you play on you iPhone and iPad the contents that you have on "
+                  a(href='https://avnode.net/playlists/')="your FLxER.net account playlists"
+                  !="."
+                  br
+                  br
+                  !="iFLxER player let you play this kind of files:"
+                ul
+                  li="SWF"
+                  li="FLV"
+                  li="AVI, MOV, MPG, MP4, F4V, M4V, MPEG (h.264 only)"
+                  li="JPG, GIF, PNG"
+                p
+                  !="To add files you have to login to your FLxER account."
+                  br
+                  br
+                  !="If you don't have a FLxER account "
+                  a(href='https://avnode.net/signup')="register now"
+                  br
+                  br
+                  !="Once you have your account you have to:"
+                ol
+                  li="Load files as FOOTAGE"
+                  li="Add the footage files to a PLAYLIST"
+                  li="Came back to your mobile application and go on ADD FILES"
+            #subSezTit13.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt13', aria-expanded='false', aria-controls='subSezCnt13')
+                .row
+                  .col!="FLxER 5.0 alpha UPGRADE Oscillator plug-in (YOU NEED FLxER 5.0 alpha)"
+                  .col.ml-auto.text-right="2010-06-16"
+            #subSezCnt13.collapse(aria-labelledby='subSezTit13', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="This update contains a plug-in that allows to change some flxer's movies properties according to a wave form generator."
+                  br
+                  !="the properties are:"
+                  br
+                  !="position (x,y,z)"
+                  br
+                  !="scaling(x,y)"
+                  br
+                  !="rotation(x,y,z)"
+                  br
+                  !="colors(r,g,b)"
+                p="Start up:"
+                p
+                  !="- Open Monitor Out"
+                  br
+                  br
+                  !="- Open FLxER in \"multi monitor\" mode"
+                  br
+                  br
+                  !="- Open Oscillator Plug-in"
+                  br
+                  br
+                  !="- Enjoy"
+                  br
+                  br
+                  !="How to install:"
+                  br
+                  !="-copy the folder \"Oscillator\" and its content in your FLxER \"plug-in\" folder "
+                  br
+                  !="-copy the Oscillator_plug-in application in your FLxER folder at the same level of your FLxER application"
+                  br
+                  br
+                  br
+                  !="How to use:"
+                  br
+                  !="The interface has 7 control panels, one for each FLxER "
+                  br
+                  !="channel."
+                  br
+                  !="first select the wave form from FUNCTION combobox"
+                  br
+                  !="set the amplitude of the wave; default is 50, max 100"
+                  br
+                  !="set the speed with the button tap "
+                  br
+                  !="then choose the property or the properties you want to change "
+                  br
+                  !="according with the wave form"
+                  br
+                  !="press the button \"APPLY TO CH\" to start the plug-in and "
+                  br
+                  !="you will see the results in monitor out"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/Oscillator-plugin-All-platform.zip", download=sessions.user ? "Oscillator-plugin-All-platform.zip" : undefined, title="Oscillator plug-in All platform")="Oscillator plug-in All platform"
+                    br
+                    !="7.6M"
+            #subSezTit12.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt12', aria-expanded='false', aria-controls='subSezCnt12')
+                .row
+                  .col!="FLxER 5.0 alpha VERSION"
+                  .col.ml-auto.text-right="2010-01-21"
+            #subSezCnt12.collapse(aria-labelledby='subSezTit12', data-parent='#accordion')
+              .cntPadd
+                p
+                  !="Waiting Adobe solution for AS3 and \"old\" AS2 support... (crazy!!!), here we have a new version of FLxER with many new features."
+                p
+                  !="The most important new feature is the possibility to manage many video out or non standard size video out from 1 or many FLxER locally or remoting, some examples:"
+                ul
+                  li
+                    !="1 Computer that manage a video out of 2400x600 (3 x 800x600) with 3 video in and 4 channel of graphics over"
+                  li
+                    !="Many computer connected to a network (local and wireless also) that manage togheter the mix on a computer connected to the projector (FLxER Orchestra)"
+                  li="Remote Vjing using internet connection"
+                  li="Vertical screen management"
+                  li="And many more..."
+                p="Updates:"
+                ol
+                  li
+                    !="New MULTIPLE VIDEO OUT to manage how many screen you need from 1 laptop (ex triple head or multiple videocard)"
+                  li="With new MULTIPLE VIDEO OUT you can not show the FLxER Toolbar in the video out"
+                  li
+                    !="With MULTIPLE VIDEO OUT you can manage every kind of size of screen (4:3, 16:9, wide screen, vertical screen ecc)"
+                  li
+                    !="New REMOTE SENDER/RECEIVER to manage how many screen you need from any laptop connected to a network (no Flash media server need)"
+                  li
+                    !="New FLxER SOCKET SERVER to manage REMOTE SENDER/RECEIVER without using Flash media server"
+                  li="Multiple video IN"
+                  li="New CODANOVA VMX VJ MIDI MAP"
+                  li="New SVG wipes loader ideal for MAPPING performances"
+                  li="3D Controller on every channel"
+                  li="3D Rotations (xyz) on transform palette"
+                  li="New TEXT READER more easy to customize (.fla included)"
+                  li="Sliders path click enabled"
+                  li="New SOLO function to have in one action 1 channel only"
+                  li="New RECORDER/PLAYER interface"
+                  li="Customizable colors interface"
+                  li="Vertical and horizontal flip on every channel"
+                  li="New scroll mode from keyboard: scroll on key press and load on key release"
+                  li="Bug fixed on AUDIO FEATURES"
+                  li="Some bug fixed"
+                p="External panels (stand alone applications)"
+                ol
+                  li="SVG wipes drawer  you can draw and save live your maps"
+                  li="FLxEReasyPlaylistsBuilder.jar manage also your wipes"
+                  li="OaxoaTiles permit to multiply every single channel of FLxER"
+                p="The package contains:"
+                ol
+                  li="FLxER5alpha Application"
+                  li="FLxER5alphaMonitorOut"
+                  li="FLxER5alphaRemoteOut"
+                  li="FLxEReasyPlaylistsBuilder.jar"
+                  li="FLxERremoteServer.jar"
+                  li="FLxERmidiManager.jar"
+                  li="OaxoaTiles"
+                  li="SVGwipesDrawer"
+                  li="Default Library"
+                  li="Wipes, Effects and DV-IN sources files"
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 5.alpha Linux")="FLxER AV Mixer 5.alpha Linux"
+                    br
+                    !="11M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 5.alpha MAC")="FLxER AV Mixer 5.alpha MAC"
+                    br
+                    !="38M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.alpha-PC.zip" : undefined, title="FLxER AV Mixer 5.alpha PC")="FLxER AV Mixer 5.alpha PC"
+                    br
+                    !="22M"
+            #subSezTit11.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt11', aria-expanded='false', aria-controls='subSezCnt11')
+                .row
+                  .col!="FLxER 4.3 beta VERSION"
+                  .col.ml-auto.text-right="2008-02-20"
+            #subSezCnt11.collapse(aria-labelledby='subSezTit11', data-parent='#accordion')
+              .cntPadd
+                !="Updates:"
+                ol
+                  li="CODANOVA VMX VJ MIDI MAP"
+                  li="New keyboard shortcut for blend and wipes "
+                  li="New FLxEReasyPlaylistsBuilder.jar"
+                  li="New MAC midiToFLxER "
+                  li="Some bug fixed"
+                !="The package contains:"
+                ol
+                  li="FLxER Application "
+                  li="FLxEReasyPlaylistsBuilder.jar "
+                  li="midiToFLxER.jar "
+                  li="Default Library "
+                  li="Wipes, Effects and DV-IN sources files "
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.3.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.3.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.3.beta Linux")="FLxER AV Mixer 4.3.beta Linux"
+                    br
+                    !="5.6M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.3.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.3.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.3.beta PC")="FLxER AV Mixer 4.3.beta PC"
+                    br
+                    !="7.7M"
+            #subSezTit10.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt10', aria-expanded='false', aria-controls='subSezCnt10')
+                .row
+                  .col!="FLxER 4.2 beta VERSION"
+                  .col.ml-auto.text-right="2007-03-24"
+            #subSezCnt10.collapse(aria-labelledby='subSezTit10', data-parent='#accordion')
+              .cntPadd
+                !="The package contains:"
+                ol
+                  li="FLxER Application "
+                  li="FLxEReasyPlaylistsBuilder.jar "
+                  li="midiToFLxER.jar "
+                  li="Default Library "
+                  li
+                    !="Wipes, Effects and DV-IN sources files "
+                    br
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.2.beta Linux")="FLxER AV Mixer 4.2.beta Linux"
+                    br
+                    !="6.4M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.beta-MAC.zip" : undefined, title="FLxER AV Mixer 4.2.beta MAC")="FLxER AV Mixer 4.2.beta MAC"
+                    br
+                    !="7.9M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.2.beta PC")="FLxER AV Mixer 4.2.beta PC"
+                    br
+                    !="7.6M"
+            #subSezTit7.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt7', aria-expanded='false', aria-controls='subSezCnt7')
+                .row
+                  .col!="FLxER 4.2 alpha VERSION"
+                  .col.ml-auto.text-right="2006-11-12"
+            #subSezCnt7.collapse(aria-labelledby='subSezTit7', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.alpha-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 4.2.alpha MAC")="FLxER AV Mixer 4.2.alpha MAC"
+                    br
+                    !="7.1M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.alpha-PC.zip" : undefined, title="FLxER AV Mixer 4.2.alpha PC")="FLxER AV Mixer 4.2.alpha PC"
+                    br
+                    !="6.9M"
+            #subSezTit9.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt9', aria-expanded='false', aria-controls='subSezCnt9')
+                .row
+                  .col!="FLxER 4.1 beta VERSION"
+                  .col.ml-auto.text-right="2007-01-23"
+            #subSezCnt9.collapse(aria-labelledby='subSezTit9', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.1.beta Linux")="FLxER AV Mixer 4.1.beta Linux"
+                    br
+                    !="6.4M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.1.beta PC")="FLxER AV Mixer 4.1.beta PC"
+                    br
+                    !="7.6M"
+            #subSezTit6.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt6', aria-expanded='false', aria-controls='subSezCnt6')
+                .row
+                  .col!="FLxER 4.1 alpha VERSION"
+                  .col.ml-auto.text-right="2006-05-14"
+            #subSezCnt6.collapse(aria-labelledby='subSezTit6', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.alpha-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 4.1.alpha Linux")="FLxER AV Mixer 4.1.alpha Linux"
+                    br
+                    !="6.4M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.alpha-PC.zip" : undefined, title="FLxER AV Mixer 4.1.alpha PC")="FLxER AV Mixer 4.1.alpha PC"
+                    br
+                    !="7.6M"
+            #subSezTit8.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt8', aria-expanded='false', aria-controls='subSezCnt8')
+                .row
+                  .col!="FLxER 4.0 beta VERSION"
+                  .col.ml-auto.text-right="2007-01-13"
+            #subSezCnt8.collapse(aria-labelledby='subSezTit8', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.0.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.0.beta Linux")="FLxER AV Mixer 4.0.beta Linux"
+                    br
+                    !="6.4M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.0.beta-MAC.zip" : undefined, title="FLxER AV Mixer 4.0.beta MAC")="FLxER AV Mixer 4.0.beta MAC"
+                    br
+                    !="7.9M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.0.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.0.beta PC")="FLxER AV Mixer 4.0.beta PC"
+                    br
+                    !="7.6M"
+            #subSezTit5.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt5', aria-expanded='false', aria-controls='subSezCnt5')
+                .row
+                  .col!="FLxER 3.0.8 UPGRADE (YOU NEED 3.0.1)"
+                  .col.ml-auto.text-right="2005-10-21"
+            #subSezCnt5.collapse(aria-labelledby='subSezTit5', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.8-Upgrade.hqx", download=sessions.user ? "FLxER-AV-Mixer-3.0.8-Upgrade.hqx" : undefined, title="FLxER AV Mixer 3.0.8 Upgrade")="FLxER AV Mixer 3.0.8 Upgrade"
+                    br
+                    !="3.0M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.8-Upgrade.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.8-Upgrade.zip" : undefined, title="FLxER AV Mixer 3.0.8 Upgrade")="FLxER AV Mixer 3.0.8 Upgrade"
+                    br
+                    !="868K"
+
+            #subSezTit4.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt4', aria-expanded='false', aria-controls='subSezCnt4')
+                .row
+                  .col!="FLxER 3.0.1 VERSION"
+                  .col.ml-auto.text-right="2004-10-25"
+            #subSezCnt4.collapse(aria-labelledby='subSezTit4', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-Linux.zip" : undefined, title="FLxER AV Mixer 3.0.1 Linux")="FLxER AV Mixer 3.0.1 Linux"
+                    br
+                    !="6.4M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-MAC-os9.sit", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-MAC-os9.sit" : undefined, title="FLxER AV Mixer 3.0.1 MAC os9")="FLxER AV Mixer 3.0.1 MAC os9"
+                    br
+                    !="13M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-MAC-osx.sit", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-MAC-osx.sit" : undefined, title="FLxER AV Mixer 3.0.1 MAC osx")="FLxER AV Mixer 3.0.1 MAC osx"
+                    br
+                    !="13M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-pocketPC.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 pocketPC")="FLxER AV Mixer 3.0.1 pocketPC"
+                    br
+                    !="6.5M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 PC (exe)")="FLxER AV Mixer 3.0.1 PC (.exe)"
+                    br
+                    !="6.29M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-exe-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 PC (exe)")="FLxER AV Mixer 3.0.1 PC (.exe)"
+                    br
+                    !="6.23M"
+            #subSezTit3.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt3', aria-expanded='false', aria-controls='subSezCnt3')
+                .row
+                  .col!="FLxER 2.0pro VERSION"
+                  .col.ml-auto.text-right="2003-02-05"
+            #subSezCnt3.collapse(aria-labelledby='subSezTit3', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0pro-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-2.0pro-PC.zip" : undefined, title="FLxER AV Mixer 2.0pro PC")="FLxER AV Mixer 2.0pro PC"
+                    br
+                    !="4.2M"
+            #subSezTit2.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt2', aria-expanded='false', aria-controls='subSezCnt2')
+                .row
+                  .col!="FLxER 2.0 VERSION"
+                  .col.ml-auto.text-right="2002-11-30"
+            #subSezCnt2.collapse(aria-labelledby='subSezTit2', data-parent='#accordion')
+              .cntPadd
+                !="\"Special Effects\" feature to its great capabilities: the best actionscripters are building some awesome effects 4 you."
+                br
+                br
+                !="Another FLxER 2.0 key feature is the capability to let you create easily your own personal library."
+                br
+                br
+                !="Along with the launch of the 2.0 version the FLxER team offers you the possibility to buy a special customised keyboard perfectly suitable to optimize the use of FLxER in full screen during a live performance."
+                br
+                br
+                !="Obviously FLxER 2.0 still keeps all the amazing features that already made 1.6.1 version similar to a real video mixer."
+                br
+                strong="FILES"
+                ul
+                  li
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0-MAC.sit", download=sessions.user ? "FLxER-AV-Mixer-2.0-MAC.sit" : undefined, title="FLxER AV Mixer 2.0 MAC")="FLxER AV Mixer 2.0 MAC"
+                    br
+                    !="2.0M"
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0-PC-exe.zip", download=sessions.user ? "FLxER-AV-Mixer-2.0-PC-exe.zip" : undefined, title="FLxER AV Mixer 2.0 PC")="FLxER AV Mixer 2.0 PC"
+                    br
+                    !="2.1M"
+            #subSezTit1.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt1', aria-expanded='false', aria-controls='subSezCnt1')
+                .row
+                  .col!="FLxER 1.6 VERSION"
+                  .col.ml-auto.text-right="2001-05-18"
+            #subSezCnt1.collapse(aria-labelledby='subSezTit1', data-parent='#accordion')
+              .cntPadd
+                !="FLxER 1.6.1 features:"
+                br
+                !=" - the capability to work in Full Screen Mode, using the Keyboard Shortcuts to control sliders, wipes, size, colors and now also Special Effects"
+                br
+                !=" - use your video line-in in three of the four \"channels\""
+                br
+                !=" - swap from high to low quality simply pressing \"H\" key"
+                br
+                !=" - change the font of the \"Koncept Shooter\" with some limits due to bugs in the new player that disable wipes when using user's system fonts."
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-1.6-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-1.6-PC.zip" : undefined, title="FLxER AV Mixer 1.6 PC")="FLxER AV Mixer 1.6 PC"
+                    br
+                    !="4.0M"
+            #subSezTit0.mb-2
+              button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt0', aria-expanded='false', aria-controls='subSezCnt0')
+                .row
+                  .col!="FLxER 1.0 VERSION"
+                  .col.ml-auto.text-right="1999-12-30"
+            #subSezCnt0.collapse(aria-labelledby='subSezTit0', data-parent='#accordion')
+              .cntPadd
+                br
+                strong="FILES"
+                ul
+                  li
+                    a(href!=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-1.0-MAC-PC-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-1.0-MAC-PC-Linux.zip" : undefined, title="FLxER AV Mixer 1.0 MAC PC Linux")="FLxER AV Mixer 1.0 MAC PC Linux"
+                    br
+                    !="8.9M"
+              //.docsLarge
+                each attach in result['attachments']
+                  - console.log(attach)
+                  .media
+                    .media-left
+                      a(href!=sessions.user ? "javascript:alert('Please login');" : attach.filesattach.title : undefined, title=attach.title)
+                        - var ext = attach.file.substring(attach.file.lastIndexOf(".")+1)
+                        i(class=ext=="zip" ? "icon-file-archive" : ext=="pdf" ? "icon-file-pdf" : "icon-doc")
+                    .media-body
+                      a(href!=sessions.user ? "javascript:alert('Please login');" : attach.file, download=sessions.user ? attach.title : undefined, title=attach.title)
+                        !=" "+attach.title
+                      br
+                      small!="("+attach.size+")"
+                      .dateModified.d-none(itemprop='dateModified', content=result.date)=result.dateModifiedHR
+                      if attach.caption
+                        p=attach.caption
+    .col-sm-3
+
+      .main-image
+        img.img-fluid(src=result.featured.thumbnail, alt!=page_data.title, itemprop='image')
+    //include ../_common/inc_grid

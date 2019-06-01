@@ -41,7 +41,7 @@ html(lang=sessions.current_lang)
           i.icon-bar
           i.icon-bar
           i.icon-bar
-        a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
+        a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
           i(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
           .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
         #menu-main.collapse.navbar-collapse

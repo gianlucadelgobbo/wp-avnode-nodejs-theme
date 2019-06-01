@@ -2,15 +2,15 @@
   .modal-dialog(role='document')
     .modal-content
       .modal-header
+        h4#searchModalLabel.modal-title=global.__("Search")
         button.close(type='button', data-dismiss='modal', aria-label='Close')
           span(aria-hidden='true') ×
-        h4#searchModalLabel.modal-title=global.__("Search")
       .modal-body
         form(action=lang_preurl+'/search/', method='get')
           .input-group.input-group-lg
             input.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
-            .input-group-btn
-              button.btn.btn-default(type='submit', name='sa')
+            .input-group-append
+              button.btn.btn-primary(type='submit', name='sa')
                 i.icon-search
                 !=" " + global.__("Search")
           input(type='hidden', name='cx', value=config.meta.google_search)

@@ -41,7 +41,7 @@ html(lang='en')
         i.icon-bar
         i.icon-bar
         i.icon-bar
-      a.navbar-brand(href='/', title=config.meta.editions[sessions.current_edition].title)
+      a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
         img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
       #menu.collapse.navbar-collapse

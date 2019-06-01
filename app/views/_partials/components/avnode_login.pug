@@ -1,0 +1,24 @@
+.row
+  .col-md-6.offset-md-3
+    if !session_login
+      .text-center.backText.pt-3.pb-3.mb-3
+        img(src="/avnode/images/LogoAVnode-bar.svg", height="100", alt="FLxER Logo")
+      if body
+        .alert(class=body.msg ? "alert-danger" : "alert-success")=body.msg ? body.msg : "Login success!!!"
+      if !body || body !== true
+        form.pb-5(method='post')
+          input(type='hidden', name='formtype', value="login")
+          .form-group
+            label(for='email')=global.__('Email')
+            input.form-control(type='email', name='email', id='email', placeholder=global.__('example@foo.bar'), autofocus, required)
+          .form-group
+            label(for='password')=global.__('Password')
+            input.form-control(type='password', name='password', id='password', placeholder=global.__('Use at least eight characters'), required)
+          .form-group
+            button.btn.btn-primary.btn-success(type='submit')=global.__('Login')
+              i.fa.fa-sign-in.fa-fw
+            a.btn.btn-link(href='https://avnode.net/password/forgot')=global.__('Forgot your password?')
+            a.btn.btn-link(href='https://avnode.net/signup')=global.__("Register now")
+      else
+        .alert.alert-success="You are Loggedin"
+

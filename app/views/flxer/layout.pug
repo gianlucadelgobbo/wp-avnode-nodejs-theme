@@ -27,22 +27,24 @@ html(lang=sessions.current_lang)
     // CSS
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
   body.body-common
-    nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
-        // Brand and toggle get grouped for better mobile display
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
-          span.navbar-toggler-icon
-          i.icon-bar
-          i.icon-bar
-          i.icon-bar
-        a.navbar-brand(href='/', title=config.project_name)
-          i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
-          .sr-only(itemprop='name')=config.project_name
-        #menu-main.collapse.navbar-collapse
-          include includes/menu-main
+    .container-fluid.my-screen
+      .row.mb-3.mt-3
+        .col.my-sidebar
+          a(href=lang_preurl + '/', title=config.project_name)
+            img.logosvg(src="/flxer/images/FLxER.svg", alt=config.project_name)
+        .col
+          .text-right
+            span.backText!=config.meta.headline[sessions.current_lang]
+          .text-right.newsletter.mt-3
+            - var subscribelarge = true
+            include ../_partials/components/newsletter-navbar
 
-    .container-fluid
-      #result
-        block content
+      .row
+        .col.my-sidebar
+          include includes/menu-main
+        .col
+          #result
+            block content
     include includes/footer
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search

@@ -1,30 +1,45 @@
-ul.navbar-nav.mr-auto
+//ul.navbar-nav.navbar-nav-flxer
   li.nav-item(class=page_data.url.indexOf('/project') == 0 ? "active" : undefined)
-    a.nav-link(href='/project/') Project
+    a.nav-link(href='#project', data-toggle='collapse', aria-expanded="true" , aria-controls="project")
+      span.backText Project
+ul#project.navbar-nav.navbar-nav-flxer.collapse.show 
+  li.nav-item(class=page_data.url.indexOf('/project') == 0 ? "active" : undefined)
+    a.nav-link(href='/project/') 
+      span.backText Project
+  li.nav-item(class=page_data.url.indexOf('/software') == 0 ? "active" : undefined)
+    a.nav-link(href='/software/') 
+      span.backText Software
   li.nav-item(class=page_data.url.indexOf('/performances') == 0 ? "active" : undefined)
-    a.nav-link(href='/performances/') Performances
+    a.nav-link(href='/performances/') 
+      span.backText Performances
   li.nav-item(class=page_data.url.indexOf('/installations') == 0 ? "active" : undefined)
-    a.nav-link(href='/installations/') Installations
-  li.nav-item(class=page_data.url.indexOf('/workshops') == 0 ? "active" : undefined)
-    a.nav-link(href='/workshops/') Workshops
+    a.nav-link(href='/installations/') 
+      span.backText Installations
+  li.nav-item(class=page_data.url.indexOf('/performances') == 0 ? "active" : undefined)
+    a.nav-link(href='/workshops/') 
+      span.backText Workshops
   li.nav-item(class=page_data.url.indexOf('/events') == 0 ? "active" : undefined)
-    a.nav-link(href='/events/') Events
+    a.nav-link(href='/events/') 
+      span.backText Events
   li.nav-item(class=page_data.url.indexOf('/partnerships') == 0 ? "active" : undefined)
-    a.nav-link(href='/partnerships/') Partnerships
+    a.nav-link(href='/partnerships/') 
+      span.backText Partnerships
   li.nav-item(class=page_data.url.indexOf('/news') == 0 ? "active" : undefined)
-    a.nav-link(href='/news/') News
+    a.nav-link(href='/news/') 
+      span.backText News
+  li.nav-item(class=page_data.url.indexOf('/team') == 0 ? "active" : undefined)
+    a.nav-link(href='/team/') 
+      span.backText Team
   //li.nav-item(class=page_data.url.indexOf('/newsletter') == 0 ? "active" : undefined)
     a.nav-link(href='/newsletter/') Newsletter
   li.nav-item(class=page_data.url.indexOf('/contacts') == 0 ? "active" : undefined)
-    a.nav-link(href='/contacts/') Contacts
+    a.nav-link(href='/contacts/') 
+      span.backText Contacts
   //li.nav-item(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
     a.nav-link(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
 
-  li.nav-item
-    include ../../_partials/components/newsletter-navbar
-
-ul.navbar-nav
   li.nav-item(class=page_data.url.indexOf('/search') == 0 ? "active" : undefined)
     a.nav-link#searchModalButton(href="/search/")
-      i.icon-search
-      .sr-only=global.__("Search")
+      span.backText 
+        i.icon-search
+        .sr-only=global.__("Search")

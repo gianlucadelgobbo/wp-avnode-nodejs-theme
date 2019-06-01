@@ -17,5 +17,20 @@
 	"This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.": "This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.",
 	"Accept": "Accept",
 	"Content NOT found": "Content NOT found",
-	"The content you requested was not found on our server, please try to search for it": "The content you requested was not found on our server, please try to search for it"
+	"The content you requested was not found on our server, please try to search for it": "The content you requested was not found on our server, please try to search for it",
+	"Production": "Production",
+	"Share": "Share",
+	"Membership request": "Membership request",
+	"Organization Name": "Organization Name",
+	"Are you a FLxER User?": "Are you a FLxER User?",
+	"Please login here": "Please login here",
+	"Email": "Email",
+	"example@foo.bar": "example@foo.bar",
+	"Password": "Password",
+	"Use at least eight characters": "Use at least eight characters",
+	"Login": "Login",
+	"Forgot your password?": "Forgot your password?",
+	"Downloads": "Downloads",
+	"AVnode login": "AVnode login",
+	"Register now": "Register now"
 }

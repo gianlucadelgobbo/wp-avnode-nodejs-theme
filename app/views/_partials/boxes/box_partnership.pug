@@ -11,7 +11,7 @@
     .box-list
       .text-center
         .text-muted.supText
-          include ../../_common/inc_eventdateplace
+          include ../components/eventdateplace
         h3.list_title(itemprop='name')!=result.title.replace(" | ","<br />")
       .read-more-box
         a.ajaxloader(href='/partnerships/'+result.slug+"/", rel='bookmark', title!=result.title, itemprop='url')

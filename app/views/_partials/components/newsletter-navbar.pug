@@ -1,5 +1,5 @@
 form#subscribe.form-inline(method='post', action='/signup')
-  .input-group.input-group-sm.mt-1
+  .input-group.mt-1(class=subscribelarge ? "" : "input-group-sm")
     input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
     label.sr-only(for='email') Email
     span.input-group-append

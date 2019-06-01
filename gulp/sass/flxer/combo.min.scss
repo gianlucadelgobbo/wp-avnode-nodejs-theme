@@ -1,5 +1,9 @@
-$font-size-base: 0.7rem !default;
-$primary:         #000000 !default;
+$font-size-base: 0.5rem !default;
+$body-color: #FFFFFF !default;
+$body-bg: #000000 !default;
+
+$primary:         #FF0000 !default;
+$textbackground: rgba(0,0,0,0.7);
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,

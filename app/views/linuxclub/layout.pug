@@ -45,7 +45,7 @@ html(lang=sessions.current_lang)
           i.icon-bar
           i.icon-bar
           i.icon-bar
-        a.navbar-brand(href='/', title=config.project_name)
+        a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
           i(class="icon-"+(config.prefix=="fotonica" ? "f" : (config.prefix=="linuxclub" ? "linux" : config.prefix+(config.prefix=="lcf" ? "-fill" : ""))), itemprop='logo')
           .sr-only(itemprop='name')=config.project_name
         #menu-main.collapse.navbar-collapse

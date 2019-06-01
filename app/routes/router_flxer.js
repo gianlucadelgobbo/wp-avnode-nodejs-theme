@@ -24,6 +24,7 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
   
+  app.post('/(:page)/(:subpage)', pagesRoutes.post);
   app.post('/signup', signupRoutes.post);
 
   app.get('*', pagesRoutes.get404);

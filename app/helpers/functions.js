@@ -104,6 +104,7 @@ exports.shortcodify = function shortcodify(prefix, data, body, req_params, cb) {
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
+    console.log(opts);
     if (opts.view === "performances") {
       /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {
         $sourceA = explode("/",str_replace(array("flxer.net/api"), array("api.avnode.net"), $shortcode_atts['source']));

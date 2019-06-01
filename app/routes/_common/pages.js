@@ -3,9 +3,12 @@ var fnz = require('../../helpers/functions');
  
 
 exports.get = function get(req, res) {
+  console.log("req.session.user");
+  console.log(req.session.user);
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
-      //console.log(result);
+      console.log("req.session.user");
+      console.log(req.session.user);
       var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
@@ -24,7 +27,7 @@ exports.get = function get(req, res) {
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
-        res.render(pug, {result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+        res.render(pug, {session_login: req.session.user, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
@@ -81,13 +84,13 @@ exports.post = function post(req, res) {
                   }
                   if (e.length) {
                     result.body = o;
-                    res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                   } else {
                     mailer.send(config.accounts.emails.gmail, message, function(e, c){
                       if (e.length) {
-                        res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       } else {
-                        res.render(pug, {result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       }
                     });
                   }
@@ -103,7 +106,69 @@ exports.post = function post(req, res) {
         }
       });
     });
-  } else if (req.body.formtype == "newsletter") {
+  } else if (req.body.formtype == "login") {
+    req.body.api = "1";
+    console.log(req.body);
+    request.post({
+      headers: {'content-type' : 'application/json'},
+      url: "http://localhost:8006/login",
+      json: true,
+      body: req.body
+    },
+    function(error, response, body){
+      console.log("req.session.user");
+      console.log(req.session.user);
+      console.log("error");
+      console.log(error);
+      console.log("body");
+      console.log(body);
+      if (body === true) {
+        req.session.user = true;
+        console.log(error || body)
+
+      }
+      console.log("req.session.user");
+      console.log(req.session.user);
+      helpers.setSessions(req, function() {
+        helpers.getPage(req, function( result ) {
+          //console.log(result);
+          var page_data = fnz.setPageData(req, result);
+          if(result && result['ID']) {
+            var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
+            if (result.event) pug = config.prefix+'/event';
+            if (result.performance) pug = config.prefix+'/performance';
+            if (result.news) pug = config.prefix+'/new';
+            if (result.member) pug = config.prefix+'/member';
+            if (result.partnership) pug = config.prefix+'/partnership';
+            var check = pug.split("/")[1];
+            if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
+              var Recaptcha = require('express-recaptcha').Recaptcha;
+              var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
+              result.countries = require('../../helpers/country-list');
+              result.body = {};
+              result.captcha = recaptcha.render()
+              var form = pug.split("_")[1];
+              pug = config.prefix+"/page";
+            }
+            res.render(pug, {session_login: req.session.user, body: body, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+          } else {
+            res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+          }
+        });
+      });
+          /* if(error) {
+        res.status(200).send({type:"danger", message: __("Subscription failed")});
+      } else {
+        var bodyObj = JSON.parse(body);
+        if (bodyObj.id) {
+          res.status(200).send({type:"success", message: __("Congratulations! Your subscription was successful")});
+        } else {
+          res.status(200).send({type:"danger", message: __("Warning!")+" "+bodyObj.title});
+        }
+      } */
+    }
+  );
+} else if (req.body.formtype == "newsletter") {
     helpers.validateFormNewsletter(req.body, function(e, o) {
       var interests = {};
       if (Array.isArray(req.body.topics)){
@@ -170,7 +235,7 @@ exports.post = function post(req, res) {
               result.body = o;
               if (e.length) {
 
-                res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
               } else {
                 request({
                     method: 'POST',
@@ -193,13 +258,13 @@ exports.post = function post(req, res) {
                     //console.log(response);
                     //console.log(body);
                     if(error) {
-                      res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                     } else {
                       var bodyObj = JSON.parse(body);
                       if (bodyObj.id) {
-                        res.render(pug, {result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       } else {
-                        res.render(pug, {result: result, msg:{e:[{m:__(bodyObj.title)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:[{m:__(bodyObj.title)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       }
                     }
                   }
@@ -259,13 +324,13 @@ exports.post = function post(req, res) {
                   }
                   if (e.length) {
                     result.body = o;
-                    res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                   } else {
                     mailer.send(config.accounts.emails.gmail, message, function(e, c){
                       if (e.length) {
-                        res.render(pug, {result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       } else {
-                        res.render(pug, {result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                       }
                     });
                   }
@@ -295,7 +360,7 @@ exports.getSubpage = function getSubpage(req, res) {
         //console.log(result);
         var itemtype = config.sez.pages.conf[req.params.subpage] && config.sez.pages.conf[req.params.subpage].itemtype ? config.sez.pages.conf[req.params.subpage].itemtype : config.sez.pages.conf.default.itemtype;
         //console.log(itemtype);
-        res.render(pug, {result: result, page_data:page_data, sessions:req.session.sessions, itemtype:itemtype,q:req.query.q,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
+        res.render(pug, {session_login: req.session.user, result: result, page_data:page_data, sessions:req.session.sessions, itemtype:itemtype,q:req.query.q,include_gallery:result.post_content.indexOf("nggthumbnail")>=0});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }
