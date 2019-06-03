@@ -1,4 +1,5 @@
-ul.pagination.pagination-sm.justify-content-center
-  each page in body.pages
-    li(class="page-item"+(page.active ? " active" : ""))
-      a(class="page-link", href=page.link)=page.index
+if body.pages
+  ul.pagination.pagination-sm.justify-content-center
+    each page in body.pages
+      li(class="page-item"+(page.active ? " active" : ""))
+        a(class="page-link", href=page.link)=page.index

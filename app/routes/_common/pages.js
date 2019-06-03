@@ -3,12 +3,8 @@ var fnz = require('../../helpers/functions');
  
 
 exports.get = function get(req, res) {
-  console.log("req.session.user");
-  console.log(req.session.user);
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
-      console.log("req.session.user");
-      console.log(req.session.user);
       var page_data = fnz.setPageData(req, result);
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
@@ -17,6 +13,7 @@ exports.get = function get(req, res) {
         if (result.news) pug = config.prefix+'/new';
         if (result.member) pug = config.prefix+'/member';
         if (result.partnership) pug = config.prefix+'/partnership';
+        console.log(pug);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
           var Recaptcha = require('express-recaptcha').Recaptcha;
@@ -36,6 +33,8 @@ exports.get = function get(req, res) {
 };
 
 exports.post = function post(req, res) {
+  var Recaptcha = require('express-recaptcha').Recaptcha;
+  var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
   var request = require("request");
   if (req.body.formtype == "join") {
     var mailer = require('../../helpers/mailer');
@@ -108,27 +107,18 @@ exports.post = function post(req, res) {
     });
   } else if (req.body.formtype == "login") {
     req.body.api = "1";
-    console.log(req.body);
     request.post({
       headers: {'content-type' : 'application/json'},
-      url: "http://localhost:8006/login",
+      url: "https://avnode.net/login",
       json: true,
       body: req.body
     },
     function(error, response, body){
-      console.log("req.session.user");
-      console.log(req.session.user);
-      console.log("error");
-      console.log(error);
-      console.log("body");
-      console.log(body);
       if (body === true) {
         req.session.user = true;
         console.log(error || body)
 
       }
-      console.log("req.session.user");
-      console.log(req.session.user);
       helpers.setSessions(req, function() {
         helpers.getPage(req, function( result ) {
           //console.log(result);
@@ -142,8 +132,6 @@ exports.post = function post(req, res) {
             if (result.partnership) pug = config.prefix+'/partnership';
             var check = pug.split("/")[1];
             if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-              var Recaptcha = require('express-recaptcha').Recaptcha;
-              var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
               result.countries = require('../../helpers/country-list');
               result.body = {};
               result.captcha = recaptcha.render()
@@ -170,18 +158,6 @@ exports.post = function post(req, res) {
   );
 } else if (req.body.formtype == "newsletter") {
     helpers.validateFormNewsletter(req.body, function(e, o) {
-      var interests = {};
-      if (Array.isArray(req.body.topics)){
-        for (var item in req.body.topics) interests[req.body.topics[item]] = true;
-      } else {
-        interests[req.body.topics] = true;
-      }
-      interests[config.accounts.newsletter.site_from] = true;
-      var merge_fields = {};
-      if (req.body.name) merge_fields.FNAME = req.body.name;
-      if (req.body.surname) merge_fields.LNAME = req.body.surname;
-      if (req.body.country) merge_fields.MMERGE6 = req.body.country;
-      if (req.body.organization_name) merge_fields.MMERGE4 = req.body.organization_name;
       if (req.body.ajax) {
         //console.log("ajaxajaxajaxajaxajaxajax");
         if (e.length) {
@@ -190,34 +166,40 @@ exports.post = function post(req, res) {
           estr+= "</ul>";
           res.status(200).send({type:"danger", message: estr});
         } else {
+          if (Array.isArray(req.body.topics)){
+            req.body.Topics = req.body.topics.join(",");
+          }
+          let formData = req.body;
+          formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
+          formData.SiteFrom = config.prefix;
+          formData.boolean = true;
+        
+          var querystring = require('querystring');
+          
+          // form data
+          var postData = querystring.stringify(formData);
+          
           request({
-              method: 'POST',
-              url: config.accounts.newsletter.url+"/members",
-              body: JSON.stringify({
-                "merge_fields": merge_fields,
-                "email_address": req.body.email,
-                "status": "subscribed",
-                "double_optin": false,
-                "interests" : interests
-              }),
-              headers: {
-                Authorization: 'apikey '+config.accounts.newsletter.apikey,
-                'Content-Type': 'application/json'
-              }
-            },
-            function(error, response, body){
-              if(error) {
-                res.status(200).send({type:"danger", message: __("Subscription failed")});
+            method: 'POST',
+            url: config.accounts.newsletter.url+"/subscribe",
+            body: postData,
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Content-Length': postData.length
+            }
+          },
+          function(error, response, body){
+            console.log(body)
+            if(error) {
+              res.status(200).send({type:"danger", message: __("Subscription failed")});
+            } else {
+              if (body === "1") {
+                res.status(200).send({type:"success", message: __("Your subscription was successful")});
               } else {
-                var bodyObj = JSON.parse(body);
-                if (bodyObj.id) {
-                  res.status(200).send({type:"success", message: __("Congratulations! Your subscription was successful")});
-                } else {
-                  res.status(200).send({type:"danger", message: __("Warning!")+" "+bodyObj.title});
-                }
+                res.status(200).send({type:"danger", message: body});
               }
             }
-          );
+          });
         }
       } else {
         helpers.setSessions(req, function() {
@@ -225,50 +207,60 @@ exports.post = function post(req, res) {
             var page_data = fnz.setPageData(req, result);
             if(result && result['ID']) {
               var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
+              if (result.event) pug = config.prefix+'/event';
+              if (result.performance) pug = config.prefix+'/performance';
+              if (result.news) pug = config.prefix+'/new';
+              if (result.member) pug = config.prefix+'/member';
+              if (result.partnership) pug = config.prefix+'/partnership';
+              console.log(pug);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
+                var Recaptcha = require('express-recaptcha').Recaptcha;
+                var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
                 result.countries = require('../../helpers/country-list');
                 result.body = {};
+                result.captcha = recaptcha.render()
                 var form = pug.split("_")[1];
-                pug = "avnode/page";
+                pug = config.prefix+"/page";
               }
               result.body = o;
               if (e.length) {
-
                 res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
               } else {
+                if (Array.isArray(req.body.topics)){
+                  req.body.Topics = req.body.topics.join(",");
+                }
+                let formData = req.body;
+                formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
+                formData.SiteFrom = config.prefix;
+                formData.boolean = true;
+              
+                var querystring = require('querystring');
+                
+                // form data
+                var postData = querystring.stringify(formData);
+                
                 request({
-                    method: 'POST',
-                    url: config.accounts.newsletter.url+"/members",
-                    body: JSON.stringify({
-                      "merge_fields": merge_fields,
-                      "email_address": req.body.email,
-                      "status": "subscribed",
-                      "double_optin": false,
-                      "interests" : interests
-                    }),
-                    headers: {
-                      Authorization: 'apikey '+config.accounts.newsletter.apikey,
-                      'Content-Type': 'application/json'
-                    }
-                  },
-                  function(error, response, body){
-                    //console.log("ECCHICE");
-                    //console.log(error);
-                    //console.log(response);
-                    //console.log(body);
-                    if(error) {
-                      res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                  method: 'POST',
+                  url: config.accounts.newsletter.url+"/subscribe",
+                  body: postData,
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': postData.length
+                  }
+                },
+                function(error, response, body){
+                  console.log(body)
+                  if(error) {
+                    res.status(200).send({type:"danger", message: __("Subscription failed")});
+                  } else {
+                    if (body === "1") {
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                     } else {
-                      var bodyObj = JSON.parse(body);
-                      if (bodyObj.id) {
-                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                      } else {
-                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:[{m:__(bodyObj.title)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                      }
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{e:[{m:__(body)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
                     }
                   }
-                );
+                });
               }
             } else {
               res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});

@@ -3,6 +3,18 @@ form#newsletter-form(method='post', action=page_data.url, role='form')
     b=__("Subscription")
     !=" form"
   .messages
+    - if (typeof msg !== "undefined" && typeof msg.e !== "undefined" && msg.e.length)
+      .alert.alert-danger
+        h4=__("There are some errors")
+        ul
+          - for(a=0;a<msg.e.length;a++)
+            li=msg.e[a].m
+    - if (typeof msg !== "undefined" && typeof msg.c !== "undefined" && msg.c.length)
+      .alert.alert-success
+        h4=__("There are some messages")
+        ul
+          - for(a=0;a<msg.c.length;a++)
+            li=msg.c[a].m
   .controls
     .row
       .col-md-6
@@ -12,8 +24,8 @@ form#newsletter-form(method='post', action=page_data.url, role='form')
           .help-block.with-errors
       .col-md-6
         .form-group
-          label(for='form_surname')=__("Surame")+" *"
-          input#form_surname.form-control(type='text', value=result.body.surname, name='surname', placeholder=__("Please enter your surname")+" *", required='required', data-error=__("Surame is required"))
+          label(for='form_surname')=__("Surname")+" *"
+          input#form_surname.form-control(type='text', value=result.body.Surname, name='Surname', placeholder=__("Please enter your surname")+" *", required='required', data-error=__("Surame is required"))
           .help-block.with-errors
     .row
       .col-md-6
@@ -24,10 +36,10 @@ form#newsletter-form(method='post', action=page_data.url, role='form')
       .col-md-6
         .form-group
           label(for='country')=__("Country")+" *"
-          select#country.form-control(name="country", required='required', data-error=__("Country is required"))
+          select#country.form-control(name="Country", required='required', data-error=__("Country is required"))
             option(value="")= __("Please select a country")
             each item in result.countries
-              option(selected=item.name == result.body.country, value=item.name)=item.name
+              option(selected=item.short == result.body.Country, value=item.short)=item.name
           .help-block.with-errors
     .row
       .col-md-6
@@ -50,7 +62,6 @@ form#newsletter-form(method='post', action=page_data.url, role='form')
               .help-block.with-errors
     .row
       .col-md-4
-        input.btn.btn-success.btn-send(type='hidden', name='topics', value='4742751cda')
         input.btn.btn-success.btn-send(type='hidden', name='formtype', value='newsletter')
         input.btn.btn-success.btn-send(type='submit', value=__("Subscribe"))
       .col-md-8

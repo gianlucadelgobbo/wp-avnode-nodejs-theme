@@ -1,6 +1,6 @@
 var request = require('request');
 
-exports.get = function(req, res){
+/* exports.get = function(req, res){
   var print = {};
   request({
       method: 'GET',
@@ -69,51 +69,36 @@ exports.get = function(req, res){
       }
     }
   );
-};
+}; */
 exports.post = function(req, res){
   let formData = req.body;
   formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
   formData.SiteFrom = config.prefix;
   formData.boolean = true;
 
-  var https = require('https');
   var querystring = require('querystring');
   
   // form data
   var postData = querystring.stringify(formData);
   
-  // request option
-  var options = {
-    host: 'ml.avnode.net',
-    port: 443,
+  request({
     method: 'POST',
-    path: '/subscribe',
+    url: config.accounts.newsletter.url+"/subscribe",
+    body: postData,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': postData.length
     }
-  };
-  
-  // request object
-  var req = https.request(options, function (resres) {
-    var result = '';
-    resres.on('data', function (chunk) {
-      result += chunk;
-    });
-    resres.on('end', function (msg) {
-      res.json(true);
-    });
-    resres.on('error', function (err) {
-      res.json(false);
-    })
+  },
+  function(error, response, body){
+    if(error) {
+      res.status(200).send({type:"danger", message: __("Subscription failed")});
+    } else {
+      if (body === "1") {
+        res.status(200).send({type:"success", message: __("Your subscription was successful")});
+      } else {
+        res.status(200).send({type:"danger", message: body});
+      }
+    }
   });
-  
-  // req error
-  req.on('error', function (err) {
-    res.json(false);
-  });
-  
-  //send request witht the postData form
-  req.write(postData);
-  req.end();
 }

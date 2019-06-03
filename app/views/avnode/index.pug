@@ -1,86 +1,47 @@
 extends layout
 block content
-  .embed-responsive.embed-responsive-16by9
-    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F485165551976639%2F&show_text=0" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true")
-  //#carousel.carousel.slide(data-ride='carousel', data-interval="false")
-    // Wrapper for slides
-    .carousel-inner
-      .carousel-item.active
-        iframe(style="border:0" width="100%" height="100%" src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F837085809979657&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
-        img.d-none.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //script.
-          document.onload = function(){$("#carousel").pause()}
-      //.item.active.full-screen
-        img.d-block.w-100(src='/lpm/images/slider/LPM2019-call-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-
-
+  #carousel.carousel.slide(data-ride='carousel')
     // Indicators
     ol.carousel-indicators
       li.active(data-target='#carousel', data-slide-to='0')
       li(data-target='#carousel', data-slide-to='1')
       li(data-target='#carousel', data-slide-to='2')
-      li(data-target='#carousel', data-slide-to='3')
-      li(data-target='#carousel', data-slide-to='4')
-      li(data-target='#carousel', data-slide-to='5')
-      li(data-target='#carousel', data-slide-to='6')
-
+      //li(data-target='#carousel', data-slide-to='3')
+    // Wrapper for slides
+    .carousel-inner(role='listbox')
+      .carousel-item.active
+        a(href="/activities/lpm-2015-2018/", title='European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+          img.d-block.w-100(src='/avnode/images/home-lpm2015-2018.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+      .carousel-item
+        a(href="/join/", title='Join AVnode')
+          img.d-block.w-100(src='/avnode/images/home-join.jpg', alt=global.__('Image for') + ': ' + 'Join AVnode')
+      .carousel-item
+        a(href="/activities/social-media/", title='Social Media')
+          img.d-block.w-100(src='/avnode/images/home-social-media.jpg', alt=global.__('Image for') + ': ' + 'Social Media')
     // Controls
-    a.carousel-control-prev(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+    a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
       span.carousel-control-prev-icon(aria-hidden='true')
       span.sr-only Previous
-    a.carousel-control-next(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+    a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
+  article
+    .text-center
+      h1.home-title
+        span.sr-only=config.project_name + " "
+        !=config.meta.headline[sessions.current_lang]
   section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") News
+    h1.entry-title(itemprop="name") News
     .swiper-container
       !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .container-fluid
       .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Satellite Events
-    .swiper-container
-      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+        a.btn.btn-primary.btn-sm(href="https://avnode.net/news/", title="See all News") See all News
 
   section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Productions
+    h1.entry-title(itemprop="name") Events
     .swiper-container
       !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .container-fluid
       .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/events/", title="See all Editions") See all Productions
+        a.btn.btn-primary.btn-sm(href="https://avnode.net/events/", title="See all Editions") See all Events

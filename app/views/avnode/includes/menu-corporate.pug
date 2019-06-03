@@ -1,11 +1,7 @@
 ul.nav.flex-column.nav-pills
   li.nav-item
-    a.nav-link(href='/idea/', class=page_data.url.indexOf('/idea') >= 0 ? "active" : undefined) Idea
+    a.nav-link(href='/manifesto/', class=page_data.url.indexOf('/manifesto') >= 0 ? "active" : undefined)=global.__("Manifesto")
   li.nav-item
-    a.nav-link(href='/events/', class=page_data.url.indexOf('/events') >= 0 ? "active" : undefined) Productions
+    a.nav-link(href='/join/', class=page_data.url.indexOf('/join') >= 0 ? "active" : undefined)=global.__("Join")
   li.nav-item
-    a.nav-link(href='/partnerships/', class=page_data.url.indexOf('/partnerships') >= 0 ? "active" : undefined) Satellite Events
-  li.nav-item
-    a.nav-link(href='/press/', class=page_data.url.indexOf('/press') >= 0 ? "active" : undefined) Press
-  li.nav-item
-    a.nav-link(href='/contacts/', class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined) Contacts
+    a.nav-link(href='/contacts/', class=page_data.url.indexOf('/contacts') >= 0 ? "active" : undefined)=global.__("Contacts")

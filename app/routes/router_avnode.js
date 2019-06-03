@@ -1,21 +1,21 @@
-var indexRoutes = require('./avnode/index');
-var activitiesRoutes = require('./avnode/activities');
-var memberactivitiesRoutes = require('./avnode/memberactivities');
+var indexRoutes = require('./index_avnode');
+/* var activitiesRoutes = require('./avnode/activities');
+var memberactivitiesRoutes = require('./avnode/memberactivities'); */
 
 var sitemapRoutes = require('./_common/sitemap');
-var usersRoutes = require('./_common/users');
+/* var usersRoutes = require('./_common/users');
 var eventsRoutes = require('./_common/events');
-var newsRoutes = require('./_common/news');
+var newsRoutes = require('./_common/news'); */
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 
 module.exports = function(app) {
-  app.get('/*.php', pagesRoutes.get404);
+  /* app.get('/*.php', pagesRoutes.get404);
   app.post('/*.php', pagesRoutes.get404);
 
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/member/*', function(req, res) {res.redirect(301, req.url.replace('/member/','/members/'))});
-  app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
+  app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))}); */
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
@@ -25,6 +25,7 @@ module.exports = function(app) {
   app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
 
   app.get('/', indexRoutes.get);
+/* 
   app.get('/insta/', indexRoutes.getInsta);
   app.get('/team', usersRoutes.getUsers);
   app.get('/team/(:user)', usersRoutes.get);
@@ -45,8 +46,12 @@ module.exports = function(app) {
   app.get('/activities/', activitiesRoutes.getAll);
   app.get('/activities/(:activity)', activitiesRoutes.get);
   app.get('/activities/page/(:page)', activitiesRoutes.getAll);
-
+ */
+  app.get('/(:page)/page/:paging', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
+
   app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);

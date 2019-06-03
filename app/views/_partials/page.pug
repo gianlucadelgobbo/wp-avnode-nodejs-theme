@@ -6,6 +6,12 @@ article(itemscope, itemtype='http://schema.org/'+itemtype)
           h1(itemprop="name")=page_data.title
         .rientro
           div(itemprop='description')!=result.post_content
+          if (form == "contacts")
+            include ../_common/inc_form_contacts
+          if (form == "newsletter")
+            include ../_common/inc_form_newsletter
+          if (form == "join")
+            include ../_common/inc_form_join
           include ../_common/inc_docs_large
           .dateModified.d-none(itemprop='dateModified', content=result.date)=result.dateModifiedHR
     .col-sm-3

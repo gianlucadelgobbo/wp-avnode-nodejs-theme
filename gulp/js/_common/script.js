@@ -38,12 +38,12 @@ $("#subscribe").submit(function(event) {
     url: "/signup",
     data: $("#subscribe").serialize()
   }).done(function (data) {
-    if (data) {
+    if (data.type=="success") {
       $("#subscribe .alert").addClass("alert-success");
-      $('#subscribe .alert .msg').html("<strong>Congratulations!</strong> Your subscription was successful&nbsp;&nbsp;&nbsp;");
+      $('#subscribe .alert .msg').html("<strong>Congratulations!</strong> "+data.message+"&nbsp;&nbsp;&nbsp;");
     } else {
       $("#subscribe .alert").addClass("alert-danger");
-      $('#subscribe .alert .msg').html("<strong>Warning!</strong> "+data.title+"&nbsp;&nbsp;&nbsp;");
+      $('#subscribe .alert .msg').html("<strong>Warning!</strong> "+data.message+"&nbsp;&nbsp;&nbsp;");
     }
     $('#subscribe .loading').addClass("d-none");
     $('#subscribe .alert').removeClass("d-none");
@@ -141,8 +141,8 @@ $(function() {
           type: "POST",
           url: url,
           data: dat,
-          success: function (data)
-          {
+          success: function (data) {
+            console.log(data);
             var messageAlert = 'alert-' + data.type;
             var messageText = data.message;
 

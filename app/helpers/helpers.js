@@ -23,14 +23,14 @@ exports.validateFormNewsletter = function validateFormNewsletter(o,callback) {
   if (!Validators.validateStringLength(o.name, 3, 100)){
     e.push({name:"name",m:__("Please enter a valid name")});
   }
-  if (!Validators.validateStringLength(o.surname, 3, 100)){
-    e.push({name:"surname",m:__("Please enter a valid surname")});
+  if (!Validators.validateStringLength(o.Surname, 3, 100)){
+    e.push({name:"Surname",m:__("Please enter a valid surnameeee")});
   }
   if(!Validators.validateEmail(o.email)){
     e.push({name:"email",m:__("Email is not an email")});
   }
-  if(!Validators.validateStringLength(o.country, 3, 100)){
-    e.push({name:"country",m:__("Please select your country")});
+  if(!Validators.validateStringLength(o.Country, 2, 100)){
+    e.push({name:"Country",m:__("Please select your country")});
   }
   if(!o.topics.length){
     e.push({name:"topics",m:__("Please select at least one topic")});
@@ -141,6 +141,7 @@ exports.getPage = function getPage(req,callback) {
             if (req.params.page == "partnerships") data.partnership = body;
             callback(data);
           } else {
+            if (body.data) body.events = body.data;
             fnz.shortcodify(config.prefix, data, body, req.params, data => {
               callback(data);
             });
