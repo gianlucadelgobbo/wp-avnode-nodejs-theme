@@ -10,7 +10,7 @@
     "outFile": "/var/log/nginx/node_flyer_out.log",
     "errFile": "/var/log/nginx/node_flyer_err.log",
     "args": ["-site", "flyer"]
-  },
+  }, */
   {
     "uid": "avnode",
     "append": true,
@@ -22,7 +22,7 @@
     "errFile": "/var/log/nginx/node_avnode_err.log",
     "args": ["-site", "avnode"]
   },
- */  {
+  {
     "uid": "lpm",
     "append": true,
     "watch": true,
