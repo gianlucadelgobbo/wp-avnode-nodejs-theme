@@ -1,0 +1,69 @@
+extends layout
+block content
+  .row
+    .col-sm-8
+      if result.gallery.medias && result.gallery.medias && result.gallery.medias.length
+        ul#listItems.row
+          each media, i in result.gallery.medias
+            li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+              meta(itemprop='position', content=i)
+              div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+                a.thumbnail(title=media.title, style='position:relative;', itemprop='url', href=basepath+"/img/"+media.slug+"/")
+                  img.img-fluid.cntGallImgImg(itemprop='image', src=media.imageFormats.small, alt=media.title)
+                  //span.cntDida(itemprop='name')=media.title
+                script.
+                  if (typeof glink==='undefined') var glink = [];
+                  glink.push("#{media.imageFormats.large}");
+    .col-sm-4
+      header.post_title.mb-4
+        h1(itemprop='name')!=result.gallery.title
+      .rientro
+        if result.gallery.type
+          ul.list-inline.category_performance_item.single_performance
+            li.list-inline-item
+                span=result.gallery.type.name
+            if result.gallery.tecnique
+              li.list-inline-item
+                span=result.gallery.tecnique.name
+            if result.gallery.genre
+              li.list-inline-item
+                span=result.gallery.genre.name
+        .row
+          each user in result.gallery.users
+            .col-md-4
+              .mb-2
+                a(href="/"+user.slug)
+                  img(class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1), src=user.imageFormats.small, alt=user.stagename)
+              h3
+                a(href="/"+user.slug).users_performance_item_name=user.stagename
+              if user.addressesFormatted && user.addressesFormatted.length
+                p.users_performance_item_country!=user.addressesFormatted.join(", ")
+        if result.gallery.events.length
+          h2=global.__('Events')  
+          each booking in result.gallery.events
+            .row.mb-3
+              .col-sm-3
+                .performance_event_image
+                  a.performance_event_title(href="/events/"+booking.event.slug)
+                    img.img-fluid(src=booking.event.imageFormats.small, alt=booking.event.title)
+              .col-sm-9
+                h3
+                  a.performance_event_title(href="/events/"+booking.event.slug)=booking.event.title
+                p
+                  each schedule in booking.schedule
+                    !=schedule.boxDate
+                    br
+                    !=schedule.venue.name + " | " + schedule.venue.room + " | " + schedule.venue.location.locality + ", " + schedule.venue.location.country
+        if result.gallery.performances.length
+          h2=global.__('Performance')  
+          each performance in result.gallery.performances
+            .row.mb-3
+              .col-sm-3
+                .performance_event_image
+                  a.performance_event_title(href="/performances/"+performance.slug)
+                    img.img-fluid(src=performance.imageFormats.small, alt=performance.title)
+              .col-sm-9
+                h3
+                  a.performance_event_title(href="/performances/"+performance.slug)=performance.title
+        .text-right
+          include ../_common/inc_share

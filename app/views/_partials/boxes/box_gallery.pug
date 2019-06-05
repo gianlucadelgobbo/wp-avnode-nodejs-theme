@@ -1,0 +1,13 @@
+li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+  meta(itemprop='position', content=i)
+  div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+    a(itemprop='url', href=basepath+item.slug+"/", title=item.title)
+      img.img-fluid(itemprop='image', src=item.imageFormats.small, alt=item.title)
+    .caption(style='padding-right:15px;padding-left:15px;')
+      .caption-body
+        h2.caption-title(itemprop='name')=item.title
+        each user in item.users
+          .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+            b(itemprop='name')=user.stagename
+            br
+        !="img: "+item.stats.img

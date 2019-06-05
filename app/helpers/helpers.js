@@ -106,13 +106,14 @@ exports.getPage = function getPage(req,callback) {
   var A = ["performances","gallery","videos","news","events","members","partnerships","exhibitions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
+  console.log(url);
   request({
     url: url,
     json: true
   }, function(error, response, data) {
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
-      var A = ["performances","gallery","videos","news","events","members","partnerships","exhibitions"];
+      var A = ["performances","gallery","galleries","videos","news","events","members","partnerships","exhibitions"];
       if (data) data = fnz.fixResult(data);
       /* if (data.posts){
         data.posts = fnz.fixResults(data.posts);
@@ -120,8 +121,13 @@ exports.getPage = function getPage(req,callback) {
       if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
       if (data['sources'] && data['sources'][0]) {
         let avnodeurl = data['sources'][0];
-        if (A.indexOf(req.params.page) !== -1 && req.params.subpage) avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
+        if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
+          avnodeurl = "https://api.avnode.net/"+req.params.subsubpage+"/"+req.params.subsubsubpage;
+        } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
+          avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
+        }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
+        console.log(avnodeurl);
         request({
           url: avnodeurl,
           json: true
@@ -133,7 +139,11 @@ exports.getPage = function getPage(req,callback) {
               body.pages[item].link = "/"+body.pages[item].link.join("/");
             };
           }
-          if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
+          if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
+            if (req.params.subsubpage == "galleries") data.gallery = body;
+            if (req.params.subsubpage == "videos") data.video = body;
+            callback(data);
+          } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
             if (req.params.page == "events") data.event = body;
             if (req.params.page == "performances") data.performance = body;
             if (req.params.page == "news") data.news = body;

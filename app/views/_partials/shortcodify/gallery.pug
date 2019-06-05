@@ -3,20 +3,9 @@
 .pt-4
   if body.galleries && body.galleries.length
     ul#listItems.row
+      - basepath+="/gallery/"
       each item, i in body.galleries
-        li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
-          meta(itemprop='position', content=i)
-          div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-            a(itemprop='url', href=basepath+"/gallery/"+item.slug+"/", title=item.title)
-              img.img-fluid(itemprop='image', src=item.imageFormats.small, alt=item.title)
-            .caption(style='padding-right:15px;padding-left:15px;')
-              .caption-body
-                h2.caption-title(itemprop='name')=item.title
-                each user in item.users
-                  .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
-                    b(itemprop='name')=user.stagename
-                    br
-                !="img: "+item.stats.img
+        include ../boxes/box_gallery
 
   if body.img && body.img.imageFormats
     .row.mb-3

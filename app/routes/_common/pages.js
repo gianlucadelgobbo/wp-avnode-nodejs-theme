@@ -6,13 +6,27 @@ exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
+      var include_gallery = false;
+      var basepath = "";
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
         if (result.event) pug = config.prefix+'/event';
-        if (result.performance) pug = config.prefix+'/performance';
+        if (result.performance) {
+          pug = config.prefix+'/performance';
+          basepath = "/performances/" +req.params.subpage;
+        }
         if (result.news) pug = config.prefix+'/new';
         if (result.member) pug = config.prefix+'/member';
         if (result.partnership) pug = config.prefix+'/partnership';
+        if (result.gallery) {
+          pug = config.prefix+'/performance_gallery';
+          include_gallery = true;
+          basepath = "/performances/" +req.params.subpage+"/galleries/" +req.params.subsubsubpage+"/";
+        }
+        if (result.video) {
+          pug = config.prefix+'/performance_video';
+          basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
+        }
         console.log(pug);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
@@ -24,7 +38,7 @@ exports.get = function get(req, res) {
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
-        res.render(pug, {session_login: req.session.user, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+        res.render(pug, {basepath:basepath, session_login: req.session.user, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: include_gallery, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
       }

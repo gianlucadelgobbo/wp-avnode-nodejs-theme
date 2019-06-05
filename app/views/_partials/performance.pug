@@ -2,50 +2,87 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
   .row
     .col-sm-8
       img.img-fluid.main-image(src=result.performance.imageFormats.large, alt=result.performance.title, itemprop='image')
-      .rientro.d-none-xs!=result.performance.aboutFull
-      include ../_common/inc_videos
+      
+      #list-tab.list-group.list-group-horizontal.mt-3(role='tablist')
+        if result.performance.about
+          a#about_tab.list-group-item.list-group-item-action.active(href='#about', aria-controls="about", role='tab', result.performance-toggle="list")=global.__('About')
+        a#technical_specifications_tab.list-group-item.list-group-item-action(href='#technical_specifications', aria-controls="technical_specifications", role='tab', result.performance-toggle="list")=global.__('Technical specifications')
+        //if result.performance.paypal
+          li.list-group-item
+            a.list-group-item.list-group-item-action(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+result.performance.paypal, target='_blank')    
+              =global.__('BUY NOW')
+      // Tab panes
+      .tab-content
+        //if result.performance.about
+        #about.tab-pane.rientro.active(role='tabpanel' aria-labelledby="about_tab")
+          .pt-2.pb-2!=result.performance.about
+        #technical_specifications.tab-pane.rientro(role='tabpanel' aria-labelledby="technical_specifications_tab")
+          if result.performance.duration
+            .tech_info_wrapper
+              h4.tech_info_title=global.__('Duration (minutes)')
+              p!=result.performance.duration
+          if result.performance.tech_req
+            .tech_info_wrapper
+              h4.tech_info_title=global.__('What is needed')
+              p!=result.performance.tech_req
+          if result.performance.tech_art
+            .tech_info_wrapper
+              h4.tech_info_title=global.__('What the artists brings')
+              p!=result.performance.tech_art
+      if result.performance.galleries.length  
+        section.event_galleries_wrapper
+          h2.main_title.indented_title!=global.__('Galleries')+" <small>(<span>"+result.performance.galleries.length+"</span>)</small>"  
+          ul#listItems.row
+            - basepath+="/galleries/"
+            each item in result.performance.galleries                    
+              include ./boxes/box_gallery
+      if result.performance.videos.length  
+        section.event_video_wrapper
+          .row
+            .col-lg-12
+              h2.main_title.indented_title!=global.__('Videos')+" <small>(<span>"+result.performance.videos.length+"</span>)</small>"  
+              ul#listItems.row
+                each item in result.performance.videos            
+                  include ./boxes/box_video
     .col-sm-4
-      header
-        h1.entry-title(itemprop='name')!=result.performance.title
+      header.post_title.mb-4
+        h1(itemprop='name')!=result.performance.title
       .rientro
-        p.subtitle=result.performance.subtitle && result.performance.subtitle!= "Text is missing" ? result.performance.subtitle : result.performance.boxDate
+        if result.performance.type
+          ul.list-inline.category_performance_item.single_performance
+            li.list-inline-item
+                span=result.performance.type.name
+            if result.performance.tecnique
+              li.list-inline-item
+                span=result.performance.tecnique.name
+            if result.performance.genre
+              li.list-inline-item
+                span=result.performance.genre.name
         .row
-          .col-lg-9
-            if result.performance.boxVenue
-              p.boxVenue=result.performance.boxVenue
-              p
-                a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
-              #fullSchedule.collapse
-                ul
-                  each fullSchedule in result.performance.fullSchedule
-                    li=fullSchedule
-          .col-lg-3
-            if result.performance.type
-              p.text-right
-                i(class="fa fa-cube")
-                =" "
-                !=result.performance.type.name
-        .d-none.d-sm-block(itemprop='description')!=result.performance.aboutFull
-        .partners_event_wrapper_bkg
-          .container
-            section.row.partners_event_wrapper
-              .col-lg-8
-                h2.main_title.indented_title.color1!=global.__('Production')
-              .col-lg-4
-                img.img-fluid(src="/images/logo_avnode_symbol_dark.svg")
-              .col-sm-12
-                .row.partners_list_wrapper
-                  each partner in result.performance.users
-                    .col-sm-2
-                      .partner_box_wrapper
-                        a(href="/"+partner.slug+"/", title=partner.stagename)
-                          if partner.imageFormats                          
-                            img.card-img-top.img-fluid(
-                              class=partner.imageFormats.small.substring(partner.imageFormats.small.lastIndexOf(".")+1)
-                              src=partner.imageFormats.small
-                              alt=partner.title
-                            )
-                        p.partner_stagename
-                          a(href="/"+partner.slug+"/", title=partner.stagename)
-                            span=partner.stagename
-        include ../_common/inc_share
+          each user in result.performance.users
+            .col-md-4
+              .mb-2
+                a(href="/"+user.slug)
+                  img(class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1), src=user.imageFormats.small, alt=user.stagename)
+              h3
+                a(href="/"+user.slug).users_performance_item_name=user.stagename
+              if user.addressesFormatted && user.addressesFormatted.length
+                p.users_performance_item_country!=user.addressesFormatted.join(", ")
+        if result.performance.bookings.length
+          h2=global.__('Events')  
+          each booking in result.performance.bookings
+            .row.mb-3
+              .col-sm-3
+                .performance_event_image
+                  a.performance_event_title(href="/events/"+booking.event.slug)
+                    img.img-fluid(src=booking.event.imageFormats.small, alt=booking.event.title)
+              .col-sm-9
+                h3
+                  a.performance_event_title(href="/events/"+booking.event.slug)=booking.event.title
+                p
+                  each schedule in booking.schedule
+                    !=schedule.boxDate
+                    br
+                    !=schedule.venue.name + " | " + schedule.venue.room + " | " + schedule.venue.location.locality + ", " + schedule.venue.location.country
+        .text-right
+          include ../_common/inc_share
