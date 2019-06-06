@@ -14,7 +14,7 @@ block content
             #subSezTit21.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt21', aria-expanded='true', aria-controls='subSezCnt21')
                 .row
-                  .col!="FLxER 6.3"
+                  .col.text-left!="FLxER 6.3"
                   .col.ml-auto.text-right="2016-03-27"
             #subSezCnt21.collapse.show(aria-labelledby='subSezTit21', data-parent='#accordion')
               .cntPadd
@@ -24,13 +24,13 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.3-MAC-PC.air", download=sessions.user ? "FLxER-AV-Mixer-6.3-MAC-PC.air" : undefined, title="FLxER AV Mixer 6.3 MAC PC")="FLxER AV Mixer 6.3 MAC PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.3-MAC-PC.air", download=!session_login ? "FLxER-AV-Mixer-6.3-MAC-PC.air" : undefined, title="FLxER AV Mixer 6.3 MAC PC")="FLxER AV Mixer 6.3 MAC PC"
                     br
                     !="6.6M"
             #subSezTit20.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt20', aria-expanded='false', aria-controls='subSezCnt20')
                 .row
-                  .col!="FLxER 6.2"
+                  .col.text-left!="FLxER 6.2"
                   .col.ml-auto.text-right="2014-06-15"
             #subSezCnt20.collapse(aria-labelledby='subSezTit20', data-parent='#accordion')
               .cntPadd
@@ -40,17 +40,17 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.2-MAC.dmg", download=sessions.user ? "FLxER-AV-Mixer-6.2-MAC.dmg" : undefined, title="FLxER AV Mixer 6.2 MAC")="FLxER AV Mixer 6.2 MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.2-MAC.dmg", download=!session_login ? "FLxER-AV-Mixer-6.2-MAC.dmg" : undefined, title="FLxER AV Mixer 6.2 MAC")="FLxER AV Mixer 6.2 MAC"
                     br
                     !="7.6M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.2-PC-exe.zip", download=sessions.user ? "FLxER-AV-Mixer-6.2-PC-exe.zip" : undefined, title="FLxER AV Mixer 6.2 PC")="FLxER AV Mixer 6.2 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.2-PC-exe.zip", download=!session_login ? "FLxER-AV-Mixer-6.2-PC-exe.zip" : undefined, title="FLxER AV Mixer 6.2 PC")="FLxER AV Mixer 6.2 PC"
                     br
                     !="7.8M"
             #subSezTit19.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt19', aria-expanded='false', aria-controls='subSezCnt19')
                 .row
-                  .col!="FLxER 6.0"
+                  .col.text-left!="FLxER 6.0"
                   .col.ml-auto.text-right="2014-06-15"
             #subSezCnt19.collapse(aria-labelledby='subSezTit19', data-parent='#accordion')
               .cntPadd
@@ -60,17 +60,17 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.0-MAC.dmg", download=sessions.user ? "FLxER-AV-Mixer-6.0-MAC.dmg" : undefined, title="FLxER AV Mixer 6.0 MAC")="FLxER AV Mixer 6.0 MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.0-MAC.dmg", download=!session_login ? "FLxER-AV-Mixer-6.0-MAC.dmg" : undefined, title="FLxER AV Mixer 6.0 MAC")="FLxER AV Mixer 6.0 MAC"
                     br
                     !="7.6M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.0-PC-exe.zip", download=sessions.user ? "FLxER-AV-Mixer-6.0-PC-exe.zip" : undefined, title="FLxER AV Mixer 6.0 PC")="FLxER AV Mixer 6.0 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-6.0-PC-exe.zip", download=!session_login ? "FLxER-AV-Mixer-6.0-PC-exe.zip" : undefined, title="FLxER AV Mixer 6.0 PC")="FLxER AV Mixer 6.0 PC"
                     br
                     !="7.8M"
             #subSezTit18.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt18', aria-expanded='false', aria-controls='subSezCnt18')
                 .row
-                  .col!="FLxER 5.3"
+                  .col.text-left!="FLxER 5.3"
                   .col.ml-auto.text-right="2011-07-18"
             #subSezCnt18.collapse(aria-labelledby='subSezTit18', data-parent='#accordion')
               .cntPadd
@@ -102,21 +102,21 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.3-Linux.zip" : undefined, title="FLxER AV Mixer 5.3 Linux")="FLxER AV Mixer 5.3 Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-5.3-Linux.zip" : undefined, title="FLxER AV Mixer 5.3 Linux")="FLxER AV Mixer 5.3 Linux"
                     br
                     !="11M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.3-MAC.zip" : undefined, title="FLxER AV Mixer 5.3 MAC")="FLxER AV Mixer 5.3 MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-5.3-MAC.zip" : undefined, title="FLxER AV Mixer 5.3 MAC")="FLxER AV Mixer 5.3 MAC"
                     br
                     !="42M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.3-PC.zip" : undefined, title="FLxER AV Mixer 5.3 PC")="FLxER AV Mixer 5.3 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.3-PC.zip", download=!session_login ? "FLxER-AV-Mixer-5.3-PC.zip" : undefined, title="FLxER AV Mixer 5.3 PC")="FLxER AV Mixer 5.3 PC"
                     br
                     !="26M"
             #subSezTit17.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt17', aria-expanded='false', aria-controls='subSezCnt17')
                 .row
-                  .col!="FLxER 5.2"
+                  .col.text-left!="FLxER 5.2"
                   .col.ml-auto.text-right="2011-03-14"
             #subSezCnt17.collapse(aria-labelledby='subSezTit17', data-parent='#accordion')
               .cntPadd
@@ -148,21 +148,21 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.2-Linux.zip" : undefined, title="FLxER AV Mixer 5.2 Linux")="FLxER AV Mixer 5.2 Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-5.2-Linux.zip" : undefined, title="FLxER AV Mixer 5.2 Linux")="FLxER AV Mixer 5.2 Linux"
                     br
                     !="12M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.2-MAC.zip" : undefined, title="FLxER AV Mixer 5.2 MAC")="FLxER AV Mixer 5.2 MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-5.2-MAC.zip" : undefined, title="FLxER AV Mixer 5.2 MAC")="FLxER AV Mixer 5.2 MAC"
                     br
                     !="42M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.2-PC.zip" : undefined, title="FLxER AV Mixer 5.2 PC")="FLxER AV Mixer 5.2 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.2-PC.zip", download=!session_login ? "FLxER-AV-Mixer-5.2-PC.zip" : undefined, title="FLxER AV Mixer 5.2 PC")="FLxER AV Mixer 5.2 PC"
                     br
                     !="28M"
             #subSezTit14.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt14', aria-expanded='false', aria-controls='subSezCnt14')
                 .row
-                  .col!="FLxER 5.1 alpha VERSION (iphone too!!!)"
+                  .col.text-left!="FLxER 5.1 alpha VERSION (iphone too!!!)"
                   .col.ml-auto.text-right="2010-06-22"
             #subSezCnt14.collapse(aria-labelledby='subSezTit14', data-parent='#accordion')
               .cntPadd
@@ -201,25 +201,25 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 5.1.alpha Linux")="FLxER AV Mixer 5.1.alpha Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-5.1.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 5.1.alpha Linux")="FLxER AV Mixer 5.1.alpha Linux"
                     br
                     !="11M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 5.1.alpha MAC")="FLxER AV Mixer 5.1.alpha MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-5.1.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 5.1.alpha MAC")="FLxER AV Mixer 5.1.alpha MAC"
                     br
                     !="38M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha-PC.zip" : undefined, title="FLxER AV Mixer 5.1.alpha PC")="FLxER AV Mixer 5.1.alpha PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha-PC.zip", download=!session_login ? "FLxER-AV-Mixer-5.1.alpha-PC.zip" : undefined, title="FLxER AV Mixer 5.1.alpha PC")="FLxER AV Mixer 5.1.alpha PC"
                     br
                     !="22M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha.ipa", download=sessions.user ? "FLxER-AV-Mixer-5.1.alpha.ipa" : undefined, title="FLxER AV Mixer 5.1.alpha")="FLxER AV Mixer 5.1.alpha"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.1.alpha.ipa", download=!session_login ? "FLxER-AV-Mixer-5.1.alpha.ipa" : undefined, title="FLxER AV Mixer 5.1.alpha")="FLxER AV Mixer 5.1.alpha"
                     br
                     !="11M"
             #subSezTit16.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt16', aria-expanded='false', aria-controls='subSezCnt16')
                 .row
-                  .col!="FLxER 5 Final"
+                  .col.text-left!="FLxER 5 Final"
                   .col.ml-auto.text-right="2010-12-27"
             #subSezCnt16.collapse(aria-labelledby='subSezTit16', data-parent='#accordion')
               .cntPadd
@@ -251,21 +251,21 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5-Linux.zip" : undefined, title="FLxER AV Mixer 5 Linux")="FLxER AV Mixer 5 Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-5-Linux.zip" : undefined, title="FLxER AV Mixer 5 Linux")="FLxER AV Mixer 5 Linux"
                     br
                     !="9.8M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5-MAC.zip" : undefined, title="FLxER AV Mixer 5 MAC")="FLxER AV Mixer 5 MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-5-MAC.zip" : undefined, title="FLxER AV Mixer 5 MAC")="FLxER AV Mixer 5 MAC"
                     br
                     !="52M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5-PC.zip" : undefined, title="FLxER AV Mixer 5 PC")="FLxER AV Mixer 5 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5-PC.zip", download=!session_login ? "FLxER-AV-Mixer-5-PC.zip" : undefined, title="FLxER AV Mixer 5 PC")="FLxER AV Mixer 5 PC"
                     br
                     !="24M"
             #subSezTit15.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt15', aria-expanded='false', aria-controls='subSezCnt15')
                 .row
-                  .col!="iFLxERplayer 1.0"
+                  .col.text-left!="iFLxERplayer 1.0"
                   .col.ml-auto.text-right="2010-12-14"
             #subSezCnt15.collapse(aria-labelledby='subSezTit15', data-parent='#accordion')
               .cntPadd
@@ -302,7 +302,7 @@ block content
             #subSezTit13.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt13', aria-expanded='false', aria-controls='subSezCnt13')
                 .row
-                  .col!="FLxER 5.0 alpha UPGRADE Oscillator plug-in (YOU NEED FLxER 5.0 alpha)"
+                  .col.text-left!="FLxER 5.0 alpha UPGRADE Oscillator plug-in (YOU NEED FLxER 5.0 alpha)"
                   .col.ml-auto.text-right="2010-06-16"
             #subSezCnt13.collapse(aria-labelledby='subSezTit13', data-parent='#accordion')
               .cntPadd
@@ -363,13 +363,13 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/Oscillator-plugin-All-platform.zip", download=sessions.user ? "Oscillator-plugin-All-platform.zip" : undefined, title="Oscillator plug-in All platform")="Oscillator plug-in All platform"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/Oscillator-plugin-All-platform.zip", download=!session_login ? "Oscillator-plugin-All-platform.zip" : undefined, title="Oscillator plug-in All platform")="Oscillator plug-in All platform"
                     br
                     !="7.6M"
             #subSezTit12.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt12', aria-expanded='false', aria-controls='subSezCnt12')
                 .row
-                  .col!="FLxER 5.0 alpha VERSION"
+                  .col.text-left!="FLxER 5.0 alpha VERSION"
                   .col.ml-auto.text-right="2010-01-21"
             #subSezCnt12.collapse(aria-labelledby='subSezTit12', data-parent='#accordion')
               .cntPadd
@@ -431,21 +431,21 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-5.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 5.alpha Linux")="FLxER AV Mixer 5.alpha Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-5.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 5.alpha Linux")="FLxER AV Mixer 5.alpha Linux"
                     br
                     !="11M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 5.alpha MAC")="FLxER AV Mixer 5.alpha MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-5.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 5.alpha MAC")="FLxER AV Mixer 5.alpha MAC"
                     br
                     !="38M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-5.alpha-PC.zip" : undefined, title="FLxER AV Mixer 5.alpha PC")="FLxER AV Mixer 5.alpha PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-5.alpha-PC.zip", download=!session_login ? "FLxER-AV-Mixer-5.alpha-PC.zip" : undefined, title="FLxER AV Mixer 5.alpha PC")="FLxER AV Mixer 5.alpha PC"
                     br
                     !="22M"
             #subSezTit11.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt11', aria-expanded='false', aria-controls='subSezCnt11')
                 .row
-                  .col!="FLxER 4.3 beta VERSION"
+                  .col.text-left!="FLxER 4.3 beta VERSION"
                   .col.ml-auto.text-right="2008-02-20"
             #subSezCnt11.collapse(aria-labelledby='subSezTit11', data-parent='#accordion')
               .cntPadd
@@ -467,17 +467,17 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.3.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.3.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.3.beta Linux")="FLxER AV Mixer 4.3.beta Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.3.beta-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-4.3.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.3.beta Linux")="FLxER AV Mixer 4.3.beta Linux"
                     br
                     !="5.6M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.3.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.3.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.3.beta PC")="FLxER AV Mixer 4.3.beta PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.3.beta-PC.zip", download=!session_login ? "FLxER-AV-Mixer-4.3.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.3.beta PC")="FLxER AV Mixer 4.3.beta PC"
                     br
                     !="7.7M"
             #subSezTit10.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt10', aria-expanded='false', aria-controls='subSezCnt10')
                 .row
-                  .col!="FLxER 4.2 beta VERSION"
+                  .col.text-left!="FLxER 4.2 beta VERSION"
                   .col.ml-auto.text-right="2007-03-24"
             #subSezCnt10.collapse(aria-labelledby='subSezTit10', data-parent='#accordion')
               .cntPadd
@@ -494,21 +494,21 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.2.beta Linux")="FLxER AV Mixer 4.2.beta Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-4.2.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.2.beta Linux")="FLxER AV Mixer 4.2.beta Linux"
                     br
                     !="6.4M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.beta-MAC.zip" : undefined, title="FLxER AV Mixer 4.2.beta MAC")="FLxER AV Mixer 4.2.beta MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-4.2.beta-MAC.zip" : undefined, title="FLxER AV Mixer 4.2.beta MAC")="FLxER AV Mixer 4.2.beta MAC"
                     br
                     !="7.9M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.2.beta PC")="FLxER AV Mixer 4.2.beta PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.beta-PC.zip", download=!session_login ? "FLxER-AV-Mixer-4.2.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.2.beta PC")="FLxER AV Mixer 4.2.beta PC"
                     br
                     !="7.6M"
             #subSezTit7.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt7', aria-expanded='false', aria-controls='subSezCnt7')
                 .row
-                  .col!="FLxER 4.2 alpha VERSION"
+                  .col.text-left!="FLxER 4.2 alpha VERSION"
                   .col.ml-auto.text-right="2006-11-12"
             #subSezCnt7.collapse(aria-labelledby='subSezTit7', data-parent='#accordion')
               .cntPadd
@@ -516,17 +516,17 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.alpha-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 4.2.alpha MAC")="FLxER AV Mixer 4.2.alpha MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.alpha-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-4.2.alpha-MAC.zip" : undefined, title="FLxER AV Mixer 4.2.alpha MAC")="FLxER AV Mixer 4.2.alpha MAC"
                     br
                     !="7.1M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.2.alpha-PC.zip" : undefined, title="FLxER AV Mixer 4.2.alpha PC")="FLxER AV Mixer 4.2.alpha PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.2.alpha-PC.zip", download=!session_login ? "FLxER-AV-Mixer-4.2.alpha-PC.zip" : undefined, title="FLxER AV Mixer 4.2.alpha PC")="FLxER AV Mixer 4.2.alpha PC"
                     br
                     !="6.9M"
             #subSezTit9.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt9', aria-expanded='false', aria-controls='subSezCnt9')
                 .row
-                  .col!="FLxER 4.1 beta VERSION"
+                  .col.text-left!="FLxER 4.1 beta VERSION"
                   .col.ml-auto.text-right="2007-01-23"
             #subSezCnt9.collapse(aria-labelledby='subSezTit9', data-parent='#accordion')
               .cntPadd
@@ -534,17 +534,17 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.1.beta Linux")="FLxER AV Mixer 4.1.beta Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.beta-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-4.1.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.1.beta Linux")="FLxER AV Mixer 4.1.beta Linux"
                     br
                     !="6.4M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.1.beta PC")="FLxER AV Mixer 4.1.beta PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.beta-PC.zip", download=!session_login ? "FLxER-AV-Mixer-4.1.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.1.beta PC")="FLxER AV Mixer 4.1.beta PC"
                     br
                     !="7.6M"
             #subSezTit6.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt6', aria-expanded='false', aria-controls='subSezCnt6')
                 .row
-                  .col!="FLxER 4.1 alpha VERSION"
+                  .col.text-left!="FLxER 4.1 alpha VERSION"
                   .col.ml-auto.text-right="2006-05-14"
             #subSezCnt6.collapse(aria-labelledby='subSezTit6', data-parent='#accordion')
               .cntPadd
@@ -552,17 +552,17 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.alpha-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 4.1.alpha Linux")="FLxER AV Mixer 4.1.alpha Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.alpha-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-4.1.alpha-Linux.zip" : undefined, title="FLxER AV Mixer 4.1.alpha Linux")="FLxER AV Mixer 4.1.alpha Linux"
                     br
                     !="6.4M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.alpha-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.1.alpha-PC.zip" : undefined, title="FLxER AV Mixer 4.1.alpha PC")="FLxER AV Mixer 4.1.alpha PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.1.alpha-PC.zip", download=!session_login ? "FLxER-AV-Mixer-4.1.alpha-PC.zip" : undefined, title="FLxER AV Mixer 4.1.alpha PC")="FLxER AV Mixer 4.1.alpha PC"
                     br
                     !="7.6M"
             #subSezTit8.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt8', aria-expanded='false', aria-controls='subSezCnt8')
                 .row
-                  .col!="FLxER 4.0 beta VERSION"
+                  .col.text-left!="FLxER 4.0 beta VERSION"
                   .col.ml-auto.text-right="2007-01-13"
             #subSezCnt8.collapse(aria-labelledby='subSezTit8', data-parent='#accordion')
               .cntPadd
@@ -570,21 +570,21 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-4.0.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.0.beta Linux")="FLxER AV Mixer 4.0.beta Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-4.0.beta-Linux.zip" : undefined, title="FLxER AV Mixer 4.0.beta Linux")="FLxER AV Mixer 4.0.beta Linux"
                     br
                     !="6.4M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-MAC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.0.beta-MAC.zip" : undefined, title="FLxER AV Mixer 4.0.beta MAC")="FLxER AV Mixer 4.0.beta MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-MAC.zip", download=!session_login ? "FLxER-AV-Mixer-4.0.beta-MAC.zip" : undefined, title="FLxER AV Mixer 4.0.beta MAC")="FLxER AV Mixer 4.0.beta MAC"
                     br
                     !="7.9M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-4.0.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.0.beta PC")="FLxER AV Mixer 4.0.beta PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-4.0.beta-PC.zip", download=!session_login ? "FLxER-AV-Mixer-4.0.beta-PC.zip" : undefined, title="FLxER AV Mixer 4.0.beta PC")="FLxER AV Mixer 4.0.beta PC"
                     br
                     !="7.6M"
             #subSezTit5.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt5', aria-expanded='false', aria-controls='subSezCnt5')
                 .row
-                  .col!="FLxER 3.0.8 UPGRADE (YOU NEED 3.0.1)"
+                  .col.text-left!="FLxER 3.0.8 UPGRADE (YOU NEED 3.0.1)"
                   .col.ml-auto.text-right="2005-10-21"
             #subSezCnt5.collapse(aria-labelledby='subSezTit5', data-parent='#accordion')
               .cntPadd
@@ -592,18 +592,18 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.8-Upgrade.hqx", download=sessions.user ? "FLxER-AV-Mixer-3.0.8-Upgrade.hqx" : undefined, title="FLxER AV Mixer 3.0.8 Upgrade")="FLxER AV Mixer 3.0.8 Upgrade"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.8-Upgrade.hqx", download=!session_login ? "FLxER-AV-Mixer-3.0.8-Upgrade.hqx" : undefined, title="FLxER AV Mixer 3.0.8 Upgrade")="FLxER AV Mixer 3.0.8 Upgrade"
                     br
                     !="3.0M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.8-Upgrade.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.8-Upgrade.zip" : undefined, title="FLxER AV Mixer 3.0.8 Upgrade")="FLxER AV Mixer 3.0.8 Upgrade"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.8-Upgrade.zip", download=!session_login ? "FLxER-AV-Mixer-3.0.8-Upgrade.zip" : undefined, title="FLxER AV Mixer 3.0.8 Upgrade")="FLxER AV Mixer 3.0.8 Upgrade"
                     br
                     !="868K"
 
             #subSezTit4.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt4', aria-expanded='false', aria-controls='subSezCnt4')
                 .row
-                  .col!="FLxER 3.0.1 VERSION"
+                  .col.text-left!="FLxER 3.0.1 VERSION"
                   .col.ml-auto.text-right="2004-10-25"
             #subSezCnt4.collapse(aria-labelledby='subSezTit4', data-parent='#accordion')
               .cntPadd
@@ -611,33 +611,33 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-Linux.zip" : undefined, title="FLxER AV Mixer 3.0.1 Linux")="FLxER AV Mixer 3.0.1 Linux"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-3.0.1-Linux.zip" : undefined, title="FLxER AV Mixer 3.0.1 Linux")="FLxER AV Mixer 3.0.1 Linux"
                     br
                     !="6.4M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-MAC-os9.sit", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-MAC-os9.sit" : undefined, title="FLxER AV Mixer 3.0.1 MAC os9")="FLxER AV Mixer 3.0.1 MAC os9"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-MAC-os9.sit", download=!session_login ? "FLxER-AV-Mixer-3.0.1-MAC-os9.sit" : undefined, title="FLxER AV Mixer 3.0.1 MAC os9")="FLxER AV Mixer 3.0.1 MAC os9"
                     br
                     !="13M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-MAC-osx.sit", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-MAC-osx.sit" : undefined, title="FLxER AV Mixer 3.0.1 MAC osx")="FLxER AV Mixer 3.0.1 MAC osx"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-MAC-osx.sit", download=!session_login ? "FLxER-AV-Mixer-3.0.1-MAC-osx.sit" : undefined, title="FLxER AV Mixer 3.0.1 MAC osx")="FLxER AV Mixer 3.0.1 MAC osx"
                     br
                     !="13M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-pocketPC.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 pocketPC")="FLxER AV Mixer 3.0.1 pocketPC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-pocketPC.zip", download=!session_login ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 pocketPC")="FLxER AV Mixer 3.0.1 pocketPC"
                     br
                     !="6.5M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 PC (exe)")="FLxER AV Mixer 3.0.1 PC (.exe)"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-PC.zip", download=!session_login ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 PC (exe)")="FLxER AV Mixer 3.0.1 PC (.exe)"
                     br
                     !="6.29M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-exe-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 PC (exe)")="FLxER AV Mixer 3.0.1 PC (.exe)"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-3.0.1-exe-PC.zip", download=!session_login ? "FLxER-AV-Mixer-3.0.1-pocketPC.zip" : undefined, title="FLxER AV Mixer 3.0.1 PC (exe)")="FLxER AV Mixer 3.0.1 PC (.exe)"
                     br
                     !="6.23M"
             #subSezTit3.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt3', aria-expanded='false', aria-controls='subSezCnt3')
                 .row
-                  .col!="FLxER 2.0pro VERSION"
+                  .col.text-left!="FLxER 2.0pro VERSION"
                   .col.ml-auto.text-right="2003-02-05"
             #subSezCnt3.collapse(aria-labelledby='subSezTit3', data-parent='#accordion')
               .cntPadd
@@ -645,13 +645,13 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0pro-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-2.0pro-PC.zip" : undefined, title="FLxER AV Mixer 2.0pro PC")="FLxER AV Mixer 2.0pro PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0pro-PC.zip", download=!session_login ? "FLxER-AV-Mixer-2.0pro-PC.zip" : undefined, title="FLxER AV Mixer 2.0pro PC")="FLxER AV Mixer 2.0pro PC"
                     br
                     !="4.2M"
             #subSezTit2.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt2', aria-expanded='false', aria-controls='subSezCnt2')
                 .row
-                  .col!="FLxER 2.0 VERSION"
+                  .col.text-left!="FLxER 2.0 VERSION"
                   .col.ml-auto.text-right="2002-11-30"
             #subSezCnt2.collapse(aria-labelledby='subSezTit2', data-parent='#accordion')
               .cntPadd
@@ -670,17 +670,17 @@ block content
                 ul
                   li
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0-MAC.sit", download=sessions.user ? "FLxER-AV-Mixer-2.0-MAC.sit" : undefined, title="FLxER AV Mixer 2.0 MAC")="FLxER AV Mixer 2.0 MAC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0-MAC.sit", download=!session_login ? "FLxER-AV-Mixer-2.0-MAC.sit" : undefined, title="FLxER AV Mixer 2.0 MAC")="FLxER AV Mixer 2.0 MAC"
                     br
                     !="2.0M"
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0-PC-exe.zip", download=sessions.user ? "FLxER-AV-Mixer-2.0-PC-exe.zip" : undefined, title="FLxER AV Mixer 2.0 PC")="FLxER AV Mixer 2.0 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-2.0-PC-exe.zip", download=!session_login ? "FLxER-AV-Mixer-2.0-PC-exe.zip" : undefined, title="FLxER AV Mixer 2.0 PC")="FLxER AV Mixer 2.0 PC"
                     br
                     !="2.1M"
             #subSezTit1.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt1', aria-expanded='false', aria-controls='subSezCnt1')
                 .row
-                  .col!="FLxER 1.6 VERSION"
+                  .col.text-left!="FLxER 1.6 VERSION"
                   .col.ml-auto.text-right="2001-05-18"
             #subSezCnt1.collapse(aria-labelledby='subSezTit1', data-parent='#accordion')
               .cntPadd
@@ -697,13 +697,13 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-1.6-PC.zip", download=sessions.user ? "FLxER-AV-Mixer-1.6-PC.zip" : undefined, title="FLxER AV Mixer 1.6 PC")="FLxER AV Mixer 1.6 PC"
+                    a(href=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-1.6-PC.zip", download=!session_login ? "FLxER-AV-Mixer-1.6-PC.zip" : undefined, title="FLxER AV Mixer 1.6 PC")="FLxER AV Mixer 1.6 PC"
                     br
                     !="4.0M"
             #subSezTit0.mb-2
               button.btn.btn-primary.btn-block(data-toggle='collapse', data-target='#subSezCnt0', aria-expanded='false', aria-controls='subSezCnt0')
                 .row
-                  .col!="FLxER 1.0 VERSION"
+                  .col.text-left!="FLxER 1.0 VERSION"
                   .col.ml-auto.text-right="1999-12-30"
             #subSezCnt0.collapse(aria-labelledby='subSezTit0', data-parent='#accordion')
               .cntPadd
@@ -711,7 +711,7 @@ block content
                 strong="FILES"
                 ul
                   li
-                    a(href!=sessions.user ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-1.0-MAC-PC-Linux.zip", download=sessions.user ? "FLxER-AV-Mixer-1.0-MAC-PC-Linux.zip" : undefined, title="FLxER AV Mixer 1.0 MAC PC Linux")="FLxER AV Mixer 1.0 MAC PC Linux"
+                    a(href!=!session_login ? "javascript:alert('Please login');" : "/flxer/versions/FLxER-AV-Mixer-1.0-MAC-PC-Linux.zip", download=!session_login ? "FLxER-AV-Mixer-1.0-MAC-PC-Linux.zip" : undefined, title="FLxER AV Mixer 1.0 MAC PC Linux")="FLxER AV Mixer 1.0 MAC PC Linux"
                     br
                     !="8.9M"
               //.docsLarge
@@ -719,11 +719,11 @@ block content
                   - console.log(attach)
                   .media
                     .media-left
-                      a(href!=sessions.user ? "javascript:alert('Please login');" : attach.filesattach.title : undefined, title=attach.title)
+                      a(href!=!session_login ? "javascript:alert('Please login');" : attach.filesattach.title : undefined, title=attach.title)
                         - var ext = attach.file.substring(attach.file.lastIndexOf(".")+1)
                         i(class=ext=="zip" ? "icon-file-archive" : ext=="pdf" ? "icon-file-pdf" : "icon-doc")
                     .media-body
-                      a(href!=sessions.user ? "javascript:alert('Please login');" : attach.file, download=sessions.user ? attach.title : undefined, title=attach.title)
+                      a(href!=!session_login ? "javascript:alert('Please login');" : attach.file, download=!session_login ? attach.title : undefined, title=attach.title)
                         !=" "+attach.title
                       br
                       small!="("+attach.size+")"
