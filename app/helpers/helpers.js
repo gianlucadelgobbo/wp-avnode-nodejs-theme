@@ -122,11 +122,14 @@ exports.getPage = function getPage(req,callback) {
       if (data['sources'] && data['sources'][0]) {
         let avnodeurl = data['sources'][0];
         if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-          avnodeurl = "https://api.avnode.net/"+req.params.subsubpage+"/"+req.params.subsubsubpage;
+          console.log(req.params);
+          avnodeurl = "https://api.avnode.net/"+req.params.page+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
+          if (req.params.img) avnodeurl+= "img/"+req.params.img;
         } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
           avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
+        console.log(avnodeurl);
         console.log(avnodeurl);
         request({
           url: avnodeurl,
@@ -139,16 +142,17 @@ exports.getPage = function getPage(req,callback) {
               body.pages[item].link = "/"+body.pages[item].link.join("/");
             };
           }
-          if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
+          /* if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
             if (req.params.subsubpage == "galleries") data.gallery = body;
             if (req.params.subsubpage == "videos") data.video = body;
             callback(data);
-          } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-            if (req.params.page == "events") data.event = body;
+          } else  */if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
+            /* if (req.params.page == "events") data.event = body;
             if (req.params.page == "performances") data.performance = body;
             if (req.params.page == "news") data.news = body;
             if (req.params.page == "members") data.member = body;
-            if (req.params.page == "partnerships") data.partnership = body;
+            if (req.params.page == "partnerships") data.partnership = body; */
+            data.avnode = body;
             callback(data);
           } else {
             if (body.data) body.events = body.data;

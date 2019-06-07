@@ -35,6 +35,7 @@ module.exports = function(app) {
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
   

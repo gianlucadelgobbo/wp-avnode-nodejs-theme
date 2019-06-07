@@ -50,5 +50,16 @@
 	"File size": "File size",
 	"File duration": "File duration",
 	"File type": "File type",
-	"Performances": "Performances"
+	"Performances": "Performances",
+	"Contact": "Contact",
+	"Name": "Name",
+	"Please enter your name": "Please enter your name",
+	"Name is required": "Name is required",
+	"Please enter your email": "Please enter your email",
+	"Valid email is required": "Valid email is required",
+	"Message": "Message",
+	"Message for me": "Message for me",
+	"Please,leave us a message": "Please,leave us a message",
+	"Send message": "Send message",
+	"These fields are required.": "These fields are required."
 }

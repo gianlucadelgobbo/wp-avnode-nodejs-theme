@@ -2,9 +2,14 @@ extends layout
 block content
   .row
     .col-sm-8
-      if result.gallery.medias && result.gallery.medias && result.gallery.medias.length
+      if result.avnode.galleries && result.avnode.galleries[0].img
+        header.post_title.mb-4
+          h1(itemprop='name')!=result.avnode.galleries[0].img.title
+        .mb-4
+          img.img-fluid.cntGallImgImg(itemprop='image', src=result.avnode.galleries[0].img.imageFormats.large, alt=result.avnode.galleries[0].img.title)
+      if result.avnode.galleries && result.avnode.galleries[0].medias && result.avnode.galleries[0].medias.length
         ul#listItems.row
-          each media, i in result.gallery.medias
+          each media, i in result.avnode.galleries[0].medias
             li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
               meta(itemprop='position', content=i)
               div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
@@ -16,20 +21,20 @@ block content
                   glink.push("#{media.imageFormats.large}");
     .col-sm-4
       header.post_title.mb-4
-        h1(itemprop='name')!=result.gallery.title
+        h2.h1(itemprop='name')!=result.avnode.galleries[0].title
       .rientro
-        if result.gallery.type
+        if result.avnode.galleries[0].type
           ul.list-inline.category_performance_item.single_performance
             li.list-inline-item
-                span=result.gallery.type.name
-            if result.gallery.tecnique
+                span=result.avnode.galleries[0].type.name
+            if result.avnode.galleries[0].tecnique
               li.list-inline-item
-                span=result.gallery.tecnique.name
-            if result.gallery.genre
+                span=result.avnode.galleries[0].tecnique.name
+            if result.avnode.galleries[0].genre
               li.list-inline-item
-                span=result.gallery.genre.name
+                span=result.avnode.galleries[0].genre.name
         .row
-          each user in result.gallery.users
+          each user in result.avnode.galleries[0].users
             .col-md-4
               .mb-2
                 a(href="/"+user.slug)
@@ -38,9 +43,9 @@ block content
                 a(href="/"+user.slug).users_performance_item_name=user.stagename
               if user.addressesFormatted && user.addressesFormatted.length
                 p.users_performance_item_country!=user.addressesFormatted.join(", ")
-        if result.gallery.events.length
+        if result.avnode.galleries[0].events.length
           h2=global.__('Events')  
-          each booking in result.gallery.events
+          each booking in result.avnode.galleries[0].events
             .row.mb-3
               .col-sm-3
                 .performance_event_image
@@ -54,9 +59,9 @@ block content
                     !=schedule.boxDate
                     br
                     !=schedule.venue.name + " | " + schedule.venue.room + " | " + schedule.venue.location.locality + ", " + schedule.venue.location.country
-        if result.gallery.performances.length
+        if result.avnode.galleries[0].performances.length
           h2=global.__('Performance')  
-          each performance in result.gallery.performances
+          each performance in result.avnode.galleries[0].performances
             .row.mb-3
               .col-sm-3
                 .performance_event_image

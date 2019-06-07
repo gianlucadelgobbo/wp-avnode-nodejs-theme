@@ -1,34 +1,34 @@
 article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
   .row
     .col-sm-8
-      img.img-fluid.main-image.mb-4(src=result.event.imageFormats.large, alt=result.event.title, itemprop='image')
-      .rientro.d-none.d-sm-block!=result.event.aboutFull
+      img.img-fluid.main-image.mb-4(src=result.avnode.imageFormats.large, alt=result.avnode.title, itemprop='image')
+      .rientro.d-none.d-sm-block!=result.avnode.aboutFull
       include ../_common/inc_videos
     .col-sm-4
       header
-        h1.entry-title.mt-3(itemprop='name')!=result.event.title
+        h1.entry-title.mt-3(itemprop='name')!=result.avnode.title
       .rientro
-        h3=result.event.subtitle && result.event.subtitle!= "Text is missing" ? result.event.subtitle : result.event.boxDate
-        if result.event.boxVenue
-          p.boxVenue=result.event.boxVenue
+        h3=result.avnode.subtitle && result.avnode.subtitle!= "Text is missing" ? result.avnode.subtitle : result.avnode.boxDate
+        if result.avnode.boxVenue
+          p.boxVenue=result.avnode.boxVenue
           p
             a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
           #fullSchedule.collapse
             ul
-              each fullSchedule in result.event.fullSchedule
+              each fullSchedule in result.avnode.fullSchedule
                 li=fullSchedule
-        if result.event.type
+        if result.avnode.type
           p
             i(class="fa fa-cube")
             =" "
-            !=result.event.type.name
-        .d-sm-none(itemprop='description')!=result.event.aboutFull
+            !=result.avnode.type.name
+        .d-sm-none(itemprop='description')!=result.avnode.aboutFull
         ul.event_social_list.list-inline
-          each item in result.event.web
+          each item in result.avnode.web
             li.list-inline-item.mb-3
               a(href=item.url target="_blank" )
                 span.lnr.lnr-link.about_button=item.url.replace("http://","").replace("https://","")
-          each item in result.event.social
+          each item in result.avnode.social
             if item.url.indexOf('instagram.com/')!=-1
               li.list-inline-item.mb-3
                 - var tooltip = item.url.replace("http://","").replace("https://","").split("/")
@@ -58,7 +58,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
           section.partners_event_wrapper
             h2.mb-3!=global.__('Production')
             .partners_list_wrapper
-              each partner in result.event.users
+              each partner in result.avnode.users
                   .media.partner.mb-4
                     a.mr-3(href="https://avnode.net/"+partner.slug+"/", title=partner.stagename target="_blank")
                       img.img-fluid(

@@ -3,31 +3,44 @@ var fnz = require('../../helpers/functions');
  
 
 exports.get = function get(req, res) {
+  console.log(req.params);
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
+      console.log(result);
       var page_data = fnz.setPageData(req, result);
       var include_gallery = false;
       var basepath = "";
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
-        if (result.event) pug = config.prefix+'/event';
-        if (result.performance) {
-          pug = config.prefix+'/performance';
-          basepath = "/performances/" +req.params.subpage;
+            /* if (req.params.subsubpage == "galleries") data.gallery = body;
+            if (req.params.subsubpage == "videos") data.video = body;
+            callback(data);
+          } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
+            if (req.params.page == "events") data.event = body;
+            if (req.params.page == "performances") data.performance = body;
+            if (req.params.page == "news") data.news = body;
+            if (req.params.page == "members") data.member = body;
+            if (req.params.page == "partnerships") data.partnership = body; */
+        if (req.params.subpage){
+          if (req.params.page == "events") pug = config.prefix+'/event';
+          if (req.params.subpage && req.params.page == "performances") {
+            pug = config.prefix+'/performance';
+            basepath = "/performances/" +req.params.subpage;
+          }
+          if (req.params.page == "news") pug = config.prefix+'/new';
+          if (req.params.page == "members") pug = config.prefix+'/member';
+          if (req.params.page == "partnerships") pug = config.prefix+'/partnership';
+          if (req.params.subsubpage == "galleries") {
+            pug = config.prefix+'/performance_gallery';
+            include_gallery = true;
+            basepath = "/performances/" +req.params.subpage+"/galleries/" +req.params.subsubsubpage+"/";
+          }
+          if (req.params.subsubpage == "videos") {
+            pug = config.prefix+'/performance_video';
+            basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
+          }            
         }
-        if (result.news) pug = config.prefix+'/new';
-        if (result.member) pug = config.prefix+'/member';
-        if (result.partnership) pug = config.prefix+'/partnership';
-        if (result.gallery) {
-          pug = config.prefix+'/performance_gallery';
-          include_gallery = true;
-          basepath = "/performances/" +req.params.subpage+"/galleries/" +req.params.subsubsubpage+"/";
-        }
-        if (result.video) {
-          pug = config.prefix+'/performance_video';
-          basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
-        }
-        console.log(pug);
+        console.log(result);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
           var Recaptcha = require('express-recaptcha').Recaptcha;
