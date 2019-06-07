@@ -53,10 +53,16 @@ a:hover {
   background-color:$textbackground;
   padding: 0 4px 2px 4px;
 }
-body {
-  background-image: url("/flxer/images/main-img.jpg");
+.background-container {
+  position: fixed;
+  /* background-image: url(/flxer/images/main-img.jpg);
   background-position: center center;
-  background-size: cover;
+  background-size: cover; */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
 .my-sidebar {
   -ms-flex: 0 0 240px;
