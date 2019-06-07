@@ -29,13 +29,13 @@ html(lang=sessions.current_lang)
     // CSS
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
   body.body-common
-    .background-container#background-container
+    #background-container.background-container
     .container-fluid.my-screen
       .row.mb-3.mt-3
-        .col.my-sidebar
+        .col-md.my-sidebar
           a(href=lang_preurl + '/', title=config.project_name)
             img.logosvg(src="/flxer/images/FLxER.svg", alt=config.project_name)
-        .col
+        .col-md
           .text-right
             span.backText!=config.meta.headline[sessions.current_lang]
           .text-right.newsletter.mt-3
@@ -43,9 +43,9 @@ html(lang=sessions.current_lang)
             include ../_partials/components/newsletter-navbar
 
       .row
-        .col.my-sidebar
+        .col-md.my-sidebar.mb-4
           include includes/menu-main
-        .col
+        .col-md
           #result
             block content
     include includes/footer

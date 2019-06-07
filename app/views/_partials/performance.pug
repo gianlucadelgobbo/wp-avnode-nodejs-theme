@@ -1,19 +1,32 @@
 article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
   .row
-    .col-sm-8
+    .col-md-8
+      header.post_title.mb-4.d-md-none
+        h1(itemprop='name')!=result.avnode.title
+      .rientro.d-md-none.mb-4
+        if result.avnode.type
+          ul.list-inline.category_performance_item.single_performance.mb-0
+            li.list-inline-item
+                span=result.avnode.type.name
+            if result.avnode.tecnique
+              li.list-inline-item
+                span=result.avnode.tecnique.name
+            if result.avnode.genre
+              li.list-inline-item
+                span=result.avnode.genre.name
+
       img.img-fluid.main-image(src=result.avnode.imageFormats.large, alt=result.avnode.title, itemprop='image')
       
       #list-tab.list-group.list-group-horizontal.mt-3(role='tablist')
         if result.avnode.about
-          a#about_tab.list-group-item.list-group-item-action.active(href='#about', aria-controls="about", role='tab', result.avnode.performance-toggle="list")=global.__('About')
-        a#technical_specifications_tab.list-group-item.list-group-item-action(href='#technical_specifications', aria-controls="technical_specifications", role='tab', result.avnode.performance-toggle="list")=global.__('Technical specifications')
+          a#about_tab.list-group-item.list-group-item-action.active(href='#about', aria-controls="about", role='tab', data-toggle="list")=global.__('About')
+        a#technical_specifications_tab.list-group-item.list-group-item-action(href='#technical_specifications', aria-controls="technical_specifications", role='tab', data-toggle="list")=global.__('Technical specifications')
         //if result.avnode.paypal
           li.list-group-item
             a.list-group-item.list-group-item-action(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+result.avnode.paypal, target='_blank')    
               =global.__('BUY NOW')
       // Tab panes
-      .tab-content
-        //if result.avnode.about
+      .tab-content.mb-4
         #about.tab-pane.rientro.active(role='tabpanel' aria-labelledby="about_tab")
           .pt-2.pb-2!=result.avnode.about
         #technical_specifications.tab-pane.rientro(role='tabpanel' aria-labelledby="technical_specifications_tab")
@@ -46,26 +59,27 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
                 - basepath = originalbasepath+"/videos/"
                 each item in result.avnode.videos            
                   include ./boxes/box_video
-    .col-sm-4
-      header.post_title.mb-4
+    .col-md-4
+      header.post_title.mb-4.d-none.d-md-block
         h1(itemprop='name')!=result.avnode.title
       .rientro
-        if result.avnode.type
-          ul.list-inline.category_performance_item.single_performance
-            li.list-inline-item
-                span=result.avnode.type.name
-            if result.avnode.tecnique
+        .d-none.d-md-block
+          if result.avnode.type
+            ul.list-inline.category_performance_item.single_performance
               li.list-inline-item
-                span=result.avnode.tecnique.name
-            if result.avnode.genre
-              li.list-inline-item
-                span=result.avnode.genre.name
+                  span=result.avnode.type.name
+              if result.avnode.tecnique
+                li.list-inline-item
+                  span=result.avnode.tecnique.name
+              if result.avnode.genre
+                li.list-inline-item
+                  span=result.avnode.genre.name
         .row
           each user in result.avnode.users
-            .col-md-4
+            .col-lg-4
               .mb-2
                 a(href="https://avnode.net/"+user.slug, target="_blank")
-                  img(class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1), src=user.imageFormats.small, alt=user.stagename)
+                  img.img-fluid(class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1), src=user.imageFormats.small, alt=user.stagename)
               h3
                 a(href="https://avnode.net/"+user.slug, target="_blank").users_performance_item_name=user.stagename
               if user.addressesFormatted && user.addressesFormatted.length
@@ -74,11 +88,11 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
           h2=global.__('Events')  
           each booking in result.avnode.bookings
             .row.mb-3
-              .col-sm-3
-                .performance_event_image
+              .col-lg-3
+                .mb-2
                   a.performance_event_title(href="https://avnode.net/events/"+booking.event.slug, target="_blank")
                     img.img-fluid(src=booking.event.imageFormats.small, alt=booking.event.title)
-              .col-sm-9
+              .col-lg-9
                 h3
                   a.performance_event_title(href="https://avnode.net/events/"+booking.event.slug, target="_blank")=booking.event.title
                 p

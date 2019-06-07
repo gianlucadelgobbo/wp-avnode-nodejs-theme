@@ -26,7 +26,7 @@ var THICKNESS = Math.pow( 80, 2 ),
 
     */
 
-    container,
+    container = document.getElementById( 'background-container' ),
     particle,
     canvas,
     mouse,
@@ -42,44 +42,27 @@ var THICKNESS = Math.pow( 80, 2 ),
     i, n,
     w, h,
     p, s,
-    r, c
-    ;
-var COLS = parseInt(screen.availWidth / SPACING);
-var ROWS = parseInt(screen.availHeight / SPACING) ;
-var NUM_PARTICLES = ROWS * COLS;
+    r, c,
+    COLS,
+    ROWS,
+    NUM_PARTICLES,
 
-console.log(screen.availWidth  );
-console.log(ROWS);
-console.log(COLS);
-console.log(screen.availHeight);
-        
-    
-particle = {
-  vx: 0,
-  vy: 0,
-  x: 0,
-  y: 0
-};
+    particle = {
+      vx: 0,
+      vy: 0,
+      x: 0,
+      y: 0
+    };
 
-function init() {
-
-  container = document.getElementById( 'background-container' );
-  canvas = document.createElement( 'canvas' );
-  
-  ctx = canvas.getContext( '2d' );
-  man = false;
-  tog = true;
-  
-  list = [];
-  
-/*   w = canvas.width = COLS * SPACING + MARGIN * 2;
-  h = canvas.height = ROWS * SPACING + MARGIN * 2;
-  
-  container.style.marginLeft = Math.round( w * -0.5 ) + 'px';
-  container.style.marginTop = Math.round( h * -0.5 ) + 'px'; */
+function setCanvas() {
+  console.log("setCanvas");
+  COLS = parseInt(container.offsetWidth / SPACING);
+  ROWS = parseInt(container.offsetHeight / SPACING) ;
+  NUM_PARTICLES = ROWS * COLS;
   w = canvas.width = COLS * SPACING;
   h = canvas.height = ROWS * SPACING;
   
+  list = [];
   for ( i = 0; i < NUM_PARTICLES; i++ ) {
     
     p = Object.create( particle );
@@ -88,6 +71,22 @@ function init() {
     
     list[i] = p;
   }
+};
+
+function init() {
+  canvas = document.createElement( 'canvas' );
+  
+  ctx = canvas.getContext( '2d' );
+  man = false;
+  tog = true;
+  
+  setCanvas();
+  
+/*   w = canvas.width = COLS * SPACING + MARGIN * 2;
+  h = canvas.height = ROWS * SPACING + MARGIN * 2;
+  
+  container.style.marginLeft = Math.round( w * -0.5 ) + 'px';
+  container.style.marginTop = Math.round( h * -0.5 ) + 'px'; */
 
   var mousetarget = document.getElementsByTagName("BODY")[0];
   mousetarget.addEventListener( 'mousemove', function(e) {
@@ -104,6 +103,7 @@ function init() {
   }
   
   container.appendChild( canvas );
+  window.addEventListener("resize", setCanvas);
 }
 
 function step() {
