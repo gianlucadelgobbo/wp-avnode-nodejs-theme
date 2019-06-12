@@ -6,7 +6,7 @@ exports.get = function get(req, res) {
   console.log(req.params);
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
-      console.log(result);
+      //console.log(result);
       var page_data = fnz.setPageData(req, result);
       var include_gallery = false;
       var basepath = "";
@@ -40,7 +40,7 @@ exports.get = function get(req, res) {
             basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
           }            
         }
-        console.log(result);
+        //console.log(result);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
           var Recaptcha = require('express-recaptcha').Recaptcha;

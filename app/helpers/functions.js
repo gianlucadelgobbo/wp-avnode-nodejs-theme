@@ -26,42 +26,42 @@ exports.setPageData = function setPageData(req, result) {
   }
   if (req.params.edition) page_data.edition = req.params.edition;
   if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
-
+  console.log(req.params)
   if(result && result['ID']) {
     page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
     page_data.description = result.post_content ? this.makeExcerpt(result.post_content, 160) : config.meta.description[req.session.sessions.current_lang];
-    if (result.partnership && result.partnership.title) {
-      page_data.title+= ": "+result.partnership.title;
-      page_data.image_src = result.partnership.imageFormats.large;
-      page_data.description = result.partnership.description;
-    } else if (result.event && result.event.title) {
-      page_data.title+= ": "+result.event.title;
-      page_data.image_src = result.event.imageFormats.large;
-      page_data.description = result.event.description;
-    } else if (result.performance && result.performance.title) {
-      page_data.title+= ": "+result.performance.title;
-      page_data.image_src = result.performance.imageFormats.large;
-      page_data.description = result.performance.description;
-    } else if (result.member && result.member.stagename) {
-      page_data.title+= ": "+result.member.stagename;
-      page_data.image_src = result.member.imageFormats.large;
-      page_data.description = result.member.description;
-    } else if (result.avnode && result.avnode.performance && result.avnode.performance.title) {
-      page_data.title+= ": "+result.avnode.performance.title;
-      page_data.image_src = result.avnode.performance.imageFormats.large;
-      page_data.description = result.avnode.performance.description;
-    } else if (result.avnode && result.avnode.performer && result.avnode.performer.stagename) {
-      page_data.title+= ": "+result.avnode.performer.stagename;
-      page_data.image_src = result.avnode.performer.imageFormats.large;
-      page_data.description = result.avnode.performer.description;
-    } else if (result.avnode && req.params.subsubedition && result.avnode.title && (req.params.subedition=="gallery" || req.params.subedition=="videos" || req.params.subedition=="videos")) {
-      page_data.title+= ": "+result.avnode.title;
-      if (req.params.image) page_data.title+=" | #"+(result.avnode.medias.map(item => {return item.slug;}).indexOf(req.params.image)+1)
-
-      page_data.image_src = result.avnode.imageFormats.large;
-      page_data.description = result.avnode.description ? result.avnode.description : page_data.title;
-    }
+    if (result.avnode) {
+      if(result.avnode.performer && result.avnode.performer.stagename) {
+        page_data.title+= ": "+result.avnode.performer.stagename;
+        page_data.image_src = result.avnode.performer.imageFormats.large;
+        page_data.description = result.avnode.performer.description;
+      } else if (result.avnode.performance && result.avnode.performance.title) {
+        page_data.title+= ": "+result.avnode.performance.title;
+        page_data.image_src = result.avnode.performance.imageFormats.large;
+        page_data.description = result.avnode.performance.description;
+      } else if (req.params.subsubedition && result.avnode.title && (req.params.subedition=="gallery" || req.params.subedition=="videos" || req.params.subedition=="videos")) {
+        page_data.title+= ": "+result.avnode.title;
+        if (req.params.image) page_data.title+=" | #"+(result.avnode.medias.map(item => {return item.slug;}).indexOf(req.params.image)+1)
+  
+        page_data.image_src = result.avnode.imageFormats.large;
+        page_data.description = result.avnode.description ? result.avnode.description : page_data.title;
+      }
+    } 
+    if (result.avnode && req.params.page) {
+      if (req.params.subsubsubpage && result.avnode.title && (req.params.subsubpage=="galleries" || req.params.subsubpage=="videos")) {
+        page_data.title+= ": "+result.avnode.title;
+        if (req.params.subsubpage=="galleries") page_data.title+=" | Gallery: "+result.avnode.galleries[0].title
+        if (req.params.img) page_data.title+=" | #"+(result.avnode.galleries[0].medias.map(item => {return item.slug;}).indexOf(req.params.img)+1)
+  
+        page_data.image_src = result.avnode.imageFormats.large;
+        page_data.description = result.avnode.galleries[0].description ? result.avnode.galleries[0].description : page_data.title;
+      } else if (result.avnode.title) {
+        page_data.title+= ": "+result.avnode.title+" | #";
+        page_data.image_src = result.avnode.imageFormats.large;
+        page_data.description = result.avnode.description;
+      }
+    } 
     page_data.headtitle = page_data.title;
     if (page_data.headtitle && req.session.sessions.current_lang != config.default_lang) page_data.headtitle+=" | "+req.session.sessions.current_lang.toUpperCase();
     /* if (result.avnode && result.avnode.title) {
@@ -252,7 +252,12 @@ exports.get_video = function get_video( url ) {
 };
 
 exports.makeExcerpt = function makeExcerpt(descr,length) {
-  var descr2 = descr.replace(/<[^>]+>/ig,"");
+  var descr2 = descr.replace(/<[^>]+>/ig," ");
+  var descr2 = descr2.replace(/\n/ig," ");
+  var descr2 = descr2.replace(/  /ig," ");
+  var descr2 = descr2.replace(/  /ig," ");
+  var descr2 = descr2.replace(/  /ig," ");
+  var descr2 = descr2.replace(/  /ig," ");
   var descrA = descr2.split(" ");
   var d = "";
   for (var item in descrA) {

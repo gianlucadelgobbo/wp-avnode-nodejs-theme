@@ -15,11 +15,11 @@ exports.get = function get(req, res) {
 
     } else if (req.url == "/sitemap-home.xml") {
       //console.log(req.url);
-      res.header('Content-Type', 'text/xml').render('_common/sitemap-home', {isodate:isodate});
+      res.header('Content-Type', 'text/xml').render('_sitemaps/sitemap-home', {isodate:isodate});
 
     } else if (req.url == "/sitemap-pages.xml") {
       //console.log(req.url);
-      res.header('Content-Type', 'text/xml').render('_common/sitemap-pages', {isodate:isodate});
+      res.header('Content-Type', 'text/xml').render('_sitemaps/sitemap-pages', {isodate:isodate});
 
     /* } else if (req.params.taxonomy) {
       //console.log(req.params.taxonomy);

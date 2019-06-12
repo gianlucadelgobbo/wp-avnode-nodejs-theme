@@ -373,7 +373,7 @@ exports.getEdition = function getEdition(req,callback) {
     } else if (req.params.performance) {
       avnodeurl = data["sources"][0]+req.params.performance+"/";
     } else if (req.params.artist) {
-      avnodeurl = data['sources'][0]+'performers/'+req.params.artist+'/'
+      avnodeurl = data['sources'][0]+(data['sources'][0].indexOf('performers/')!==-1 ? '' : 'performers/')+req.params.artist+'/'
     } else if (data["sources"] && data["sources"][0]) {
       avnodeurl = data["sources"][0];
       if (req.params.performance) avnodeurl+= req.params.performance+"/";
@@ -381,6 +381,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
+      //console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
