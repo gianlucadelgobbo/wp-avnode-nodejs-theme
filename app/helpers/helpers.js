@@ -171,6 +171,57 @@ exports.getPage = function getPage(req,callback) {
   });
 };
 
+exports.getXMLlist = function getXMLlist(req,callback) {
+  const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
+  console.log(url);
+  request({
+    url: url,
+    json: true
+  }, function(error, response, data) {
+    //console.log("//// Page " + req.params.page);
+    if (!error && data && data.ID) {
+      var A = ["performances","gallery","galleries","videos","news","events","members","partnerships","exhibitions"];
+      if (data) data = fnz.fixResult(data);
+      /* if (data.posts){
+        data.posts = fnz.fixResults(data.posts);
+      } */
+      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+      if (data['sources'] && data['sources'][0]) {
+        let avnodeurl = data['sources'][0];
+        if (A.indexOf(req.params.avnode) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
+          console.log(req.params);
+          avnodeurl = "https://api.avnode.net/"+req.params.avnode+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
+          if (req.params.img) avnodeurl+= "img/"+req.params.img;
+        } else if (A.indexOf(req.params.avnode) !== -1 && req.params.subpage) {
+          avnodeurl = "https://api.avnode.net/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
+        }
+        if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
+        console.log(avnodeurl);
+        console.log(avnodeurl);
+        request({
+          url: avnodeurl,
+          json: true
+        }, function(error, response, body) {
+          if (body.pages) {
+            for (var item in body.pages) {
+              body.pages[item].link = body.pages[item].link.split("/");
+              body.pages[item].link.splice(0, 2);
+              body.pages[item].link = "/"+body.pages[item].link.join("/");
+            };
+          }
+          data.avnode = body;
+          callback(data);
+        });
+      } else {
+        //console.log("stocazzo");
+        callback(data);
+      }
+    } else {
+      callback({});
+    }
+  });
+};
+
 exports.getAll = function getAll(req, sez, limit, page, callback) {
   this.getAllReturn(req, sez, limit, page, [], callback);
 };

@@ -1,0 +1,38 @@
+doctype xml
+urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://www.google.com/schemas/sitemap-image/1.1", xmlns:xhtml="http://www.w3.org/1999/xhtml")
+  - console.log(results)
+  url
+    loc=config.domain+"/"+config.sez[sez].baseurl +"/"
+    if (config.locales.length > 1)
+      each locale in config.locales
+        if locale == config.default_lang
+          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sez[sez].baseurl +"/")
+        else
+          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sez[sez].baseurl +"/")
+
+    lastmod=results.startdateISO
+    changefreq yearly
+    priority 1.0
+    if results.featured.full
+      image:image
+        image:loc=result.featured.full
+        image:title!="<![CDATA["+(result.title ? result.title : result.stagename)+"]]>"
+
+
+  each result in results.avnode[config.sez[sez].node]
+    url
+      loc=config.domain+"/"+config.sez[sez].baseurl +"/"+result.slug+"/"
+      if (config.locales.length > 1)
+        each locale in config.locales
+          if locale == config.default_lang
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sez[sez].baseurl +"/"+result.slug+"/")
+          else
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sez[sez].baseurl +"/"+result.slug+"/")
+
+      lastmod=result.date
+      changefreq yearly
+      priority 1.0
+      if result.imageFormats.large
+        image:image
+          image:loc=result.imageFormats.large
+          image:title!="<![CDATA["+(result.title ? result.title : result.stagename)+"]]>"
