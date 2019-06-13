@@ -79,7 +79,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
             .col-lg-4
               .mb-2
                 a(href="https://avnode.net/"+user.slug, target="_blank")
-                  img.img-fluid(class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1), src=user.imageFormats.small, alt=user.stagename)
+                  img.img-fluid(class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1)+"small", src=user.imageFormats.small, alt=user.stagename)
               h3
                 a(href="https://avnode.net/"+user.slug, target="_blank").users_performance_item_name=user.stagename
               if user.addressesFormatted && user.addressesFormatted.length

@@ -24,7 +24,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
     .col-sm-9
       .row
         .col-sm-3
-          img.img-fluid(itemprop='image', alt=result.avnode.performer.stagename, src=result.avnode.performer.imageFormats.large)
+          img.img-fluid(class=result.avnode.performer.imageFormats.large.substring(result.avnode.performer.imageFormats.large.lastIndexOf(".")+1), itemprop='image', alt=result.avnode.performer.stagename, src=result.avnode.performer.imageFormats.large)
         .col-sm-9
           h1.mt-3.entry-title(itemprop='name')!=result.avnode.performer.stagename
           .rientro

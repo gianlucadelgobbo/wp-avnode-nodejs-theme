@@ -2,6 +2,7 @@
 .pt-4
   if body.videos && body.videos.length
     ul#listItems.row
+      - basepath+="/videos/"
       each item, i in body.videos
         include ../boxes/box_video
 

@@ -2,7 +2,7 @@
   if item.imageFormats
     a(href=page_data.url.item.slug+"/", stagename=item.stagename, title=item.stagename)
       img.card-img-top.img-fluid(
-        class=item.imageFormats.small.substring(item.imageFormats.small.lastIndexOf(".")+1)
+        class=item.imageFormats.small.substring(item.imageFormats.small.lastIndexOf(".")+1)+"small"
         src=item.imageFormats.small
         alt=item.stagename
       )
