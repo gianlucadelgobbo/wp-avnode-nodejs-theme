@@ -15,8 +15,8 @@ urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://
     priority 1.0
     if results.featured.full
       image:image
-        image:loc=result.featured.full
-        image:title!="<![CDATA["+(result.title ? result.title : result.stagename)+"]]>"
+        image:loc=results.featured.full
+        image:title!="<![CDATA["+(results.stagename ? results.stagename : results.title ? results.title : results.post_title)+"]]>"
 
 
   each result in results.avnode[config.sez[sez].node]
