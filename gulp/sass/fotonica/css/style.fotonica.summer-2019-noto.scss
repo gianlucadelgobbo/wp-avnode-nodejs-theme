@@ -1,10 +1,10 @@
-summer-2019-noto@import url(https://fonts.googleapis.com/css?family=Mukta:400,700);
+@import url(https://fonts.googleapis.com/css?family=Mukta:400,700);
 body,h1,h2,h3,h4,h5,h6,h7{font-family:'Mukta',sans-serif}
 
 body{color:#131c65;background-color:#f1f1f2;background-size: cover;}
 .btn-primary{color:#131c65;}
 .btn-primary:hover{color:#131c65;opacity: .7;}
-.btn-primary:active, .btn-primary.active, .open>.btn-primary.dropdown-toggle, .open>.btn-primary.dropdown-toggle:hover{
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show>.btn-primary.dropdown-toggle{
   color: #e2336e;
   background: none;
   background-color: none;

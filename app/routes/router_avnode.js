@@ -20,9 +20,7 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-posttype-(:posttype).xml", sitemapRoutes.get);
-  app.get("/sitemap-activities-(:activity).xml", sitemapRoutes.get);
-  app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
+  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
   app.get('/', indexRoutes.get);
 /* 

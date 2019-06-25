@@ -25,7 +25,6 @@ module.exports = function(app) {
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
-  app.get('/sitemap-editions.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);

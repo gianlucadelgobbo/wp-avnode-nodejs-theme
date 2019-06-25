@@ -2,12 +2,12 @@ nav.text-right.mt-5.mb-5
   ul.pl-0.mb-0
     each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
       li.btn-group.mb-3.gradient-ghost-btn-lg.live.gradient-color-palette2
-        a.btn.btn-primary(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+        a.btn.btn-primary(class=menu.childs.length ? "pr-0" : undefined, title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
         if menu.childs.length
-          button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+          button.btn.btn-primary.dropdown-toggle.pl-0(type='button', data-toggle='dropdown', style=menu.post_status == 'publish' ? undefined : "opacity:.65")
             span.caret
             span.sr-only Toggle Dropdown
           ul.dropdown-menu
             each child in menu.childs
-              li(class=child.post_status == 'publish' ? undefined : "disabled")
+              li.dropdown-item(class=child.post_status == 'publish' ? undefined : "disabled")
                 a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title

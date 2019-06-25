@@ -15,10 +15,10 @@ module.exports = function(app) {
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
+  //app.get('/sitemap-editions.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-posttype-(:posttype).xml", sitemapRoutes.get);
-  app.get("/sitemap-users-(:users).xml", sitemapRoutes.get);
+  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);
   app.get('/it/team', usersRoutes.getUsers);
