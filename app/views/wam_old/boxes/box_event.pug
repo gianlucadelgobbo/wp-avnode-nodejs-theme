@@ -16,5 +16,5 @@
         h3.list_title(itemprop='name')!=result.post_title.replace(" | ","<br />")
       .read-more-box
         a.ajaxloader(href=lang_preurl+'/events/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')
-          .sr-only=__("Read More")
+          .sr-only=global.__("Read More")
           i.icon-right

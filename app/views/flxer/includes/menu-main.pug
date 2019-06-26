@@ -1,41 +1,41 @@
 //ul.navbar-nav.navbar-nav-flxer
-  li.nav-item(class=page_data.url.indexOf('/project') == 0 ? "active" : undefined)
-    a.nav-link(href='#project', data-toggle='collapse', aria-expanded="true" , aria-controls="project")
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'#project', data-toggle='collapse', aria-expanded="true" , aria-controls="project")
       span.backText Project
 ul#project.navbar-nav.navbar-nav-flxer.collapse.show 
-  li.nav-item(class=page_data.url.indexOf('/project') == 0 ? "active" : undefined)
-    a.nav-link(href='/project/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/project/') 
       span.backText Project
-  li.nav-item(class=page_data.url.indexOf('/software') == 0 ? "active" : undefined)
-    a.nav-link(href='/software/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/software') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/software/') 
       span.backText Software
-  li.nav-item(class=page_data.url.indexOf('/performances') == 0 ? "active" : undefined)
-    a.nav-link(href='/performances/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/performances') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/performances/') 
       span.backText Performances
-  li.nav-item(class=page_data.url.indexOf('/installations') == 0 ? "active" : undefined)
-    a.nav-link(href='/installations/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/installations') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/installations/') 
       span.backText Installations
-  li.nav-item(class=page_data.url.indexOf('/performances') == 0 ? "active" : undefined)
-    a.nav-link(href='/workshops/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/performances') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/workshops/') 
       span.backText Workshops
-  li.nav-item(class=page_data.url.indexOf('/events') == 0 ? "active" : undefined)
-    a.nav-link(href='/events/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/events/') 
       span.backText Events
-  li.nav-item(class=page_data.url.indexOf('/news') == 0 ? "active" : undefined)
-    a.nav-link(href='/news/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/news/') 
       span.backText News
-  li.nav-item(class=page_data.url.indexOf('/team') == 0 ? "active" : undefined)
-    a.nav-link(href='/team/') 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/team') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/team/') 
       span.backText Team
-  //li.nav-item(class=page_data.url.indexOf('/newsletter') == 0 ? "active" : undefined)
-    a.nav-link(href='/newsletter/') Newsletter
-  li.nav-item(class=page_data.url.indexOf('/contacts') == 0 ? "active" : undefined)
-    a.nav-link(href='/contacts/') 
-      span.backText Contacts
-  //li.nav-item(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
-    a.nav-link(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+  //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/newsletter/') Newsletter
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/contacts/') 
+      span.backText=global.__('Contacts')
+  //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
 
-  li.nav-item(class=page_data.url.indexOf('/search') == 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
     a.nav-link#searchModalButton(href="/search/")
       span.backText 
         i.icon-search

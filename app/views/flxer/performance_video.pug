@@ -15,7 +15,7 @@ block content
       header.post_title.mb-4
         h1(itemprop='name')!=result.avnode.videos[0].title
       .rientro
-        h3=__("Data")
+        h3=global.__("Data")
         if result.avnode.videos[0].media && result.avnode.videos[0].media.file
           ul
             li=global.__('File name')+": "
@@ -28,16 +28,16 @@ block content
               b=ext
         if result.avnode.videos[0].tags
           .data_footage_video_wrapper
-            h3=__("Tags")
+            h3=global.__("Tags")
             ul.list-inline.category_performance_item
               each tag in result.avnode.videos[0].tags
                 li.list-inline-item=tag.tag
         if result.avnode.videos[0].about
           .data_footage_video_wrapper
-            h3=__("About")
+            h3=global.__("About")
             .pt-2.pb-2!=result.avnode.videos[0].about
         .data_footage_video_wrapper
-          h3=__("Author")
+          h3=global.__("Author")
           .row
             each user in result.avnode.videos[0].users
               .col-md-4

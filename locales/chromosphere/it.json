@@ -3,7 +3,7 @@
 	"The content you requested was not found on our server, please try to search for it": "The content you requested was not found on our server, please try to search for it",
 	"Events": "Events",
 	"Editions": "Editions",
-	"Contacts": "Contacts",
+	"Contacts": "Contatti",
 	"Search": "Search",
 	"a project of": "a project of",
 	"Rome": "Rome",
@@ -34,5 +34,11 @@
 	"Videos": "Videos",
 	"Corporate": "Corporate",
 	"Previous slide": "Previous slide",
-	"Nexts slide": "Nexts slide"
+	"Nexts slide": "Nexts slide",
+	"performers": "performers",
+	"peoples": "peoples",
+	"from": "from",
+	"playing": "playing",
+	"Author": "Author",
+	"LINKS": "LINKS"
 }

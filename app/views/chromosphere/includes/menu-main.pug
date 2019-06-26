@@ -1,17 +1,17 @@
 ul.navbar-nav.mr-auto
-  li.nav-item(class=page_data.url.indexOf('/concept') == 0 ? "active" : undefined)
-    a.nav-link(href='/concept/') Concept
-  li.nav-item(class=page_data.url.indexOf('/partnerships') == 0 ? "active" : undefined)
-    a.nav-link(href='/partnerships/') Satellite Events
-  li.nav-item(class=page_data.url.indexOf('/news') == 0 ? "active" : undefined)
-    a.nav-link(href='/news/') News
-  li.nav-item(class=page_data.url.indexOf('/press') == 0 ? "active" : undefined)
-    a.nav-link(href='/press/') Press
-  li.nav-item(class=page_data.url.indexOf('/contacts') == 0 ? "active" : undefined)
-    a.nav-link(href='/contacts/') Contacts
-  //li.nav-item(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
-    a.nav-link(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-  li.nav-item(class=page_data.url.indexOf('/search') == 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/concept') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/concept/') Concept
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/partnerships/') Satellite Events
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/news/') News
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/press') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/press/') Press
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
+  //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
     a.nav-link#searchModalButton(href="/search/")
       i.icon-search
       .sr-only=global.__("Search")

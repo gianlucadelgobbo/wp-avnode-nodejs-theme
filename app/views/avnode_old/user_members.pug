@@ -65,7 +65,7 @@ block content
       if result.auth_contents.events && result.auth_contents.events.length
         - var res = result.auth_contents.events
         section(itemscope, itemtype="https://schema.org/ItemList")
-          h3(itemprop="name")=__("Member")+" "+config.posttypes_labels['events']
+          h3(itemprop="name")=global.__("Member")+" "+config.posttypes_labels['events']
           .row.isotope.results
             each result, position in res
               .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem
@@ -73,7 +73,7 @@ block content
       if result.auth_contents.news && result.auth_contents.news.length
         - var res = result.auth_contents.news
         section(itemscope, itemtype="https://schema.org/ItemList")
-          h3(itemprop="name")=__("Member")+" "+config.posttypes_labels['news']
+          h3(itemprop="name")=global.__("Member")+" "+config.posttypes_labels['news']
           .row.isotope.results
             each result, position in res
               .col-xl-3.col-lg-4.col-md-12.col-sm-12.isotopeitem

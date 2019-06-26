@@ -1,12 +1,12 @@
 ul.navbar-nav
-  li.nav-item(class=page_data.url.indexOf('/idea') == 0 ? "active" : undefined)
-    a.nav-link(href='/idea/') Idea
-  li.nav-item(class=page_data.url.indexOf('/events') == 0 ? "active" : undefined)
-    a.nav-link(href='/events/') Productions
-  li.nav-item(class=page_data.url.indexOf('/partnerships') == 0 ? "active" : undefined)
-    a.nav-link(href='/partnerships/') Satellite Events
-  li.nav-item(class=page_data.url.indexOf('/news') == 0 ? "active" : undefined)
-    a.nav-link(href='/news/') News
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/idea') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/idea/') Idea
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/events/') Productions
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/partnerships/') Satellite Events
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/news/') News
   li.nav-item.dropdown
     a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
     .dropdown-menu(role='menu')
@@ -79,13 +79,13 @@ ul.navbar-nav
       a.dropdown-item(href='/editions/2006-rome/') 2006 Rome
       a.dropdown-item(href='/editions/2005-rome/') 2005 Rome
       a.dropdown-item(href='/editions/2004-rome/') 2004 Rome
-  li.nav-item(class=page_data.url.indexOf('/press') == 0 ? "active" : undefined)
-    a.nav-link(href='/press/') Press
-  li.nav-item(class=page_data.url.indexOf('/contacts') == 0 ? "active" : undefined)
-    a.nav-link(href='/contacts/') Contacts
-  //li.nav-item(class=page_data.url.indexOf('/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
-    a.nav-link(href='/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
-  li.nav-item(class=page_data.url.indexOf('/search') == 0 ? "active" : undefined)
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/press') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/press/') Press
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
+  //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
     a.nav-link#searchModalButton(href="/search/")
       i.icon-search
       .sr-only=global.__("Search")
