@@ -1,6 +1,6 @@
 doctype xml
 urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://www.google.com/schemas/sitemap-image/1.1", xmlns:xhtml="http://www.w3.org/1999/xhtml")
-  - console.log(results)
+  - console.log(results.avnode[config.sez[sez].node])
   url
     loc=config.domain+"/"+config.sez[sez].baseurl +"/"
     if (config.locales.length > 1)
@@ -29,7 +29,7 @@ urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://
           else
             xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sez[sez].baseurl +"/"+result.slug+"/")
 
-      lastmod=result.date
+      lastmod=result.updatedAt ? result.updatedAt : result.createdAt
       changefreq yearly
       priority 1.0
       if result.imageFormats.large
