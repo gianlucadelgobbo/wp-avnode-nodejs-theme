@@ -129,36 +129,40 @@ exports.getPage = function getPage(req,callback) {
           avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        console.log(avnodeurl);
-        console.log(avnodeurl);
+        //console.log(avnodeurl);
+        
         request({
           url: avnodeurl,
           json: true
         }, function(error, response, body) {
-          if (body.pages) {
-            for (var item in body.pages) {
-              body.pages[item].link = body.pages[item].link.split("/");
-              body.pages[item].link.splice(0, 2);
-              body.pages[item].link = "/"+body.pages[item].link.join("/");
-            };
-          }
-          /* if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-            if (req.params.subsubpage == "galleries") data.gallery = body;
-            if (req.params.subsubpage == "videos") data.video = body;
-            callback(data);
-          } else  */if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-            /* if (req.params.page == "events") data.event = body;
-            if (req.params.page == "performances") data.performance = body;
-            if (req.params.page == "news") data.news = body;
-            if (req.params.page == "members") data.member = body;
-            if (req.params.page == "partnerships") data.partnership = body; */
-            data.avnode = body;
-            callback(data);
-          } else {
-            if (body.data) body.events = body.data;
-            fnz.shortcodify(config.prefix, data, body, req.params, data => {
+          if (response.statusCode==200) {
+            if (body.pages) {
+              for (var item in body.pages) {
+                body.pages[item].link = body.pages[item].link.split("/");
+                body.pages[item].link.splice(0, 2);
+                body.pages[item].link = "/"+body.pages[item].link.join("/");
+              };
+            }
+            /* if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
+              if (req.params.subsubpage == "galleries") data.gallery = body;
+              if (req.params.subsubpage == "videos") data.video = body;
               callback(data);
-            });
+            } else  */if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
+              /* if (req.params.page == "events") data.event = body;
+              if (req.params.page == "performances") data.performance = body;
+              if (req.params.page == "news") data.news = body;
+              if (req.params.page == "members") data.member = body;
+              if (req.params.page == "partnerships") data.partnership = body; */
+              data.avnode = body;
+              callback(data);
+            } else {
+              if (body.data) body.events = body.data;
+              fnz.shortcodify(config.prefix, data, body, req.params, data => {
+                callback(data);
+              });
+            }
+          } else {
+            callback({});
           }
         });
       } else {
@@ -381,21 +385,25 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      //console.log("avnodeurl "+avnodeurl);
+      console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
       }, function(error, response, body) {
-        data.avnode = body;
-        if (req.params.performance || req.params.artist) {
-          callback(data);
-        } else {
-          /* if (req.params.subsubedition && (req.params.subedition == "gallery" || req.params.subedition == "videos")) {
-            data.avnode = body;
-          } */
-          fnz.shortcodify(config.prefix, data, body, req.params, data => {
+        if (response.statusCode==200) {
+          data.avnode = body;
+          if (req.params.performance || req.params.artist) {
             callback(data);
-          });
+          } else {
+            /* if (req.params.subsubedition && (req.params.subedition == "gallery" || req.params.subedition == "videos")) {
+              data.avnode = body;
+            } */
+            fnz.shortcodify(config.prefix, data, body, req.params, data => {
+              callback(data);
+            });
+          }
+        } else {
+          callback({});
         }
       });
     } else {

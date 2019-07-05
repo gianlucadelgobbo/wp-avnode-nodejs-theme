@@ -3,7 +3,7 @@ var fnz = require('../../helpers/functions');
  
 
 exports.get = function get(req, res) {
-  //console.log(req.params);
+  console.log("req.params");
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
