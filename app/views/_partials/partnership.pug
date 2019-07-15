@@ -2,7 +2,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
   .row
     .col-sm-8
       img.img-fluid.main-image.mb-4(src=result.avnode.imageFormats.large, alt=result.avnode.title, itemprop='image')
-      .rientro.d-none.d-sm-block!=result.avnode.aboutFull
+      .rientro.d-none.d-sm-block!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
       include ../_common/inc_videos
     .col-sm-4
       header
@@ -22,7 +22,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
             i(class="fa fa-cube")
             =" "
             !=result.avnode.type.name
-        .d-sm-none(itemprop='description')!=result.avnode.aboutFull
+        .d-sm-none(itemprop='description')!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
         ul.event_social_list.list-inline
           each item in result.avnode.web
             li.list-inline-item.mb-3
