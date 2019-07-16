@@ -1,10 +1,9 @@
 $(function() {
-    function bodyPadding() {
-      $('.body-common').css("padding-top", $('#navbar-top').outerHeight()+"px");
-    }
+  function bodyPadding() {
+    $('.body-common').css("padding-top", $('#navbar-top').outerHeight()+"px");
+  }
+  bodyPadding();
+  $( window ).resize(function() {
     bodyPadding();
-    $( window ).resize(function() {
-      bodyPadding();
-    });
   });
-  
+});

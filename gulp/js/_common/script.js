@@ -228,16 +228,16 @@ $(function() {
     var title = this.title;
     $('#cntModal').modal();
     history.pushState({}, title, url);
-    $(document).prop('title',title);
+    $(document).prop('title', title);
     $( "#cntModal .modal-body .container" ).load( url+" #result" , function(response) {
-      $( "#cntModal .modal-title" ).html($(response).find(".type").html())
+      $( "#cntModal #cntModalLabel" ).html($(response).find(".type").html())
     });
 
     return false;
   });
   $('#cntModal').on('hidden.bs.modal', function (e) {
-    $( "#cntModal .modal-body" ).html("<div class='loading'>Loading...</div>");
-    $( "#cntModal .modal-title" ).html("");
+    $( "#cntModal .modal-body .container" ).html("<div class='loading'>Loading...</div>");
+    $( "#cntModal #cntModalLabel" ).html("");
     history.pushState({}, onclose_title, onclose_url);
     $(document).prop('title',onclose_title);
   });

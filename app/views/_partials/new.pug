@@ -5,6 +5,10 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Article'
         h1.entry-title(itemprop='name')=result.avnode.title+" "
       .rientro
         include ../_common/inc_type_hidden
+        .d-none.type.text-muted
+          i(class="fa fa-cube")
+          =" News"
+
         .text-right
           include ../_common/inc_datemonth
           br

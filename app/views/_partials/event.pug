@@ -18,7 +18,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
               each fullSchedule in result.avnode.fullSchedule
                 li=fullSchedule
         if result.avnode.type
-          p
+          p.type
             i(class="fa fa-cube")
             =" "
             !=result.avnode.type.name

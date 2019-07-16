@@ -45,8 +45,8 @@ html(lang=sessions.current_lang)
       #result
         block content
     include includes/footer
-    include ../_common/modal-full
-    include ../_common/modal-search
+    include ../_partials/components/modal-full
+    include ../_partials/components/modal-search
     //include includes/modal-resize
 
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
@@ -56,15 +56,7 @@ html(lang=sessions.current_lang)
 
     if include_gallery
       #fb-root
-      script.
-        (function (d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=#{config.meta.fb_appId}";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+      script(async='', defer='', crossorigin='anonymous', src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId='+config.meta.fb_appId+'&autoLogAppEvents=1')
       script(type="text/javascript").
         var sgp_config = {
           "sgp_selT": "2",

@@ -106,5 +106,7 @@
 	"Surname": "Surname",
 	"Please enter a valid name": "Please enter a valid name",
 	"Subscription success!!!": "Subscription success!!!",
-	"Already subscribed.": "Already subscribed."
+	"Already subscribed.": "Already subscribed.",
+	"Full schedule": "Full schedule",
+	"Production": "Production"
 }
