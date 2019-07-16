@@ -9,17 +9,20 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
           span.stit=performance.schedule.starttimeTime+" > "+performance.schedule.endtimeTime
       .caption-body
         h2.caption-title(itemprop='name')=performance.title
-        each user in performance.users
-          .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
-            b(itemprop='name')=user.stagename
-            if user.addresses && user.addresses.length && user.addresses[0] && user.addresses[0].country
-              span.caption-location.caption-location-block
-              span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
-                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                b(itemprop='addressCountry')=user.addresses[0].country
-                if user.addresses[0].locality
-                  !=", " 
-                  span(itemprop='addressLocality')=user.addresses[0].locality
+        each user, index in performance.users
+          if index < 2
+            .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+              b(itemprop='name')=user.stagename
+              if user.addresses && user.addresses.length && user.addresses[0] && user.addresses[0].country
+                span.caption-location.caption-location-block
+                span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                  span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                  b(itemprop='addressCountry')=user.addresses[0].country
+                  if user.addresses[0].locality
+                    !=", " 
+                    span(itemprop='addressLocality')=user.addresses[0].locality
+        if performance.users.length > 2
+          .caption-author="+"+(performance.users.length - 2)+" "+global.__("More")
       .caption-type
         .caption-type-cnt
           span.icon-eye
