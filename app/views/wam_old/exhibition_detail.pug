@@ -23,33 +23,31 @@ block content
                       span.d-none(itemprop='datePublished')=schedule.starttime
               div(itemprop='description')!=result.avnode.performance.about
             if result.avnode.performance.galleries && result.avnode.performance.galleries.length
-              div(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
+              .mt-3(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
                 h3.grid-title.h1like(itemprop='name')=global.__("Gallery")
                 .rientro
-                  ul#listItems.row
+                  ul.listItems.row
                     each gallery, index in result.avnode.performance.galleries
-                      li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+                      li.col-xl-4.col-sm-6(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                         meta(itemprop='position', content=index)
                         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
                           a(itemprop='url', href='/prenatal/'+page_data.exhibition+'/gallery/'+gallery.slug+'/', title=gallery.title)
                             img.img-fluid(itemprop='image', src=gallery.imageFormats.small, alt=gallery.title)
-                          p
                           .caption(style='padding-right:15px;padding-left:15px;')
                             .caption-body
                               h2.caption-title(itemprop='name')=gallery.title
                               !="Images: "+gallery.stats.img
             if result.avnode.performance.videos && result.avnode.performance.videos.length
-              div(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
+              .mt-3(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
                 h3.grid-title.h1like(itemprop='name')=global.__("Videos")
                 .rientro
-                  ul#listItems.row
+                  ul.listItems.row
                     each video, index in result.avnode.performance.videos
-                      li.col-xl-2.col-sm-3(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+                      li.col-xl-4.col-sm-6(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                         meta(itemprop='position', content=index)
                         div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
                           a(itemprop='url', href='/prenatal/'+page_data.exhibition+'/videos/'+video.slug+'/', title=video.title)
                             img.img-fluid(itemprop='image', src=video.imageFormats.small, alt=video.title)
-                          p
                           .caption(style='padding-right:15px;padding-left:15px;')
                             .caption-body
                               h2.caption-title(itemprop='name')=video.title

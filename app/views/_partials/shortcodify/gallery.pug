@@ -2,7 +2,7 @@
 
 .pt-4
   if body.galleries && body.galleries.length
-    ul#listItems.row
+    ul.listItems.row
       - basepath+="/gallery/"
       each item, i in body.galleries
         include ../boxes/box_gallery
@@ -18,7 +18,7 @@
 
 
   if body.medias && body.medias.length
-    ul#listItems.row
+    ul.listItems.row
       each media, i in body.medias
         li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
           meta(itemprop='position', content=i)

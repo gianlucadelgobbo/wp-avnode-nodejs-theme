@@ -46,7 +46,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
       if result.avnode.galleries.length  
         section.event_galleries_wrapper
           h2.main_title.indented_title!=global.__('Galleries')+" <small>(<span>"+result.avnode.galleries.length+"</span>)</small>"  
-          ul#listItems.row
+          ul.listItems.row
             - basepath = originalbasepath+"/galleries/"
             each item in result.avnode.galleries                    
               include ./boxes/box_gallery
@@ -55,7 +55,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
           .row
             .col-lg-12
               h2.main_title.indented_title!=global.__('Videos')+" <small>(<span>"+result.avnode.videos.length+"</span>)</small>"  
-              ul#listItems.row
+              ul.listItems.row
                 - basepath = originalbasepath+"/videos/"
                 each item in result.avnode.videos            
                   include ./boxes/box_video

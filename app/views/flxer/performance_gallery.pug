@@ -8,7 +8,7 @@ block content
         .mb-4
           img.img-fluid.cntGallImgImg(itemprop='image', src=result.avnode.galleries[0].img.imageFormats.large, alt=result.avnode.galleries[0].img.title)
       if result.avnode.galleries && result.avnode.galleries[0].medias && result.avnode.galleries[0].medias.length
-        ul#listItems.row
+        ul.listItems.row
           each media, i in result.avnode.galleries[0].medias
             li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
               meta(itemprop='position', content=i)

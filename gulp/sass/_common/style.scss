@@ -23,8 +23,9 @@ a:hover {
   padding-right: .5rem;
   padding-left: .5rem;
 }
-#listItems {
+.listItems {
   padding-left: 0;
+  list-style: none;
 }
 #subscribe .alert {
   padding: 0.5rem 1rem;
