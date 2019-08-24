@@ -31,6 +31,15 @@ module.exports = function(app) {
   app.get('/', indexRoutes.get);
 
   app.get('/meta/', metaRoutes.get);
+  app.get('/qrcode-app-2019', function(req, res) {
+    console.log(req.headers["user-agent"]);
+    if (req.headers["user-agent"].indexOf("Android")>=0) {
+      res.redirect(301, "https://livecinemafestival.comfiles/2019/08/LCF2019.apk")
+    } else {
+      //res.redirect(301, "")
+    }
+    res.send(req.headers["user-agent"]);
+  });
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
   //app.get('/sitemap-editions.xml', sitemapRoutes.get);
