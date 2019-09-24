@@ -4,7 +4,7 @@ span.sr-only
         !=" | "
     if result.schedule[result.schedule.length-1].endtime
         span(itemprop='endDate', content=result.schedule[result.schedule.length-1].endtime)=result.schedule[result.schedule.length-1].endtime
-if result.boxDate
+if result.boxDateFull
     .date
         i.icon-calendar-check-o
-        !=" "+result.boxDate
+        !=" "+result.boxDateFull

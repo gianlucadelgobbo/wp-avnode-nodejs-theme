@@ -56,7 +56,7 @@ block content
                   a.performance_event_title(href="/events/"+booking.event.slug)=booking.event.title
                 p
                   each schedule in booking.schedule
-                    !=schedule.boxDate
+                    !=schedule.boxDateFull
                     br
                     !=schedule.venue.name + " | " + schedule.venue.room + " | " + schedule.venue.location.locality + ", " + schedule.venue.location.country
         if result.avnode.galleries[0].performances.length

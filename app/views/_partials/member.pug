@@ -8,7 +8,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
       header
         h1.entry-title(itemprop='name')!=result.member.stagename
       .rientro
-        p.subtitle=result.member.subtitle && result.member.subtitle!= "Text is missing" ? result.member.subtitle : result.member.boxDate
+        p.subtitle=result.member.subtitle && result.member.subtitle!= "Text is missing" ? result.member.subtitle : result.member.boxDateFull
         .row
           .col-lg-9
             if result.member.boxVenue

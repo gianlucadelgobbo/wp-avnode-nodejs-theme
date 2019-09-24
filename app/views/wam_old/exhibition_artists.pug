@@ -63,7 +63,7 @@ block content
                         p.stit.schedule
                           span(itemprop='contentLocation')=schedule.venue.room
                           !=" | "
-                          !=schedule.boxDate+" > "+schedule.endtimeTime
+                          !=schedule.boxDateFull+" > "+schedule.endtimeTime
 
     else if result.post_content
       !=result.post_content

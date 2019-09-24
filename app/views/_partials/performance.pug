@@ -97,7 +97,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
                   a.performance_event_title(href="https://avnode.net/events/"+booking.event.slug, target="_blank")=booking.event.title
                 p
                   each schedule in booking.schedule
-                    !=schedule.boxDate
+                    !=schedule.boxDateFull
                     br
                     !=schedule.venue.name + " | " + schedule.venue.room + " | " + schedule.venue.location.locality + ", " + schedule.venue.location.country
         .text-right
