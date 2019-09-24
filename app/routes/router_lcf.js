@@ -34,11 +34,11 @@ module.exports = function(app) {
   app.get('/qrcode-app-2019', function(req, res) {
     console.log(req.headers["user-agent"]);
     if (req.headers["user-agent"].indexOf("Android")>=0) {
-      res.redirect(301, "https://livecinemafestival.com/files/2019/08/LCF2019.apk")
+      res.redirect(301, "https://play.google.com/store/apps/details?id=com.Ielardiartwork.LiveCinema1")
     } else {
       res.redirect(301, "https://apps.apple.com/us/app/lcf/id1258182985?ls=1")
     }
-    res.send(req.headers["user-agent"]);
+    //res.send(req.headers["user-agent"]);
   });
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);
