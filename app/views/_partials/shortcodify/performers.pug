@@ -18,10 +18,11 @@ section.performers_event_wrapper
             .caption
               .caption-body
                 h2.caption-title(itemprop='name')=item.stagename
-                .caption-location-artists
-                  each address in item.addresses
-                    span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
-                      span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                        b(itemprop='addressCountry')=address.country
-                        | , 
-                        span(itemprop='addressLocality')=address.locality
+                if item.addresses
+                  .caption-location-artists
+                    each address in item.addresses
+                      span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                        span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                          b(itemprop='addressCountry')=address.country
+                          | , 
+                          span(itemprop='addressLocality')=address.locality
