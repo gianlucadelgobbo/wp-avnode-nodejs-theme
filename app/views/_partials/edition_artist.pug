@@ -59,11 +59,11 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
             li.rientro(style='margin-bottom: 10px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
               meta(itemprop='position', content=i)
               div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                a(itemprop='url', href=(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)
+                a(itemprop='url', href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)
                   img.img-fluid(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
                 p
                 h3(itemprop='name')
-                  a(href=(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)!=performance.title
+                  a(href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)!=performance.title
                 p.type=performance.type.name
                 - console.log(performance)
                 each booking in performance.bookings
