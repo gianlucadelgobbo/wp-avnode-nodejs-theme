@@ -4,7 +4,9 @@ var fnz = require('../../helpers/functions');
 
 exports.get = function get(req, res) {
   console.log("req.params");
-  helpers.setSessions(req, function() {
+  helpers.setSessions(req, function(lang_preurl) {
+    console.log("lang_preurl stocazzo");
+    console.log(lang_preurl);
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       var include_gallery = false;

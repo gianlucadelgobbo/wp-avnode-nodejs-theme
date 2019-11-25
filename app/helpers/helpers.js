@@ -157,7 +157,8 @@ exports.getPage = function getPage(req,callback) {
               callback(data);
             } else {
               if (body.data) body.events = body.data;
-              fnz.shortcodify(config.prefix, data, body, req.params, data => {
+              var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
+              fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, data => {
                 callback(data);
               });
             }
@@ -385,7 +386,6 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
@@ -398,7 +398,8 @@ exports.getEdition = function getEdition(req,callback) {
             /* if (req.params.subsubedition && (req.params.subedition == "gallery" || req.params.subedition == "videos")) {
               data.avnode = body;
             } */
-            fnz.shortcodify(config.prefix, data, body, req.params, data => {
+            var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
+            fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, data => {
               callback(data);
             });
           }
