@@ -1,6 +1,8 @@
 extends layout
 block content
-  #carousel.carousel.slide(data-ride='carousel')
+  .embed-responsive.embed-responsive-16by9
+    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffotonicafestival%2Fvideos%2F2464820847091537%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true")
+  //#carousel.carousel.slide(data-ride='carousel')
     //
       Indicators
       <ol class="carousel-indicators">
@@ -17,7 +19,6 @@ block content
       <li data-target="#carousel" data-slide-to="10"></li>
       </ol>
     // Wrapper for slides
-    .carousel-inner
       .carousel-item.active
         img.img-fluid(src='//fotonicafestival.com/files/2019/10/fotonica2019-visual.jpg', alt='Fotonica 2019')
       .carousel-item
