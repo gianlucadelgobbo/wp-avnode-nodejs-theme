@@ -1,7 +1,7 @@
 article#container(itemprop='performer', itemscope='', itemtype='http://schema.org/CreativeWork')
   header.post_title.mb-4
     h1(itemprop="name")=page_data.title
-  - console.log(result.avnode.performance)
+  - console.log(result.avnode.performance.bookings[0].schedule)
   .row.performance-dett
     .col-sm-9
       .row
@@ -11,28 +11,26 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
           h1.mt-3.entry-title(itemprop='name')=result.avnode.performance.title
           .rientro
             p.type=result.avnode.performance.type.name
+            p.stit
+              !="Duration: "+result.avnode.performance.humanDuration
+              
             each booking in result.avnode.performance.bookings
               each schedule in booking.schedule
                 p.stit
-                  span(itemprop='contentLocation')=schedule.venue.room
-                p.stit
-                  !=schedule.boxDateFull
-                  br
+                  !=schedule.boxDateFull+" "
                   span.d-none(itemprop='datePublished')=schedule.starttime
-            p.stit
-              !="Duration: "+result.avnode.performance.humanDuration
-            if result.avnode.performance.price && result.avnode.performance.paypal
-              p.price="Price: "
-                a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+result.avnode.performance.paypal, target='_blank')
-                  b=result.avnode.performance.price+",00 € | "+ global.__('BUY NOW')
+                  !=" | "
+                  span(itemprop='contentLocation')=schedule.venue.room
+                  if schedule.price && !schedule.alleventschedulewithoneprice
+                    p.price="Price: "
+                      a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
+                        b=schedule.price+",00 € | "+ global.__('BUY NOW')
+
+              if booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice && booking.schedule[0].price && booking.schedule[0].paypal
+                p.price="Price: "
+                  a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+booking.schedule[0].paypal, target='_blank')
+                    b=booking.schedule[0].price+",00 € | "+ global.__('BUY NOW')
             div(itemprop='description')!=result.avnode.performance.about
-            if result.avnode.performance.paypal
-              p
-                form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
-                  input(type='hidden', name='cmd', value='_s-xclick')
-                  input(type='hidden', name='hosted_button_id', value=result.avnode.performance.paypal)
-                  input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
-                  img(alt='', border='0', src='https://www.paypalobjects.com/it_IT/i/scr/pixel.gif', width='1', height='1')
 
           if result.avnode.performance.galleries && result.avnode.performance.galleries.length
             .mt-3(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
