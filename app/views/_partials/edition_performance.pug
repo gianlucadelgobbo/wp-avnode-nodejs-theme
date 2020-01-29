@@ -1,7 +1,8 @@
+script(src="https://www.paypal.com/sdk/js?client-id="+config.accounts.paypal_client_id+"&currency=EUR")
 article#container(itemprop='performer', itemscope='', itemtype='http://schema.org/CreativeWork')
   header.post_title.mb-4
     h1(itemprop="name")=page_data.title
-  - console.log(result.avnode.performance.bookings[0].schedule)
+  - console.log(result.avnode)
   .row.performance-dett
     .col-sm-9
       .row
@@ -14,22 +15,75 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
             p.stit
               !="Duration: "+result.avnode.performance.humanDuration
               
-            each booking in result.avnode.performance.bookings
-              each schedule in booking.schedule
+              each booking in result.avnode.performance.bookings
                 p.stit
-                  !=schedule.boxDateFull+" "
-                  span.d-none(itemprop='datePublished')=schedule.starttime
-                  !=" | "
-                  span(itemprop='contentLocation')=schedule.venue.room
-                  if schedule.price && !schedule.alleventschedulewithoneprice
-                    p.price="Price: "
-                      a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
-                        b=schedule.price+",00 € | "+ global.__('BUY NOW')
+                  each schedule in booking.schedule
+                    .stit
+                      !=schedule.boxDateFull+" "
+                      span.d-none(itemprop='datePublished')=schedule.starttime
+                      !=" | "
+                      span(itemprop='contentLocation')=schedule.venue.room
+                    .stit
+                      if schedule.price && !schedule.alleventschedulewithoneprice
+                        p.price="Price: "
+                          a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
+                            b=schedule.price+",00 € | "+ global.__('BUY NOW')
 
-              if booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice && booking.schedule[0].price && booking.schedule[0].paypal
-                p.price="Price: "
-                  a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+booking.schedule[0].paypal, target='_blank')
-                    b=booking.schedule[0].price+",00 € | "+ global.__('BUY NOW')
+                if booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice && booking.schedule[0].price && booking.schedule[0].paypal
+                  .row
+                    .col
+                      p!="Price: <b>"+booking.schedule[0].price+",00 €</b>"
+                    .col
+                      p(id='paybutton')
+                      script.
+                        paypal.Buttons({
+                          style: {
+                              layout: 'horizontal'
+                          },
+                          createOrder: function(data, actions) {
+                            var order = {
+                              "intent": "CAPTURE",
+                              "application_context": {
+                                "brand_name": "#{booking.event.title}: #{result.avnode.performance.title}",
+                                "shipping_preference": "NO_SHIPPING"
+                              },
+
+                              "purchase_units": [
+                                {
+                                  "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
+                                  "description": "#{result.avnode.performance.about.substring(0, 100)}",
+                                  "amount": {
+                                    "currency": "EURO",
+                                    "value": "#{booking.schedule[0].price}"
+                                  }
+                                }
+                              ]
+                            };
+                            return actions.order.create(order);
+                          },
+                          onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                              alert('Transaction completed by ' + details.payer.name.given_name);
+                              return fetch('https://avnode.net/admin/api/transactionupdate', {
+                                method: 'post',
+                                headers: {
+                                  'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                  orderID: data.orderID,
+                                  order: order,
+                                  event: "#{result.avnode}",
+                                  details: details,
+                                  data: data
+                                })
+                              });
+                            });
+                          }
+                        }).render('#paybutton');
+
+
+
+
             div(itemprop='description')!=result.avnode.performance.about
 
           if result.avnode.performance.galleries && result.avnode.performance.galleries.length
