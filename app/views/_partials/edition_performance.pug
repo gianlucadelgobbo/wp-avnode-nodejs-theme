@@ -2,7 +2,6 @@ script(src="https://www.paypal.com/sdk/js?client-id="+config.accounts.paypal_cli
 article#container(itemprop='performer', itemscope='', itemtype='http://schema.org/CreativeWork')
   header.post_title.mb-4
     h1(itemprop="name")=page_data.title
-  - console.log(result.avnode)
   .row.performance-dett
     .col-sm-9
       .row
@@ -23,13 +22,13 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                       span.d-none(itemprop='datePublished')=schedule.starttime
                       !=" | "
                       span(itemprop='contentLocation')=schedule.venue.room
-                    .stit
+                    //.stit
                       if schedule.price && !schedule.alleventschedulewithoneprice
                         p.price="Price: "
                           a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
                             b=schedule.price+",00 € | "+ global.__('BUY NOW')
-
-                if booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice && booking.schedule[0].price && booking.schedule[0].paypal
+                - console.log(booking.schedule)
+                if booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice
                   .row
                     .col
                       p!="Price: <b>"+booking.schedule[0].price+",00 €</b>"
