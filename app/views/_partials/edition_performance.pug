@@ -89,6 +89,66 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                         }).render('#paybutton');
 
 
+                  .row
+                    .col
+                      p!="Price for LPM performing artists: <b>"+(parseFloat(booking.schedule[0].price)-(parseFloat(booking.schedule[0].price)*0.2))+",00 €</b>"
+                    .col
+                      p(id='paybutton_discount')
+                      script.
+                        paypal.Buttons({
+                          style: {
+                              layout: 'horizontal'
+                          },
+                          createOrder: function(data, actions) {
+                            var description = "#{booking.event.title} FOR ARTISTS: #{result.avnode.performance.title}";
+                            description = description.substring(0, 127);
+                            var order = {
+                              "intent": "CAPTURE",
+                              "application_context": {
+                                "brand_name": "#{booking.event.title}: #{result.avnode.performance.title}",
+                                "shipping_preference": "NO_SHIPPING"
+                              },
+
+                              "purchase_units": [
+                                {
+                                  "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
+                                  "description": description,
+                                  "amount": {
+                                    "currency": "EURO",
+                                    "value": "#{(parseFloat(booking.schedule[0].price)-(parseFloat(booking.schedule[0].price)*0.2))}"
+                                  }
+                                }
+                              ]
+                            };
+                            console.log("order.create");
+                            console.log(order);
+                            return actions.order.create(order);
+                          },
+                          onApprove: function(data, actions) {
+                            console.log("onApprove actions");
+                            console.log(actions);
+                            return actions.order.capture().then(function(details) {
+                              console.log("onApprove details");
+                              console.log(details);
+                              alert('Transaction completed by ' + details.payer.name.given_name);
+                              return fetch('https://avnode.net/api/transactionupdate', {
+                                method: 'post',
+                                headers: {
+                                  'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                  orderID: data.orderID,
+                                  event: "#{result.avnode._id}",
+                                  item: !{JSON.stringify(result.avnode.performance)},
+                                  details: details,
+                                  data: data
+                                })
+                              });
+                            });
+                          }
+                        }).render('#paybutton_discount');
+
+
 
 
             div(itemprop='description')!=result.avnode.performance.about
