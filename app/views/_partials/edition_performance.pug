@@ -69,7 +69,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                               console.log("onApprove details");
                               console.log(details);
                               alert('Transaction completed by ' + details.payer.name.given_name);
-                              return fetch('https://avnode.net/admin/api/transactionupdate', {
+                              return fetch('https://avnode.net/api/transactionupdate', {
                                 method: 'post',
                                 headers: {
                                   'Content-Type': 'application/json'
