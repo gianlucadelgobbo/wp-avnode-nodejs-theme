@@ -78,7 +78,8 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                                 },
                                 body: JSON.stringify({
                                   orderID: data.orderID,
-                                  event: !{JSON.stringify(result.avnode)},
+                                  event: "#{result.avnode._id}",
+                                  item: !{JSON.stringify(result.avnode.performance)},
                                   details: details,
                                   data: data
                                 })
