@@ -40,6 +40,8 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                               layout: 'horizontal'
                           },
                           createOrder: function(data, actions) {
+                            var description = "#{booking.event.title}: #{result.avnode.performance.title}";
+                            description = description.substring(0, 127);
                             var order = {
                               "intent": "CAPTURE",
                               "application_context": {
@@ -50,7 +52,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                               "purchase_units": [
                                 {
                                   "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
-                                  "description": "#{result.avnode.performance.about.substring(0, 100)}",
+                                  "description": description,
                                   "amount": {
                                     "currency": "EURO",
                                     "value": "#{booking.schedule[0].price}"
@@ -76,8 +78,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                                 },
                                 body: JSON.stringify({
                                   orderID: data.orderID,
-                                  order: "#{order}",
-                                  event: "#{result.avnode}",
+                                  event: !{JSON.stringify(result.avnode)},
                                   details: details,
                                   data: data
                                 })
