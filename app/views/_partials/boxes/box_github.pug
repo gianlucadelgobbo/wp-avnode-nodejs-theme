@@ -1,0 +1,17 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Web(itemscope, itemprop="item", itemtype='http://schema.org/CreativeWork')
+    .box-list
+      h3.list_title(itemprop='name')
+        a(itemprop='url', href=result.html_url, rel='bookmark', title=result.name)!=result.name
+      .text-muted
+        .dates
+          .dateheadline(itemprop="headline")
+            i.icon-calendar-check-o
+            !=" "
+            !="Last Commit: "+result.pushed_at.split("T")[0]
+      //if result.excerpt && result.excerpt.rendered
+        .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered
+      //.tags.text-muted.small
+        include ../../_common/inc_tags_post_nolink
+      //include ../../_common/inc_capauthors_box

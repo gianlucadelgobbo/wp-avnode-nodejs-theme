@@ -1,12 +1,12 @@
-var indexRoutes = require('./flyer/index');
+var indexRoutes = require('./index_flyer');
 var sitemapRoutes = require('./_common/sitemap');
 var robotsRoutes = require('./_common/robots');
 var webRoutes = require('./_common/web');
 var videosRoutes = require('./_common/videos');
-var eventsRoutes = require('./_common/events');
+//var eventsRoutes = require('./_common/events');
 var learningRoutes = require('./_common/learning');
 var labRoutes = require('./_common/lab');
-var newsRoutes = require('./_common/news');
+//var newsRoutes = require('./_common/news');
 var awardsRoutes = require('./_common/awards');
 var usersRoutes = require('./_common/users');
 var pagesRoutes = require('./_common/pages');
@@ -111,11 +111,11 @@ module.exports = function(app) {
   app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/it/portfolio/videos/page/(:page)', videosRoutes.getAll);
 
-  app.get('/it/portfolio/live-visuals/', eventsRoutes.getAll);
+  /* app.get('/it/portfolio/live-visuals/', eventsRoutes.getAll);
   app.get('/it/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
   app.get('/it/portfolio/live-visuals/(:event)', eventsRoutes.get);
   app.get('/it/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
-  app.get('/it/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getAllTags);
+  app.get('/it/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getAllTags); */
 
   app.get('/it/portfolio/learning/', learningRoutes.getAll);
   app.get('/it/portfolio/learning/(:learning)', learningRoutes.get);
@@ -125,10 +125,10 @@ module.exports = function(app) {
   app.get('/it/portfolio/lab/(:lab)', labRoutes.get);
   app.get('/it/portfolio/lab/page/(:page)', labRoutes.getAll);
 
-  app.get('/it/extra/', newsRoutes.getAll);
+  /* app.get('/it/extra/', newsRoutes.getAll);
   app.get('/it/extra/(:new)', newsRoutes.get);
   app.get('/it/extra/page/(:page)', newsRoutes.getAll);
-
+ */
   app.get('/it/portfolio/awards-and-grants/', awardsRoutes.getAll);
   app.get('/it/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
   app.get('/it/portfolio/awards-and-grants/page/(:page)', awardsRoutes.getAll);
@@ -153,11 +153,11 @@ module.exports = function(app) {
   app.get('/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/portfolio/videos/page/(:page)', videosRoutes.getAll);
 
-  app.get('/portfolio/live-visuals/', eventsRoutes.getAll);
+  /* app.get('/portfolio/live-visuals/', eventsRoutes.getAll);
   app.get('/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
   app.get('/portfolio/live-visuals/(:event)', eventsRoutes.get);
   app.get('/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
-  app.get('/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getTag);
+  app.get('/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getTag); */
 
   app.get('/portfolio/learning/', learningRoutes.getAll);
   app.get('/portfolio/learning/(:learning)', learningRoutes.get);
@@ -167,9 +167,9 @@ module.exports = function(app) {
   app.get('/portfolio/lab/(:lab)', labRoutes.get);
   app.get('/portfolio/lab/page/(:page)', labRoutes.getAll);
 
-  app.get('/extra/', newsRoutes.getAll);
+  /* app.get('/extra/', newsRoutes.getAll);
   app.get('/extra/(:new)', newsRoutes.get);
-  app.get('/extra/page/(:page)', newsRoutes.getAll);
+  app.get('/extra/page/(:page)', newsRoutes.getAll); */
 
   app.get('/portfolio/awards-and-grants/', awardsRoutes.getAll);
   app.get('/portfolio/awards-and-grants/(:award)', awardsRoutes.get);

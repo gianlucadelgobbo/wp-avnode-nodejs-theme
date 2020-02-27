@@ -1,0 +1,31 @@
+extends layout
+block content
+  article(itemscope, itemtype='http://schema.org/CollectionPage')
+    header.mb-4
+      h1.entry-title(itemprop="name")=posttype.post_title+(tag ? ": #"+tag : "")
+      p(itemprop="description")!=posttype.post_content
+    //.text-center
+      include ../_common/inc_share
+    - var result = posttype
+    include ../_common/inc_grid
+
+    .row
+      .col-md-4
+        .results(itemscope, itemtype='http://schema.org/ItemList')
+          h3(itemprop="description")!="GitHub projects"
+          if github
+            each result, position in github
+              .listitem
+                include ../_partials/boxes/box_github
+      .col-md-4
+        .results(itemscope, itemtype='http://schema.org/ItemList')
+          h3(itemprop="description")!="Web sites & App"
+            if results
+              each result, position in results
+                .listitem
+                  include ../_partials/boxes/box_coding
+            include ../_common/inc_pagination
+      .col-md-4
+        .results(itemscope, itemtype='http://schema.org/ItemList')
+          h3(itemprop="description")!="Web sites & App TAGS"
+          include ../_common/inc_tags

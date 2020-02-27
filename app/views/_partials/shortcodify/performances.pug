@@ -1,7 +1,7 @@
 if opts.params && body
   each day in body
     if opts.days.indexOf(day.day)!=-1
-      ul.lists.row
+      ul.lists.row(itemscope itemtype="http://schema.org/ItemList")
         each room in day.rooms
           if !opts.rooms || (opts.rooms && opts.rooms.indexOf(room.room)!=-1)
             each performance in room.performances

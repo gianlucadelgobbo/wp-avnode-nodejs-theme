@@ -90,12 +90,29 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
-  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
+  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
+    if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     //console.log("//// ContainerPage "+slug);
     //console.log(err || data);
     //if (data && data.ID) data = fnz.fixResult(data);
+    callback(data);
+  });
+};
+
+ //////// getGitHub
+
+ exports.getGitHub = function getGitHub(req, callback) {
+  const url = config.github;
+  request({
+    url: url,
+    headers: {
+      'User-Agent': 'Awesome-Octocat-App'
+    },
+    json: true
+  }, function(error, response, data) {
+    //console.log(data)
     callback(data);
   });
 };
@@ -129,7 +146,7 @@ exports.getPage = function getPage(req,callback) {
           avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        //console.log(avnodeurl);
+        console.log(avnodeurl);
         
         request({
           url: avnodeurl,
@@ -137,6 +154,7 @@ exports.getPage = function getPage(req,callback) {
         }, function(error, response, body) {
           if (response.statusCode==200) {
             if (body.pages) {
+              console.log(body.pages);
               for (var item in body.pages) {
                 body.pages[item].link = body.pages[item].link.split("/");
                 body.pages[item].link.splice(0, 2);
@@ -157,6 +175,7 @@ exports.getPage = function getPage(req,callback) {
               callback(data);
             } else {
               if (body.data) body.events = body.data;
+              console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, data => {
                 callback(data);
@@ -260,7 +279,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   } else {
     wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
       //console.log("//// All "+config.data_domain);
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
+      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
       //console.log("//// All "+sez.post_type);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -359,7 +378,7 @@ exports.getEdition = function getEdition(req,callback) {
   if (req.params.artist)        endpoint+="artists/";
   if (req.params.subedition)    endpoint+=req.params.subedition+'/';
   if (req.params.subsubedition) endpoint+=req.params.subsubedition+'/';
-  console.log("endpoint "+endpoint);
+  //console.log("endpoint "+endpoint);
   request({
     url: endpoint,
     json: true

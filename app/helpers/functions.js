@@ -26,7 +26,7 @@ exports.setPageData = function setPageData(req, result) {
   }
   if (req.params.edition) page_data.edition = req.params.edition;
   if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
-  console.log(req.params)
+  //console.log(req.params)
   if(result && result['ID']) {
     page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
@@ -104,6 +104,7 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
+    console.log("opts");
     console.log(opts);
     if (opts.view === "performances") {
       /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {

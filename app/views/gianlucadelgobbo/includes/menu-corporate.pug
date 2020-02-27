@@ -1,0 +1,10 @@
+ul#project.navbar-nav.navbar-nav-flxer.ml-1
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/project/') 
+      span.backText Project
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/software') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/software/') 
+      span.backText Software
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/contacts/') 
+      span.backText=global.__('Contacts')

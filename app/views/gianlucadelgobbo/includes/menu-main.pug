@@ -1,0 +1,44 @@
+//ul.navbar-nav.navbar-nav-flxer
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/about') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'#about', data-toggle='collapse', aria-expanded="true" , aria-controls="about")
+      span.backText about
+ul#about.navbar-nav.navbar-nav-flxer.collapse.show 
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/about') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/about/') 
+      span.backText About
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/cultural-productions') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/cultural-productions/') 
+      span.backText Cultural Productions
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships-management') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/partnerships-management/') 
+      span.backText Partnerships management
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/software') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/coding/') 
+      span.backText Coding
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/performances') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/performances/') 
+      span.backText Performances
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/installations') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/installations/') 
+      span.backText Installations
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/workshops') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/workshops/') 
+      span.backText Workshop
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/lectures') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/lectures/') 
+      span.backText Lectures
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/contacts/') 
+      span.backText=global.__('Contacts')
+
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
+    a.nav-link#searchModalButton(href="/search/")
+      span.backText 
+        i.icon-search
+        .sr-only=global.__("Search")
+ul.navbar-nav
+  li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+    a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+  li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+    a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+
