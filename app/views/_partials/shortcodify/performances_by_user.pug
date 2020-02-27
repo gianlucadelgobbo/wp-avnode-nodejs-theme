@@ -1,5 +1,5 @@
 ul.lists.row(itemscope itemtype="http://schema.org/ItemList")
-  each performance in body.performances
+  each performance, i in body.performances
     - var basepath = '/performances/'
     - var css = "col-md-4"
     if (opts.params && performance.type.slug==opts.params) || !opts.params

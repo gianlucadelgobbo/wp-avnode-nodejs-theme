@@ -157,7 +157,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
             .mt-3(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
               h3.grid-title.h1like(itemprop='name')=global.__("Gallery")
               .rientro
-                ul.listItems.row
+                ul.listItems.row(itemscope itemtype="http://schema.org/ItemList")
                   each gallery, index in result.avnode.performance.galleries
                     li.col-xl-4.col-sm-6(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                       meta(itemprop='position', content=index)

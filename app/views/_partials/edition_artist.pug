@@ -54,7 +54,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
     .col-sm-3(itemprop='owns', itemscope='', itemtype='http://schema.org/ItemList')
       h2.grid-title.mt-3(itemprop='name') Performance
       div
-        ul.lists
+        ul.lists(itemscope itemtype="http://schema.org/ItemList")
           each performance, i in result.avnode.performer.performances
             li.rientro(style='margin-bottom: 10px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
               meta(itemprop='position', content=i)
