@@ -9,7 +9,7 @@ else
     if item.category.name == opts.filter
       - users = item.users
 if users && users.length
-  .lists.row
+  .lists.row(itemscope itemtype="http://schema.org/ItemList")
     each item, i in users
       .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem', class=opts.cols == '1' ? 'col-md-3' : 'col-md-12')
         meta(itemprop='position', content=i)
