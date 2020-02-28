@@ -32,10 +32,12 @@ html(lang=sessions.current_lang)
     #background-container.background-container
     .container-fluid.my-screen
       .row.mb-3.mt-3
-        .col-md.my-sidebar
-          a(href=lang_preurl + '/', title=config.project_name)
-            img.logosvg(src="/flxer/images/FLxER.svg", alt=config.project_name)
-        .col-md
+        .col-md-8
+          a.logo(href=lang_preurl + '/', title=config.project_name)=config.project_name
+            //img.logosvg(src="/flxer/images/FLxER.svg", alt=config.project_name)
+          br
+          span.backText!=config.meta.headline[sessions.current_lang]
+        .col-md-4
           .text-right
             span.backText!=config.meta.headline[sessions.current_lang]
           .text-right.newsletter.mt-3

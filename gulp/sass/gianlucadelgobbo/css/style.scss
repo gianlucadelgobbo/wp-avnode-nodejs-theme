@@ -1,13 +1,7 @@
-@font-face {
-  font-family: 'standard_0753regular';
-  src: url('standard0753-webfont.woff2') format('woff2'),
-      url('standard0753-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&display=swap');
 
-}
 body {
-  font-family: 'standard_0753regular';
+  font-family: 'Ubuntu Mono';
 }
 a:hover {
   opacity: .6;
@@ -15,6 +9,13 @@ a:hover {
 .logosvg{
   max-width: 225px;
 } 
+.logo {
+  color: #ffffff;
+  font-size: 50px;
+}
+.logo:hover {
+  color: #00ff00;
+}
 .share {
   font-size: 1rem;
 }
@@ -33,7 +34,6 @@ a:hover {
     margin-left: 40px;
 } 
 .navbar-nav-flxer .navbar-nav-flxer h2 {
-    font-size: .5rem;
     margin: 0 0 0 20px;
     padding: 5px 0;
 }
@@ -44,10 +44,6 @@ a:hover {
 .rientro{
   background-color: $textbackground;
   padding: 10px 12px;
-}
-.post_title{
-  background-color: $textbackground;
-  padding: 6px 4px 2px 12px;
 }
 .backText{
   background-color:$textbackground;
