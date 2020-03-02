@@ -186,6 +186,25 @@ footer .projects {
     margin: 0;
   }
 }
+.read-more{
+  margin-top: 20px;
+}
+.read-more a:hover{
+  text-decoration: none;
+}
+.read-more a {
+  display: inline-block;
+  padding: 8px 15px;
+  color: #FFF;
+  background-color: #666;
+}
+.read-more.inverse a {
+  color: #000;
+  background-color: #FFF;
+}
+.read-more .loading{
+  display: none;
+}
 
 /* NAVBAR AFFIX
 .affix {

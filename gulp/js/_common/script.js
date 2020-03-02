@@ -52,36 +52,39 @@ $("#subscribe").submit(function(event) {
   return false;
 });
 
-/* $("#container > .read-more a").click(function() {
+$("#result .read-more a").click(function() {
   infiniteScroll(this);
   return false;
 });
 function infiniteScroll(t) {
+  var appendToId = $(t).parent().parent().find(".results").attr("id");
   var url = t.href;
-  $('#container > .read-more a').hide();
-  $('#container > .read-more .loading').show();
+  $(t).hide();
+  $(t).parent().parent().find(".loading").show();
   $.ajax({
     method: "GET",
     url: url
   }).done(function (msg) {
     console.log(url);
-    $("#container > .read-more").html($(msg).find("#container > .read-more").html());
-    $("#container .read-more a").click(function() {
-      infiniteScroll(this);
-      return false;
-    });
-    $('#container > .read-more .loading').hide();
-    var $newItems = $($(msg).find("#container .results").html());
-    $containerappend = $("#container .results").append($newItems);
-    $containerappend.imagesLoaded( function(){
-      if ($("#container .results.isotope").length) $containerappend.isotope("appended", $newItems );
-    });
+    var $newItems  = $($(msg).find("#"+appendToId).children());
+    var $newButtonHref = $($(msg).find("#"+appendToId)).parent().find(".read-more a").attr("href");
+    //$("#"+appendToId).append($newItems);
+    $(t).attr("href", $newButtonHref)
+    $(t).parent().find(".loading").hide();
+    $(t).show();
+    $containerappend = $("#"+appendToId).append($newItems);
+    //$(t).remove();
+    if ($("#"+appendToId+".isotope").length) {
+      $containerappend.imagesLoaded( function(){
+        $containerappend.isotope("appended", $newItems );
+      });  
+    }
   });
-} */
+}
 
 
 $(function() {
-  if (window.location.hash=="#app") {
+  /* if (window.location.hash=="#app") {
     var launchmyapp = {
       "livecinemafestival.com" : "lcf",
       "localhost:3002" : "lcf",
@@ -99,7 +102,7 @@ $(function() {
       }
       location.href = launchmyapp[window.location.host]+'://'+loc;
     }
-  }
+  } */
   if ($('#contact-form').length) {
     $('#contact-form').validator();
 
@@ -157,7 +160,7 @@ $(function() {
       }
     });
   }
-  if ($('#join-form').length){
+  /* if ($('#join-form').length){
     $('#join-form').validator();
 
     $('#join-form').on('submit', function (e) {
@@ -185,7 +188,7 @@ $(function() {
         return false;
       }
     });
-  }
+  } */
   if (typeof(cx) !== "undefined") {
     console.log("append gcse:searchresults-only")
     jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
@@ -208,7 +211,9 @@ $(function() {
       //   }
     });
   }
+
   $(".tooltips").tooltip();
+
   $container = $('.isotope');
   $container.imagesLoaded( function(){
     $container.isotope({
@@ -216,6 +221,7 @@ $(function() {
       masonry: {}
     });
   });
+
   $("#searchModalButton").click(function(event) {
     $('#searchModal').modal();
     event.preventDefault();

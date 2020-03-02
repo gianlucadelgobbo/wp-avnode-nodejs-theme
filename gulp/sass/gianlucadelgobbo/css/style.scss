@@ -3,6 +3,9 @@
 body {
   font-family: 'Ubuntu Mono';
 }
+.btn-primary {
+  color: #000;
+}
 a:hover {
   opacity: .6;
 }
@@ -43,7 +46,7 @@ a:hover {
 }
 .rientro{
   background-color: $textbackground;
-  padding: 10px 12px;
+  padding: 0;
 }
 .backText{
   background-color:$textbackground;
@@ -92,7 +95,7 @@ footer .projects i {
 
 .logofooter {
   font-size: 68px;
-  margin: -36px 0 -8px -24px;
+  margin: -24px 0 -8px 0;
 }
 
 .subfooter .madeby a i {
