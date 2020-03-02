@@ -38,16 +38,14 @@ html(lang=sessions.current_lang)
           br
           span.backText!=config.meta.headline[sessions.current_lang]
         .col-md-4
-          .text-right
-            span.backText!=config.meta.headline[sessions.current_lang]
           .text-right.newsletter.mt-3
             - var subscribelarge = true
             include ../_partials/components/newsletter-navbar
 
       .row
-        .col-md.my-sidebar.mb-4
+        .col-md-2.mb-4
           include includes/menu-main
-        .col-md
+        .col-md-10
           #result
             block content
     include includes/footer

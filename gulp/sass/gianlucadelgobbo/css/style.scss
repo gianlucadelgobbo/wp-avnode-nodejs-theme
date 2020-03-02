@@ -63,7 +63,7 @@ a:hover {
   right: 0;
   z-index: -1;
 }
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .my-sidebar {
     -ms-flex: 0 0 120px;
     flex: 0 0 120px;
@@ -75,8 +75,10 @@ a:hover {
     -ms-flex: 0 0 240px;
     flex: 0 0 240px;
   }
+} */
+.home > div > p {
+  display:none;
 }
-
 .newsletter .form-inline {
   display: inline-block;
 }
