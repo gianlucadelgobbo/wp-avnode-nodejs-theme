@@ -104,8 +104,6 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
-    console.log("opts");
-    console.log(opts);
     if (opts.view === "performances") {
       /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {
         $sourceA = explode("/",str_replace(array("flxer.net/api"), array("api.avnode.net"), $shortcode_atts['source']));
@@ -159,12 +157,14 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
       var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "events") {
+      if (!body.events && body.data) body.events = body.data;
       var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "partnerships") {
       var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "news") {
+      if (!body.news && body.data) body.news = body.data;
       var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "members") {
