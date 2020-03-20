@@ -38,7 +38,9 @@
     "gulp-concat": "^2.6.1",
     "gulp-minify": "0.0.15",
     "gulp-sass": "^3.2.1",
+    "gulp-terser": "^1.2.0",
     "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^2.0.0",
     "main-bower-files": "^2.13.1",
     "nodemon": "^1.19.0"
   },
