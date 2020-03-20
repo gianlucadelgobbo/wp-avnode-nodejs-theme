@@ -23,5 +23,6 @@ $container-max-widths: (
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 @import "../_common/swiper";
+@import "../_common/video-js.min";
 @import "../_common/style";
 @import "./css/style";
