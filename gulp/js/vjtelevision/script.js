@@ -15,7 +15,6 @@ $(function() {
     var player = videojs('my-video', options, function onPlayerReady() {
       videojs.log('Your player is ready!');
       $(".playlist").height($("#my-video video").height());
-
       $(".vjs-big-play-button").hide();
     
       // In this context, `this` is the player that was created by Video.js.
@@ -27,34 +26,16 @@ $(function() {
       });
     });
     /* $(".vjs-poster").on('click', function(ev) {
-      player.playlist([{
-        sources: [{
-          src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
-          type: 'video/mp4'
-        }],
-        poster: 'http://media.w3.org/2010/05/sintel/poster.png'
-      }, {
-        sources: [{
-          src: 'http://vjs.zencdn.net/v/oceans.mp4',
-          type: 'video/mp4'
-        }],
-        poster: 'http://www.videojs.com/img/poster.jpg'
-      }, {
-        sources: [{
-          src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
-          type: 'video/mp4'
-        }],
-        poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-      }, {
-        sources: [{
-          src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
-          type: 'video/mp4'
-        }],
-        poster: 'http://media.w3.org/2010/05/video/poster.png'
-      }]);
-      player.playlist.autoadvance(0);
-      player.playlist.currentItem(2);
     }); */
+    player.logo({
+      image: 'https://vjtelevision.com/vjtelevision/images/VJTV_4x.svg',
+      url: "https://vjtelevision.com",
+      height: 50,
+      offsetH: 20,
+      offsetV: 20,
+      position: 'top-left',
+      width: 150
+    });
 
     var now = new Date();
 
@@ -85,8 +66,8 @@ $(function() {
         var id = new Date(data[a].programming).getTime();
         html+="<li class=\"playlist-item bg-dark mb-3\" id=\"P"+a+"\">";
         html+="  <div class=\"row text-monospace small playlist-header\">";
-        html+="    <div class=\"col\"><div class=\"pl-2\">"+data[a].programming.split(".")[0].replace("T", " | ")+"</div></div>";
-        html+="    <div class=\"col\"><div class=\"pr-2 text-right\">"+data[a].category.name+" | "+data[a].video.media.durationHR+"</div></div>";
+        html+="    <div class=\"col\"><div class=\"pl-2\">"+data[a].programming.split(".")[0].replace("T", "<br />")+"</div></div>";
+        html+="    <div class=\"col\"><div class=\"pr-2 text-right\">"+data[a].category.name+"<br />"+data[a].video.media.durationHR+"</div></div>";
         html+="  </div>";
         html+="  <div class=\"media p-2\" id=\"P"+a+"\">";
         html+="    <img class=\"mr-3\" style=\"width:100px\" src=\""+data[a].video.imageFormats.small+"\">";
@@ -120,9 +101,9 @@ $(function() {
         $('#P'+oldgoto).removeClass("bg-danger");
         $('#P'+goto).removeClass("bg-dark");
         $('#P'+goto).addClass("bg-danger");
-        $('#vjtv .playlist').animate({
-          scrollTop: $("#P"+goto).position().top
-        }, 2000);
+        $('#vjtv .playlist').imagesLoaded(() => {
+          $('#vjtv .playlist').animate({scrollTop: $("#P"+goto).position().top}, 2000);
+        });
         oldgoto = goto;
         console.log("oldgoto");
         console.log(oldgoto);

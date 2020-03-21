@@ -308,6 +308,7 @@ const compress_js_vjtelevision = () => {
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/video.min.js',
     './gulp/js/_common/videojs-playlist.min.js',
+    './gulp/js/_common/videojs-logo.min.js',
     './gulp/js/_common/script.js',
     './gulp/js/vjtelevision/script.js',
   ])
