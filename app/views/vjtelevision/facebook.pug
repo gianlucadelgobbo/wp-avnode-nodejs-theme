@@ -1,16 +1,228 @@
-extends layout
-block content
-  #vjtv
-    .row
-      .col-md-9
-        .embed-responsive.embed-responsive-16by9
-          video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
-            //source(src=process.env.WAREHOUSE+data[0].media.file, type='video/mp4')
-            //source(src='MY_VIDEO.webm', type='video/webm')
-            p.vjs-no-js
-              !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-              a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
-      .col-md-3
-        .playlist
-          .vjs-waiting
-            .vjs-loading-spinner
+html(lang='en', xml:lang='en', xmlns='http://www.w3.org/1999/xhtml')
+  head
+    title VJ Television
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    meta(http-equiv='Content-Language', content='en')
+    meta(name='author', content='FLYER COMMUNICATION, Gianluca Del Gobbo, Flavio Distefano')
+    meta(name='copyright', content='(c)2011 Flyer Communication')
+    meta(name='robots', content='all')
+    meta(name='distribution', content='public')
+    meta(name='keywords', content='webtv, vj, television, brodcast, live performances, live cinema, live video, live visuals, lisuals, vjing')
+    meta(name='description', content='Vj television is the first 24-hour live video broadcast channel. The daily programming is 06-12 Documentary, 12-18 Video, 18-24 Performances, 24-06 Vj sets')
+    // jscal2
+    link(type='text/css', rel='stylesheet', href='https://dev.vjtelevision.com/_jscal/css/jscal2.css')
+    // <link type="text/css" rel="stylesheet" href="https://dev.vjtelevision.com/_jscal/css/border-radius.css" />
+    script(src='https://connect.facebook.net/en_US/all.js?hash=45ca9abfc6365636da753e5b8701736e&ua=modern_es6', async='', crossorigin='anonymous')
+    script(type='text/javascript', async='', src='https://ssl.google-analytics.com/ga.js')
+    script(language='javascript1.1', type='text/javascript', src='https://dev.vjtelevision.com/_script/maxDate.js')
+    script(language='javascript', type='text/javascript', src='https://dev.vjtelevision.com/_jscal/js/jscal2.js')
+    //
+      you actually only need to load one of these; we put them all here for demo purposes
+      <script language="javascript"    type="text/javascript" src="https://dev.vjtelevision.com/_jscal/js/lang/de.js"></script>
+      <script language="javascript"    type="text/javascript" src="https://dev.vjtelevision.com/_jscal/js/lang/fr.js"></script>
+      <script language="javascript"    type="text/javascript" src="https://dev.vjtelevision.com/_jscal/js/lang/es.js"></script>
+      <script language="javascript"    type="text/javascript" src="https://dev.vjtelevision.com/_jscal/js/lang/pl.js"></script>
+    script(language='javascript', type='text/javascript', src='https://dev.vjtelevision.com/_jscal/js/lang/en.js')
+    // jscal2 end
+    script(language='javascript', type='text/javascript', src='https://dev.vjtelevision.com/_script/fpVariables.js')
+    script(language='javascript1.1', type='text/javascript', src='https://dev.vjtelevision.com/_script/fpManager.js')
+    script(language='javascript', type='text/javascript', src='https://dev.vjtelevision.com/_script/fpCheck.js')
+    script(language='javascript', type='text/javascript').
+      window.onload = function () {
+      if (window.location.href=="https://vjtv.flxer.net/facebook/invite.php") {
+      FB_RequireFeatures(["XFBML"], function() {
+      FB.Facebook.init("169587674742f592888a880e568f4a67", "https://vjtv.flxer.net/facebook/xd_receiver.htm");
+      });
+      }
+      caricaFlashAvvio();
+      }
+    link(href='https://dev.vjtelevision.com/_css/styleFB.css', rel='stylesheet', type='text/css')
+    //if lte IE 6
+      link(href='https://dev.vjtelevision.com/_css/style-ie6.css', rel='stylesheet', type='text/css')
+    link(rel='image_src', href='https://vjtv.flxer.net/_images/FBicon.jpg')
+    style(type='text/css').
+      .fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+      .fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+      .fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+  body#Canvas
+    .cntMain
+      .header
+        .cnt
+          h2
+            a(href='https://dev.vjtelevision.com/', target='_blank', title='VJ Television')
+              img(src='https://dev.vjtelevision.com/_images/logo.gif', alt='VJ Television')
+      .gray
+        .cnt
+          .gFFFFFF.mb10
+            #fb-root.fb_reset
+              script(async='', src='https://connect.facebook.net/en_US/all.js')
+              div(style='position: absolute; top: -10000px; width: 0px; height: 0px;')
+                div
+            script(type='text/javascript').
+              function authpages(p) {
+              top.location.href = "https://www.facebook.com/add.php?api_key=169587674742f592888a880e568f4a67&pages=1&next=https%3A%2F%2Fapps.facebook.com%2Fvj-television&page="+p;
+              }
+              window.fbAsyncInit = function() {
+              FB.init({appId: '174405599260914', status: true, cookie: true, xfbml: true});
+              FB.Canvas.setAutoGrow(true);
+              };
+              (function() {
+              var e = document.createElement('script'); e.async = true;
+              e.src = document.location.protocol +
+              '//connect.facebook.net/en_US/all.js';
+              document.getElementById('fb-root').appendChild(e);
+              }());
+            #vjtv
+              .row
+                .col-md-9
+                  .embed-responsive.embed-responsive-16by9
+                    video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
+                      //source(src=process.env.WAREHOUSE+data[0].media.file, type='video/mp4')
+                      //source(src='MY_VIDEO.webm', type='video/webm')
+                      p.vjs-no-js
+                        !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+                        a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+                .col-md-3
+                  .playlist
+                    .vjs-waiting
+                      .vjs-loading-spinner
+
+            .cntPadd
+              .left
+                label(for='pages') Add VJ Television TAB to your pages.
+                select#pages(onchange='authpages(this.value)')
+                  option(value='') Select your page
+                  option(value='39523661566') Free Hardware Foundation
+                  option(value='276911438823') VJ television
+                  option(value='101787431236235') Hic sunt dracones
+                  option(value='104622071106122') Uno, nessuno, Centocelle
+                  option(value='116365825083476') Flyer
+                  option(value='148844655150043') FLxER
+                  option(value='151024398252445') Shockart.net
+                  option(value='176966905687876') AVnode
+                  option(value='182842281761052') Electrode
+                  option(value='185482561478671') LPM Live Performers Meeting
+                  option(value='213398435384824') videosolid
+                  option(value='344601646000208') Fotonica Festival
+                  option(value='609718299145612') Video Mapping Mexico
+                  option(value='720508908032467') 79Things
+                  option(value='788508917903713') Liminal
+                  option(value='911646675535312') PiùVolume
+                  option(value='1027067190744770') Chromosphere
+                  option(value='1638553593037140') Live Cinema Festival
+              .right
+                a(href='https://apps.facebook.com/vj-television/invite.php', target='_top') Invite your friends
+              br.myClear
+            h1 Vj television the first live video channel
+            .bigText
+              | Vj television is the first 24-hour live video broadcast channel.
+              br
+              br
+              | The daily programming is:
+            ul
+              li
+                h3 06:00 - 12:00 Documentary
+                p.bigText Here is a collection of workshops, interview and report live video related.
+              li
+                h3 12:00 - 18:00 Video
+                p.bigText
+                  | All that video are made from vj an live visual artists so you can find lots of difference in technical and style.
+              li
+                h3 18:00 - 00:00 Performances
+                p.bigText
+                  | This is the time of live video, live cinema, mapping, generative and many other styles of performances.
+              li
+                h3 00:00 - 06:00 Vj sets
+                p.bigText Let's get party with the best VJ from all over the world.
+            h1 Get VJ television contents on demand
+            .bigText
+              | All the Vj television contents can be seen not only from the 
+              strong daily programming
+              |  but also 
+              strong on demand
+              |  jumping in 
+              strong previous or next days
+              |  or choosing from the 4 main categories, 
+              strong Documentary
+              | , 
+              strong Video
+              | , 
+              strong Performances
+              |  and 
+              strong VJ sets
+              | .
+            h1 Do not want to switch on the TV?
+            .bigText Check the programming here
+            ul
+              li
+                a(target='_blank', href='https://dev.vjtelevision.com/programming/') DAILY
+              li
+                a(target='_blank', href='https://dev.vjtelevision.com/programming/?id=588') DOCUMENTARY
+              li
+                a(target='_blank', href='https://dev.vjtelevision.com/programming/?id=589') VJ-DJ SETS
+              li
+                a(target='_blank', href='https://dev.vjtelevision.com/programming/?id=590') PERFORMANCES
+              li
+                a(target='_blank', href='https://dev.vjtelevision.com/programming/?id=591') VIDEO00
+            h4
+              | All contents come from the FLxER.net live visuals community 
+              a(target='_blank', href='https://flxer.net') flxer.net
+      .black
+        .col_0s
+          img(alt='VJ Television', src='https://flxer.net/_images/logo_piede.gif')
+        .left(style='padding:15px 10px;')
+          strong FLxER.net
+          |  | a Flyer communication project
+          br
+          a(href='mailto:info@flxer.net', title='Write to FLxER.net') info@flxer.net
+          |  // P.IVA: 06589171005
+        .right(style='text-align: right;padding:15px 10px;')
+          | NO © 2011
+          br
+          a(href='https://flxer.net/disclaimers/privacy') Privacy
+          |  // 
+          a(href='https://flxer.net/disclaimers/terms') Terms & conditions
+        br.myClear
+      div
+        ul#corporate
+          li
+            a(target='_blank', href='http://www.flyer.it/', title='Flyer communication: new media agency')
+              span.bulletSmall  
+              |  FLYER
+          li
+            a(target='_blank', href='https://flxer.net/', title='FLxER: Live visuals community and software')
+              span.bulletSmall  
+              |  FLxER
+          li.corpSel
+            span.bulletSmall  
+            |  VJ TELEVISION
+          li
+            a(target='_blank', href='http://www.liveperformersmeeting.net/', title='LPM: Live Performers Meeting')
+              span.bulletSmall  
+              |  LPM
+          li
+            a(target='_blank', href='http://www.shockart.net/', title='Shockart: web art project')
+              span.bulletSmall  
+              |  SHOCKART
+          li
+            a(target='_blank', href='http://wam.flyer.it/', title='WAM: Web Art Mouseum')
+              span.bulletSmall  
+              |  WAM
+      br.myClear
+      #footer
+        ul.left
+          li
+            a(href='http://www.vjtelevision.com', target='_blank') Vjtelevision.com
+        ul.right
+          li.right
+            a(href='http://apps.facebook.com/vj-television/') Add / Edit "VJ Television FB app"
+        br.myClear
+    script(type='text/javascript').
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8844617-14']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
