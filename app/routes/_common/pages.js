@@ -2,6 +2,13 @@ var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
  
 
+exports.facebook = function get(req, res) {
+  helpers.setSessions(req, function() {
+    var page_data = fnz.setPageData(req, {'ID':'100'});
+    res.render(config.prefix+'/facebook', {basepath:"", session_login: req.session.user, page_data: page_data, sessions: req.session.sessions});
+  });
+}
+
 exports.get = function get(req, res) {
   console.log("req.params");
   helpers.setSessions(req, function(lang_preurl) {
@@ -9,6 +16,7 @@ exports.get = function get(req, res) {
     console.log(lang_preurl);
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
+      console.log
       var include_gallery = false;
       var basepath = "";
       if(result && result['ID']) {
