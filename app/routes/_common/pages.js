@@ -5,6 +5,8 @@ var fnz = require('../../helpers/functions');
 exports.facebook = function get(req, res) {
   helpers.setSessions(req, function() {
     var page_data = fnz.setPageData(req, {'ID':'100'});
+    res.set('Content-Security-Policy', "frame-ancestors 'self' https://*.facebook.com");
+    res.header('X-Frame-Options', 'ALLOW-FROM https://www.facebook.com');
     res.render(config.prefix+'/facebook', {basepath:"", session_login: req.session.user, page_data: page_data, sessions: req.session.sessions});
   });
 }
