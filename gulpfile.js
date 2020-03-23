@@ -303,6 +303,7 @@ const compress_js_vjtelevision = () => {
     config.npmDir + '/popper.js/dist/popper.min.js',
     config.npmDir + '/bootstrap/dist/js/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
+    './gulp/js/_common/jquery-ui.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
     './gulp/js/_common/swiper.js',
