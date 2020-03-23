@@ -52,8 +52,9 @@ $(document).ready(function(){
       dateFormat: 'yy-mm-dd',
       beforeShow: function (input, inst) {
         var rect = input.getBoundingClientRect();
+        console.log(rect);
         setTimeout(function () {
-	        inst.dpDiv.css({ top: rect.top + 40 });
+	        inst.dpDiv.css({ top: (parseFloat(inst.dpDiv.css("top").replace("px",""))+40)+"px" });
         }, 0);
       },
       //defaultDate: new Date('03/10/2017'), // this line is for testing
