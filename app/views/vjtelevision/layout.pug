@@ -27,7 +27,8 @@ html(lang=sessions.current_lang)
     // CSS
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
   body.body-common
-    .container
+    block vjtv
+    .container-fluid.d-none
       header.mt-4.mb-4
         .row
           .col-md-4
@@ -38,7 +39,8 @@ html(lang=sessions.current_lang)
           .col-md-4
           .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
             !=config.meta.headline[sessions.current_lang]
-      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+    .container-fluid.p-0
+      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4.m-0
         // Brand and toggle get grouped for better mobile display
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
           span.navbar-toggler-icon
@@ -50,13 +52,14 @@ html(lang=sessions.current_lang)
           .sr-only(itemprop='name')=config.project_name
         #menu-main.collapse.navbar-collapse
           include includes/menu-main
-
+    .container-fluid
       #result
         block content
       include includes/footer
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search
     include includes/modal-resize
+    include includes/modal-vjtv
 
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form

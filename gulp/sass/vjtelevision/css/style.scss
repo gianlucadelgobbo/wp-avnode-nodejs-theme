@@ -18,8 +18,8 @@ a:hover {
     margin-left: 0.5em;
   }
   #navbar-top .navbar-brand {
-    font-size: 33px;
-    margin: -20px 10px -20px 0;
+    font-size: 75px;
+    margin: -43px 10px -40px 0;
   }
   @media (min-width: 768px) {
     #navbar-top .navbar-brand img {
@@ -288,4 +288,8 @@ a:hover {
   #headervjtv {
     height: 53px;
     margin-bottom: 5px;
+  }
+  .vjs-logo-content img{
+    -webkit-filter: drop-shadow( 0 0 2px rgba(255, 255, 255, 1));
+    filter: drop-shadow( 0 0 2px rgba(255, 255, 255, 1));
   }
