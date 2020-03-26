@@ -1,14 +1,31 @@
-html(lang='en', xml:lang='en', xmlns='http://www.w3.org/1999/xhtml')
+doctype html
+html(lang=sessions.current_lang)
+  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
   head
-    title VJ Television
-    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
-    meta(http-equiv='Content-Language', content='en')
-    meta(name='author', content='FLYER COMMUNICATION, Gianluca Del Gobbo, Flavio Distefano')
-    meta(name='copyright', content='(c)2011 Flyer Communication')
-    meta(name='robots', content='all')
-    meta(name='distribution', content='public')
-    meta(name='keywords', content='webtv, vj, television, brodcast, live performances, live cinema, live video, live visuals, lisuals, vjing')
-    meta(name='description', content='Vj television is the first 24-hour live video broadcast channel. The daily programming is 06-12 Documentary, 12-18 Video, 18-24 Performances, 24-06 Vj sets')
+    title=page_data.headtitle
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(property='fb:admins', content=config.meta.fb_admin)
+    meta(property='fb:app_id', content=config.meta.fb_appId)
+    meta(property='og:image', content=page_data.image_src)
+    meta(property='og:title', content=page_data.title)
+    meta(property='og:description', content=page_data.description)
+    meta(property='og:site_name', content=config.project_name)
+    meta(property='og:url', content=config.domain + page_data.url)
+    link(rel='canonical', href=config.domain + page_data.url)
+    meta(property='og:type', content='website')
+    meta(name='description', content=page_data.description)
+    meta(name='keywords', content=config.meta.keywords)
+    meta(name='google-site-verification', content=config.meta.google_webmasterstools)
+    link(rel='shortcut icon', href=config.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
+    // CSS
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
 
     script(src='https://connect.facebook.net/en_US/all.js?hash=45ca9abfc6365636da753e5b8701736e&ua=modern_es6', async='', crossorigin='anonymous')
 
@@ -21,187 +38,218 @@ html(lang='en', xml:lang='en', xmlns='http://www.w3.org/1999/xhtml')
         }
         caricaFlashAvvio();
       }
-    link(href='https://vjtelevision.com/_css/styleFB.css', rel='stylesheet', type='text/css')
 
-  body#Canvas
-    .cntMain
-      .header
-        .cnt
-          h2
-            a(href='https://vjtelevision.com/', target='_blank', title='VJ Television')
-              img(src='https://vjtelevision.com/_images/logo.gif', alt='VJ Television')
-      .gray
-        .cnt
-          .gFFFFFF.mb10
-            #fb-root.fb_reset
-              script(async='', src='https://connect.facebook.net/en_US/all.js')
-              div(style='position: absolute; top: -10000px; width: 0px; height: 0px;')
-                div
-            script(type='text/javascript').
-              function authpages(p) {
-                top.location.href = "https://www.facebook.com/add.php?api_key=169587674742f592888a880e568f4a67&pages=1&next=https%3A%2F%2Fapps.facebook.com%2Fvj-television&page="+p;
-              }
-              window.fbAsyncInit = function() {
-                FB.init({appId: '174405599260914', status: true, cookie: true, xfbml: true});
-                //FB.Canvas.setAutoGrow(true);
-              };
-              (function() {
-                var e = document.createElement('script'); e.async = true;
-                e.src = document.location.protocol +
-                '//connect.facebook.net/en_US/all.js';
-                document.getElementById('fb-root').appendChild(e);
-              }());
-            #vjtv
-              .row
-                .col-md-9
-                  .embed-responsive.embed-responsive-16by9
-                    video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
-                      //source(src=process.env.WAREHOUSE+data[0].media.file, type='video/mp4')
-                      //source(src='MY_VIDEO.webm', type='video/webm')
-                      p.vjs-no-js
-                        !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-                        a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
-                .col-md-3
-                  .playlist
-                    .vjs-waiting
-                      .vjs-loading-spinner
-
-            //.cntPadd
-              .left
-                label(for='pages') Add VJ Television TAB to your pages.
-                select#pages(onchange='authpages(this.value)')
-                  option(value='') Select your page
-                  option(value='39523661566') Free Hardware Foundation
-                  option(value='276911438823') VJ television
-                  option(value='101787431236235') Hic sunt dracones
-                  option(value='104622071106122') Uno, nessuno, Centocelle
-                  option(value='116365825083476') Flyer
-                  option(value='148844655150043') FLxER
-                  option(value='151024398252445') Shockart.net
-                  option(value='176966905687876') AVnode
-                  option(value='182842281761052') Electrode
-                  option(value='185482561478671') LPM Live Performers Meeting
-                  option(value='213398435384824') videosolid
-                  option(value='344601646000208') Fotonica Festival
-                  option(value='609718299145612') Video Mapping Mexico
-                  option(value='720508908032467') 79Things
-                  option(value='788508917903713') Liminal
-                  option(value='911646675535312') PiùVolume
-                  option(value='1027067190744770') Chromosphere
-                  option(value='1638553593037140') Live Cinema Festival
-              .right
-                a(href='https://apps.facebook.com/vj-television/invite.php', target='_top') Invite your friends
-              br.myClear
-            h1 Vj television the first live video channel
-            .bigText
-              | Vj television is the first 24-hour live video broadcast channel.
-              br
-              br
-              | The daily programming is:
-            ul
-              li
-                h3 06:00 - 12:00 Documentary
-                p.bigText Here is a collection of workshops, interview and report live video related.
-              li
-                h3 12:00 - 18:00 Video
-                p.bigText
-                  | All that video are made from vj an live visual artists so you can find lots of difference in technical and style.
-              li
-                h3 18:00 - 00:00 Performances
-                p.bigText
-                  | This is the time of live video, live cinema, mapping, generative and many other styles of performances.
-              li
-                h3 00:00 - 06:00 Vj sets
-                p.bigText Let's get party with the best VJ from all over the world.
-            h1 Get VJ television contents on demand
-            .bigText
-              | All the Vj television contents can be seen not only from the 
-              strong daily programming
-              |  but also 
-              strong on demand
-              |  jumping in 
-              strong previous or next days
-              |  or choosing from the 4 main categories, 
-              strong Documentary
-              | , 
-              strong Video
-              | , 
-              strong Performances
-              |  and 
-              strong VJ sets
-              | .
-            h1 Do not want to switch on the TV?
-            .bigText Check the programming here
-            ul
-              li
-                a(target='_blank', href='https://vjtelevision.com/programming/') DAILY
-              li
-                a(target='_blank', href='https://vjtelevision.com/programming/?id=588') DOCUMENTARY
-              li
-                a(target='_blank', href='https://vjtelevision.com/programming/?id=589') VJ-DJ SETS
-              li
-                a(target='_blank', href='https://vjtelevision.com/programming/?id=590') PERFORMANCES
-              li
-                a(target='_blank', href='https://vjtelevision.com/programming/?id=591') VIDEO00
-            h4
-              | All contents come from the FLxER.net live visuals community 
-              a(target='_blank', href='https://flxer.net') flxer.net
-      .black
-        .col_0s
-          img(alt='VJ Television', src='https://flxer.net/_images/logo_piede.gif')
-        .left(style='padding:15px 10px;')
-          strong FLxER.net
-          |  | a Flyer communication project
-          br
-          a(href='mailto:info@flxer.net', title='Write to FLxER.net') info@flxer.net
-          |  // P.IVA: 06589171005
-        .right(style='text-align: right;padding:15px 10px;')
-          | NO © 2011
-          br
-          a(href='https://flxer.net/disclaimers/privacy') Privacy
-          |  // 
-          a(href='https://flxer.net/disclaimers/terms') Terms & conditions
-        br.myClear
-      div
-        ul#corporate
-          li
-            a(target='_blank', href='http://www.flyer.it/', title='Flyer communication: new media agency')
-              span.bulletSmall  
-              |  FLYER
-          li
-            a(target='_blank', href='https://flxer.net/', title='FLxER: Live visuals community and software')
-              span.bulletSmall  
-              |  FLxER
-          li.corpSel
-            span.bulletSmall  
-            |  VJ TELEVISION
-          li
-            a(target='_blank', href='http://www.liveperformersmeeting.net/', title='LPM: Live Performers Meeting')
-              span.bulletSmall  
-              |  LPM
-          li
-            a(target='_blank', href='http://www.shockart.net/', title='Shockart: web art project')
-              span.bulletSmall  
-              |  SHOCKART
-          li
-            a(target='_blank', href='http://wam.flyer.it/', title='WAM: Web Art Mouseum')
-              span.bulletSmall  
-              |  WAM
-      br.myClear
-      #footer
-        ul.left
-          li
-            a(href='http://www.vjtelevision.com', target='_blank') Vjtelevision.com
-        ul.right
-          li.right
-            a(href='http://apps.facebook.com/vj-television/') Add / Edit "VJ Television FB app"
-        br.myClear
-    //  script(type='text/javascript').
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-8844617-14']);
-      _gaq.push(['_trackPageview']);
+  body.body-common
+    #fb-root.fb_reset
+      script(async='', src='https://connect.facebook.net/en_US/all.js')
+      div(style='position: absolute; top: -10000px; width: 0px; height: 0px;')
+        div
+    script(type='text/javascript').
+      function authpages(p) {
+        top.location.href = "https://www.facebook.com/add.php?api_key=169587674742f592888a880e568f4a67&pages=1&next=https%3A%2F%2Fapps.facebook.com%2Fvj-television&page="+p;
+      }
+      window.fbAsyncInit = function() {
+        FB.init({appId: '174405599260914', status: true, cookie: true, xfbml: true});
+        //FB.Canvas.setAutoGrow(true);
+      };
       (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol +
+        '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    .container-fluid  
+      #vjtv
+        .row
+          .col-md-9.p-0
+            .embed-responsive.embed-responsive-16by9
+              video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
+                //source(src=process.env.WAREHOUSE+data[0].media.file, type='video/mp4')
+                //source(src='MY_VIDEO.webm', type='video/webm')
+                p.vjs-no-js
+                  !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+                  a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+          .col-md-3.p-0
+            #headervjtv.clearfix.h3.p-2.bg-dark
+              #date.float-left.pt-1.pl-2=date
+              .float-right
+                input#datepicker(type="hidden" name="date")
+                a#datepickerbutton(href="#")
+                  i.icon-calendar
+            .playlist
+              .vjs-waiting
+                .vjs-loading-spinner
+              //.cntPadd
+                .left
+                  label(for='pages') Add VJ Television TAB to your pages.
+                  select#pages(onchange='authpages(this.value)')
+                    option(value='') Select your page
+                    option(value='39523661566') Free Hardware Foundation
+                    option(value='276911438823') VJ television
+                    option(value='101787431236235') Hic sunt dracones
+                    option(value='104622071106122') Uno, nessuno, Centocelle
+                    option(value='116365825083476') Flyer
+                    option(value='148844655150043') FLxER
+                    option(value='151024398252445') Shockart.net
+                    option(value='176966905687876') AVnode
+                    option(value='182842281761052') Electrode
+                    option(value='185482561478671') LPM Live Performers Meeting
+                    option(value='213398435384824') videosolid
+                    option(value='344601646000208') Fotonica Festival
+                    option(value='609718299145612') Video Mapping Mexico
+                    option(value='720508908032467') 79Things
+                    option(value='788508917903713') Liminal
+                    option(value='911646675535312') PiùVolume
+                    option(value='1027067190744770') Chromosphere
+                    option(value='1638553593037140') Live Cinema Festival
+                .right
+                  a(href='https://apps.facebook.com/vj-television/invite.php', target='_top') Invite your friends
+                br.myClear
+                h1 Vj television the first live video channel
+                .bigText
+                  | Vj television is the first 24-hour live video broadcast channel.
+                  br
+                  br
+                  | The daily programming is:
+                ul
+                  li
+                    h3 06:00 - 12:00 Documentary
+                    p.bigText Here is a collection of workshops, interview and report live video related.
+                  li
+                    h3 12:00 - 18:00 Video
+                    p.bigText
+                      | All that video are made from vj an live visual artists so you can find lots of difference in technical and style.
+                  li
+                    h3 18:00 - 00:00 Performances
+                    p.bigText
+                      | This is the time of live video, live cinema, mapping, generative and many other styles of performances.
+                  li
+                    h3 00:00 - 06:00 Vj sets
+                    p.bigText Let's get party with the best VJ from all over the world.
+                h1 Get VJ television contents on demand
+                .bigText
+                  | All the Vj television contents can be seen not only from the 
+                  strong daily programming
+                  |  but also 
+                  strong on demand
+                  |  jumping in 
+                  strong previous or next days
+                  |  or choosing from the 4 main categories, 
+                  strong Documentary
+                  | , 
+                  strong Video
+                  | , 
+                  strong Performances
+                  |  and 
+                  strong VJ sets
+                  | .
+                h1 Do not want to switch on the TV?
+                .bigText Check the programming here
+                ul
+                  li
+                    a(target='_blank', href='https://vjtelevision.com/programming/') DAILY
+                  li
+                    a(target='_blank', href='https://vjtelevision.com/programming/?id=588') DOCUMENTARY
+                  li
+                    a(target='_blank', href='https://vjtelevision.com/programming/?id=589') VJ-DJ SETS
+                  li
+                    a(target='_blank', href='https://vjtelevision.com/programming/?id=590') PERFORMANCES
+                  li
+                    a(target='_blank', href='https://vjtelevision.com/programming/?id=591') VIDEO00
+                h4
+                  | All contents come from the FLxER.net live visuals community 
+                  a(target='_blank', href='https://flxer.net') flxer.net
+                .black
+                  .col_0s
+                    img(alt='VJ Television', src='https://flxer.net/_images/logo_piede.gif')
+                  .left(style='padding:15px 10px;')
+                    strong FLxER.net
+                    |  | a Flyer communication project
+                    br
+                    a(href='mailto:info@flxer.net', title='Write to FLxER.net') info@flxer.net
+                    |  // P.IVA: 06589171005
+                  .right(style='text-align: right;padding:15px 10px;')
+                    | NO © 2011
+                    br
+                    a(href='https://flxer.net/disclaimers/privacy') Privacy
+                    |  // 
+                    a(href='https://flxer.net/disclaimers/terms') Terms & conditions
+                  br.myClear
+                div
+                  ul#corporate
+                    li
+                      a(target='_blank', href='http://www.flyer.it/', title='Flyer communication: new media agency')
+                        span.bulletSmall  
+                        |  FLYER
+                    li
+                      a(target='_blank', href='https://flxer.net/', title='FLxER: Live visuals community and software')
+                        span.bulletSmall  
+                        |  FLxER
+                    li.corpSel
+                      span.bulletSmall  
+                      |  VJ TELEVISION
+                    li
+                      a(target='_blank', href='http://www.liveperformersmeeting.net/', title='LPM: Live Performers Meeting')
+                        span.bulletSmall  
+                        |  LPM
+                    li
+                      a(target='_blank', href='http://www.shockart.net/', title='Shockart: web art project')
+                        span.bulletSmall  
+                        |  SHOCKART
+                    li
+                      a(target='_blank', href='http://wam.flyer.it/', title='WAM: Web Art Mouseum')
+                        span.bulletSmall  
+                        |  WAM
+                br.myClear
+                #footer
+                  ul.left
+                    li
+                      a(href='http://www.vjtelevision.com', target='_blank') Vjtelevision.com
+                  ul.right
+                    li.right
+                      a(href='http://apps.facebook.com/vj-television/') Add / Edit "VJ Television FB app"
+                  br.myClear
+    include includes/modal-vjtv
+
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    if form
+      script(type='text/javascript', src='/_js/validator.js')
+    include ../_partials/components/cookielawinfo
+
+    if include_gallery
+      #fb-root
+      script(async='', defer='', crossorigin='anonymous', src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId='+config.meta.fb_appId+'&autoLogAppEvents=1')
+
+      script(type="text/javascript").
+        var sgp_config = {
+          "sgp_selT": "2",
+          "sgp_sel": ".thumbnail",
+          "sgp_bT": "#{config.project_name}",
+          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
+          "sgp_bU": "#{global.config.domain}",
+          "sgp_bg": "000000",
+          "sgp_bgo": "0.8",
+          "sgp_bb": "1",
+          "sgp_hb": "1",
+          "sgp_hbt": "1",
+          "sgp_ch": "",
+          "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
+          "sgp_desc": "1",
+          "sgp_fb": "1",
+          "sgp_fbf": "1",
+          "sgp_fbc": "1",
+          "sgp_nav": "1",
+          "sgp_hon": "",
+          "sgp_usf": "1.2",
+          "sgp_mb": "10",
+          "sgp_theme": "_images",
+          "sgp_theme_root": "/",
+          "sgp_iLoadR": 'social-gallery-loading.gif',
+          "sgp_iR": 'social-gallery-r.png',
+          "sgp_iL": 'social-gallery-l.png'
+        };
+        var sgp_ie = false;var sgp_ie7 = false;
+      script(type='text/javascript', src='/_js/jquery-migrate.min.js')
+      script(type='text/javascript', src='/_js/socialGalleryPluginLite.js')
+
+    include ../_partials/components/analytics
