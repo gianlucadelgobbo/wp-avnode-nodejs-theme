@@ -38,6 +38,13 @@ module.exports = function(app, exp) {
   //app.use(cookieParser());
   //app.use(methodOverride());
   app.use(i18n.init);
+  const csp = require('helmet-csp')
+
+  app.use(csp({
+    directives: {
+      "frame-ancestors": ["'self'", '*.facebook.com']
+    }
+  }));
   app.use(function(req, res, next) {
     res.setHeader("Content-Security-Policy", "frame-ancestors *facebook.com");
     return next();
