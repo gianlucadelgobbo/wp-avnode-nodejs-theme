@@ -20,7 +20,10 @@ i18n.configure({
 module.exports = function(app, exp) {
 
   var env = process.env.NODE_ENV || 'development';
-  app.use(helmet());
+  app.use(helmet.frameguard({
+    action: 'allow-from',
+    domain: 'https://www.facebook.com'
+  }));
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
   //app.set('view options', { layout: false });
@@ -36,11 +39,11 @@ module.exports = function(app, exp) {
   //app.use(methodOverride());
   app.use(i18n.init);
   //console.log("env "+env);
-  app.use(function(req, res, next) {
+  /* app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+  }); */
   if (env == 'production') {
     //console.log("env "+env);
     app.set('view cache', true);
