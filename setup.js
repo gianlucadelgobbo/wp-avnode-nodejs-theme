@@ -38,6 +38,10 @@ module.exports = function(app, exp) {
   //app.use(cookieParser());
   //app.use(methodOverride());
   app.use(i18n.init);
+  app.use(function(req, res, next) {
+    res.setHeader("Content-Security-Policy", "frame-ancestors *facebook.com");
+    return next();
+});
   //console.log("env "+env);
   /* app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
