@@ -52,14 +52,14 @@ html(lang=sessions.current_lang)
           .sr-only(itemprop='name')=config.project_name
         #menu-main.collapse.navbar-collapse
           include includes/menu-main
-    .container-fluid
+    block home
+    .container
       #result
         block content
       include includes/footer
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search
     include includes/modal-resize
-    include includes/modal-vjtv
 
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form

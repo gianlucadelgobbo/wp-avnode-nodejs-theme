@@ -1,46 +1,23 @@
 extends layout
 block vjtv
-  .container-fluid
-    #vjtv
-      .row
-        .col-md-9.p-0
-          .embed-responsive.embed-responsive-16by9
-            video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
-              //source(src=process.env.WAREHOUSE+data[0].media.file, type='video/mp4')
-              //source(src='MY_VIDEO.webm', type='video/webm')
-              p.vjs-no-js
-                !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-                a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
-        .col-md-3.p-0
-          #headervjtv.clearfix.h3.p-2.bg-dark
-            #date.float-left.pt-1.pl-2=date
-            .float-right
-              input#datepicker(type="hidden" name="date")
-              a#datepickerbutton(href="#")
-                i.icon-calendar
-          .playlist
-            .vjs-waiting
-              .vjs-loading-spinner
-
-    //.embed-responsive.embed-responsive-16by9
-      iframe.embed-responsive-item(width="100",height="270",style="border:0;width:100%;",src="https://dev.vjtelevision.com/_swf/")
-
-block content
-  section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") News
-    .swiper-container
-      !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
-        
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Satellite Events
-    .swiper-container
-      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+  include vjtv
+block home
+  .container-fluid.p-0
+    section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") News
+      .swiper-container
+        !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
+          
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") Satellite Events
+      .swiper-container
+        !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
 
