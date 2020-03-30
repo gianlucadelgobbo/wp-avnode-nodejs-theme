@@ -1,7 +1,7 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-  meta(itemprop="eventStatus" content="confirmed")
   meta(itemprop="position", content=position+1)
   .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
+    meta(itemprop="eventStatus" content="confirmed")
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
       .thumb-cnt-cnt
         - var editionIndex = -1;
@@ -14,7 +14,7 @@
     .box-list
       .text-center
         .text-muted.supText
-          include ../components/eventdateplace
+          include ../components/eventdateplace_box
         h3.list_title(itemprop='name')!=result.title.replace(" | ","<br />")
       .read-more-box
         a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/events/'+result.slug+"/"), rel='bookmark', title!=result.title, itemprop='url')

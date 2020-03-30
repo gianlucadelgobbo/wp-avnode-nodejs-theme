@@ -1,10 +1,9 @@
-nav
-  ul.footer-nav.corporate
-    li
-      a(title='Home', href=lang_preurl + '/')=global.__("Home")
-    li(class=page_data.url.indexOf(lang_preurl+'/profile') >= 0 ? "active" : undefined)
-      a(title=global.__("Profile"), href=lang_preurl + '/profile/')=global.__("Profile")
-    li(class=page_data.url.indexOf(lang_preurl+'/portfolio/awards-and-grants') >= 0 ? "active" : undefined)
-      a(title=global.__("Awards and Grants"), href=lang_preurl + '/portfolio/awards-and-grants/')=global.__("Awards and Grants")
-    li(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
-      a(title=global.__("Contacts"), href=lang_preurl + '/contacts/')=global.__("Contacts")
+ul.nav.flex-column.nav-pills
+  li.nav-item
+    a.nav-link(title='Home', href=lang_preurl + '/')=global.__("Home")
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/profile') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Profile"), href=lang_preurl + '/profile/')=global.__("Profile")
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/portfolio/awards-and-grants') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Awards and Grants"), href=lang_preurl + '/portfolio/awards-and-grants/')=global.__("Awards and Grants")
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Contacts"), href=lang_preurl + '/contacts/')=global.__("Contacts")

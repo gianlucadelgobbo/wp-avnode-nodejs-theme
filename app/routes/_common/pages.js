@@ -13,12 +13,12 @@ exports.facebook = function get(req, res) {
 
 exports.get = function get(req, res) {
   console.log("req.params");
+  console.log(req.params);
   helpers.setSessions(req, function(lang_preurl) {
     console.log("lang_preurl stocazzo");
     console.log(lang_preurl);
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
-      console.log
       var include_gallery = false;
       var basepath = "";
       if(result && result['ID']) {
@@ -34,6 +34,7 @@ exports.get = function get(req, res) {
             if (req.params.page == "partnerships") data.partnership = body; */
         if (req.params.subpage){
           if (req.params.page == "events") pug = config.prefix+'/event';
+          if (req.params.page == "cultural-productions") pug = config.prefix+'/event';
           if (req.params.subpage && req.params.page == "performances") {
             pug = config.prefix+'/performance';
             basepath = "/performances/" +req.params.subpage;
@@ -41,6 +42,7 @@ exports.get = function get(req, res) {
           if (req.params.page == "news") pug = config.prefix+'/new';
           if (req.params.page == "members") pug = config.prefix+'/member';
           if (req.params.page == "partnerships") pug = config.prefix+'/partnership';
+          if (req.params.page == "partnerships-management") pug = config.prefix+'/partnership';
           if (req.params.subsubpage == "galleries") {
             pug = config.prefix+'/performance_gallery';
             include_gallery = true;
@@ -51,9 +53,9 @@ exports.get = function get(req, res) {
             basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
           }            
         }
-        //console.log(result);
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
+          console.log(pug);
           var Recaptcha = require('express-recaptcha').Recaptcha;
           var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
           result.countries = require('../../helpers/country-list');
@@ -380,6 +382,7 @@ exports.post = function post(req, res) {
 };
 
 exports.getSubpage = function getSubpage(req, res) {
+  console.log("stocazzo");
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);

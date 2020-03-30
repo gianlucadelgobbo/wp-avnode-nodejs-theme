@@ -1,7 +1,7 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
 
-var sez = config.sez["web-and-mobile"];
+var sez = config.sez["web-and-apps"];
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {

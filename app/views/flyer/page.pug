@@ -1,17 +1,5 @@
 extends layout
 block content
-  .container
-    article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/'+itemtype)
-      .row
-        .col-sm-9
-          header
-            h1.entry-title(itemprop='name')!=result.post_title
-          .rientro
-            div(itemprop='description')!=result.post_content
-            include ../_common/inc_videos
-            include ../_common/inc_share
-        .col-sm-3
-          img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
-          include ../_common/inc_docs_small
-      if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns']
-        include ../_common/inc_grid
+  .container.mt-4
+    include ../_partials/page
+

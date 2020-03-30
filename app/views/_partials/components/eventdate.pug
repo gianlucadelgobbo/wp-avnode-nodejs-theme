@@ -1,10 +1,11 @@
-span.sr-only
-    if result.schedule[0].starttime
-        span(itemprop='startDate', content=result.schedule[0].starttime)=result.schedule[0].starttime
-        !=" | "
-    if result.schedule[result.schedule.length-1].endtime
-        span(itemprop='endDate', content=result.schedule[result.schedule.length-1].endtime)=result.schedule[result.schedule.length-1].endtime
-if result.boxDateFull
+if result.avnode.schedule
+    span.sr-only
+        if result.avnode.schedule[0].starttime
+            span(itemprop='startDate', content=result.avnode.schedule[0].starttime)=result.avnode.schedule[0].starttime
+            !=" | "
+        if result.avnode.schedule[result.avnode.schedule.length-1].endtime
+            span(itemprop='endDate', content=result.avnode.schedule[result.avnode.schedule.length-1].endtime)=result.avnode.schedule[result.avnode.schedule.length-1].endtime
+if result.avnode.boxDateFull
     .date
         i.icon-calendar-check-o
-        !=" "+result.boxDateFull
+        !=" "+result.avnode.boxDateFull

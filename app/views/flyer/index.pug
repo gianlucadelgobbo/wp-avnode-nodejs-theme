@@ -9,18 +9,18 @@ block content
       li(data-target='#carousel', data-slide-to='3')
     // Wrapper for slides
     .carousel-inner(role='listbox')
-      .item.active
+      .carousel-item.active
         a(href=lang_preurl+"/portfolio/live-visuals/video-mapping-maxxi-spring-attitude-2016/", title="Video Mapping MAXXI Spring Attitude 2016")
-          img(src='https://flyer.dev.flyer.it/files/2016/12/event-mapping-SA.jpg', alt=global.__('Image for')+': '+'Video Mapping MAXXI Spring Attitude 2016')
-      .item
+          img.d-block.w-100(src='https://flyer.dev.flyer.it/files/2016/12/event-mapping-SA.jpg', alt=global.__('Image for')+': '+'Video Mapping MAXXI Spring Attitude 2016')
+      .carousel-item
         a(href=lang_preurl + "/portfolio/web-and-mobile/funder35/", title="Funder35")
-          img(src='https://flyer.dev.flyer.it/files/2015/06/Flyer-slider-Europe.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
-      .item
+          img.d-block.w-100(src='https://flyer.dev.flyer.it/files/2015/06/Flyer-slider-Europe.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
+      .carousel-item
         a(href=lang_preurl + "/portfolio/awards-and-grants/european-union-avnode-lpm-2015-2018-creative-europe-large-scale-cooperation/", title="Funder35")
-          img(src='https://flyer.dev.flyer.it/files/2016/11/wm_funder35.jpg', alt=global.__('Image for') + ': ' + 'Funder35')
-      .item
+          img.d-block.w-100(src='https://flyer.dev.flyer.it/files/2016/11/wm_funder35.jpg', alt=global.__('Image for') + ': ' + 'Funder35')
+      .carousel-item
         a(href=lang_preurl + "/portfolio/videos/live-cinema-festival-2016-video-report/", title="Live Cinema Festival 2016 Video Report")
-          img(src='https://flyer.dev.flyer.it/files/2016/11/LCF2016_report-thumb.jpg', alt=global.__('Image for') + ': ' + 'Live Cinema Festival 2016 Video Report')
+          img.d-block.w-100(src='https://flyer.dev.flyer.it/files/2016/11/LCF2016_report-thumb.jpg', alt=global.__('Image for') + ': ' + 'Live Cinema Festival 2016 Video Report')
 
 
     // Controls
@@ -30,17 +30,17 @@ block content
     a.right.carousel-control(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
       span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
       span.sr-only Next
-  article.home
+  //article.home
     .text-center(style="padding-top: 20px;")
       h1.entry-title
         span.sr-only=config.project_name+" "
         !=config.meta.headline[sessions.current_lang]
-    section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .home-services(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .sr-only(itemprop="name")=global.__("Services")
         .container-fluid
           .row.sameheightcnt
-            .col-xl-2.col-xl-offset-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+            .col-xl-2.offset-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
               meta(itemprop="position", content="1")
               !=profile['wpcf-row-1-col-1-html-box']
             .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
@@ -56,12 +56,12 @@ block content
             
             
             
-    section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=global.__("Live Visuals")
           .row
-            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
               .col-xs-12!=posttype_events.post_content
         .row.isotope.results
           each result, position in results.events
@@ -75,12 +75,12 @@ block content
             
             
             
-    section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=posttype_lab.post_title
           .row
-            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
               .col-xs-12!=posttype_lab.post_content
         .row.isotope.results
           each result, position in results.lab
@@ -94,12 +94,12 @@ block content
 
 
 
-    section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=posttype_web.post_title
           .row
-            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
               .col-xs-12!=posttype_web.post_content
         .row.isotope.results
           each result, position in results.web
@@ -113,11 +113,11 @@ block content
 
 
 
-    .home-learning(itemprop="owns", itemscope, itemtype = 'http://schema.org/OwnershipInfo')
+    //section.home-learning(itemprop="owns", itemscope, itemtype = 'http://schema.org/OwnershipInfo')
       section
         .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
           .row
-            .col-lg-6.col-lg-offset-2.col-md-12.col-sm-12
+            .col-lg-6.offset-lg-2.col-md-12.col-sm-12
               h2.entry-title.boxItem(itemprop="name")=global.__("Learning")
               each result, position in results.learning
                   include boxes/box_learning_home
@@ -129,12 +129,12 @@ block content
 
 
 
-    section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title(itemprop="name")=posttype_video.post_title
           .row
-            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
               .col-xs-12!=posttype_video.post_content
         .row
           each result, position in results.videos
@@ -148,12 +148,12 @@ block content
 
 
 
-    section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
           .row
-            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
               .col-xs-12!=posttype_awards.post_content
         .row
           each result, position in results.awards
@@ -165,12 +165,12 @@ block content
             !=" "
             i.icon-right
 
-    section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    //section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
           h2.entry-title.boxItem(itemprop="name")=global.__("Extra")
           .row
-            .col-xl-6.col-xl-offset-3.col-lg-8.col-lg-offset-2
+            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
               .col-xs-12!=posttype_news.post_content
         .row.isotope.results
           each result, position in results.news

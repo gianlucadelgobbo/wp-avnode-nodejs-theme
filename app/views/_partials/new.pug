@@ -7,20 +7,18 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Article'
         include ../_common/inc_type_hidden
         .d-none.type.text-muted
           i(class="fa fa-cube")
-          =" News"
+          !=" News"
 
         .text-right
           include ../_common/inc_datemonth
           br
         div(itemprop='description')!=result.avnode.about
-        .row
-          .col-md-6
-            //include ../_common/inc_capauthors
-          .col-md-6
-            include ../_common/inc_websites
+        include ../_common/inc_websites
         include ../_common/inc_share
-    .col-sm-3(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
-      img.img-fluid.main-image(src=result.avnode.imageFormats.small, alt=result.avnode.title, itemprop='contentUrl')
-      meta(itemprop="width" content="1280")
-      meta(itemprop="height" content="720")
+    .col-sm-3
+      .mb-3(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+        img.img-fluid.main-image(src=result.avnode.imageFormats.small, alt=result.avnode.title, itemprop='url')
+        meta(itemprop="width" content="1280")
+        meta(itemprop="height" content="720")
+      include ../_common/inc_authors
 

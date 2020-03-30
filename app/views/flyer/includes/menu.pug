@@ -1,128 +1,124 @@
-nav#top-menu.navbar.navbar-inverse
-  .container-fluid
+nav#top-menu.navbar.navbar-dark.bg-dark.navbar-expand-lg
+    //.container-fluid
     // Brand and toggle get grouped for better mobile display
-    .navbar-header
-      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mainmenu',aria-expanded="false")
-        span.sr-only Toggle navigation
-        span.flyer-expanding-icon
-          span.flyer-line
-          span.flyer-line
-          span.flyer-line
-      a.navbar-brand(href=lang_preurl+'/', title=config.project_name)
-        i.icon-flyer
-        .sr-only=config.project_name
+    //.navbar-header
+    a.navbar-brand(href=lang_preurl+'/', title=config.project_name)
+      i.icon-flyer
+      .sr-only=config.project_name
+    button.navbar-toggler.ml-auto(type='button', data-toggle='collapse', data-target='#mainmenu')
+      //button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#mainmenu',aria-expanded="false")
+      span.sr-only Toggle navigation
+      span.flyer-expanding-icon
+        span.flyer-line
+        span.flyer-line
+        span.flyer-line
     // Collect the nav links, forms, and other content for toggling
     #mainmenu.collapse.navbar-collapse
-      .nav.navbar-nav.navbar-right.flyer-expanding-icon-holder
-        .flyer-expanding-icon-holder-inner
-          a.flyer-menu-appear(href="#", title=global.__("Open menu"))
-            span.flyer-expanding-icon
-              span.flyer-line
-              span.flyer-line
-              span.flyer-line
-      form.navbar-form.d-none.d-sm-block(action='/search/', method='get')
+      //form.d-md-none(action='/search/', method='get')
+        input(type='hidden', name='cx', value=config.meta.google_search)
+        input(type='hidden', name='cof', value='FORID:10')
+        input(type='hidden', name='ie', value='UTF-8')
         .input-group
-          input(type='hidden', name='cx', value=config.meta.google_search)
-          input(type='hidden', name='cof', value='FORID:10')
-          input(type='hidden', name='ie', value='UTF-8')
-
           input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
-          span.input-group-btn
-            button.btn.btn-default(type='submit', name='sa')=global.__("Search")
+          div.input-group-append
+            button.btn.btn-secondary(type='submit', name='sa')=global.__("Search")
 
-      form.flyer-search-cover.d-none-xs(action=lang_preurl+'/search/', method='get')
+      .flyer-search-cover
         .flyer-form-holder-outer
-          .flyer-search-submit-holder
-            button(type='submit', name='sa')
-              i.icon-search
-              span.sr-only=global.__("Search")
-          .flyer-form-holder
-            .flyer-form-holder-inner
-              input(type='hidden', name='cx', value=config.meta.google_search)
-              input(type='hidden', name='cof', value='FORID:10')
-              input(type='hidden', name='ie', value='UTF-8')
-              input.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+          form.form-inline(action=lang_preurl+'/search/', method='get')
+            //.flyer-form-holder
+            input(type='hidden', name='cx', value=config.meta.google_search)
+            input(type='hidden', name='cof', value='FORID:10')
+            input(type='hidden', name='ie', value='UTF-8')
+            .input-group.ml-auto
+              input.form-control.form-control-sm.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+              div.input-group-append
+                button.btn.btn-sm.btn-secondary(type='submit', name='sa')=global.__("Search")
+            //.flyer-search-submit-holder
+              button(type='submit', name='sa')
+                i.icon-search
+                span.sr-only=global.__("Search")
+            //.flyer-form-holder-inner
+            .flyer-search-close-cnt.d-none.d-md-inline
               a.flyer-search-close(href='#', title=global.__("Close")) &times;
-      ul.nav.navbar-nav.navbar-right.menu-hide.border-right
-        li(class=page_data.url == '/' ? "active" : undefined)
-          a(href=lang_preurl+'/', title=global.__("Home"))
+      ul.navbar-nav.ml-auto.menu-hide
+        li.nav-item(class=page_data.url == '/' ? "active" : undefined)
+          a.nav-link(href=lang_preurl+'/', title=global.__("Home"))
             span.flyer-item-inner
               i.icon-right
               | Home
-        li(class=page_data.url.indexOf(lang_preurl+'/profile') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/profile/', title=global.__("Profile"))
+        li.nav-item(class=page_data.url.indexOf(lang_preurl+'/profile') >= 0 ? "active" : undefined)
+          a.nav-link(href=lang_preurl+'/profile/', title=global.__("Profile"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Profile")
-        li.dropdown(class=page_data.url.indexOf(lang_preurl+'/portfolio') >= 0 ? "active" : undefined)
-          a.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true', title=global.__("Portfolio"))
+        li.nav-item.dropdown(class=page_data.url.indexOf(lang_preurl+'') >= 0 ? "active" : undefined)
+          a.nav-link.dropdown-toggle(role='button', href='#', data-toggle='dropdown', aria-haspopup='true', title=global.__("Portfolio"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Portfolio")
-              !=" "
-              span.caret
           ul.dropdown-menu(role='menu')
-            li(class=page_data.url.indexOf(lang_preurl+'/portfolio/web-and-mobile') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("Web & Mobile"))
+            li.dropdown-item(class=page_data.url.indexOf(lang_preurl+'/cultural-productions') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/cultural-productions/', title=global.__("Cultural productions"))
                 span.flyer-item-inner
                   i.icon-right
-                  !=global.__("Web & Mobile")
-            li(class=page_data.url.indexOf(lang_preurl+'/portfolio/live-visuals') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/live-visuals/', title=global.__("Live Visuals"))
+                  !=global.__("Cultural productions")
+            li.dropdown-item(class=page_data.url.indexOf(lang_preurl+'/web-and-apps') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/web-and-apps/', title=global.__("Web Sites & Apps"))
                 span.flyer-item-inner
                   i.icon-right
-                  !=global.__("Live Visuals")
-            li(class=page_data.url.indexOf(lang_preurl+'/portfolio/videos/') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/videos/', title=global.__("Videos"))
+                  !=global.__("Web Sites & Apps")
+            li.dropdown-item(class=page_data.url.indexOf(lang_preurl+'/partnerships-management/') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/partnerships-management/', title=global.__("Partnerships management"))
                 span.flyer-item-inner
                   i.icon-right
-                  !=global.__("Videos")
-            li(class=page_data.url.indexOf(lang_preurl+'/portfolio/learning') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/learning/', title=global.__("Learning"))
+                  !=global.__("Partnerships management")
+            //li.dropdown-item(class=page_data.url.indexOf(lang_preurl+'/learning') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/learning/', title=global.__("Learning"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Learning")
-            li(class=page_data.url.indexOf(lang_preurl+'/portfolio/lab') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/lab/', title=global.__("Lab"))
+            //li.dropdown-item(class=page_data.url.indexOf(lang_preurl+'/lab') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/lab/', title=global.__("Lab"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Lab")
-            li(class=page_data.url.indexOf(lang_preurl+'/portfolio/awards-and-grants') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/awards-and-grants/', title=global.__("Awards and Grants"))
+            li.dropdown-item(class=page_data.url.indexOf(lang_preurl+'/awards-and-grants') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/awards-and-grants/', title=global.__("Awards and Grants"))
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Awards and Grants")
-            //li(class=page_data.url.indexOf(lang_preurl+'/tags') >= 0 ? "active" : undefined)
-              a(href=lang_preurl+'/portfolio/tags/')
+            //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/tags') >= 0 ? "active" : undefined)
+              a(href=lang_preurl+'/tags/')
                 span.flyer-item-inner
                   i.icon-right
                   !=global.__("Tags")
-        li(class=page_data.url.indexOf(lang_preurl+'/customers') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/customers/', title=global.__("Customers"))
+        //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/customers') >= 0 ? "active" : undefined)
+          a.nav-link(href=lang_preurl+'/customers/', title=global.__("Customers"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Customers")
-        li(class=page_data.url.indexOf(lang_preurl+'/extra') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/extra/', title=global.__("Extra"))
+        li.nav-item(class=page_data.url.indexOf(lang_preurl+'/extra') >= 0 ? "active" : undefined)
+          a.nav-link(href=lang_preurl+'/extra/', title=global.__("Extra"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Extra")
-        li(class=page_data.url.indexOf(lang_preurl+'/people') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/people/', title=global.__("People"))
+        //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/people') >= 0 ? "active" : undefined)
+          a.nav-link(href=lang_preurl+'/people/', title=global.__("People"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("People")
-        li.menu-spacer-after(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
-          a(href=lang_preurl+'/contacts/', title=global.__("Contacts"))
+        li.nav-item.menu-spacer-after(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
+          a.nav-link(href=lang_preurl+'/contacts/', title=global.__("Contacts"))
             span.flyer-item-inner
               i.icon-right
               !=global.__("Contacts")
-        li.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
-          a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
-        li.menu-spacer-after.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
-          a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
-        li.menu-spacer-after.d-none-xs
-          a(href='#', title=global.__("Search")).flyer-search-opener
+        li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+          a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+        li.nav-item.menu-spacer-after.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+          a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+        li.nav-item.menu-spacer-after.d-none-xs
+          a.nav-link(href='#', title=global.__("Search")).flyer-search-opener
             i.icon-search
             span.sr-only=global.__("Search")
 
@@ -138,4 +134,11 @@ nav#top-menu.navbar.navbar-inverse
             input(type='hidden', name='lang', value='EN')
             input(type='hidden', name='topic', value='livevisuals')
           #nl_res.d-none
+      .navbar-nav.flyer-expanding-icon-holder
+        .flyer-expanding-icon-holder-inner
+          a.flyer-menu-appear(href="#", title=global.__("Open menu"))
+            span.flyer-expanding-icon
+              span.flyer-line
+              span.flyer-line
+              span.flyer-line
     .menu-expand-bkg

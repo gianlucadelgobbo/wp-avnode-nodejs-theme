@@ -1,13 +1,12 @@
-if result.data_month
-  .text-muted
-    .dates
-      .dateheadline(itemprop="headline")
-        i.icon-calendar-check-o
-        !=" "
-        !=result.data_month+" "
-      if (result.post_type=="lab")
-        meta(itemprop="foundingDate", content=result.datePublished)
-      else
-        meta(itemprop="datePublished", content=result.datePublished)
-      if (result.post_type=="news")
-        meta(itemprop="dateModified", content=result.dateModified)
+.text-muted
+  .dates
+    .dateheadline(itemprop="headline")
+      i.icon-calendar-check-o
+      !=" "
+      !=result.avnode.creation_dateFormatted+" "
+    if (result.post_name=="lab")
+      meta(itemprop="foundingDate", content=result.datePublished)
+    else
+      meta(itemprop="datePublished", content=result.avnode.createdAt)
+    if (result.post_name=="news")
+      meta(itemprop="dateModified", content=result.avnode.modifiedAt)

@@ -1,0 +1,15 @@
+if result.avnode.users
+  ul.list-unstyled
+    li.media.mb-3(itemprop="publisher", itemscope, itemtype="http://schema.org/Organization")
+      a.mr-3(itemprop="logo", itemscope, itemtype="http://schema.org/ImageObject", href="https://avnode.net/" target="_blank")
+        img(itemprop="url", class="svgsmall", src="https://avnode.net/warehouse/users/2013/03/100x100/avnode_jpg.jpg", alt="AVnode.net")
+      .media-body
+        h3
+          a.users_performance_item_name(itemprop="name", href="https://avnode.net/", target="_blank")="AVnode.net"
+    each user in result.avnode.users
+      li.media.mb-3(itemprop="author", itemscope, itemtype="http://schema.org/Person")
+        a.mr-3(itemprop="url", href="https://avnode.net/"+user.slug, target="_blank")
+          img(itemprop="image", class=user.imageFormats.small.substring(user.imageFormats.small.lastIndexOf(".")+1)+"small", src=user.imageFormats.small, alt=user.stagename)
+        .media-body
+          h3
+            a.users_performance_item_name(itemprop="name", href="https://avnode.net/"+user.slug, target="_blank")=user.stagename

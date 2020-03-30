@@ -1,22 +1,33 @@
-ul.navbar-nav.mr-auto
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/project/') Project
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/contents-programming/')="Contents & programming"
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/partnerships/') Partnerships
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/news/') News
-  //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/newsletter/') Newsletter
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
-  //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4.m-0
+  // Brand and toggle get grouped for better mobile display
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
+    span.navbar-toggler-icon
+    i.icon-bar
+    i.icon-bar
+    i.icon-bar
+  a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
+    i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
+    .sr-only(itemprop='name')=config.project_name
+  #menu-main.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/project/') Project
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/project') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/contents-programming/')="Contents & programming"
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/partnerships/') Partnerships
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/news/') News
+      //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/newsletter/') Newsletter
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
+      //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
 
-ul.navbar-nav
-  li.nav-item
-    include ../../_partials/components/newsletter-navbar
+    ul.navbar-nav
+      li.nav-item
+        include ../../_partials/components/newsletter-navbar
 
   //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
     a.nav-link#searchModalButton(href="/search/")

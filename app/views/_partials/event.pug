@@ -1,4 +1,4 @@
-article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
+article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
   .row
     .col-sm-8
       img.img-fluid.main-image.mb-4(src=result.avnode.imageFormats.large, alt=result.avnode.title, itemprop='image')
@@ -7,10 +7,17 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
     .col-sm-4
       header
         h1.entry-title.mt-3(itemprop='name')!=result.avnode.title
+        meta(itemprop="eventStatus" content="confirmed")
+        meta(itemprop="eventAttendanceMode" content="offline")
+        .d-none(itemprop='offers', itemscope='', itemtype='http://schema.org/Offer')
+          .event-price(itemprop='price', content='0')="Free Entry"
+          meta(itemprop='priceCurrency', content='USD')
+
       .rientro
         h3=result.avnode.subtitle && result.avnode.subtitle!= "Text is missing" ? result.avnode.subtitle : result.avnode.boxDateFull
         if result.avnode.boxVenue
-          p.boxVenue=result.avnode.boxVenue
+          include components/eventdateplace
+          //p.boxVenue=result.avnode.boxVenue
           p
             a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
           #fullSchedule.collapse

@@ -10,7 +10,7 @@ block content
             div(itemprop='description')!=result.post_content
             .text-muted
               .dates
-                .date=result.data_evento
+                //.date=result.data_evento
                 meta(itemprop="dateModified", content=result.dateModified)
             include ../_common/inc_share
         .col-sm-3

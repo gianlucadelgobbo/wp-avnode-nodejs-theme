@@ -1,7 +1,7 @@
 .dateplace
-  if result.schedule[0].starttime || result.schedule[result.schedule.length-1].endtime || result.boxDateFull
+  if result.avnode.schedule[0].starttime || result.avnode.schedule[result.avnode.schedule.length-1].endtime || result.avnode.boxDateFull
     .dates
       include eventdate
-  if result.boxVenue
+  if result.avnode.boxVenue
     .places
       include place

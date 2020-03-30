@@ -5,7 +5,6 @@ html(lang=sessions.current_lang)
     title=page_data.headtitle
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    //- //console.log(config.meta)
     meta(property='fb:admins', content=config.meta.fb_admin)
     meta(property='fb:app_id', content=config.meta.fb_appId)
     meta(property='og:image', content=page_data.image_src)
@@ -29,17 +28,20 @@ html(lang=sessions.current_lang)
     //link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700")
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
 
-  body(class=page_data.url == '/' || page_data.url == '/it/' || page_data.url == '/it' ? "flyer-header-expanding expanding" : undefined)
+  body(class=(page_data.url == '/' || page_data.url == '/it/' || page_data.url == '/it' ? "flyer-header-expanding expanding" : undefined))
     include includes/menu
     .cnt(itemscope, itemtype='http://schema.org/Organization')
       #result
         block content
       include includes/footer
-    include ../_common/modal-full
+    include ../_partials/components/modal-full
+    include ../_partials/components/modal-search
+    //include includes/modal-resize
+
     script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
     if form
       script(type='text/javascript', src='/_js/validator.js')
-    include ../_common/inc_cookielawinfo
+    include ../_partials/components/cookielawinfo
 
     if include_gallery
       #fb-root

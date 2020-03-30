@@ -1,0 +1,14 @@
+extends layout
+block content
+  .container-fluid
+    article#container(itemprop="owns", itemscope, itemtype='http://schema.org/ItemList')
+      .row
+        .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2.col-xs-12
+          .header
+            header
+              .text-center
+                h1.entry-title(itemprop="name")=page_data.title
+                //p(itemprop="description")!=posttype.post_content
+            .text-center.mb-3
+              include ../_common/inc_share
+      .post_content!=result.post_content

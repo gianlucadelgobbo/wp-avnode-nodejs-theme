@@ -1,0 +1,7 @@
+.dateplace
+  if result.schedule[0].starttime || result.schedule[result.schedule.length-1].endtime || result.boxDateFull
+    .dates
+      include eventdate_box
+  if result.boxVenue
+    .places
+      include place_box

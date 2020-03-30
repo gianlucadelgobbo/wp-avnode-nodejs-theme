@@ -4,7 +4,7 @@ $(function() {
   $('#carousel').carousel({
     pause: "false"
   });
-  $( window ).scroll(function() {
+  /* $( window ).scroll(function() {
     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
     if (st > lastScrollTop) {
       if ($('#top-menu').hasClass("navbar-fixed-top") && !$('#mainmenu').hasClass("in")) {
@@ -30,7 +30,7 @@ $(function() {
       $('body').addClass("flyer-header-expanding");
     }
     lastScrollTop = st;
-  });
+  }); */
   $(".flyer-menu-appear").click(function() {
     if ($('#top-menu').hasClass("flyer-opened")){
       $('#top-menu').removeClass("flyer-opened");
@@ -40,6 +40,7 @@ $(function() {
     return false;
   });
   $(".flyer-search-opener").click(function() {
+    $('.flyer-search-cover').removeClass("d-none");
     $('.flyer-search-cover').addClass("flyer-search-cover-opened");
     return false;
   });
