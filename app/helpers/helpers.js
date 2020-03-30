@@ -165,7 +165,7 @@ exports.getPage = function getPage(req,callback) {
               callback(data);
             } else  */
             if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-              console.log("req.params.page");
+              console.log("req.params.pagessssssssssss");
               console.log(req.params.page);
               /* if (req.params.page == "events") data.event = body;
               if (req.params.page == "performances") data.performance = body;
@@ -178,7 +178,8 @@ exports.getPage = function getPage(req,callback) {
               if (body.data) body.events = body.data;
               console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, data => {
+              var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+              fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });
             }
@@ -419,7 +420,8 @@ exports.getEdition = function getEdition(req,callback) {
               data.avnode = body;
             } */
             var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-            fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, data => {
+            var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+            fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
               callback(data);
             });
           }

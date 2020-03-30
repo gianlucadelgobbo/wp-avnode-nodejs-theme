@@ -100,7 +100,7 @@ exports.formatLocation = function formatLocation(l) {
   return loc;
 };
 
-exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_params, cb) {
+exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_params, basepath, cb) {
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
@@ -138,37 +138,37 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
         });
         opts.day = undefined;
       }
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body.advanced.programmebydayvenue});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body.advanced.programmebydayvenue});      
     }
     if (opts.view === "performers") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body.advanced.performers});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body.advanced.performers});      
     }
     if (opts.view === "partners") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "gallery") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "videos") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     // Users
     if (opts.view === "performances_by_user") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "events") {
       if (!body.events && body.data) body.events = body.data;
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "partnerships") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "news") {
       if (!body.news && body.data) body.news = body.data;
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "members") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     return html;
   });

@@ -7,7 +7,7 @@
         - var editionIndex = -1;
         if config.editions && config.events_to_editions
           - editionIndex = config.events_to_editions.indexOf(result.slug)        
-        a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/events/'+result.slug+"/"), rel='bookmark', title!=result.title, itemprop='url')
+        a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/'+(basepath ? basepath : "partnerships")+'/'+result.slug+"/"), rel='bookmark', title!=result.title, itemprop='url')
           img.img-fluid(src=result.imageFormats.small, alt!=global.__('Image for')+': '+result.title, itemprop='contentUrl')
           meta(itemprop="width" content="480")
           meta(itemprop="height" content="270")
@@ -17,6 +17,6 @@
           include ../components/eventdateplace_box
         h3.list_title(itemprop='name')!=result.title.replace(" | ","<br />")
       .read-more-box
-        a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/events/'+result.slug+"/"), rel='bookmark', title!=result.title, itemprop='url')
+        a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/'+(basepath ? basepath : "partnerships")+'/'+result.slug+"/"), rel='bookmark', title!=result.title, itemprop='url')
           .sr-only=global.__("Read More")
           i.icon-right

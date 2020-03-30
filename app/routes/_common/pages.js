@@ -20,7 +20,7 @@ exports.get = function get(req, res) {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       var include_gallery = false;
-      var basepath = "";
+      var basepath = config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
       if(result && result['ID']) {
         var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
             /* if (req.params.subsubpage == "galleries") data.gallery = body;
@@ -64,6 +64,8 @@ exports.get = function get(req, res) {
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
+        console.log("basepath");
+        console.log(basepath);
         res.render(pug, {basepath:basepath, session_login: req.session.user, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: include_gallery, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
