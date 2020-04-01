@@ -1,8 +1,8 @@
 .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-  meta(itemprop="eventStatus" content="confirmed")
+  meta(itemprop="eventStatus" content="EventScheduled")
   meta(itemprop="position", content=position+1)
   .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
-    meta(itemprop="eventStatus" content="confirmed")
+    meta(itemprop="eventStatus" content="EventScheduled")
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
       .thumb-cnt-cnt
         a.ajaxloader(href=lang_preurl+'/events/'+result.slug+"/", rel='bookmark', title!=result.post_title, itemprop='url')

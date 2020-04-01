@@ -202,8 +202,6 @@ exports.getGrid = function getGrid(data) {
     while (row<rowsN) {
       grid[row] = [];
       while (col<columnsN) {
-        //console.log("stocazzo"+data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title']+"stocazzo");
-        //console.log("stocazzo "+row + "-"+col+" stocazzo");
         if (data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title']) {
           grid[row][col] = {};
           grid[row][col].tit = data['wpcf-row-'+(row+1)+'-col-'+(col+1)+'-title'];
