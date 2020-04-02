@@ -13,12 +13,12 @@ exports.get = function get(req, res) {
         //console.log("getAll events");
         req.params.page = "partnerships";
         helpers.getPage(req, function(result_events) {
-          //console.log("getAll editions");
+          //console.log("getAll events");
           req.params.page = "events";
-          helpers.getPage(req, function(result_editions) {
+          helpers.getPage(req, function(result_events) {
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
-              results: {news:result_news.post_content,events:result_events.post_content,editions:result_editions.post_content},
+              results: {news:result_news.post_content,events:result_events.post_content,events:result_events.post_content},
               page_data:page_data,
               sessions:req.session.sessions
             };

@@ -5,24 +5,23 @@ block content
     ol.carousel-indicators
       li.active(data-target='#carousel', data-slide-to='0')
       li(data-target='#carousel', data-slide-to='1')
-      li(data-target='#carousel', data-slide-to='2')
-      //li(data-target='#carousel', data-slide-to='3')
+      //li(data-target='#carousel', data-slide-to='2')
     // Wrapper for slides
     .carousel-inner(role='listbox')
-      .carousel-item.active
+      //.carousel-item.active
         a(href="/activities/lpm-2015-2018/", title='European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
           img.d-block.w-100(src='/avnode/images/home-lpm2015-2018.jpg', alt=global.__('Image for') + ': ' + 'European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation')
-      .carousel-item
+      .carousel-item.active
         a(href="/join/", title='Join AVnode')
           img.d-block.w-100(src='/avnode/images/home-join.jpg', alt=global.__('Image for') + ': ' + 'Join AVnode')
       .carousel-item
-        a(href="/activities/social-media/", title='Social Media')
-          img.d-block.w-100(src='/avnode/images/home-social-media.jpg', alt=global.__('Image for') + ': ' + 'Social Media')
+        //a(href="/activities/social-media/", title='Social Media')
+        img.d-block.w-100(src='/avnode/images/home-social-media.jpg', alt=global.__('Image for') + ': ' + 'Social Media')
     // Controls
-    a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+    a.carousel-control-prev(href='#carousel', role='button', data-slide='prev')
       span.carousel-control-prev-icon(aria-hidden='true')
       span.sr-only Previous
-    a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+    a.carousel-control-next(href='#carousel', role='button', data-slide='next')
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
   article
@@ -33,7 +32,7 @@ block content
   section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
     h1.entry-title(itemprop="name") News
     .swiper-container
-      !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      !=results.news.replace(new RegExp("class=\"ajaxloader\"", 'g'),"").replace(new RegExp("href=\"/", 'g'),"href=\"https://avnode.net/").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="https://avnode.net/news/", title="See all News") See all News
@@ -41,7 +40,7 @@ block content
   section.home(itemscope, itemtype='http://schema.org/ItemList')
     h1.entry-title(itemprop="name") Events
     .swiper-container
-      !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      !=results.events.replace(new RegExp("class=\"ajaxloader\"", 'g'),"").replace(new RegExp("href=\"/", 'g'),"href=\"https://avnode.net/").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .container-fluid
       .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="https://avnode.net/events/", title="See all Editions") See all Events
+        a.btn.btn-primary.btn-sm(href="https://avnode.net/events/", title="See all Events") See all Events

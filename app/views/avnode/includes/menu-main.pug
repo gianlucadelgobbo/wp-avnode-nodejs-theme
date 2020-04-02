@@ -15,11 +15,11 @@ ul.navbar-nav
     a.nav-link(href=lang_preurl + '/join/', title=global.__("Join"))=global.__("Join")
   li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') >= 0 ? "active" : undefined)
     a.nav-link(href=lang_preurl + '/newsletter/', title=global.__("Newsletter"))=global.__("Newsletter")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contact') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/contact/', title=global.__("Contact"))=global.__("Contact")
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/contacts/', title=global.__("Contacts"))=global.__("Contacts")
   li.nav-item
     a.nav-link(href=lang_preurl+'https://avnode.net/login', title=global.__("Login"))=global.__("Login")
-  li.menu-spacer-after.d-none-xs
+  //li.menu-spacer-after.d-none-xs
     a#searchModalButton.nav-link(href="/search/", title=global.__("Search"))
       i.icon-search
       .sr-only=global.__("Search")
