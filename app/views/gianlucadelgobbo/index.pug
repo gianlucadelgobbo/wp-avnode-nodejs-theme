@@ -1,46 +1,6 @@
 extends layout
 block content
-  #carousel.carousel.slide(data-ride='carousel')
-    //
-      Indicators
-      <ol class="carousel-indicators">
-      <li data-target="#carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel" data-slide-to="1"></li>
-      <li data-target="#carousel" data-slide-to="2"></li>
-      <li data-target="#carousel" data-slide-to="3"></li>
-      <li data-target="#carousel" data-slide-to="4"></li>
-      <li data-target="#carousel" data-slide-to="5"></li>
-      <li data-target="#carousel" data-slide-to="6"></li>
-      <li data-target="#carousel" data-slide-to="7"></li>
-      <li data-target="#carousel" data-slide-to="8"></li>
-      <li data-target="#carousel" data-slide-to="9"></li>
-      <li data-target="#carousel" data-slide-to="10"></li>
-      </ol>
-    // Wrapper for slides
-    .carousel-inner
-      .carousel-item.active
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-2.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-3.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-4.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-5.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-6.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-7.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-8.jpg', alt='fotonica 2017')
-      .carousel-item
-        img.img-fluid(src='/fotonica/images/carusel_img_2017/FOTONICA2017_img-9.jpg', alt='fotonica 2017')
-    // Controls
-    a.carousel-control-prev(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
-      span.carousel-control-prev-icon(aria-hidden='true')
-      span.sr-only Previous
-    a.carousel-control-next(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
-      span.carousel-control-next-icon(aria-hidden='true')
-      span.sr-only Next
+  include ../_partials/carousel
       
   section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
     h1.entry-title(itemprop="name") Latest Cultural Productions

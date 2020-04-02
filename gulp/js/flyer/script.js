@@ -1,7 +1,7 @@
 var lastScrollTop = 0;
 
 $(function() {
-  $('#carousel').carousel({
+  $('#mycarousel').carousel({
     pause: "false"
   });
   /* $( window ).scroll(function() {

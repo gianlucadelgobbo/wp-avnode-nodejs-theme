@@ -1,11 +1,11 @@
 extends layout
 block content
-  #carousel.carousel.slide(data-ride='carousel')
+  #mycarousel.mycarousel.slide(data-ride='carousel')
     // Indicators
     ol.carousel-indicators
-      li.active(data-target='#carousel', data-slide-to='0')
-      li(data-target='#carousel', data-slide-to='1')
-      //li(data-target='#carousel', data-slide-to='2')
+      li.active(data-target='#mycarousel', data-slide-to='0')
+      li(data-target='#mycarousel', data-slide-to='1')
+      //li(data-target='#mycarousel', data-slide-to='2')
     // Wrapper for slides
     .carousel-inner(role='listbox')
       //.carousel-item.active
@@ -18,10 +18,10 @@ block content
         //a(href="/activities/social-media/", title='Social Media')
         img.d-block.w-100(src='/avnode/images/home-social-media.jpg', alt=global.__('Image for') + ': ' + 'Social Media')
     // Controls
-    a.carousel-control-prev(href='#carousel', role='button', data-slide='prev')
+    a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
       span.carousel-control-prev-icon(aria-hidden='true')
       span.sr-only Previous
-    a.carousel-control-next(href='#carousel', role='button', data-slide='next')
+    a.carousel-control-next(href='#mycarousel', role='button', data-slide='next')
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
   article

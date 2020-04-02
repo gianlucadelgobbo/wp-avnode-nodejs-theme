@@ -2,14 +2,14 @@ extends layout
 block content
   .embed-responsive.embed-responsive-16by9
     iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F2475917385800496%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true")
-  //#carousel.carousel.slide(data-ride='carousel', data-interval="false")
+  //#mycarousel.mycarousel.slide(data-ride='carousel', data-interval="false")
     // Wrapper for slides
     .carousel-inner
       .carousel-item.active
         iframe(style="border:0" width="100%" height="100%" src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F837085809979657&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
         img.d-none.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
         //script.
-          document.onload = function(){$("#carousel").pause()}
+          document.onload = function(){$("#mycarousel").pause()}
       //.item.active.full-screen
         img.d-block.w-100(src='/lpm/images/slider/LPM2019-call-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
       .carousel-item
@@ -44,19 +44,19 @@ block content
 
     // Indicators
     ol.carousel-indicators
-      li.active(data-target='#carousel', data-slide-to='0')
-      li(data-target='#carousel', data-slide-to='1')
-      li(data-target='#carousel', data-slide-to='2')
-      li(data-target='#carousel', data-slide-to='3')
-      li(data-target='#carousel', data-slide-to='4')
-      li(data-target='#carousel', data-slide-to='5')
-      li(data-target='#carousel', data-slide-to='6')
+      li.active(data-target='#mycarousel', data-slide-to='0')
+      li(data-target='#mycarousel', data-slide-to='1')
+      li(data-target='#mycarousel', data-slide-to='2')
+      li(data-target='#mycarousel', data-slide-to='3')
+      li(data-target='#mycarousel', data-slide-to='4')
+      li(data-target='#mycarousel', data-slide-to='5')
+      li(data-target='#mycarousel', data-slide-to='6')
 
     // Controls
-    a.carousel-control-prev(href='#carousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+    a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
       span.carousel-control-prev-icon(aria-hidden='true')
       span.sr-only Previous
-    a.carousel-control-next(href='#carousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+    a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
       

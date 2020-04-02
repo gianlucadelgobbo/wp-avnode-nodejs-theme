@@ -154,19 +154,19 @@ body.expanding.fixed-top{
       width:124px;
       text-align:center
   }
-  .carousel{
+  .mycarousel{
       max-height:100vh;
       width:100%;
       overflow:hidden
   }
-  .carousel .carousel-inner,.carousel .carousel-inner .item{
+  .mycarousel .carousel-inner,.mycarousel .carousel-inner .item{
       height:100%
   }
-  .carousel .carousel-inner img{
+  .mycarousel .carousel-inner img{
       display:block;
       object-fit:cover
   }
-  .carousel a:hover img{
+  .mycarousel a:hover img{
       opacity:1;
       -ms-filter:none;
       filter:none
