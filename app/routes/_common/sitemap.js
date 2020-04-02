@@ -46,16 +46,6 @@ exports.get = function get(req, res) {
       helpers.getXMLlist(req, function( results ) {
         res.header('Content-Type', 'text/xml').render('_sitemaps/sitemap-avnode', {results:results, isodate:isodate, sez:req.params.avnode});
       });
-    /* } else if (req.params.users) {
-      if(config.sez.users[req.params.users]){
-        helpers.getAllUsers(req, req.params.users, function( results ) {
-          res.header('Content-Type', 'text/xml').render('_common/sitemap-users', {results: results});
-        });
-      } else {
-        var page_data = fnz.setPageData(req, {});
-        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-
-      } */
     }
   });
 };

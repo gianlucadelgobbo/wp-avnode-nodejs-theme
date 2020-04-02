@@ -9,11 +9,11 @@
     .box-list
       .box-list-cnt
         .text-muted
-          include ../../_common/inc_eventdate
+          include ../../_partials/inc_eventdate
         h3.list_title(itemprop='name')
           a(itemprop='url', href='/editions/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
         .places
-          include ../../_common/inc_place
+          include ../../_partials/inc_place
         .text-muted.small.excerpt
           if result.excerpt && result.excerpt.rendered
             div(itemprop='description')!=result.excerpt.rendered

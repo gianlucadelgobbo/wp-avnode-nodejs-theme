@@ -55,7 +55,7 @@ exports.get = function get(req, res) {
         }
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-          console.log(pug);
+          //console.log(pug);
           var Recaptcha = require('express-recaptcha').Recaptcha;
           var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
           result.countries = require('../../helpers/country-list');
@@ -64,9 +64,9 @@ exports.get = function get(req, res) {
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
-        console.log("basepath");
-        console.log(basepath);
-        console.log(pug);
+        //console.log("basepath");
+        //console.log(basepath);
+        //console.log(pug);
         res.render(pug, {basepath:basepath, session_login: req.session.user, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: include_gallery, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});

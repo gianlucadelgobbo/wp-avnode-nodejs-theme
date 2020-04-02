@@ -3,7 +3,7 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
     .col-sm-8
       img.img-fluid.main-image.mb-4(src=result.avnode.imageFormats.large, alt=result.avnode.title, itemprop='image')
       .rientro.d-none.d-sm-block!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
-      include ../_common/inc_videos
+      include ../_partials/inc_videos
     .col-sm-4
       header
         h1.entry-title.mt-3(itemprop='name')!=result.avnode.title
@@ -77,4 +77,4 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
                       h2.media-heading
                         a(href="https://avnode.net/"+partner.slug+"/", title=partner.stagename target="_blank")
                           span=partner.stagename
-        include ../_common/inc_share
+        include ../_partials/inc_share

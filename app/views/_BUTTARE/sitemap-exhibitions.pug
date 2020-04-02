@@ -1,8 +1,0 @@
-doctype xml
-sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
-  each result in results
-    sitemap
-      loc=config.domain+"/sitemap-"+result.post_type +"-"+result.slug+".xml"
-      lastmod=result.startdateISO
-      changefreq yearly
-      priority 1.0

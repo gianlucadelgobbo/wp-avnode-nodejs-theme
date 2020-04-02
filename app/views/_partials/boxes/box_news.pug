@@ -14,12 +14,12 @@
     .box-list
       .box-list-cnt
         .text-right
-          include ../../_common/inc_datemonth_box
+          include ../../_partials/inc_datemonth_box
         h3.list_title
           a.ajaxloader(itemprop='name', href='/news/'+result.slug+"/", rel='bookmark', title=result.title)!=result.title
         .text-muted.small.excerpt
-          if result.description
-            div(itemprop='mainEntityOfPage')!=result.description
+          if result.excerpt
+            div(itemprop='mainEntityOfPage')!=result.excerpt
         ul.list-unstyled.d-none
           li.media.mb-3(itemprop="publisher", itemscope, itemtype="http://schema.org/Organization")
             .users_performance_item_name(itemprop="name")="AVnode.net"

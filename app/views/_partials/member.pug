@@ -3,7 +3,7 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
     .col-sm-8
       img.img-fluid.main-image(src=result.member.imageFormats.large, alt=result.member.stagename, itemprop='image')
       .rientro.d-none-xs!=result.member.aboutFull ? result.member.aboutFull : result.member.about
-      include ../_common/inc_videos
+      include ../_partials/inc_videos
     .col-sm-4
       header
         h1.entry-title(itemprop='name')!=result.member.stagename
@@ -26,4 +26,4 @@ article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http:
                 =" "
                 !=result.member.type.name
         .d-none.d-sm-block(itemprop='description')!=result.member.aboutFull ? result.member.aboutFull : result.member.about
-        include ../_common/inc_share
+        include ../_partials/inc_share

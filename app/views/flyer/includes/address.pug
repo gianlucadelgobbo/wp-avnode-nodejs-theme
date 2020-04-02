@@ -4,8 +4,10 @@ div
       i(class="icon-" + config.prefix, itemprop='logo')
       .sr-only=config.project_name
   br
-  strong(itemprop='name') Flyer new media
+  strong(itemprop='name')=config.project_name
   br
+
+
   span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
     span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
       span(itemprop='streetAddress') Via del Verano 39

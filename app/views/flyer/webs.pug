@@ -9,15 +9,15 @@ block content
               .text-center
                 h1.entry-title(itemprop="name")=posttype.post_title+(tag ? ": #"+tag : "")
             .text-center.mb-3
-              include ../_common/inc_share
+              include ../_partials/inc_share
             aside
               .text-center
-                include ../_common/inc_tags
+                include ../_partials/inc_tags
       if results
         .post_content
           !=posttype.post_content
         .row.isotope.results
           each result, position in results
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
-              include boxes/box_web
-        include ../_common/inc_pagination
+              include ../_partials/boxes/box_web
+        include ../_partials/inc_pagination

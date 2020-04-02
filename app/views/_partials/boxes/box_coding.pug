@@ -8,9 +8,4 @@
     .box-list
       h3.list_title(itemprop='name')
         a.ajaxloader(itemprop='url', href=lang_preurl+'/coding/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
-      include ../../_common/inc_datemonth
-      //if result.excerpt && result.excerpt.rendered
-        .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered
-      //.tags.text-muted.small
-        include ../../_common/inc_tags_post_nolink
-      //include ../../_common/inc_capauthors_box
+      include ../../_partials/inc_datemonth
