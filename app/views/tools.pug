@@ -1,0 +1,64 @@
+doctype html
+html(lang=sessions.current_lang)
+  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' :'/'+sessions.current_lang)
+  head
+    title=page_data.headtitle
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(property='fb:admins', content=config.meta.fb_admin)
+    meta(property='fb:app_id', content=config.meta.fb_appId)
+    meta(property='og:image', content=page_data.image_src)
+    meta(property='og:title', content=page_data.title)
+    meta(property='og:description', content=page_data.description)
+    meta(property='og:site_name', content=config.project_name)
+    meta(property='og:url', content=config.domain+page_data.url)
+    link(rel='canonical', href=config.domain+page_data.url)
+    meta(property='og:type', content='website')
+    meta(name='description', content=page_data.description)
+    meta(name='keywords', content=config.meta.keywords)
+    meta(name='google-site-verification', content=config.meta.google_webmasterstools)
+    link(rel='shortcut icon', href=config.meta['favicon'])
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
+    // CSS
+    //link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700")
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
+
+  body
+    h1 Tools
+    ul
+      - links = []
+      each site, index in configFull
+        if site.project_name
+          each lang in site.locales
+            if lang != site.default_lang
+              - links.push("http://localhost:"+site.port+"/"+lang+"/?createcache=1")
+            else
+              - links.push("http://localhost:"+site.port+"/?createcache=1")
+            if site.editions
+              - links.push("http://localhost:"+site.port+"/meta/?generate=1")
+          li=site.project_name
+      button.btn.btn-primary GENERATE
+      pre=links.join("\n")
+
+    include _partials/components/modal-full
+    include _partials/components/modal-search
+    //include includes/modal-resize
+
+    script(type='text/javascript', src='/' + config.prefix + '/js/combo.min.js')
+    script.
+      var links = !{JSON.stringify(links)}
+      $(function() {
+        $("button.btn.btn-primary").on("click", ()=>{
+          for (var a=0;a<links.length;a++) {
+            window.open(links[a]);
+          }
+        });
+      });
+
+
+    include _partials/components/analytics

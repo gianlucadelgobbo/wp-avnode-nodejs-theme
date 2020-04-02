@@ -45,10 +45,10 @@ module.exports = function(app, exp) {
       "frame-ancestors": ["'self'", '*.facebook.com']
     }
   }));
-  app.use(function(req, res, next) {
+  /* app.use(function(req, res, next) {
     res.setHeader("Content-Security-Policy", "frame-ancestors *facebook.com");
     return next();
-});
+  }); */
   //console.log("env "+env);
   /* app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

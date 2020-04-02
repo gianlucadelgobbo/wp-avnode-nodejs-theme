@@ -7,7 +7,7 @@ exports.get = function get(req, res) {
     meta = {};
     conta = [];
     if (!req.query.generate){
-      res.render("_common/meta_test", {meta:config.meta.editions});
+      res.render("_partials/meta_test", {meta:config.meta.editions});
     } else {
       getMetaSingle(config.editions[conta.length],req);
       function getMetaSingle(val,req) {
@@ -25,11 +25,11 @@ exports.get = function get(req, res) {
           //console.log(req.query.check);
           if (conta.length==config.editions.length) {
             if (req.query.check){
-              res.render("_common/meta_test", {meta:meta});
+              res.render("_partials/meta_test", {meta:meta});
             } else {
               require('jsonfile').writeFile(config.root+'/cache/'+config.prefix+'_editions.json', meta, function(err) {
                 config.meta.editions = meta;
-                res.render("_common/meta_test", {meta:config.meta.editions});
+                res.render("_partials/meta_test", {meta:config.meta.editions});
               });
             }
           } else {

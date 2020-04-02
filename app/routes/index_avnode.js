@@ -7,7 +7,7 @@ exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/cache/'+config.prefix+'_home_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      //console.log("getAll news");
+      console.log("getAll news");
       req.params.page = "news";
       helpers.getPage(req, function(result_news) {
         //console.log("getAll events");

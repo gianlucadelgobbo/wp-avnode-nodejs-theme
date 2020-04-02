@@ -196,6 +196,7 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/tools', pagesRoutes.getTools);
   app.get('/(:page)', pagesRoutes.get);
   
   app.post('/(:page)', pagesRoutes.post);

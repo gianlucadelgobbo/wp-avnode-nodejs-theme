@@ -11,6 +11,13 @@ exports.facebook = function get(req, res) {
   });
 }
 
+exports.getTools = function get(req, res) {
+  helpers.setSessions(req, function() {
+    var page_data = fnz.setPageData(req, {'ID':'100'});
+    res.render('tools', {configFull: require('config'), session_login: req.session.user, page_data: page_data, sessions: req.session.sessions});
+  });
+}
+
 exports.get = function get(req, res) {
   //console.log("req.params");
   //console.log(req.params);

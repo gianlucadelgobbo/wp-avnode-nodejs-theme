@@ -1,6 +1,6 @@
 // NODE_ENV=production forever start -l /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/out.log -e /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/err.log /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/forever.json
 [
-  /*   {
+    {
       "uid": "flyer",
       "append": true,
       "watch": true,
@@ -10,7 +10,7 @@
       "outFile": "/Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/node_flyer_out.log",
       "errFile": "/Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/node_flyer_err.log",
       "args": ["-site", "flyer"]
-    },*/  
+    },  
     {
       "uid": "avnode",
       "append": true,
