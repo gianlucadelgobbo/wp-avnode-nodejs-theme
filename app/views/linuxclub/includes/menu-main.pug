@@ -1,26 +1,37 @@
-ul.navbar-nav.mr-auto
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/linux-club-italia') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/linux-club-italia/') Linux Club Italia
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/events/')=global.__("Eventi")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/partnerships/')=global.__("Partnerships")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news/') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/news/')=global.__("News")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contatti') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/contacts/')=global.__("Contatti")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/newsletter/')=global.__("Newsletter")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/diventa-membro') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/join/')=global.__("Diventa membro")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/amici') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/amici/')=global.__("Amici")
+nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+  // Brand and toggle get grouped for better mobile display
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
+    span.navbar-toggler-icon
+    i.icon-bar
+    i.icon-bar
+    i.icon-bar
+  a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
+    i(class="icon-"+(config.prefix=="fotonica" ? "f" : (config.prefix=="linuxclub" ? "linux" : config.prefix+(config.prefix=="lcf" ? "-fill" : ""))), itemprop='logo')
+    .sr-only(itemprop='name')=config.project_name
+  #menu-main.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/linux-club-italia') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/linux-club-italia/') Linux Club Italia
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/events/')=global.__("Eventi")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/partnerships/')=global.__("Partnerships")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news/') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/news/')=global.__("News")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contatti') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/contacts/')=global.__("Contatti")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/newsletter/')=global.__("Newsletter")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/diventa-membro') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/join/')=global.__("Diventa membro")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/amici') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/amici/')=global.__("Amici")
 
-  li.nav-item
-    include ../../_partials/components/newsletter-navbar
+      li.nav-item
+        include ../../_partials/components/newsletter-navbar
 
-ul.navbar-nav
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
-    a.nav-link#searchModalButton(href="/search/")
-      i.icon-search
-      .sr-only=global.__("Search")
+    ul.navbar-nav
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
+        a.nav-link#searchModalButton(href="/search/")
+          i.icon-search
+          .sr-only=global.__("Search")

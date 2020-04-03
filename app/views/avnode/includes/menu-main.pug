@@ -1,25 +1,35 @@
-ul.navbar-nav.mr-auto
-  li.nav-item(class=page_data.url == "/" ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/', title=global.__("Home"))=global.__("Home")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/manifesto') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/manifesto/', title=global.__("Manifesto"))=global.__("Manifesto")
-  li.nav-item
-    a.nav-link(href="https://avnode.net/organizations/", title=global.__("Members"))=global.__("Members")
-  li.nav-item
-    a.nav-link(href="https://avnode.net/events/", title=global.__("Events"))=global.__("Events")
-  li.nav-item
-    a.nav-link(href="https://avnode.net/news/", title=global.__("News"))=global.__("News")
+nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+  // Brand and toggle get grouped for better mobile display
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
+    span.navbar-toggler-icon
+    i.icon-bar
+    i.icon-bar
+    i.icon-bar
+  a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
+    img.img-fluid(src="/avnode/images/LogoAVnode-bar.svg", alt=config.project_name)
+  #menu-main.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item(class=page_data.url == "/" ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/', title=global.__("Home"))=global.__("Home")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/manifesto') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/manifesto/', title=global.__("Manifesto"))=global.__("Manifesto")
+      li.nav-item
+        a.nav-link(href="https://avnode.net/organizations/", title=global.__("Members"))=global.__("Members")
+      li.nav-item
+        a.nav-link(href="https://avnode.net/events/", title=global.__("Events"))=global.__("Events")
+      li.nav-item
+        a.nav-link(href="https://avnode.net/news/", title=global.__("News"))=global.__("News")
 
-ul.navbar-nav
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/join') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/join/', title=global.__("Join"))=global.__("Join")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/newsletter/', title=global.__("Newsletter"))=global.__("Newsletter")
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/contacts/', title=global.__("Contacts"))=global.__("Contacts")
-  li.nav-item
-    a.nav-link(href=lang_preurl+'https://avnode.net/login', title=global.__("Login"))=global.__("Login")
-  //li.menu-spacer-after.d-none-xs
-    a#searchModalButton.nav-link(href="/search/", title=global.__("Search"))
-      i.icon-search
-      .sr-only=global.__("Search")
+    ul.navbar-nav
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/join') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/join/', title=global.__("Join"))=global.__("Join")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/newsletter') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/newsletter/', title=global.__("Newsletter"))=global.__("Newsletter")
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl + '/contacts/', title=global.__("Contacts"))=global.__("Contacts")
+      li.nav-item
+        a.nav-link(href=lang_preurl+'https://avnode.net/login', title=global.__("Login"))=global.__("Login")
+      //li.menu-spacer-after.d-none-xs
+        a#searchModalButton.nav-link(href="/search/", title=global.__("Search"))
+          i.icon-search
+          .sr-only=global.__("Search")

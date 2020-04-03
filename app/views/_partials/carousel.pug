@@ -21,8 +21,8 @@
   .carousel-inner(role='listbox')
     each car, index in carousel
       .carousel-item(data-target='#mycarousel', data-slide-to=index, class=(index===0 ? "active" : undefined))
-        a(href=car.link.replace("events", (config.prefix == "flyer" ? "cultural-productions" : "events")), title=car.title)
-          img.d-block.w-100(src=car.img, alt=global.__('Image for')+': '+car.title)
+        //a(href=car.link.replace("events", (config.prefix == "flyer" ? "cultural-productions" : "events")), title=car.title)
+        img.d-block.w-100(src=car.img, alt=global.__('Image for')+': '+car.title)
 
   // Controls
   a.left.carousel-control(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))

@@ -29,7 +29,7 @@ html(lang=sessions.current_lang)
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css', media='all')
 
   body(class=(page_data.url == '/' || page_data.url == '/it/' || page_data.url == '/it' ? "flyer-header-expanding expanding" : undefined))
-    include includes/menu
+    include includes/menu-main
     .cnt(itemscope, itemtype='http://schema.org/Organization')
       #result
         block content

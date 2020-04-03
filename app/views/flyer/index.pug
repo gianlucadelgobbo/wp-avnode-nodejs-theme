@@ -1,157 +1,70 @@
 extends layout
 block content
   include ../_partials/carousel
-  //article.home
+  article.home
     .text-center(style="padding-top: 20px;")
       h1.entry-title
         span.sr-only=config.project_name+" "
         !=config.meta.headline[sessions.current_lang]
-    //section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    section(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .home-services(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         .sr-only(itemprop="name")=global.__("Services")
         .container-fluid
           .row.sameheightcnt
             .col-xl-2.offset-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
               meta(itemprop="position", content="1")
-              !=profile['wpcf-row-1-col-1-html-box']
+              !=results.profile['wpcf-row-1-col-1-html-box']
             .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
               meta(itemprop="position", content="2")
-              !=profile['wpcf-row-1-col-2-html-box']
+              !=results.profile['wpcf-row-1-col-2-html-box']
             .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
               meta(itemprop="position", content="3")
-              !=profile['wpcf-row-1-col-3-html-box']
+              !=results.profile['wpcf-row-1-col-3-html-box']
             .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
               meta(itemprop="position", content="4")
-              !=profile['wpcf-row-1-col-4-html-box']
+              !=results.profile['wpcf-row-1-col-4-html-box']
 
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name")=global.__("Latest Cultural Productions")
+      .swiper-container
+        !=results.events.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title=global.__("See all Cultural Productions"))=global.__("See all Cultural Productions")
+
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name")=global.__("Latest Parterships Managed")
+      .swiper-container
+        !=results.partnerships.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title=global.__("See all Parterships Managed"))=global.__("See all Parterships Managed")
+
+    section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") News
+      .swiper-container
+        !=results.news.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/news/", title=global.__("See all News"))=global.__("See all News")
             
-            
-            
-    //section.home-events(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
+    section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
         header.text-center
-          h2.entry-title(itemprop="name")=global.__("Live Visuals")
+          h2.entry-title(itemprop="name")=results.posttype_web.post_title
           .row
             .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
-              .col-xs-12!=posttype_events.post_content
-        .row.isotope.results
-          each result, position in results.events
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
-              include boxes/box_event
-        .text-center.read-more
-          a(href=lang_preurl+'/portfolio/live-visuals/', title=global.__("See all Events"))
-            !=global.__("See all Events")
-            !=" "
-            i.icon-right
-            
-            
-            
-    //section.home-lab(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
-      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
-        header.text-center
-          h2.entry-title(itemprop="name")=posttype_lab.post_title
-          .row
-            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
-              .col-xs-12!=posttype_lab.post_content
-        .row.isotope.results
-          each result, position in results.lab
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>5 ? "hidden-lg visible-xl" : "")
-              include boxes/box_lab
-        .text-center.read-more
-          a(href=lang_preurl+'/portfolio/lab/', title=global.__("See all Lab"))
-            !=global.__("See all Lab")
-            !=" "
-            i.icon-right
-
-
-
-    //section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
-      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
-        header.text-center
-          h2.entry-title(itemprop="name")=posttype_web.post_title
-          .row
-            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
-              .col-xs-12!=posttype_web.post_content
+              .col-xs-12!=results.posttype_web.post_content
         .row.isotope.results
           each result, position in results.web
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
-              include boxes/box_web
+              include ../_partials/boxes/box_web
         .text-center.read-more
           a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("See all Web & Mobile"))
             !=global.__("See all Web & Mobile")
             !=" "
             i.icon-right
-
-
-
-    //section.home-learning(itemprop="owns", itemscope, itemtype = 'http://schema.org/OwnershipInfo')
-      section
-        .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
-          .row
-            .col-lg-6.offset-lg-2.col-md-12.col-sm-12
-              h2.entry-title.boxItem(itemprop="name")=global.__("Learning")
-              each result, position in results.learning
-                  include boxes/box_learning_home
-              .read-more.inverse
-                a(href=lang_preurl+'/portfolio/learning/', title=global.__("See all Learnings"))
-                  !=global.__("See all Learnings")
-                  !=" "
-                  i.icon-right
-
-
-
-    //section.home-videos(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
-      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
-        header.text-center
-          h2.entry-title(itemprop="name")=posttype_video.post_title
-          .row
-            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
-              .col-xs-12!=posttype_video.post_content
-        .row
-          each result, position in results.videos
-            .col-md-3.col-sm-12
-              include boxes/box_video_home
-        .text-center.read-more
-          a(href=lang_preurl+'/portfolio/videos/', title=global.__("See all Videos"))
-            !=global.__("See all Videos")
-            !=" "
-            i.icon-right
-
-
-
-    //section.home-awards(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
-      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
-        header.text-center
-          h2.entry-title.boxItem(itemprop="name")=global.__("Awards and Grants")
-          .row
-            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
-              .col-xs-12!=posttype_awards.post_content
-        .row
-          each result, position in results.awards
-            .col-xl-2.col-lg-3.col-md-3(class=(!position ? "col-xl-offset-2" : ""))
-              include boxes/box_award
-        .text-center.read-more
-          a(href=lang_preurl+'/portfolio/awards-and-grants/', title=global.__("See all Awards and Grants"))
-            !=global.__("See all Awards and Grants")
-            !=" "
-            i.icon-right
-
-    //section.home-news(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
-      .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
-        header.text-center
-          h2.entry-title.boxItem(itemprop="name")=global.__("Extra")
-          .row
-            .col-xl-6.offset-xl-3.col-lg-8.offset-lg-2
-              .col-xs-12!=posttype_news.post_content
-        .row.isotope.results
-          each result, position in results.news
-            .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "visible-md hidden-lg visible-xl" : "")
-              include boxes/box_news
-        .text-center.read-more
-          a(href=lang_preurl + '/extra/', title=global.__("See all Extras"))
-            !=global.__("See all Extras")
-            !=" "
-            i.icon-right
-
-
 

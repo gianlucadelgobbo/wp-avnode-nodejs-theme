@@ -6,6 +6,7 @@ article(itemscope, itemtype='http://schema.org/'+itemtype)
           h1(itemprop="name")=page_data.title
         .rientro
           div(itemprop='description')!=result.post_content
+          //.replace(new RegExp("https://flyer.dev.flyer.it/wp-content/blogs.dir/20", 'g'), "https://wam.flyer.it").replace(new RegExp(".jpg\"\n               title", 'g'), "\" title").replace(new RegExp("style=\"max-width:100%;\"", 'g'), "style=\"max-width:100%;height: auto;\"").replace(new RegExp("class=\"ngg-galleryoverview ngg-ajax-pagination-none\"", 'g'), "class=\"listItems row\"").replace(new RegExp("class=\"ngg-gallery-thumbnail-box\"", 'g'), "class=\"col-md-3 itemListElement\"").replace(new RegExp(" data-thumbnail=", 'g'), "class=\"thumbnail\" data-thumbnail=")
           if (form == "contacts")
             include ../_partials/inc_form_contacts
           if (form == "newsletter")

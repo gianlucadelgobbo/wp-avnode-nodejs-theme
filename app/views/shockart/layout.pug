@@ -38,18 +38,7 @@ html(lang=sessions.current_lang)
           .col-md-4
           .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
             !=config.meta.headline[sessions.current_lang]
-      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
-        // Brand and toggle get grouped for better mobile display
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
-          span.navbar-toggler-icon
-          i.icon-bar
-          i.icon-bar
-          i.icon-bar
-        a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
-          i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
-          .sr-only(itemprop='name')=config.project_name
-        #menu-main.collapse.navbar-collapse
-          include includes/menu-main
+      include includes/menu-main
 
       #result
         block content

@@ -7,25 +7,36 @@ exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/cache/'+config.prefix+'_home_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
-      //console.log("getAll news");
-      req.params.page = "news";
-      helpers.getPage(req, function(result_news) {
+      //console.log("getAll profile");
+      req.params.page = "profile";
+      helpers.getPage(req, function(profile) {
+        //console.log(profile);
         //console.log("getAll events");
-        req.params.page = "partnerships";
-        helpers.getPage(req, function(result_events) {
-          //console.log("getAll editions");
-          req.params.page = "events";
-          helpers.getPage(req, function(result_editions) {
-            var page_data = fnz.setPageData(req, {'ID':'100'});
-            var obj = {
-              results: {news:result_news.post_content,events:result_events.post_content,editions:result_editions.post_content},
-              page_data:page_data,
-              sessions:req.session.sessions
-            };
-            jsonfile.writeFile(file, obj, function (err) {
-              console.log("writeFile: "+file);
-              //if(err) console.log(err);
-              res.render(config.prefix+'/'+'index',obj);
+        req.params.page = "news";
+        helpers.getPage(req, function(result_news) {
+          //console.log("getAll events");
+          req.params.page = "cultural-productions";
+          helpers.getPage(req, function(result_events) {
+            //console.log("getAll editions");
+            req.params.page = "partnerships-management";
+            helpers.getPage(req, function(result_partnerships) {
+              //console.log("getAll editions");
+              req.params.page = "web-and-mobile";
+              helpers.getAll(req, config.sez["web-and-apps"], config.sez.home.web.limit, 1, function (result_web) {
+                helpers.getContainerPage(req, "web-and-mobile", function( posttype_web ) {
+                  var page_data = fnz.setPageData(req, {'ID':'100'});
+                  var obj = {
+                    results: {profile: profile, posttype_web: posttype_web, web: result_web, news:result_news.post_content, events:result_events.post_content, partnerships:result_partnerships.post_content},
+                    page_data:page_data,
+                    sessions:req.session.sessions
+                  };
+                  jsonfile.writeFile(file, obj, function (err) {
+                    console.log("writeFile: "+file);
+                    //if(err) console.log(err);
+                    res.render(config.prefix+'/'+'index',obj);
+                  });
+                });
+              });
             });
           });
         });

@@ -28,7 +28,7 @@ html(lang=sessions.current_lang)
     link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
   body.body-common
     .container
-      header.mt-4.mb-4
+      header.mb-4
         .row
           .col-md-4
             #logo
@@ -38,18 +38,7 @@ html(lang=sessions.current_lang)
           .col-md-4
           .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
             !=config.meta.headline[sessions.current_lang]
-      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
-        // Brand and toggle get grouped for better mobile display
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
-          span.navbar-toggler-icon
-          i.icon-bar
-          i.icon-bar
-          i.icon-bar
-        a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
-          i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
-          .sr-only(itemprop='name')=config.project_name
-        #menu-main.collapse.navbar-collapse
-          include includes/menu-main
+      include includes/menu-main
 
       #result
         block content
@@ -64,39 +53,39 @@ html(lang=sessions.current_lang)
     include ../_partials/components/cookielawinfo
 
     if include_gallery
-      #fb-root
-      script(async='', defer='', crossorigin='anonymous', src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId='+config.meta.fb_appId+'&autoLogAppEvents=1')
+    #fb-root
+    script(async='', defer='', crossorigin='anonymous', src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId='+config.meta.fb_appId+'&autoLogAppEvents=1')
 
-      script(type="text/javascript").
-        var sgp_config = {
-          "sgp_selT": "2",
-          "sgp_sel": ".thumbnail",
-          "sgp_bT": "#{config.project_name}",
-          "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
-          "sgp_bU": "#{global.config.domain}",
-          "sgp_bg": "000000",
-          "sgp_bgo": "0.8",
-          "sgp_bb": "1",
-          "sgp_hb": "1",
-          "sgp_hbt": "1",
-          "sgp_ch": "",
-          "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
-          "sgp_desc": "1",
-          "sgp_fb": "1",
-          "sgp_fbf": "1",
-          "sgp_fbc": "1",
-          "sgp_nav": "1",
-          "sgp_hon": "",
-          "sgp_usf": "1.2",
-          "sgp_mb": "10",
-          "sgp_theme": "_images",
-          "sgp_theme_root": "/",
-          "sgp_iLoadR": 'social-gallery-loading.gif',
-          "sgp_iR": 'social-gallery-r.png',
-          "sgp_iL": 'social-gallery-l.png'
-        };
-        var sgp_ie = false;var sgp_ie7 = false;
-      script(type='text/javascript', src='/_js/jquery-migrate.min.js')
-      script(type='text/javascript', src='/_js/socialGalleryPluginLite.js')
+    script(type="text/javascript").
+      var sgp_config = {
+        "sgp_selT": "2",
+        "sgp_sel": ".thumbnail",
+        "sgp_bT": "#{config.project_name}",
+        "sgp_bL": "#{config.meta.headline[sessions.current_lang]}",
+        "sgp_bU": "#{global.config.domain}",
+        "sgp_bg": "000000",
+        "sgp_bgo": "0.8",
+        "sgp_bb": "1",
+        "sgp_hb": "1",
+        "sgp_hbt": "1",
+        "sgp_ch": "",
+        "sgp_hbi": '/#{config.prefix}/images/social-gallery-icon-50x50.png',
+        "sgp_desc": "1",
+        "sgp_fb": "1",
+        "sgp_fbf": "1",
+        "sgp_fbc": "1",
+        "sgp_nav": "1",
+        "sgp_hon": "",
+        "sgp_usf": "1.2",
+        "sgp_mb": "10",
+        "sgp_theme": "_images",
+        "sgp_theme_root": "/",
+        "sgp_iLoadR": 'social-gallery-loading.gif',
+        "sgp_iR": 'social-gallery-r.png',
+        "sgp_iL": 'social-gallery-l.png'
+      };
+      var sgp_ie = false;var sgp_ie7 = false;
+    script(type='text/javascript', src='/_js/jquery-migrate.min.js')
+    script(type='text/javascript', src='/_js/socialGalleryPluginLite.js')
 
     include ../_partials/components/analytics

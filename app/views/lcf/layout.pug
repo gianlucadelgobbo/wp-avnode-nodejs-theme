@@ -34,18 +34,7 @@ html(lang=sessions.current_lang)
         }
   body.body-common
     .cnt(itemscope, itemtype='http://schema.org/Event')
-      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
-        // Brand and toggle get grouped for better mobile display
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
-          span.navbar-toggler-icon
-          i.icon-bar
-          i.icon-bar
-          i.icon-bar
-        a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
-          i(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
-          .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-        #menu-main.collapse.navbar-collapse
-          include includes/menu-main
+      include includes/menu-main
       //div(class=page_data.url == "/" ? "container-fluid" : "container")
       .container
         header.mt-4
