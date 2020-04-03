@@ -23,9 +23,9 @@
         li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
           meta(itemprop='position', content=i)
           div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-            a.thumbnail(title=media.title, style='position:relative;', itemprop='url', href=basepath+"/gallery/"+body.slug+"/"+media.slug+"/")
+            a.thumbnail(title=media.title, data-src=media.imageFormats.large, style='position:relative;', itemprop='url', href=basepath+"/gallery/"+body.slug+"/"+media.slug+"/")
               img.img-fluid.cntGallImgImg(itemprop='image', src=media.imageFormats.small, alt=media.title)
               //span.cntDida(itemprop='name')=media.title
-            script.
+            //script.
               if (typeof glink==='undefined') var glink = [];
               glink.push("#{media.imageFormats.large}");

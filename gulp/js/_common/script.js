@@ -84,6 +84,11 @@ function infiniteScroll(t) {
 
 
 $(function() {
+  var glink = [];
+  $( ".thumbnail" ).each(function( index ) {
+    glink.push($( this ).attr("data-src") );
+  });
+  //console.log(glink);
   /* if (window.location.hash=="#app") {
     var launchmyapp = {
       "livecinemafestival.com" : "lcf",
