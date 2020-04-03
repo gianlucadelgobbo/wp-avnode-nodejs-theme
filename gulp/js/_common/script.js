@@ -82,12 +82,13 @@ function infiniteScroll(t) {
   });
 }
 
-
+var glink = [];
 $(function() {
-  var glink = [];
-  $( ".thumbnail" ).each(function( index ) {
-    glink.push($( this ).attr("data-src") );
-  });
+  if ($( ".thumbnail" ).length) {
+    glink = $( ".thumbnail" ).map(function( item ) {
+      return ($( this ).attr("data-src") );
+    });
+  }
   //console.log(glink);
   /* if (window.location.hash=="#app") {
     var launchmyapp = {
