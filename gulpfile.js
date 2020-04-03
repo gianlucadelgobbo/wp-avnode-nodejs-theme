@@ -155,7 +155,7 @@ const compress_js = () => {
       './gulp/js/_common/jquery-migrate.min.js',
       './gulp/js/_common/validator.js'
     ])
-    .pipe(uglify())
+    .pipe(uglify({mangle: { reserved: ['glink'] } }))
     .pipe(gulp.dest(config.publicDir + '/_js/'));
 }
 
@@ -173,7 +173,7 @@ const compress_js_avnode = () => {
       './gulp/js/avnode/script.js'
     ])
     .pipe(concat('combo.min.js'))
-    .pipe(uglify())
+    .pipe(uglify({mangle: { reserved: ['glink'] } }))
     .pipe(gulp.dest(config.publicDir + '/avnode/js/'));
 }
 
@@ -190,7 +190,7 @@ const compress_js_chromosphere = () => {
     './gulp/js/chromosphere/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/chromosphere/js/'));
 }
 
@@ -207,7 +207,7 @@ const compress_js_fotonica = () => {
     './gulp/js/fotonica/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/fotonica/js/'));
 }
 
@@ -224,7 +224,7 @@ const compress_js_flyer = () => {
     './gulp/js/flyer/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/flyer/js/'));
 }
 
@@ -241,7 +241,7 @@ const compress_js_lcf = () => {
     './gulp/js/lcf/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/lcf/js/'));
 }
 
@@ -258,7 +258,7 @@ const compress_js_linuxclub = () => {
     './gulp/js/linuxclub/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/linuxclub/js/'));
 }
 
@@ -276,7 +276,7 @@ const compress_js_lpm = () => {
     './gulp/js/lpm/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/lpm/js/'));
 }
 
@@ -293,7 +293,7 @@ const compress_js_shockart = () => {
     './gulp/js/shockart/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/shockart/js/'));
 }
 
@@ -314,7 +314,7 @@ const compress_js_vjtelevision = () => {
     './gulp/js/vjtelevision/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/vjtelevision/js/'));
 }
 
@@ -331,7 +331,7 @@ const compress_js_wam = () => {
     './gulp/js/wam/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/wam/js/'));
 }
 
@@ -349,7 +349,7 @@ const compress_js_flxer = () => {
     './gulp/js/flxer/shaderback.js'
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/flxer/js/'));
 }
 
@@ -366,7 +366,7 @@ const compress_js_gianlucadelgobbo = () => {
     './gulp/js/gianlucadelgobbo/script.js',
   ])
   .pipe(concat('combo.min.js'))
-  .pipe(uglify())
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/js/'));
 }
 
