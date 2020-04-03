@@ -22,10 +22,15 @@ var pagesRoutes = require('./_common/pages'); */
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
   app.post('/*.php', pagesRoutes.get404);
+  /* app.get('*', function(req, res) {
+    console.log(req.url)
+  }); */
 
   app.get('/en/*', function(req, res) {res.redirect(301, req.url.replace('/en/','/'))});
-  app.get('/extra/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/extra/lpm-2018-rome-call-to-partecipate/','/extra/lpm-2018-rome-call-to-participate/'))});
-  app.get('/web-and-apps/*', function(req, res) {res.redirect(301, req.url.replace('/web-and-apps/','/portfolio/web-and-apps/'))});
+  app.get('/portfolio/web-and-mobile*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/web-and-mobile/','/web-and-apps/'))});
+  app.get('/portfolio/web-and-apps*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/web-and-apps/','/web-and-apps/'))});
+  app.get('/it/portfolio/web-and-mobile*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/web-and-mobile/','/web-and-apps/'))});
+  /* app.get('/extra/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/extra/lpm-2018-rome-call-to-partecipate/','/extra/lpm-2018-rome-call-to-participate/'))});
   app.get('/web-portfolio/*', function(req, res) {res.redirect(301, req.url.replace('/web-portfolio/','/portfolio/web-and-apps/'))});
   app.get('/live-visuals-portfolio/*', function(req, res) {res.redirect(301, req.url.replace('/live-visuals-portfolio/','/portfolio/live-visuals/'))});
   app.get('/events/2005-rome/', function(req, res) {res.redirect(301, req.url.replace('/events/2005-rome/','/portfolio/live-visuals/lpm-2005-rome/'))});
@@ -94,7 +99,7 @@ module.exports = function(app) {
   //app.get('/it/news/*', function(req, res) {res.redirect(301, req.url.replace('/news/','/extra/'))});
   app.get('/it/download*', function(req, res) {res.redirect(301, "https://flyer.dev.flyer.it"+req.url.replace('/download/?filename=',''))});
   app.get('/it/awards-and-grants/*', function(req, res) {res.redirect(301, req.url.replace('/awards-and-grants/','/portfolio/awards-and-grants/'))});
-  app.get('/it/all-news/', function(req, res) {res.redirect(301, '/extra/')});
+  app.get('/it/all-news/', function(req, res) {res.redirect(301, '/extra/')}); */
 
   app.get('/', indexRoutes.get);
 
@@ -105,14 +110,41 @@ module.exports = function(app) {
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
+  app.get('/it/web-and-apps/', webRoutes.getAll);
+  app.get('/it/web-and-apps/tags/', webRoutes.getAllTags);
+  app.get('/it/web-and-apps/(:web)', webRoutes.get);
+  app.get('/it/web-and-apps/page/(:page)', webRoutes.getAll);
+  app.get('/it/web-and-apps/tags/(:tag)', webRoutes.getTag);
+
   app.get('/it/', indexRoutes.get);
+  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/it/(:page)', pagesRoutes.get);
+  
+  app.post('/it/(:page)', pagesRoutes.post);
 
-  app.get('/it/portfolio/web-and-apps/', webRoutes.getAll);
-  app.get('/it/portfolio/web-and-apps/tags/', webRoutes.getAllTags);
-  app.get('/it/portfolio/web-and-apps/(:web)', webRoutes.get);
-  app.get('/it/portfolio/web-and-apps/page/(:page)', webRoutes.getAll);
-  app.get('/it/portfolio/web-and-apps/tags/(:tag)', webRoutes.getTag);
+  app.get('/web-and-apps/', webRoutes.getAll);
+  app.get('/web-and-apps/tags/', webRoutes.getAllTags);
+  app.get('/web-and-apps/(:web)', webRoutes.get);
+  app.get('/web-and-apps/page/(:page)', webRoutes.getAll);
+  app.get('/web-and-apps/tags/(:tag)', webRoutes.getTag);
 
+  app.get('/(:page)/page/:paging', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/tools', pagesRoutes.getTools);
+  app.get('/(:page)', pagesRoutes.get);
+  
+  app.post('/(:page)', pagesRoutes.post);
+
+  app.get('*', pagesRoutes.get404);
+
+};
   /* app.get('/it/portfolio/videos/', videosRoutes.getAll);
   app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/it/portfolio/videos/page/(:page)', videosRoutes.getAll);
@@ -144,22 +176,6 @@ module.exports = function(app) {
   app.get('/it/customers', usersRoutes.getUsers);
   app.get('/it/customers/(:user)', usersRoutes.get); */
 
-  app.get('/it/', indexRoutes.get);
-  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/it/(:page)', pagesRoutes.get);
-  
-  app.post('/it/(:page)', pagesRoutes.post);
-
-  app.get('/portfolio/web-and-apps/', webRoutes.getAll);
-  app.get('/portfolio/web-and-apps/tags/', webRoutes.getAllTags);
-  app.get('/portfolio/web-and-apps/(:web)', webRoutes.get);
-  app.get('/portfolio/web-and-apps/page/(:page)', webRoutes.getAll);
-  app.get('/portfolio/web-and-apps/tags/(:tag)', webRoutes.getTag);
-
   /* app.get('/portfolio/videos/', videosRoutes.getAll);
   app.get('/portfolio/videos/(:video)', videosRoutes.get);
   app.get('/portfolio/videos/page/(:page)', videosRoutes.getAll); */
@@ -190,19 +206,6 @@ module.exports = function(app) {
   app.get('/people/(:user)', usersRoutes.get);
   app.get('/customers', usersRoutes.getUsers);
   app.get('/customers/(:user)', usersRoutes.get); */
-
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/tools', pagesRoutes.getTools);
-  app.get('/(:page)', pagesRoutes.get);
-  
-  app.post('/(:page)', pagesRoutes.post);
-
-  app.get('*', pagesRoutes.get404);
-
   //app.get('/users/(:user)', usersRoutes.getUser);
   /*
    app.use('/controlpanel', controlpanelRoutes);
@@ -258,4 +261,3 @@ module.exports = function(app) {
 
    app.get('/(:user)', userRoutes.getUser);
    */
-};

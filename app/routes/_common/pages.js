@@ -71,6 +71,10 @@ exports.get = function get(req, res) {
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
+        if (result.post_content.indexOf("class=\"ngg-gallery-thumbnail-box\"")!==-1) {
+          result.post_content = result.post_content.replace(new RegExp("https://flyer.dev.flyer.it/wp-content/blogs.dir/20", 'g'), "https://wam.flyer.it").replace(new RegExp(".jpg\"\n               title", 'g'), "\" title").replace(new RegExp("style=\"max-width:100%;\"", 'g'), "style=\"max-width:100%;height: auto;\"").replace(new RegExp("class=\"ngg-galleryoverview ngg-ajax-pagination-none\"", 'g'), "class=\"listItems row\"").replace(new RegExp("class=\"ngg-gallery-thumbnail-box\"", 'g'), "class=\"col-md-3 itemListElement\"").replace(new RegExp(" data-thumbnail=", 'g'), "class=\"thumbnail\" data-thumbnail=");
+          include_gallery = true;
+        }
         //console.log("basepath");
         //console.log(basepath);
         //console.log(pug);
