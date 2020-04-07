@@ -30,7 +30,6 @@ $(document).ready(function(){
         videojs.log('Awww...over so soon?!');
         if (goto+1 == playlist.length) {
           day.setDate(day.getDate()+1);
-          console.log(day)
           loadDay();
         }
         videojs.log(goto);
@@ -121,7 +120,6 @@ $(document).ready(function(){
           } else {
             oldgoto = goto = 0;
           }
-          console.log(new Date(timeA[goto]));
           var html = "<ul class=\"list-unstyled\">"
           playlist = [];
           for (var a=0;a<data.length;a++) {
@@ -130,7 +128,8 @@ $(document).ready(function(){
                 src: "https://avnode.net"+data[a].video.media.file,
                 type: 'video/mp4'
               }],
-              poster: data[a].video.imageFormats.small
+              poster: data[a].video.imageFormats.small,
+              slug: data[a].video.slug
             })
 
             /* console.log(data[a].programming);
@@ -154,9 +153,11 @@ $(document).ready(function(){
             html+="</li>";
           }
           html+="</ul>";
-          player.playlist(playlist, goto);
+          player.playlist(JSON.parse(JSON.stringify(playlist)), goto);
           player.on('playlistitem', (item) => {
             oldgoto = goto;
+            var track = "/video/"+playlist[goto].slug;
+            ga('send', 'pageview', track);
             goto = player.playlist.currentItem();
             setMarker();
           });

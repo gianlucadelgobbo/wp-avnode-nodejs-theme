@@ -22,6 +22,11 @@ $(window).on("popstate", function(e) {
   };
 })(history.pushState);
 
+$(".track").click(function(event) {
+  var track = $(this).attr("download") ? "/"+$(this).attr("download") : $(this).attr("href").substring($(this).attr("href").lastIndexOf("/"))
+  ga('send', 'pageview', track);
+});
+
 $("#subscribe .close").click(function(event) {
   $("#subscribe .input-group").removeClass("d-none");
   $('#subscribe .loading').addClass("d-none");

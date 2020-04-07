@@ -9,6 +9,3 @@ li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='
         each user in item.users
           .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
             b(itemprop='name')=user.stagename
-    //script.
-      if (typeof glink==='undefined') var glink = [];
-      glink.push(!{JSON.stringify(item)});
