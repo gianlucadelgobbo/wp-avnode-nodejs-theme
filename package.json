@@ -49,7 +49,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startall": "NODE_ENV=production forever start -l /sites/wp-avnode-nodejs-theme/forever.log -o /sites/wp-avnode-nodejs-theme/out.log -e /sites/wp-avnode-nodejs-theme/err.log /sites/wp-avnode-nodejs-theme/forever.json",
-    "stopall": "forever stop wam; forever stop lpm; forever stop lcf; forever stop vjtelevision; forever stop linuxclub; forever stop chromosphere; forever stop fotonica; forever stop shockart; forever stop flxer; forever stop gianlucadelgobbo; forever stop avnode;",
+    "stopall": "forever stop flyer2; forever stop wam; forever stop lpm; forever stop lcf; forever stop vjtelevision; forever stop linuxclub; forever stop chromosphere; forever stop fotonica; forever stop shockart; forever stop flxer; forever stop gianlucadelgobbo; forever stop avnode;",
     "startallloc": "NODE_ENV=dev forever start -l /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/forever.log -o /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/out.log -e /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/localLogs/err.log /Users/gianlucadelgobbo/GitHub/wp-avnode-nodejs-theme/foreverLocal.json",
     "flyer": "NODE_ENV=dev nodemon app.js -site flyer",
     "lpm": "NODE_ENV=dev nodemon app -site lpm",
