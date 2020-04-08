@@ -57,7 +57,7 @@ $("#subscribe").submit(function(event) {
   return false;
 });
 
-$("#result .read-more a").click(function() {
+$("#result .readmore a").click(function() {
   infiniteScroll(this);
   return false;
 });
@@ -72,7 +72,7 @@ function infiniteScroll(t) {
   }).done(function (msg) {
     console.log(url);
     var $newItems  = $($(msg).find("#"+appendToId).children());
-    var $newButtonHref = $($(msg).find("#"+appendToId)).parent().find(".read-more a").attr("href");
+    var $newButtonHref = $($(msg).find("#"+appendToId)).parent().find(".readmore a").attr("href");
     //$("#"+appendToId).append($newItems);
     $(t).attr("href", $newButtonHref)
     $(t).parent().find(".loading").hide();

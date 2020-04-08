@@ -8,14 +8,14 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
     //- console.log(result.grid)
     each row in result.grid
       if row
-        .row.sameheightcnt
+        .row
           - var conta = 0
           each col in row
             - if (col && col.tit) conta++
           - var span = 12/conta
           each col in row
             if col && col.tit && col.tit!="."
-              .sameheight.boxItem(class="col-sm-"+span, itemprop=col.box && col.box.indexOf("itemListElement")>0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement")>0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement")>0 ? "http://schema.org/ItemList" : undefined)
+              div(class="col-sm-"+span, itemprop=col.box && col.box.indexOf("itemListElement")>0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement")>0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement")>0 ? "http://schema.org/ItemList" : undefined)
                 .mb-4
                   .grid-title.mb-3
                     h3.mb-0(itemprop="name")!=col.tit
@@ -27,11 +27,11 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
                     .rientro(itemprop="description")!=col.box
   else
     if result.grid
-      .row.sameheightcnt
+      .row
         - span = 12/result.grid.length
         each col in result.grid
           if col
-            .sameheight.boxItem(class="col-sm-" + span, itemprop=col.box && col.box.indexOf("itemListElement") > 0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement") > 0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement") > 0 ? "http://schema.org/ItemList" : undefined)
+            div(class="col-sm-" + span, itemprop=col.box && col.box.indexOf("itemListElement") > 0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement") > 0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement") > 0 ? "http://schema.org/ItemList" : undefined)
               each row in col
                 if row.tit && col.tit != "."
                   .mb-4

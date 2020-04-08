@@ -1,6 +1,6 @@
 // NODE_ENV=production forever start -l /sites/wp-avnode-nodejs-theme/forever.log -o /sites/wp-avnode-nodejs-theme/out.log -e /sites/wp-avnode-nodejs-theme/err.log /sites/wp-avnode-nodejs-theme/forever.json
 [
-/*   {
+  {
     "uid": "flyer",
     "append": true,
     "watch": true,
@@ -10,7 +10,7 @@
     "outFile": "/var/log/nginx/node_flyer_out.log",
     "errFile": "/var/log/nginx/node_flyer_err.log",
     "args": ["-site", "flyer"]
-  }, */
+  },
   {
     "uid": "avnode",
     "append": true,
