@@ -7,12 +7,12 @@ var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
 var codingRoutes = require('./_common/coding');
 var webRoutes = require('./_common/web');
+var awardsRoutes = require('./_common/awards');
 /* var videosRoutes = require('./_common/videos');
 //var eventsRoutes = require('./_common/events');
 var learningRoutes = require('./_common/learning');
 var labRoutes = require('./_common/lab');
 //var newsRoutes = require('./_common/news');
-var awardsRoutes = require('./_common/awards');
 var usersRoutes = require('./_common/users');
 var pagesRoutes = require('./_common/pages'); */
 /*
@@ -27,6 +27,8 @@ module.exports = function(app) {
   }); */
 
   app.get('/en/*', function(req, res) {res.redirect(301, req.url.replace('/en/','/'))});
+  //app.get('/it/profile/', function(req, res) {res.redirect(301, req.url.replace('/profile/','/profile2/'))});
+  //app.get('/profile/', function(req, res) {res.redirect(301, req.url.replace('/profile/','/profile2/'))});
   app.get('/portfolio/web-and-mobile*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/web-and-mobile/','/web-and-apps/'))});
   app.get('/portfolio/web-and-apps*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/web-and-apps/','/web-and-apps/'))});
   app.get('/it/portfolio/web-and-mobile*', function(req, res) {res.redirect(301, req.url.replace('/portfolio/web-and-mobile/','/web-and-apps/'))});
@@ -116,6 +118,10 @@ module.exports = function(app) {
   app.get('/it/web-and-apps/page/(:page)', webRoutes.getAll);
   app.get('/it/web-and-apps/tags/(:tag)', webRoutes.getTag);
 
+  app.get('/it/awards-and-grants/', awardsRoutes.getAll);
+  app.get('/it/awards-and-grants/(:award)', awardsRoutes.get);
+  app.get('/it/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+
   app.get('/it/', indexRoutes.get);
   app.get('/it/(:page)/page/:paging', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
@@ -131,6 +137,10 @@ module.exports = function(app) {
   app.get('/web-and-apps/(:web)', webRoutes.get);
   app.get('/web-and-apps/page/(:page)', webRoutes.getAll);
   app.get('/web-and-apps/tags/(:tag)', webRoutes.getTag);
+
+  app.get('/awards-and-grants/', awardsRoutes.getAll);
+  app.get('/awards-and-grants/(:award)', awardsRoutes.get);
+  app.get('/awards-and-grants/page/(:page)', awardsRoutes.getAll);
 
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
@@ -167,11 +177,8 @@ module.exports = function(app) {
   app.get('/it/extra/(:new)', newsRoutes.get);
   app.get('/it/extra/page/(:page)', newsRoutes.getAll);
  */
- /*  app.get('/it/portfolio/awards-and-grants/', awardsRoutes.getAll);
-  app.get('/it/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/it/portfolio/awards-and-grants/page/(:page)', awardsRoutes.getAll);
 
-  app.get('/it/people', usersRoutes.getUsers);
+  /*  app.get('/it/people', usersRoutes.getUsers);
   app.get('/it/people/(:user)', usersRoutes.get);
   app.get('/it/customers', usersRoutes.getUsers);
   app.get('/it/customers/(:user)', usersRoutes.get); */

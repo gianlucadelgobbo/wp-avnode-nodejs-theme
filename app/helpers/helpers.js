@@ -260,7 +260,6 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
-
   if (sez.site_tax && sez.post_type != "posts") {
     wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).param( 'filter[order]', 'meta_value_num' ).param( 'filter[meta_key]', 'wpcf-startdate' ).perPage(mylimit).page(page).get(function( err, data ) {
       //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
@@ -313,12 +312,12 @@ exports.getWeb = function getWeb(req,callback) {
 };
 
 exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
-  //console.log("getAllWebByTag "+req.params.tag);
+  console.log("getAllWebByTag "+req.params.tag);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    //console.log("//// All Web By Tag");
-    //console.log(err || data);
+    console.log("//// All Web By Tag");
+    console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });

@@ -150,10 +150,10 @@ body.expanding.fixed-top{
   .sameheight .readmore.bottom{
       bottom:0;
       position:absolute;
-      left:50%;
-      margin-left:-62px;
-      width:124px;
-      text-align:center
+      /* left:50%; */
+      /* margin-left:-62px; */
+      text-align:center;
+      width: 100%;
   }
 /*
   .mycarousel{

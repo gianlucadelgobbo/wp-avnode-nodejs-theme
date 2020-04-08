@@ -11,18 +11,22 @@ block content
         .sr-only(itemprop="name")=global.__("Services")
         .container-fluid
           .row.sameheightcnt
-            .col-xl-2.offset-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-              meta(itemprop="position", content="1")
+            .col-md-6.sameheight.boxItem
               !=results.profile['wpcf-row-1-col-1-html-box']
-            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-              meta(itemprop="position", content="2")
+              .sameheightinner
+                .row.sameheightcnt
+                  .col-md-6.sameheight.boxItem
+                    !=results.profile['wpcf-row-2-col-1-html-box']
+                  .col-md-6.sameheight.boxItem
+                    !=results.profile['wpcf-row-2-col-2-html-box']
+            .col-md-6.sameheight.boxItem
               !=results.profile['wpcf-row-1-col-2-html-box']
-            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-              meta(itemprop="position", content="3")
-              !=results.profile['wpcf-row-1-col-3-html-box']
-            .col-xl-2.col-lg-3.col-md-3.sameheight.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
-              meta(itemprop="position", content="4")
-              !=results.profile['wpcf-row-1-col-4-html-box']
+              .sameheightinner
+                .row.sameheightcnt
+                  .col-md-6.sameheight.boxItem
+                    !=results.profile['wpcf-row-2-col-3-html-box']
+                  .col-md-6.sameheight.boxItem
+                    !=results.profile['wpcf-row-2-col-4-html-box']
 
     section.home(itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
@@ -63,7 +67,7 @@ block content
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
               include ../_partials/boxes/box_web
         .text-center.readmore
-          a(href=lang_preurl+'/portfolio/web-and-mobile/', title=global.__("See all Web & Mobile"))
+          a(href=lang_preurl+'/web-and-mobile/', title=global.__("See all Web & Mobile"))
             !=global.__("See all Web & Mobile")
             !=" "
             i.icon-right

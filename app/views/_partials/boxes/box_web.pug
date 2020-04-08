@@ -3,12 +3,12 @@
   .Web(itemscope, itemprop="item", itemtype='http://schema.org/CreativeWork')
     .thumb-cnt
       //.catlabel=result.type
-      a.ajaxloader(href=lang_preurl+'/portfolio/web-and-apps/'+result.slug+"/", rel='bookmark', title!=result.post_title)
+      a.ajaxloader(href=lang_preurl+'/web-and-apps/'+result.slug+"/", rel='bookmark', title!=result.post_title)
         img.img-fluid(src=result.featured.thumbnail, alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
     .box-list
       include ../../_partials/inc_datemonth_wp
       h3.list_title(itemprop='name')
-        a.ajaxloader(itemprop='url', href=lang_preurl+'/portfolio/web-and-apps/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
+        a.ajaxloader(itemprop='url', href=lang_preurl+'/web-and-apps/'+result.slug+"/", rel='bookmark', title=result.post_title)!=result.post_title
       if result.excerpt && result.excerpt.rendered
         .excerpt.text-muted(itemprop='headline')!=result.excerpt.rendered
       .tags.text-muted.small

@@ -22,6 +22,6 @@ require('./app/routes/'+global.config.router)(app);
 var server = null;
 
 server = app.listen(config.port, function(){
-  console.log('Express server listening on (' + config.prefix + ') http://' + config.host + ':' + config.port);
+  console.log('Express server listening on (' + config.prefix + ') http://' + config.host + ':' + config.port+ " in "+process.env.NODE_ENV+" mode");
 });
 if(process.env.NODE_ENV=='dev') server.timeout = 480000;  

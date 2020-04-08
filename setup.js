@@ -19,7 +19,7 @@ i18n.configure({
 
 module.exports = function(app, exp) {
 
-  var env = process.env.NODE_ENV || 'development';
+  var env = process.env.NODE_ENV || 'dev';
   app.use(helmet.frameguard({
     action: 'allow-from',
     domain: 'https://www.facebook.com'
