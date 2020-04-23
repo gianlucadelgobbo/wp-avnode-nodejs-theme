@@ -32,7 +32,7 @@ block content
       .container-fluid
         h1.entry-title(itemprop="name")=global.__("Latest Cultural Productions")
       .swiper-container
-        !=results.events.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+        !=results.events.post_content.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
       .container-fluid
         .text-right.boxItem
           a.btn.btn-primary.btn-sm(href="/partnerships/", title=global.__("See all Cultural Productions"))=global.__("See all Cultural Productions")

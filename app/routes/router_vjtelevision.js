@@ -5,10 +5,12 @@ var signupRoutes = require('./_common/signup');
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
+var facebook = require('./_common/facebook');
 
 module.exports = function(app) {
   app.get('/', indexRoutes.get);
 
+  app.get('/facebookSender', facebook.facebookSender);
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);

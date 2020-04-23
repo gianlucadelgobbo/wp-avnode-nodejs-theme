@@ -146,17 +146,20 @@ exports.getPage = function getPage(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        //console.log(avnodeurl);
+        console.log(avnodeurl);
         
         request({
           url: avnodeurl,
           json: true
         }, function(error, response, body) {
           if (response.statusCode==200) {
+            data.avnode = body;
+            var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
             if (body.pages) {
               for (var item in body.pages) {
                 body.pages[item].link = body.pages[item].link.split("/");
-                body.pages[item].link.splice(0, 2);
+                body.pages[item].link.splice(0, 3);
+                body.pages[item].link.unshift(basepath);
                 body.pages[item].link = "/"+body.pages[item].link.join("/");
               };
             }
@@ -173,13 +176,12 @@ exports.getPage = function getPage(req,callback) {
               if (req.params.page == "news") data.news = body;
               if (req.params.page == "members") data.member = body;
               if (req.params.page == "partnerships") data.partnership = body; */
-              data.avnode = body;
               callback(data);
             } else {
               if (body.data) body.events = body.data;
               //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+              console.log("shortcodify2"+basepath);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });
@@ -421,6 +423,7 @@ exports.getEdition = function getEdition(req,callback) {
             } */
             var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+            console.log("shortcodify"+basepath);
             fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
               callback(data);
             });

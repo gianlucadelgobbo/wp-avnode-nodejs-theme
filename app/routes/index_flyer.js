@@ -18,6 +18,7 @@ exports.get = function get(req, res) {
           req.params.page = "cultural-productions";
           helpers.getPage(req, function(result_events) {
             //console.log("getAll editions");
+            console.log(result_events.avnode);
             req.params.page = "partnerships-management";
             helpers.getPage(req, function(result_partnerships) {
               //console.log("getAll editions");
@@ -26,7 +27,7 @@ exports.get = function get(req, res) {
                 helpers.getContainerPage(req, "web-and-mobile", function( posttype_web ) {
                   var page_data = fnz.setPageData(req, {'ID':'100'});
                   var obj = {
-                    results: {profile: profile, posttype_web: posttype_web, web: result_web, news:result_news.post_content, events:result_events.post_content, partnerships:result_partnerships.post_content},
+                    results: {profile: profile, posttype_web: posttype_web, web: result_web, news:result_news.post_content, events:result_events, partnerships:result_partnerships.post_content},
                     page_data:page_data,
                     sessions:req.session.sessions
                   };

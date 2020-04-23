@@ -1,0 +1,33 @@
+#mycarousel.mycarousel.slide(data-ride='carousel')
+  - var carousel = []
+  - carousel.push({title:"Video Mapping MAXXI Spring Attitude", link: lang_preurl + "/events/video-mapping-maxxi-spring-attitude-2016/", img:"https://flyer.it/files/2016/12/event-mapping-SA.jpg"})
+  - carousel.push({title:"Funder35", link: lang_preurl + "/web-and-apps/funder35/", img:"https://flyer.it/files/2016/11/wm_funder35.jpg"})
+  - carousel.push({title:"European Union | AVnode LPM 2015 > 2018 | Creative Europe: Large Scale Cooperation", link: lang_preurl + "/news/web-and-apps/funder35/", img:"https://flyer.it/files/2015/06/Flyer-slider-Europe.jpg"})
+  - carousel.push({title:"Live Cinema Festival", link: lang_preurl + "/web-and-apps/funder35/", img:"https://flyer.it/files/2016/11/wm_funder35.jpg"})
+  - carousel.push({title:"Funder35", link: lang_preurl + "/events/live-cinema-festival-2019", img:"https://flyer.it/files/2016/11/LCF2016_report-thumb.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-2.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-3.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-4.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-5.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-6.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-7.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-8.jpg"})
+  - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-9.jpg"})
+  // Indicators
+  ol.carousel-indicators
+    each car, index in carousel
+      li(data-target='#mycarousel', data-slide-to=index, class=(index===0 ? "active" : undefined))
+  // Wrapper for slides
+  .carousel-inner(role='listbox')
+    each car, index in carousel
+      .carousel-item(data-target='#mycarousel', data-slide-to=index, class=(index===0 ? "active" : undefined))
+        //a(href=car.link.replace("events", (config.prefix == "flyer" ? "cultural-productions" : "events")), title=car.title)
+        img.d-block.w-100(src=car.img, alt=global.__('Image for')+': '+car.title)
+
+  // Controls
+  a.left.carousel-control(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+    span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+    span.sr-only Previous
+  a.right.carousel-control(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+    span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+    span.sr-only Next
