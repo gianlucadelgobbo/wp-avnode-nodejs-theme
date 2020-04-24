@@ -63,15 +63,17 @@
 	"Name is required": "Il nome è richiesto",
 	"Email": "Email",
 	"Please enter your email": "Inserisci la tua email",
-	"Valid email is required": "Valid email is richiesto",
+	"Valid email is required": "È richiesta una mail valida",
 	"Message": "Messagio",
-	"Message for me": "Message for me",
+	"Message for me": "Messaggio per me",
 	"Please,leave us a message": "Lasciaci un messaggio",
 	"Send message": "Invia messaggio",
 	"These fields are required.": "Questi campi sono richiesti.",
 	"Latest Cultural Productions": "Latest Cultural Productions",
-	"See all Cultural Productions": "See all Cultural Productions",
-	"Latest Parterships Managed": "Latest Parterships Managed",
-	"See all Parterships Managed": "See all Parterships Managed",
-	"See all News": "See all News"
+	"See all Cultural Productions": "Guarda tutte le Produzioni Culturali",
+	"Latest Parterships Managed": "Le ultime Partership Gestite",
+	"See all Parterships Managed": "Guarda tutte le Partership Gestite",
+	"See all News": "Guarda tutte le News",
+	"Full schedule": "Calendario completo",
+	"Production": "Produzione"
 }

@@ -139,10 +139,10 @@ exports.getPage = function getPage(req,callback) {
       if (data['sources'] && data['sources'][0]) {
         let avnodeurl = data['sources'][0];
         if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-          avnodeurl = "https://api.avnode.net/"+req.params.page+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
+          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.page+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
           if (req.params.img) avnodeurl+= "img/"+req.params.img;
         } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-          avnodeurl = "https://api.avnode.net/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
+          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
@@ -219,10 +219,10 @@ exports.getXMLlist = function getXMLlist(req,callback) {
         let avnodeurl = data['sources'][0];
         if (A.indexOf(req.params.avnode) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
           console.log(req.params);
-          avnodeurl = "https://api.avnode.net/"+req.params.avnode+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
+          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.avnode+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
           if (req.params.img) avnodeurl+= "img/"+req.params.img;
         } else if (A.indexOf(req.params.avnode) !== -1 && req.params.subpage) {
-          avnodeurl = "https://api.avnode.net/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
+          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         console.log(avnodeurl);
@@ -389,12 +389,13 @@ exports.getEdition = function getEdition(req,callback) {
   }, function(error, response, data) {
     let avnodeurl;
     if (req.params.subsubedition) {
+      var lang_predomain = 'https://'+(req.session.sessions.current_lang == "en" ? '' : req.session.sessions.current_lang+'.')+"api.avnode.net";
       if (req.params.image) {
-        avnodeurl = "https://api.avnode.net/galleries/"+req.params.subsubedition+"/img/"+req.params.image;
+        avnodeurl = lang_predomain+"/galleries/"+req.params.subsubedition+"/img/"+req.params.image;
       } else if (req.params.subedition == "gallery") {
-        avnodeurl = "https://api.avnode.net/galleries/"+req.params.subsubedition;
+        avnodeurl = lang_predomain+"/galleries/"+req.params.subsubedition;
       } else if (req.params.subedition == "videos") {
-        avnodeurl = "https://api.avnode.net/videos/"+req.params.subsubedition;
+        avnodeurl = lang_predomain+"/videos/"+req.params.subsubedition;
       } else if (data["sources"] && data["sources"][0]) {
         avnodeurl = data["sources"][0];
       }
