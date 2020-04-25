@@ -14,15 +14,6 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
       -webkit-box-shadow:inset 0 0 1px 0 rgba(255,255,255,0.1),0 0 1px 0 rgba(255,255,255,0.1);
       box-shadow:inset 0 0 1px 0 rgba(255,255,255,0.1),0 0 1px 0 rgba(255,255,255,0.1)
   }
-  .sameheight{
-      padding-bottom:30px
-  }
-  .sameheight:last-child{
-      padding-bottom:0
-  }
-}
-.sameheightinner .img-circle{
-  width:100px
 }
 body.fixed-top{
   padding-top:54px
@@ -125,6 +116,17 @@ body.expanding.fixed-top{
 }
 
 
+.sameheightinner .img-circle{
+  width:100px
+}
+@media (max-width:767px){
+  .sameheight{
+      padding-bottom:30px
+  }
+  .sameheight:last-child{
+      padding-bottom:0
+  }
+}
 
 @media (min-width:768px){
   .sameheightcnt{
@@ -133,7 +135,8 @@ body.expanding.fixed-top{
       display:-webkit-flex;
       display:-ms-flexbox;
       display:box;
-      display:flex
+      display:flex;
+      height: 100%;
   }
   .sameheight{
       -webkit-box-flex:0;
@@ -145,7 +148,7 @@ body.expanding.fixed-top{
       flex-grow:0
   }
   .sameheightinner{
-      padding-bottom:50px
+      padding-bottom:150px
   }
   .sameheight .readmore.bottom{
       bottom:0;

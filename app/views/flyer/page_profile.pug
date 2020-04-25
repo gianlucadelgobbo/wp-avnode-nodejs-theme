@@ -16,20 +16,11 @@ block content
               include ../_partials/inc_share
         .col-sm-3
           img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
-      .row.sameheightcnt
-        .col-md-6.sameheight.boxItem
-          !=result['wpcf-row-1-col-1-html-box']
-          .sameheightinner
-            .row.sameheightcnt
-              .col-md-6.sameheight.boxItem
-                !=result['wpcf-row-2-col-1-html-box']
-              .col-md-6.sameheight.boxItem
-                !=result['wpcf-row-2-col-2-html-box']
-        .col-md-6.sameheight.boxItem
-          !=result['wpcf-row-1-col-2-html-box']
-          .sameheightinner
-            .row.sameheightcnt
-              .col-md-6.sameheight.boxItem
-                !=result['wpcf-row-2-col-3-html-box']
-              .col-md-6.sameheight.boxItem
-                !=result['wpcf-row-2-col-4-html-box']
+      .container-fluid.sameheightcnt
+        .row.mb-5
+          .col-md-4.sameheight
+            !=result['wpcf-row-1-col-1-html-box']
+          .col-md-4.sameheight
+            !=result['wpcf-row-1-col-2-html-box']
+          .col-md-4.sameheight
+            !=result['wpcf-row-1-col-3-html-box']
