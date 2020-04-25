@@ -1,4 +1,4 @@
-#mycarousel.mycarousel.slide(data-ride='carousel')
+#mycarousel.carousel.slide(data-ride='carousel')
   - var carousel = []
   - carousel.push({title:"Video Mapping MAXXI Spring Attitude", link: lang_preurl + "/events/video-mapping-maxxi-spring-attitude-2016/", img:"https://flyer.it/files/2016/12/event-mapping-SA.jpg"})
   - carousel.push({title:"Fotonica Festival", link: lang_preurl + "/events/fotonica-2019/", img:"/fotonica/images/carusel_img_2017/FOTONICA2017_img-2.jpg"})
@@ -24,9 +24,9 @@
         img.d-block.w-100(src=car.img, alt=global.__('Image for')+': '+car.title)
 
   // Controls
-  a.left.carousel-control(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
-    span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+  a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+    span.carousel-control-prev-icon(aria-hidden='true')
     span.sr-only Previous
-  a.right.carousel-control(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
-    span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+  a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+    span.carousel-control-next-icon(aria-hidden='true')
     span.sr-only Next

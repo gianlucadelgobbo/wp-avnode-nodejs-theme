@@ -1,9 +1,6 @@
 var lastScrollTop = 0;
 
 $(function() {
-  $('#mycarousel').carousel({
-    pause: "false"
-  });
   /* $( window ).scroll(function() {
     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
     if (st > lastScrollTop) {
