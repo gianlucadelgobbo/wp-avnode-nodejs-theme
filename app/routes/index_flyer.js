@@ -12,13 +12,14 @@ exports.get = function get(req, res) {
       helpers.getPage(req, function(profile) {
         //console.log(profile);
         //console.log("getAll events");
-        req.params.page = "news";
+        req.params.page = "extra";
         helpers.getPage(req, function(result_news) {
-          //console.log("getAll events");
+          console.log(result_news);
+          console.log("getAll events");
           req.params.page = "cultural-productions";
           helpers.getPage(req, function(result_events) {
             //console.log("getAll editions");
-            console.log(result_events.avnode);
+            //console.log(result_events.avnode);
             req.params.page = "partnerships-management";
             helpers.getPage(req, function(result_partnerships) {
               //console.log("getAll editions");

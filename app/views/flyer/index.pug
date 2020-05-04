@@ -24,8 +24,11 @@ block content
       .swiper-container
         !=results.events.post_content.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
       .container-fluid
-        .text-right.boxItem
-          a.btn.btn-primary.btn-sm(href=lang_preurl+"/cultural-productions/", title=global.__("See all Cultural Productions"))=global.__("See all Cultural Productions")
+        .text-right.boxItem.readmore
+          a(href=lang_preurl+"/cultural-productions/", title=global.__("See all Cultural Productions"))
+            !=global.__("See all Cultural Productions")
+            !=" "
+            i.icon-right
 
     section.home(itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
@@ -33,17 +36,23 @@ block content
       .swiper-container
         !=results.partnerships.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
       .container-fluid
-        .text-right.boxItem
-          a.btn.btn-primary.btn-sm(href=lang_preurl+"/partnerships-management/", title=global.__("See all Parterships Managed"))=global.__("See all Parterships Managed")
+        .text-right.boxItem.readmore
+          a(href=lang_preurl+"/partnerships-management/", title=global.__("See all Parterships Managed"))
+            !=global.__("See all Parterships Managed")
+            !=" "
+            i.icon-right
 
     section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
       .container-fluid
-        h1.entry-title(itemprop="name") News
+        h1.entry-title(itemprop="name") Extra
       .swiper-container
         !=results.news.replace("<p>", "<p class=\"container-fluid\">").replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
       .container-fluid
-        .text-right.boxItem
-          a.btn.btn-primary.btn-sm(href="/news/", title=global.__("See all News"))=global.__("See all News")
+        .text-right.boxItem.readmore
+          a(href="/extra/", title=global.__("See all Extras"))
+            !=global.__("See all Extras")
+            !=" "
+            i.icon-right
             
     section.home-web(itemprop="owns", itemscope, itemtype='http://schema.org/OwnershipInfo')
       .container-fluid(itemprop="typeOfGood", itemscope, itemtype='http://schema.org/ItemList')
@@ -56,7 +65,7 @@ block content
           each result, position in results.web
             .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem(class=position>2 ? "hidden-lg visible-xl visible-md" : "")
               include ../_partials/boxes/box_web
-        .text-center.readmore
+        .text-right.boxItem.readmore
           a(href=lang_preurl+'/web-and-apps/', title=global.__("See all Web & Apps"))
             !=global.__("See all Web & Apps")
             !=" "

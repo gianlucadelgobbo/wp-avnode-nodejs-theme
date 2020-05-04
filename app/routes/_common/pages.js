@@ -170,7 +170,7 @@ exports.post = function post(req, res) {
     function(error, response, body){
       if (body === true) {
         req.session.user = true;
-        console.log(error || body)
+        //console.log(error || body)
 
       }
       helpers.setSessions(req, function() {
@@ -243,7 +243,7 @@ exports.post = function post(req, res) {
             }
           },
           function(error, response, body){
-            console.log(body)
+            //console.log(body)
             if(error) {
               res.status(200).send({type:"danger", message: __("Subscription failed")});
             } else {
@@ -266,7 +266,7 @@ exports.post = function post(req, res) {
               if (result.news) pug = config.prefix+'/new';
               if (result.member) pug = config.prefix+'/member';
               if (result.partnership) pug = config.prefix+'/partnership';
-              console.log(pug);
+              //console.log(pug);
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
                 var Recaptcha = require('express-recaptcha').Recaptcha;
@@ -304,7 +304,7 @@ exports.post = function post(req, res) {
                   }
                 },
                 function(error, response, body){
-                  console.log(body)
+                  //console.log(body)
                   if(error) {
                     res.status(200).send({type:"danger", message: __("Subscription failed")});
                   } else {
@@ -396,7 +396,7 @@ exports.post = function post(req, res) {
 };
 
 exports.getSubpage = function getSubpage(req, res) {
-  console.log("stocazzo");
+  //console.log("stocazzo");
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);

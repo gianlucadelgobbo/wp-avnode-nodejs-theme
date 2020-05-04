@@ -90,7 +90,7 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
-  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
+  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
@@ -123,7 +123,7 @@ exports.getPage = function getPage(req,callback) {
   var A = ["performances","gallery","videos","news","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
-  console.log(url);
+  //console.log(url);
   request({
     url: url,
     json: true
@@ -146,7 +146,7 @@ exports.getPage = function getPage(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        console.log(avnodeurl);
+        //console.log(avnodeurl);
         
         request({
           url: avnodeurl,
@@ -181,7 +181,7 @@ exports.getPage = function getPage(req,callback) {
               if (body.data) body.events = body.data;
               //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              console.log("shortcodify2"+basepath);
+              //console.log("shortcodify2"+basepath);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });
@@ -202,7 +202,7 @@ exports.getPage = function getPage(req,callback) {
 
 exports.getXMLlist = function getXMLlist(req,callback) {
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
-  console.log(url);
+  //console.log(url);
   request({
     url: url,
     json: true
@@ -218,15 +218,14 @@ exports.getXMLlist = function getXMLlist(req,callback) {
       if (data['sources'] && data['sources'][0]) {
         let avnodeurl = data['sources'][0];
         if (A.indexOf(req.params.avnode) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-          console.log(req.params);
+          //console.log(req.params);
           avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.avnode+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
           if (req.params.img) avnodeurl+= "img/"+req.params.img;
         } else if (A.indexOf(req.params.avnode) !== -1 && req.params.subpage) {
           avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        console.log(avnodeurl);
-        console.log(avnodeurl);
+        //console.log(avnodeurl);
         request({
           url: avnodeurl,
           json: true
@@ -258,7 +257,7 @@ exports.getAll = function getAll(req, sez, limit, page, callback) {
 exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback) {
   var trgt = this;
   var previousdata = p;
-  console.log("getAll "+sez.post_type);
+  //console.log("getAll "+sez.post_type);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
@@ -283,7 +282,7 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   } else {
     wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
       //console.log("//// All "+config.data_domain);
-      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
+      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
       //console.log("//// All "+sez.post_type);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -314,12 +313,12 @@ exports.getWeb = function getWeb(req,callback) {
 };
 
 exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
-  console.log("getAllWebByTag "+req.params.tag);
+  //console.log("getAllWebByTag "+req.params.tag);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
-    console.log("//// All Web By Tag");
-    console.log(err || data);
+    //console.log("//// All Web By Tag");
+    //console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
   });
@@ -424,7 +423,7 @@ exports.getEdition = function getEdition(req,callback) {
             } */
             var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
-            console.log("shortcodify"+basepath);
+            //console.log("shortcodify"+basepath);
             fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
               callback(data);
             });

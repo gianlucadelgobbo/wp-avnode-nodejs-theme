@@ -10,6 +10,7 @@ exports.get = function get(req, res) {
       //console.log("getAll news");
       req.params.page = "news";
       helpers.getPage(req, function(result_news) {
+        //console.log(result_news);
         //console.log("getAll events");
         req.params.page = "performances";
         helpers.getPage(req, function(result_performances) {
