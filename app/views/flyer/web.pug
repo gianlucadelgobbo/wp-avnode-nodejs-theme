@@ -5,7 +5,7 @@ block content
       .row
         .col-sm-8
           img.img-fluid.main-image(src=result.featured.full, alt=result.post_title, itemprop='image')
-          .d-none-xs(itemprop='description')!=result.post_content
+          .d-none.d-sm-block(itemprop='description')!=result.post_content
         .col-sm-4
           header
             h1.entry-title(itemprop='name')!=result.post_title
@@ -14,7 +14,7 @@ block content
           .rientro
             include ../_partials/inc_type_hidden
             include ../_partials/inc_datemonth_wp
-            .d-none.d-sm-block!=result.post_content
+            .d-block.d-sm-none!=result.post_content
             include ../_partials/inc_websites
             include ../_partials/inc_share
 
