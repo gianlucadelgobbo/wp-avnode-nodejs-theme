@@ -8,7 +8,7 @@ exports.get = function get(req, res) {
     var file = config.root+'/cache/'+config.prefix+'_home_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
       //console.log("getAll profile");
-      req.params.page = "profile2";
+      req.params.page = "profile";
       helpers.getPage(req, function(profile) {
         //console.log(profile);
         //console.log("getAll events");
