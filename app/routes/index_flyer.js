@@ -14,8 +14,6 @@ exports.get = function get(req, res) {
         //console.log("getAll events");
         req.params.page = "extra";
         helpers.getPage(req, function(result_news) {
-          console.log(result_news);
-          console.log("getAll events");
           req.params.page = "cultural-productions";
           helpers.getPage(req, function(result_events) {
             //console.log("getAll editions");

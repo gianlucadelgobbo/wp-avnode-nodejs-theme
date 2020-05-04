@@ -11,7 +11,7 @@
     .row.mb-3
       .col-md-9
         .embed-responsive.embed-responsive-16by9
-          video.embed-responsive-item#my-video.video-js(controls='', preload='auto', width='640', height='264', poster=body.imageFormats.large, data-setup='{aspectRatio:"16:9", fluid: true}')
+          video.embed-responsive-item#my-video.video-js(controls='', preload='metadata', width='640', height='264', poster=body.imageFormats.large, data-setup='{aspectRatio:"16:9", fluid: true}')
             source(src="https://avnode.net"+body.media.file, type='video/mp4')
             p.vjs-no-js
               !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")

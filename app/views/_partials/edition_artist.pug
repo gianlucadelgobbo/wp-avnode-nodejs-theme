@@ -65,7 +65,6 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                 h3(itemprop='name')
                   a(href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+performance.slug+"/", title=performance.title)!=performance.title
                 p.type=performance.type.name
-                - console.log(performance)
                 each booking in performance.bookings
                   each schedule in booking.schedule
                     p.stit.schedule
