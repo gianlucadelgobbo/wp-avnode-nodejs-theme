@@ -5,7 +5,7 @@ block content
       h1.entry-title(itemprop="name")=posttype.post_title+(tag ? ": #"+tag : "")
       p(itemprop="description")!=posttype.post_content
     //.text-center
-      include ../_partials/inc_sharere
+      include ../_partials/inc_share
       include ../_partials/inc_tags
     - var result = posttype
     include ../_partials/inc_grid

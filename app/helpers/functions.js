@@ -55,7 +55,7 @@ exports.setPageData = function setPageData(req, result) {
         if (req.params.img) page_data.title+=" | #"+(result.avnode.galleries[0].medias.map(item => {return item.slug;}).indexOf(req.params.img)+1)
   
         page_data.image_src = result.avnode.imageFormats.large;
-        page_data.description = result.avnode.galleries[0].description ? result.avnode.galleries[0].description : page_data.title;
+        page_data.description = result.avnode.galleries && result.avnode.galleries.length && result.avnode.galleries[0].description ? result.avnode.galleries[0].description : page_data.title;
       } else if (result.avnode.title) {
         page_data.title+= ": "+result.avnode.title+" | #";
         page_data.image_src = result.avnode.imageFormats.large;
