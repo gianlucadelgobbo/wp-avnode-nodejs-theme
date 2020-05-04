@@ -2,7 +2,7 @@
   meta(itemprop="position", content=position+1)
   .News(itemprop="item", itemscope, itemtype="http://schema.org/Article")
     .thumb-cnt
-      a.ajaxloader(href='/news/'+result.slug+"/", rel='bookmark', title!=result.title, itemprop='url')
+      a.ajaxloader(href='/'+basepath+'/'+result.slug+"/", rel='bookmark', title!=result.title, itemprop='url')
         span(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
           if result.video_thumbnail
             span.play-cnt
@@ -16,7 +16,7 @@
         .text-right
           include ../../_partials/inc_datemonth_box
         h3.list_title
-          a.ajaxloader(itemprop='name', href='/news/'+result.slug+"/", rel='bookmark', title=result.title)!=result.title
+          a.ajaxloader(itemprop='name', href='/'+basepath+'/'+result.slug+"/", rel='bookmark', title=result.title)!=result.title
         .text-muted.small.excerpt
           if result.excerpt
             div(itemprop='mainEntityOfPage')!=result.excerpt

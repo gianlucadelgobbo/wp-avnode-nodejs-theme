@@ -120,17 +120,16 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
  //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
-  var A = ["performances","gallery","videos","news","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
+  var A = ["performances","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
-  //console.log(url);
   request({
     url: url,
     json: true
   }, function(error, response, data) {
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
-      var A = ["performances","gallery","galleries","videos","news","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
+      var A = ["performances","gallery","galleries","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
       if (data) data = fnz.fixResult(data);
       /* if (data.posts){
         data.posts = fnz.fixResults(data.posts);
@@ -142,7 +141,7 @@ exports.getPage = function getPage(req,callback) {
           avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.page+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
           if (req.params.img) avnodeurl+= "img/"+req.params.img;
         } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
+          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page == "extra" ? "news"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
@@ -209,7 +208,7 @@ exports.getXMLlist = function getXMLlist(req,callback) {
   }, function(error, response, data) {
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
-      var A = ["performances","gallery","galleries","videos","news","events","members","partnerships","exhibitions"];
+      var A = ["performances","gallery","galleries","videos","news","extra","events","members","partnerships","exhibitions"];
       if (data) data = fnz.fixResult(data);
       /* if (data.posts){
         data.posts = fnz.fixResults(data.posts);

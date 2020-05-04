@@ -47,6 +47,7 @@ exports.get = function get(req, res) {
             basepath = "/performances/" +req.params.subpage;
           }
           if (req.params.page == "news") pug = config.prefix+'/new';
+          if (req.params.page == "extra") pug = config.prefix+'/new';
           if (req.params.page == "members") pug = config.prefix+'/member';
           if (req.params.page == "partnerships") pug = config.prefix+'/partnership';
           if (req.params.page == "partnerships-management") pug = config.prefix+'/partnership';
