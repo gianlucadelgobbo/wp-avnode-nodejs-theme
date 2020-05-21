@@ -14,7 +14,7 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
           meta(itemprop='priceCurrency', content='USD')
 
       .rientro
-        h3=result.avnode.subtitle && result.avnode.subtitle!= "Text is missing" ? result.avnode.subtitle : result.avnode.boxDateFull
+        h3.mb-4.text-black-50=result.avnode.subtitle && result.avnode.subtitle!= "Text is missing" ? result.avnode.subtitle : result.avnode.boxDateFull
         if result.avnode.boxVenue
           include components/eventdateplace
           //p.boxVenue=result.avnode.boxVenue
@@ -26,55 +26,61 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
                 li=fullSchedule
         if result.avnode.type
           p.type
-            i(class="fa fa-cube")
-            =" "
+            i.icon-star.mr-2
             !=result.avnode.type.name
         .d-sm-none(itemprop='description')!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
-        ul.event_social_list.list-inline
+        ul.list-unstyled
           each item in result.avnode.web
-            li.list-inline-item.mb-3
+            li.mb-3
               a(href=item.url target="_blank" )
-                span.lnr.lnr-link.about_button=item.url.replace("http://","").replace("https://","")
+                i.icon-globe.mr-2
+                !=item.url.replace("http://","").replace("https://","")
           each item in result.avnode.social
             if item.url.indexOf('instagram.com/')!=-1
-              li.list-inline-item.mb-3
+              li.mb-3
                 - var tooltip = item.url.replace("http://","").replace("https://","").split("/")
                 a(href=item.url target="_blank" )
-                  i.fa.fa-instagram.about_button=item.url.replace("http://","").replace("https://","")
+                  i.icon-instagram.mr-2
+                  !=item.url.replace("http://","").replace("https://","")
             else if item.url.indexOf('twitter.com/')!=-1
-              li.list-inline-item.mb-3
+              li.mb-3
                 a(href=item.url target="_blank" )
-                  i.fa.fa-twitter.about_button=item.url.replace("http://","").replace("https://","")
+                  i.icon-twitter.mr-2
+                  !=item.url.replace("http://","").replace("https://","")
             else if item.url.indexOf('facebook.com/')!=-1 || item.url.indexOf('fb.com/')!=-1
-              li.list-inline-item.mb-3
+              li.mb-3
                 a(href=item.url target="_blank" )
-                  i.fa.fa-facebook.about_button=item.url.replace("http://","").replace("https://","")
+                  i.icon-facebook.mr-2
+                  !=item.url.replace("http://","").replace("https://","")
             else if item.url.indexOf('vimeo.com/')!=-1
-              li.list-inline-item.mb-3
+              li.mb-3
                 a(href=item.url target="_blank" )
-                  i.fa.fa-vimeo.about_button=item.url.replace("http://","").replace("https://","")
+                  i.icon-vimeo.mr-2
+                  !=item.url.replace("http://","").replace("https://","")
             else if item.url.indexOf('youtube.com/')!=-1
-              li.list-inline-item.mb-3
+              li.mb-3
                 a(href=item.url target="_blank" )
-                  i.fa.fa-youtube.about_button=item.url.replace("http://","").replace("https://","")
+                  i.icon-youtube.mr-2
+                  !=item.url.replace("http://","").replace("https://","")
             else
-              li.list-inline-item.mb-3
+              li.mb-3
                 a(href=item.url target="_blank" )
-                  span.lnr.lnr-link.about_button=item.url.replace("http://","").replace("https://","")
+                  i.icon-globe
+                  !=item.url.replace("http://","").replace("https://","")
         .partners_event_wrapper_bkg
-          section.partners_event_wrapper
-            h2.mb-3!=global.__('Production')
+          section.partners_event_wrapper.mt-4
+            h4.mb-3!=global.__('Production')
             .partners_list_wrapper
               each partner in result.avnode.users
                   .media.partner.mb-4
                     a.mr-3(href="https://avnode.net/"+partner.slug+"/", title=partner.stagename target="_blank")
                       img.img-fluid(
-                        class=partner.imageFormats.small.substring(partner.imageFormats.small.lastIndexOf(".")+1)+"small"
+                        class=partner.imageFormats.small.substring(partner.imageFormats.small.lastIndexOf(".")+1)+"xssmall"
                         src=partner.imageFormats.small
                         alt=partner.title
                       )
                     .media-body
-                      h2.media-heading
+                      .media-heading
                         a(href="https://avnode.net/"+partner.slug+"/", title=partner.stagename target="_blank")
-                          span=partner.stagename
+                          b=partner.stagename
         include ../_partials/inc_share
