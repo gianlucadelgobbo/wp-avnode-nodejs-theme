@@ -22,6 +22,7 @@ var tasklist = [
   'css_wam_bs',
   'css_flxer_bs',
   'css_gianlucadelgobbo_bs',
+  'css_pac_bs',
   'compress_js_avnode',
   'compress_js_chromosphere',
   'compress_js_fotonica',
@@ -148,6 +149,16 @@ const css_gianlucadelgobbo_bs = () => {
     }))
     .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/css'));
 }
+
+const css_pac_bs = () => {
+  return gulp.src('./gulp/sass/pac/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+    }))
+    .pipe(gulp.dest(config.publicDir + '/pac/css'));
+}
+
 
 const compress_js = () => {
   return gulp.src([
@@ -370,9 +381,27 @@ const compress_js_gianlucadelgobbo = () => {
   .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/js/'));
 }
 
+const compress_js_pac = () => {
+  return gulp.src([
+      config.npmDir + '/jquery/dist/jquery.min.js',
+      config.npmDir + '/popper.js/dist/popper.min.js',
+      config.npmDir + '/bootstrap/dist/js/bootstrap.min.js',
+      './gulp/js/_common/jquery.isotope.min.js',
+      './gulp/js/_common/imagesloaded.pkgd.min.js',
+      './gulp/js/_common/cookielawinfo.min.js',
+      './gulp/js/_common/swiper.js',
+      './gulp/js/_common/script.js',
+      //'./gulp/js/pac/map.js',
+      './gulp/js/pac/script.js'
+    ])
+    .pipe(concat('combo.min.js'))
+    .pipe(uglify({mangle: { reserved: ['glink'] } }))
+    .pipe(gulp.dest(config.publicDir + '/pac/js/'));
+}
 
-gulp.task('default', gulp.series(compress_js,css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
+//gulp.task('default', gulp.series(compress_js,css_pac_bs,css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_gianlucadelgobbo,css_gianlucadelgobbo_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flyer,css_flyer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flxer,css_flxer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_vjtelevision));
+gulp.task('default', gulp.series(compress_js, compress_js_pac,css_pac_bs));

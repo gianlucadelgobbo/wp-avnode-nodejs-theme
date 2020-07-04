@@ -62,7 +62,8 @@
     "wam": "NODE_ENV=dev nodemon app -site wam",
     "fotonica": "NODE_ENV=dev nodemon app -site fotonica",
     "flxer": "NODE_ENV=dev nodemon app -site flxer",
-    "gianlucadelgobbo": "NODE_ENV=dev nodemon app -site gianlucadelgobbo"
+    "gianlucadelgobbo": "NODE_ENV=dev nodemon app -site gianlucadelgobbo",
+    "pac": "NODE_ENV=dev nodemon app -site pac"
   },
   "repository": {
     "type": "git",

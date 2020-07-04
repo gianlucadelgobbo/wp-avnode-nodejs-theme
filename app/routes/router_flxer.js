@@ -29,6 +29,16 @@ module.exports = function(app) {
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
+  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/it/(:page)', pagesRoutes.get);
+  
+  app.post('/it/(:page)/(:subpage)', pagesRoutes.post);
+  app.post('/it/(:page)', pagesRoutes.post);
+
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
@@ -38,7 +48,7 @@ module.exports = function(app) {
   
   app.post('/(:page)/(:subpage)', pagesRoutes.post);
   app.post('/(:page)', pagesRoutes.post);
-  app.post('/signup', signupRoutes.post);
+  //app.post('/signup', signupRoutes.post);
 
 
   app.get('*', pagesRoutes.get404);
