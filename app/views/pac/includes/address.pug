@@ -1,12 +1,12 @@
 div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
   a(href=lang_preurl + '/', title=config.project_name)
-    img.media-object(src="/avnode/images/LogoAVnode-bar.svg", alt=config.project_name, itemprop='logo')
+    img.media-object(src="/pac/images/LogoPAC-bar.svg", alt=config.project_name, itemprop='logo')
   //br
   strong.sr-only(itemprop='name')=config.project_name
   //br
-  !=global.__("a project of")+" Stichting AVnode"
+  !=global.__("Network di organizzazioni attive nelle Performing Arts Contemporanee")
   br
-  span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
+  //span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
     span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
       span(itemprop='streetAddress') Arondeusstraat 7
       !=" "
@@ -31,10 +31,10 @@ div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
     !=" "
     span(itemprop='faxNumber') +39 06 78390805
     br
-  !=global.__('VAT N°')
-  !=" "
-  span(itemprop='vatID') NL856555253B01
-  br
+    !=global.__('VAT N°')
+    !=" "
+    span(itemprop='vatID') NL856555253B01
+    br
   a(itemprop='email', title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
   br.sr-only
   a.sr-only(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain
