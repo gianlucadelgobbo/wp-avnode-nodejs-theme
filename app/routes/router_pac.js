@@ -18,27 +18,15 @@ module.exports = function(app) {
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
-  app.get('/it/coding/', codingRoutes.getAll);
-  app.get('/it/coding/tags/', codingRoutes.getAllTags);
-  app.get('/it/coding/(:web)', codingRoutes.get);
-  app.get('/it/coding/page/(:page)', codingRoutes.getAll);
-  app.get('/it/coding/tags/(:tag)', codingRoutes.getTag);
-
-  app.get('/it/', indexRoutes.get);
-  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/it/(:page)', pagesRoutes.get);
+  app.get('/en/', indexRoutes.get);
+  app.get('/en/(:page)/page/:paging', pagesRoutes.get);
+  app.get('/en/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/en/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/en/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/en/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/en/(:page)', pagesRoutes.get);
   
-  app.post('/it/(:page)', pagesRoutes.post);
-
-  app.get('/coding/', codingRoutes.getAll);
-  app.get('/coding/tags/', codingRoutes.getAllTags);
-  app.get('/coding/(:web)', codingRoutes.get);
-  app.get('/coding/page/(:page)', codingRoutes.getAll);
-  app.get('/coding/tags/(:tag)', codingRoutes.getTag);
+  app.post('/en/(:page)', pagesRoutes.post);
 
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);

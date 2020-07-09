@@ -1,29 +1,29 @@
 article.pagepaddingtop#container(itemprop='subEvent', itemscope, itemtype='http://schema.org/Event')
   .row
     .col-sm-8
-      img.img-fluid.main-image(src=result.member.imageFormats.large, alt=result.member.stagename, itemprop='image')
-      .rientro.d-none-xs!=result.member.aboutFull ? result.member.aboutFull : result.member.about
+      img.img-fluid.main-image(src=result.avnode.imageFormats.large, alt=result.avnode.stagename, itemprop='image')
+      .rientro.d-none-xs!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
       include ../_partials/inc_videos
     .col-sm-4
       header
-        h1.entry-title(itemprop='name')!=result.member.stagename
+        h1.entry-title(itemprop='name')!=result.avnode.stagename
       .rientro
-        p.subtitle=result.member.subtitle && result.member.subtitle!= "Text is missing" ? result.member.subtitle : result.member.boxDateFull
+        p.subtitle=result.avnode.subtitle && result.avnode.subtitle!= "Text is missing" ? result.avnode.subtitle : result.avnode.boxDateFull
         .row
           .col-lg-9
-            if result.member.boxVenue
-              p.boxVenue=result.member.boxVenue
+            if result.avnode.boxVenue
+              p.boxVenue=result.avnode.boxVenue
               p
                 a(data-toggle='collapse', href="javascript:void(0);", data-target='#fullSchedule', role='button', aria-expanded='false', aria-controls='fullSchedule')=global.__("Full schedule")
               #fullSchedule.collapse
                 ul
-                  each fullSchedule in result.member.fullSchedule
+                  each fullSchedule in result.avnode.fullSchedule
                     li=fullSchedule
           .col-lg-3
-            if result.member.type
+            if result.avnode.type
               p.text-right
                 i(class="fa fa-cube")
                 =" "
-                !=result.member.type.name
-        .d-none.d-sm-block(itemprop='description')!=result.member.aboutFull ? result.member.aboutFull : result.member.about
+                !=result.avnode.type.name
+        .d-none.d-sm-block(itemprop='description')!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
         include ../_partials/inc_share

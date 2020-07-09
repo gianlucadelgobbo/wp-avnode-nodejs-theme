@@ -2,14 +2,14 @@
   meta(itemprop="position", content=position+1)
   .Person(itemprop="item", itemscope, itemtype="http://schema.org/Person")
     .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
-      a(href='http://avnode.net/'+result.slug+"/", target="_blank", rel='bookmark', title!=result.stagename, itemprop='url')
+      a(href='/'+basepath+'/'+result.slug+"/", rel='bookmark', title!=result.stagename, itemprop='url')
         img.img-fluid(src=result.imageFormats.large, alt!=global.__('Image for')+': '+result.stagename, itemprop='contentUrl')
         meta(itemprop="width" content="480")
         meta(itemprop="height" content="270")
     .caption
       .caption-body
         h3.caption-title(itemprop='name')
-          a(itemprop='url', href='http://avnode.net/'+result.slug+"/", target="_blank", rel='bookmark', title!=result.stagename)!=result.stagename
+          a(itemprop='url', href='/'+basepath+'/'+result.slug+"/", rel='bookmark', title!=result.stagename)!=result.stagename
         if result.addresses
           .caption-location-artists
             each address in result.addresses

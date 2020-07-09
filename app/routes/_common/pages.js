@@ -49,6 +49,7 @@ exports.get = function get(req, res) {
           if (req.params.page == "news") pug = config.prefix+'/new';
           if (req.params.page == "extra") pug = config.prefix+'/new';
           if (req.params.page == "members") pug = config.prefix+'/member';
+          if (req.params.page == "videos") pug = config.prefix+'/video';
           if (req.params.page == "partnerships") pug = config.prefix+'/partnership';
           if (req.params.page == "partnerships-management") pug = config.prefix+'/partnership';
           if (req.params.subsubpage == "galleries") {
