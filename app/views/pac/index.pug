@@ -1,22 +1,26 @@
 extends layout
 block content
-  .row
-    .col-lg-9.pr-lg-0
-      .embed-responsive.embed-responsive-16by9
-        video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
-          p.vjs-no-js
-            !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-            a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
-    .col-lg-3.pl-lg-0
-      #headervjtv.clearfix.h3.p-2.bg-dark
-        #date.float-left.pt-1.pl-2=date
-        .float-right
-          input#datepicker(type="hidden" name="date")
-          a#datepickerbutton(href="#")
-            i.icon-calendar
-      .playlist
-        .vjs-waiting
-          .vjs-loading-spinner
+  #vjtv
+    .row
+      .col-lg-9
+        .embed-responsive.embed-responsive-16by9
+          video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=results.videos[0].imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
+            source(src="https://avnode.net"+results.videos[0].media.file type="video/mp4")
+            p
+              !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+              a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+      .col-lg-3
+        h1
+          !="Video"
+        script.
+          var videos = !{JSON.stringify(results.videos)}
+        ul.list-unstyled
+          each video in results.videos
+            li.mb-3
+              a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
+                img.img-fluid(src=video.imageFormats.small)
+              a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
+                !=video.title
   article
     .text-center
       h1.home-title
@@ -26,7 +30,7 @@ block content
   section.home(itemscope, itemtype='http://schema.org/ItemList')
     h1.entry-title(itemprop="name") Eventi
     .swiper-container
-      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      !=results.partnerships.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .container-fluid
       .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/events/", title="See all Events") Vedi tutti gli eventi
+        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") Vedi tutti gli eventi

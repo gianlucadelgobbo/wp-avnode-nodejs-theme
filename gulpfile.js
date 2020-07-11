@@ -390,7 +390,10 @@ const compress_js_pac = () => {
       './gulp/js/_common/imagesloaded.pkgd.min.js',
       './gulp/js/_common/cookielawinfo.min.js',
       './gulp/js/_common/swiper.js',
-      './gulp/js/_common/script.js',
+      './gulp/js/_common/video.min.js',
+      './gulp/js/_common/videojs-playlist.min.js',
+      './gulp/js/_common/videojs-logo.min.js',
+        './gulp/js/_common/script.js',
       //'./gulp/js/pac/map.js',
       './gulp/js/pac/script.js'
     ])

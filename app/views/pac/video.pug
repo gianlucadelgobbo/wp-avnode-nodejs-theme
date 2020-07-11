@@ -1,3 +1,35 @@
 extends layout
 block content
-  include ../_partials/new
+  article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Article')
+    .row(itemprop='mainEntityOfPage')
+      .col-sm-9
+        header(itemprop="headline")
+          h1.entry-title(itemprop='name')=result.avnode.title+" "
+        .rientro
+          include ../_partials/inc_type_hidden
+          .d-none.type.text-muted
+            i(class="fa fa-cube")
+            !=" News"
+
+          .text-right
+            include ../_partials/inc_datemonth
+            br
+          .embed-responsive.embed-responsive-16by9
+            - console.log(result)
+            video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=result.avnode.imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
+              source(src="https://avnode.net"+result.avnode.media.file type="video/mp4")
+              p
+                !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+                a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+          div(itemprop='description')!=result.avnode.about
+          include ../_partials/inc_websites
+          include ../_partials/inc_share
+      .col-sm-3
+        h3="Evento"
+        each event in result.avnode.events
+          a.mb-3(href="/partnerships/"+event.slug)
+            img.img-fluid.main-image(src=event.imageFormats.small, alt=event.title)
+            !=event.title
+        h3="Organizzazione"
+        include ../_partials/inc_authors
+
