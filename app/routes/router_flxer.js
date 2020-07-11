@@ -7,7 +7,7 @@ var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
 
 module.exports = function(app) {
-  app.get('/performers', function(req, res) {console.log(req.url);res.redirect(301, 'https://avnode.net/performers/')});
+  /* app.get('/performers', function(req, res) {console.log(req.url);res.redirect(301, 'https://avnode.net/performers/')});
 
   app.get('/:performer/performances/:performance/', function(req, res) {res.redirect(301, 'https://avnode.net/performances/'+req.params.performance)});
   app.get('/:performer/events/:event/', function(req, res) {res.redirect(301, 'https://avnode.net/events/'+req.params.event)});
@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.get('/performers/*', function(req, res) {console.log(req.url);res.redirect(301, req.url.replace('/performers/','https://avnode.net/'))});
   app.get('/tvshows', function(req, res) {res.redirect(301, 'https://avnode.net/videos/')});
   app.get('/footage', function(req, res) {res.redirect(301, 'https://avnode.net/footage/')});
-  app.get('/playlists', function(req, res) {res.redirect(301, 'https://avnode.net/playlists/')});
+  app.get('/playlists', function(req, res) {res.redirect(301, 'https://avnode.net/playlists/')}); */
 
   app.get('/', indexRoutes.get);
 
