@@ -407,4 +407,5 @@ const compress_js_pac = () => {
 //gulp.task('default', gulp.series(compress_js, compress_js_flyer,css_flyer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flxer,css_flxer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_vjtelevision));
-gulp.task('default', gulp.series(compress_js, compress_js_pac,css_pac_bs));
+//gulp.task('default', gulp.series(compress_js, compress_js_pac,css_pac_bs));
+gulp.task('default', gulp.series(compress_js, compress_js_lcf,css_lcf_bs));
