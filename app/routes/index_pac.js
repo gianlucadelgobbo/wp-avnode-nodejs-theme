@@ -19,7 +19,7 @@ exports.get = function get(req, res) {
           console.log(result_partnerships);
           var page_data = fnz.setPageData(req, {'ID':'100'});
           var obj = {
-            results: {videos:result_videos.avnode.videos,partnerships:result_partnerships.post_content},
+            results: {videos:result_videos.avnode.videos,partnerships_html:result_partnerships.post_content,partnerships:result_partnerships.avnode.partnerships},
             page_data:page_data,
             sessions:req.session.sessions
           };

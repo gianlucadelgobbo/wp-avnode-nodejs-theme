@@ -31,9 +31,8 @@ html(lang=sessions.current_lang)
   body.body-common
     .cnt(itemscope, itemtype='http://schema.org/Event')
       include includes/menu-main
-    .container
-      #result
-        block content
+    #result
+      block content
     include includes/footer
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search

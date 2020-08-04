@@ -1,36 +1,59 @@
 extends layout
 block content
-  #vjtv
-    .row
-      .col-lg-9
-        .embed-responsive.embed-responsive-16by9
-          video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=results.videos[0].imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
-            source(src="https://avnode.net"+results.videos[0].media.file type="video/mp4")
-            p
-              !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-              a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
-      .col-lg-3
-        h1
-          !="Video"
-        script.
-          var videos = !{JSON.stringify(results.videos)}
-        ul.list-unstyled
-          each video in results.videos
-            li.mb-3
-              a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
-                img.img-fluid(src=video.imageFormats.small)
-              a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
-                !=video.title
-  article
-    .text-center
-      h1.home-title
-        span.sr-only=config.project_name + " "
-        !=config.meta.headline[sessions.current_lang]
+  .container
+    article
+      h1.mt-5.mb-5
+        b=config.meta.headline[sessions.current_lang]
+    #vjtv
+      .row
+        .col-lg-8
+          .embed-responsive.embed-responsive-16by9
+            video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=results.videos[0].imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
+              source(src="https://avnode.net"+results.videos[0].media.file type="video/mp4")
+              p
+                !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+                a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+          .pt-3.pb-3
+            .mb-1.mt-3
+              h2
+                a(href="/videos/"+results.videos[0].slug data-src="https://avnode.net"+results.videos[0].media.file)
+                  b=results.videos[0].title
+            .mb-1
+              b=results.videos[0].users[0].stagename
+            .mb-1
+              !="Views: "+results.videos[0].stats.visits
 
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    h1.entry-title(itemprop="name") Eventi
-    .swiper-container
-      !=results.partnerships.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") Vedi tutti gli eventi
+        .col-lg-4
+          h3.home-video-title.pb-3.mb-3
+            !="Video"
+          script.
+            var videos = !{JSON.stringify(results.videos)}
+          ul.list-unstyled
+            each video in results.videos
+              li.media.mb-3
+                a.mr-3(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
+                  img(src=video.imageFormats.small style="max-width:200px")
+                .media-body
+                  .mb-1
+                    h4
+                      a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
+                        b=video.title
+                  .mb-1
+                    b=video.users[0].stagename
+                  .mb-1
+                    !="Views: "+video.stats.visits
+  .bg-light
+    section.pt-3.pb-3(itemscope, itemtype='http://schema.org/ItemList')
+      .container
+        h1.entry-title(itemprop="name")
+          b="Eventi"
+      .swiper-container
+        .swiper-wrapper
+          each result in results.partnerships
+            .swiper-slide(style="margin-right: 30px;")
+              include ../_partials/boxes/box_event
+      //.swiper-container
+        !=results.partnerships_html.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") Vedi tutti gli eventi

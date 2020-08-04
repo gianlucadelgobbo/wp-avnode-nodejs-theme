@@ -1,19 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
-body,h1,h2,h3,h4,h5,h6{font-family: 'Sora', serif}
+body,h1,h2,h3,h4,h5,h6{font-family: 'Sora', sans-serif}
 
 footer a:hover {
     color: #ec1b45;
 }
-.home-title {
-    margin: 0;
-    padding: 20px;
-    font-size: 28px;
-    background: -webkit-repeating-linear-gradient(145deg,  #222,  #222 10px,  #333 10px,  #333 20px);
-    background: -moz-repeating-linear-gradient(145deg,  #222,  #222 10px,  #333 10px,  #333 20px);
-    background: -o-repeating-linear-gradient(145deg,  #222,  #222 10px,  #333 10px,  #333 20px);
-    background: -ms-repeating-linear-gradient(145deg,  #222,  #222 10px,  #333 10px,  #333 20px);
-    background: repeating-linear-gradient(-55deg,  #222,  #222 10px,  #333 10px,  #333 20px);
-    color: #fff;
+.home-video-title {
+    border-bottom: 1px solid #000;
 }
 .navbar-brand>img {
     height: 41px;
