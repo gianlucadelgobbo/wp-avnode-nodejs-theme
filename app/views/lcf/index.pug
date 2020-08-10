@@ -1,6 +1,7 @@
 extends layout
 block content
-  .embed-responsive.embed-responsive-16by9
+  img.img-fluid(src="/lcf/images/main-img.jpg")
+  //.embed-responsive.embed-responsive-16by9
     iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F2475917385800496%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true")
   //#mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
     // Wrapper for slides
@@ -60,29 +61,30 @@ block content
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
       
-  section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") News
-    .swiper-container
-      !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
+  //
+    section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") News
+      .swiper-container
+        !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
 
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Satellite Events
-    .swiper-container
-      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") Satellite Events
+      .swiper-container
+        !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
 
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Productions
-    .swiper-container
-      !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/events/", title="See all Editions") See all Productions
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") Productions
+      .swiper-container
+        !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/events/", title="See all Editions") See all Productions
