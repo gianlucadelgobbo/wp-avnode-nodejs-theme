@@ -10,23 +10,22 @@ exports.get = function get(req, res) {
       //console.log("getAll news");
       req.params.page = "videos";
       helpers.getPage(req, function(result_videos) {
-        console.log("getAll videos");
-        console.log(result_videos);
-
         req.params.page = "partnerships";
         helpers.getPage(req, function(result_partnerships) {
-          console.log("getAll events");
-          console.log(result_partnerships);
-          var page_data = fnz.setPageData(req, {'ID':'100'});
-          var obj = {
-            results: {videos:result_videos.avnode.videos,partnerships_html:result_partnerships.post_content,partnerships:result_partnerships.avnode.partnerships},
-            page_data:page_data,
-            sessions:req.session.sessions
-          };
-          jsonfile.writeFile(file, obj, function (err) {
-            //console.log("writeFile: "+file);
-            //if(err) console.log(err);
-            res.render(config.prefix+'/'+'index',obj);
+          req.params.page = "home";
+          helpers.getPage(req, function(home) {
+            console.log(home)
+            var page_data = fnz.setPageData(req, {'ID':'100'});
+            var obj = {
+              results: {home:home.post_content,videos:result_videos.avnode.videos,partnerships_html:result_partnerships.post_content,partnerships:result_partnerships.avnode.partnerships},
+              page_data:page_data,
+              sessions:req.session.sessions
+            };
+            jsonfile.writeFile(file, obj, function (err) {
+              //console.log("writeFile: "+file);
+              //if(err) console.log(err);
+              res.render(config.prefix+'/'+'index',obj);
+            });
           });
         });
       });

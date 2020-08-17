@@ -1,0 +1,11 @@
+extends layout
+block content
+  .container
+    article(itemscope, itemtype='http://schema.org/ItemList')
+      header.post_title
+        h1(itemprop='name')!="Membri"
+      .row
+        each item in result.avnode.members
+          .col-md-3
+            include ../_partials/boxes/box_member_item
+

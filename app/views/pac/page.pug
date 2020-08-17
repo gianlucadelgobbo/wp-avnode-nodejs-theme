@@ -1,5 +1,25 @@
 extends layout
 block content
   .container
-    include ../_partials/page
+    article(itemscope, itemtype='http://schema.org/'+itemtype)
+      header.post_title
+        h1(itemprop='name')!=page_data.title
+      .row
+        .col-sm-9
+          .rientro
+            div(itemprop='description')!=result.post_content
+            if (form == "contacts")
+              include ../_partials/inc_form_contacts
+            if (form == "newsletter")
+              include ../_partials/inc_form_newsletter
+            if (form == "join")
+              include ../_partials/inc_form_join
+            include ../_partials/inc_docs_large
+            .dateModified.d-none(itemprop='dateModified', content=result.date)=result.dateModifiedHR
+        .col-sm-3
+          .main-image
+            img.img-fluid(src=result.featured.thumbnail, alt!=page_data.title, itemprop='image')
+        //include ../_partials/inc_grid
+        
+
 

@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
 body,h1,h2,h3,h4,h5,h6{font-family: 'Sora', sans-serif}
-
+body {
+  padding-top: 90px;
+}
+.circle-border {
+  font-size: 40px;
+  border: 1px solid #ec1b45;
+  padding: 8px 6px;
+  border-radius: 50%;
+  display: inline-block;
+  height: 72px;
+  width: 72px;
+  text-align: center;
+}
 footer a:hover {
     color: #ec1b45;
 }
@@ -16,7 +28,10 @@ footer .media-object {
     display: block;
 }
 .post_title {
-    margin-top: 20px;
+  margin: 1.5rem 0;
+}
+.post_title h1{
+  font-weight: bold !important;
 }
 /* .header {
     padding: 20px 0 50px 0;
@@ -268,7 +283,13 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
     overflow: hidden;
     max-width: 392px;
   }
-  .caption {
+  .caption a {
+    color: #000;
+  }
+  .caption a:hover {
+    opacity: 50%;
+  }
+  /* .caption {
     position: absolute;
     pointer-events: none;
     color: #FFF;
@@ -278,7 +299,7 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
     right: 0;
     bottom: 0px;
     overflow: hidden;
-  }
+  } */
   .caption-time {
     background: rgba(255, 255, 255, .5);
     color: #000;
@@ -287,12 +308,12 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
     font-size: 10px;
     line-height: 2;
   }
-  .caption-body {
+  /* .caption-body {
     position: absolute;
     bottom: 0;
     padding: 10px;
     text-shadow: 0 2px 4px black;
-  }
+  } */
   .caption-type {
     position: absolute;
     -ms-transform: rotate(-90deg);
@@ -348,7 +369,16 @@ ul.lists .itemListElement .caption .caption-body .caption-title {
   .partner img {
     border-radius: 50%;
   }
-  
+  .Person .thumb-cnt img {
+    border-radius: 50%;
+    max-width: 100px;
+  }
+  .Person .thumb-cnt {
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
   // BOXES
   
   .boxItem {

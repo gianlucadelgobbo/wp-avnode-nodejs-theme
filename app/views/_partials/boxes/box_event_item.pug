@@ -1,0 +1,22 @@
+.boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
+    meta(itemprop="eventStatus" content="EventScheduled")
+    .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+      .thumb-cnt-cnt
+        - var editionIndex = -1;
+        if config.editions && config.events_to_editions
+          - editionIndex = config.events_to_editions.indexOf(item.slug)        
+        a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/'+(basepath ? basepath : "partnerships")+'/'+item.slug+"/"), rel='bookmark', title!=item.title, itemprop='url')
+          img.img-fluid(src=item.imageFormats.small, alt!=global.__('Image for')+': '+item.title, itemprop='contentUrl')
+          meta(itemprop="width" content="480")
+          meta(itemprop="height" content="270")
+    .box-list
+      .text-center
+        .text-muted.supText
+          //include ../components/eventdateplace_box
+        h3.list_title(itemprop='name')!=item.title.replace(" | ","<br />")
+      .read-more-box
+        a(class=lang_preurl+(editionIndex != -1 ? "" : "ajaxloader"), href=lang_preurl+(editionIndex != -1 ? (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+config.editions[editionIndex]+"/" : '/'+(basepath ? basepath : "partnerships")+'/'+item.slug+"/"), rel='bookmark', title!=item.title, itemprop='url')
+          .sr-only=global.__("Read More")
+          i.icon-right

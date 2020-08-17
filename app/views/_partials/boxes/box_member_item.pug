@@ -1,0 +1,20 @@
+.boxItem.mb-5(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+  meta(itemprop="position", content=position+1)
+  .Person.pb-5(itemprop="item", itemscope, itemtype="http://schema.org/Person")
+    .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+      a(href='/'+basepath+'/'+item.slug+"/", rel='bookmark', title!=item.stagename, itemprop='url')
+        img.img-fluid(src=item.imageFormats.large, alt!=global.__('Image for')+': '+item.stagename, itemprop='contentUrl')
+        meta(itemprop="width" content="480")
+        meta(itemprop="height" content="270")
+    .caption
+      .caption-body
+        h3.caption-title(itemprop='name')
+          a(itemprop='url', href='/'+basepath+'/'+item.slug+"/", rel='bookmark', title!=item.stagename)!=item.stagename
+        if item.addresses
+          .caption-location-artists
+            each address in item.addresses
+              span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                  b(itemprop='addressCountry')=address.country
+                  | , 
+                  span(itemprop='addressLocality')=address.locality
