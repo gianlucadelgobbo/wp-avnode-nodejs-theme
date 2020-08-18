@@ -1,11 +1,13 @@
 extends layout
 block content
-  .container
-    article(itemscope, itemtype='http://schema.org/ItemList')
+  article(itemscope, itemtype='http://schema.org/ItemList')
+    .container
       header.post_title
         h1(itemprop='name')!="Membri"
-      .row
-        each item in result.avnode.members
-          .col-md-3
-            include ../_partials/boxes/box_member_item
+    .bg-light.pt-3
+      .container
+        .row
+          each item in result.avnode.members
+            .col-md-3
+              include ../_partials/boxes/box_member_item
 
