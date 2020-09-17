@@ -1,13 +1,14 @@
 doctype xml
+- console.log(sez)
 urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://www.google.com/schemas/sitemap-image/1.1", xmlns:xhtml="http://www.w3.org/1999/xhtml")
   url
-    loc=config.domain+"/"+config.sez[sez].baseurl +"/"
+    loc=config.domain+"/"+sez +"/"
     if (config.locales.length > 1)
       each locale in config.locales
         if locale == config.default_lang
-          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sez[sez].baseurl +"/")
+          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + sez +"/")
         else
-          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sez[sez].baseurl +"/")
+          xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + sez +"/")
 
     lastmod=results.startdateISO
     changefreq yearly
@@ -18,15 +19,15 @@ urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://
         image:title!="<![CDATA["+(results.stagename ? results.stagename : results.title ? results.title : results.post_title)+"]]>"
 
 
-  each result in results.avnode[config.sez[sez].node]
+  each result in results.avnode[sez]
     url
-      loc=config.domain+"/"+config.sez[sez].baseurl +"/"+result.slug+"/"
+      loc=config.domain+"/"+sez +"/"+result.slug+"/"
       if (config.locales.length > 1)
         each locale in config.locales
           if locale == config.default_lang
-            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + config.sez[sez].baseurl +"/"+result.slug+"/")
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + sez +"/"+result.slug+"/")
           else
-            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + config.sez[sez].baseurl +"/"+result.slug+"/")
+            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + sez +"/"+result.slug+"/")
 
       lastmod=result.updatedAt ? result.updatedAt : result.createdAt
       changefreq yearly
