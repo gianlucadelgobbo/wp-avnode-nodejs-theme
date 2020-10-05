@@ -53,6 +53,7 @@ block content
           h1.entry-title(itemprop="name")
             b="Eventi"
           .row
+            - basepath = "partnerships"
             each item in result.avnode.events
               .col-md-3
                 include ../_partials/boxes/box_event_item
