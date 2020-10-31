@@ -120,11 +120,11 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
  //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
-  console.log("avnodeurl");
+  //console.log("avnodeurl");
   var A = ["performances","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
-  console.log(url);
+  //console.log(url);
   request({
     url: url,
     json: true
@@ -258,13 +258,13 @@ exports.getAll = function getAll(req, sez, limit, page, callback) {
 exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback) {
   var trgt = this;
   var previousdata = p;
-  //console.log("getAll "+sez.post_type);
+  console.log("getAll "+sez.post_type);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
   if (sez.site_tax && sez.post_type != "posts") {
     wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).param( 'filter[order]', 'meta_value_num' ).param( 'filter[meta_key]', 'wpcf-startdate' ).perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
+      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
       //console.log("//// AllFilterTax "+sez.post_type+" "+config.site_tax_id);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -282,9 +282,9 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
     });
   } else {
     wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log("//// All "+config.data_domain);
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
-      //console.log("//// All "+sez.post_type);
+      console.log("//// All "+config.data_domain);
+      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
+      console.log("//// All "+sez.post_type);
       //console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {

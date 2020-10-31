@@ -88,10 +88,14 @@ function infiniteScroll(t) {
 }
 
 var glink = [];
+var cntObj;
 $(function() {
   if ($( ".thumbnail" ).length) {
     glink = $( ".thumbnail" ).map(function( item ) {
-      return ($( this ).attr("data-src") );
+      var cnt = $( this ).attr("data-src");
+      cntObj = JSON.parse($( this ).attr("data-src"));
+      if (cntObj.media.file) cnt = cntObj;
+      return (cnt);
     });
   }
   //console.log(glink);

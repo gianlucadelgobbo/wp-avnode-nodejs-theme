@@ -397,7 +397,7 @@
              callLoading();
              var img = (typeof window.glink!=="undefined" && window.glink[window.sgCurrind] ? window.glink[window.sgCurrind] : a);
              if (window.sgCurrind>=0 && window.glink && window.glink[window.sgCurrind] && window.glink[window.sgCurrind].media && window.glink[window.sgCurrind].media.file) {
-                 htmlstr = '<iframe id="sgpILoading" width="980" height="551" frameborder="0" src="https://avnode.net'+window.glink[window.sgCurrind].media.file+'"></iframe>';	
+                 htmlstr = '<iframe id="sgpILoading" width="980" height="551" frameborder="0" src="https://avnode.net/videos/'+window.glink[window.sgCurrind].slug+'?oembed=1"></iframe>';	
                  jQuery("#sgCont").html(htmlstr);
                  sgResizer();
                  if(sgGetElements().length>1){
