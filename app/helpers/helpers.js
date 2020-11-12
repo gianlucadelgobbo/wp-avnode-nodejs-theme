@@ -203,7 +203,7 @@ exports.getPage = function getPage(req,callback) {
 
 exports.getXMLlist = function getXMLlist(req,callback) {
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
-  //console.log(url);
+  console.log(url);
   request({
     url: url,
     json: true
@@ -238,7 +238,12 @@ exports.getXMLlist = function getXMLlist(req,callback) {
               body.pages[item].link = "/"+body.pages[item].link.join("/");
             };
           }
-          data.avnode = body;
+          if (body[req.params.avnode]) {
+            data.avnode = body;
+          } else {
+            data.avnode = {};
+            data.avnode[req.params.avnode] = body.data;
+          }
           callback(data);
         });
       } else {
