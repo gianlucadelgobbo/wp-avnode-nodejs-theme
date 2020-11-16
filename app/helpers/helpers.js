@@ -157,11 +157,12 @@ exports.getPage = function getPage(req,callback) {
             data.avnode = body;
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
             if (body.pages) {
+              console.log(body.pages)
               for (var item in body.pages) {
                 body.pages[item].link = body.pages[item].link.split("/");
-                body.pages[item].link.splice(0, 3);
+                body.pages[item].link.splice(0, body.pages[item].link.indexOf("page")-1);
                 body.pages[item].link.unshift(basepath);
-                body.pages[item].link = "/"+body.pages[item].link.join("/");
+                body.pages[item].link = body.pages[item].link.join("/");
               };
             }
             /* if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
