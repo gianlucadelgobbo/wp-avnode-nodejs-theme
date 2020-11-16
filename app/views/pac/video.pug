@@ -16,12 +16,14 @@ block content
               include ../_partials/inc_datemonth
               br
             .embed-responsive.embed-responsive-16by9
-              - console.log(result)
-              video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=result.avnode.imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
-                source(src="https://avnode.net"+result.avnode.media.file type="video/mp4")
-                p
-                  !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-                  a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+              if result.avnode.media.iframe
+                !=result.avnode.media.iframe
+              else 
+                video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=result.avnode.imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
+                  source(src="https://avnode.net"+result.avnode.media.file type="video/mp4")
+                  p
+                    !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+                    a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
             .mt-3(itemprop='description')!=result.avnode.about
             include ../_partials/inc_websites
             include ../_partials/inc_share

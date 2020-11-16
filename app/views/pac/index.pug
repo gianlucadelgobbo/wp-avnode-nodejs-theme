@@ -10,12 +10,15 @@ block content
           .embed-responsive.embed-responsive-16by9
             if results.home
               !=results.home
-            else 
-              video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=results.videos[0].imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
-                source(src="https://avnode.net"+results.videos[0].media.file type="video/mp4")
-                p
-                  !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
-                  a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+            else
+              if results.videos[0].media.iframe
+                !=results.videos[0].media.iframe
+              else 
+                video#my-video.embed-responsive-item.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster=results.videos[0].imageFormats.large, data-setup='{"aspectRatio":"16:9", "fluid": true}')
+                  source(src="https://avnode.net"+results.videos[0].media.file type="video/mp4")
+                  p
+                    !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+                    a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
           .pt-3.pb-3
             .mb-1.mt-3
               h2
@@ -32,19 +35,22 @@ block content
           script.
             var videos = !{JSON.stringify(results.videos)}
           ul.list-unstyled
-            each video in results.videos
-              li.media.mb-3
-                a.mr-3(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
-                  img(src=video.imageFormats.small style="max-width:200px")
-                .media-body
-                  .mb-1
-                    h4
-                      a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
-                        b=video.title
-                  .mb-1
-                    b=video.users[0].stagename
-                  .mb-1
-                    !="Views: "+video.stats.visits
+            each video, index in results.videos
+              if index < 4
+                li.media.mb-3
+                  a.mr-3(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
+                    img(src=video.imageFormats.small style="max-width:200px")
+                  .media-body
+                    .mb-1
+                      h4
+                        a(href="/videos/"+video.slug data-src="https://avnode.net"+video.media.file)
+                          b=video.title
+                    .mb-1
+                      b=video.users[0].stagename
+                    .mb-1
+                      !="Views: "+video.stats.visits
+          .text-right
+            a.btn.btn-primary.btn-sm(href="/videos/", title="See all Videos") Vedi tutti i video
   .bg-light
     section.pt-3.pb-3(itemscope, itemtype='http://schema.org/ItemList')
       .container
