@@ -229,7 +229,7 @@
     font-weight: 200;
     font-size: 15px;
   } 
-  .playlist{
+  #vjtv .playlist{
     position: relative;
     /* height: 100vh; */
     overflow-x: hidden;
@@ -244,10 +244,13 @@
     position: relative;
     margin-top: 2px;
   }
+  .embed-responsive{
+    z-index: 100;
+  }
   .playlist-item .media:hover{
     opacity: .6;
   }
-  .playlist-header{
+  #vjtv .playlist-header{
     background-color: #000;
   }
   .playlist-item h5 {

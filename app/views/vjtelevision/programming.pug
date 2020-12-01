@@ -1,0 +1,21 @@
+extends layout
+block content
+  #programming
+    .row
+      .col-lg-6
+        .embed-responsive.embed-responsive-16by9
+          video.embed-responsive-item#my-video.video-js.vjs-big-play-centered(controls='', preload='auto', width='640', height='264', poster="https://vjtelevision.com/vjtelevision/images/main-img.jpg", data-setup='{"aspectRatio":"16:9", "fluid": true}')
+            p.vjs-no-js
+              !=global.__("To view this video please enable JavaScript, and consider upgrading to a web browser that")
+              a(href='http://videojs.com/html5-video-support/', target='_blank')=!global.__("supports HTML5 video")
+      .col-lg-6
+        #headervjtv.clearfix.h3
+          h1#date.float-left=date
+          .float-right
+            input#datepicker(type="hidden" name="date")
+            a#datepickerbutton(href="#")
+              i.icon-calendar
+        .playlist
+          .vjs-waiting
+            .vjs-loading-spinner
+  include includes/modal-vjtv

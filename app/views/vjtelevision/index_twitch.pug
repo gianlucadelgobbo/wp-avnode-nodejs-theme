@@ -1,0 +1,30 @@
+extends layout
+block vjtv
+  .container-fluid
+    .row
+      .col-lg-9.p-md-0
+        .embed-responsive.embed-responsive-16by9
+          iframe(height="378" width="620" src="https://player.twitch.tv/?channel=vjtelevision&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no")
+      .col-lg-3.p-md-0
+        .chat(style="height: 100%;width: 100%;min-height: 300px;")
+          iframe(style="height: 100%;width: 100%;" id="chat_embed" src="https://www.twitch.tv/embed/vjtelevision/chat?parent=localhost" height="500" width="350" frameborder="0" scrolling="no")
+block home
+  .container-fluid.p-0
+    section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") News
+      .swiper-container
+        !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
+          
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") Satellite Events
+      .swiper-container
+        !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+

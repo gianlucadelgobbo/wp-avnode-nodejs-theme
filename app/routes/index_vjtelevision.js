@@ -23,7 +23,8 @@ exports.get = function get(req, res) {
             jsonfile.writeFile(file, obj, function (err) {
               console.log("writeFile: "+file);
               //if(err) console.log(err);
-              res.render(config.prefix+'/'+'index',obj);
+              //res.render(config.prefix+'/'+'index',obj);
+              res.render(config.prefix+'/'+'index_twitch',obj);
             });
         });
       });
@@ -31,7 +32,8 @@ exports.get = function get(req, res) {
       var obj = jsonfile.readFileSync(file);
       obj.page_data.url = obj.page_data.url.replace("?createcache=1","")
       for(item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
-      res.render(config.prefix+'/'+'index',obj);
+      //res.render(config.prefix+'/'+'index',obj);
+      res.render(config.prefix+'/'+'index_twitch',obj);
     }
   });
 };

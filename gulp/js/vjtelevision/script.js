@@ -3,8 +3,146 @@ var oldgoto = 0;
 var dates = [];
 var playlist = [];
 var day = new Date();
-
 $(document).ready(function(){
+  if ($('#programming').length) {
+    var offset = $(".embed-responsive").offset().top;
+    $( window ).scroll(function() {
+      if ($(document).scrollTop()>offset) {
+        $(".embed-responsive").css({"top": ($(document).scrollTop()-offset)+"px"});
+      } else {
+        $(".embed-responsive").css({"top": "auto"});
+      }
+    });
+    var player = videojs('my-video', options, function onPlayerReady() {
+      videojs.log('Your player is ready!');
+      this.on('ended', function() {
+        videojs.log('Awww...over so soon?!');
+        if (goto+1 == playlist.length) {
+          day.setDate(day.getDate()+1);
+          loadDay();
+        }
+        videojs.log(goto);
+        videojs.log(playlist.length);
+      });
+    });
+    player.logo({
+      image: 'https://vjtelevision.com/vjtelevision/images/VJTV_4x_white.svg',
+      url: "https://vjtelevision.com",
+      height: 50,
+      offsetH: 20,
+      offsetV: 20,
+      position: 'top-left',
+      width: 150
+    });
+
+    $("#programming #date").html(day.toDateString());
+
+    $.ajax({
+      url: "https://avnode.net/api/getprogramsdays",
+      method: "get"
+    })
+    .done(function(dd) {
+      dates = dd;
+      console.log("stoca");
+      loadDay();
+    })
+    .fail(function(data) {
+      $('#programming .playlist').html("error");
+    });
+
+
+    $('#programming #datepicker').datepicker({
+      dateFormat: 'yy-mm-dd',
+      beforeShow: function (input, inst) {
+        var rect = input.getBoundingClientRect();
+        setTimeout(function () {
+	        inst.dpDiv.css({ top: rect.top + 40 });
+        }, 0);
+      },
+      //defaultDate: new Date('03/10/2017'), // this line is for testing
+      beforeShowDay: highlightDays
+    });
+    $("#programming #datepicker").change(function(){
+      day = new Date($('#programming #datepicker').datepicker("getDate"));
+      loadDay();
+    });
+
+    $( "#programming #datepickerbutton" ).click(function( event ) {
+      event.preventDefault();
+      var visible = $("#programming #datepicker").datepicker("widget").is(":visible");
+      $("#programming #datepicker").datepicker(visible ? "hide" : "show");
+    });
+
+    function highlightDays(date) {
+      for (var i = 0; i < dates.length; i++) {
+        if (new Date(dates[i].replace("-","/").replace("-","/")).toString() == date.toString()) {
+            return [true, 'highlight'];
+        }
+      }
+      return [true, ''];
+    }
+  
+    function loadDay() {
+      console.log("loadDay");
+      var daystr = day.getFullYear()+"-"+(("0" + (day.getMonth()+1)).slice(-2))+"-"+(("0" + (day.getDate())).slice(-2));
+      console.log(daystr);
+      $("#programming #date").html(day.toDateString());
+      if (dates.indexOf(daystr)===-1) {
+        alert("No programming for this date!!!");
+      } else {
+        $('#programming .playlist').html("<div class=\"vjs-waiting\"><div class=\"vjs-loading-spinner\"></div></div>");
+        $.ajax({
+          url: "https://avnode.net/api/getprograms",
+          method: "get",
+          data: {day: daystr}
+        })
+        .done(function(data) {
+          console.log("done");
+          $('#loadingplay span').html("Building interface");
+          var html = "<ul class=\"list-unstyled\">"
+          playlist = [];
+          for (var a=0;a<data.length;a++) {
+            playlist.push({
+              sources: [{
+                src: "https://avnode.net"+data[a].video.media.file,
+                type: 'video/mp4'
+              }],
+              poster: data[a].video.imageFormats.small,
+              slug: data[a].video.slug
+            })
+            var id = new Date(data[a].programming).getTime();
+            var date = new Date(data[a].programming);
+            html+="<li class=\"playlist-item mb-3\" id=\"P"+a+"\">";
+            html+="  <div class=\"bg-secondary text-white small pt-2 pb-2 pl-3 pr-3\" id=\""+id+"\">";
+            html+="    <div class=\"row\" id=\""+id+"\">";
+            html+="      <div class=\"col\" id=\""+data[a].programming+"\">"+date.getUTCFullYear()+"-"+(("0" + (date.getUTCMonth()+1)).slice(-2))+"-"+(("0" + (date.getUTCDate())).slice(-2))+ "<br />"+(("0" + (date.getUTCHours())).slice(-2))+":"+(("0" + (date.getUTCMinutes())).slice(-2))+":"+(("0" + (date.getUTCSeconds())).slice(-2))+"</div>";
+            html+="      <div class=\"col\"><div class=\"text-right\">"+data[a].category.name+"<br />"+data[a].video.media.durationHR+"</div></div>";
+            html+="    </div>";
+            html+="  </div>";
+            html+="  <div class=\"media\" id=\"P"+a+"\">";
+            html+="    <img class=\"mr-3\" style=\"width:20%\" src=\""+data[a].video.imageFormats.small+"\">";
+            html+="    <div class=\"media-body\">";
+            html+="      <h5 class=\"mt-0 mb-1 mt-3\">"+data[a].video.title+"</h5>";
+            html+="      <ul class=\"list-inline small\">"+data[a].video.users.map(user =>{return "<li>"+user.stagename+"</li>"})+"</ul>";
+            html+="    </div>";
+            html+="  </div>";
+            html+="   <div class=\"more p-2\"><a href=\"https://avnode.net/videos/"+data[a].video.slug+"/\" class=\"badge badge-primary\">MORE</a></div>";
+            html+="</li>";
+          }
+          html+="</ul>";
+          $('#programming .playlist').html(html);
+          player.playlist(JSON.parse(JSON.stringify(playlist)), goto);
+          $( ".playlist-item" ).click(function( event ) {
+            player.playlist.currentItem(parseInt($(this).attr("id").substring(1)));
+            player.play();
+          });
+        })
+        .fail(function(data) {
+          $('#programming .playlist').html("error");
+        });
+      }
+    }
+  }
   if ($('#vjtv').length) {
     console.log("vjtv");
     $('#vjtv_modal').modal({
