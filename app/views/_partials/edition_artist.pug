@@ -37,6 +37,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                     !=", "
                     span(itemprop='addressLocality')=address.locality
             div(itemprop='description')!=result.avnode.performer.aboutFull ? result.avnode.performer.aboutFull : result.avnode.performer.about
+            - console.log(result.avnode.performer)
             if result.avnode.performer.web && result.avnode.performer.web.length
               p
                 strong LINKS

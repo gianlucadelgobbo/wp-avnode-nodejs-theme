@@ -214,10 +214,10 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                   each web in user.web
                     li
                       a(target='_blank', href=web.url)=web.url
-              if user.socials && user.socials.length
+              if user.social && user.social.length
                 p
                   strong=global.__("Socials")
                 ul.squared10aa
-                  each web in user.socials
+                  each web in user.social
                     li
                       a(target='_blank', href=web.url)=web.url
