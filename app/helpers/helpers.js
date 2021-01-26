@@ -147,7 +147,7 @@ exports.getPage = function getPage(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        console.log(avnodeurl);
+        //console.log(avnodeurl);
         
         request({
           url: avnodeurl,
@@ -157,7 +157,7 @@ exports.getPage = function getPage(req,callback) {
             data.avnode = body;
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
             if (body.pages) {
-              console.log(body.pages)
+              //console.log(body.pages)
               for (var item in body.pages) {
                 body.pages[item].link = body.pages[item].link.split("/");
                 body.pages[item].link.splice(0, body.pages[item].link.indexOf("page")-1);
@@ -183,7 +183,7 @@ exports.getPage = function getPage(req,callback) {
               if (body.data) body.events = body.data;
               //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              console.log("shortcodify2"+basepath);
+              //console.log("shortcodify2"+basepath);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });
@@ -204,7 +204,7 @@ exports.getPage = function getPage(req,callback) {
 
 exports.getXMLlist = function getXMLlist(req,callback) {
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
-  console.log(url);
+  //console.log(url);
   request({
     url: url,
     json: true
@@ -264,13 +264,13 @@ exports.getAll = function getAll(req, sez, limit, page, callback) {
 exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback) {
   var trgt = this;
   var previousdata = p;
-  console.log("getAll "+sez.post_type);
+  //console.log("getAll "+sez.post_type);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
   if (sez.site_tax && sez.post_type != "posts") {
     wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).param( 'filter[order]', 'meta_value_num' ).param( 'filter[meta_key]', 'wpcf-startdate' ).perPage(mylimit).page(page).get(function( err, data ) {
-      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
+      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
       //console.log("//// AllFilterTax "+sez.post_type+" "+config.site_tax_id);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -288,9 +288,9 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
     });
   } else {
     wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
-      console.log("//// All "+config.data_domain);
-      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
-      console.log("//// All "+sez.post_type);
+      //console.log("//// All "+config.data_domain);
+      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
+      //console.log("//// All "+sez.post_type);
       //console.log(err || data);
       data = fnz.fixResults(data);
       if (limit == -1) {
