@@ -90,11 +90,17 @@ function infiniteScroll(t) {
 var glink = [];
 var cntObj;
 $(function() {
-  if ($( ".thumbnail" ).length) {
-    glink = $( ".thumbnail" ).map(function( item ) {
+  if ($( ".videothumbnail" ).length) {
+    glink = $( ".videothumbnail" ).map(function( item ) {
       var cnt = $( this ).attr("data-src");
       cntObj = JSON.parse($( this ).attr("data-src"));
       if (cntObj.media.file) cnt = cntObj;
+      return (cnt);
+    });
+  }
+  if ($( ".thumbnail" ).length && !$( ".videothumbnail" ).length) {
+    glink = $( ".thumbnail" ).map(function( item ) {
+      var cnt = $( this ).attr("data-src");
       return (cnt);
     });
   }
