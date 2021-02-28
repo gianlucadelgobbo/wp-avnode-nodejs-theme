@@ -4,7 +4,6 @@ var fnz = require('../../helpers/functions');
 var sez = config.sez["web-and-apps"];
 
 exports.get = function get(req, res) {
-  console.log("get");
   helpers.setSessions(req, function() {
     helpers.getWeb(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
@@ -18,7 +17,6 @@ exports.get = function get(req, res) {
 };
 
 exports.getAll = function getAll(req, res) {
-  console.log("getAll");
   helpers.setSessions(req, function() {
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;

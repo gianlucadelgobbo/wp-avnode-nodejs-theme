@@ -14,7 +14,6 @@ exports.get = function get(req, res) {
         helpers.getPage(req, function(result_partnerships) {
           req.params.page = "home";
           helpers.getPage(req, function(home) {
-            console.log(home)
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
               results: {home:home.post_content,videos:result_videos.avnode.videos,partnerships_html:result_partnerships.post_content,partnerships:result_partnerships.avnode.partnerships},

@@ -18,7 +18,6 @@ exports.get = function get(req, res) {
 
 exports.getAll = function getAll(req, res) {
   helpers.setSessions(req, function() {
-    console.log(sez)
     helpers.getContainerPage(req, sez.post_type, function( posttype ) {
       var page = req.params.page ? req.params.page : 1;
       helpers.getAll(req, sez, sez.limit, page, function( results ) {
