@@ -3,7 +3,6 @@ article.pagepaddingtop#container(itemscope, itemtype='http://schema.org/Event')
     .col-sm-8
       img.img-fluid.main-image.mb-4(src=result.avnode.imageFormats.large, alt=result.avnode.title, itemprop='image')
       .rientro.d-none.d-sm-block!=result.avnode.aboutFull ? result.avnode.aboutFull : result.avnode.about
-      - console.log(result.avnode.videos)
       if result.avnode.videos && result.avnode.videos.length
         section.event_video_wrapper
           .row

@@ -716,7 +716,6 @@ block content
                     !="8.9M"
               //.docsLarge
                 each attach in result['attachments']
-                  - console.log(attach)
                   .media
                     .media-left
                       a(href!=!session_login ? "javascript:alert('Please login');" : attach.filesattach.title : undefined, title=attach.title)
