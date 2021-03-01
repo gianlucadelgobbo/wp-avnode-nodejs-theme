@@ -25,7 +25,7 @@ module.exports = {
       NODE_ENV: "production"
     }
   },
-  {
+/*   {
     "name": "avnode",
     max_memory_restart: "100M",
     "script": "app.js",
@@ -48,7 +48,7 @@ module.exports = {
     env_production: {
       NODE_ENV: "production"
     }
-  },
+  }, */
   {
     "name": "lpm",
     max_memory_restart: "600M",
