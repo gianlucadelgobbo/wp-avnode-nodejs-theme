@@ -103,6 +103,8 @@ exports.formatLocation = function formatLocation(l) {
 exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_params, basepath, cb) {
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
+  console.log("basepath2")
+  console.log(basepath)
   shortcode.add('avnode', function(buf, opts) {
     if (opts.view === "performances") {
       /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {
@@ -154,7 +156,10 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
     }
     // Users
     if (opts.view === "performances_by_user") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      console.log("basepath3")
+      console.log(basepath)
+      console.log(opts.view)
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, stocazzo:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "events") {
       if (!body.events && body.data) body.events = body.data;

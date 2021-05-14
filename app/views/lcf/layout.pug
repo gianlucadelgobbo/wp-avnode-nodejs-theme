@@ -51,7 +51,8 @@ html(lang=sessions.current_lang)
               .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
               .sr-only
                 include ../_partials/components/eventdateplace_meta
-          include includes/menu-edition
+          if page_data.url !== "/" && page_data.url !== "/en/"
+            include includes/menu-edition
 
 
         #result

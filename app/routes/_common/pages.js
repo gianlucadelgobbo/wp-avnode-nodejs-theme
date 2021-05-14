@@ -46,6 +46,10 @@ exports.get = function get(req, res) {
             pug = config.prefix+'/performance';
             basepath = "/performances/" +req.params.subpage;
           }
+          if (req.params.subpage && req.params.page == "workshops") {
+            pug = config.prefix+'/workshops';
+            basepath = "/workshops/" +req.params.subpage;
+          }
           if (req.params.page == "news") pug = config.prefix+'/new';
           if (req.params.page == "extra") pug = config.prefix+'/new';
           if (req.params.page == "members") pug = config.prefix+'/member';
@@ -77,9 +81,9 @@ exports.get = function get(req, res) {
           result.post_content = result.post_content.replace(new RegExp("https://flyer.dev.flyer.it/wp-content/blogs.dir/20", 'g'), "https://wam.flyer.it")/* .replace(new RegExp(".jpg\"\n               title", 'g'), "\" title") */.replace(new RegExp("style=\"max-width:100%;\"", 'g'), "style=\"max-width:100%;height: auto;\"").replace(new RegExp("class=\"ngg-galleryoverview ngg-ajax-pagination-none\"", 'g'), "class=\"listItems row\"").replace(new RegExp("class=\"ngg-gallery-thumbnail-box\"", 'g'), "class=\"col-md-3 itemListElement\"").replace(new RegExp(" data-thumbnail=", 'g'), "class=\"thumbnail\" data-thumbnail=");
           include_gallery = true;
         }
-        //console.log("basepath");
-        //console.log(basepath);
-        //console.log(pug);
+        console.log("basepath");
+        console.log(basepath);
+        console.log(pug);
         res.render(pug, {basepath:basepath, session_login: req.session.user, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: include_gallery, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
       } else {
         res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
