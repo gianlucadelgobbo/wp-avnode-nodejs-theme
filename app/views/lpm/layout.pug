@@ -53,8 +53,8 @@ html(lang='en')
             include includes/menu-main
         a.mr-3(href='#', onclick="$(this).html($('#menu-main').hasClass('show') ? 'Switch to Main menu' : 'Switch to Edition menu')", data-toggle='collapse', data-target='.menu-edition-main')=showmain ? "Switch to Edition menu" : "Switch to Main menu"
     block home
-    .header-bar.pt-4.pb-4
-      div(class=page_data.url == "/" ? "container-fluid" : "container")
+    .header-bar(class=page_data.url == "/" ? "" : "pt-4 pb-4")
+      div(class=page_data.url == "/" ? "container-fluid d-none" : "container")
         header
           .row
             .col-md-6.pt-1
