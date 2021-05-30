@@ -1,7 +1,7 @@
 var bodyParser = require('body-parser');
 //var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo');
 //var methodOverride = require('method-override');
 var helmet = require('helmet');
 
@@ -29,7 +29,7 @@ module.exports = function(app, exp) {
   //app.set('view options', { layout: false });
   app.use(session({
     secret: 'wp-avnode-nodejs-theme',
-    store: new MongoStore({ url: 'mongodb://localhost/SessionStore' }),
+    store: new MongoStore({ mongoUrl: 'mongodb://localhost/SessionStore' }),
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, maxAge: 3600000 }
