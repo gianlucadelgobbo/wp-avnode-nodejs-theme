@@ -4,7 +4,7 @@
     .thumb-cnt
       //.catlabel=result.type
       a.ajaxloader(href=lang_preurl+'/web-and-apps/'+result.slug+"/", rel='bookmark', title!=result.post_title)
-        img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", ""), alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
+        img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt!=global.__('Image for')+': '+result.post_title, itemprop='image')
     .box-list
       include ../../_partials/inc_datemonth_wp
       h3.list_title(itemprop='name')

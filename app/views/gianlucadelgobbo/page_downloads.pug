@@ -732,5 +732,5 @@ block content
     .col-sm-3
 
       .main-image
-        img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", ""), alt!=page_data.title, itemprop='image')
+        img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt!=page_data.title, itemprop='image')
     //include ../_partials/inc_grid

@@ -9,7 +9,7 @@ article#container
             div(itemprop='description')!=result.post_content
       .col-sm-3
         .main-image
-          img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", ""), alt=page_data.title, itemprop='image')
+          img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt=page_data.title, itemprop='image')
   else
     header.post_title.mb-4
       h1(itemprop='name')=page_data.title
