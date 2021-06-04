@@ -15,7 +15,7 @@ block content
             .mb-5
               include ../_partials/inc_share
         .col-sm-3
-          img.img-fluid.main-image(src=result.featured.thumbnail, alt!=result.post_title, itemprop='image')
+          img.img-fluid.main-image(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", ""), alt!=result.post_title, itemprop='image')
       .container-fluid.sameheightcnt
         .row.mb-5
           .col-md-4.sameheight
