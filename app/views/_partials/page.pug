@@ -16,7 +16,7 @@ article(itemscope, itemtype='http://schema.org/'+itemtype)
           .dateModified.d-none(itemprop='dateModified', content=result.date)=result.dateModifiedHR
     .col-sm-3
       .main-image
-        img.img-fluid(src=result.featured.thumbnail, alt!=page_data.title, itemprop='image')
+        img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", ""), alt!=page_data.title, itemprop='image')
     //include ../_partials/inc_grid
         
 
