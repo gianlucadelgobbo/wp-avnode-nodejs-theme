@@ -183,7 +183,7 @@ exports.getPage = function getPage(req,callback) {
               if (body.data) body.events = body.data;
               //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              console.log("shortcodify2"+basepath);
+              //console.log("shortcodify2"+basepath);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });

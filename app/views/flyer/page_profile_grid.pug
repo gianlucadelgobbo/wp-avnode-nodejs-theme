@@ -15,7 +15,8 @@ block content
             .mt-3
               include ../_partials/inc_share
         .col-sm-3
-          img.img-fluid.main-image(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt!=result.post_title, itemprop='image')
+          if result.featured.thumbnail
+            img.img-fluid.main-image(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt!=result.post_title, itemprop='image')
           if page_data.url.indexOf("cultural-productions")!==-1
             .embed-responsive.embed-responsive-16by9  
               iframe.embed-responsive-item(id="fitvid87733" height="150" src="//www.youtube.com/embed/SpdoNFXTLts?rel=0" width="300")

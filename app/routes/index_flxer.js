@@ -39,7 +39,6 @@ exports.get = function get(req, res) {
                     sessions:req.session.sessions
                   };
                   jsonfile.writeFile(file, obj, function (err) {
-                    console.log("writeFile: "+file);
                     //if(err) console.log(err);
                     res.render(config.prefix+'/'+'index',obj);
                   });

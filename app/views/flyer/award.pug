@@ -17,6 +17,7 @@ block content
                 include ../_partials/inc_websites
             include ../_partials/inc_share
         .col-sm-3
-          img.img-responsive.main-image(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt=result.post_title, itemprop='image')
+          if result.featured.thumbnail
+            img.img-responsive.main-image(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt=result.post_title, itemprop='image')
 
       include ../_partials/inc_grid

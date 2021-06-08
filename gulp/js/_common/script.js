@@ -70,7 +70,6 @@ function infiniteScroll(t) {
     method: "GET",
     url: url
   }).done(function (msg) {
-    console.log(url);
     var $newItems  = $($(msg).find("#"+appendToId).children());
     var $newButtonHref = $($(msg).find("#"+appendToId)).parent().find(".read-more a").attr("href");
     //$("#"+appendToId).append($newItems);
