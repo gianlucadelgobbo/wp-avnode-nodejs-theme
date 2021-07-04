@@ -1,0 +1,109 @@
+#navbar-top-cnt.menu-full.text-white.position-fixed
+  nav#navbar-top.navbar.navbar-expand-lcf.navbar-dark
+    // Brand and toggle get grouped for better mobile display
+    div 
+      a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
+        i(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
+        .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+    .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
+    div
+      button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#menu-main')
+        span.sr-only Toggle navigation
+        span.flyer-expanding-icon
+          span.flyer-line
+          span.flyer-line
+          span.flyer-line
+  #menu-main.collapse.navbar-collapse
+    .px-5.py-2.navbar.navbar-lang 
+      ul.list-inline.m-0
+        li.list-inline-item.lang-en.pr-3(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+          a(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+        li.list-inline-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+          a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+      ul.list-inline.m-0
+        li.list-inline-item
+          a.disabled(title="TICKETS" href="#") TICKETS
+      ul.list-inline.m-0
+        li.list-inline-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+          a#searchModalButton(href="/search/")
+            i.icon-search
+            .sr-only=global.__("Search")
+    ul.list-unstyled.p-5.h3.m-0
+      each menu, i in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+        li(class=(page_data.url === lang_preurl+menu.permalink ? "active" : "")+(i+1<config.meta.editions[sessions.current_edition].menu[sessions.current_lang].length ? " pb-3" : ""))
+          a(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
+        //-.btn.btn-primary.btn-lg
+          if menu.childs.length
+            button.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown',style=menu.post_status == 'publish' ? undefined : "opacity:.65")
+              span.caret
+              span.sr-only Toggle Dropdown
+            ul.dropdown-menu
+              each child in menu.childs
+                li(class=child.post_status == 'publish' ? undefined : "disabled")
+                  a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
+    .px-5.py-2.navbar-lang 
+      include socials
+    ul.list-unstyled.p-5.m-0
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/concept') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/concept/') Concept
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/events/') Productions
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/partnerships') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/partnerships/') Satellite Events
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/news/') News
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2020-rome/gallery/') 2020 Rome
+          a.dropdown-item(href='/editions/2019-rome/gallery/') 2019 Rome
+          a.dropdown-item(href='/editions/2018-rome/gallery/') 2018 Rome
+          a.dropdown-item(href='/editions/2017-rome/gallery/') 2017 Rome
+          a.dropdown-item(href='/editions/2016-rome/gallery/') 2016 Rome
+          a.dropdown-item(href='/editions/2015-rome/gallery/') 2015 Rome
+          a.dropdown-item(href='/editions/2014-rome/gallery/') 2014 Rome
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Videos"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2020-rome/videos/') 2020 Rome
+          a.dropdown-item(href='/editions/2019-rome/videos/') 2019 Rome
+          a.dropdown-item(href='/editions/2018-rome/videos/') 2018 Rome
+          a.dropdown-item(href='/editions/2017-rome/videos/') 2017 Rome
+          a.dropdown-item(href='/editions/2016-rome/videos/') 2016 Rome
+          a.dropdown-item(href='/editions/2015-rome/videos/') 2015 Rome
+          a.dropdown-item(href='/editions/2014-rome/videos/') 2014 Rome
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Editions"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2020-rome/') 2020 Rome
+          a.dropdown-item(href='/editions/2019-rome/') 2019 Rome
+          a.dropdown-item(href='/editions/2018-rome/') 2018 Rome
+          a.dropdown-item(href='/editions/2017-rome/') 2017 Rome
+          a.dropdown-item(href='/editions/2016-rome/') 2016 Rome
+          a.dropdown-item(href='/editions/2015-rome/') 2015 Rome
+          a.dropdown-item(href='/editions/2014-rome/') 2014 Rome
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/press') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/press/') Press
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/the-app') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/the-app/') The App
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
+      //li.nav-item(class=page_data.url.indexOf(lang_preurl+'/avnode-lpm-2015-2018') >= 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/avnode-lpm-2015-2018/') AVnode | LPM 2015 > 2018
+
+      li.nav-item
+        .nav-link
+          include ../../_partials/components/newsletter-navbar
+      li.nav-item.mt-4
+        .nav-link
+          include ../../_partials/components/address
+      //-li.nav-item
+          p.mt-3.mt-md-0=global.__("Corporate")
+          include menu-corporate
+      li.nav-item
+        .nav-link
+          p.mt-3=global.__("Projects")
+          include ../../_partials/components/projects
+      li.nav-item
+        .nav-link
+          include ../../_partials/components/copy-and-flyer

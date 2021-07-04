@@ -1,13 +1,13 @@
 article#container
   if result.post_content!=""
     .row
-      .col-sm-9
+      .col-md-8
         .main-cnt
           header.post_title.mb-4
             h1(itemprop="name")=page_data.title
           .rientro
             div(itemprop='description')!=result.post_content
-      .col-sm-3
+      .col-md-4
         .main-image
           if result.featured.thumbnail
             img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt=page_data.title, itemprop='image')

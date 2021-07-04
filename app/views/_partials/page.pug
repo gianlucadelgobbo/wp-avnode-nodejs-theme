@@ -1,6 +1,6 @@
 article(itemscope, itemtype='http://schema.org/'+itemtype)
   .row
-    .col-sm-9
+    .col-md-9
       .main-cnt
         header.post_title.mb-4
           h1(itemprop="name")=page_data.title
@@ -14,7 +14,7 @@ article(itemscope, itemtype='http://schema.org/'+itemtype)
             include ../_partials/inc_form_join
           include ../_partials/inc_docs_large
           .dateModified.d-none(itemprop='dateModified', content=result.date)=result.dateModifiedHR
-    .col-sm-3
+    .col-md-3
       .main-image
         if result.featured.thumbnail
           img.img-fluid(src=result.featured.thumbnail.replace("https://flyer.dev.flyer.it", config.domain), alt!=page_data.title, itemprop='image')

@@ -27,6 +27,16 @@ footer.navbar-inverse {
 .modal-fullscreen .modal-content a:hover {
 	text-decoration: underline;
 }
+.menu-full {
+	background: #0a0a0a; /* Old browsers */
+	background: -moz-linear-gradient(45deg, #0a0a0a 70%, #00ffff 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(45deg, #0a0a0a 70%,#00ffff 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(45deg, #0a0a0a 70%,#00ffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.navbar-lang {
+	border-top: 2px solid #00ffff ;
+	border-bottom: 2px solid #00ffff ;
+}
 @media (min-width: 768px){
 
 	#logo {

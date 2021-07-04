@@ -32,34 +32,38 @@ html(lang=sessions.current_lang)
         body {
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
-  body.body-common
-    .cnt(itemscope, itemtype='http://schema.org/Event')
-      include includes/menu-main
-      //div(class=page_data.url == "/" ? "container-fluid" : "container")
-      .container
-        if page_data.url == ""
-        header.mt-4
-          .row
-            .col-md-4
-              #logo
-                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
-                  img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
-                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-            .col-md-4
-            .col-md-4(itemprop='disambiguatingDescription')
-              img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
-              .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
-              .sr-only
-                include ../_partials/components/eventdateplace_meta
-          if page_data.url !== "/" && page_data.url !== "/en/"
-            include includes/menu-edition
+  body
+    if page_data.url == "/"
+      include includes/menu-main-hidden
+      block content
+    else
+      .cnt.body-common(itemscope, itemtype='http://schema.org/Event')
+        include includes/menu-main-hidden
+        //-div(class=page_data.url == "/" ? "container-fluid" : "container")
+        .container.mt-5
+          //-if page_data.url == ""
+            header.mt-4
+              .row
+                .col-md-4
+                  #logo
+                    a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
+                      img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
+                      .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+                .col-md-4
+                .col-md-4(itemprop='disambiguatingDescription')
+                  img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
+                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+                  .sr-only
+                    include ../_partials/components/eventdateplace_meta
+              if page_data.url !== "/" && page_data.url !== "/en/"
+                include includes/menu-edition
 
 
-        #result
-          block content
-        include includes/footer
-    #twCnt
-      #tw
+          #result
+            block content
+          //-include includes/footer
+      //-#twCnt
+        #tw
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search
 

@@ -193,7 +193,6 @@ exports.getPage = function getPage(req,callback) {
           }
         });
       } else {
-        //console.log("stocazzo");
         callback(data);
       }
     } else {
@@ -248,7 +247,6 @@ exports.getXMLlist = function getXMLlist(req,callback) {
           callback(data);
         });
       } else {
-        //console.log("stocazzo");
         callback(data);
       }
     } else {
@@ -405,9 +403,9 @@ exports.getEdition = function getEdition(req,callback) {
       } else if (data["sources"] && data["sources"][0]) {
         avnodeurl = data["sources"][0];
       }
-    } else if (req.params.performance) {
+    } else if (req.params.performance && data["sources"] && data["sources"][0]) {
       avnodeurl = data["sources"][0]+req.params.performance+"/";
-    } else if (req.params.artist) {
+    } else if (req.params.artist && data["sources"] && data["sources"][0]) {
       avnodeurl = data['sources'][0]+(data['sources'][0].indexOf('performers/')!==-1 ? '' : 'performers/')+req.params.artist+'/'
     } else if (data["sources"] && data["sources"][0]) {
       avnodeurl = data["sources"][0];

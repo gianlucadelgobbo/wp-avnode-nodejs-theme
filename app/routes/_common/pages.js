@@ -22,8 +22,6 @@ exports.get = function get(req, res) {
   //console.log("req.params");
   //console.log(req.params);
   helpers.setSessions(req, function(lang_preurl) {
-    //console.log("lang_preurl stocazzo");
-    //console.log(lang_preurl);
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);
       var include_gallery = false;
@@ -399,7 +397,6 @@ exports.post = function post(req, res) {
 };
 
 exports.getSubpage = function getSubpage(req, res) {
-  //console.log("stocazzo");
   helpers.setSessions(req, function() {
     helpers.getPage(req, function( result ) {
       var page_data = fnz.setPageData(req, result);

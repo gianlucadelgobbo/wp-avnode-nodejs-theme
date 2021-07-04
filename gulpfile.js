@@ -402,11 +402,11 @@ const compress_js_pac = () => {
     .pipe(gulp.dest(config.publicDir + '/pac/js/'));
 }
 
-gulp.task('default', gulp.series(compress_js,css_pac_bs,css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
+//gulp.task('default', gulp.series(compress_js,css_pac_bs,css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_gianlucadelgobbo,css_gianlucadelgobbo_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flyer,css_flyer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flxer,css_flxer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_vjtelevision,css_vjtelevision_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_fotonica,css_fotonica_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_pac,css_pac_bs));
-//gulp.task('default', gulp.series(css_lpm_bs));
+gulp.task('default', gulp.series(css_lcf_bs, compress_js_lcf));

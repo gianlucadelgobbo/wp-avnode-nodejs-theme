@@ -1,9 +1,33 @@
 extends layout
 block content
-  //img.img-fluid(src="/lcf/images/main-img.jpg")
-  .embed-responsive.embed-responsive-16by9
+  model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-orbit="37.8deg 73.41deg 0.3908m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 0.3908m" camera-target="-0.69m -0.22m -0.45m" auto-rotate='')
+    .progress-bar.hide(slot='progress-bar')
+      .update-bar
+    button#ar-button(slot='ar-button')
+      | View in your space
+    #ar-prompt
+      img(src='/lcf/glb/ar_hand_prompt.png')
+  script.
+     // Handles loading the events for <model-viewer>'s slotted progress bar
+      const onProgress = (event) => {
+        const progressBar = event.target.querySelector('.progress-bar');
+        const updatingBar = event.target.querySelector('.update-bar');
+        updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+        if (event.detail.totalProgress === 1) {
+          progressBar.classList.add('hide');
+        } else {
+          progressBar.classList.remove('hide');
+          if (event.detail.totalProgress === 0) {
+            event.target.querySelector('.center-pre-prompt').classList.add('hide');
+          }
+        }
+      };
+      document.querySelector('model-viewer').addEventListener('progress', onProgress);  //img.img-fluid(src="/lcf/images/main-img.jpg")
+  // Loads <model-viewer> for browsers:
+  script(type='module' src='/lcf/glb/model-viewer.min.js')
+  //-.embed-responsive.embed-responsive-16by9
     iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F355583155525969%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
-  //#mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
+  //-#mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
     // Wrapper for slides
     .carousel-inner
       .carousel-item.active
@@ -61,30 +85,30 @@ block content
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
       
-  //
-  section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") News
-    .swiper-container
-      !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
+  //-
+    section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") News
+      .swiper-container
+        !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
 
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Satellite Events
-    .swiper-container
-      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") Satellite Events
+      .swiper-container
+        !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
 
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
-    .container-fluid
-      h1.entry-title(itemprop="name") Productions
-    .swiper-container
-      !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .container-fluid
-      .text-right.boxItem
-        a.btn.btn-primary.btn-sm(href="/events/", title="See all Editions") See all Productions
+    section.home(itemscope, itemtype='http://schema.org/ItemList')
+      .container-fluid
+        h1.entry-title(itemprop="name") Productions
+      .swiper-container
+        !=results.editions.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      .container-fluid
+        .text-right.boxItem
+          a.btn.btn-primary.btn-sm(href="/events/", title="See all Editions") See all Productions

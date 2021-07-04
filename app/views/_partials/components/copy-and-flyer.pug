@@ -1,9 +1,7 @@
-.row.subfooter
-  .col
-    .small
-      !="NO © " + new Date().getFullYear() + " " + config.project_name + " "
-  .col
-    .madeby.text-right
-      a.tooltips(data-toggle='tooltip', data-placement="left", href='https://flyer.it', target='_blank', title=global.__('This website is made by Flyer new media'))
-        i.icon-flyer.text-warning
-        .sr-only='Logo Flyer new media'
+.d-flex.justify-content-between.subfooter
+  .small
+    !="NO © " + new Date().getFullYear() + " " + config.project_name + " "
+  .madeby.text-right
+    a.tooltips(data-toggle='tooltip', data-placement="left", href='https://flyer.it', target='_blank', title=global.__('This website is made by Flyer new media'))
+      i.icon-flyer.text-warning
+      .sr-only='Logo Flyer new media'
