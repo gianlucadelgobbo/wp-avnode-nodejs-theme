@@ -1,7 +1,7 @@
 extends layout
 block content
   //model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-orbit="37.8deg 73.41deg 0.3908m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 0.3908m" camera-target="-0.69m -0.22m -0.45m" auto-rotate='')
-  model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-target="-0.61m -0.15m -0.3m" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto" ar="" ar-modes="scene-viewer webxr quick-look")
+  model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-target="-0.61m -0.15m -0.3m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto" ar="" ar-modes="scene-viewer webxr quick-look")
     .progress-bar.hide(slot='progress-bar')
       .update-bar
     button#ar-button(slot='ar-button')
