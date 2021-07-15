@@ -213,10 +213,12 @@ ul.lists{
   position: relative;
   margin-bottom: 20px;
   overflow: hidden;
-  max-width: 392px;
+}
+.itemListElement.col-md-12 {
+  max-width: 230px;
 }
 .caption {
-  position: absolute;
+  /* position: absolute;
   pointer-events: none;
   color: #FFF;
   left: 0;
@@ -224,7 +226,7 @@ ul.lists{
   bottom: 0;
   right: 0;
   bottom: 0px;
-  overflow: hidden;
+  overflow: hidden; */
 }
 .caption-time {
   background: rgba(255, 255, 255, .5);
@@ -235,10 +237,11 @@ ul.lists{
   line-height: 2;
 }
 .caption-body {
-  position: absolute;
+  padding-top: 10px;
+  /* position: absolute;
   bottom: 0;
   padding: 10px;
-  text-shadow: 0 2px 4px black;
+  text-shadow: 0 2px 4px black; */
 }
 .caption-type {
   position: absolute;
@@ -291,9 +294,6 @@ ul.lists{
 }
 .partner .stit {
   font-size: 11px;
-}
-.partner img {
-  border-radius: 50%;
 }
 
 // BOXES
@@ -366,4 +366,25 @@ a:hover img {
 .navbar-lang {
 	border-top: 2px solid $edition ;
 	border-bottom: 2px solid $edition ;
+}
+.media.partner {
+  display: block;
+}
+.media.partner  a.mr-3{
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-color: #FFF;
+}
+.svgsmall {
+  width: 200px;
+  height: 200px;
+}
+.media.partner .mr-3 img {
+  padding: 50px;
+}
+
+.grid-title {
+  border-bottom: 1px solid #000;
+  padding-bottom: 10px;
 }

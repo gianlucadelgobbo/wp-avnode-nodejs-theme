@@ -31,7 +31,7 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
           if col
             .sameheight.boxItem(class="col-lg-" + span, itemprop=col.box && col.box.indexOf("itemListElement") > 0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement") > 0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement") > 0 ? "http://schema.org/ItemList" : undefined)
               each row in col
-                if row.tit && col.tit != "."
+                if row && row.tit && col.tit != "."
                   .mb-4
                     .grid-title.mb-3
                       h3.mb-0(itemprop="name")!=row.tit
