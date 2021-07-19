@@ -28,6 +28,7 @@ exports.setPageData = function setPageData(req, result) {
   if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
   //console.log(req.params)
   if(result && result['ID']) {
+    page_data.wpID = result['ID']
     page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
     page_data.description = result.post_content ? this.makeExcerpt(result.post_content, 160) : config.meta.description[req.session.sessions.current_lang];
@@ -104,7 +105,7 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
-    if (opts.view === "performances") {
+    if (opts.view === "performances" || opts.view === "performances_inverse") {
       /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {
         $sourceA = explode("/",str_replace(array("flxer.net/api"), array("api.avnode.net"), $shortcode_atts['source']));
         $shortcode_atts['source'] = "https://".$sourceA[2]."/".$sourceA[4]."/".$sourceA[5]."/";

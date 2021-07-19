@@ -1,6 +1,4 @@
-//pre=JSON.stringify(opts, null, 2)
-//pre=JSON.stringify(body, null, 2)
-//pre=JSON.stringify(data, null, 2)
+//-pre=JSON.stringify(opts, null, 2)
 - var users
 if opts.filter == "PRODUCTION"
   - users = body.users
@@ -11,7 +9,8 @@ else
 if users && users.length
   .lists.row(itemscope itemtype="http://schema.org/ItemList")
     each item, i in users
-      .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem', class=opts.cols == '1' ? 'col-md-3' : 'col-md-12')
+      //-.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem', class=opts.cols == '1' ? 'col-md-3' : 'col-md-12')
+      .itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem', class=opts.cols == '1' ? 'col-md-12' : 'col-md-12')
         meta(itemprop='position', content=i)
         .media.partner(itemprop='item', itemscope='', itemtype='http://schema.org/Organization')
           a.mr-3(itemprop='url', href=item.web && item.web.length ? item.web[0].url : undefined, target='_blank', title=item.stagename)

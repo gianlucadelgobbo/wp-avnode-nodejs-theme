@@ -32,7 +32,8 @@ html(lang=sessions.current_lang)
         body {
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
-  body
+  body(id="wpID"+page_data.wpID)
+    - console.log(page_data)
     if page_data.url == "/"
       include includes/menu-main-hidden
       block content
