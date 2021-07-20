@@ -102,6 +102,7 @@ exports.formatLocation = function formatLocation(l) {
 };
 
 exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_params, basepath, cb) {
+  console.log("shortcodify");
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {

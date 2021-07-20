@@ -4,6 +4,11 @@
 a:hover {
   opacity: .6;
 }
+header > h1 {
+  border-bottom: 1px solid #000;
+  padding-bottom: 1.5rem;
+  font-size: 6rem;
+}
 
 // FOOTER
 
@@ -265,8 +270,7 @@ ul.lists{
   width: 200px; */
 }
 .caption-title {
-  font-size: 50px;
-  margin-top: 0;
+  margin-top: 20px;
   font-weight: bold;
 }
 .caption-location, .caption-location b {
@@ -404,4 +408,7 @@ a:hover img {
 .filters {
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
+}
+.caption-author{
+  display: none;
 }
