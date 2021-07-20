@@ -3,9 +3,12 @@
     // Brand and toggle get grouped for better mobile display
     div 
       a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
-        i(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
+        i.d-block.d-md-none(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
+        img.d-none.d-md-block(src="https://livecinemafestival.com/files/2021/05/LCF2021-logo.svg")
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
     .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
+    div.d-none.d-sm-block
+      a.btn.btn-primary(title="TICKETS" href="#") TICKETS
     div
       button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#menu-main')
         span.sr-only Toggle navigation

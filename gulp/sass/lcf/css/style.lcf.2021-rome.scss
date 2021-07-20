@@ -2,6 +2,10 @@ body {
     color: #000;
     background-color: #f2f2f2;
 }
+
+.menu-full a.btn-primary {
+  color: #000;
+}
 footer.navbar-inverse {
     background-color: #000000;
     border-color: #000000;
@@ -25,6 +29,10 @@ footer.navbar-inverse {
 	text-decoration: underline;
 }
 @media (min-width: 768px){
+  #wpID89079 .sameheight > .mb-4, #wpID89088 .sameheight > .mb-4{
+    display: flex;
+
+  }
 
 	#logo {
 		margin-bottom: 0;
@@ -85,11 +93,11 @@ footer.navbar-inverse {
   .Hotspot > * {
 	opacity: 1;
 	transform: translateY(-50%);
-  }
-  #default-poster {
+}
+#default-poster {
     background-size: auto;
-  }
-  .HotspotAnnotation{
+}
+.HotspotAnnotation{
 	background: #fff;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -105,9 +113,9 @@ footer.navbar-inverse {
 	position: absolute;
 	top: 50%;
 	width: max-content;
-  }
-  
-  .Hotspot:not([data-visible]) > * {
+}
+
+.Hotspot:not([data-visible]) > * {
 	opacity: 0;
 	pointer-events: none;
 	transform: translateY(calc(-50% + 4px));
@@ -200,11 +208,25 @@ footer.navbar-inverse {
   
   model-viewer > #ar-prompt > img {
 	animation: circle 4s linear infinite;
-  }
+}
 
-  #wpID89079 .grid-title{
-	float: left;
+
+	#wpID89079 .grid-title, #wpID89088 .grid-title{
+    width: 230px;
+    border:none;
+    padding-top: 3rem !important;
   }
-  #wpID89079 .itemListElement.col-md-12 {
+/*   #wpID89079 .itemListElement.col-md-12 {
     max-width: 338px;
+  } */
+  #wpID89079 .lists.row {
+	border-left: 1px solid #000;
+  }
+  #wpID89088 .sameheight > .mb-4{
+    border-top: 1px solid #000;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  #wpID89088 .sameheight > .mb-4 .rientro{
+    width: 100%;
   }

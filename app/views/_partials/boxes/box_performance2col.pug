@@ -1,0 +1,39 @@
+li.itemListElement.p-5.b-bl(class=css+" "+performance.type.slug, itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+  meta(itemprop='position', content=i)
+  - console.log(performance.type)
+  .row(style='position:relative', itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+    .col-md-6
+      .mb-5
+        span.caption-type.small.p-0
+          span.icon-eye
+          !=" "+performance.stats.visits
+          if performance.type.name
+            !=" | "+performance.type.name
+      a(itemprop='url', href=basepath+performance.slug+'/', title=performance.title)
+        img.img-fluid(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
+    .col-md-6.caption
+      .caption-body
+        if performance.schedule
+          .text-right.mb-5
+            span.small.caption-time.schedule
+              span.d-none(itemprop='datePublished')=""
+              span.stit=performance.schedule.starttimeTime+" > "+performance.schedule.endtimeTime
+        h2.caption-title(itemprop='name')=performance.title
+        each user, index in performance.users
+          if index < 2
+            .caption-author(itemprop='author', itemscope='', itemtype='http://schema.org/Person')
+              .mb-1 
+                b(itemprop='name')=user.stagename
+              if user.addresses && user.addresses.length && user.addresses[0] && user.addresses[0].country
+                !=" "
+                span.caption-location.caption-location-block
+                span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                  span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                  span(itemprop='addressCountry')=user.addresses[0].country
+                  if user.addresses[0].locality
+                    span.sr-only 
+                      !=", " 
+                      span(itemprop='addressLocality')=user.addresses[0].locality
+        if performance.users.length > 2
+          .caption-author="+"+(performance.users.length - 2)+" "+global.__("More")
+

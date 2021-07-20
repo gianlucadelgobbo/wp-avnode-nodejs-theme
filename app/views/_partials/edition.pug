@@ -50,6 +50,51 @@ article#container
         .alert.alert-danger!="<b>ATTENTION!!!</b> We are still programming the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
 
   .pt-3
+    if page_data.wpID == 89079
+      .filters.row.p-4
+        .by-type.col
+          span.mr-4
+            !="By Type"
+          span.mr-4 
+            a(href="#" data-show="all")
+              b="All"
+          span.mr-4 
+            a(href="#" data-show="av-performance")
+              b="Performances"
+          span.mr-4 
+            a(href="#" data-show="video-installation")
+              b="Installations"
+          span.mr-4 
+            a(href="#" data-show="lecture")
+              b="Lectures"
+          span.mr-4 
+            a(href="#" data-show="workshop")
+              b="Workshops"
+        if result['wpcf-same-rows-height']==1
+          .by-day.col
+            span.mr-4.ml-lg-4
+              !="By Day"
+            span.mr-4 
+              a(href="#" data-show="all")
+                b="All"
+            each row in result.grid
+              if row
+                  each col in row
+                    if col && col.tit && col.tit!="."
+                      .mr-4 
+                        a(href="#" data-show=col.tit.split(" ").join("-"))
+                          b=col.tit
+                      - console.log(col)
+        else
+          if result.grid
+              - span = 12/result.grid.length
+              each col in result.grid
+                if col
+                    each row in col
+                      if row && row.tit && col.tit != "."
+                        .mr-4 
+                          a(href="#" data-show=row.tit.split(" ").join("-"))=row.tit
+                        - console.log(row)
     include ../_partials/inc_grid
 
 
