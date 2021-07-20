@@ -29,8 +29,8 @@ footer.navbar-inverse {
 	text-decoration: underline;
 }
 @media (min-width: 768px){
-  #wpID89079 .sameheight > .mb-4, #wpID89088 .sameheight > .mb-4{
-    display: flex;
+  #wpID89079 .grid-title, #wpID89088 .grid-title{
+    float: left;
 
   }
 
@@ -215,6 +215,8 @@ footer.navbar-inverse {
     width: 230px;
     border:none;
     padding-top: 3rem !important;
+    padding-right: 1rem !important;
+    
   }
 /*   #wpID89079 .itemListElement.col-md-12 {
     max-width: 338px;
@@ -229,4 +231,5 @@ footer.navbar-inverse {
   }
   #wpID89088 .sameheight > .mb-4 .rientro{
     width: 100%;
+    display: table-cell;
   }

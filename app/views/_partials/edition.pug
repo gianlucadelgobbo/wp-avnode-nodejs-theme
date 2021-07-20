@@ -51,8 +51,8 @@ article#container
 
   .pt-3
     if page_data.wpID == 89079
-      .filters.row.p-4
-        .by-type.col
+      .filters.p-4
+        span.by-type.small.d-sm-block.d-md-inline
           span.mr-4
             !="By Type"
           span.mr-4 
@@ -71,7 +71,7 @@ article#container
             a(href="#" data-show="workshop")
               b="Workshops"
         if result['wpcf-same-rows-height']==1
-          .by-day.col
+          span.by-day.small.d-sm-block.d-md-inline
             span.mr-4.ml-lg-4
               !="By Day"
             span.mr-4 
@@ -81,7 +81,7 @@ article#container
               if row
                   each col in row
                     if col && col.tit && col.tit!="."
-                      .mr-4 
+                      span.mr-4 
                         a(href="#" data-show=col.tit.split(" ").join("-"))
                           b=col.tit
                       - console.log(col)

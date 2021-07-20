@@ -17,7 +17,8 @@ li.itemListElement.p-5.b-bl(class=css+" "+performance.type.slug, itemprop='itemL
           .text-right.mb-5
             span.small.caption-time.schedule
               span.d-none(itemprop='datePublished')=""
-              span.stit=performance.schedule.starttimeTime+" > "+performance.schedule.endtimeTime
+              - console.log(performance.schedule)
+              span.stit=performance.schedule.starttimeDay+" | "+performance.schedule.starttimeTime+" > "+performance.schedule.endtimeTime
         h2.caption-title(itemprop='name')=performance.title
         each user, index in performance.users
           if index < 2
