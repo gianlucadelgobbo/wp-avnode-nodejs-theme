@@ -8,7 +8,7 @@
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
     .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
     div.d-none.d-sm-block
-      a.btn.btn-primary.disabled(title="TICKETS" href="#") TICKETS
+      a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2021-rome/tickets/") TICKETS
     div
       button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#menu-main')
         span.sr-only Toggle navigation
@@ -25,7 +25,7 @@
           a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
       ul.list-inline.m-0
         li.list-inline-item
-          a.disabled(title="TICKETS" href="#") TICKETS
+          a(title="TICKETS" href=lang_preurl + "/editions/2021-rome/tickets/") TICKETS
       ul.list-inline.m-0
         li.list-inline-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
           a#searchModalButton(href="/search/")
