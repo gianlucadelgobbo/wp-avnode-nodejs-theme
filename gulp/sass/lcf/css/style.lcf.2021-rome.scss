@@ -29,7 +29,7 @@ footer.navbar-inverse {
 	text-decoration: underline;
 }
 @media (min-width: 768px){
-  #wpID89079 .grid-title, #wpID89088 .grid-title{
+  #wpID89079 .grid-title, #wpID89088 .grid-title, #wpID89076 .grid-title{
     float: left;
 
   }
@@ -211,11 +211,15 @@ footer.navbar-inverse {
 }
 
 
-	#wpID89079 .grid-title, #wpID89088 .grid-title{
+	#wpID89079 .grid-title, #wpID89088 .grid-title, #wpID89076 .grid-title{
     width: 230px;
-    border:none;
-    padding-top: 3rem !important;
     padding-right: 1rem !important;
+    border:none;
+  }
+
+
+	#wpID89079 .grid-title, #wpID89088 .grid-title{
+    padding-top: 3rem !important;
     
   }
 /*   #wpID89079 .itemListElement.col-md-12 {
@@ -224,12 +228,12 @@ footer.navbar-inverse {
   #wpID89079 .lists.row {
 	border-left: 1px solid #000;
   }
-  #wpID89088 .sameheight > .mb-4{
+  #wpID89088 .sameheight > .mb-4, #wpID89076 .sameheight > .mb-4{
     border-top: 1px solid #000;
     margin-top: 20px;
     padding-top: 20px;
   }
-  #wpID89088 .sameheight > .mb-4 .rientro{
+  #wpID89088 .sameheight > .mb-4 .rientro, #wpID89076 .sameheight > .mb-4 .rientro{
     width: 100%;
     display: table-cell;
   }

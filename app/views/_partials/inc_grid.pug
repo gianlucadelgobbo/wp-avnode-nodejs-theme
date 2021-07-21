@@ -13,7 +13,7 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
           - var span = 12/conta
           each col in row
             if col && col.tit && col.tit!="."
-              .sameheight.boxItem(class="col-lg-"+span+" "+col.tit.split(" ").join("-"), itemprop=col.box && col.box.indexOf("itemListElement")>0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement")>0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement")>0 ? "http://schema.org/ItemList" : undefined)
+              .sameheight.boxItem(class="col-lg-"+span+" "+(col.tit ? col.tit.split(" ").join("-") : ""), itemprop=col.box && col.box.indexOf("itemListElement")>0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement")>0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement")>0 ? "http://schema.org/ItemList" : undefined)
                 .mb-4
                   .grid-title.mb-3
                     h3.mb-0(itemprop="name")!=col.tit
@@ -29,7 +29,7 @@ if result['wpcf-add-grid-boxes'] && result['wpcf-rows'] && result['wpcf-columns'
         - span = 12/result.grid.length
         each col in result.grid
           if col
-            .sameheight.boxItem(class="col-lg-" + span+" "+row.tit.split(" ").join("-"), itemprop=col.box && col.box.indexOf("itemListElement") > 0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement") > 0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement") > 0 ? "http://schema.org/ItemList" : undefined)
+            .sameheight.boxItem(class="col-lg-" + span+" "+(col.tit ? col.tit.split(" ").join("-") : ""), itemprop=col.box && col.box.indexOf("itemListElement") > 0 ? "performer" : undefined, itemscope=col.box && col.box.indexOf("itemListElement") > 0 ? "" : undefined, itemtype=col.box && col.box.indexOf("itemListElement") > 0 ? "http://schema.org/ItemList" : undefined)
               each row in col
                 if row && row.tit && col.tit != "."
                   .mb-4
