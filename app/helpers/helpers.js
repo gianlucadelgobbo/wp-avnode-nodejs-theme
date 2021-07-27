@@ -400,14 +400,14 @@ exports.getEdition = function getEdition(req,callback) {
         avnodeurl = lang_predomain+"/galleries/"+req.params.subsubedition;
       } else if (req.params.subedition == "videos") {
         avnodeurl = lang_predomain+"/videos/"+req.params.subsubedition;
-      } else if (data["sources"] && data["sources"][0]) {
+      } else if (data && data["sources"] && data["sources"][0]) {
         avnodeurl = data["sources"][0];
       }
-    } else if (req.params.performance && data["sources"] && data["sources"][0]) {
+    } else if (req.params.performance && data && data["sources"] && data["sources"][0]) {
       avnodeurl = data["sources"][0]+req.params.performance+"/";
-    } else if (req.params.artist && data["sources"] && data["sources"][0]) {
+    } else if (req.params.artist && data && data["sources"] && data["sources"][0]) {
       avnodeurl = data['sources'][0]+(data['sources'][0].indexOf('performers/')!==-1 ? '' : 'performers/')+req.params.artist+'/'
-    } else if (data["sources"] && data["sources"][0]) {
+    } else if (data && data["sources"] && data["sources"][0]) {
       avnodeurl = data["sources"][0];
       if (req.params.performance) avnodeurl+= req.params.performance+"/";
     }
