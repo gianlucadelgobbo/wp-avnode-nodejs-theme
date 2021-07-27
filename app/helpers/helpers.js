@@ -412,7 +412,7 @@ exports.getEdition = function getEdition(req,callback) {
       if (req.params.performance) avnodeurl+= req.params.performance+"/";
     }
     if (data && data.ID) data = fnz.fixResult(data);
-    if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+    if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
       //console.log("avnodeurl "+avnodeurl);
       request({
