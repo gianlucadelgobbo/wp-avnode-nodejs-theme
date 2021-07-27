@@ -419,7 +419,7 @@ exports.getEdition = function getEdition(req,callback) {
         url: avnodeurl,
         json: true
       }, function(error, response, body) {
-        if (response.statusCode==200) {
+        if (response && response.statusCode==200) {
           data.avnode = body;
           if (req.params.performance || req.params.artist) {
             callback(data);
