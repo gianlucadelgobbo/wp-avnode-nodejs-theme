@@ -189,7 +189,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
             li.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
               meta(itemprop='position', content=index+1)
               div(itemprop='item', itemscope='', itemtype='http://schema.org/Person')
-                .media
+                .media.media-author
                   a.mr-3(itemprop='url', href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+"/artists/"+user.slug, title=user.stagename)
                     img.media-object(itemprop='image', src=user.imageFormats.small, alt=user.stagename)
                   .media-body
@@ -207,14 +207,14 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                                   !=", "
                                   span(itemprop='addressLocality')=address.locality
               .mt-3.mb-3(itemprop='description')!=user.about
-              if user.web && user.web.length
+              if user.web && user.web.length && user.web[0].web
                 p
                   strong=global.__("LINKS")
                 ul.squared10aa
                   each web in user.web
                     li
                       a(target='_blank', href=web.url)=web.url
-              if user.social && user.social.length
+              if user.social && user.social.length && user.social[0].web
                 p
                   strong=global.__("Socials")
                 ul.squared10aa

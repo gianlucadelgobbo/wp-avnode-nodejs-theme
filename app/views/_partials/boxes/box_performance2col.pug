@@ -2,7 +2,7 @@ li.itemListElement.p-5.b-bl(class=css+" "+performance.type.slug, itemprop='itemL
   meta(itemprop='position', content=i)
   - console.log(performance.type)
   .row(style='position:relative', itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-    .col-md-6
+    .col-xl-6
       .mb-5
         span.caption-type.small.p-0
           span.icon-eye
@@ -11,7 +11,7 @@ li.itemListElement.p-5.b-bl(class=css+" "+performance.type.slug, itemprop='itemL
             !=" | "+performance.type.name
       a(itemprop='url', href=basepath+performance.slug+'/', title=performance.title)
         img.img-fluid(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
-    .col-md-6.caption
+    .col-xl-6.caption
       .caption-body
         if performance.schedule
           .text-right.mb-5

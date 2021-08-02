@@ -28,8 +28,8 @@ footer.navbar-inverse {
 .modal-fullscreen .modal-content a:hover {
 	text-decoration: underline;
 }
-@media (min-width: 768px){
-  #wpID89079 .grid-title, #wpID89088 .grid-title, #wpID89076 .grid-title{
+@media (min-width: 1200px){
+  #wpID89079 .sameheight .grid-title, #wpID89088 .sameheight .grid-title, #wpID89076 .sameheight .grid-title{
     float: left;
 
   }
@@ -211,14 +211,14 @@ footer.navbar-inverse {
 }
 
 
-	#wpID89079 .grid-title, #wpID89088 .grid-title, #wpID89076 .grid-title{
+	#wpID89079 .sameheight .grid-title, #wpID89088 .sameheight .grid-title, #wpID89076 .sameheight .grid-title{
     width: 230px;
     padding-right: 1rem !important;
     border:none;
   }
 
 
-	#wpID89079 .grid-title, #wpID89088 .grid-title{
+	#wpID89079 .sameheight .grid-title, #wpID89088 .sameheight .grid-title{
     padding-top: 3rem !important;
     
   }
@@ -241,6 +241,6 @@ footer.navbar-inverse {
     color: #00FFFF;
   }
   #wpID89079 .caption-title {
-    font-size: 50px;
+    font-size: 28px;
     margin-top: 0;
 }
