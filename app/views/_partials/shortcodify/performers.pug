@@ -20,9 +20,6 @@ section.performers_event_wrapper
                 h2.caption-title(itemprop='name')=item.stagename
                 if item.addresses
                   .caption-location-artists
-                    each address in item.addresses
+                    each address in item.addressesFormatted
                       span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
-                        span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
-                          b(itemprop='addressCountry')=address.country
-                          | , 
-                          span(itemprop='addressLocality')=address.locality
+                        span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')=address.addressesFormatted
