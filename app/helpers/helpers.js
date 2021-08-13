@@ -181,7 +181,7 @@ exports.getPage = function getPage(req,callback) {
               callback(data);
             } else {
               if (body.data) body.events = body.data;
-              console.log("shortcodify");
+              //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
               //console.log("shortcodify2"+basepath);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
@@ -414,7 +414,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      //console.log("avnodeurl "+avnodeurl);
+      console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
