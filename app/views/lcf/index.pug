@@ -1,31 +1,31 @@
 extends layout
 block content
-  //-model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-orbit="37.8deg 73.41deg 0.3908m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 0.3908m" camera-target="-0.69m -0.22m -0.45m" auto-rotate='')
-  model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-target="-0.61m -0.15m -0.3m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto" ar="" ar-modes="scene-viewer webxr quick-look")
-      .progress-bar.hide(slot='progress-bar')
-        .update-bar
-      button#ar-button(slot='ar-button')
-        | View in your space
-      #ar-prompt
-        img(src='/lcf/glb/ar_hand_prompt.png')
-  script.
-     // Handles loading the events for <model-viewer>'s slotted progress bar
-      const onProgress = (event) => {
-        const progressBar = event.target.querySelector('.progress-bar');
-        const updatingBar = event.target.querySelector('.update-bar');
-        updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
-        if (event.detail.totalProgress === 1) {
-          progressBar.classList.add('hide');
-        } else {
-          progressBar.classList.remove('hide');
-          if (event.detail.totalProgress === 0) {
-            event.target.querySelector('.center-pre-prompt').classList.add('hide');
+  //- model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-orbit="37.8deg 73.41deg 0.3908m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 0.3908m" camera-target="-0.69m -0.22m -0.45m" auto-rotate='')
+    model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-target="-0.61m -0.15m -0.3m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto" ar="" ar-modes="scene-viewer webxr quick-look")
+        .progress-bar.hide(slot='progress-bar')
+          .update-bar
+        button#ar-button(slot='ar-button')
+          | View in your space
+        #ar-prompt
+          img(src='/lcf/glb/ar_hand_prompt.png')
+    script.
+      // Handles loading the events for <model-viewer>'s slotted progress bar
+        const onProgress = (event) => {
+          const progressBar = event.target.querySelector('.progress-bar');
+          const updatingBar = event.target.querySelector('.update-bar');
+          updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+          if (event.detail.totalProgress === 1) {
+            progressBar.classList.add('hide');
+          } else {
+            progressBar.classList.remove('hide');
+            if (event.detail.totalProgress === 0) {
+              event.target.querySelector('.center-pre-prompt').classList.add('hide');
+            }
           }
-        }
-      };
-      document.querySelector('model-viewer').addEventListener('progress', onProgress);  //img.img-fluid(src="/lcf/images/main-img.jpg")
-  // Loads <model-viewer> for browsers:
-  script(type='module' src='/lcf/glb/model-viewer.min.js')
+        };
+        document.querySelector('model-viewer').addEventListener('progress', onProgress);  //img.img-fluid(src="/lcf/images/main-img.jpg")
+    // Loads <model-viewer> for browsers:
+    script(type='module' src='/lcf/glb/model-viewer.min.js')
   
   //- .scene
     script(src="/lcf/threejs/build/three.module.js")
@@ -123,9 +123,8 @@ block content
       window.addEventListener("resize", onWindowResize);
       }
 
-
-  //-.embed-responsive.embed-responsive-16by9
-    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F355583155525969%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
+  .embed-responsive.embed-responsive-16by9(style="margin-top:65px")
+    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F216074323908055%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
   //-#mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
     // Wrapper for slides
     .carousel-inner
