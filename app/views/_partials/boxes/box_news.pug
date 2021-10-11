@@ -21,10 +21,6 @@
           if result.excerpt
             div(itemprop='mainEntityOfPage')!=result.excerpt
         ul.list-unstyled.d-none
-          li.media.mb-3(itemprop="publisher", itemscope, itemtype="http://schema.org/Organization")
-            .users_performance_item_name(itemprop="name")="AVnode.net"
-            .d-block(itemprop="logo", itemscope, itemtype="http://schema.org/ImageObject")
-              img(itemprop="url", class="svgsmall", src="https://avnode.net/warehouse/users/2013/03/100x100/avnode_jpg.jpg", alt="AVnode.net")
           each user in result.users
             li.media.mb-3(itemprop="author", itemscope, itemtype="http://schema.org/Person")
               .users_performance_item_name(itemprop="name")=user.stagename
