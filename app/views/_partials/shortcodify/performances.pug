@@ -5,6 +5,7 @@ if opts.params && body
         each room in day.rooms
           if !opts.rooms || (opts.rooms && opts.rooms.indexOf(room.room)!=-1)
             each performance in room.performances
+              //- console.log(performance.performance.title)
               if opts.params.indexOf(performance.performance.type.name)!=-1
                 - performance.performance.schedule = performance.schedule
                 - var performance = performance.performance

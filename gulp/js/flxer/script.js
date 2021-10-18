@@ -55,7 +55,6 @@ var THICKNESS = Math.pow( 80, 2 ),
     };
 
 function setCanvas() {
-  console.log("setCanvas");
   COLS = parseInt(container.offsetWidth / SPACING);
   ROWS = parseInt(container.offsetHeight / SPACING) ;
   NUM_PARTICLES = ROWS * COLS;

@@ -131,7 +131,7 @@ $(function() {
         var url = $(this).action;
         var dat = $(this).serialize() + "&ajax=1";
         //dat.ajax = 1;
-        console.log(dat);
+        //console.log(dat);
         $.ajax({
           type: "POST",
           url: url,
@@ -165,7 +165,7 @@ $(function() {
           url: url,
           data: dat,
           success: function (data) {
-            console.log(data);
+            //console.log(data);
             var messageAlert = 'alert-' + data.type;
             var messageText = data.message;
 
@@ -210,7 +210,7 @@ $(function() {
     });
   } */
   if (typeof(cx) !== "undefined") {
-    console.log("append gcse:searchresults-only")
+    //console.log("append gcse:searchresults-only")
     jQuery(".rientro.searchresults").append($("<gcse:searchresults-only></gcse:searchresults-only>"));
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';

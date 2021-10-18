@@ -2,7 +2,6 @@ $(function() {
   $('#menu-main').on('hidden.bs.collapse', function () {
     $( "#navbar-top-cnt" ).addClass( "position-fixed" );
     $( "#navbar-top-cnt" ).removeClass( "position-absolute" );
-    console.log("hidden")
   })
   $('#menu-main').on('show.bs.collapse', function () {
     $( "#navbar-top-cnt" ).addClass( "position-absolute" );

@@ -1,28 +1,32 @@
-script(src="https://www.paypal.com/sdk/js?client-id="+config.accounts.paypal_client_id+"&currency=EUR")
+//-
+  script(src="https://www.paypal.com/sdk/js?client-id="+config.accounts.paypal_client_id+"&currency=EUR")
 article#container(itemprop='performer', itemscope='', itemtype='http://schema.org/CreativeWork')
-  header.post_title.mb-4
+  //header.post_title.mb-4
     h1(itemprop="name")=page_data.title
   .row.performance-dett
-    .col-sm-9
+    .col-xl-9
       .row
-        .col-sm-3
-          img.img-fluid(itemprop='image', alt=result.avnode.performance.title+' MAIN IMAGE', src=result.avnode.performance.imageFormats.small)
-        .col-sm-9
-          h1.mt-3.entry-title(itemprop='name')=result.avnode.performance.title
+        .col-xl-3
+          picture
+            source(media="(max-width: 400px)" srcset=result.avnode.performance.imageFormats.small)
+            source(media="(min-width: 401px)" srcset=result.avnode.performance.imageFormats.large)
+            img.img-fluid(itemprop='image', alt=result.avnode.performance.title+' MAIN IMAGE', src=result.avnode.performance.imageFormats.small)
+        .col-xl-9
+          h1.mt-3.mt-xl-0.entry-title(itemprop='name')=result.avnode.performance.title
           .rientro
             p.type=result.avnode.performance.type.name
             p.stit
               !="Duration: "+result.avnode.performance.humanDuration
-              
               each booking in result.avnode.performance.bookings
                 p.stit
                   each schedule in booking.schedule
+                    - console.log(schedule)
                     .stit
                       !=schedule.boxDateFull+" "
                       span.d-none(itemprop='datePublished')=schedule.starttime
                       !=" | "
                       span(itemprop='contentLocation')=schedule.venue.room
-                    //.stit
+                    //-.stit
                       if schedule.price && !schedule.alleventschedulewithoneprice
                         p.price="Price: "
                           a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
@@ -32,120 +36,128 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                     .col
                       p!="Price: <b>"+booking.schedule[0].price+",00 €</b>"
                     .col
-                      p(id='paybutton')
-                      script.
-                        paypal.Buttons({
-                          style: {
-                              layout: 'horizontal'
-                          },
-                          createOrder: function(data, actions) {
-                            var description = "#{booking.event.title}: #{result.avnode.performance.title}";
-                            description = description.substring(0, 127);
-                            var order = {
-                              "intent": "CAPTURE",
-                              "application_context": {
-                                "brand_name": "#{booking.event.title}: #{result.avnode.performance.title}",
-                                "shipping_preference": "NO_SHIPPING"
-                              },
-
-                              "purchase_units": [
-                                {
-                                  "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
-                                  "description": description,
-                                  "amount": {
-                                    "currency": "EURO",
-                                    "value": "#{booking.schedule[0].price}"
-                                  }
-                                }
-                              ]
-                            };
-                            console.log("order.create");
-                            console.log(order);
-                            return actions.order.create(order);
-                          },
-                          onApprove: function(data, actions) {
-                            console.log("onApprove actions");
-                            console.log(actions);
-                            return actions.order.capture().then(function(details) {
-                              console.log("onApprove details");
-                              console.log(details);
-                              alert('Transaction completed by ' + details.payer.name.given_name);
-                              return fetch('https://avnode.net/api/transactionupdate', {
-                                method: 'post',
-                                headers: {
-                                  'Content-Type': 'application/json'
+                      if booking.schedule[0].paypal.indexOf("https")!==-1
+                        a.btn.btn-lg.btn-primary(href=booking.schedule[0].paypal target="_blank")
+                          b=booking.schedule[0].price+",00 € | "+ global.__('BUY NOW')
+                      //-else
+                        p(id='paybutton')
+                        script.
+                          paypal.Buttons({
+                            style: {
+                                layout: 'horizontal'
+                            },
+                            createOrder: function(data, actions) {
+                              var description = "#{booking.event.title}: #{result.avnode.performance.title}";
+                              description = description.substring(0, 127);
+                              var order = {
+                                "intent": "CAPTURE",
+                                "application_context": {
+                                  "brand_name": "#{booking.event.title}: #{result.avnode.performance.title}",
+                                  "shipping_preference": "NO_SHIPPING"
                                 },
-                                body: JSON.stringify({
-                                  orderID: data.orderID,
-                                  event: "#{result.avnode._id}",
-                                  item: !{JSON.stringify(result.avnode.performance)},
-                                  details: details,
-                                  data: data
-                                })
+
+                                "purchase_units": [
+                                  {
+                                    "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
+                                    "description": description,
+                                    "amount": {
+                                      "currency": "EURO",
+                                      "value": "#{booking.schedule[0].price}"
+                                    }
+                                  }
+                                ]
+                              };
+                              console.log("order.create");
+                              console.log(order);
+                              return actions.order.create(order);
+                            },
+                            onApprove: function(data, actions) {
+                              console.log("onApprove actions");
+                              console.log(actions);
+                              return actions.order.capture().then(function(details) {
+                                console.log("onApprove details");
+                                console.log(details);
+                                alert('Transaction completed by ' + details.payer.name.given_name);
+                                return fetch('https://avnode.net/api/transactionupdate', {
+                                  method: 'post',
+                                  headers: {
+                                    'Content-Type': 'application/json'
+                                  },
+                                  body: JSON.stringify({
+                                    orderID: data.orderID,
+                                    event: "#{result.avnode._id}",
+                                    item: !{JSON.stringify(result.avnode.performance)},
+                                    details: details,
+                                    data: data
+                                  })
+                                });
                               });
-                            });
-                          }
-                        }).render('#paybutton');
+                            }
+                          }).render('#paybutton');
 
 
-                  .row
+                  //-.row
                     .col
                       p!="Price for LPM performing artists: <b>"+(parseFloat(booking.schedule[0].price)-(parseFloat(booking.schedule[0].price)*0.2))+",00 €</b>"
                     .col
-                      p(id='paybutton_discount')
-                      script.
-                        paypal.Buttons({
-                          style: {
-                              layout: 'horizontal'
-                          },
-                          createOrder: function(data, actions) {
-                            var description = "#{booking.event.title} FOR ARTISTS: #{result.avnode.performance.title}";
-                            description = description.substring(0, 127);
-                            var order = {
-                              "intent": "CAPTURE",
-                              "application_context": {
-                                "brand_name": "#{booking.event.title}: #{result.avnode.performance.title}",
-                                "shipping_preference": "NO_SHIPPING"
-                              },
-
-                              "purchase_units": [
-                                {
-                                  "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
-                                  "description": description,
-                                  "amount": {
-                                    "currency": "EURO",
-                                    "value": "#{(parseFloat(booking.schedule[0].price)-(parseFloat(booking.schedule[0].price)*0.2))}"
-                                  }
-                                }
-                              ]
-                            };
-                            console.log("order.create");
-                            console.log(order);
-                            return actions.order.create(order);
-                          },
-                          onApprove: function(data, actions) {
-                            console.log("onApprove actions");
-                            console.log(actions);
-                            return actions.order.capture().then(function(details) {
-                              console.log("onApprove details");
-                              console.log(details);
-                              alert('Transaction completed by ' + details.payer.name.given_name);
-                              return fetch('https://avnode.net/api/transactionupdate', {
-                                method: 'post',
-                                headers: {
-                                  'Content-Type': 'application/json'
+                      if booking.schedule[0].paypal.indexOf("https")!==-1
+                        a.btn.btn-lg.btn-primary(href=booking.schedule[0].paypal target="_blank")
+                          b=(parseFloat(booking.schedule[0].price)-(parseFloat(booking.schedule[0].price)*0.2))+",00 € | "+ global.__('BUY NOW')
+                      else
+                        p(id='paybutton_discount')
+                        script.
+                          paypal.Buttons({
+                            style: {
+                                layout: 'horizontal'
+                            },
+                            createOrder: function(data, actions) {
+                              var description = "#{booking.event.title} FOR ARTISTS: #{result.avnode.performance.title}";
+                              description = description.substring(0, 127);
+                              var order = {
+                                "intent": "CAPTURE",
+                                "application_context": {
+                                  "brand_name": "#{booking.event.title}: #{result.avnode.performance.title}",
+                                  "shipping_preference": "NO_SHIPPING"
                                 },
-                                body: JSON.stringify({
-                                  orderID: data.orderID,
-                                  event: "#{result.avnode._id}",
-                                  item: !{JSON.stringify(result.avnode.performance)},
-                                  details: details,
-                                  data: data
-                                })
+
+                                "purchase_units": [
+                                  {
+                                    "reference_id": "#{booking.event._id}_#{result.avnode.performance._id}",
+                                    "description": description,
+                                    "amount": {
+                                      "currency": "EURO",
+                                      "value": "#{(parseFloat(booking.schedule[0].price)-(parseFloat(booking.schedule[0].price)*0.2))}"
+                                    }
+                                  }
+                                ]
+                              };
+                              console.log("order.create");
+                              console.log(order);
+                              return actions.order.create(order);
+                            },
+                            onApprove: function(data, actions) {
+                              console.log("onApprove actions");
+                              console.log(actions);
+                              return actions.order.capture().then(function(details) {
+                                console.log("onApprove details");
+                                console.log(details);
+                                alert('Transaction completed by ' + details.payer.name.given_name);
+                                return fetch('https://avnode.net/api/transactionupdate', {
+                                  method: 'post',
+                                  headers: {
+                                    'Content-Type': 'application/json'
+                                  },
+                                  body: JSON.stringify({
+                                    orderID: data.orderID,
+                                    event: "#{result.avnode._id}",
+                                    item: !{JSON.stringify(result.avnode.performance)},
+                                    details: details,
+                                    data: data
+                                  })
+                                });
                               });
-                            });
-                          }
-                        }).render('#paybutton_discount');
+                            }
+                          }).render('#paybutton_discount');
 
 
 
@@ -181,7 +193,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                         .caption(style='padding-right:15px;padding-left:15px;')
                           .caption-body
                             h2.caption-title(itemprop='name')=video.title
-    .col-sm-3
+    .col-xl-3
       h2.grid-title.mt-3=global.__("Author")
       .rientro
         ul.lists(itemprop='author', itemscope='', itemtype='http://schema.org/ItemList')

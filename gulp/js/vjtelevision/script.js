@@ -43,7 +43,6 @@ $(document).ready(function(){
     })
     .done(function(dd) {
       dates = dd;
-      console.log("stoca");
       loadDay();
     })
     .fail(function(data) {
@@ -83,9 +82,7 @@ $(document).ready(function(){
     }
   
     function loadDay() {
-      console.log("loadDay");
       var daystr = day.getFullYear()+"-"+(("0" + (day.getMonth()+1)).slice(-2))+"-"+(("0" + (day.getDate())).slice(-2));
-      console.log(daystr);
       $("#programming #date").html(day.toDateString());
       if (dates.indexOf(daystr)===-1) {
         alert("No programming for this date!!!");
@@ -97,7 +94,6 @@ $(document).ready(function(){
           data: {day: daystr}
         })
         .done(function(data) {
-          console.log("done");
           $('#loadingplay span').html("Building interface");
           var html = "<ul class=\"list-unstyled\">"
           playlist = [];
@@ -144,7 +140,6 @@ $(document).ready(function(){
     }
   }
   if ($('#vjtv').length) {
-    console.log("vjtv");
     $('#vjtv_modal').modal({
       backdrop: 'static',
       keyboard: false

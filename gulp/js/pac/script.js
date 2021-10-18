@@ -2,7 +2,6 @@ var player
 
 $(document).ready(function(){
   if ($('#my-video').length) {
-    console.log("#my-video");
     var options = {
       controls: true
     };
