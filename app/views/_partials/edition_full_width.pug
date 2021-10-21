@@ -73,7 +73,6 @@ article#container
                       span.mr-4 
                         a(href="#" data-show=col.tit.split(" ").join("-"))
                           b=col.tit
-                      - console.log(col)
         else
           if result.grid
               - span = 12/result.grid.length
@@ -83,7 +82,6 @@ article#container
                       if row && row.tit && col.tit != "."
                         .mr-4 
                           a(href="#" data-show=row.tit.split(" ").join("-"))=row.tit
-                        - console.log(row)
     include ../_partials/inc_grid
 
 

@@ -20,7 +20,6 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
               each booking in result.avnode.performance.bookings
                 p.stit
                   each schedule in booking.schedule
-                    - console.log(schedule)
                     .stit
                       !=schedule.boxDateFull+" "
                       span.d-none(itemprop='datePublished')=schedule.starttime

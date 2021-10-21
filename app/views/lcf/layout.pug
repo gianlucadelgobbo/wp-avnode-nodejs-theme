@@ -33,7 +33,6 @@ html(lang=sessions.current_lang)
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
   body(id="wpID"+page_data.wpID)
-    - console.log(page_data)
     if page_data.url == "/" || page_data.url == "/en" || page_data.url == "/en/"
       include includes/menu-main-hidden
       block content
