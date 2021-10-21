@@ -30,7 +30,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                         p.price="Price: "
                           a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
                             b=schedule.price+",00 € | "+ global.__('BUY NOW')
-                if booking.schedule.length && booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice
+                if booking.schedule.length && booking.schedule[0].price && booking.schedule[0].alleventschedulewithoneprice && new Date(booking.event.schedule[0].starttime)>=new Date()
                   .row
                     .col
                       p!="Price: <b>"+booking.schedule[0].price+",00 €</b>"
