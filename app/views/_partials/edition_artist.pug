@@ -44,14 +44,14 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                     !=", "
                     span(itemprop='addressLocality')=address.locality
             .mb-3(itemprop='description')!=result.avnode.performer.aboutFull ? result.avnode.performer.aboutFull : result.avnode.performer.about
-            if result.avnode.performer.web && result.avnode.performer.web.length && result.avnode.performer.web[0].web
+            if result.avnode.performer.web && result.avnode.performer.web.length && result.avnode.performer.web[0].url
               p
                 strong LINKS
               ul.squared10
                 each web in result.avnode.performer.web
                   li
                     a(itemprop='url', target='_blank', href=web.url)=web.url
-            if result.avnode.performer.social && result.avnode.performer.social.length && result.avnode.performer.social[0].web
+            if result.avnode.performer.social && result.avnode.performer.social.length && result.avnode.performer.social[0].url
               p
                 strong SOCIAL
               ul.squared10
