@@ -1,7 +1,15 @@
 /*!
 CSS COMMON
 */
-.user_perfomance_image {
+.caption-paypal {
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+}
+.caption-paypal a {
+  color: #FFF;
+  background-color: $primary;
+  padding: 1px 10px 0 10px;
 }
 .svg {
   background-color: #FFF;
