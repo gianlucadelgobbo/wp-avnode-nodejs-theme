@@ -4,6 +4,7 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
     a(itemprop='url', href=basepath+performance.slug+'/', title=performance.title)
       img.img-fluid(itemprop='image', src=performance.imageFormats.small, alt=performance.title)
     .caption
+      //- console.log(performance)
       if performance.schedule
         .caption-time.schedule
           span.d-none(itemprop='datePublished')=""
@@ -30,4 +31,6 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
           !=" "+performance.stats.visits
           if performance.type.name
             !=" | "+performance.type.name
+      if performance.schedule.paypal
+        a(href=performance.schedule.paypal)=global.__("BUY NOW")
 
