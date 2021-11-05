@@ -1,5 +1,5 @@
 doctype xml
-urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:xhtml="http://www.w3.org/1999/xhtml")
+urlset(xmlns='https://www.sitemaps.org/schemas/sitemap/0.9', xmlns:xhtml='https://www.w3.org/1999/xhtml')
   url
     loc=config.domain
     if (config.locales.length>1)
@@ -9,5 +9,5 @@ urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:xhtml="http://
         else
           xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/"+locale+"/")
     lastmod=isodate
-    changefreq daily
+    //changefreq daily
     priority 1.0

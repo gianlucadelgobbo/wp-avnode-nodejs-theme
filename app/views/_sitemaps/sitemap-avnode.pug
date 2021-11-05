@@ -1,5 +1,5 @@
 doctype xml
-urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://www.google.com/schemas/sitemap-image/1.1", xmlns:xhtml="http://www.w3.org/1999/xhtml")
+urlset(xmlns="https://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="https://www.google.com/schemas/sitemap-image/1.1", xmlns:xhtml="https://www.w3.org/1999/xhtml")
   url
     loc=config.domain+"/"+sez +"/"
     if (config.locales.length > 1)
@@ -12,21 +12,21 @@ urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9", xmlns:image="http://
     lastmod=results.startdateISO
     changefreq yearly
     priority 1.0
-    if results.featured.full
+    if results.featured && results.featured.full
       image:image
         image:loc=results.featured.full
         image:title!="<![CDATA["+(results.stagename ? results.stagename : results.title ? results.title : results.post_title)+"]]>"
 
-
-  each result in results.avnode[sez]
-    url
-      loc=config.domain+"/"+sez +"/"+result.slug+"/"
-      if (config.locales.length > 1)
-        each locale in config.locales
-          if locale == config.default_lang
-            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + sez +"/"+result.slug+"/")
-          else
-            xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + sez +"/"+result.slug+"/")
+  if results.avnode && results.avnode[sez] && results.avnode[sez].length
+    each result in results.avnode[sez]
+      url
+        loc=config.domain+"/"+sez +"/"+result.slug+"/"
+        if (config.locales.length > 1)
+          each locale in config.locales
+            if locale == config.default_lang
+              xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + sez +"/"+result.slug+"/")
+            else
+              xhtml:link(rel="alternate", hreflang=locale, href=config.domain + "/" + locale + "/" + sez +"/"+result.slug+"/")
 
       lastmod=result.updatedAt ? result.updatedAt : result.createdAt
       changefreq yearly

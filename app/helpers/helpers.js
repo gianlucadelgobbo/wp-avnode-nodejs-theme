@@ -202,12 +202,14 @@ exports.getPage = function getPage(req,callback) {
 };
 
 exports.getXMLlist = function getXMLlist(req,callback) {
+  if (config.prefix=="flyer" && req.params.avnode=="news") req.params.avnode="extra";
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
-  //console.log(url);
+  console.log(url);
   request({
     url: url,
     json: true
   }, function(error, response, data) {
+    //console.log(data);
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
       var A = ["performances","gallery","galleries","videos","news","extra","events","members","partnerships","exhibitions"];
@@ -226,7 +228,7 @@ exports.getXMLlist = function getXMLlist(req,callback) {
           avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        // console.log("avnodeurl "+avnodeurl);
+        //console.log("avnodeurl "+avnodeurl);
         request({
           url: avnodeurl,
           json: true
@@ -238,12 +240,17 @@ exports.getXMLlist = function getXMLlist(req,callback) {
               body.pages[item].link = "/"+body.pages[item].link.join("/");
             };
           }
+          if (req.params.avnode == "partnerships-management") req.params.avnode = 'partnerships';
+          if (req.params.avnode == "cultural-productions") req.params.avnode = 'events';
+
+
           if (body[req.params.avnode]) {
             data.avnode = body;
           } else {
             data.avnode = {};
             data.avnode[req.params.avnode] = body.data;
           }
+          console.log(data);
           callback(data);
         });
       } else {
