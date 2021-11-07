@@ -15,6 +15,7 @@ exports.get = function get(req, res) {
         if (req.params.performance) {
           if (result.avnode.performance && result.avnode.performance.title) {
             template = config.prefix+'/'+'edition_performance';
+            include_gallery = true;
           }
         } else if (req.params.subedition == "artists") {
           if (result.avnode.advanced && result.avnode.advanced.performers) {

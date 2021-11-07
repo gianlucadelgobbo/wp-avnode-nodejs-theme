@@ -250,7 +250,7 @@ exports.getXMLlist = function getXMLlist(req,callback) {
             data.avnode = {};
             data.avnode[req.params.avnode] = body.data;
           }
-          console.log(data);
+          //console.log(data);
           callback(data);
         });
       } else {
@@ -423,7 +423,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      console.log("avnodeurl "+avnodeurl);
+      //console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
