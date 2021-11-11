@@ -33,5 +33,9 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
             !=" | "+performance.type.name
   if performance.schedule.paypal
     .caption-paypal
-      a(href=performance.schedule.paypal)=global.__("BUY NOW")
+      a(href=performance.schedule.paypal)
+        if performance.schedule.price
+          !=global.__('BUY NOW')
+        else
+          !=global.__('BOOK NOW')
 

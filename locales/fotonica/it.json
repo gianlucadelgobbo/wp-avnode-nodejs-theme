@@ -50,7 +50,7 @@
 	"peoples": "peoples",
 	"from": "from",
 	"playing": "playing",
-	"BUY NOW": "BUY NOW",
+	"BUY NOW": "COMPRA",
 	"Videos": "Videos",
 	"Full schedule": "Full schedule",
 	"Production": "Production",
@@ -63,5 +63,7 @@
 	"Socials": "Socials",
 	"<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!": "<b>ATTENZIONE!!!</b> La programmazione non è ancora definitiva. Torna presto!!!",
 	"PRICE IS FOR THE FULL DAY": "IL PREZZO SI RIFERISCE ALL'INTERA GIORNATA",
-	"PRICE IS FOR ALL APPOINTMENTS": "IL PREZZO INCLUDE TUTTI GLI APPUNTAMENTI"
+	"PRICE IS FOR ALL APPOINTMENTS": "IL PREZZO INCLUDE TUTTI GLI APPUNTAMENTI",
+	"Free admission with reservations required": "Ingresso libero con prenotazione obbligatoria",
+	"BOOK NOW": "PRENOTA"
 }
