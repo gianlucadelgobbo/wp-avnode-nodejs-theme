@@ -1,5 +1,7 @@
 extends layout
 block content
+  //-.embed-responsive.embed-responsive-16by9(style="margin-top:65px")
+    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F286073986690677%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
   //- model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-orbit="37.8deg 73.41deg 0.3908m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto 0.3908m" camera-target="-0.69m -0.22m -0.45m" auto-rotate='')
     model-viewer(src='/lcf/glb/brancaccio_mesh.glb' camera-controls='' camera-target="-0.61m -0.15m -0.3m" poster="/lcf/glb/poster.png" min-camera-orbit="auto auto auto" max-camera-orbit="auto auto auto" ar="" ar-modes="scene-viewer webxr quick-look")
         .progress-bar.hide(slot='progress-bar')
@@ -124,7 +126,7 @@ block content
       }
 
   .embed-responsive.embed-responsive-16by9(style="margin-top:65px")
-    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F216074323908055%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
+    iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F286073986690677%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
   //-#mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
     // Wrapper for slides
     .carousel-inner
