@@ -31,7 +31,7 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
           !=" "+performance.stats.visits
           if performance.type.name
             !=" | "+performance.type.name
-  if performance.schedule.paypal
+  if performance.schedule.paypal && new Date(performance.schedule.endtime)>=new Date()
     .caption-paypal
       a(href=performance.schedule.paypal)
         if performance.schedule.price
