@@ -23,10 +23,10 @@ exports.get = function get(req, res) {
               sessions:req.session.sessions
             };
             jsonfile.writeFile(file, obj)
-            .then(res => {
-              res.json(err || {"writeFileSuccess": file+" SUCCESS"});
+            .then(r => {
+              res.json({"writeFileSuccess": file+" SUCCESS"});
             })
-            .catch(error => console.error(error))
+            .catch(error => res.json(error))
           });
         });
       });

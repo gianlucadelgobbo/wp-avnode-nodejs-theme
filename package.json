@@ -20,7 +20,7 @@
     "i18n": "^0.8.3",
     "instagram-node": "^0.5.8",
     "jquery": "^3.4.1",
-    "jsonfile": "^2.4.0",
+    "jsonfile": "^6.1.0",
     "method-override": "^2.3.10",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
