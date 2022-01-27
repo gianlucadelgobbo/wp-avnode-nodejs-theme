@@ -24,9 +24,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -53,9 +50,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   }, */
@@ -82,9 +76,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -111,9 +102,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -140,9 +128,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -169,9 +154,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -198,9 +180,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -227,9 +206,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -256,9 +232,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -285,9 +258,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -314,9 +284,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -343,9 +310,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   },
@@ -372,9 +336,6 @@ module.exports = {
       followSymlinks: false
     },
     env: {
-      NODE_ENV: "development"
-    },
-    env_production: {
       NODE_ENV: "production"
     }
   }
