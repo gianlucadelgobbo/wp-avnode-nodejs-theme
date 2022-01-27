@@ -32,7 +32,7 @@ exports.get = function get(req, res) {
                   };
                   jsonfile.writeFile(file, obj, function (err) {
                     //if(err) console.log(err);
-                    res.render(config.prefix+'/'+'index',obj);
+                    res.json(err || {"writeFileSuccess": file+" SUCCESS"});
                   });
                 });
               });

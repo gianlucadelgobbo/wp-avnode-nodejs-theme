@@ -23,7 +23,7 @@ exports.get = function get(req, res) {
             jsonfile.writeFile(file, obj, function (err) {
               //console.log("writeFile: "+file);
               //if(err) console.log(err);
-              res.render(config.prefix+'/'+'index',obj);
+              res.json(err || {"writeFileSuccess": file+" SUCCESS"});
             });
           });
         });
