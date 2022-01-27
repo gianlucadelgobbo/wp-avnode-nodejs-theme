@@ -13,8 +13,9 @@ module.exports = {
       ".git",
       "node_modules",
       "public",
+      "cache",
       "locales"
-    ],
+  ],
     time: true,
     instances: 1,
     exec_mode: "fork",
@@ -39,6 +40,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -65,6 +67,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -91,6 +94,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -117,6 +121,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -143,6 +148,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -169,6 +175,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -195,6 +202,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -221,6 +229,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -247,6 +256,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -273,6 +283,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -299,6 +310,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
@@ -325,6 +337,7 @@ module.exports = {
         ".git",
         "node_modules",
         "public",
+        "cache",
         "locales"
     ],
     time: true,
