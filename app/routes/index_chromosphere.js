@@ -22,11 +22,11 @@ exports.get = function get(req, res) {
               page_data:page_data,
               sessions:req.session.sessions
             };
-            jsonfile.writeFile(file, obj, function (err) {
-              //console.log("writeFile: "+file);
-              //if(err) console.log(err);
+            jsonfile.writeFile(file, obj)
+            .then(res => {
               res.json(err || {"writeFileSuccess": file+" SUCCESS"});
-            });
+            })
+            .catch(error => console.error(error))
           });
         });
       });
