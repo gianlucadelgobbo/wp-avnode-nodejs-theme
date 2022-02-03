@@ -183,12 +183,12 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                     li.col-xl-4.col-sm-6.itemListElement(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                       meta(itemprop='position', content=index)
                       div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                        a.thumbnail(itemprop='url', href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+'/gallery/'+gallery.slug+'/', title=gallery.title)
+                        a.thumbnail.gallerythumbnail(itemprop='url', data-src=JSON.stringify(gallery), href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+'/gallery/'+gallery.slug+'/', title=gallery.title)
                           img.img-fluid(itemprop='image', src=gallery.imageFormats.small, alt=gallery.title)
                         .caption(style='padding-right:15px;padding-left:15px;')
                           .caption-body
                             h2.caption-title(itemprop='name')=gallery.title
-                            !="Images: "+gallery.stats.img
+                            //!="Images: "+gallery.stats.img
           if result.avnode.performance.videos && result.avnode.performance.videos.length
             .mt-3(itemprop='exampleOfWork', itemscope='', itemtype='http://schema.org/ItemList')
               h3.grid-title.h1like(itemprop='name')=global.__("Videos")
@@ -204,7 +204,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                           .caption-body
                             h2.caption-title(itemprop='name')=video.title
     .col-xl-3
-      h2.grid-title.mt-3=global.__("Author")
+      h2.mt-3.mt-xl-0.grid-title=global.__("Author")
       .rientro
         ul.lists(itemprop='author', itemscope='', itemtype='http://schema.org/ItemList')
           each user, index in result.avnode.performance.users

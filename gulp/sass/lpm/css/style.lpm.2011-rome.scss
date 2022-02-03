@@ -1,4 +1,8 @@
-body {background-color:#000000; color:#333333; background-repeat:no-repeat;background-size: contain;background-position: center 206px;}
+body {background-color:#000000; color:#333333; background-repeat:no-repeat;background-size: contain;background-position: center 195px;}
 .entry-title, .grid-title{color:#FFF; background-color:#000;padding:5px 10px;}
-.rientro{background: rgba(255,255,255,.8);margin-bottom:20px;}
-
+.rientro{background: rgba(255,255,255,.8);padding:15px;}
+.performers_event_wrapper h3{background: rgba(255,255,255,.8);padding:15px;}
+.nav-item.disabled {display: none;}
+.media.media-author img {
+  min-width: 100px;
+}

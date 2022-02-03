@@ -19,7 +19,7 @@ nav#top-menu.navbar.fixed-top.navbar-dark.bg-dark.navbar-expand-lg
       input(type='hidden', name='cof', value='FORID:10')
       input(type='hidden', name='ie', value='UTF-8')
       .input-group
-        input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+        input.edgt_search_field.form-control(type='text', placeholder=global.__("Search"), name='q', autocomplete='nope')
         div.input-group-append
           button.btn.btn-secondary(type='submit', name='sa')=global.__("Search")
 
@@ -31,7 +31,7 @@ nav#top-menu.navbar.fixed-top.navbar-dark.bg-dark.navbar-expand-lg
           input(type='hidden', name='cof', value='FORID:10')
           input(type='hidden', name='ie', value='UTF-8')
           .input-group.ml-auto
-            input.form-control.form-control-sm.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='off')
+            input.form-control.form-control-sm.edgt_search_field(type='text', placeholder=global.__("Search"), name='q', autocomplete='nope')
             div.input-group-append
               button.btn.btn-sm.btn-secondary(type='submit', name='sa')=global.__("Search")
           //.flyer-search-submit-holder
@@ -128,7 +128,7 @@ nav#top-menu.navbar.fixed-top.navbar-dark.bg-dark.navbar-expand-lg
     //form#nl_form.navbar-form.navbar-right(method='post', action='#', onsubmit="createSend(this,'/wp-content/themes/lpm/subscribe.php'); return false;")
         #nl_cnt
           .input-group.input-group-sm
-            input#email.form-control(autocomplete='off', type='text', name='email', placeholder='your email')
+            input#email.form-control(autocomplete='nope', type='text', name='email', placeholder='your email')
             label.sr-only(for='email') Email
             span.input-group-btn
               button#invia.btn.btn-default(type='submit', name='email-button') KEEP ME INFORMED

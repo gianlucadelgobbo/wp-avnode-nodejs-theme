@@ -1,6 +1,7 @@
-body {background-color:#7e7d79; color:#333333; background-repeat:no-repeat; background-position: center 237px;}
+body {background-color:#7e7d79; color:#333333; background-position: center 195px;background-size: cover;}
 .entry-title, .grid-title{color:#FFF; background-color:#464646;padding:5px 10px;}
-.rientro{background: rgba(255,255,255,.8);margin-bottom:20px;}
-@media (min-width: 1200px) {
-	.container {width: 1010px;}
+.rientro{background: rgba(255,255,255,.8);padding:15px;}
+.nav-item.disabled {display: none;}
+.media.media-author img {
+  min-width: 100px;
 }

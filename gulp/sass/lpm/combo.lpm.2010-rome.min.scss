@@ -1,13 +1,30 @@
 
 $primary:         #d9b600 !default;
+$border-radius:           0 !default;
+$border-radius-lg:        0 !default;
+$border-radius-sm:        0 !default;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+);
 
-
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1570px
+);
 @import "../_common/fontello";
 @import "../_common/fontello-animation";
 @import "../_common/socialGalleryPluginLite";
 @import "../_common/cookielawinfo";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
+//
 @import "../_common/swiper";
 @import "../_common/style";
 @import "./css/style.lpm";

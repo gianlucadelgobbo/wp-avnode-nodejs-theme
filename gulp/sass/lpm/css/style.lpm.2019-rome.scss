@@ -21,3 +21,7 @@ body {
     text-transform: uppercase;
     color: #fe0002;
 }
+.nav-item.disabled {display: none;}
+.media.media-author img {
+  min-width: 100px;
+}

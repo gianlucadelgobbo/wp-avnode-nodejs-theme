@@ -1,2 +1,9 @@
 body {background-color:#000; background-repeat:repeat-y; background-size: cover; background-attachment: fixed;}
-.rientro,.box-list{background: rgba(255,255,255,.8);}
+.entry-title, .grid-title{color:#FFF; background-color:#000;padding:5px 10px;}
+.box-list{background: rgba(255,255,255,.8);}
+.rientro{background: rgba(255,255,255,.8);padding:15px;}
+.performers_event_wrapper h3{background: rgba(255,255,255,.8);padding:15px;}
+.nav-item.disabled {display: none;}
+.media.media-author img {
+  min-width: 100px;
+}
