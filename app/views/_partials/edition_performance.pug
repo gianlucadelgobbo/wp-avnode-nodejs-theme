@@ -183,7 +183,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                     li.col-xl-4.col-sm-6.itemListElement(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                       meta(itemprop='position', content=index)
                       div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                        a.thumbnail.gallerythumbnail(itemprop='url', data-src=JSON.stringify(gallery), href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+'/gallery/'+gallery.slug+'/', title=gallery.title)
+                        a.gallerythumbnail(itemprop='url', data-src=JSON.stringify(gallery), href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+'/gallery/'+gallery.slug+'/', title=gallery.title)
                           img.img-fluid(itemprop='image', src=gallery.imageFormats.small, alt=gallery.title)
                         .caption(style='padding-right:15px;padding-left:15px;')
                           .caption-body
@@ -198,7 +198,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                     li.col-xl-4.col-sm-6.itemListElement(style='margin-bottom: 30px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
                       meta(itemprop='position', content=index)
                       div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-                        a.thumbnail.videothumbnail(itemprop='url', data-src=JSON.stringify(video), href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+'/videos/'+video.slug+'/', title=video.title)
+                        a.videothumbnail(itemprop='url', data-src=JSON.stringify(video), href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+page_data.edition+'/videos/'+video.slug+'/', title=video.title)
                           img.img-fluid(itemprop='image', src=video.imageFormats.small, alt=video.title)
                         .caption(style='padding-right:15px;padding-left:15px;')
                           .caption-body

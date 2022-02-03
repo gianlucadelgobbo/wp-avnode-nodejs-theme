@@ -97,7 +97,7 @@ $(function() {
       return (cnt);
     });
   }
-  if ($( ".thumbnail" ).length && !$( ".videothumbnail" ).length) {
+  if ($( ".thumbnail" ).length) {
     glink = $( ".thumbnail" ).map(function( item ) {
       var cnt = $( this ).attr("data-src");
       return (cnt);
