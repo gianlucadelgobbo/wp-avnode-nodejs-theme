@@ -87,63 +87,44 @@ function infiniteScroll(t) {
 }
 
 $(function() {
-  /*  var glink = [];
-  var cntObj;
-  if ($( ".videothumbnail" ).length) {
-   glink = $( ".videothumbnail" ).map(function( item ) {
-      var cnt = $( this ).attr("data-src");
-      cntObj = JSON.parse($( this ).attr("data-src"));
-      if (cntObj.media.file) cnt = cntObj;
-      return (cnt);
-    });
-  } */
   if ($( ".videothumbnail" ).length) {
     var LG;
     $('.videothumbnail').click(function( event ) {
       event.preventDefault();
       if (LG) LG.destroy();
-      /* $.ajax({
-        url: $(this).attr("href")+"?api=1",
-        method: "get"
-      })
-      .done(function(data) { */
-        const data = $(this).data("src")
-        const list = data.videos && data.videos[0] ? data.videos[0] : data;
-        const $dynamicGallery = document.getElementById('lightGallery');
-        if (list.media.iframe) {
-          const dynamicEl = [{
-            src:list.media.iframe,
-            subHtml: '<h4>'+list.title+'</h4>',
-          }];
-          LG = lightGallery($dynamicGallery, {
-            iframe: true,
-            dynamic: true,
-            download: false,
-            plugins: [
-              lgVideo
-            ],
-            dynamicEl: dynamicEl
-          });
-        } else {
-          var dynamicEl = [{
-            video:{"source": [{"src": "https://avnode.net"+list.media.file, "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}},
-            poster: list.imageFormats.large,
-            subHtml: '<h4>'+list.title+'</h4>',
-          }];
-          LG = lightGallery($dynamicGallery, {
-            dynamic: true,
-            download: false,
-            plugins: [
-              lgVideo
-            ],
-            dynamicEl: dynamicEl
-          });
-        }
-        LG.openGallery(0);
-      /* })
-      .fail(function(err) {
-        console.log("LOADING ERROR");
-      });*/
+      const data = $(this).data("src")
+      const list = data.videos && data.videos[0] ? data.videos[0] : data;
+      const $dynamicGallery = document.getElementById('lightGallery');
+      if (list.media.iframe) {
+        const dynamicEl = [{
+          src:list.media.iframe,
+          subHtml: '<h4>'+list.title+'</h4>',
+        }];
+        LG = lightGallery($dynamicGallery, {
+          iframe: true,
+          dynamic: true,
+          download: false,
+          plugins: [
+            lgVideo
+          ],
+          dynamicEl: dynamicEl
+        });
+      } else {
+        var dynamicEl = [{
+          video:{"source": [{"src": "https://avnode.net"+list.media.file, "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}},
+          poster: list.imageFormats.large,
+          subHtml: '<h4>'+list.title+'</h4>',
+        }];
+        LG = lightGallery($dynamicGallery, {
+          dynamic: true,
+          download: false,
+          plugins: [
+            lgVideo
+          ],
+          dynamicEl: dynamicEl
+        });
+      }
+      LG.openGallery(0);
     }); 
   }
   
@@ -180,16 +161,13 @@ $(function() {
         LG.openGallery(0);
       })
       .fail(function(err) {
+        console.log(err);
         console.log("LOADING ERROR");
       });
     }); 
   }
   
   if ($( ".thumbnail" ).length) {
-    /* glink = $( ".thumbnail" ).map(function( item ) {
-      var cnt = $( this ).attr("data-src");
-      return (cnt);
-    }); */
     const list = $( ".thumbnail" );
     var dynamicEl = [];
     list.each(function() {
@@ -210,66 +188,9 @@ $(function() {
     });
     $('.thumbnail').click(function( event ) {
       event.preventDefault();
-
       dynamicGallery.openGallery($('.thumbnail').index(this));
     });
-    //dynamicGallery.openGallery(0);
-
   }
-  /* $('.gallery_item_wrapper a').click(function( event ) {
-    event.preventDefault();
-    $.ajax({
-      url: $(this).attr("href")+"?api=1",
-      method: "get"
-    })
-    .done(function(data) {
-      console.log(data)
-      const list = data.galleries && data.galleries[0] ? data.galleries[0] : data;
-      const $dynamicGallery = document.getElementById('lightGallery');
-      var dynamicEl = [];
-      for(var item in list.medias) {
-        dynamicEl.push({
-          src: list.medias[item].imageFormats.large,
-          thumb: list.medias[item].imageFormats.small,
-          subHtml: '<h4>'+list.medias[item].title+'</h4>',
-        });
-      }
-      console.log(dynamicEl)
-      const dynamicGallery = lightGallery($dynamicGallery, {
-          dynamic: true,
-          download: false,
-          plugins: [
-            lgZoom,
-            lgThumbnail
-          ],
-          dynamicEl: dynamicEl
-      });
-      dynamicGallery.openGallery(0);
-    })
-    .fail(function(err) {
-      console.log("LOADING ERROR");
-    });
-  });   */
-  //console.log(glink);
-  /* if (window.location.hash=="#app") {
-    var launchmyapp = {
-      "livecinemafestival.com" : "lcf",
-      "localhost:3002" : "lcf",
-      "liveperformersmeeting.net" : "lpm"
-    };
-    var param = window.location.pathname.split("/");
-    if (launchmyapp[window.location.host] && param[3]=="artists") {
-      var loc = "";
-      if (param[5]=="performances") {
-        loc = "loadPerf#"+window.location.pathname;
-      } else if (param[4]) {
-        loc = "loadArtist#"+window.location.pathname;
-      } else {
-        loc = "loadArtistsList";
-      }
-      location.href = launchmyapp[window.location.host]+'://'+loc;
-    }
-  } */
   if ($('#contact-form').length) {
     $('#contact-form').validator();
 
