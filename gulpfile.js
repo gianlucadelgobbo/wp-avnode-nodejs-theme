@@ -10,7 +10,6 @@ var config = {
 
 var tasklist = [
   'fonts_bs',
-  'css_avnode_bs',
   'css_chromosphere_bs',
   'css_fotonica_bs',
   'css_flyer_bs',
@@ -23,7 +22,6 @@ var tasklist = [
   'css_flxer_bs',
   'css_gianlucadelgobbo_bs',
   'css_pac_bs',
-  'compress_js_avnode',
   'compress_js_chromosphere',
   'compress_js_fotonica',
   'compress_js_flyer',
@@ -40,15 +38,6 @@ var tasklist = [
 const fonts_bs = () => {
   return gulp.src(config.bowerDir + '/bootstrap-sass/assets/fonts/bootstrap/**/*')
     .pipe(gulp.dest(config.publicDir + '/_common/fonts'));
-}
-
-const css_avnode_bs = () => {
-  return gulp.src('./gulp/sass/avnode/*.scss')
-    .pipe(sass({
-      outputStyle: 'compressed',
-      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
-    }))
-    .pipe(gulp.dest(config.publicDir + '/avnode/css'));
 }
 
 const css_chromosphere_bs = () => {
@@ -162,30 +151,12 @@ const css_pac_bs = () => {
 
 const compress_js = () => {
   return gulp.src([
-      './gulp/js/_common/socialGalleryPluginLite.js',
+      //'./gulp/js/_common/socialGalleryPluginLite.js',
       './gulp/js/_common/jquery-migrate.min.js',
       './gulp/js/_common/validator.js'
     ])
     .pipe(uglify({mangle: { reserved: ['glink'] } }))
     .pipe(gulp.dest(config.publicDir + '/_js/'));
-}
-
-const compress_js_avnode = () => {
-  return gulp.src([
-      config.npmDir + '/jquery/dist/jquery.min.js',
-      config.npmDir + '/popper.js/dist/popper.min.js',
-      config.npmDir + '/bootstrap/dist/js/bootstrap.min.js',
-      './gulp/js/_common/jquery.isotope.min.js',
-      './gulp/js/_common/imagesloaded.pkgd.min.js',
-      './gulp/js/_common/cookielawinfo.min.js',
-      './gulp/js/_common/swiper.js',
-      './gulp/js/_common/script.js',
-      //'./gulp/js/avnode/map.js',
-      './gulp/js/avnode/script.js'
-    ])
-    .pipe(concat('combo.min.js'))
-    .pipe(uglify({mangle: { reserved: ['glink'] } }))
-    .pipe(gulp.dest(config.publicDir + '/avnode/js/'));
 }
 
 const compress_js_chromosphere = () => {
@@ -196,6 +167,13 @@ const compress_js_chromosphere = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/chromosphere/script.js',
@@ -213,6 +191,13 @@ const compress_js_fotonica = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/fotonica/script.js',
@@ -230,6 +215,13 @@ const compress_js_flyer = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/flyer/script.js',
@@ -247,6 +239,13 @@ const compress_js_lcf = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/lcf/script.js',
@@ -264,6 +263,13 @@ const compress_js_linuxclub = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/linuxclub/script.js',
@@ -281,6 +287,13 @@ const compress_js_lpm = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     //'./gulp/js/lpm/map.js',
@@ -299,6 +312,13 @@ const compress_js_shockart = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/shockart/script.js',
@@ -314,13 +334,21 @@ const compress_js_vjtelevision = () => {
     config.npmDir + '/popper.js/dist/popper.min.js',
     config.npmDir + '/bootstrap/dist/js/bootstrap.min.js',
     './gulp/js/_common/jquery.isotope.min.js',
-    './gulp/js/_common/jquery-ui.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
+    /* 
+    './gulp/js/_common/jquery-ui.min.js',
     './gulp/js/_common/video.min.js',
     './gulp/js/_common/videojs-playlist.min.js',
-    './gulp/js/_common/videojs-logo.min.js',
+    './gulp/js/_common/videojs-logo.min.js', */
     './gulp/js/_common/script.js',
     './gulp/js/vjtelevision/script.js',
   ])
@@ -337,6 +365,13 @@ const compress_js_wam = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/wam/script.js',
@@ -354,6 +389,13 @@ const compress_js_flxer = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/flxer/script.js',
@@ -372,6 +414,13 @@ const compress_js_gianlucadelgobbo = () => {
     './gulp/js/_common/jquery.isotope.min.js',
     './gulp/js/_common/imagesloaded.pkgd.min.js',
     './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
     './gulp/js/_common/swiper.js',
     './gulp/js/_common/script.js',
     './gulp/js/gianlucadelgobbo/script.js',
@@ -393,8 +442,15 @@ const compress_js_pac = () => {
       './gulp/js/_common/video.min.js',
       './gulp/js/_common/videojs-playlist.min.js',
       './gulp/js/_common/videojs-logo.min.js',
-        './gulp/js/_common/script.js',
-      //'./gulp/js/pac/map.js',
+      config.npmDir + '/lightgallery/lightgallery.min.js',
+      config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+      config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+      config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+      config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+      config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+      config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
+      './gulp/js/_common/script.js',
+        //'./gulp/js/pac/map.js',
       './gulp/js/pac/script.js'
     ])
     .pipe(concat('combo.min.js'))
@@ -402,7 +458,7 @@ const compress_js_pac = () => {
     .pipe(gulp.dest(config.publicDir + '/pac/js/'));
 }
 
-gulp.task('default', gulp.series(compress_js,css_pac_bs,css_avnode_bs, css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_avnode, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, css_avnode_bs));
+gulp.task('default', gulp.series(compress_js,css_pac_bs,css_chromosphere_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_chromosphere, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo));
 //gulp.task('default', gulp.series(compress_js, compress_js_gianlucadelgobbo,css_gianlucadelgobbo_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flyer,css_flyer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flxer,css_flxer_bs));

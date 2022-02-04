@@ -1,7 +1,7 @@
 li.col-md-3.itemListElement(itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
   meta(itemprop='position', content=i)
   div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
-    a.thumbnail.videothumbnail(itemprop='url', data-src=JSON.stringify(item), href=basepath+item.slug+"/", title=item.title)
+    a.videothumbnail(itemprop='url', data-src=JSON.stringify(item), href=basepath+item.slug+"/", title=item.title)
       img.img-fluid(itemprop='image', src=item.imageFormats.small, alt=item.title)
     .caption(style='padding-right:15px;padding-left:15px;')
       .caption-body

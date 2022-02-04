@@ -21,6 +21,7 @@
     "instagram-node": "^0.5.8",
     "jquery": "^3.4.1",
     "jsonfile": "^6.1.0",
+    "lightgallery": "^2.1.0",
     "method-override": "^2.3.10",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",

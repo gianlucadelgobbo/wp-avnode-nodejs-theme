@@ -284,7 +284,7 @@ a:hover img {
 }
 
 /* TWITTER */
-#twCnt {position:fixed; bottom:0; width: 100%; z-index:2000; background-color:#000; padding:2px 15px 2px 5px;}
+#twCnt {position:fixed; bottom:0; width: 100%; z-index:1000; background-color:#000; padding:2px 15px 2px 5px;}
 #tw {overflow:hidden;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;}
 #tw .info{display:none;}
 #sc{background-color: #000  ;text-align: right;}
@@ -292,7 +292,7 @@ a:hover img {
 #tw #twitcker-bar div.box a {color: #999999;text-shadow:none;}
 #tw #twitcker-bar a.logo {top:2px;}
 #tw #twitcker-bar div.box {display: inline-block;background-color: rgb(0,0,0);background: none;margin:5px 11px 0 0;width: auto;float: none;position: relative;z-index: 2;-moz-border-radius:0;-webkit-border-radius:0;border-radius:0;-moz-box-shadow: none;-webkit-box-shadow: none;box-shadow: none;}
-#tw #twitcker-bar {height: 32px;width: 100%;background-color: rgb(0,0,0);background:none;border:0;overflow: hidden;z-index: 9999;-moz-box-shadow: none;-webkit-box-shadow: none;box-shadow: none;}
+#tw #twitcker-bar {height: 32px;width: 100%;background-color: rgb(0,0,0);background:none;border:0;overflow: hidden;z-index: 100;-moz-box-shadow: none;-webkit-box-shadow: none;box-shadow: none;}
 #twitcker-bar div.box {background:none;}
 @media (min-width: 768px) {
   #tw {overflow:hidden;margin-right:272px;}
