@@ -133,11 +133,13 @@ $(function() {
     $('.gallerythumbnail').click(function( event ) {
       event.preventDefault();
       if (LG) LG.destroy();
+      console.log("https://avnode.net/galleries/"+$(this).attr("href").split("gallery/")[1]+"?api=1");
       $.ajax({
         url: "https://avnode.net/galleries/"+$(this).attr("href").split("gallery/")[1]+"?api=1",
         method: "get"
       })
       .done(function(data) {
+        console.log(data);
         //const data = $(this).data("src")
         const list = data.galleries && data.galleries[0] ? data.galleries[0] : data;
         const $dynamicGallery = document.getElementById('lightGallery');
