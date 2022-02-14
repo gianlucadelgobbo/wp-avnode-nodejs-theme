@@ -4,11 +4,12 @@
     div 
       a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
         i.d-block.d-md-none(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
-        img.d-none.d-md-block(src="https://livecinemafestival.com/files/2021/05/LCF2021-logo.svg")
+        img.d-none.d-md-block(src="https://livecinemafestival.com/files/2022/02/LCF2022-logo.svg")
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
     .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
     div.d-none.d-sm-block
-      a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2021-rome/tickets/") TICKETS
+      //-a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2022-rome/tickets/") TICKETS
+      a.btn.btn-primary.disabled(title="TICKETS" href="#") TICKETS
     div
       button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#menu-main')
         span.sr-only Toggle navigation
@@ -25,7 +26,8 @@
           a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
       ul.list-inline.m-0
         li.list-inline-item
-          a(title="TICKETS" href=lang_preurl + "/editions/2021-rome/tickets/") TICKETS
+          //-a(title="TICKETS" href=lang_preurl + "/editions/2022-rome/tickets/") TICKETS
+          a.disabled(title="TICKETS" href=lang_preurl + "#") TICKETS
       ul.list-inline.m-0
         li.list-inline-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
           a#searchModalButton(href="/search/")
@@ -58,6 +60,7 @@
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
         .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2021-rome/gallery/') 2021 Rome
           a.dropdown-item(href='/editions/2020-rome/gallery/') 2020 Rome
           a.dropdown-item(href='/editions/2019-rome/gallery/') 2019 Rome
           a.dropdown-item(href='/editions/2018-rome/gallery/') 2018 Rome
@@ -68,6 +71,7 @@
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Videos"
         .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2021-rome/videos/') 2021 Rome
           a.dropdown-item(href='/editions/2020-rome/videos/') 2020 Rome
           a.dropdown-item(href='/editions/2019-rome/videos/') 2019 Rome
           a.dropdown-item(href='/editions/2018-rome/videos/') 2018 Rome
@@ -78,6 +82,7 @@
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Editions"
         .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2021-rome/') 2021 Rome
           a.dropdown-item(href='/editions/2020-rome/') 2020 Rome
           a.dropdown-item(href='/editions/2019-rome/') 2019 Rome
           a.dropdown-item(href='/editions/2018-rome/') 2018 Rome

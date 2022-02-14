@@ -50,7 +50,7 @@ header > h1 {
 }
 #navbar-top .navbar-brand {
   font-size: 47px;
-  margin: -20px 10px -20px 18px;
+  margin: -30px 10px -25px -10px;
 }
 .projects.h1 {
   font-size: 2.26rem;
@@ -161,7 +161,7 @@ header > h1 {
 @media (min-width: 768px) {
   #navbar-top .navbar-brand img {
     width: 190px;
-    margin:-8px 10px 0 10px;
+    margin:0 10px 0 10px;
   }
   #menu-main .form-inline {
     padding-right: 0;
