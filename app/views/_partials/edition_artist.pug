@@ -86,8 +86,8 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
           - var day_rooms = []
           each venueroom in day.rooms
             if venueroom.performances
-              - console.log("venueroom")
-              - console.log(venueroom.room)
+              //- console.log("venueroom")
+              //- console.log(venueroom.room)
               - var performances_new = []
               each item in venueroom.performances
                 if item.performance && item.performance.users.map(user =>{return user._id}).indexOf(result.avnode.performer._id)!=-1
@@ -95,13 +95,13 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                   //- venueroom.performances.splice(a, 1)
               - venueroom.performances = performances_new
               if venueroom.performances.length
-                - console.log("pusha")
-                - console.log(venueroom)
+                //- console.log("pusha")
+                //- console.log(venueroom)
                 - day_rooms.push(venueroom)
           - day.rooms = day_rooms
           if day.rooms.length
-            - console.log("pusha")
-            - console.log(venueroom)
+            //- console.log("pusha")
+            //- console.log(venueroom)
             - programmebydayvenue.push(day)
 
 
@@ -126,7 +126,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                             h4.program_category_title=item.schedule.starttimeTime +" // "+ venueroom.venue+" // "+venueroom.room                      
                           //if item.performance.users.map(user =>{return user._id}).indexOf(data.performer._id)!=-1
                           //include ../partials/boxPerformanceScheduled
-                          - console.log(item)
+                          //- console.log(item)
                           meta(itemprop='position', content=i)
                           div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
                             a(itemprop='url', href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+item.performance.slug+"/", title=item.performance.title)
