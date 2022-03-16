@@ -6,6 +6,7 @@ var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
 var codingRoutes = require('./_common/coding');
+var awardsRoutes = require('./_common/awards');
 
 module.exports = function(app) {
 
@@ -24,6 +25,10 @@ module.exports = function(app) {
   app.get('/it/coding/page/(:page)', codingRoutes.getAll);
   app.get('/it/coding/tags/(:tag)', codingRoutes.getTag);
 
+  app.get('/it/awards-and-grants/', awardsRoutes.getAll);
+  app.get('/it/awards-and-grants/(:award)', awardsRoutes.get);
+  app.get('/it/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+
   app.get('/it/', indexRoutes.get);
   app.get('/it/(:page)/page/:paging', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
@@ -39,6 +44,10 @@ module.exports = function(app) {
   app.get('/coding/(:web)', codingRoutes.get);
   app.get('/coding/page/(:page)', codingRoutes.getAll);
   app.get('/coding/tags/(:tag)', codingRoutes.getTag);
+
+  app.get('/awards-and-grants/', awardsRoutes.getAll);
+  app.get('/awards-and-grants/(:award)', awardsRoutes.get);
+  app.get('/awards-and-grants/page/(:page)', awardsRoutes.getAll);
 
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);

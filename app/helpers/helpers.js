@@ -121,7 +121,7 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
 
 exports.getPage = function getPage(req,callback) {
   //console.log("avnodeurl");
-  var A = ["performances","workshops","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
+  var A = ["performances","workshops","installations","lectures","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
   //console.log(url);
@@ -131,7 +131,7 @@ exports.getPage = function getPage(req,callback) {
   }, function(error, response, data) {
     //console.log("//// Page " + req.params.page);
     if (!error && data && data.ID) {
-      var A = ["performances","workshops","gallery","galleries","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
+      var A = ["performances","workshops","installations","lectures","gallery","galleries","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
       if (data) data = fnz.fixResult(data);
       /* if (data.posts){
         data.posts = fnz.fixResults(data.posts);
@@ -143,11 +143,11 @@ exports.getPage = function getPage(req,callback) {
           avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.page+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
           if (req.params.img) avnodeurl+= "img/"+req.params.img;
         } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page == "extra" ? "news"+"/"+req.params.subpage : req.params.page == "workshops" ? "learnings"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
+          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page == "extra" ? "news"+"/"+req.params.subpage : req.params.page == "workshops" ? "learnings"+"/"+req.params.subpage : req.params.page == "installations" ? "performances"+"/"+req.params.subpage : req.params.page == "lectures" ? "learnings"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        // console.log("avnodeurl "+avnodeurl);
+        console.log("avnodeurl "+avnodeurl);
         
         request({
           url: avnodeurl,
@@ -156,6 +156,8 @@ exports.getPage = function getPage(req,callback) {
           if (response.statusCode==200) {
             data.avnode = body;
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+            console.log ("basepath")
+            console.log (basepath)
             if (body.pages) {
               //console.log(body.pages)
               for (var item in body.pages) {
@@ -171,7 +173,7 @@ exports.getPage = function getPage(req,callback) {
               callback(data);
             } else  */
             if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-              //console.log("req.params.pagessssssssssss");
+              console.log("req.params.pagessssssssssss");
               //console.log(req.params.page);
               /* if (req.params.page == "events") data.event = body;
               if (req.params.page == "performances") data.performance = body;
@@ -183,7 +185,7 @@ exports.getPage = function getPage(req,callback) {
               if (body.data) body.events = body.data;
               //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              //console.log("shortcodify2"+basepath);
+              console.log("shortcodify2"+config.prefix);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });

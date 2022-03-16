@@ -48,6 +48,14 @@ exports.get = function get(req, res) {
             pug = config.prefix+'/workshops';
             basepath = "/workshops/" +req.params.subpage;
           }
+          if (req.params.subpage && req.params.page == "installations") {
+            pug = config.prefix+'/workshops';
+            basepath = "/installations/" +req.params.subpage;
+          }
+          if (req.params.subpage && req.params.page == "lectures") {
+            pug = config.prefix+'/workshops';
+            basepath = "/lectures/" +req.params.subpage;
+          }
           if (req.params.page == "news") pug = config.prefix+'/new';
           if (req.params.page == "extra") pug = config.prefix+'/new';
           if (req.params.page == "members") pug = config.prefix+'/member';
