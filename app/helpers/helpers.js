@@ -147,7 +147,7 @@ exports.getPage = function getPage(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        console.log("avnodeurl "+avnodeurl);
+        //console.log("avnodeurl "+avnodeurl);
         
         request({
           url: avnodeurl,
@@ -156,8 +156,6 @@ exports.getPage = function getPage(req,callback) {
           if (response.statusCode==200) {
             data.avnode = body;
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
-            console.log ("basepath")
-            console.log (basepath)
             if (body.pages) {
               //console.log(body.pages)
               for (var item in body.pages) {
@@ -173,7 +171,7 @@ exports.getPage = function getPage(req,callback) {
               callback(data);
             } else  */
             if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-              console.log("req.params.pagessssssssssss");
+              //console.log("req.params.pagessssssssssss");
               //console.log(req.params.page);
               /* if (req.params.page == "events") data.event = body;
               if (req.params.page == "performances") data.performance = body;
@@ -185,7 +183,7 @@ exports.getPage = function getPage(req,callback) {
               if (body.data) body.events = body.data;
               //console.log("shortcodify");
               var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              console.log("shortcodify2"+config.prefix);
+              //console.log("shortcodify2"+config.prefix);
               fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
                 callback(data);
               });
@@ -206,7 +204,7 @@ exports.getPage = function getPage(req,callback) {
 exports.getXMLlist = function getXMLlist(req,callback) {
   if (config.prefix=="flyer" && req.params.avnode=="news") req.params.avnode="extra";
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
-  console.log(url);
+  //console.log(url);
   request({
     url: url,
     json: true

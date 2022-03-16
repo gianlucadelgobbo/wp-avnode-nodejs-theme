@@ -1,7 +1,5 @@
 ul.lists.row(itemscope itemtype="http://schema.org/ItemList")
-  - console.log ("stocazzo")
   - var basepath = '/'+basepath+'/'
-  - console.log (basepath)
   each performance, i in body.performances
     - var css = "col-md-4"
     if (opts.params && performance.type.slug==opts.params) || !opts.params
