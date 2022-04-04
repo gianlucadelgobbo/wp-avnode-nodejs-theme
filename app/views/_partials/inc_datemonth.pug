@@ -2,8 +2,9 @@
   .dates
     .dateheadline(itemprop="headline")
       i.icon-calendar-check-o
-      !=" "
-      !=result.avnode.creation_dateFormatted+" "
+      if result.avnode.creation_dateFormatted
+        !=" "
+        !=result.avnode.creation_dateFormatted+" "
     if (result.post_name=="lab")
       meta(itemprop="foundingDate", content=result.datePublished)
     else

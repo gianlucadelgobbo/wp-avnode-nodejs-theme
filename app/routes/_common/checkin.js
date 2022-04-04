@@ -99,7 +99,6 @@ exports.post = function post(req, res) {
 
 exports.list = function list(req, res) {
   Reservation.find({}, function(err, reservations) {
-    console.log(reservations);
     res.render('gianlucadelgobbo/checkin_list', {comuni:comuni, nazioni,nazioni, docs: docs, myget: req.query, reservations: reservations});
   });
 }
