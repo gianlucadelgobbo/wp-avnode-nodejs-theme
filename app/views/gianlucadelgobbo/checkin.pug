@@ -24,9 +24,9 @@ html(lang='en')
               label.form-label(for="mytype")="Tipo Alloggiato"
               select#mytype.form-select(name="guesttype" disabled=(myget.guests && myget.guests==1 ? "disabled" : undefined))
                 option(value="0")="Tipo Alloggiato"
-                if myget.guests && myget.guests==1
+                if myget.guests && parseInt(myget.guests)==1
                   option(value="16" selected="selected")="OSPITE SINGOLO"
-                else if myget.guests && myget.guests>1
+                else if myget.guests && parseInt(myget.guests)>1
                   option(value="17")="CAPO FAMIGLIA"
                   option(value="18")="CAPO GRUPPO"
                 else 
@@ -39,10 +39,10 @@ html(lang='en')
               label.form-label(for="guestsnumber")="Numero di persone"
               select#guestsnumber.form-select(name="guestsnumber" disabled=(myget.guests && parseInt(myget.guests)>0 ? "disabled" : undefined))
                 option(value="0")="Numero di persone"
-                option(value="1" selected=(myget.guests == "1" ? "selected" : undefined))="1"
-                option(value="2" selected=(myget.guests == "2" ? "selected" : undefined))="2"
-                option(value="3" selected=(myget.guests == "3" ? "selected" : undefined))="3"      
-                option(value="4" selected=(myget.guests == "4" ? "selected" : undefined))="4"
+                option(value="1" selected=(myget.guests && parseInt(myget.guests) == 1 ? "selected" : undefined))="1"
+                option(value="2" selected=(myget.guests && parseInt(myget.guests) == 2 ? "selected" : undefined))="2"
+                option(value="3" selected=(myget.guests && parseInt(myget.guests) == 3 ? "selected" : undefined))="3"      
+                option(value="4" selected=(myget.guests && parseInt(myget.guests) == 4 ? "selected" : undefined))="4"
               .invalid-feedback
         .row
           .col-md-6
@@ -52,11 +52,13 @@ html(lang='en')
               .invalid-feedback
           .col-md-6
             .mb-3
+              - console.log(myget.nights)
+              - console.log(parseInt(myget.nights))
               label.form-label(for="days")="Numero Giorni di Permanenza"
               select#days.form-select(name="days" disabled=(myget.nights && parseInt(myget.nights)>0 ? "disabled" : undefined))
                 option(value="0")="Numero Giorni di Permanenzae"
                 - for (var a=1; a<31;a++)
-                  option(value=a selected=(myget.nights == a ? "selected" : undefined))=a
+                  option(value=a selected=(myget.nights && parseInt(myget.nights) == a ? "selected" : undefined))=a
               .invalid-feedback
         #single(class=(myget.guests && myget.guests=="1" ?  undefined : "d-none"))
           .clone
