@@ -16,6 +16,7 @@ module.exports = function(app) {
 
   app.get('/checkin', checkinRoutes.get);
   app.post('/checkin', checkinRoutes.post);
+  app.get('/checkin/list', checkinRoutes.list);
   
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);

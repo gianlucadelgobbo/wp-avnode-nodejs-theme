@@ -63,7 +63,7 @@ const Guest = new Schema({
       return re.test(email)
     }, 'EMAIL_IS_NOT_VALID']
   },
-  phome: String
+  phone: String
 },{ _id : false });
 
 const Reservation = mongoose.model('Guest',{
@@ -95,4 +95,11 @@ exports.post = function post(req, res) {
     console.log(error);
     res.json(error);
   }); 
+}
+
+exports.list = function list(req, res) {
+  Reservation.find({}, function(err, reservations) {
+    console.log(reservations);
+    res.render('gianlucadelgobbo/checkin_list', {comuni:comuni, nazioni,nazioni, docs: docs, myget: req.query, reservations: reservations});
+  });
 }
