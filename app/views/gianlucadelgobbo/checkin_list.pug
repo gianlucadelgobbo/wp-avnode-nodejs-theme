@@ -33,12 +33,14 @@ html(lang='en')
           .mb-3
             if guest.birthmunicipality && guest.birthmunicipality!="0"
               !=guest.birthmunicipality + " | " + comuni[comuni.map(function(item) {return item.code}).indexOf(guest.birthmunicipality)].city
-          .mb-3=guest.doctype + " | " + docs[docs.map(function(item) {return item.code}).indexOf(guest.doctype)].doc
-          .mb-3=guest.docnumber
-          .mb-3=guest.doccountry + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.doccountry)].country
           .mb-3
-            if guest.docmunicipality && guest.docmunicipality!="0"
-              !=guest.docmunicipality + " | " + comuni[comuni.map(function(item) {return item.code}).indexOf(guest.docmunicipality)].city
+            if guest.doctype && guest.doctype!="0"
+              !=guest.doctype + " | " + docs[docs.map(function(item) {return item.code}).indexOf(guest.doctype)].doc
+              .mb-3=guest.docnumber
+              .mb-3=guest.doccountry + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.doccountry)].country
+              .mb-3
+                if guest.docmunicipality && guest.docmunicipality!="0"
+                  !=guest.docmunicipality + " | " + comuni[comuni.map(function(item) {return item.code}).indexOf(guest.docmunicipality)].city
           .mb-3=guest.email
           .mb-3=guest.phone
           hr
