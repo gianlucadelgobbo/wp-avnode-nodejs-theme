@@ -8,10 +8,15 @@ var metaRoutes = require('./_common/meta');
 var codingRoutes = require('./_common/coding');
 var awardsRoutes = require('./_common/awards');
 
+var checkinRoutes = require('./_common/checkin');
+
 module.exports = function(app) {
 
   app.get('/', indexRoutes.get);
 
+  app.get('/checkin', checkinRoutes.get);
+  app.post('/checkin', checkinRoutes.post);
+  
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);
   app.get('/sitemap.xml', sitemapRoutes.get);

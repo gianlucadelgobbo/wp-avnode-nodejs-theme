@@ -24,6 +24,7 @@
     "lightgallery": "^2.1.0",
     "method-override": "^2.3.10",
     "moment": "^2.24.0",
+    "mongoose": "^6.2.9",
     "morgan": "^1.9.1",
     "nib": "^1.1.2",
     "popper.js": "^1.15.0",

@@ -34,7 +34,8 @@ module.exports = function(app, exp) {
     saveUninitialized: true,
     cookie: { secure: false, maxAge: 3600000 }
   }));
-  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json()); // for parsing application/json
+  app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
   //app.use(cookieParser());
   //app.use(methodOverride());
   app.use(i18n.init);

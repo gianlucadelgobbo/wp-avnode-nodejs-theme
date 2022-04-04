@@ -1,0 +1,284 @@
+doctype html
+//- /checkin/?code=short code start[confirmation code]short code end&listing={{Listing name}}&checkin={{Check-in date}}&nights={{Number of nights}}&guests={{Number of guests}}&name={{Guest’s first name}}&surname={{Guest’s last name}}&phone={{Guest’s phone number}}
+html(lang='en')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    // Bootstrap CSS
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+    title="MAXXI"
+  body
+    nav.navbar
+      .container-fluid
+        a.navbar-brand(href='#')="MAXXI"
+        // Button trigger modal
+        button.btn.btn-primary#insertModalButton(type='button')=btntitle
+    .container
+      form
+        input.guesttype.form-control(type="text" name="reservation" value=myget.code)
+        input.listing.form-control(type="text" name="listing" value=myget.listing)
+        .row
+          .col-md-6
+            .mb-3
+              label.form-label(for="mytype")="Tipo Alloggiato"
+              select#mytype.form-select(name="guesttype" disabled=(myget.guests && myget.guests==1 ? "disabled" : undefined))
+                option(value="0")="Tipo Alloggiato"
+                if myget.guests && myget.guests==1
+                  option(value="16" selected="selected")="OSPITE SINGOLO"
+                else if myget.guests && myget.guests>1
+                  option(value="17")="CAPO FAMIGLIA"
+                  option(value="18")="CAPO GRUPPO"
+                else 
+                  option(value="16")="OSPITE SINGOLO"
+                  option(value="17")="CAPO FAMIGLIA"
+                  option(value="18")="CAPO GRUPPO"
+              .invalid-feedback
+          .col-md-6
+            .mb-3#guestscnt(class=(myget.guests && parseInt(myget.guests)>1 ?  undefined : "d-none"))
+              label.form-label(for="guestsnumber")="Numero di persone"
+              select#guestsnumber.form-select(name="guestsnumber" disabled=(myget.guests && parseInt(myget.guests)>0 ? "disabled" : undefined))
+                option(value="0")="Numero di persone"
+                option(value="1" selected=(myget.guests == "1" ? "selected" : undefined))="1"
+                option(value="2" selected=(myget.guests == "2" ? "selected" : undefined))="2"
+                option(value="3" selected=(myget.guests == "3" ? "selected" : undefined))="3"      
+                option(value="4" selected=(myget.guests == "4" ? "selected" : undefined))="4"
+              .invalid-feedback
+        .row
+          .col-md-6
+            .mb-3
+              label.form-label(for="arrival")="Data Arrivo (gg/mm/aaaa)"
+              input#arrival.form-control(type="text" name="arrival" value=myget.checkin)
+              .invalid-feedback
+          .col-md-6
+            .mb-3
+              label.form-label(for="days")="Numero Giorni di Permanenza"
+              select#days.form-select(name="days" disabled=(myget.nights && parseInt(myget.nights)>0 ? "disabled" : undefined))
+                option(value="0")="Numero Giorni di Permanenzae"
+                - for (var a=1; a<31;a++)
+                  option(value=a selected=(myget.nights == a ? "selected" : undefined))=a
+              .invalid-feedback
+        #single(class=(myget.guests && myget.guests=="1" ?  undefined : "d-none"))
+          .clone
+            h3="Ospite 1"
+            input.guesttype.form-control(type="text" name="guests[0][guesttype]" value=myget.guests && (myget.guests)=="1" ?  16 : undefined)
+            .row
+              .col-md-4
+                .mb-3
+                  label.form-label(for="name")="Nome"
+                  input#name_0.form-control(type="text" name="guests[0][name]" value=myget.name)
+                  .invalid-feedback
+              .col-md-4
+                .mb-3
+                  label.form-label(for="surname_0")="Cognome"
+                  input#surname_0.form-control(type="text" name="guests[0][surname]" value=myget.surname)
+                  .invalid-feedback
+              .col-md-4
+                .mb-3
+                  label.form-label(for="gender_0")="Sesso"
+                  select#gender_0.form-select(name="guests[0][gender]")
+                    option(value="0")="Sesso"
+                    option(value="M")="M"
+                    option(value="F")="F"      
+                  .invalid-feedback
+            .row
+              .col-md-4
+                .mb-3
+                  label.form-label(for="citizenship_0")="Cittadinanza"
+                  select#citizenship_0.form-select(name="guests[0][citizenship]")
+                    option(value="0")="Cittadinanza"
+                    each country in nazioni
+                      option(value=country.code)=country.country
+                  .invalid-feedback
+              .col-md-4
+                .mb-3
+                  label.form-label(for="birthdate_0")="Data Nascita"
+                  input#birthdate_0.form-control(type="text" name="guests[0][birthdate]")
+                  .invalid-feedback
+              .col-md-4
+                .mb-3
+                  label.form-label(for="birthcountry_0")="Stato Nascita"
+                  select#birthcountry_0.form-select.country(name="guests[0][birthcountry]")
+                    option(value="0")="Stato Nascita"
+                    each country in nazioni
+                      option(value=country.code)=country.country
+                  .invalid-feedback
+                .comune.d-none
+                  .mb-3
+                    label.form-label(for="birthmunicipality_0")="Comune Nascita"
+                    select#birthmunicipality_0.form-select(name="guests[0][birthmunicipality]")
+                      option(value="")="Comune Nascita"
+                      each city in comuni
+                        option(value=city.code)=city.city
+                    .invalid-feedback
+                    input.form-control(type="text" name="guests[0][birthprovince]")
+          .row
+            .col-md-4
+              .mb-3
+                label.form-label(for="doctype_0")="Tipo Documento"
+                select#doctype_0.form-select(name="guests[0][doctype]")
+                  option(value="")="Tipo Documento"
+                  each doc in docs
+                    option(value=doc.code)=doc.doc
+                .invalid-feedback
+            .col-md-4
+              .mb-3
+                label.form-label(for="docnumber_0")="Numero Documento"
+                input#docnumber_0.form-control(type="text" name="guests[0][docnumber]")
+                .invalid-feedback
+            .col-md-4
+              .mb-3
+                label.form-label(for="doccountry_0")="Luogo Rilascio Documento"
+                select.country#doccountry_0.form-select(name="guests[0][doccountry]")
+                  option(value="")="Stato Rilascio Documento"
+                  each country in nazioni
+                    option(value=country.code)=country.country
+                .invalid-feedback
+              .comune.d-none
+                .mb-3
+                  label.form-label(for="docmunicipality_0")="Comune Rilascio Documento"
+                  select#docmunicipality_0.form-select(name="guests[0][docmunicipality]")
+                    option(value="")="Comune Rilascio Documento"
+                    each city in comuni
+                      option(value=city.code)=city.city
+                  .invalid-feedback
+          .row
+            .col-md-6
+              .mb-3
+                label.form-label(for="email_0")="Email"
+                input#email_0.form-control(type="text" name="guests[0][email]")
+                .invalid-feedback
+            .col-md-6
+              .mb-3
+                label.form-label(for="phone_0")="Telefono (Meglio se con Whatsapp)"
+                input#phone_0.form-control(type="text" name="guests[0][phone]" value=myget.phone)
+                .invalid-feedback
+
+        #lista
+
+        .mb-3
+          button#submit.btn.btn-primary(type="button" disabled="disabled")="INVIA"
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')
+    script(guesttype='text/javascript' src='https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js')
+    script.
+      var comuni = !{JSON.stringify(comuni)}
+      function getFormData($form){
+        var disabled = $( "select:disabled" );
+          disabled.prop("disabled", false);
+          var unindexed_array = $form.serializeArray();
+          var indexed_array = {};
+
+          $.map(unindexed_array, function(n, i){
+              indexed_array[n['name']] = n['value'];
+          });
+          disabled.prop("disabled", "disabled");
+
+          return indexed_array;
+      }
+      function validate(data){
+          return true;
+      }
+      function maybeClone(){
+          if ( $("#mytype").val()=="0" || $("#guestsnumber").val()=="0") {
+            $("#single").addClass("d-none")
+            $("#submit").prop("disabled", "disabled")
+          } else {
+            $("#single").removeClass("d-none")
+            $("#lista").html("")
+            $("#submit").removeAttr("disabled")
+            //$(".clone").find(".guesttype").val($(".guesttype").val())
+            for (var a=1; a<$("#guestsnumber").val();a++) {
+              var myclone = $(".clone").clone();
+              myclone.removeClass("clone")
+              myclone.find("h3").text(myclone.find("h3").text().replace("1", a+1))
+              myclone.find(".guesttype").val(myclone.find(".guesttype").val()=="17" ? "19" : "20")
+              myclone.find("select").each(function(){
+                $(this).attr("id", $(this).attr("id").replace("0", a))
+                $(this).attr("name", $(this).attr("name").replace("0", a))
+              });
+              myclone.find("label").each(function(){
+                $(this).attr("for", $(this).attr("for").replace("0", a))
+              });
+              myclone.find("input").each(function(){
+                if($(this).attr("id")) $(this).attr("id", $(this).attr("id").replace("0", a))
+                $(this).attr("name", $(this).attr("name").replace("0", a))
+              });
+              $("#lista").append(myclone);
+            }
+            $(".country")  
+            .change(function () {
+              if ($(this).val()=="100000100") {
+                $(this).parent().parent().find(".comune").removeClass("d-none");
+              }
+            });
+
+            $(".comune select")  
+            .change(function () {
+              $(this).parent().find("input").val(comuni[comuni.map(function(item) {return item.code}).indexOf($(this).val())].province)
+              console.log(comuni[comuni.map(function(item) {return item.code}).indexOf($(this).val())].province)
+            });
+          }
+      }
+      $(function() {
+        maybeClone();
+        $( ".is-invalid" ).focus(function() {
+          console.log(this)
+          $(this).removeClass("is-invalid")
+          $(this).parent().find(".invalid-feedback").html("")
+        });
+        $("#submit")  
+        .click(function () {
+          var data = getFormData($("form"));
+
+          if (validate(data)) {
+            $.ajax({
+              url: "/checkin",
+              method: "post",
+              data: data
+            }).fail(function(err) {
+              console.log(err)
+            }).done(function(doc) {
+              console.log(doc);
+              if (doc.errors) {
+                for(var item in doc.errors) {
+                  var select = item;
+                  if (select.indexOf(".")!=-1) select = select.replace(".","[").replace(".","][")+"]";
+
+                  $("[name='"+select+"']").addClass("is-invalid")
+                  $("[name='"+select+"']").parent().find(".invalid-feedback").text(doc.errors[item].message);
+                  console.log($("[name='"+select+"']"));
+                  console.log(select);
+                  console.log(item);
+                  console.log(item.indexOf("."));
+                  console.log(doc.errors[item].message);
+                }
+                $( ".is-invalid" ).focus(function() {
+                  console.log(this)
+                  $(this).removeClass("is-invalid")
+                  $(this).parent().find(".invalid-feedback").html("")
+                });
+              }
+            });
+          }
+        });
+
+        $("#mytype")  
+        .change(function () {
+          if ($(this).val()==0 || $(this).val()==16) {
+             $("#guestscnt").addClass("d-none")
+          } else {
+             $("#guestscnt").removeClass("d-none")
+          }
+          $(".clone .guesttype").val($(this).val())
+          if ($(this).val()=="16") $("#guestsnumber").val(1)
+          maybeClone()
+          console.log($(this).val())
+        });
+
+        $("#guestsnumber")  
+        .change(function () {
+          maybeClone()
+        });
+      })
+    // Modal
