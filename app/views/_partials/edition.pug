@@ -22,10 +22,10 @@ article#container
         }
       if (page_data.url.indexOf("/workshops/") == page_data.url.length - 11)
         br
-        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of the FREE workshops include ONLY the submissions approved till today and their schedule may change.<br />The list of workshop with a fee is FINAL and you can buy it!<br /> <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/participate/\">PARTICIPATE</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of the FREE workshops include ONLY the submissions approved till today and their schedule may change.<br />The list of workshop with a fee is FINAL and you can buy it!<br /> <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/call-to-participate/\">PARTICIPATE</a>"
       else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
         br
-        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of acts include ONLY the submissions approved till today and their schedule will be available soon.<br /><b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/participate/\">PARTICIPATE</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of acts include ONLY the submissions approved till today and their schedule will be available soon.<br /><b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/call-to-participate/\">PARTICIPATE</a>"
     if (config.last_edition_status == "approving")
       style.
         .schedule {
@@ -33,10 +33,10 @@ article#container
         }
       if (page_data.url.indexOf("/artists/") == page_data.url.length - 9)
         br
-        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/call-to-participate/as-visitor/\">BUY A TICKET</a>"
       else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
         br
-        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/participate/as-visitor/\">BUY A TICKET</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/call-to-participate/as-visitor/\">BUY A TICKET</a>"
     if (config.last_edition_status == "programming")
       style.
         .schedule {
