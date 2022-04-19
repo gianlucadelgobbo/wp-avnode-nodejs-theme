@@ -47,7 +47,7 @@ html(lang='en')
         .row
           .col-md-6
             .mb-3
-              label.form-label(for="arrival")="Data Arrivo (gg/mm/aaaa)"
+              label.form-label(for="arrival")="Data Arrivo (mm/gg/aaaa)"
               input#arrival.form-control(type="text" name="arrival" value=myget.checkin)
               .invalid-feedback
           .col-md-6
@@ -94,7 +94,7 @@ html(lang='en')
                   .invalid-feedback
               .col-md-4
                 .mb-3
-                  label.form-label(for="birthdate_0")="Data Nascita"
+                  label.form-label(for="birthdate_0")="Data Nascita (mm/gg/aaaa)"
                   input#birthdate_0.form-control(type="text" name="guests[0][birthdate]")
                   .invalid-feedback
               .col-md-4

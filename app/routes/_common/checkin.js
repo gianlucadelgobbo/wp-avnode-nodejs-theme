@@ -1,6 +1,7 @@
 const comuni = require('../includes/comuni.js');
 const nazioni = require('../includes/nazioni.js');
 const docs = require('../includes/docs.js');
+const type = require('../includes/type.js');
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -79,7 +80,7 @@ const Reservation = mongoose.model('Guest',{
 });
 
 exports.get = function get(req, res) {
-  res.render('gianlucadelgobbo/checkin', {comuni:comuni, nazioni,nazioni, docs: docs, myget: req.query});
+  res.render('gianlucadelgobbo/checkin', {comuni:comuni, nazioni,nazioni, docs: docs, type: type, myget: req.query});
 }
 exports.post = function post(req, res) {
   console.log(req.body);
@@ -99,6 +100,6 @@ exports.post = function post(req, res) {
 
 exports.list = function list(req, res) {
   Reservation.find({}, function(err, reservations) {
-    res.render('gianlucadelgobbo/checkin_list', {comuni:comuni, nazioni,nazioni, docs: docs, myget: req.query, reservations: reservations});
+    res.render('gianlucadelgobbo/checkin_list', {comuni:comuni, nazioni,nazioni, docs: docs, type: type, myget: req.query, reservations: reservations});
   });
 }

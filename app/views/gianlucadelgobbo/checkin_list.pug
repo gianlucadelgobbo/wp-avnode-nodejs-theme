@@ -17,30 +17,87 @@ html(lang='en')
     .container
       each reservation, i in reservations
         each guest, ii in reservation.guests
+          - var str = ""
           .mb-3=reservation.reservation
           .mb-3=reservation.listing
-          .mb-3=reservation.arrival
-          .mb-3=reservation.days
           .mb-3=reservation.guestsnumber
-          .mb-3=guest.guesttype
-          .mb-3=guest.name
+
+          .mb-3=guest.guesttype + " | " + type[type.map(function(item) {return item.code}).indexOf(guest.guesttype)].doc
+          - str+= guest.guesttype
+
+          .mb-3=reservation.arrival
+          - str+= ('0' + reservation.arrival.getDate()).slice(-2) + '/' + ('0' + (reservation.arrival.getMonth()+1)).slice(-2) + '/' + reservation.arrival.getFullYear();
+          
+          .mb-3=reservation.days
+          - str+= ('0' + reservation.days).slice(-2);
+          
           .mb-3=guest.surname
+          - str+= guest.surname
+          - if (str.length > 64) str =str.substring(0,64)
+          - while(str.length < 64) str =str+"."
+
+          .mb-3=guest.name
+          - str+= guest.name
+          - if (str.length > 94) str =str.substring(0,94)
+          - while(str.length < 94) str =str+"."
+
           .mb-3=guest.gender
-          .mb-3=guest.citizenship + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.citizenship)].country
+          - str+= guest.gender
+
           .mb-3=guest.birthdate
-          .mb-3=guest.birthcountry + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.birthcountry)].country
-          .mb-3=guest.birthprovince
-          .mb-3
-            if guest.birthmunicipality && guest.birthmunicipality!="0"
+          - str+= ('0' + guest.birthdate.getDate()).slice(-2) + '/' + ('0' + (guest.birthdate.getMonth()+1)).slice(-2) + '/' + guest.birthdate.getFullYear();
+
+          if guest.birthmunicipality && guest.birthmunicipality!="0"
+            .mb-3
               !=guest.birthmunicipality + " | " + comuni[comuni.map(function(item) {return item.code}).indexOf(guest.birthmunicipality)].city
+              - str+= guest.birthmunicipality
+              .mb-3=guest.birthprovince
+              - str+= guest.birthprovince
+          else
+            - str+= "........."
+            - str+= ".."
+
+          .mb-3=guest.birthcountry + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.birthcountry)].country
+          - str+= guest.birthcountry
+
+          .mb-3=guest.citizenship + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.citizenship)].country
+          - str+= guest.citizenship
+
+
+
           .mb-3
             if guest.doctype && guest.doctype!="0"
               !=guest.doctype + " | " + docs[docs.map(function(item) {return item.code}).indexOf(guest.doctype)].doc
+              - str+= guest.doctype
+
               .mb-3=guest.docnumber
+              - str+= guest.docnumber
+              - if (str.length > 159) str =str.substring(0,159)
+              - while(str.length < 159) str =str+"."
+
               .mb-3=guest.doccountry + " | " + nazioni[nazioni.map(function(item) {return item.code}).indexOf(guest.doccountry)].country
+              - str+= guest.doccountry
+
               .mb-3
                 if guest.docmunicipality && guest.docmunicipality!="0"
                   !=guest.docmunicipality + " | " + comuni[comuni.map(function(item) {return item.code}).indexOf(guest.docmunicipality)].city
+            else
+              - if (str.length > 168) str =str.substring(0,168)
+              - while(str.length < 168) str =str+"."
+
+          code=str+" "+str.length
+          table.table
+            tr
+              - var a=0
+              - while(a < 168)
+                td=a
+                - a++
+            tr
+              - a=0
+              - while(a < 168)
+                td=str[a]
+                - a++
+          - str+= "end"
           .mb-3=guest.email
           .mb-3=guest.phone
           hr
