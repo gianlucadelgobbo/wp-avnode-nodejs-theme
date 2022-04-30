@@ -16,9 +16,9 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
         display: none
       }
     if (page_data.url.indexOf("/artists/") == page_data.url.length - 9)
-      .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/as-visitor/\">BUY A TICKET</a>"
+      .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/visitors/\">BUY A TICKET</a>"
     else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
-      .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/as-visitor/\">BUY A TICKET</a>"
+      .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/visitors/\">BUY A TICKET</a>"
   if (sessions.current_edition == config.last_edition && config.last_edition_status == "programming")
     style.
       .schedule {
