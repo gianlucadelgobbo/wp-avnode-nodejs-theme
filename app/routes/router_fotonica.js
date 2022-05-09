@@ -6,7 +6,7 @@ var editionsRoutes = require('./_common/editions');
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
-var Recaptcha = require('express-recaptcha').RecaptchaV3
+var Recaptcha = require('express-recaptcha').RecaptchaV2
 //import Recaptcha from 'express-recaptcha'
 var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
 
