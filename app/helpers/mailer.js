@@ -22,7 +22,7 @@ const utf8 = require('utf8');
 
  */
 exports.send = function send(server, message, callback) {
-  message.html = "<html>"+message.text+"</html>";
+  message.text = message.text.replace(new RegExp("&#x2F;", 'g'),"/");
   //console.log("SEND");
   var e = [];
   var c = [];
