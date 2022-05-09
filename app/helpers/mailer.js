@@ -1,4 +1,6 @@
 var email = require('emailjs');
+const utf8 = require('utf8');
+
 /*
  {
     text: req.body.text,
@@ -19,7 +21,8 @@ var email = require('emailjs');
   });
 
  */
-exports.send = function send(server, message, callback) {
+exports.send = function send(server, m, callback) {
+  var message = utf8.encode(m);
   //console.log("SEND");
   var e = [];
   var c = [];

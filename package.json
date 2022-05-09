@@ -32,6 +32,7 @@
     "request": "^2.88.0",
     "shortcode-parser": "0.0.1",
     "stylus": "^0.54.5",
+    "utf8": "^3.0.0",
     "videojs-logo": "^2.0.0",
     "wpapi": "^1.2.2"
   },
