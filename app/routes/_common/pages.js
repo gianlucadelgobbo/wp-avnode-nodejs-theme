@@ -74,9 +74,6 @@ exports.get = function get(req, res) {
         }
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-          console.log(pug);
-          /* var Recaptcha = require('express-recaptcha').RecaptchaV3;
-          var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' }); */
           result.countries = require('../../helpers/country-list');
           result.body = {};
           result.captcha = res.recaptcha
@@ -96,8 +93,6 @@ exports.get = function get(req, res) {
 };
 
 exports.post = function post(req, res) {
-  /* var Recaptcha = require('express-recaptcha').RecaptchaV3;
-  var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key); */
   var request = require("request");
   if (req.body.formtype == "join") {
     var mailer = require('../../helpers/mailer');

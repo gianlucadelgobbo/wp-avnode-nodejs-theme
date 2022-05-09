@@ -18,7 +18,9 @@ var pagesRoutes = require('./_common/pages'); */
 /*
  var searchRoutes = require('./routes/search');
  */
-
+ var Recaptcha = require('express-recaptcha').RecaptchaV2
+ var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
+ 
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
   app.post('/*.php', pagesRoutes.get404);
@@ -128,9 +130,9 @@ module.exports = function(app) {
   app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/it/(:page)', pagesRoutes.get);
+  app.get('/it/(:page)', recaptcha.middleware.render, pagesRoutes.get);
   
-  app.post('/it/(:page)', pagesRoutes.post);
+  app.post('/it/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
 
   app.get('/web-and-apps/', webRoutes.getAll);
   app.get('/web-and-apps/tags/', webRoutes.getAllTags);
@@ -148,9 +150,9 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/tools', pagesRoutes.getTools);
-  app.get('/(:page)', pagesRoutes.get);
+  app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
   
-  app.post('/(:page)', pagesRoutes.post);
+  app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 
