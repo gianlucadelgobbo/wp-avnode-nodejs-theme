@@ -6,6 +6,9 @@ var editionsRoutes = require('./_common/editions');
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
+var Recaptcha = require('express-recaptcha').RecaptchaV3
+//import Recaptcha from 'express-recaptcha'
+var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
 
 module.exports = function(app) {
   app.get('/it', function(req, res) {res.redirect(301, '/')});
@@ -22,6 +25,7 @@ module.exports = function(app) {
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
   app.get('/en/', indexRoutes.get);
+  app.get('/en/contacts', recaptcha.middleware.render, pagesRoutes.get);
   app.get('/en/editions/(:edition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)', editionsRoutes.get);
@@ -34,8 +38,10 @@ module.exports = function(app) {
   app.get('/en/(:page)', pagesRoutes.get);
 
   app.post('/en/signup', signupRoutes.post);
+  app.post('/en/contacts', recaptcha.middleware.verify, pagesRoutes.post);
   app.post('/en/(:page)', pagesRoutes.post);
 
+  //app.get('/contacts', recaptcha.middleware.render, pagesRoutes.get);
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
@@ -46,9 +52,11 @@ module.exports = function(app) {
   app.get('/(:page)/page/:paging', pagesRoutes.get);
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
+  app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
   
   app.post('/signup', signupRoutes.post);
+  app.post('/en/contacts', recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 };

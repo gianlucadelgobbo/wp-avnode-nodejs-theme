@@ -74,12 +74,12 @@ exports.get = function get(req, res) {
         }
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-          //console.log(pug);
-          var Recaptcha = require('express-recaptcha').Recaptcha;
-          var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
+          console.log(pug);
+          /* var Recaptcha = require('express-recaptcha').RecaptchaV3;
+          var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' }); */
           result.countries = require('../../helpers/country-list');
           result.body = {};
-          result.captcha = recaptcha.render()
+          result.captcha = res.recaptcha
           var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
@@ -96,8 +96,8 @@ exports.get = function get(req, res) {
 };
 
 exports.post = function post(req, res) {
-  var Recaptcha = require('express-recaptcha').Recaptcha;
-  var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
+  /* var Recaptcha = require('express-recaptcha').RecaptchaV3;
+  var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key); */
   var request = require("request");
   if (req.body.formtype == "join") {
     var mailer = require('../../helpers/mailer');
@@ -219,7 +219,7 @@ exports.post = function post(req, res) {
       } */
     }
   );
-} else if (req.body.formtype == "newsletter") {
+  } else if (req.body.formtype == "newsletter") {
     helpers.validateFormNewsletter(req.body, function(e, o) {
       if (req.body.ajax) {
         //console.log("ajaxajaxajaxajaxajaxajax");
@@ -333,74 +333,75 @@ exports.post = function post(req, res) {
       }
     });
   } else {
-    recaptcha.verify(req, function(error, data){
-      if(!error) {
-        var mailer = require('../../helpers/mailer');
-        var message = {
-          text: __('New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}', { name: req.body.name, email:req.body.email, message:req.body.message, website:config.domain+req.url}),
-          from: config.accounts.emails.defaults[req.params.page].from_name+' <'+ config.accounts.emails.defaults[req.params.page].from_email + ">",
-          to: config.accounts.emails.defaults[req.params.page].to_name+' <'+config.accounts.emails.defaults[req.params.page].to_email+'>',
-          cc: '',
-          subject: __('[{{project_name}} Mailer] New Messagge from {{name}}', { name: req.body.name, project_name:config.project_name}),
-          /*subject: req.body.subject,
-          attachment: [
-            {data:req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br />'), alternative:true},
-            {path:req.body.folderfile, type:"application/pdf", name:req.body.file}
-          ]*/
-        };
-        helpers.validateFormEmail(req.body, function(e, o) {
-          if (req.body.ajax) {
-            if (e.length) {
-              var estr = "<ul>";
-              for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
-              estr+= "</ul>";
-              res.status(200).send({type:"danger", message: estr});
-            } else {
-              mailer.send(config.accounts.emails.gmail, message, function(e, c){
-                if (e.length) {
-                  res.status(200).send({type:"danger", message: e[0].m});
-                } else {
-                  res.status(200).send({type:"success", message: c[0].m});
-                }
-              });
-            }
+    console.log("recaptcha.verify")
+    if(!req.recaptcha.error) {
+      var mailer = require('../../helpers/mailer');
+      var message = {
+        text: __('New Messagge from: {{name}} <{{email}}>\n\n{{message}}\n\nMessagge sent from {{website}}', { name: req.body.name, email:req.body.email, message:req.body.message, website:config.domain+req.url}),
+        from: config.accounts.emails.defaults[req.params.page].from_name+' <'+ config.accounts.emails.defaults[req.params.page].from_email + ">",
+        to: config.accounts.emails.defaults[req.params.page].to_name+' <'+config.accounts.emails.defaults[req.params.page].to_email+'>',
+        cc: '',
+        subject: __('[{{project_name}} Mailer] New Messagge from {{name}}', { name: req.body.name, project_name:config.project_name}),
+        /*subject: req.body.subject,
+        attachment: [
+          {data:req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br />'), alternative:true},
+          {path:req.body.folderfile, type:"application/pdf", name:req.body.file}
+        ]*/
+      };
+      helpers.validateFormEmail(req.body, function(e, o) {
+        if (req.body.ajax) {
+          if (e.length) {
+            var estr = "<ul>";
+            for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
+            estr+= "</ul>";
+            res.status(200).send({type:"danger", message: estr});
           } else {
-            helpers.setSessions(req, function() {
-              helpers.getPage(req, function( result ) {
-                var page_data = fnz.setPageData(req, result);
-                if(result && result['ID']) {
-                  var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
-                  var check = pug.split("/")[1];
-                  if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                    result.countries = require('../../helpers/country-list');
-                    result.body = {};
-                    var form = pug.split("_")[1];
-                    pug = "avnode/page";
-                  }
-                  if (e.length) {
-                    result.body = o;
-                    res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                  } else {
-                    mailer.send(config.accounts.emails.gmail, message, function(e, c){
-                      if (e.length) {
-                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                      } else {
-                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                      }
-                    });
-                  }
-                } else {
-                  res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-                }
-              });
+            mailer.send(config.accounts.emails.gmail, message, function(e, c){
+              if (e.length) {
+                res.status(200).send({type:"danger", message: e[0].m});
+              } else {
+                res.status(200).send({type:"success", message: c[0].m});
+              }
             });
           }
-        });
-      } else {
-        var estr = "<ul><li>Captcha error ("+error+")</li></ul>";
-        res.status(200).send({type:"danger", message: estr});
-      }
-    });
+        } else {
+          helpers.setSessions(req, function() {
+            helpers.getPage(req, function( result ) {
+              var page_data = fnz.setPageData(req, result);
+              if(result && result['ID']) {
+                var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
+                var check = pug.split("/")[1];
+                if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
+                  result.countries = require('../../helpers/country-list');
+                  result.body = {};
+                  var form = pug.split("_")[1];
+                  pug = "avnode/page";
+                }
+                if (e.length) {
+                  result.body = o;
+                  res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                } else {
+                  mailer.send(config.accounts.emails.gmail, message, function(e, c){
+                    if (e.length) {
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    } else {
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    }
+                  });
+                }
+              } else {
+                res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+              }
+            });
+          });
+        }
+      });
+    } else {
+      var estr = "<ul><li>Captcha error ("+req.recaptcha.error+")</li></ul>";
+      res.status(200).send({type:"danger", message: estr});
+    }
+   /*  recaptcha.verify(req, function(error, data){
+    }); */
   }
 };
 
