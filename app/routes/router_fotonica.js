@@ -38,8 +38,7 @@ module.exports = function(app) {
   app.get('/en/(:page)', pagesRoutes.get);
 
   app.post('/en/signup', signupRoutes.post);
-  app.post('/en/contacts', recaptcha.middleware.verify, pagesRoutes.post);
-  app.post('/en/(:page)', pagesRoutes.post);
+  app.post('/en/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
 
   //app.get('/contacts', recaptcha.middleware.render, pagesRoutes.get);
   app.get('/editions/(:edition)', editionsRoutes.get);
@@ -55,8 +54,7 @@ module.exports = function(app) {
   app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
   
   app.post('/signup', signupRoutes.post);
-  app.post('/en/contacts', recaptcha.middleware.verify, pagesRoutes.post);
-  app.post('/(:page)', pagesRoutes.post);
+  app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 };
