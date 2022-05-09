@@ -1,4 +1,4 @@
-var email = require('emailjs');
+import { SMTPClient } from 'emailjs';
 /*
  {
     text: req.body.text,
@@ -20,10 +20,10 @@ var email = require('emailjs');
 
  */
 exports.send = function send(server, message, callback) {
-  //console.log("SEND");
+  console.log("SEND");
   var e = [];
   var c = [];
-  var myserver = email.server.connect(server);
+  var myserver = new SMTPClient(server);
   myserver.send(message, function (err, message) {
     //console.log(err);
     //console.log(message);
