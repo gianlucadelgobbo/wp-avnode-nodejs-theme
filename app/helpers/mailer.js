@@ -21,8 +21,8 @@ const utf8 = require('utf8');
   });
 
  */
-exports.send = function send(server, m, callback) {
-  var message = utf8.encode(m);
+exports.send = function send(server, message, callback) {
+  message.text = utf8.encode(message.text);
   //console.log("SEND");
   var e = [];
   var c = [];
