@@ -73,6 +73,7 @@ var request = require('request');
 exports.post = function(req, res){
   let formData = req.body;
   formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
+  formData.api_key = config.accounts.newsletter.api_key;
   formData.SiteFrom = config.prefix;
   formData.boolean = true;
 
@@ -81,6 +82,8 @@ exports.post = function(req, res){
   // form data
   var postData = querystring.stringify(formData);
   
+  console.log("stocazzo")
+  console.log(formData)
   request({
     method: 'POST',
     url: config.accounts.newsletter.url+"/subscribe",

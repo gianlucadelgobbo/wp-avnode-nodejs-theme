@@ -229,6 +229,7 @@ exports.post = function post(req, res) {
           }
           let formData = req.body;
           formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
+          formData.api_key = config.accounts.newsletter.api_key;
           formData.SiteFrom = config.prefix;
           formData.boolean = true;
         
