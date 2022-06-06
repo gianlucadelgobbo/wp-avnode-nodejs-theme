@@ -126,6 +126,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                       if venueroom.performances
                         each item in venueroom.performances
                           if venueroom.room && venueroom.performances.length
+                            - if (config.siae_on_off=="on") venueroom.room = venueroom.room.replace(new RegExp("DJ Sets", "g"), "Live Sets")
                             h4.program_category_title=item.schedule.starttimeTime +" // "+ venueroom.venue+" // "+venueroom.room                      
                           //if item.performance.users.map(user =>{return user._id}).indexOf(data.performer._id)!=-1
                           //include ../partials/boxPerformanceScheduled
@@ -137,6 +138,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
                             p
                             h3(itemprop='name')
                               a(href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+item.performance.slug+"/", title=item.performance.title)!=item.performance.title
+                            - if (config.siae_on_off=="on") item.performance.type.name = item.performance.type.name.replace(new RegExp("DJ Set", "g"), "Live Set")
                             p.type=item.performance.type.name
                             //each booking in item.performance.bookings
                               each schedule in booking.schedule
