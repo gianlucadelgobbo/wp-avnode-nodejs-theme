@@ -8,6 +8,7 @@ ul.navbar-nav
             span.sr-only Toggle Dropdown
           .dropdown-menu
             each child in menu.childs
+              - if (config.siae_on_off=="on") child.post_title = child.post_title.replace(new RegExp("VJ-DJ Sets", "g"), "AV Lives")
               a.dropdown-item(class=child.post_status == 'publish' ? (page_data.url == lang_preurl+child.permalink ? "active" : undefined) : "disabled" href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)!=child.post_title
     else
       li.nav-item(class=menu.post_status == 'publish' ? (page_data.url == menu.permalink ? "active" : undefined) : "disabled")

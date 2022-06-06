@@ -59,6 +59,7 @@ html(lang='en')
           .row
             .col-md-6.pt-1
               if result
+                - if (config.siae_on_off=="on") page_data.title = page_data.title.replace(new RegExp("VJ-DJ Sets", "g"), "AV Lives")
                 h1.d-inline!=page_data.title
                 include ../_partials/components/share_span
             .col-md-6(itemscope, itemtype='http://schema.org/Event')

@@ -1,5 +1,6 @@
 article#container
   if result.post_content!=""
+    - if (config.siae_on_off=="on") result.post_content = result.post_content.replace(new RegExp("VJ / DJ sets", "g"), "AV Live")
     .row
       .col-md-8
         .main-cnt
