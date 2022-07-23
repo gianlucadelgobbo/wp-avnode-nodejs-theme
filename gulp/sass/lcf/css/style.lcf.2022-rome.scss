@@ -238,9 +238,13 @@ footer.navbar-inverse {
     display: table-cell;
   }
   .caption-type{
-    color: #00FFFF;
+    color: $edition;
   }
   #wpID89079 .caption-title {
     font-size: 28px;
     margin-top: 0;
+}
+
+.lists.row {
+	margin-bottom: 1rem !important;
 }
