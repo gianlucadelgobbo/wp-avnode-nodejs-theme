@@ -33,7 +33,7 @@
           a#searchModalButton(href="/search/")
             i.icon-search
             .sr-only=global.__("Search")
-    ul.list-unstyled.p-5.h3.m-0
+    ul.list-unstyled.p-5.h3.m-0.text-right
       each menu, i in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
         li(class=(page_data.url === lang_preurl+menu.permalink ? "active" : "")+(i+1<config.meta.editions[sessions.current_edition].menu[sessions.current_lang].length ? " pb-3" : ""))
           a(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
@@ -48,7 +48,7 @@
                   a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
     .px-5.py-2.navbar-lang 
       include socials
-    ul.list-unstyled.p-5.m-0
+    ul.list-unstyled.p-5.m-0.text-right
       li.nav-item(class=page_data.url.indexOf(lang_preurl+'/concept') == 0 ? "active" : undefined)
         a.nav-link(href=lang_preurl+'/concept/') Concept
       li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') == 0 ? "active" : undefined)
@@ -60,6 +60,7 @@
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
         .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2022-rome/gallery/') 2022 Rome
           a.dropdown-item(href='/editions/2021-rome/gallery/') 2021 Rome
           a.dropdown-item(href='/editions/2020-rome/gallery/') 2020 Rome
           a.dropdown-item(href='/editions/2019-rome/gallery/') 2019 Rome
@@ -71,6 +72,7 @@
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Videos"
         .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2022-rome/videos/') 2022 Rome
           a.dropdown-item(href='/editions/2021-rome/videos/') 2021 Rome
           a.dropdown-item(href='/editions/2020-rome/videos/') 2020 Rome
           a.dropdown-item(href='/editions/2019-rome/videos/') 2019 Rome
@@ -82,6 +84,7 @@
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Editions"
         .dropdown-menu(role='menu')
+          a.dropdown-item(href='/editions/2022-rome/') 2022 Rome
           a.dropdown-item(href='/editions/2021-rome/') 2021 Rome
           a.dropdown-item(href='/editions/2020-rome/') 2020 Rome
           a.dropdown-item(href='/editions/2019-rome/') 2019 Rome
