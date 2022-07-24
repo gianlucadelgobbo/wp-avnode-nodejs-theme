@@ -26,7 +26,7 @@ article#container(itemprop='performer', itemscope, itemtype='http://schema.org/P
       }
     if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
       .alert.alert-danger!=__("<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!")
-  if (sessions.current_edition == config.last_edition && config.last_edition_status == "done")
+  if (sessions.current_edition == config.last_edition && config.last_edition_status == "selling")
       br
       .alert.alert-success!="<b>ATTENTION LAST TICKETS AVAILABES</b> &nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
 
