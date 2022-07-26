@@ -8,8 +8,10 @@
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
     .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
     div.d-none.d-sm-block
-      //-a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2022-rome/tickets/") TICKETS
-      a.btn.btn-primary.disabled(title="TICKETS" href="#") TICKETS
+      if (config.last_edition_status == "selling")
+        a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2022-rome/tickets/") TICKETS
+      else 
+        a.btn.btn-primary.disabled(title="TICKETS" href="#") TICKETS
     div
       button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#menu-main')
         span.sr-only Toggle navigation
