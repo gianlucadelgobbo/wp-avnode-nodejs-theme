@@ -31,25 +31,25 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                         p.price="Price: "
                           a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
                             b=schedule.price+",00 € | "+ global.__('BUY NOW')
-                if booking.schedule.length && booking.schedule[0].paypal && new Date(booking.schedule[0].endtime)>=new Date()
-                  .row
-                    .col
-                      p
-                        if booking.schedule[0].price
-                          !="Price: <b>"+booking.schedule[0].price+",00 €</b>"
-                          if booking.schedule[0].alleventschedulewithoneprice
-                            !=" | <b>"+global.__('PRICE INCLUDES ALL APPOINTMENTS')+"</b>"
-                          if booking.schedule[0].priceincludesothershows
-                            !=" | <b>"+global.__('PRICE IS FOR THE FULL DAY')+"</b>"
-                        else
-                          !="<b>"+global.__('Free admission with reservations required')+"</b>"
-                    .col
-                      if booking.schedule[0].paypal.indexOf("https")!==-1
-                        a.btn.btn-lg.btn-primary(href=booking.schedule[0].paypal target="_blank")
-                          if booking.schedule[0].price
-                            b=booking.schedule[0].price+",00 € | "+ global.__('BUY NOW')
-                          else
-                            b=global.__('BOOK NOW')
+                    if booking.schedule.length && schedule.paypal && new Date(schedule.endtime)>=new Date()
+                      .row
+                        .col
+                          p
+                            if schedule.price
+                              !="Price: <b>"+schedule.price+",00 €</b>"
+                              if schedule.alleventschedulewithoneprice
+                                !=" | <b>"+global.__('PRICE INCLUDES ALL APPOINTMENTS')+"</b>"
+                              if schedule.priceincludesothershows
+                                !=" | <b>"+global.__('PRICE IS FOR THE FULL DAY')+"</b>"
+                            else
+                              !="<b>"+global.__('Free admission with reservations required')+"</b>"
+                        .col
+                          if schedule.paypal.indexOf("https")!==-1
+                            a.btn.btn-lg.btn-primary(href=schedule.paypal target="_blank")
+                              if schedule.price
+                                b=schedule.price+",00 € | "+ global.__('BUY NOW')
+                              else
+                                b=global.__('BOOK NOW')
                       //-else
                         p(id='paybutton')
                         script.

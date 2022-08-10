@@ -423,7 +423,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      //console.log("avnodeurl "+avnodeurl);
+      console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
