@@ -6,3 +6,5 @@ localLogs
 config/*
 package-lock.json
 logs/*
+*.mp4
+

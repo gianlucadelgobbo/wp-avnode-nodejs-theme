@@ -13,6 +13,8 @@ module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);
   app.post('/*.php', pagesRoutes.get404);
 
+  app.get('/ar', pagesRoutes.getAR);
+
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/editions/2017-rome/artists/AshKoosha/performances/live-vr-show/', function(req, res) {res.redirect(301, '/editions/2017-rome/artists/AshKoosha/performances/live-av-show/')});
   app.get('/en/editions/2017-rome/artists/AshKoosha/performances/live-vr-show/', function(req, res) {res.redirect(301, '/en/editions/2017-rome/artists/AshKoosha/performances/live-av-show/')});

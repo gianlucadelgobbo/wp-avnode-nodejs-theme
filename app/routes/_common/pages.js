@@ -18,6 +18,10 @@ exports.getTools = function get(req, res) {
   });
 }
 
+exports.getAR = function get(req, res) {
+  res.render(config.prefix+'/ar', {});
+}
+
 exports.get = function get(req, res) {
   //console.log("req.params");
   //console.log(req.params);
