@@ -30,7 +30,7 @@ html
       // a-nft is the anchor that defines an Image Tracking entity
       // on 'url' use the path to the Image Descriptors created before.
       // the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball'
-      a-nft(type='nft' url=config.prefix+'/ar/2022/LCF2022-promo-1.iset' smooth='true' smoothcount='10' smoothtolerance='.01' smooththreshold='5')
+      a-nft(type='nft' url=config.prefix+'/ar/2022/LCF2022-promo-1' smooth='true' smoothcount='10' smoothtolerance='.01' smooththreshold='5')
         // as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity
         a-entity(gltf-model=config.prefix+'/ar/2022/LCF2022-promo-1.mp4' scale='5 5 5' position='50 150 0')
       // static camera that moves according to the device movemenents
