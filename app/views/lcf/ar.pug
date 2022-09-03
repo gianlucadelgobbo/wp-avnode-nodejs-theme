@@ -23,7 +23,7 @@ html
   body(style='margin: 0; overflow: hidden;')
     a-scene#scene(vr-mode-ui='enabled: false' loading-screen='enabled: false;' arjs='sourceType: webcam; debugUIEnabled: false;' embedded='' gesture-detector='')
       a-assets
-        video#vid(src=config.prefix+'/ar/2022/LCF2022-promo-1.mind.mp4' preload='auto' response-type='arraybuffer' loop='' crossorigin='' webkit-playsinline='' autoplay='' muted='' playsinline='')
+        video#vid(src=config.prefix+'/ar/2022/LCF2022-promo-1.mp4' preload='auto' response-type='arraybuffer' loop='' crossorigin='' webkit-playsinline='' autoplay='' muted='' playsinline='')
       a-marker#markerA(type='pattern' preset='custom' url=config.prefix+'/ar/2022/LCF2022-promo-1.patt' videohandler='' smooth='true' smoothcount='10' smoothtolerance='0.01' smooththreshold='5' raycaster='objects: .clickable' emitevents='true' cursor='fuse: false; rayOrigin: mouse;')
         a-video.clickable(src='#vid' scale='1 1 1' position='0 0.1 0' rotation='-90 0 0' gesture-handler='')
       a-entity(camera='')
