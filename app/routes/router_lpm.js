@@ -87,6 +87,56 @@ module.exports = function(app) {
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
   app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
 
+  app.get('/it/editions/(:edition)', function(req, res) {
+    console.log("stocazzo")
+    if (req.params.edition!="videomapping-pasolini-corviale") {
+      res.redirect(301, req.url.replace('/it',''))
+    } else {
+      editionsRoutes.get(req, res); 
+    }
+  });
+  app.get('/it/editions/(:edition)/artists/(:artist)', function(req, res) {
+    console.log("stocazzo")
+    if (req.params.edition!="videomapping-pasolini-corviale") {
+      res.redirect(301, req.url.replace('/it',''))
+    } else {
+      editionsRoutes.get(req, res); 
+    }
+  });
+  app.get('/it/editions/(:edition)/(:subedition)', function(req, res) {
+    console.log("stocazzo")
+    if (req.params.edition!="videomapping-pasolini-corviale") {
+      res.redirect(301, req.url.replace('/it',''))
+    } else {
+      editionsRoutes.get(req, res); 
+    }
+  });
+  app.get('/it/editions/(:edition)/program/detail/(:performance)', function(req, res) {
+    console.log("stocazzo")
+    if (req.params.edition!="videomapping-pasolini-corviale") {
+      res.redirect(301, req.url.replace('/it',''))
+    } else {
+      editionsRoutes.get(req, res); 
+    }
+  });
+  app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)', function(req, res) {
+    console.log("stocazzo")
+    if (req.params.edition!="videomapping-pasolini-corviale") {
+      res.redirect(301, req.url.replace('/it',''))
+    } else {
+      editionsRoutes.get(req, res); 
+    }
+  });
+  app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', function(req, res) {
+    console.log("stocazzo")
+    if (req.params.edition!="videomapping-pasolini-corviale") {
+      res.redirect(301, req.url.replace('/it',''))
+    } else {
+      editionsRoutes.get(req, res); 
+    }
+  });
+  app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
+
   /* app.get('/timeline', timelinemapRoutes.getTimeline);
   app.get('/timeline/(:year)/', timelinemapRoutes.getTimeline);
   app.get('/map', timelinemapRoutes.getMap); 

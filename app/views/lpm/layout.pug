@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html(lang=sessions.current_lang)
   - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
   head
     title!=page_data.headtitle
