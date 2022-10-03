@@ -69,7 +69,8 @@ html(lang=sessions.current_lang)
                   #next-edition-cnt
                     #next-edition!=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
                   #site-description-cnt
-                    #site-description=config.meta.headline[sessions.current_lang]
+                    if config.meta.editions[sessions.current_edition]['wpcf-sub-title'].indexOf("Corviale")===-1
+                      #site-description=config.meta.headline[sessions.current_lang]
                 .sr-only
                   include ../_partials/components/eventdateplace_meta
     .cnt(class=page_data.url == "/" ? "" : "container")
