@@ -82,8 +82,6 @@ exports.post = function(req, res){
   // form data
   var postData = querystring.stringify(formData);
   
-  console.log("stocazzo")
-  console.log(formData)
   request({
     method: 'POST',
     url: config.accounts.newsletter.url+"/subscribe",

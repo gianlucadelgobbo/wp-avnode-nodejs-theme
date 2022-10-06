@@ -2,7 +2,6 @@ var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
 
 exports.get = function get(req, res) {
-  console.log("stocazzo")
   helpers.setSessions(req, function() {
     helpers.getEdition(req, function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
