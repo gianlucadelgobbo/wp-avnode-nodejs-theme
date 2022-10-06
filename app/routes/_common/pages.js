@@ -76,12 +76,13 @@ exports.get = function get(req, res) {
             basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
           }            
         }
+        var form = "";
         var check = pug.split("/")[1];
         if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-          result.countries = require('../../helpers/country-list');
+          /* result.countries = require('../../helpers/country-list');
           result.body = {};
           result.captcha = res.recaptcha
-          var form = pug.split("_")[1];
+          var form = pug.split("_")[1]; */
           pug = config.prefix+"/page";
         }
         if (result.post_content.indexOf("class=\"ngg-gallery-thumbnail-box\"")!==-1) {
@@ -137,10 +138,11 @@ exports.post = function post(req, res) {
                   var page_data = fnz.setPageData(req, result);
                   var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
                   var check = pug.split("/")[1];
+                  var form = "";
                   if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                    result.countries = require('../../helpers/country-list');
+                    /* result.countries = require('../../helpers/country-list');
                     result.body = {};
-                    var form = pug.split("_")[1];
+                    var form = pug.split("_")[1];*/
                     pug = config.prefix+"/page";
                   }
                   if (e.length) {
@@ -193,11 +195,12 @@ exports.post = function post(req, res) {
             if (result.member) pug = config.prefix+'/member';
             if (result.partnership) pug = config.prefix+'/partnership';
             var check = pug.split("/")[1];
+            var form = "";
             if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-              result.countries = require('../../helpers/country-list');
+              /* result.countries = require('../../helpers/country-list');
               result.body = {};
               result.captcha = recaptcha.render()
-              var form = pug.split("_")[1];
+              var form = pug.split("_")[1]; */
               pug = config.prefix+"/page";
             }
             res.render(pug, {session_login: req.session.user, body: body, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
@@ -276,14 +279,15 @@ exports.post = function post(req, res) {
               if (result.member) pug = config.prefix+'/member';
               if (result.partnership) pug = config.prefix+'/partnership';
               //console.log(pug);
+              var form = "";
               var check = pug.split("/")[1];
               if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                var Recaptcha = require('express-recaptcha').Recaptcha;
+                /* var Recaptcha = require('express-recaptcha').Recaptcha;
                 var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
                 result.countries = require('../../helpers/country-list');
                 result.body = {};
                 result.captcha = recaptcha.render()
-                var form = pug.split("_")[1];
+                var form = pug.split("_")[1];*/
                 pug = config.prefix+"/page";
               }
               result.body = o;
@@ -370,11 +374,12 @@ exports.post = function post(req, res) {
               var page_data = fnz.setPageData(req, result);
               if(result && result['ID']) {
                 var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
+                var form = "";
                 var check = pug.split("/")[1];
                 if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                  result.countries = require('../../helpers/country-list');
+                  /* result.countries = require('../../helpers/country-list');
                   result.body = {};
-                  var form = pug.split("_")[1];
+                  var form = pug.split("_")[1]; */
                   pug = "avnode/page";
                 }
                 if (e.length) {

@@ -393,7 +393,7 @@ exports.getEdition = function getEdition(req,callback) {
   if (req.params.artist)        endpoint+="artists/";
   if (req.params.subedition)    endpoint+=req.params.subedition+'/';
   if (req.params.subsubedition) endpoint+=req.params.subsubedition+'/';
-  console.log("endpoint "+endpoint);
+  //console.log("endpoint "+endpoint);
   request({
     url: endpoint,
     json: true
@@ -423,7 +423,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      console.log("avnodeurl "+avnodeurl);
+      //console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
