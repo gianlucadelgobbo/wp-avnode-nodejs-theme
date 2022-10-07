@@ -24,7 +24,6 @@ module.exports = function(app) {
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
   app.get('/en/', indexRoutes.get);
-  app.get('/en/contacts', recaptcha.middleware.render, pagesRoutes.get);
   app.get('/en/editions/(:edition)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
   app.get('/en/editions/(:edition)/(:subedition)', editionsRoutes.get);
