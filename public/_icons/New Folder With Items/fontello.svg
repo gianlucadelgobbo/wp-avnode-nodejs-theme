@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2019 by original authors @ fontello.com</metadata>
 <defs>
 <font id="fontello" horiz-adv-x="1000" >
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -85,8 +85,6 @@
 <glyph glyph-name="flyer" unicode="&#xe844;" d="M631 293c19-19 14-54-11-79-17-17-39-24-57-21-24-31-71-61-109-64-71-8-140 38-178 59-51 28-156 55-243-110 32 83 85 125 112 141 88 53 181-41 257-53 49-8 99 14 130 55-5 19 2 43 20 61 25 25 60 30 79 11l0 0z m-230 55h97c0 101 82 183 183 183 101 0 183-82 183-183 0-101-82-183-183-183v-97c154 0 280 126 280 280 0 154-126 279-280 279-154 1-280-124-280-279l0 0z" horiz-adv-x="1000" />
 
 <glyph glyph-name="f" unicode="&#xe84b;" d="M1003 333l-207-54-394-75-8-31-62-251h-268l62 252-126 43 153 62 176 54-150 55 99 394h674l-100-245h-366l-28-110h375l-10-39 180-55z" horiz-adv-x="1000" />
-
-<glyph glyph-name="tiktok" unicode="&#xe84f;" d="M875 440a410 410 0 0 0-240 77v-349a318 318 0 1 0-274 314v-175a146 146 0 1 1 102-139v682l172 0a237 237 0 0 1 4-43h0a239 239 0 0 1 105-157 237 237 0 0 1 131-39z" horiz-adv-x="875" />
 
 <glyph glyph-name="link-ext" unicode="&#xf08e;" d="M786 332v-178q0-67-47-114t-114-47h-464q-67 0-114 47t-47 114v464q0 66 47 113t114 48h393q7 0 12-5t5-13v-36q0-8-5-13t-12-5h-393q-37 0-63-26t-27-63v-464q0-37 27-63t63-27h464q37 0 63 27t26 63v178q0 8 5 13t13 5h36q8 0 13-5t5-13z m214 482v-285q0-15-11-25t-25-11-25 11l-98 98-364-364q-5-6-13-6t-12 6l-64 64q-6 5-6 12t6 13l364 364-98 98q-11 11-11 25t11 25 25 11h285q15 0 25-11t11-25z" horiz-adv-x="1000" />
 

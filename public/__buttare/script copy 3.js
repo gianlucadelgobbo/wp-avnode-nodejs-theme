@@ -23,7 +23,7 @@ $(function() {
     }).done(function (data) {
       if (data.id) {
         $("#subscribe .alert").addClass("alert-success");
-        $('#subscribe .alert .msg').html("<strong>Congratulations!</strong> Your subscription was successful&nbsp;&nbsp;&nbsp;");
+        $('#subscribe .alert .msg').html("<strong>Congratulations!</strong> Please confirm your subscription in the email we have sent&nbsp;&nbsp;&nbsp;");
       } else {
         $("#subscribe .alert").addClass("alert-danger");
         $('#subscribe .alert .msg').html("<strong>Warning!</strong> "+data.title+"&nbsp;&nbsp;&nbsp;");

@@ -61,6 +61,10 @@ form#newsletter-form(method='post', action=page_data.url, role='form')
                 !=" " + item
               .help-block.with-errors
     .row
+      .col-md-12
+        if result.captcha
+          p!=result.captcha
+    .row
       .col-md-4
         input.btn.btn-success.btn-send(type='hidden', name='formtype', value='newsletter')
         input.btn.btn-success.btn-send(type='submit', value=global.__("Subscribe"))

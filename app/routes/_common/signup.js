@@ -72,7 +72,7 @@ var request = require('request');
 }; */
 exports.post = function(req, res){
   let formData = req.body;
-  formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
+  formData.list = config.accounts.newsletter.list;
   formData.api_key = config.accounts.newsletter.api_key;
   formData.SiteFrom = config.prefix;
   formData.boolean = true;
@@ -96,7 +96,7 @@ exports.post = function(req, res){
       res.status(200).send({type:"danger", message: __("Subscription failed")});
     } else {
       if (body === "1") {
-        res.status(200).send({type:"success", message: __("Your subscription was successful")});
+        res.status(200).send({type:"success", message: __("Please confirm your subscription in the email we have sent")});
       } else {
         res.status(200).send({type:"danger", message: body});
       }

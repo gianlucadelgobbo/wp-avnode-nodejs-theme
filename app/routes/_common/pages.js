@@ -76,13 +76,13 @@ exports.get = function get(req, res) {
             basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
           }            
         }
-        var form = "";
+        console.log(pug)
         var check = pug.split("/")[1];
-        if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-          /* result.countries = require('../../helpers/country-list');
+        if (check == "page_newsletter"/*  || check == "page_contacts" */ || check == "page_join") {
+          result.countries = require('../../helpers/country-list');
           result.body = {};
           result.captcha = res.recaptcha
-          var form = pug.split("_")[1]; */
+          var form = pug.split("_")[1];
           pug = config.prefix+"/page";
         }
         if (result.post_content.indexOf("class=\"ngg-gallery-thumbnail-box\"")!==-1) {
@@ -100,75 +100,74 @@ exports.get = function get(req, res) {
 exports.post = function post(req, res) {
   var request = require("request");
   if (req.body.formtype == "join") {
-    var mailer = require('../../helpers/mailer');
-    var message = {
-      text: __('New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}', { name: req.body.name, email:req.body.email, organization_name: req.body.organization_name, organization_country:req.body.organization_country, activity_description:req.body.activity_description, activity_list:req.body.activity_list, website:config.domain+req.url}),
-      from: config.accounts.emails.defaults[req.params.page].from_name+' <'+ config.accounts.emails.defaults[req.params.page].from_email + ">",
-      to: config.accounts.emails.defaults[req.params.page].to_name+' <'+config.accounts.emails.defaults[req.params.page].to_email+'>',
-      cc: '',
-      subject: __('[{{project_name}} Mailer] New Join from {{organization_name}}', { organization_name: req.body.organization_name, project_name:config.project_name}),
-      /*subject: req.body.subject,
-       attachment: [
-       {data:req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br />'), alternative:true},
-       {path:req.body.folderfile, type:"application/pdf", name:req.body.file}
-       ]*/
-    };
-    helpers.validateFormJoin(req.body, function(e, o) {
-      recaptcha.verify(req, function(error, data){
-        if(!error) {
-          if (req.body.ajax) {
-            if (e.length) {
-              var estr = "<ul>";
-              for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
-              estr+= "</ul>";
-              res.status(200).send({type:"danger", message: estr});
-            } else {
-              mailer.send(config.accounts.emails.gmail, message, function(e, c){
-                if (e.length) {
-                  res.status(200).send({type:"danger", message: e[0].m});
-                } else {
-                  res.status(200).send({type:"success", message: c[0].m});
-                }
-              });
-            }
+    console.log("recaptcha.verify")
+    if(!req.recaptcha.error) {
+      var mailer = require('../../helpers/mailer');
+      var message = {
+        text: __('New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}', { name: req.body.name, email:req.body.email, organization_name: req.body.organization_name, organization_country:req.body.organization_country, activity_description:req.body.activity_description, activity_list:req.body.activity_list, website:config.domain+req.url}),
+        from: config.accounts.emails.defaults[req.params.page].from_name+' <'+ config.accounts.emails.defaults[req.params.page].from_email + ">",
+        to: config.accounts.emails.defaults[req.params.page].to_name+' <'+config.accounts.emails.defaults[req.params.page].to_email+'>',
+        cc: '',
+        subject: __('[{{project_name}} Mailer] New Join from {{organization_name}}', { organization_name: req.body.organization_name, project_name:config.project_name}),
+        /*subject: req.body.subject,
+        attachment: [
+        {data:req.body.text.replace(/(?:\r\n|\r|\n)/g, '<br />'), alternative:true},
+        {path:req.body.folderfile, type:"application/pdf", name:req.body.file}
+        ]*/
+      };
+      helpers.validateFormJoin(req.body, function(e, o) {
+        if (req.body.ajax) {
+          if (e.length) {
+            var estr = "<ul>";
+            for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
+            estr+= "</ul>";
+            res.status(200).send({type:"danger", message: estr});
           } else {
-            helpers.setSessions(req, function() {
-              helpers.getPage(req, function( result ) {
-                if(result && result['ID']) {
-                  var page_data = fnz.setPageData(req, result);
-                  var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
-                  var check = pug.split("/")[1];
-                  var form = "";
-                  if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                    /* result.countries = require('../../helpers/country-list');
-                    result.body = {};
-                    var form = pug.split("_")[1];*/
-                    pug = config.prefix+"/page";
-                  }
-                  if (e.length) {
-                    result.body = o;
-                    res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                  } else {
-                    mailer.send(config.accounts.emails.gmail, message, function(e, c){
-                      if (e.length) {
-                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                      } else {
-                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                      }
-                    });
-                  }
-                } else {
-                  res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-                }
-              });
+            mailer.send(config.accounts.emails.gmail, message, function(e, c){
+              if (e.length) {
+                res.status(200).send({type:"danger", message: e[0].m});
+              } else {
+                res.status(200).send({type:"success", message: c[0].m});
+              }
             });
           }
         } else {
-          var estr = "<ul><li>Captcha error ("+error+")</li></ul>";
-          res.status(200).send({type:"danger", message: estr});
+          helpers.setSessions(req, function() {
+            helpers.getPage(req, function( result ) {
+              if(result && result['ID']) {
+                var page_data = fnz.setPageData(req, result);
+                var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
+                var check = pug.split("/")[1];
+                var form = "";
+                if (check == "page_newsletter" /* || check == "page_contacts"*/ || check == "page_join") {
+                  result.countries = require('../../helpers/country-list');
+                  result.body = {};
+                  var form = pug.split("_")[1];
+                  pug = config.prefix+"/page";
+                }
+                if (e.length) {
+                  result.body = o;
+                  res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                } else {
+                  mailer.send(config.accounts.emails.gmail, message, function(e, c){
+                    if (e.length) {
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    } else {
+                      res.render(pug, {session_login: req.session.user, result: result, msg:{c:c}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                    }
+                  });
+                }
+              } else {
+                res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+              }
+            });
+          });
         }
       });
-    });
+    } else {
+      var estr = "<ul><li>Captcha error ("+req.recaptcha.error+")</li></ul>";
+      res.status(200).send({type:"danger", message: estr});
+    }
   } else if (req.body.formtype == "login") {
     req.body.api = "1";
     request.post({
@@ -196,11 +195,11 @@ exports.post = function post(req, res) {
             if (result.partnership) pug = config.prefix+'/partnership';
             var check = pug.split("/")[1];
             var form = "";
-            if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-              /* result.countries = require('../../helpers/country-list');
+            if (check == "page_newsletter" /* || check == "page_contacts" */ || check == "page_join") {
+              result.countries = require('../../helpers/country-list');
               result.body = {};
               result.captcha = recaptcha.render()
-              var form = pug.split("_")[1]; */
+              var form = pug.split("_")[1]; 
               pug = config.prefix+"/page";
             }
             res.render(pug, {session_login: req.session.user, body: body, result: result, page_data: page_data, sessions: req.session.sessions, include_gallery: result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
@@ -214,7 +213,7 @@ exports.post = function post(req, res) {
       } else {
         var bodyObj = JSON.parse(body);
         if (bodyObj.id) {
-          res.status(200).send({type:"success", message: __("Congratulations! Your subscription was successful")});
+          res.status(200).send({type:"success", message: __("Congratulations! Please confirm your subscription in the email we have sent")});
         } else {
           res.status(200).send({type:"danger", message: __("Warning!")+" "+bodyObj.title});
         }
@@ -222,120 +221,126 @@ exports.post = function post(req, res) {
     }
   );
   } else if (req.body.formtype == "newsletter") {
-    helpers.validateFormNewsletter(req.body, function(e, o) {
-      if (req.body.ajax) {
-        //console.log("ajaxajaxajaxajaxajaxajax");
-        if (e.length) {
-          var estr = "<ul>";
-          for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
-          estr+= "</ul>";
-          res.status(200).send({type:"danger", message: estr});
-        } else {
-          if (Array.isArray(req.body.topics)){
-            req.body.Topics = req.body.topics.join(",");
-          }
-          let formData = req.body;
-          formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
-          formData.api_key = config.accounts.newsletter.api_key;
-          formData.SiteFrom = config.prefix;
-          formData.boolean = true;
-        
-          var querystring = require('querystring');
-          
-          // form data
-          var postData = querystring.stringify(formData);
-          
-          request({
-            method: 'POST',
-            url: config.accounts.newsletter.url+"/subscribe",
-            body: postData,
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'Content-Length': postData.length
+    console.log("recaptcha.verify")
+    if(!req.recaptcha.error) {
+      helpers.validateFormNewsletter(req.body, function(e, o) {
+        if (req.body.ajax) {
+          //console.log("ajaxajaxajaxajaxajaxajax");
+          if (e.length) {
+            var estr = "<ul>";
+            for(var item in e)  estr+= "<li>"+e[item].m+"</li>";
+            estr+= "</ul>";
+            res.status(200).send({type:"danger", message: estr});
+          } else {
+            if (Array.isArray(req.body.topics)){
+              req.body.Topics = req.body.topics.join(",");
             }
-          },
-          function(error, response, body){
-            //console.log(body)
-            if(error) {
-              res.status(200).send({type:"danger", message: __("Subscription failed")});
-            } else {
-              if (body === "1") {
-                res.status(200).send({type:"success", message: __("Your subscription was successful")});
-              } else {
-                res.status(200).send({type:"danger", message: body});
+            let formData = req.body;
+            formData.list = config.accounts.newsletter.list;
+            formData.api_key = config.accounts.newsletter.api_key;
+            formData.SiteFrom = config.prefix;
+            formData.boolean = true;
+            console.log(formData)
+            var querystring = require('querystring');
+            
+            // form data
+            var postData = querystring.stringify(formData);
+            
+            request({
+              method: 'POST',
+              url: config.accounts.newsletter.url+"/subscribe",
+              body: postData,
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': postData.length
               }
-            }
+            },
+            function(error, response, body){
+              //console.log(body)
+              if(error) {
+                res.status(200).send({type:"danger", message: __("Subscription failed")});
+              } else {
+                if (body === "1") {
+                  res.status(200).send({type:"success", message: __("Please confirm your subscription in the email we have sent")});
+                } else {
+                  res.status(200).send({type:"danger", message: body});
+                }
+              }
+            });
+          }
+        } else {
+          helpers.setSessions(req, function() {
+            helpers.getPage(req, function( result ) {
+              var page_data = fnz.setPageData(req, result);
+              if(result && result['ID']) {
+                var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
+                if (result.event) pug = config.prefix+'/event';
+                if (result.performance) pug = config.prefix+'/performance';
+                if (result.news) pug = config.prefix+'/new';
+                if (result.member) pug = config.prefix+'/member';
+                if (result.partnership) pug = config.prefix+'/partnership';
+                //console.log(pug);
+                var form = "";
+                var check = pug.split("/")[1];
+                if (check == "page_newsletter" /* || check == "page_contacts"*/ || check == "page_join") {
+                  var Recaptcha = require('express-recaptcha').Recaptcha;
+                  var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
+                  result.countries = require('../../helpers/country-list');
+                  result.body = {};
+                  result.captcha = recaptcha.render()
+                  var form = pug.split("_")[1];
+                  pug = config.prefix+"/page";
+                }
+                result.body = o;
+                if (e.length) {
+                  res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                } else {
+                  if (Array.isArray(req.body.topics)){
+                    req.body.Topics = req.body.topics.join(",");
+                  }
+                  let formData = req.body;
+                  formData.list = config.accounts.newsletter.list;
+                  formData.SiteFrom = config.prefix;
+                  formData.boolean = true;
+                
+                  var querystring = require('querystring');
+                  
+                  // form data
+                  var postData = querystring.stringify(formData);
+                  
+                  request({
+                    method: 'POST',
+                    url: config.accounts.newsletter.url+"/subscribe",
+                    body: postData,
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                      'Content-Length': postData.length
+                    }
+                  },
+                  function(error, response, body){
+                    //console.log(body)
+                    if(error) {
+                      res.status(200).send({type:"danger", message: __("Subscription failed")});
+                    } else {
+                      if (body === "1") {
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                      } else {
+                        res.render(pug, {session_login: req.session.user, result: result, msg:{e:[{m:__(body)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
+                      }
+                    }
+                  });
+                }
+              } else {
+                res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+              }
+            });
           });
         }
-      } else {
-        helpers.setSessions(req, function() {
-          helpers.getPage(req, function( result ) {
-            var page_data = fnz.setPageData(req, result);
-            if(result && result['ID']) {
-              var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
-              if (result.event) pug = config.prefix+'/event';
-              if (result.performance) pug = config.prefix+'/performance';
-              if (result.news) pug = config.prefix+'/new';
-              if (result.member) pug = config.prefix+'/member';
-              if (result.partnership) pug = config.prefix+'/partnership';
-              //console.log(pug);
-              var form = "";
-              var check = pug.split("/")[1];
-              if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                /* var Recaptcha = require('express-recaptcha').Recaptcha;
-                var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key);
-                result.countries = require('../../helpers/country-list');
-                result.body = {};
-                result.captcha = recaptcha.render()
-                var form = pug.split("_")[1];*/
-                pug = config.prefix+"/page";
-              }
-              result.body = o;
-              if (e.length) {
-                res.render(pug, {session_login: req.session.user, result: result, msg:{e:e}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-              } else {
-                if (Array.isArray(req.body.topics)){
-                  req.body.Topics = req.body.topics.join(",");
-                }
-                let formData = req.body;
-                formData.list = 'AXRGq2Ftn2Fiab3skb5E892g';
-                formData.SiteFrom = config.prefix;
-                formData.boolean = true;
-              
-                var querystring = require('querystring');
-                
-                // form data
-                var postData = querystring.stringify(formData);
-                
-                request({
-                  method: 'POST',
-                  url: config.accounts.newsletter.url+"/subscribe",
-                  body: postData,
-                  headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': postData.length
-                  }
-                },
-                function(error, response, body){
-                  //console.log(body)
-                  if(error) {
-                    res.status(200).send({type:"danger", message: __("Subscription failed")});
-                  } else {
-                    if (body === "1") {
-                      res.render(pug, {session_login: req.session.user, result: result, msg:{c:[{m:__("Subscription success!!!")}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                    } else {
-                      res.render(pug, {session_login: req.session.user, result: result, msg:{e:[{m:__(body)}]}, page_data:page_data, sessions:req.session.sessions,include_gallery:result.post_content.indexOf("nggthumbnail")>=0, itemtype:config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].itemtype ? config.sez.pages.conf[req.params.page].itemtype : config.sez.pages.conf.default.itemtype,q:req.query.q,form:form});
-                    }
-                  }
-                });
-              }
-            } else {
-              res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
-            }
-          });
-        });
-      }
-    });
+      });
+    } else {
+      var estr = "<ul><li>Captcha error ("+req.recaptcha.error+")</li></ul>";
+      res.status(200).send({type:"danger", message: estr});
+    }
   } else {
     console.log("recaptcha.verify")
     if(!req.recaptcha.error) {
@@ -376,10 +381,10 @@ exports.post = function post(req, res) {
                 var pug = config.prefix+'/'+(config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].pugpage ? config.sez.pages.conf[req.params.page].pugpage : config.sez.pages.conf.default.pugpage);
                 var form = "";
                 var check = pug.split("/")[1];
-                if (check == "page_newsletter" || check == "page_contacts" || check == "page_join") {
-                  /* result.countries = require('../../helpers/country-list');
+                if (check == "page_newsletter" /* || check == "page_contacts" */ || check == "page_join") {
+                  result.countries = require('../../helpers/country-list');
                   result.body = {};
-                  var form = pug.split("_")[1]; */
+                  var form = pug.split("_")[1];
                   pug = "avnode/page";
                 }
                 if (e.length) {

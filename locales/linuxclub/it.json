@@ -89,7 +89,7 @@
 	"There are some messages": "There are some messages",
 	"New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}": "New Join submission from: {{name}} <{{email}}>\n\nOrganization name: {{organization_name}}\n\nOrganization country: {{organization_country}}\n\nOrganization activity description\n{{activity_description}}\n\nActivities name list\n{{activity_list}}\n\nMessagge sent from {{website}}",
 	"[{{project_name}} Mailer] New Join from {{organization_name}}": "[{{project_name}} Mailer] New Join from {{organization_name}}",
-	"Congratulations! Your subscription was successful": "Congratulations! Your subscription was successful",
+	"Congratulations! Please confirm your subscription in the email we have sent": "Congratulations! Please confirm your subscription in the email we have sent",
 	"Please enter a valid Name": "Please enter a valid Name",
 	"Email is not an email": "Email is not an email",
 	"Please enter a valid Message": "Please enter a valid Message",
@@ -100,5 +100,6 @@
 	"Corporate": "Corporate",
 	"Surname": "Surname",
 	"Main topic is required": "Main topic is required",
-	"Partnerships": "Partnerships"
+	"Partnerships": "Partnerships",
+	"Please confirm your subscription in the email we have sent": "Please confirm your subscription in the email we have sent"
 }
