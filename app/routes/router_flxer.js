@@ -39,7 +39,7 @@ module.exports = function(app) {
   //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
   
   app.post('/(:page)/(:subpage)', pagesRoutes.post);
-  //app.post('/signup', signupRoutes.post);
+  app.post('/signup', signupRoutes.post);
 
 
   app.get('*', pagesRoutes.get404);
