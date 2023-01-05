@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,700');
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  background: rgba(0,0,0,1);
+  color: #FFF;
+}
+.grid-title {
+  background-color: #8400FF;
+  padding: 5px 8px;
+  letter-spacing: -1px;
+}
+.carousel a:hover img{
+  opacity: 1;
+  /* background-image: url(/lpm/images/slider/LPM2018-main-call_over.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;*/
+} 
+.home h1 {
+    text-transform: uppercase;
+    color: #8400FF;
+}
+.grid-title .text-muted {
+  color: #333 !important;
+}
