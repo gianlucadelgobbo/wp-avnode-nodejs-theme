@@ -4,13 +4,14 @@
     div 
       a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
         i.d-block.d-md-none(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
-        img.d-none.d-md-block(src="https://livecinemafestival.com/files/2022/02/LCF2022-logo.svg")
+        img.d-none.d-md-block(src=config.meta.editions[sessions.current_edition]['wpcf-header-image'])
+        //img.d-none.d-md-block(src="https://livecinemafestival.com/files/2022/02/LCF2022-logo.svg")
         .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
     .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
     div.d-none.d-sm-block
       if (config.last_edition_status == "selling")
-        a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2022-rome/tickets/") TICKETS
-      else 
+        a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2023-rome/tickets/") TICKETS
+      //-else 
         a.btn.btn-primary.disabled(title="TICKETS" href="#") TICKETS
     div
       button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#menu-main')
