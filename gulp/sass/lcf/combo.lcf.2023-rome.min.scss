@@ -1,0 +1,40 @@
+$edition:         #ff5416  !default;
+$primary:         #000000 !default;
+$border-radius:           0 !default;
+$border-radius-lg:        0 !default;
+$border-radius-sm:        0 !default;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1570px
+);
+$mynewcolor:#ff5416;
+
+@import "../_common/fontello";
+@import "../_common/fontello-animation";
+@import "../../../node_modules/lightgallery/scss/lightgallery-bundle";
+@import "../_common/cookielawinfo";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+.btn-primary {
+  @include button-variant($mynewcolor, darken($mynewcolor, 7.5%), darken($mynewcolor, 10%), lighten($mynewcolor,5%), lighten($mynewcolor, 10%), darken($mynewcolor,30%));
+}
+  
+.btn-outline-primary {
+  @include button-outline-variant($mynewcolor, #222222, lighten($mynewcolor,5%), $mynewcolor);
+}
+
+@import "../_common/swiper";
+@import "../_common/style";
+@import "./css/style.lcf";
+@import "./css/style.lcf.2023-rome";
