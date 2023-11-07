@@ -125,59 +125,60 @@ block content
       window.addEventListener("resize", onWindowResize);
       }
 
-  .embed-responsive.embed-responsive-16by9(style="margin-top:65px")
+  //-.embed-responsive.embed-responsive-16by9(style="margin-top:65px")
     //-iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F626116682118550%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
-    //iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F286073986690677%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
-    iframe.embed-responsive-item(width="560" height="315" src="https://www.youtube.com/embed/HUnmdsDFbVc?controls=0" title="LCF 2022 REPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen")
-  //-#mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
+      //iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F286073986690677%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
+      iframe.embed-responsive-item(width="560" height="315" src="https://www.youtube.com/embed/HUnmdsDFbVc?controls=0" title="LCF 2022 REPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen")
+  #mycarousel.carousel(data-ride='carousel', data-interval="false", style="z-index: 0;")
     // Wrapper for slides
     .carousel-inner
       .carousel-item.active
-        iframe(style="border:0" width="100%" height="100%" src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F837085809979657&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
-        img.d-none.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //script.
-          document.onload = function(){$("#mycarousel").pause()}
-      //.item.active.full-screen
-        img.d-block.w-100(src='/lpm/images/slider/LPM2019-call-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+        img.d-block.w-100(src='https://livecinemafestival.com/files/2023/05/cover_x.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
       .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-      .carousel-item
-        img.d-block.w-100(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-        //.carousel-caption
-          a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .embed-responsive.embed-responsive-16by9
+          iframe.embed-responsive-item(width="560" height="315" src="https://www.youtube.com/embed/HUnmdsDFbVc?controls=0" title="LCF 2022 REPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen")
+        //-img.d-none.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //script.
+            document.onload = function(){$("#mycarousel").pause()}
+      //-.carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
+        .carousel-item
+          img.d-block.w-100(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
+          //.carousel-caption
+            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
 
 
     // Indicators
     ol.carousel-indicators
       li.active(data-target='#mycarousel', data-slide-to='0')
       li(data-target='#mycarousel', data-slide-to='1')
-      li(data-target='#mycarousel', data-slide-to='2')
-      li(data-target='#mycarousel', data-slide-to='3')
-      li(data-target='#mycarousel', data-slide-to='4')
-      li(data-target='#mycarousel', data-slide-to='5')
-      li(data-target='#mycarousel', data-slide-to='6')
+      //-li(data-target='#mycarousel', data-slide-to='2')
+        li(data-target='#mycarousel', data-slide-to='3')
+        li(data-target='#mycarousel', data-slide-to='4')
+        li(data-target='#mycarousel', data-slide-to='5')
+        li(data-target='#mycarousel', data-slide-to='6')
 
     // Controls
     a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
