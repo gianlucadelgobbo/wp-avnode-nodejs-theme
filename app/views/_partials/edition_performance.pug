@@ -44,7 +44,10 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                             else
                               !="<b>"+global.__('Free admission with reservations required')+"</b>"
                         .col
-                          if schedule.paypal.indexOf("https")!==-1
+                          if schedule.paypal=="soldout"
+                            .caption-soldout
+                              !=global.__('SOLD OUT')
+                          if schedule.paypal && schedule.paypal!="soldout" && new Date(schedule.endtime)>=new Date()
                             a.btn.btn-lg.btn-primary(href=schedule.paypal target="_blank")
                               if schedule.price
                                 b=schedule.price+",00 € | "+ global.__('BUY NOW')

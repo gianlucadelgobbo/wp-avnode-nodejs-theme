@@ -32,11 +32,16 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
           if performance.type.name
             - if (config.siae_on_off=="on") performance.type.name = performance.type.name.replace(new RegExp("DJ Set", "g"), "AV Live")
             !=" | "+performance.type.name
-  if performance.schedule && performance.schedule.paypal && new Date(performance.schedule.endtime)>=new Date()
-    .caption-paypal
-      a(href=performance.schedule.paypal)
-        if performance.schedule.price
-          !=global.__('BUY NOW')
-        else
-          !=global.__('BOOK NOW')
+  if performance.schedule
+    if performance.schedule.paypal=="soldout"
+      .caption-soldout
+        !=global.__('SOLD OUT')
+    if performance.schedule.paypal && performance.schedule.paypal!="soldout" && new Date(performance.schedule.endtime)>=new Date()
+      .caption-paypal
+        a(href=performance.schedule.paypal)
+          if performance.schedule.price
+            !=global.__('BUY NOW')
+          else
+            !=global.__('BOOK NOW')
+    if performance.schedule.paypal && new Date(performance.schedule.endtime)>=new Date()
 
