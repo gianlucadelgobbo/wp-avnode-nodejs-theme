@@ -8,6 +8,7 @@ var editionsRoutes = require('./_common/editions');
 /* var eventsRoutes = require('./_common/events');
 var newsRoutes = require('./_common/news'); */
 var pagesRoutes = require('./_common/pages');
+var paypalRoutes = require('./_common/paypal');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
 
@@ -17,7 +18,9 @@ module.exports = function(app) {
   app.get('/test', function(req, res) {
     res.render(config.prefix+'/layout', {});
   });
-  
+  app.get('/api/orders', paypalRoutes.post);
+  app.get('/api/orders/:orderID/capture', paypalRoutes.capture);
+
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/event/2004-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2004-rome/','/editions/2004-rome/'))});
   app.get('/event/2005-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2005-rome/','/editions/2005-rome/'))});

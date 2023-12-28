@@ -32,6 +32,10 @@ html(lang=sessions.current_lang)
         body {
           background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
         }
+    if include_paypal
+      link(rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css")
+      script(src="https://www.paypal.com/sdk/js?components=buttons&client-id="+config.PAYPAL_CLIENT_ID+"&enable-funding=venmo,card")
+      script(src="/_js/paypal.js")
   //body(class=page_data.url == "/" ? "body-home" : "body-common")
   body.body-common
     nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
