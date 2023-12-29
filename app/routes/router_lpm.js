@@ -18,8 +18,8 @@ module.exports = function(app) {
   app.get('/test', function(req, res) {
     res.render(config.prefix+'/layout', {});
   });
+  app.post('/api/orders/:orderID/capture', paypalRoutes.capture);
   app.post('/api/orders', paypalRoutes.post);
-  app.get('/api/orders/:orderID/capture', paypalRoutes.capture);
 
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/event/2004-rome/*', function(req, res) {res.redirect(301, req.url.replace('/event/2004-rome/','/editions/2004-rome/'))});

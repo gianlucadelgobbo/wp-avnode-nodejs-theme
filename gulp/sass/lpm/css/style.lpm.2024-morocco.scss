@@ -9,6 +9,13 @@ body {
 table.table {
   color: #FFF;
 }
+.navbar-nav {
+  font-weight: bold;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+ol,
 .grid-title {
   background-color: #e9a13c;
   padding: 5px 8px;
