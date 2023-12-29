@@ -34,7 +34,7 @@ html(lang=sessions.current_lang)
         }
     if include_paypal
       link(rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css")
-      script(src="https://www.paypal.com/sdk/js?components=buttons&client-id="+config.PAYPAL_CLIENT_ID+"&enable-funding=venmo,card")
+      script(src="https://www.paypal.com/sdk/js?components=buttons&client-id="+config.PAYPAL_CLIENT_ID+"&enable-funding=venmo,card&currency=EUR")
       script(src="/_js/paypal.js")
   //body(class=page_data.url == "/" ? "body-home" : "body-common")
   body.body-common

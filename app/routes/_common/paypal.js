@@ -1,8 +1,9 @@
 const base = "https://api-m.sandbox.paypal.com";
 var request = require( 'request' );
+const fetch = require('node-fetch-commonjs');
 
 
-exports.post = async function get(req, res) {
+exports.post = async function post(req, res) {
   console.log("stocazzo")
   req.body.id = "lpm2024morocco"
   console.log(req.body)
@@ -21,68 +22,9 @@ exports.post = async function get(req, res) {
       },
       json: true
     }, 
-    function(error, response, data) {
-      console.log(`Bearer ${data.access_token}`)
-      const url = `${base}/v2/checkout/orders`;
-      const payload = {
-        intent: "capture",
-        purchase_units: [
-          {
-            amount: {
-              currency_code: "USD",
-              value: "100.00",
-            },
-          },
-        ],
-      };
-    
-      request({
-        url: "https://api-m.sandbox.paypal.com/v2/checkout/orders",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data.access_token}`,
-          // Uncomment one of these to force an error for negative testing (in sandbox mode only). Documentation:
-          // https://developer.paypal.com/tools/sandbox/negative-testing/request-headers/
-          // "PayPal-Mock-Response": '{"mock_application_codes": "MISSING_REQUIRED_PARAMETER"}'
-          // "PayPal-Mock-Response": '{"mock_application_codes": "PERMISSION_DENIED"}'
-          // "PayPal-Mock-Response": '{"mock_application_codes": "INTERNAL_SERVER_ERROR"}'
-        },
-        form: JSON.stringify({
-          "purchase_units": [
-            {
-              "amount": {
-                "currency_code": "USD",
-                "value": "100.00"
-              },
-              "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b"
-            }
-          ],
-          "intent": "CAPTURE",
-          "payment_source": {
-            "paypal": {
-              "experience_context": {
-                "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
-                "payment_method_selected": "PAYPAL",
-                "brand_name": "EXAMPLE INC",
-                "locale": "en-US",
-                "landing_page": "LOGIN",
-                "shipping_preference": "SET_PROVIDED_ADDRESS",
-                "user_action": "PAY_NOW",
-                "return_url": "https://example.com/returnUrl",
-                "cancel_url": "https://example.com/cancelUrl"
-              }
-            }
-          }
-        }),
-        method: "POST",
-        json: true
-      }, 
-      function(error, response, data) {
-        console.log(data)
-        res.json (data);
-      });
-          //res.status(httpStatusCode).json(data);
-      //callback(data);
+    async function(error, response, data) {
+      const order = await createOrder(data.access_token);
+      res.json(order);    
     });
     
   } catch (error) {
@@ -90,6 +32,35 @@ exports.post = async function get(req, res) {
     res.status(500).json({ error: "Failed to create order." });
   }
 };
+
+function createOrder(accessToken) {
+  // create accessToken using your clientID and clientSecret
+  // for the full stack example, please see the Standard Integration guide
+  // https://developer.paypal.com/docs/multiparty/checkout/standard/integrate/
+  //const accessToken = "REPLACE_WITH_YOUR_ACCESS_TOKEN";
+  return fetch ("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      "purchase_units": [
+        {
+          "amount": {
+            "currency_code": "EUR",
+            "value": "300.00"
+          },
+          "description": "LPM 2024 Full 4 Days",
+          "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b"
+        }
+      ],
+      "intent": "CAPTURE"
+    })
+  })
+  .then((response) => response.json());
+}
+
 exports.capture = async function get(req, res) {
   try {
     const { orderID } = req.params;

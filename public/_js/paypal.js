@@ -2,7 +2,7 @@ window.paypal
   .Buttons({
     style: {
       shape: "rect",
-      layout: "vertical",
+      layout: "vertical"
     },
     async createOrder() {
       console.log("bella")

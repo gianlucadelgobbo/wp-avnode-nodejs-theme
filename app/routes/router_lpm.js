@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.get('/test', function(req, res) {
     res.render(config.prefix+'/layout', {});
   });
-  app.get('/api/orders', paypalRoutes.post);
+  app.post('/api/orders', paypalRoutes.post);
   app.get('/api/orders/:orderID/capture', paypalRoutes.capture);
 
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});

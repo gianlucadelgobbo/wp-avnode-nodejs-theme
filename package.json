@@ -26,6 +26,7 @@
     "mongoose": "^6.2.9",
     "morgan": "^1.9.1",
     "nib": "^1.1.2",
+    "node-fetch-commonjs": "^3.3.2",
     "popper.js": "^1.15.0",
     "pug": "^3.0.2",
     "request": "^2.88.0",
