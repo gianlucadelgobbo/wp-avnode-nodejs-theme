@@ -75,7 +75,7 @@ window.paypal
             orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
             orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
           resultMessage(
-            `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
+            `<div class="alert alert-success" role="alert">Transaction ${transaction.status}: ${transaction.id}</div>`,
           );
           console.log(
             "Capture result",
@@ -86,7 +86,7 @@ window.paypal
       } catch (error) {
         console.error(error);
         resultMessage(
-          `Sorry, your transaction could not be processed...<br><br>${error}`,
+          `<div class="alert alert-danger" role="alert">Sorry, your transaction could not be processed...<br><br>${error}</div>`,
         );
       }
     },

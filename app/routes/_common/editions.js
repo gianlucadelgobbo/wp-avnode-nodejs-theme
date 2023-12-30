@@ -1,7 +1,7 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
 
-const base = "https://api-m.sandbox.paypal.com";
+const base = "https://api-m.paypal.com";
 const fetch = require('node-fetch-commonjs');
 var clientId = "";
 var clientToken = "";
