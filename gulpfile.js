@@ -463,7 +463,8 @@ const compress_js_pac = () => {
 //gulp.task('default', gulp.series(compress_js, compress_js_flyer,css_flyer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flxer,css_flxer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_vjtelevision,css_vjtelevision_bs));
-gulp.task('default', gulp.series(compress_js, compress_js_lpm,css_lpm_bs));
+//gulp.task('default', gulp.series(compress_js, compress_js_lpm,css_lpm_bs));
+gulp.task('default', gulp.series(css_lpm_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_pac,css_pac_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_pac,css_pac_bs));
 //gulp.task('default', gulp.series(compress_js_fotonica,css_fotonica_bs));
