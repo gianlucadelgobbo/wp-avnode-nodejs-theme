@@ -64,6 +64,9 @@ const createOrder = async (cart) => {
   const url = `${base}/v2/checkout/orders`;
   const payload = {
     intent: "CAPTURE",
+    application_context: {
+        shipping_preference: "NO_SHIPPING"
+    },
     purchase_units: [
       {
         amount: {
