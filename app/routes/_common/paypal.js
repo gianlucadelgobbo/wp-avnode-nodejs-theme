@@ -71,7 +71,7 @@ const createOrder = async (cart) => {
       {
         amount: {
           currency_code: "EUR",
-          value: "300.00"
+          value: "1.00"
         },
         description: "LPM 2024 Morocco 4 Days Full Pack"
       }
