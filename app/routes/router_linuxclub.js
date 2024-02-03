@@ -28,8 +28,10 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   //app.get('/(:page)', pagesRoutes.get);
+  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
   app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
   
+  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
   app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
   
   app.post('/signup', signupRoutes.post);

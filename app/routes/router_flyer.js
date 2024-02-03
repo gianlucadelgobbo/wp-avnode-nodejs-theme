@@ -130,9 +130,11 @@ module.exports = function(app) {
   app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
   app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/it/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  //app.get('/it/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/it/(:page)', pagesRoutes.get);
   
-  app.post('/it/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  //app.post('/it/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/it/(:page)', pagesRoutes.post);
 
   app.get('/web-and-apps/', webRoutes.getAll);
   app.get('/web-and-apps/tags/', webRoutes.getAllTags);
