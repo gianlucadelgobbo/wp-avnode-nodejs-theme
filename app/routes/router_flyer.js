@@ -152,9 +152,11 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/tools', pagesRoutes.getTools);
-  app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/(:page)', pagesRoutes.get);
   
-  app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/(:page)', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 
