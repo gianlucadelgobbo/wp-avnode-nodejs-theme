@@ -23,7 +23,6 @@ exports.getAR = function get(req, res) {
 }
 
 exports.get = function get(req, res) {
-  console.log("stocazzo")
   //console.log("req.params");
   //console.log(req.params);
   helpers.setSessions(req, function(lang_preurl) {

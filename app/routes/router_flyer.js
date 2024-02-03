@@ -18,8 +18,8 @@ var pagesRoutes = require('./_common/pages'); */
 /*
  var searchRoutes = require('./routes/search');
  */
- var Recaptcha = require('express-recaptcha').RecaptchaV2
- var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
+ //var Recaptcha = require('express-recaptcha').RecaptchaV2
+ //var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
  
 module.exports = function(app) {
   app.get('/*.php', pagesRoutes.get404);

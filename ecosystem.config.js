@@ -351,6 +351,33 @@ module.exports = {
     env: {
       NODE_ENV: "production"
     }
+  },
+  {
+    "name": "electrokids",
+    max_memory_restart: "600M",
+    "script": "app.js",
+    "log_file": "/sites/logs/node_electrokids-combined.log",
+    "out_file": "/sites/logs/node_electrokids-out.log",
+    "error_file": "/sites/logs/node_electrokids-err.log",
+    "args": "-site electrokids",
+    ignore_watch: [
+        ".git",
+        "node_modules",
+        "public",
+        "cache",
+        "locales"
+    ],
+    time: true,
+    instances: 1,
+    exec_mode: "fork",
+    autorestart: true,
+    watch: true,
+    watch_options: {
+      followSymlinks: false
+    },
+    env: {
+      NODE_ENV: "production"
+    }
   }
 ],
 

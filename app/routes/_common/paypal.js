@@ -134,9 +134,7 @@ async function handleResponse(response) {
 
 
 exports.post = async function post(req, res) {
-  console.log("stocazzo")
   req.body.id = "lpm2024morocco"
-  console.log(req.body)
   try {
     // use the cart information passed from the front-end to calculate the order amount detals
     const { cart } = req.body;

@@ -57,6 +57,7 @@
     "lpm": "NODE_ENV=dev nodemon app -site lpm",
     "lcf": "NODE_ENV=dev nodemon app -site lcf",
     "chromosphere": "NODE_ENV=dev nodemon app -site chromosphere",
+    "electrokids": "NODE_ENV=dev nodemon app -site electrokids",
     "vjtelevision": "NODE_ENV=dev nodemon app -site vjtelevision",
     "shockart": "NODE_ENV=dev nodemon app -site shockart",
     "linuxclub": "NODE_ENV=dev nodemon app -site linuxclub",
