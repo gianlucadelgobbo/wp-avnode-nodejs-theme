@@ -29,9 +29,9 @@ nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
 
       //-li.nav-item
         include ../../_partials/components/newsletter-navbar
-
-    ul.navbar-nav
-      li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
-        a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
-      li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
-        a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+    if config.locales.length>1
+      ul.navbar-nav
+        li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+          a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+        li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+          a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
