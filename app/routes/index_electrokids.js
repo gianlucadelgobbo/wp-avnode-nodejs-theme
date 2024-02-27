@@ -8,17 +8,18 @@ exports.get = function get(req, res) {
     var file = config.root+'/cache/'+config.prefix+'_home_'+req.session.sessions.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
       //console.log("getAll news");
-      req.params.page = "news";
-      helpers.getPage(req, function(result_news) {
         //console.log("getAll events");
-        req.params.page = "partnerships";
-        helpers.getPage(req, function(result_events) {
-          //console.log("getAll editions");
-          req.params.page = "events";
-          helpers.getPage(req, function(result_editions) {
+      req.params.page = "partnerships";
+      helpers.getPage(req, function(result_events) {
+        //console.log("getAll editions");
+        req.params.page = "events";
+        helpers.getPage(req, function(result_editions) {
+          req.params = { edition: '2024-rome', subedition: 'home' };
+          helpers.getEdition(req, async function( result ) {
+            console.log(result)
             var page_data = fnz.setPageData(req, {'ID':'100'});
             var obj = {
-              results: {news:result_news.post_content,events:result_events.post_content,editions:result_editions.post_content},
+              results: {result:result,events:result_events.post_content,editions:result_editions.post_content},
               page_data:page_data,
               sessions:req.session.sessions
             };

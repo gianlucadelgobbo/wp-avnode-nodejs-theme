@@ -9,6 +9,8 @@ var clientToken = "";
 exports.get = function get(req, res) {
   console.log(req.params.subedition)
   helpers.setSessions(req, function() {
+    console.log(req.params)
+    console.log(req.session)
     helpers.getEdition(req, async function( result ) {
       var rientro = req.url.indexOf("/program/")>0;
       //console.log("rientro");

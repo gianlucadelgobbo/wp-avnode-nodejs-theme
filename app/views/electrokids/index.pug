@@ -1,13 +1,18 @@
 extends layout
 block content
-  script(type='text/javascript', src='/' + config.prefix + '/js/p5.js')
-  script(type='text/javascript', src='/' + config.prefix + '/js/p5.sound.min.js')
-  //main
-  //script(type='text/javascript', src='/' + config.prefix + '/js/sketch.js')
-  #mycarousel.carousel.slide(data-ride='carousel')
-      //-
-        Indicators
-        <ol class="carousel-indicators">
+  .d-sm-block.d-md-none.d-lg-none.d-xl-none
+    img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img-vert.jpg', alt='ElectroKids 2024')
+  .d-none.d-sm-none.d-md-block.d-lg-block.d-xl-block
+    img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img.jpg', alt='ElectroKids 2024')
+  //- 
+    script(type='text/javascript', src='/' + config.prefix + '/js/p5.js')
+    script(type='text/javascript', src='/' + config.prefix + '/js/p5.sound.min.js')
+    main
+    script(type='text/javascript', src='/' + config.prefix + '/js/sketch.js')
+  //- Carousel
+    #mycarousel.carousel.slide(data-ride='carousel')
+    //- Indicators
+      <ol class="carousel-indicators">
         <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
         <li data-target="#mycarousel" data-slide-to="1"></li>
         <li data-target="#mycarousel" data-slide-to="2"></li>
@@ -19,22 +24,24 @@ block content
         <li data-target="#mycarousel" data-slide-to="8"></li>
         <li data-target="#mycarousel" data-slide-to="9"></li>
         <li data-target="#mycarousel" data-slide-to="10"></li>
-        </ol>
-      // Wrapper for slides
+      </ol>
+    //- Wrapper for slides
       .carousel-inner
         .carousel-item.active
-          img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img.jpg', alt='ElectroKids 2024')
-        //-.carousel-item
-          img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-02.jpg', alt='ElectroKids 2016')
-            .carousel-item
-              img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-03.jpg', alt='ElectroKids 2016')
-            .carousel-item
-              img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-04.jpg', alt='ElectroKids 2016')
-            .carousel-item
-              img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-05.jpg', alt='ElectroKids 2016')
-            .carousel-item
-              img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-06.jpg', alt='ElectroKids 2016')
-          // Controls
+        //-
+          .carousel-item
+            img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img.jpg', alt='ElectroKids 2024')
+          .carousel-item
+            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-02.jpg', alt='ElectroKids 2016')
+          .carousel-item
+            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-03.jpg', alt='ElectroKids 2016')
+          .carousel-item
+            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-04.jpg', alt='ElectroKids 2016')
+          .carousel-item
+            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-05.jpg', alt='ElectroKids 2016')
+          .carousel-item
+            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-06.jpg', alt='ElectroKids 2016')
+        //- Controls
           a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
             span.carousel-control-prev-icon(aria-hidden='true')
             span.sr-only Previous
@@ -42,7 +49,7 @@ block content
             span.carousel-control-next-icon(aria-hidden='true')
             span.sr-only Next
         
-  section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
+  //-section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
       h1.entry-title(itemprop="name") News
     .swiper-container
@@ -50,7 +57,7 @@ block content
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="/news/", title="See all News") See all News
-  section.home(itemscope, itemtype='http://schema.org/ItemList')
+  //-section.home(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
       h1.entry-title(itemprop="name")=global.__('Our Productions')
     .swiper-container
@@ -58,3 +65,6 @@ block content
     .container-fluid
       .text-right.boxItem
         a.btn.btn-primary.btn-sm(href="/partnerships/", title="See all Events") See all Events
+  - var result = results.result
+  .mt-5.mb-5!=result.post_content
+  include ../_partials/inc_grid
