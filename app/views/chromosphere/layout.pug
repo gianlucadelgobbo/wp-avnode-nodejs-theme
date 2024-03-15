@@ -41,12 +41,12 @@ html(lang=sessions.current_lang)
       .container
         header.mt-4
           .row
-            .col-md-4
+            .col-md-3
               #logo
                 a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
                   img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
                   .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-            .col-md-4
+            .col-md-5
             .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
               img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
               .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']

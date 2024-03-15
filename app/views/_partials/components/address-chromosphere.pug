@@ -1,0 +1,55 @@
+div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
+  .logofooter
+    a(href=lang_preurl + '/', title=config.project_name)
+      i(class="icon-"+(config.prefix=="fotonica" ? "f" : (config.prefix=="linuxclub" ? "linux" : config.prefix+(config.prefix=="lcf" ? "-fill" : ""))), itemprop='logo')
+      .sr-only=config.project_name
+  br
+  strong(itemprop='name')=config.project_name
+  br
+  !=global.__("a project of")
+  br
+  !="Athens Digital Arts Festival (Greece)"
+  br
+  !="Flyer New Media (Italy)"
+  br
+  !="Fundacja Photon (Poland)"
+  br
+  !="Főnix Event Organizer (Hungary)"
+  br
+  !="AADN-Arts et Cultures Numériques (France)"
+  br
+  !="Asociatia Art Mirror (Romania)"
+  br
+  br
+  !="Project Leader:"
+  br
+  b
+    !="Athens Digital Arts Festival"
+  br
+  span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
+    span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
+      span(itemprop='streetAddress') 7 Flemingk Str.
+      br
+      span(itemprop='postalCode') 143 42
+      !=" "
+      span(itemprop='addressLocality') Nea Filadelfia, Athens
+      !=" "
+      span(itemprop='addressCountry') Greece
+    br
+    span.d-none(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
+      span(itemprop='latitude') 37.9907343
+      | ,
+      span(itemprop='longitude') 23.5824492
+    a(itemprop='url', title=global.__('map'), href='https://www.google.com/maps/place/Athens+Digital+Art+Festival/@38.0506845,23.7403395,990m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14a1a3fd0c69f519:0xf4eb0043278c8f17!8m2!3d38.0506845!4d23.7429144!16s%2Fg%2F11jb42kft_?hl=en&entry=ttu', target='_blank')=global.__('map')
+    br
+  |    Tel.
+  !=" "
+  a(href='tel:+302103230005', itemprop='telephone', title=global.__('Phone number')) +302103230005
+  //-br
+    !=global.__('VAT N°')
+    !=" "
+    span(itemprop='vatID') IT06589171005
+  br
+  a(itemprop='email', title=global.__('Write to') + " " + config.project_name, href='mailto:' + config.project_email)=config.project_email
+  br.sr-only
+  a.sr-only(itemprop='url', title=config.project_name+" Web Site", href=config.domain)=config.domain
