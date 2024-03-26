@@ -28,6 +28,8 @@ exports.setPageData = function setPageData(req, result) {
   if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
   //console.log(req.params)
   if(result && result['ID']) {
+    console.log("req.params")
+    console.log(result)
     page_data.wpID = result['ID']
     page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
@@ -44,7 +46,6 @@ exports.setPageData = function setPageData(req, result) {
       } else if (req.params.subsubedition && result.avnode.title && (req.params.subedition=="gallery" || req.params.subedition=="videos" || req.params.subedition=="videos")) {
         page_data.title+= ": "+result.avnode.title;
         if (req.params.image) page_data.title+=" | #"+(result.avnode.medias.map(item => {return item.slug;}).indexOf(req.params.image)+1)
-  
         page_data.image_src = result.avnode.imageFormats.large;
         page_data.description = result.avnode.description ? result.avnode.description : page_data.title;
       }
@@ -62,7 +63,7 @@ exports.setPageData = function setPageData(req, result) {
         page_data.image_src = result.avnode.imageFormats.large;
         page_data.description = result.avnode.description;
       }
-    } 
+    }
     page_data.headtitle = page_data.title;
     if (page_data.headtitle && req.session.sessions.current_lang != config.default_lang) page_data.headtitle+=" | "+req.session.sessions.current_lang.toUpperCase();
     /* if (result.avnode && result.avnode.title) {
@@ -70,6 +71,7 @@ exports.setPageData = function setPageData(req, result) {
     } */
     page_data.headtitle+= page_data.headtitle ? " | "+config.project_name : config.project_name;
     if (page_data.headtitle==config.project_name && config.meta.headline) page_data.headtitle+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
+    console.log(page_data)
   } else {
     page_data.title = "404 "+__("Content NOT found");
     page_data.headtitle = page_data.title;

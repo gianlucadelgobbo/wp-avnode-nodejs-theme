@@ -17,7 +17,8 @@ exports.get = function get(req, res) {
           req.params = { edition: '2024-rome', subedition: 'home' };
           helpers.getEdition(req, async function( result ) {
             console.log(result)
-            var page_data = fnz.setPageData(req, {'ID':'100'});
+            var page_data = fnz.setPageData(req, {'ID':'100', post_title: "Home"});
+
             var obj = {
               results: {result:result,events:result_events.post_content,editions:result_editions.post_content},
               page_data:page_data,
