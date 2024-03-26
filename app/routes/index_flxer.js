@@ -25,7 +25,7 @@ exports.get = function get(req, res) {
                 //console.log("getAll editions");
                 req.params.page = "events";
                 helpers.getPage(req, function(result_events) {
-                  var page_data = fnz.setPageData(req, {'ID':'100', post_title: "Home"});
+                  var page_data = fnz.setPageData(req, {'ID':'100'});
                   var obj = {
                     results: {
                       news:result_news.post_content,

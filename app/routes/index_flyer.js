@@ -24,7 +24,7 @@ exports.get = function get(req, res) {
               req.params.page = "web-and-mobile";
               helpers.getAll(req, config.sez["web-and-apps"], config.sez.home.web.limit, 1, function (result_web) {
                 helpers.getContainerPage(req, "web-and-mobile", function( posttype_web ) {
-                  var page_data = fnz.setPageData(req, {'ID':'100', post_title: "Home"});
+                  var page_data = fnz.setPageData(req, {'ID':'100'});
                   var obj = {
                     results: {profile: profile, posttype_web: posttype_web, web: result_web, news:result_news.post_content, events:result_events, partnerships:result_partnerships.post_content},
                     page_data:page_data,
