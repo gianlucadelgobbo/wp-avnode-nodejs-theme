@@ -11,4 +11,7 @@ ul.pl-0
             each child in menu.childs
               li(class=child.post_status == 'publish' ? undefined : "disabled")
                 a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
-
+  li.btn-group.mb-2
+    a.btn.btn-primary.btn-lg.ml-3(title="ElectroKids on Instagram"  target="_blank" href="https://www.instagram.com/electrokidsfestival/")
+      i(class="icon-instagram")
+      !=" Instagram"
