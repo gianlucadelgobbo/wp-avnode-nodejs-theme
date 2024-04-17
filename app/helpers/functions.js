@@ -28,8 +28,8 @@ exports.setPageData = function setPageData(req, result) {
   if (req.params.exhibition) page_data.exhibition = req.params.exhibition;
   //console.log(req.params)
   if(result && result['ID']) {
-    console.log("req.params")
-    console.log(result)
+    //console.log("req.params")
+    //console.log(result)
     page_data.wpID = result['ID']
     page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
@@ -69,9 +69,11 @@ exports.setPageData = function setPageData(req, result) {
     /* if (result.avnode && result.avnode.title) {
       page_data.headtitle+= " | "+result.avnode.title;
     } */
+    console.log("page_data.headtitle "+page_data.headtitle);
     page_data.headtitle+= page_data.headtitle ? " | "+config.project_name : config.project_name;
     if (page_data.headtitle==config.project_name && config.meta.headline) page_data.headtitle+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
-    if (!page_data.title) page_data.title = page_data.headtitle;
+    //if (!page_data.title) page_data.title = page_data.headtitle;
+    page_data.title = page_data.headtitle;
   } else {
     page_data.title = "404 "+__("Content NOT found");
     page_data.headtitle = page_data.title;
