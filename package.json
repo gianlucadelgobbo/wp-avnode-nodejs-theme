@@ -56,6 +56,7 @@
     "flyer": "NODE_ENV=dev nodemon app.js -site flyer",
     "lpm": "NODE_ENV=dev nodemon app -site lpm",
     "lcf": "NODE_ENV=dev nodemon app -site lcf",
+    "digitalatium": "NODE_ENV=dev nodemon app -site digitalatium",
     "chromosphere": "NODE_ENV=dev nodemon app -site chromosphere",
     "electrokids": "NODE_ENV=dev nodemon app -site electrokids",
     "vjtelevision": "NODE_ENV=dev nodemon app -site vjtelevision",
