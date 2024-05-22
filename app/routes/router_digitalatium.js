@@ -11,8 +11,8 @@ var metaRoutes = require('./_common/meta');
 
 
 module.exports = function(app) {
-  app.get('/it', function(req, res) {res.redirect(301, '/')});
-  app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
+  //app.get('/it', function(req, res) {res.redirect(301, '/')});
+  //app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
 
   app.get('/', indexRoutes.get);
 
@@ -24,20 +24,21 @@ module.exports = function(app) {
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
   app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
 
-  app.get('/en/', indexRoutes.get);
-  app.get('/en/editions/(:edition)', editionsRoutes.get);
-  app.get('/en/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
-  app.get('/en/editions/(:edition)/(:subedition)', editionsRoutes.get);
-  app.get('/en/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
-  app.get('/en/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
-  app.get('/en/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
-  app.get('/en/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/en/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/en/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/en/(:page)', pagesRoutes.get);
+  app.get('/it/', indexRoutes.get);
+  app.get('/it/editions/(:edition)', editionsRoutes.get);
+  app.get('/it/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
+  app.get('/it/editions/(:edition)/(:subedition)', editionsRoutes.get);
+  app.get('/it/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
+  app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
+  app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
+  
+  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
+  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/it/(:page)', pagesRoutes.get);
 
-  app.post('/en/signup', signupRoutes.post);
-  //app.post('/en/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/it/signup', signupRoutes.post);
+  //app.post('/it/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
 
   app.get('/editions/(:edition)', editionsRoutes.get);
   app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
@@ -50,11 +51,10 @@ module.exports = function(app) {
   app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
   app.get('/(:page)/(:subpage)', pagesRoutes.get);
   app.get('/(:page)', pagesRoutes.get);
-  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
-  
-  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
-  
+
   app.post('/signup', signupRoutes.post);
+  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post); 
 
   app.get('*', pagesRoutes.get404);
 };

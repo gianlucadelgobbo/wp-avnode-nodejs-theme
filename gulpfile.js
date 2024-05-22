@@ -201,7 +201,7 @@ const compress_js_digitalatium = () => {
   ])
   .pipe(concat('combo.min.js'))
   .pipe(uglify({mangle: { reserved: ['glink'] } }))
-  .pipe(gulp.dest(config.publicDir + '/chromosphere/js/'));
+  .pipe(gulp.dest(config.publicDir + '/digitalatium/js/'));
 }
 
 const compress_js_chromosphere = () => {
