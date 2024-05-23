@@ -65,8 +65,6 @@ exports.setPageData = function setPageData(req, result) {
       }
     }
     page_data.headtitle = page_data.title;
-    console.log("headtitle")
-    console.log(page_data.headtitle)
     if (page_data.headtitle && req.session.sessions.current_lang != config.default_lang) page_data.headtitle+=" | "+req.session.sessions.current_lang.toUpperCase();
     /* if (result.avnode && result.avnode.title) {
       page_data.headtitle+= " | "+result.avnode.title;
