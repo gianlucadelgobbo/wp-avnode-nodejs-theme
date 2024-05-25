@@ -120,11 +120,11 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
  //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
-  console.log("avnodeurl");
+  //console.log("avnodeurl");
   var A = ["performances","workshops","installations","lectures","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
-  console.log(url);
+  //console.log(url);
   request({
     url: url,
     json: true

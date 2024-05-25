@@ -1,4 +1,4 @@
-var indexRoutes = require('./index_chromosphere');
+var indexRoutes = require('./index_digitalatium');
 
 var sitemapRoutes = require('./_common/sitemap');
 var signupRoutes = require('./_common/signup');
