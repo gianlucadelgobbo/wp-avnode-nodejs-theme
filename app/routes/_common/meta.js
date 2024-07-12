@@ -12,7 +12,7 @@ exports.get = function get(req, res) {
       getMetaSingle(config.editions[conta.length],req);
       function getMetaSingle(val,req) {
         //console.log("getMetaSingle 1 "+val);
-        //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/meta_data/editions/'+config.prefix+'/'+val);
+        console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/meta_data/editions/'+config.prefix+'/'+val);
         var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
         wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
         wp.myCustomResource().edition(config.prefix+'/'+val).sez("editions").get(function( err, data ) {

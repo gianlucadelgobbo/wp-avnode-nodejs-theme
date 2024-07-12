@@ -7,7 +7,7 @@ global.config = require('config')[process.argv[3]];
 
 config.root = app.root = __dirname;
 
-if (process.argv[3]=="lpm" || process.argv[3]=="lcf" || process.argv[3]=="chromosphere"  || process.argv[3]=="digitalatium" || process.argv[3]=="fotonica" || process.argv[3]=="shockart" || process.argv[3]=="electrokids") {
+if (process.argv[3]=="lpm" || process.argv[3]=="lcf" || process.argv[3]=="chromosphere"  || process.argv[3]=="digitalatium"  || process.argv[3]=="visualsound" || process.argv[3]=="fotonica" || process.argv[3]=="shockart" || process.argv[3]=="electrokids") {
   var file = config.root+'/cache/'+process.argv[3]+'_editions.json';
   if (fs.existsSync(file)) {
     jsonfile.readFile(file, function(err, obj) {

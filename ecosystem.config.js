@@ -218,6 +218,33 @@ module.exports = {
     }
   },
   {
+    "name": "visualsound",
+    max_memory_restart: "300M",
+    "script": "app.js",
+    "log_file": "/sites/logs/node_visualsound-combined.log",
+    "out_file": "/sites/logs/node_visualsound-out.log",
+    "error_file": "/sites/logs/node_visualsound-err.log",
+    "args": "-site visualsound",
+    ignore_watch: [
+        ".git",
+        "node_modules",
+        "public",
+        "cache",
+        "locales"
+    ],
+    time: true,
+    instances: 1,
+    exec_mode: "fork",
+    autorestart: true,
+    watch: true,
+    watch_options: {
+      followSymlinks: false
+    },
+    env: {
+      NODE_ENV: "production"
+    }
+  },
+  {
     "name": "fotonica",
     max_memory_restart: "600M",
     "script": "app.js",
