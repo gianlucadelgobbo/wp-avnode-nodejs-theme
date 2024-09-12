@@ -2,8 +2,8 @@
 body,h1,h2,h3,h4,h5,h6,h7{font-family:'Mukta',sans-serif}
 
 body{color:#FFFFFF;background-color:#000000;background-size: cover;}
-.btn-primary{color:#000000;background-color:#6610F2;}
-.btn-primary:hover{color:#6610F2;opacity: .7;}
+.btn-primary{color:#000000;background-color:$primary;}
+.btn-primary:hover{color:$primary;opacity: .7;}
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show>.btn-primary.dropdown-toggle{
   color: #00FFFF;
   background: none;
