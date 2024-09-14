@@ -97,7 +97,7 @@ block content
           div
             ul.lists(itemscope itemtype="http://schema.org/ItemList")
               - addtit = false;
-              if (programmebydayvenue.length ==1)
+              if (programmebydayvenue.length ==0)
                 .date_schedule_title=global.__('TO BE SCHEDULED')
               else 
                 each day, index in programmebydayvenue
