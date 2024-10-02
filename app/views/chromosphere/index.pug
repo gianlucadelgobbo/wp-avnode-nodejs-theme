@@ -1,7 +1,7 @@
 extends layout
 block content
   #mycarousel.carousel.slide(data-ride='carousel')
-      //
+      //-
         Indicators
         <ol class="carousel-indicators">
         <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
@@ -20,23 +20,23 @@ block content
       .carousel-inner
         .carousel-item.active
           img.img-fluid(src='https://chromosphere.eu/files/2024/02/cromosphere-main.jpg', alt='Chromosphere 2024-2025')
-        .carousel-item
+        //-.carousel-item
           img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-02.jpg', alt='Chromosphere 2024-2025')
-        .carousel-item
-          img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-03.jpg', alt='Chromosphere 2024-2025')
-        .carousel-item
-          img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-04.jpg', alt='Chromosphere 2024-2025')
-        .carousel-item
-          img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-05.jpg', alt='Chromosphere 2024-2025')
-        .carousel-item
-          img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-06.jpg', alt='Chromosphere 2024-2025')
-      // Controls
-      a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
-        span.carousel-control-prev-icon(aria-hidden='true')
-        span.sr-only Previous
-      a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
-        span.carousel-control-next-icon(aria-hidden='true')
-        span.sr-only Next
+          .carousel-item
+            img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-03.jpg', alt='Chromosphere 2024-2025')
+          .carousel-item
+            img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-04.jpg', alt='Chromosphere 2024-2025')
+          .carousel-item
+            img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-05.jpg', alt='Chromosphere 2024-2025')
+          .carousel-item
+            img.img-fluid(src='/chromosphere/images/carusel_img_2016/chromosphere_slide-06.jpg', alt='Chromosphere 2024-2025')
+      //- Controls
+        a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+          span.carousel-control-prev-icon(aria-hidden='true')
+          span.sr-only Previous
+        a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.sr-only Next
         
   section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
