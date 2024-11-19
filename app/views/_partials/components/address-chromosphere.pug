@@ -1,9 +1,9 @@
 div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
-  .logofooter
+  //-.logofooter
     a(href=lang_preurl + '/', title=config.project_name)
       i(class="icon-"+(config.prefix=="fotonica" ? "f" : (config.prefix=="linuxclub" ? "linux" : config.prefix+(config.prefix=="lcf" ? "-fill" : ""))), itemprop='logo')
       .sr-only=config.project_name
-  br
+    br
   strong(itemprop='name')=config.project_name
   br
   !=global.__("a project of")
