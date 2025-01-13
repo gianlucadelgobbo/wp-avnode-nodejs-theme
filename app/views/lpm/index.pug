@@ -4,17 +4,16 @@ block home
   #mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
     //- Wrapper for slides
     .carousel-inner
-      .carousel-item.active
+      //-.carousel-item.active
         .embed-responsive.embed-responsive-16by9
-          iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F672554798609204%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
-          //-iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F837085809979657&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
+          iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?allowfullscreen=true&autoplay=true&href=https%3A%2F%2Fwww.facebook.com%2FLPM.LivePerformersMeeting%2Fvideos%2F837085809979657&show_text=0&width=1920" webkitallowfullscreen mozallowfullscreen allowfullscreen)
       //-.carousel-item.active
         a(href=lang_preurl+"/editions/2020-rome/", title="LPM 2025 Morocco")
           img.d-block.w-100(src='https://liveperformersmeeting.net/files/2020/02/LPM2020-visual-avnode-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2025 Morocco')
       //-.carousel-item.active
         a(href=lang_preurl+"/editions/2022-rome/call-to-participate/", title="LPM 2022 Rome | CALL TO PARTICIPATE'")
           img.d-block.w-100(src='https://liveperformersmeeting.net/files/2022/02/LPM2022-main.jpg', alt=global.__('Image for') + ': ' + 'LPM 2022 Rome | CALL TO PARTICIPATE')
-      //-.carousel-item.active
+      .carousel-item.active
         a(href=lang_preurl+"/editions/2025-morocco/call-to-participate/", title="LPM 2025 Morocco | CALL TO PARTICIPATE")
           img.d-block.w-100(src='https://liveperformersmeeting.net/files/2024/08/LPM25-call-16-9.jpg', alt=global.__('Image for') + ': ' + 'LPM 2025 Morocco | CALL TO PARTICIPATE')
       //-.carousel-item
