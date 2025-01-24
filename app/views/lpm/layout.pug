@@ -38,6 +38,7 @@ html(lang=sessions.current_lang)
         src="https://www.paypal.com/sdk/js?components=buttons&client-id="+clientId+"&enable-funding=venmo,card&currency=EUR"
         data-client-token=clientToken
       )
+      link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css")
       script(src="/_js/paypal.js")
   //body(class=page_data.url == "/" ? "body-home" : "body-common")
   body.body-common
@@ -91,6 +92,7 @@ html(lang=sessions.current_lang)
     if form
       script(type='text/javascript', src='/_js/validator.js')
     include ../_partials/components/cookielawinfo
+    script(src="https://cdn.jsdelivr.net/npm/flatpickr")
 
     // TICKER
     #twCnt.fixed-bottom

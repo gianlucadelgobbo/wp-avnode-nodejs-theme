@@ -1,19 +1,27 @@
-const base = "https://api-m.paypal.com";
-var request = require( 'request' );
+const sandbox = false;
+var base = sandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com";
+var request = require('request');
 const fetch = require('node-fetch-commonjs');
-
 
 /**
  * Generate an OAuth 2.0 access token for authenticating with PayPal REST APIs.
  * @see https://developer.paypal.com/api/rest/authentication/
  */
 const generateAccessToken = async () => {
+  let PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET;
+  if (sandbox) {
+    PAYPAL_CLIENT_ID = config.PAYPAL_CLIENT_ID_SANDBOX;
+    PAYPAL_CLIENT_SECRET = config.PAYPAL_CLIENT_SECRET_SANDBOX;
+  } else {
+    PAYPAL_CLIENT_ID = config.PAYPAL_CLIENT_ID;
+    PAYPAL_CLIENT_SECRET = config.PAYPAL_CLIENT_SECRET;
+  }
   try {
-    if (!config.PAYPAL_CLIENT_ID || !config.PAYPAL_CLIENT_SECRET) {
+    if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
       throw new Error("MISSING_API_CREDENTIALS");
     }
     const auth = Buffer.from(
-      config.PAYPAL_CLIENT_ID + ":" + config.PAYPAL_CLIENT_SECRET,
+      PAYPAL_CLIENT_ID + ":" + PAYPAL_CLIENT_SECRET
     ).toString("base64");
     const response = await fetch(`${base}/v1/oauth2/token`, {
       method: "POST",
@@ -24,9 +32,14 @@ const generateAccessToken = async () => {
     });
 
     const data = await response.json();
+    if (!response.ok) {
+      console.error("Error generating access token:", data);
+      throw new Error(data.error || "Failed to generate access token");
+    }
     return data.access_token;
   } catch (error) {
     console.error("Failed to generate Access Token:", error);
+    throw error;
   }
 };
 
@@ -50,75 +63,132 @@ const generateClientToken = async () => {
 };
 
 /**
- * Create an order to start the transaction.
+ * Create an order dynamically based on client-provided cart data.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 const createOrder = async (cart) => {
-  // use the cart information passed from the front-end to calculate the purchase unit details
-  console.log(
-    "shopping cart information passed from the frontend createOrder() callback:",
-    cart,
-  );
+  try {
+    console.log("Shopping cart information from the frontend:", cart);
 
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders`;
-  const payload = {
-    intent: "CAPTURE",
-    application_context: {
-        shipping_preference: "NO_SHIPPING"
-    },
-    purchase_units: [
+    let totalValue = 0;
+    const items = cart.map((item) => {
+      const { name, description = name, quantity, days, costPerPerson, productType } = item;
+
+      if (!name || !costPerPerson || !quantity || (productType === "daily" && !days)) {
+        throw new Error(`Missing required fields in cart item: ${JSON.stringify(item)}`);
+      }
+
+      let unitAmountValue;
+      let itemQuantity;
+
+      if (productType === "daily") {
+        // For daily products, each unit is a single day per person
+        unitAmountValue = costPerPerson.toFixed(2);
+        itemQuantity = quantity * days; // Multiply people by days for total quantity
+      } else {
+        // For fixed products, each unit is a single person
+        unitAmountValue = costPerPerson.toFixed(2);
+        itemQuantity = quantity;
+      }
+
+      const itemTotal = itemQuantity * parseFloat(unitAmountValue);
+      totalValue += itemTotal;
+
+      return {
+        name,
+        quantity: itemQuantity.toString(), // Total quantity for PayPal
+        description:
+          productType === "daily"
+            ? `Daily rate for ${days} day(s) per person`
+            : "Fixed price",
+        unit_amount: {
+          currency_code: "EUR",
+          value: unitAmountValue, // Price per unit
+        },
+      };
+    });
+
+    const purchase_units = [
       {
+        description: "Combined order for fixed and daily products",
         amount: {
           currency_code: "EUR",
-          value: "300.00"
+          value: totalValue.toFixed(2), // Total order value
+          breakdown: {
+            item_total: {
+              currency_code: "EUR",
+              value: totalValue.toFixed(2), // Sum of all items
+            },
+          },
         },
-        description: "LPM 2024 Morocco 4 Days Full Pack"
-      }
-    ]
-  };
+        items,
+      },
+    ];
 
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-      // Uncomment one of these to force an error for negative testing (in sandbox mode only). Documentation:
-      // https://developer.paypal.com/tools/sandbox/negative-testing/request-headers/
-      // "PayPal-Mock-Response": '{"mock_application_codes": "MISSING_REQUIRED_PARAMETER"}'
-      // "PayPal-Mock-Response": '{"mock_application_codes": "PERMISSION_DENIED"}'
-      // "PayPal-Mock-Response": '{"mock_application_codes": "INTERNAL_SERVER_ERROR"}'
-    },
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
+    console.log("Calculated Item Total:", totalValue.toFixed(2));
+    console.log("Payload Sent to PayPal:", JSON.stringify(purchase_units, null, 2));
 
-  return handleResponse(response);
+    const accessToken = await generateAccessToken();
+    const response = await fetch(`${base}/v2/checkout/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        intent: "CAPTURE",
+        application_context: {
+          shipping_preference: "NO_SHIPPING",
+        },
+        purchase_units,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      console.error("PayPal API Error:", data);
+      return { jsonResponse: data, httpStatusCode: response.status || 500 };
+    }
+
+    return { jsonResponse: data, httpStatusCode: response.status };
+  } catch (error) {
+    console.error("Error creating order:", error);
+    return { jsonResponse: { error: error.message }, httpStatusCode: 500 };
+  }
 };
 
+
 /**
- * Capture payment for the created order to complete the transaction.
+ * Capture payment for a created order.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_capture
  */
 const captureOrder = async (orderID) => {
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders/${orderID}/capture`;
+  try {
+    const accessToken = await generateAccessToken();
+    const response = await fetch(`${base}/v2/checkout/orders/${orderID}/capture`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-      // Uncomment one of these to force an error for negative testing (in sandbox mode only). Documentation:
-      // https://developer.paypal.com/tools/sandbox/negative-testing/request-headers/
-      // "PayPal-Mock-Response": '{"mock_application_codes": "INSTRUMENT_DECLINED"}'
-      // "PayPal-Mock-Response": '{"mock_application_codes": "TRANSACTION_REFUSED"}'
-      // "PayPal-Mock-Response": '{"mock_application_codes": "INTERNAL_SERVER_ERROR"}'
-    },
-  });
+    const data = await response.json();
+    if (!response.ok) {
+      console.error("PayPal API Error:", data);
+      return { jsonResponse: data, httpStatusCode: response.status || 500 };
+    }
 
-  return handleResponse(response);
+    return { jsonResponse: data, httpStatusCode: response.status };
+  } catch (error) {
+    console.error("Error capturing order:", error);
+    return { jsonResponse: { error: error.message }, httpStatusCode: 500 };
+  }
 };
 
+/**
+ * Handle API responses.
+ */
 async function handleResponse(response) {
   try {
     const jsonResponse = await response.json();
@@ -132,33 +202,34 @@ async function handleResponse(response) {
   }
 }
 
-
+/**
+ * POST endpoint to create an order.
+ */
 exports.post = async function post(req, res) {
-  req.body.id = "lpm2024morocco"
   try {
-    // use the cart information passed from the front-end to calculate the order amount detals
     const { cart } = req.body;
+    if (!cart || !Array.isArray(cart) || cart.length === 0) {
+      return res.status(400).json({ error: "Invalid cart data" });
+    }
+
     const { jsonResponse, httpStatusCode } = await createOrder(cart);
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
-    console.error("Failed to create order:", error);
+    console.error("Failed to create order:", error.message || error);
     res.status(500).json({ error: "Failed to create order." });
   }
 };
 
+/**
+ * POST endpoint to capture an order.
+ */
 exports.capture = async function capture(req, res) {
-  console.log("capture")
-  req.body.id = "lpm2024morocco"
-  console.log(req.body)
   try {
     const { orderID } = req.params;
     const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
-    console.error("Failed to create order:", error);
+    console.error("Failed to capture order:", error.message || error);
     res.status(500).json({ error: "Failed to capture order." });
   }
 };
-
-
-
