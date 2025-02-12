@@ -21,7 +21,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                 !="Duration: "+result.avnode.performance.humanDuration
               each booking,index in result.avnode.performance.bookings
                 p.stit
-                  each schedule in booking.schedule
+                  each schedule,index2 in booking.schedule
                     .stit(class="schedule-"+schedule.venue.room.replace(RegExp(" ", 'g'), "-"))
                       !=schedule.boxDateFull
                       span.d-none(itemprop='datePublished')=schedule.starttime
@@ -32,9 +32,10 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                         p.price="Price: "
                           a.btn.btn-lg.btn-warning(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id='+schedule.paypal, target='_blank')
                             b=schedule.price+",00 € | "+ global.__('BUY NOW')
-                    if booking.schedule.length && schedule.paypal && new Date(schedule.endtime)>=new Date()
+                    
+                    if booking.schedule.length && schedule.paypal && new Date(schedule.endtime)>=new Date() && (schedule.alleventschedulewithoneprice && index2==booking.schedule.length-1)
                       .row
-                        .col
+                        .col(class=(schedule.alleventschedulewithoneprice && index2==booking.schedule.length-1) ? "mt-3" : null)
                           p
                             if schedule.price
                               !="Price: <b>"+schedule.price+",00 €</b>"
