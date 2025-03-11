@@ -66,9 +66,14 @@ const generateClientToken = async () => {
  * Create an order dynamically based on client-provided cart data.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
-const createOrder = async (cart) => {
+const createOrder = async (cart, buyer) => {
   try {
     console.log("Shopping cart information from the frontend:", cart);
+    console.log("Buyer information from the frontend:", buyer);
+
+    if (!buyer || !buyer.name || !buyer.email) {
+      throw new Error("Buyer information is missing.");
+    }
 
     let totalValue = 0;
     const items = cart.map((item) => {
@@ -82,11 +87,9 @@ const createOrder = async (cart) => {
       let itemQuantity;
 
       if (productType === "daily") {
-        // For daily products, each unit is a single day per person
         unitAmountValue = costPerPerson.toFixed(2);
-        itemQuantity = quantity * days; // Multiply people by days for total quantity
+        itemQuantity = quantity * days;
       } else {
-        // For fixed products, each unit is a single person
         unitAmountValue = costPerPerson.toFixed(2);
         itemQuantity = quantity;
       }
@@ -96,14 +99,11 @@ const createOrder = async (cart) => {
 
       return {
         name,
-        quantity: itemQuantity.toString(), // Total quantity for PayPal
-        description:
-          productType === "daily"
-            ? `Daily rate for ${days} day(s) per person`
-            : "Fixed price",
+        quantity: itemQuantity.toString(),
+        description: productType === "daily" ? `Daily rate for ${days} day(s) per person` : "Fixed price",
         unit_amount: {
           currency_code: "EUR",
-          value: unitAmountValue, // Price per unit
+          value: unitAmountValue,
         },
       };
     });
@@ -113,11 +113,11 @@ const createOrder = async (cart) => {
         description: "Combined order for fixed and daily products",
         amount: {
           currency_code: "EUR",
-          value: totalValue.toFixed(2), // Total order value
+          value: totalValue.toFixed(2),
           breakdown: {
             item_total: {
               currency_code: "EUR",
-              value: totalValue.toFixed(2), // Sum of all items
+              value: totalValue.toFixed(2),
             },
           },
         },
@@ -140,6 +140,12 @@ const createOrder = async (cart) => {
         application_context: {
           shipping_preference: "NO_SHIPPING",
         },
+        payer: { // ✅ Added buyer details
+          name: {
+            given_name: buyer.name,
+          },
+          email_address: buyer.email,
+        },
         purchase_units,
       }),
     });
@@ -156,6 +162,7 @@ const createOrder = async (cart) => {
     return { jsonResponse: { error: error.message }, httpStatusCode: 500 };
   }
 };
+
 
 
 /**
@@ -206,19 +213,28 @@ async function handleResponse(response) {
  * POST endpoint to create an order.
  */
 exports.post = async function post(req, res) {
+
   try {
-    const { cart } = req.body;
+    const { cart, buyer } = req.body; // Extract buyer info
+
     if (!cart || !Array.isArray(cart) || cart.length === 0) {
       return res.status(400).json({ error: "Invalid cart data" });
     }
 
-    const { jsonResponse, httpStatusCode } = await createOrder(cart);
+    if (!buyer || !buyer.name || !buyer.email) {
+      return res.status(400).json({ error: "Missing buyer details" });
+    }
+
+    // Pass buyer info along with cart
+    const { jsonResponse, httpStatusCode } = await createOrder(cart, buyer);
+
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
     console.error("Failed to create order:", error.message || error);
     res.status(500).json({ error: "Failed to create order." });
   }
 };
+
 
 /**
  * POST endpoint to capture an order.

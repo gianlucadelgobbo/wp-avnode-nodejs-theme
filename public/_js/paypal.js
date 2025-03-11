@@ -1,4 +1,4 @@
-function initializePayPalButtons() {
+/* function initializePayPalButtons() {
   // Query all PayPal button containers
   document.querySelectorAll('[id^="paypal-button-container"]').forEach((container) => {
     const containerId = container.id; // e.g., "paypal-button-container-1"
@@ -13,6 +13,7 @@ function initializePayPalButtons() {
         },
         async createOrder() {
           const box = container.closest(".paypal-box");
+          console.log("nameInput")
         
           // Collect input data
           const quantity = parseInt(box.querySelector(".quantity-input").value, 10) || 1;
@@ -20,7 +21,20 @@ function initializePayPalButtons() {
           const emailInput = box.querySelector(`#${containerId.replace("paypal-button-container", "email")}`);
           const name = nameInput.value.trim();
           const email = emailInput.value.trim();
-        
+          if (name === "") {
+            alert("Please insert a valid name for your reservation.");
+            nameInput.focus();
+            return;
+          }
+
+          console.log("nameInput")
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (typeof email !== "string" || !emailRegex.test(email)) {
+            alert("Please insert a valid email for your reservation.");
+            emailInput.focus();
+            return;
+          }
+
           const dateRangeInput = box.querySelector(".flatpickr-input");
           let days = 1;
           let selectedDates = [];
@@ -131,8 +145,116 @@ function initializePayPalButtons() {
       })
       .render(`#${containerId}`);
   });
-}
+} */
 
+
+  function initializePayPalButtons() {
+    document.querySelectorAll('[id^="paypal-button-container"]').forEach((container) => {
+      const containerId = container.id;
+      const box = container.closest(".paypal-box");
+  
+      // Get input fields
+      const nameInput = box.querySelector(`#${containerId.replace("paypal-button-container", "name")}`);
+      const emailInput = box.querySelector(`#${containerId.replace("paypal-button-container", "email")}`);
+      const dateRangeInput = box.querySelector(".flatpickr-input");
+  
+      // Function to check if inputs are valid
+      function isFormValid(showAlert = false) {
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+        // Name validation
+        if (name === "") {
+          if (showAlert) {
+            alert("Please insert a valid name for your reservation.");
+            nameInput.focus();
+          }
+          return false;
+        }
+  
+        // Email validation
+        if (!emailRegex.test(email)) {
+          if (showAlert) {
+            alert("Please insert a valid email for your reservation.");
+            emailInput.focus();
+          }
+          return false;
+        }
+  
+        // Date range validation if needed
+        const isDaily = box.querySelector('[data-mode="by-people-by-day"]') ? true : false;
+        if (isDaily && (!dateRangeInput || !dateRangeInput._flatpickr || dateRangeInput._flatpickr.selectedDates.length !== 2)) {
+          if (showAlert) {
+            alert("Please select a valid date range for your stay.");
+            dateRangeInput.focus();
+          }
+          return false;
+        }
+  
+        return true;
+      }
+  
+      // Disable PayPal button until form is valid
+      const paypalButton = window.paypal.Buttons({
+        style: { shape: "rect", layout: "vertical" },
+        async createOrder() {
+          if (!isFormValid(true)) return; // Show alert and stop if invalid
+  
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          const productName = box.querySelector("h3 b").innerText;
+          const quantity = parseInt(box.querySelector(".quantity-input").value, 10) || 1;
+          const productId = container.dataset.id;
+          const costPerPerson = parseFloat(box.querySelector('[data-mode="by-people"]').dataset.cost);
+          const costPerDay = parseFloat(box.querySelector('[data-mode="by-people-by-day"]')?.dataset.cost || 0);
+  
+          let cart = [{ id: productId, name: productName, quantity, costPerPerson, total: costPerPerson * quantity, productType: "fixed" }];
+          
+          if (box.querySelector('[data-mode="by-people-by-day"]')) {
+            const selectedDates = dateRangeInput._flatpickr.selectedDates.map((date) => date.toISOString().split("T")[0]);
+            const days = Math.round(
+              (dateRangeInput._flatpickr.selectedDates[1] - dateRangeInput._flatpickr.selectedDates[0]) /
+              (24 * 60 * 60 * 1000)
+            );
+  
+            cart.push({ id: productId, name: `${productName} - Daily`, quantity, days, selectedDates, costPerPerson: costPerDay, total: costPerDay * quantity * days, productType: "daily" });
+          }
+  
+          try {
+            const response = await fetch("/api/orders", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ cart, buyer: { name, email } }),
+            });
+  
+            const orderData = await response.json();
+            if (!response.ok) throw new Error(orderData.error || "Unknown error.");
+            return orderData.id;
+          } catch (error) {
+            console.error("Order creation error:", error);
+            document.querySelector("#result-message").innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+          }
+        }
+      });
+  
+      // Render PayPal button
+      paypalButton.render(`#${containerId}`);
+  
+      // Function to update button state
+      function updateButtonState() {
+        document.querySelector(`#${containerId} iframe`).style.opacity = isFormValid() ? "1" : "0.5";
+      }
+      
+      // Listen for input changes and update the button
+      nameInput.addEventListener("input", updateButtonState);
+      emailInput.addEventListener("input", updateButtonState);
+      if (dateRangeInput) dateRangeInput.addEventListener("change", updateButtonState);
+  
+      updateButtonState(); // Initial check
+    });
+  }
+  
 // Initialize PayPal buttons
 document.addEventListener("DOMContentLoaded", () => {
   const paypalScript = document.querySelector('script[src*="paypal.com/sdk/js"]');
