@@ -1,9 +1,21 @@
 ul.nav.flex-column.nav-pills
-  li.nav-item
-    a.nav-link(href=lang_preurl+'/concept/', class=page_data.url.indexOf(lang_preurl+'/concept') >= 0 ? "active" : undefined) Concept
-  li.nav-item
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/concept') >= 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/concept/', class=page_data.url.indexOf(lang_preurl+'/concept') >= 0 ? "active" : undefined)=global.__("Concept")
+    
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/our-productions') >= 0 ? "active" : undefined)
     a.nav-link(href=lang_preurl+'/our-productions/', class=page_data.url.indexOf(lang_preurl+'/our-productions') >= 0 ? "active" : undefined)=global.__('Our Productions')
-  li.nav-item
-    a.nav-link(href=lang_preurl+'/press/', class=page_data.url.indexOf(lang_preurl+'/press') >= 0 ? "active" : undefined) Press
-  li.nav-item
-    a.nav-link(href=lang_preurl+'/contacts/', class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)=global.__('Contacts')
+
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/press') >= 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/press/', class=page_data.url.indexOf(lang_preurl+'/press') >= 0 ? "active" : undefined)=global.__("Press")
+
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/model-231') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Model 231"), href=lang_preurl + '/model-231/')=global.__("Model 231")
+
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/privacy-policy') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Privacy Policy"), href=lang_preurl + '/privacy-policy/')=global.__("Privacy Policy")
+
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/cookies-policy') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Cookies Policy"), href=lang_preurl + '/cookies-policy/')=global.__("Cookies Policy")
+
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') >= 0 ? "active" : undefined)
+    a.nav-link(title=global.__("Contacts"), href=lang_preurl + '/contacts/')=global.__("Contacts")
