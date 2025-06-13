@@ -31,7 +31,7 @@ module.exports = function(app, exp) {
     secret: 'wp-avnode-nodejs-theme',
     store: new MongoStore({ mongoUrl: 'mongodb://localhost/SessionStore' }),
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false, maxAge: 3600000 }
   }));
   app.use(bodyParser.json()); // for parsing application/json
