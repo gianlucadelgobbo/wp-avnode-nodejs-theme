@@ -5,7 +5,7 @@ article#container
       .col-md-8
         .main-cnt
           header.post_title.mb-4
-            h1(itemprop="name")=page_data.title
+            h1(itemprop="name")!=page_data.title
           .rientro
             div(itemprop='description')!=result.post_content
       .col-md-4
