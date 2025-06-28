@@ -1,6 +1,6 @@
 doctype html
-html(lang=sessions.current_lang)
-  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
+html(lang=current_lang)
+  - var lang_preurl = (current_lang == config.default_lang ? '' : '/'+current_lang)
   head
     title!=page_data.headtitle
     meta(charset='UTF-8')
@@ -25,12 +25,12 @@ html(lang=sessions.current_lang)
     link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
     link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
     // CSS
-    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + current_edition + '.min.css', type='text/css')
 
-    if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
+    if config.meta.editions[current_edition][ 'wpcf-background-image' ]
       style(type='text/css').
         body {
-          background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
+          background-image: url(#{config.meta.editions[current_edition][ 'wpcf-background-image' ]});
         }
     if include_paypal
       link(rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css")
@@ -49,9 +49,9 @@ html(lang=sessions.current_lang)
         i.icon-bar
         i.icon-bar
         i.icon-bar
-      a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
-        img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
-        .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+      a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[current_edition].title)
+        img.img-fluid(itemprop='image', src=config.meta.editions[current_edition]['wpcf-header-image'], alt=config.meta.editions[current_edition].title)
+        .sr-only(itemprop='name')=config.meta.editions[current_edition].title
       #menu.collapse.navbar-collapse
         .accordion.mr-auto
           - var showmain = page_data.url.indexOf(lang_preurl+'/idea') == 0 || page_data.url.indexOf(lang_preurl+'/events') == 0 || page_data.url.indexOf(lang_preurl+'/partnerships') == 0 || page_data.url.indexOf(lang_preurl+'/news') == 0 || page_data.url.indexOf(lang_preurl+'/press') == 0 || page_data.url.indexOf(lang_preurl+'/contacts') == 0 || page_data.url.indexOf(lang_preurl+'/search') == 0
@@ -72,13 +72,13 @@ html(lang=sessions.current_lang)
                 include ../_partials/components/share_span
             .col-md-6(itemscope, itemtype='http://schema.org/Event')
               .event-card.text-right
-                .d-none(itemprop='name')!=config.project_name+" "+config.meta.editions[sessions.current_edition]['title']
+                .d-none(itemprop='name')!=config.project_name+" "+config.meta.editions[current_edition]['title']
                 div(itemprop='disambiguatingDescription')
                   #next-edition-cnt
-                    #next-edition!=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+                    #next-edition!=config.meta.editions[current_edition]['wpcf-sub-title']
                   #site-description-cnt
-                    if config.meta.editions[sessions.current_edition]['wpcf-sub-title'].indexOf("Corviale")===-1
-                      #site-description=config.meta.headline[sessions.current_lang]
+                    if config.meta.editions[current_edition]['wpcf-sub-title'].indexOf("Corviale")===-1
+                      #site-description=config.meta.headline[current_lang]
                 .sr-only
                   include ../_partials/components/eventdateplace_meta
     .cnt(class=page_data.url == "/" ? "" : "container")

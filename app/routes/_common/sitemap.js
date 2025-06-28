@@ -28,7 +28,7 @@ exports.get = function get(req, res) {
           res.header('Content-Type', 'text/xml').render('_common/sitemap-taxonomy', {results:results, isodate:isodate});
         } else {
           var page_data = fnz.setPageData(req, {});
-          res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+          res.status(404).render(config.prefix+'/404', {page_data:page_data, current_lang:req.current_lang, current_edition:req.current_edition, itemtype:"WebPage"});
         }
       }); */
 

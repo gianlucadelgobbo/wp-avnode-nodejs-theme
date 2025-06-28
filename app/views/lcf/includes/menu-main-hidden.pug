@@ -2,12 +2,12 @@
   nav#navbar-top.navbar.navbar-expand-lcf.navbar-dark
     // Brand and toggle get grouped for better mobile display
     div 
-      a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
+      a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[current_edition].title)
         i.d-block.d-md-none(class="icon-"+config.prefix+(config.prefix=="lcf" ? "-fill" : ""), itemprop='logo')
-        img.d-none.d-md-block(src=config.meta.editions[sessions.current_edition]['wpcf-header-image'])
+        img.d-none.d-md-block(src=config.meta.editions[current_edition]['wpcf-header-image'])
         //img.d-none.d-md-block(src="https://livecinemafestival.com/files/2022/02/LCF2022-logo.svg")
-        .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
-    .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
+        .sr-only(itemprop='name')=config.meta.editions[current_edition].title
+    .text-right!=config.meta.editions[current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
     div.d-none.d-sm-block
       if (config.last_edition_status == "selling")
         a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2023-rome/tickets/") TICKETS
@@ -37,8 +37,8 @@
             i.icon-search
             .sr-only=global.__("Search")
     ul.list-unstyled.p-5.h3.m-0.text-right
-      each menu, i in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
-        li(class=(page_data.url === lang_preurl+menu.permalink ? "active" : "")+(i+1<config.meta.editions[sessions.current_edition].menu[sessions.current_lang].length ? " pb-3" : ""))
+      each menu, i in config.meta.editions[current_edition].menu[current_lang]
+        li(class=(page_data.url === lang_preurl+menu.permalink ? "active" : "")+(i+1<config.meta.editions[current_edition].menu[current_lang].length ? " pb-3" : ""))
           a(title=menu.post_title, href=menu.post_status == 'publish' ? lang_preurl+menu.permalink : "#", class=menu.post_status == 'publish' ? undefined : "disabled")=menu.post_title
         //-.btn.btn-primary.btn-lg
           if menu.childs.length

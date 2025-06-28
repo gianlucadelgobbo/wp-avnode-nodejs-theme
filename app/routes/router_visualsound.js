@@ -22,7 +22,7 @@ module.exports = function(app) {
   //app.get('/sitemap-editions.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
+  //app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   app.get('/en/', indexRoutes.get);
   app.get('/en/editions/:edition', editionsRoutes.get);
@@ -56,5 +56,5 @@ module.exports = function(app) {
   //app.get('/:page', recaptcha.middleware.render, pagesRoutes.get);
   //app.post('/:page', recaptcha.middleware.verify, pagesRoutes.post); 
 
-  app.get('*', pagesRoutes.get404);
+  app.use(pagesRoutes.get404);
 };

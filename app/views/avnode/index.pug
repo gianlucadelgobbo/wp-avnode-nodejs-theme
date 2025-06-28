@@ -28,7 +28,7 @@ block content
     .text-center
       h1.home-title
         span.sr-only=config.project_name + " "
-        !=config.meta.headline[sessions.current_lang]
+        !=config.meta.headline[current_lang]
   section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
     h1.entry-title(itemprop="name") News
     .swiper-container

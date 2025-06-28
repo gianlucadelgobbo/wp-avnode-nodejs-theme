@@ -1,9 +1,9 @@
 var bodyParser = require('body-parser');
 //var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var MongoStore = require('connect-mongo');
+//var session = require('express-session');
+//var MongoStore = require('connect-mongo');
 //var methodOverride = require('method-override');
-var helmet = require('helmet');
+//var helmet = require('helmet');
 
 var i18n = require('i18n');
 i18n.configure({
@@ -20,32 +20,32 @@ i18n.configure({
 module.exports = function(app, exp) {
 
   var env = process.env.NODE_ENV || 'dev';
-  app.use(helmet.frameguard({
+  /* app.use(helmet.frameguard({
     action: 'allow-from',
     domain: 'https://www.facebook.com'
-  }));
+  })); */
   app.set('views', [app.root + '/app/views']);
   app.set('view engine', 'pug');
   //app.set('view options', { layout: false });
-  app.use(session({
+  /* app.use(session({
     secret: 'wp-avnode-nodejs-theme',
     store: new MongoStore({ mongoUrl: 'mongodb://localhost/SessionStore' }),
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, maxAge: 3600000 }
-  }));
+  })); */
   app.use(bodyParser.json()); // for parsing application/json
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
   //app.use(cookieParser());
   //app.use(methodOverride());
   app.use(i18n.init);
-  const csp = require('helmet-csp')
+  /* const csp = require('helmet-csp')
 
   app.use(csp({
     directives: {
       "frame-ancestors": ["'self'", '*.facebook.com']
     }
-  }));
+  })); */
   /* app.use(function(req, res, next) {
     res.setHeader("Content-Security-Policy", "frame-ancestors *facebook.com");
     return next();

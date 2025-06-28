@@ -1,5 +1,4 @@
-var WPAPI = require( 'wpapi' );
-var request = require( 'request' );
+var axios = require( 'axios' );
 var moment = require( 'moment' );
 var fnz = require('./functions');
 var Validators = require('./validators').Validators;
@@ -65,39 +64,52 @@ exports.validateFormJoin = function validateFormJoin(o,callback) {
 
 exports.getNetwork = function getNetwork(req,callback) {
   //console.log("//// Eventoooo");
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/posts/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.network).get(function( err, data ) {
-    //
-    //console.log(data);
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/posts/'+req.params.network;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     if (data && data.ID) data = fnz.fixResult(data);
     //console.log("//// Event");
     callback(data);
+  })
+  .catch(error => {
+    console.error('Network API error:', error);
+    callback(null);
   });
 };
 
 /* POST TYPE */
 exports.getPostType = function getPostType(req,posttype,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/post_type/'+posttype;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     //console.log("//// PostType "+posttype);
     //console.log(err || data);
     //if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('PostType API error:', error);
+    callback(null);
   });
 };
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
-  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
+  const url = config.data_domain+(req.current_lang!=config.default_lang ? '/'+req.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug;
+  //console.log(config.data_domain+(req.current_lang!=config.default_lang ? '/'+req.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     //console.log("//// ContainerPage "+slug);
     //console.log(err || data);
     //if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('ContainerPage API error:', error);
+    callback(null);
   });
 };
 
@@ -105,15 +117,17 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
 
  exports.getGitHub = function getGitHub(req, callback) {
   const url = config.github;
-  request({
-    url: url,
+  axios.get(url, {
     headers: {
-      'User-Agent': 'Awesome-Octocat-App'
-    },
-    json: true
-  }, function(error, response, data) {
-    //console.log(data)
-    callback(data);
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+  })
+  .then(response => {
+    callback(response.data);
+  })
+  .catch(error => {
+    console.error('GitHub API error:', error);
+    callback(null);
   });
 };
 
@@ -123,142 +137,76 @@ exports.getPage = function getPage(req,callback) {
   //console.log("avnodeurl");
   var A = ["performances","workshops","installations","lectures","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
-  const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
   //console.log(url);
-  request({
-    url: url,
-    json: true
-  }, function(error, response, data) {
-    //console.log("//// Page " + req.params.page);
-    if (!error && data && data.ID) {
-      var A = ["performances","workshops","installations","lectures","gallery","galleries","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
-      if (data) data = fnz.fixResult(data);
-      /* if (data.posts){
-        data.posts = fnz.fixResults(data.posts);
-      } */
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      if (data['sources'] && data['sources'][0]) {
-        let avnodeurl = data['sources'][0];
-        if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.page+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
-          if (req.params.img) avnodeurl+= "img/"+req.params.img;
-        } else if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.page == "members" ? req.params.subpage : (req.params.page == "partnerships" || req.params.page == "partnerships-management" || req.params.page == "cultural-productions" ? "events"+"/"+req.params.subpage : req.params.page == "extra" ? "news"+"/"+req.params.subpage : req.params.page == "workshops" ? "learnings"+"/"+req.params.subpage : req.params.page == "installations" ? "performances"+"/"+req.params.subpage : req.params.page == "lectures" ? "learnings"+"/"+req.params.subpage : req.params.page+"/"+req.params.subpage));
-        }
-        if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        
-        //console.log("avnodeurl "+avnodeurl);
-        
-        request({
-          url: avnodeurl,
-          json: true
-        }, function(error, response, body) {
-          if (response.statusCode==200) {
-            data.avnode = body;
-            var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
-            if (body.pages) {
-              //console.log(body.pages)
-              for (var item in body.pages) {
-                body.pages[item].link = body.pages[item].link.split("/");
-                body.pages[item].link.splice(0, body.pages[item].link.indexOf("page")-1);
-                body.pages[item].link.unshift(basepath);
-                body.pages[item].link = body.pages[item].link.join("/");
-              };
-            }
-            /* if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-              if (req.params.subsubpage == "galleries") data.gallery = body;
-              if (req.params.subsubpage == "videos") data.video = body;
-              callback(data);
-            } else  */
-            if (A.indexOf(req.params.page) !== -1 && req.params.subpage) {
-              //console.log("req.params.pagessssssssssss");
-              //console.log(req.params.page);
-              /* if (req.params.page == "events") data.event = body;
-              if (req.params.page == "performances") data.performance = body;
-              if (req.params.page == "news") data.news = body;
-              if (req.params.page == "members") data.member = body;
-              if (req.params.page == "partnerships") data.partnership = body; */
-              callback(data);
-            } else {
-              if (body.data) body.events = body.data;
-              //console.log("shortcodify");
-              var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
-              //console.log("shortcodify2"+config.prefix);
-              fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
-                callback(data);
-              });
-            }
-          } else {
-            callback({});
-          }
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
+    if (data && data.ID) data = fnz.fixResult(data);
+    if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
+    var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+    if (data && data["sources"] && data["sources"][0]) {
+      var avnodeurl = data["sources"][0];
+      if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
+      //console.log("avnodeurl "+avnodeurl);
+      
+      axios.get(avnodeurl)
+      .then(avnodeResponse => {
+        var body = avnodeResponse.data;
+        if (body.data) body.events = body.data;
+        //console.log("shortcodify");
+        var lang_preurl = (req.current_lang == config.default_lang ? '' : '/'+req.current_lang);
+        //console.log("shortcodify2"+config.prefix);
+        fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
+          callback(data);
         });
-      } else {
+      })
+      .catch(error => {
+        console.error('Avnode API error:', error);
         callback(data);
-      }
+      });
     } else {
-      callback({});
+      callback(data);
     }
+  })
+  .catch(error => {
+    console.error('Page API error:', error);
+    callback(null);
   });
 };
 
 exports.getXMLlist = function getXMLlist(req,callback) {
   if (config.prefix=="flyer" && req.params.avnode=="news") req.params.avnode="extra";
-  const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
   //console.log(url);
-  request({
-    url: url,
-    json: true
-  }, function(error, response, data) {
-    //console.log(data);
-    //console.log("//// Page " + req.params.page);
-    if (!error && data && data.ID) {
-      var A = ["performances","gallery","galleries","videos","news","extra","events","members","partnerships","exhibitions"];
-      if (data) data = fnz.fixResult(data);
-      /* if (data.posts){
-        data.posts = fnz.fixResults(data.posts);
-      } */
-      if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
-      if (data['sources'] && data['sources'][0]) {
-        let avnodeurl = data['sources'][0];
-        if (A.indexOf(req.params.avnode) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
-          //console.log(req.params);
-          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+req.params.avnode+"/"+req.params.subpage+"/"+req.params.subsubpage+"/"+req.params.subsubsubpage+"/";
-          if (req.params.img) avnodeurl+= "img/"+req.params.img;
-        } else if (A.indexOf(req.params.avnode) !== -1 && req.params.subpage) {
-          avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
-        }
-        if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        //console.log("avnodeurl "+avnodeurl);
-        request({
-          url: avnodeurl,
-          json: true
-        }, function(error, response, body) {
-          if (body.pages) {
-            for (var item in body.pages) {
-              body.pages[item].link = body.pages[item].link.split("/");
-              body.pages[item].link.splice(0, 2);
-              body.pages[item].link = "/"+body.pages[item].link.join("/");
-            };
-          }
-          if (req.params.avnode == "partnerships-management") req.params.avnode = 'partnerships';
-          if (req.params.avnode == "cultural-productions") req.params.avnode = 'events';
-
-
-          if (body[req.params.avnode]) {
-            data.avnode = body;
-          } else {
-            data.avnode = {};
-            data.avnode[req.params.avnode] = body.data;
-          }
-          //console.log(data);
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
+    if (data && data.ID) data = fnz.fixResult(data);
+    if (data && data["sources"] && data["sources"][0]) {
+      var avnodeurl = data["sources"][0];
+      if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
+      //console.log("avnodeurl "+avnodeurl);
+      axios.get(avnodeurl)
+      .then(avnodeResponse => {
+        var body = avnodeResponse.data;
+        if (body.data) body.events = body.data;
+        var lang_preurl = (req.current_lang == config.default_lang ? '' : '/'+req.current_lang);
+        fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, "", data => {
           callback(data);
         });
-      } else {
+      })
+      .catch(error => {
+        console.error('Avnode XML API error:', error);
         callback(data);
-      }
+      });
     } else {
-      callback({});
+      callback(data);
     }
+  })
+  .catch(error => {
+    console.error('XML list API error:', error);
+    callback(null);
   });
 };
 
@@ -270,69 +218,92 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
   var trgt = this;
   var previousdata = p;
   //console.log("getAll "+sez.post_type);
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
-  var mylimit =  limit>0 ? limit : 50;
+  
+  var baseUrl = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2';
+  var endpoint = sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type;
+  var url = baseUrl + endpoint;
+  
+  var params = {
+    parent: 0,
+    per_page: limit > 0 ? limit : 50,
+    page: page
+  };
+  
   if (sez.site_tax && sez.post_type != "posts") {
-    wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).param( 'filter[order]', 'meta_value_num' ).param( 'filter[meta_key]', 'wpcf-startdate' ).perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
-      //console.log("//// AllFilterTax "+sez.post_type+" "+config.site_tax_id);
-      //console.log(err || data);
-      data = fnz.fixResults(data);
-      if (limit == -1) {
-        for(var d in data) if (data[d].id) previousdata.push(data[d]);
-        if (data._paging.totalPages>page) {
-          trgt.getAllReturn(req, sez, limit, page+1, previousdata, callback);
-        } else {
-          callback(previousdata);
-        }
-      } else {
-        callback(data);
-      }
-
-    });
-  } else {
-    wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log("//// All "+config.data_domain);
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
-      //console.log("//// All "+sez.post_type);
-      //console.log(err || data);
-      data = fnz.fixResults(data);
-      if (limit == -1) {
-        for(var d in data) if (data[d].id) previousdata.push(data[d]);
-        if (data._paging.totalPages>page) {
-          trgt.getAllReturn(req, sez, limit, page+1, previousdata, callback);
-        } else {
-          callback(previousdata);
-        }
-      } else {
-        callback(data);
-      }
-    });
+    params.site = config.site_tax_id;
+    params.filter = {
+      order: 'meta_value_num',
+      meta_key: 'wpcf-startdate'
+    };
   }
+  
+  axios.get(url, { params: params })
+  .then(response => {
+    var data = response.data;
+    //console.log("//// AllFilterTax "+sez.post_type+" "+config.site_tax_id);
+    //console.log(err || data);
+    data = fnz.fixResults(data);
+    
+    // Add pagination info from headers
+    if (response.headers['x-wp-totalpages']) {
+      data._paging = {
+        totalPages: parseInt(response.headers['x-wp-totalpages'])
+      };
+    }
+    
+    if (limit == -1) {
+      for(var d in data) if (data[d].id) previousdata.push(data[d]);
+      if (data._paging && data._paging.totalPages > page) {
+        trgt.getAllReturn(req, sez, limit, page+1, previousdata, callback);
+      } else {
+        callback(previousdata);
+      }
+    } else {
+      callback(data);
+    }
+  })
+  .catch(error => {
+    console.error('GetAll API error:', error);
+    callback([]);
+  });
 };
 
 //////// WEB & MOBILE
 
 exports.getWeb = function getWeb(req,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
-    //console.log("//// Web "+config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/web-and-mobile/'+req.params.web);
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/web-and-mobile/'+req.params.web;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
+    //console.log("//// Web "+config.data_domain+(req.current_lang!=config.default_lang ? '/'+req.current_lang : '')+'/wp-json/wp/v2/web-and-mobile/'+req.params.web);
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('Web API error:', error);
+    callback(null);
   });
 };
 
 exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
   //console.log("getAllWebByTag "+req.params.tag);
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/post_tag/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/post_tag/'+req.params.tag;
+  const params = {
+    parent: 0,
+    per_page: limit,
+    page: page
+  };
+  axios.get(url, { params: params })
+  .then(response => {
+    var data = response.data;
     //console.log("//// All Web By Tag");
     //console.log(err || data);
     data = fnz.fixResults(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('GetAllWebByTag API error:', error);
+    callback([]);
   });
 };
 
@@ -340,69 +311,88 @@ exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
 //////// LEARNING
 
 exports.getLearning = function getLearning(req,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/learning/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.learning).get(function( err, data ) {
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/learning/'+req.params.learning;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     //console.log("//// Learning");
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('Learning API error:', error);
+    callback(null);
   });
 };
 
 //////// VIDEOS
 
 exports.getVideo = function getVideo(req,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/videos/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.video).get(function( err, data ) {
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/videos/'+req.params.video;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     //console.log("//// Video");
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('Video API error:', error);
+    callback(null);
   });
 };
 
 //////// AWARDS
 
 exports.getAward = function getAward(req,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.award). get(function( err, data ) {
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/awards-and-grants/'+req.params.award;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     //console.log("//// Award");
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('Award API error:', error);
+    callback(null);
   });
 };
 
 //////// LAB
 
 exports.getLab = function getLab(req,callback) {
-  var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
-  wp.myCustomResource = wp.registerRoute('wp/v2', '/lab/(?P<sluggg>)' );
-  wp.myCustomResource().sluggg(req.params.lab).get(function( err, data ) {
+  const url = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/lab/'+req.params.lab;
+  axios.get(url)
+  .then(response => {
+    var data = response.data;
     //console.log("//// Lab");
     //console.log(data);
     if (data && data.auth_contents) data.auth_contents["events"].posts = fnz.fixResults(data.auth_contents["events"].posts);
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
+  })
+  .catch(error => {
+    console.error('Lab API error:', error);
+    callback(null);
   });
 };
 
 exports.getEdition = function getEdition(req,callback) {
-  let endpoint = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+'/';
+  let endpoint = config.data_domain+'/'+req.current_lang+'/wp-json/wp/v2/editions/'+config.prefix+'/'+req.params.edition+'/';
   if (req.params.performance)   endpoint+="program/";
   if (req.params.artist)        endpoint+="artists/";
   if (req.params.subedition)    endpoint+=req.params.subedition+'/';
   if (req.params.subsubedition) endpoint+=req.params.subsubedition+'/';
   //console.log("endpoint "+endpoint);
-  request({
-    url: endpoint,
-    json: true
-  }, function(error, response, data) {
+  axios.get(endpoint)
+  .then(response => {
+    var data = response.data;
     //console.log("data ");
     //console.log(data);
     let avnodeurl;
     if (req.params.subsubedition) {
-      var lang_predomain = 'https://'+(req.session.sessions.current_lang == "en" ? '' : req.session.sessions.current_lang+'.')+"api.avnode.net";
+      var lang_predomain = 'https://'+(req.current_lang == "en" ? '' : req.current_lang+'.')+"api.avnode.net";
       if (req.params.image) {
         avnodeurl = lang_predomain+"/galleries/"+req.params.subsubedition+"/img/"+req.params.image;
       } else if (req.params.subedition == "gallery") {
@@ -424,11 +414,10 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
       console.log("avnodeurl "+avnodeurl);
-      request({
-        url: avnodeurl,
-        json: true
-      }, function(error, response, body) {
-        if (response && response.statusCode==200 && body) {
+      axios.get(avnodeurl)
+      .then(avnodeResponse => {
+        var body = avnodeResponse.data;
+        if (body) {
           data.avnode = body;
           if (req.params.performance || req.params.artist) {
             callback(data);
@@ -436,7 +425,7 @@ exports.getEdition = function getEdition(req,callback) {
             /* if (req.params.subsubedition && (req.params.subedition == "gallery" || req.params.subedition == "videos")) {
               data.avnode = body;
             } */
-            var lang_preurl = (req.session.sessions.current_lang == config.default_lang ? '' : '/'+req.session.sessions.current_lang);
+            var lang_preurl = (req.current_lang == config.default_lang ? '' : '/'+req.current_lang);
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
             //console.log("shortcodify"+basepath);
             fnz.shortcodify(config.prefix, lang_preurl, data, body, req.params, basepath, data => {
@@ -446,33 +435,72 @@ exports.getEdition = function getEdition(req,callback) {
         } else {
           callback({});
         }
+      })
+      .catch(error => {
+        console.error('Avnode edition API error:', error);
+        callback({});
       });
     } else {
       callback(data);
     }
+  })
+  .catch(error => {
+    console.error('Edition API error:', error);
+    callback(null);
   });
 }
 
 //////// GLOBAL
 
+// Alternative: In-memory storage (no cookies, but data persists in server memory)
+// var userData = new Map(); // Store user data by IP or user agent
+
+exports.checkUserLogin = function checkUserLogin(req, callback) {
+  // Call avnode.net API to check if user is logged in
+  const loginCheckUrl = 'https://admin.avnode.net/api/session'; // Adjust URL as needed
+  
+  axios.get(loginCheckUrl, {
+    timeout: 5000, // 5 second timeout
+    headers: {
+      'User-Agent': req.headers['user-agent'] || 'Mozilla/5.0',
+      'Cookie': req.headers.cookie || '' // Forward cookies if needed
+    }
+  })
+  .then(response => {
+    const userData = response.data;
+    req.current_user = userData.loggedIn ? userData.user : null;
+    callback();
+  })
+  .catch(error => {
+    console.error('User login check error:', error.message);
+    req.current_user = null; // Default to not logged in on error
+    callback();
+  });
+};
+
 exports.setSessions = function setSessions(req,callback) {
-  //if (!req.session.meta) req.session.meta = require('util')._extend({}, config.meta);
-  if (!req.session.sessions) req.session.sessions = {};
-  req.session.sessions = {};
+  // Parse language from URL or use default
   var urlA = req.url.split("/");
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
-  if(req.session.sessions.current_lang != lang) {
-    req.session.sessions.current_lang = lang;
-    require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
-    global.setLocale(lang);
-  }
-  //console.log("sessions.current_lang: "+req.session.sessions.current_lang);
-  //console.log(req.params.edition);
+  
+  // Set language globally
+  require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
+  global.setLocale(lang);
+  
+  // Set current edition from URL params or use default
   if (config.last_edition) {
-    req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
-    //console.log(req.session.sessions.current_edition);
-    //console.log(config.meta.editions[req.session.sessions.current_edition]);
-    if (config.meta.editions && config.meta.editions[req.session.sessions.current_edition] && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
+    var current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
+    
+    // Fix edition data if needed
+    if (config.meta.editions && config.meta.editions[current_edition] && !config.meta.editions[current_edition].startdateISO) {
+      config.meta.editions[current_edition] = fnz.fixResult(config.meta.editions[current_edition]);
+    }
+    
+    // Store in request object
+    req.current_lang = lang;
+    req.current_edition = current_edition;
   }
-  callback();
+  
+  // Check user login status from avnode.net
+  this.checkUserLogin(req, callback);
 };

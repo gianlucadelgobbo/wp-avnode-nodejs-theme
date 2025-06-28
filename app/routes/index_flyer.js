@@ -5,7 +5,7 @@ var fs = require('fs');
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
-    var file = config.root+'/cache/'+config.prefix+'_home_'+req.session.sessions.current_lang+'.json';
+    var file = config.root+'/cache/'+config.prefix+'_home_'+req.current_lang+'.json';
     if (req.query.createcache==1 || !fs.existsSync(file)){
       //console.log("getAll profile");
       req.params.page = "profile";
@@ -28,7 +28,7 @@ exports.get = function get(req, res) {
                   var obj = {
                     results: {profile: profile, posttype_web: posttype_web, web: result_web, news:result_news.post_content, events:result_events, partnerships:result_partnerships.post_content},
                     page_data:page_data,
-                    sessions:req.session.sessions
+                    current_lang:req.current_lang, current_edition:req.current_edition
                   };
             jsonfile.writeFile(file, obj)
             .then(r => {

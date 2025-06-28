@@ -1,6 +1,6 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
-var request = require('request');
+var request = require('axios');
 
 
 exports.facebookSender = (req, res) => {

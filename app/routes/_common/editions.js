@@ -45,21 +45,23 @@ exports.get = function get(req, res) {
             template = config.prefix+'/'+'edition_medias';
           }
         } else if (req.params.subedition == "tickets") {
-          include_paypal = true;
-          const { jsonResponse } = await generateClientToken();
-          clientId = config.PAYPAL_CLIENT_ID,
-          clientToken = jsonResponse.client_token,
+          if (config.PAYPAL_CLIENT_ID && config.PAYPAL_CLIENT_SECRET) {
+            include_paypal = true;
+            const { jsonResponse } = await generateClientToken();
+            clientId = config.PAYPAL_CLIENT_ID;
+            clientToken = jsonResponse.client_token;
+          }
           template = config.prefix+'/'+'edition';
         } else {
           template = config.prefix+'/'+'edition';
         }
         if (template) {
-          res.render(template, {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions,rientro:rientro, include_gallery: include_gallery,include_paypal: include_paypal, clientToken:clientToken, clientId:clientId});
+          res.render(template, {result: result, req_params:req.params, page_data:page_data, current_lang:req.current_lang, current_edition:req.current_edition,rientro:rientro, include_gallery: include_gallery,include_paypal: include_paypal, clientToken:clientToken, clientId:clientId});
         } else {
-          res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+          res.status(404).render(config.prefix+'/404', {page_data:page_data, current_lang:req.current_lang, current_edition:req.current_edition, itemtype:"WebPage"});
         }
       } else {
-        res.status(404).render(config.prefix+'/404', {page_data:page_data, sessions:req.session.sessions, itemtype:"WebPage"});
+        res.status(404).render(config.prefix+'/404', {page_data:page_data, current_lang:req.current_lang, current_edition:req.current_edition, itemtype:"WebPage"});
       }
     });
   });

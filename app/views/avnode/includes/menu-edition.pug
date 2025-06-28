@@ -1,5 +1,5 @@
 ul.navbar-nav
-  each menu in config.meta.editions[sessions.current_edition].menu[sessions.current_lang]
+  each menu in config.meta.editions[current_edition].menu[current_lang]
     if menu.childs.length>0
       li.nav-item.dropdown(class=menu.post_status == 'publish' ? (page_data.url.indexOf(lang_preurl+menu.permalink) >= 0 ? "active" : undefined) : "disabled")
         .btn-group

@@ -1,10 +1,10 @@
-if config.meta.editions[sessions.current_edition].startdateHR || config.meta.editions[sessions.current_edition].enddateHR || config.meta.editions[sessions.current_edition].data_evento
+if config.meta.editions[current_edition].startdateHR || config.meta.editions[current_edition].enddateHR || config.meta.editions[current_edition].data_evento
   .dates
     span.sr-only
-      if config.meta.editions[sessions.current_edition].startdateHR
-        span(itemprop='startDate', content=config.meta.editions[sessions.current_edition].startdateISO)=config.meta.editions[sessions.current_edition].startdateHR
+      if config.meta.editions[current_edition].startdateHR
+        span(itemprop='startDate', content=config.meta.editions[current_edition].startdateISO)=config.meta.editions[current_edition].startdateHR
         !=" | "
-      if config.meta.editions[sessions.current_edition].enddateHR
-        span(itemprop='endDate', content=config.meta.editions[sessions.current_edition].enddateISO)=config.meta.editions[sessions.current_edition].enddateHR
-    if config.meta.editions[sessions.current_edition].data_evento
-      .date=config.meta.editions[sessions.current_edition].data_evento
+      if config.meta.editions[current_edition].enddateHR
+        span(itemprop='endDate', content=config.meta.editions[current_edition].enddateISO)=config.meta.editions[current_edition].enddateHR
+    if config.meta.editions[current_edition].data_evento
+      .date=config.meta.editions[current_edition].data_evento

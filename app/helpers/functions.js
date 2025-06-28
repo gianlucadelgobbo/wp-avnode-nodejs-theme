@@ -33,7 +33,7 @@ exports.setPageData = function setPageData(req, result) {
     page_data.wpID = result['ID']
     page_data.title = (result.post_title ? result.post_title : "");
     page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
-    page_data.description = result.post_content ? this.makeExcerpt(result.post_content, 160) : config.meta.description[req.session.sessions.current_lang];
+    page_data.description = result.post_content ? this.makeExcerpt(result.post_content, 160) : config.meta.description[req.current_lang];
     if (result.avnode) {
       if(result.avnode.performer && result.avnode.performer.stagename) {
         page_data.title+= ": "+result.avnode.performer.stagename;
@@ -65,12 +65,12 @@ exports.setPageData = function setPageData(req, result) {
       }
     }
     page_data.headtitle = page_data.title;
-    if (page_data.headtitle && req.session.sessions.current_lang != config.default_lang) page_data.headtitle+=" | "+req.session.sessions.current_lang.toUpperCase();
+    if (page_data.headtitle && req.current_lang != config.default_lang) page_data.headtitle+=" | "+req.current_lang.toUpperCase();
     /* if (result.avnode && result.avnode.title) {
       page_data.headtitle+= " | "+result.avnode.title;
     } */
     page_data.headtitle+= page_data.headtitle ? " | "+config.project_name : config.project_name;
-    if (page_data.headtitle==config.project_name && config.meta.headline) page_data.headtitle+=(config.meta.headline ? " | "+config.meta.headline[req.session.sessions.current_lang] : "");
+    if (page_data.headtitle==config.project_name && config.meta.headline) page_data.headtitle+=(config.meta.headline ? " | "+config.meta.headline[req.current_lang] : "");
     //if (!page_data.title) page_data.title = page_data.headtitle;
     //page_data.title = page_data.headtitle;
   } else {
@@ -83,16 +83,6 @@ exports.setPageData = function setPageData(req, result) {
   return page_data;
 };
 
-/*exports.getCurrentLang = function getCurrentLang(req) {
-  var urlA = req.url.split("/");
-  var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
-  if(req.session.sessions.current_lang != lang) {
-    req.session.sessions.current_lang = lang;
-    require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
-    global.setLocale(lang);
-  }
-};
-*/
 exports.formatLocation = function formatLocation(l) {
   var loc = {};
   for (var item in l){
@@ -105,7 +95,8 @@ exports.formatLocation = function formatLocation(l) {
 };
 
 exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_params, basepath, cb) {
-  var shortcode = require('shortcode-parser');
+  var ShortcodeParser = require('./shortcode-parser');
+  var shortcode = new ShortcodeParser();
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
     if (opts.view === "performances" || opts.view === "performances_inverse") {

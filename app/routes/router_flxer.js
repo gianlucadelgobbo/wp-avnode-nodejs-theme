@@ -17,7 +17,7 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-:avnode', xml", sitemapRoutes.get);
+  //app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   app.get('/it/:page/page/:paging', pagesRoutes.get);
   app.get('/it/:page/:subpage/:subsubpage', pagesRoutes.get);

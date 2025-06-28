@@ -1,6 +1,6 @@
 doctype html
-html(lang=sessions.current_lang)
-  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
+html(lang=current_lang)
+  - var lang_preurl = (current_lang == config.default_lang ? '' : '/'+current_lang)
   head
     title=page_data.headtitle
     meta(charset='UTF-8')
@@ -37,7 +37,7 @@ html(lang=sessions.current_lang)
                 .sr-only(itemprop='name')=config.project_name
           .col-md-4
           .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
-            !=config.meta.headline[sessions.current_lang]
+            !=config.meta.headline[current_lang]
       include includes/menu-main
 
       #result

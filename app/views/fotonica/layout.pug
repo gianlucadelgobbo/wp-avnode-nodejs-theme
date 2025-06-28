@@ -1,6 +1,6 @@
 doctype html
-html(lang=sessions.current_lang)
-  - var lang_preurl = (sessions.current_lang == config.default_lang ? '' : '/'+sessions.current_lang)
+html(lang=current_lang)
+  - var lang_preurl = (current_lang == config.default_lang ? '' : '/'+current_lang)
   head
     title=page_data.headtitle
     meta(charset='UTF-8')
@@ -25,12 +25,12 @@ html(lang=sessions.current_lang)
     link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
     link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
     // CSS
-    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + current_edition + '.min.css', type='text/css')
 
-    if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
+    if config.meta.editions[current_edition][ 'wpcf-background-image' ]
       style(type='text/css').
         body {
-          background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
+          background-image: url(#{config.meta.editions[current_edition][ 'wpcf-background-image' ]});
           background-position: top center;
           background-attachment:fixed;
         }
@@ -43,9 +43,9 @@ html(lang=sessions.current_lang)
           i.icon-bar
           i.icon-bar
           i.icon-bar
-        a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
+        a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[current_edition].title)
           i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
-          .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+          .sr-only(itemprop='name')=config.meta.editions[current_edition].title
         #menu-main.collapse.navbar-collapse
           include includes/menu-main
       //div(class=page_data.url == "/" ? "container-fluid" : "container")
@@ -54,14 +54,14 @@ html(lang=sessions.current_lang)
           .row
             .col-md-4
               #logo
-                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
-                  img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
-                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+                a(href='/', title=config.meta.editions[current_edition].title, itemprop='url')
+                  img.img-fluid(itemprop='image', src=config.meta.editions[current_edition]['wpcf-header-image'], alt=config.meta.editions[current_edition].title)
+                  .sr-only(itemprop='name')=config.meta.editions[current_edition].title
             .col-md-4
             .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
-              if config.meta.editions[sessions.current_edition]['wpcf-sub-title-image']
-                img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
-                .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+              if config.meta.editions[current_edition]['wpcf-sub-title-image']
+                img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[current_edition]['wpcf-sub-title'])
+                .sr-only(itemprop='name')=config.meta.editions[current_edition]['wpcf-sub-title']
                 .sr-only
                   include ../_partials/components/eventdateplace_meta
               else

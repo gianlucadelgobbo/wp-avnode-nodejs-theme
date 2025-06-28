@@ -1,6 +1,6 @@
 const sandbox = false;
 var base = sandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com";
-var request = require('request');
+var request = require('axios');
 const fetch = require('node-fetch-commonjs');
 
 /**

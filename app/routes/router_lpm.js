@@ -69,7 +69,7 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
+  //app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   /* app.get('/events/', eventsRoutes.getAll);
   app.get('/events/page/:page',  eventsRoutes.getAll);
