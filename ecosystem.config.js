@@ -13,6 +13,8 @@ module.exports = {
       ".git",
       "node_modules",
       "public",
+      "warehouse",
+      "files",
       "cache",
       "locales"
   ],
