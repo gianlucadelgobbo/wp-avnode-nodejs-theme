@@ -82,6 +82,6 @@ module.exports = function(app, exp) {
     })
   }*/
   app.use(exp.static(app.root + '/public'));
-  app.use(exp.static(app.root + '/files'));
-  app.use(exp.static(app.root + '/warehouse'));
+  app.use('/files', exp.static(app.root + '/files'));
+  app.use('/warehouse', exp.static(app.root + '/warehouse'));
 };
