@@ -18,21 +18,21 @@ module.exports = function(app) {
   //app.get('/sitemap-editions.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
+  app.get("/sitemap-:avnode', xml", sitemapRoutes.get);
 
   app.get('/network/', networkRoutes.getAll);
-  app.get('/network/page/(:page)', networkRoutes.getAll);
-  app.get('/network/(:network)', networkRoutes.get);
+  app.get('/network/page/:page',  networkRoutes.getAll);
+  app.get('/network/:network',  networkRoutes.get);
 
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  //app.get('/(:page)', pagesRoutes.get);
-  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
+  app.get('/:page/page/:paging', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage',  pagesRoutes.get);
+  app.get('/:page/:subpage',  pagesRoutes.get);
+  //app.get('/:page',  pagesRoutes.get);
+  //app.get('/:page',  recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/:page',  pagesRoutes.get);
   
-  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
-  app.post('/(:page)', pagesRoutes.post);
+  //app.post('/:page',  recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/:page',  pagesRoutes.post);
   
   app.post('/signup', signupRoutes.post);
 

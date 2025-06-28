@@ -112,165 +112,165 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
+  app.get("/sitemap-:avnode', xml", sitemapRoutes.get);
 
   app.get('/it/web-and-apps/', webRoutes.getAll);
   app.get('/it/web-and-apps/tags/', webRoutes.getAllTags);
-  app.get('/it/web-and-apps/(:web)', webRoutes.get);
-  app.get('/it/web-and-apps/page/(:page)', webRoutes.getAll);
-  app.get('/it/web-and-apps/tags/(:tag)', webRoutes.getTag);
+  app.get('/it/web-and-apps/:web', webRoutes.get);
+  app.get('/it/web-and-apps/page/:page', webRoutes.getAll);
+  app.get('/it/web-and-apps/tags/:tag', webRoutes.getTag);
 
   app.get('/it/awards-and-grants/', awardsRoutes.getAll);
-  app.get('/it/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/it/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+  app.get('/it/awards-and-grants/:award', awardsRoutes.get);
+  app.get('/it/awards-and-grants/page/:page', awardsRoutes.getAll);
 
   app.get('/it/', indexRoutes.get);
-  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  //app.get('/it/(:page)', recaptcha.middleware.render, pagesRoutes.get);
-  app.get('/it/(:page)', pagesRoutes.get);
+  app.get('/it/:page/page/:paging', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage/:subsubsubpage', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage/:subsubsubpage/img/:img', pagesRoutes.get);
+  app.get('/it/:page/:subpage', pagesRoutes.get);
+  //app.get('/it/:page', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/it/:page', pagesRoutes.get);
   
-  //app.post('/it/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
-  app.post('/it/(:page)', pagesRoutes.post);
+  //app.post('/it/:page', recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/it/:page', pagesRoutes.post);
 
   app.get('/web-and-apps/', webRoutes.getAll);
   app.get('/web-and-apps/tags/', webRoutes.getAllTags);
-  app.get('/web-and-apps/(:web)', webRoutes.get);
-  app.get('/web-and-apps/page/(:page)', webRoutes.getAll);
-  app.get('/web-and-apps/tags/(:tag)', webRoutes.getTag);
+  app.get('/web-and-apps/:web', webRoutes.get);
+  app.get('/web-and-apps/page/:page', webRoutes.getAll);
+  app.get('/web-and-apps/tags/:tag', webRoutes.getTag);
 
   app.get('/awards-and-grants/', awardsRoutes.getAll);
-  app.get('/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+  app.get('/awards-and-grants/:award', awardsRoutes.get);
+  app.get('/awards-and-grants/page/:page', awardsRoutes.getAll);
 
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
+  app.get('/:page/page/:paging', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage/:subsubsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage/:subsubsubpage/img/:img', pagesRoutes.get);
+  app.get('/:page/:subpage', pagesRoutes.get);
   app.get('/tools', pagesRoutes.getTools);
-  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
+  //app.get('/:page', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/:page', pagesRoutes.get);
   
-  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
-  app.post('/(:page)', pagesRoutes.post);
+  //app.post('/:page', recaptcha.middleware.verify, pagesRoutes.post);
+  app.post('/:page', pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 
 };
   /* app.get('/it/portfolio/videos/', videosRoutes.getAll);
-  app.get('/it/portfolio/videos/(:video)', videosRoutes.get);
-  app.get('/it/portfolio/videos/page/(:page)', videosRoutes.getAll);
+  app.get('/it/portfolio/videos/:video', videosRoutes.get);
+  app.get('/it/portfolio/videos/page/:page', videosRoutes.getAll);
 
   app.get('/it/portfolio/live-visuals/', eventsRoutes.getAll);
   app.get('/it/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
-  app.get('/it/portfolio/live-visuals/(:event)', eventsRoutes.get);
-  app.get('/it/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
-  app.get('/it/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getAllTags);
+  app.get('/it/portfolio/live-visuals/:event', eventsRoutes.get);
+  app.get('/it/portfolio/live-visuals/page/:page', eventsRoutes.getAll);
+  app.get('/it/portfolio/live-visuals/tags/:tag', eventsRoutes.getAllTags);
 
   app.get('/it/portfolio/learning/', learningRoutes.getAll);
-  app.get('/it/portfolio/learning/(:learning)', learningRoutes.get);
-  app.get('/it/portfolio/learning/page/(:page)', learningRoutes.getAll);
+  app.get('/it/portfolio/learning/:learning', learningRoutes.get);
+  app.get('/it/portfolio/learning/page/:page', learningRoutes.getAll);
 
   app.get('/it/portfolio/lab/', labRoutes.getAll);
-  app.get('/it/portfolio/lab/(:lab)', labRoutes.get);
-  app.get('/it/portfolio/lab/page/(:page)', labRoutes.getAll);
+  app.get('/it/portfolio/lab/:lab', labRoutes.get);
+  app.get('/it/portfolio/lab/page/:page', labRoutes.getAll);
  */
   /* app.get('/it/extra/', newsRoutes.getAll);
-  app.get('/it/extra/(:new)', newsRoutes.get);
-  app.get('/it/extra/page/(:page)', newsRoutes.getAll);
+  app.get('/it/extra/:new', newsRoutes.get);
+  app.get('/it/extra/page/:page', newsRoutes.getAll);
  */
 
   /*  app.get('/it/people', usersRoutes.getUsers);
-  app.get('/it/people/(:user)', usersRoutes.get);
+  app.get('/it/people/:user', usersRoutes.get);
   app.get('/it/customers', usersRoutes.getUsers);
-  app.get('/it/customers/(:user)', usersRoutes.get); */
+  app.get('/it/customers/:user', usersRoutes.get); */
 
   /* app.get('/portfolio/videos/', videosRoutes.getAll);
-  app.get('/portfolio/videos/(:video)', videosRoutes.get);
-  app.get('/portfolio/videos/page/(:page)', videosRoutes.getAll); */
+  app.get('/portfolio/videos/:video', videosRoutes.get);
+  app.get('/portfolio/videos/page/:page', videosRoutes.getAll); */
 
   /* app.get('/portfolio/live-visuals/', eventsRoutes.getAll);
   app.get('/portfolio/live-visuals/tags/', eventsRoutes.getAllTags);
-  app.get('/portfolio/live-visuals/(:event)', eventsRoutes.get);
-  app.get('/portfolio/live-visuals/page/(:page)', eventsRoutes.getAll);
-  app.get('/portfolio/live-visuals/tags/(:tag)', eventsRoutes.getTag); */
+  app.get('/portfolio/live-visuals/:event', eventsRoutes.get);
+  app.get('/portfolio/live-visuals/page/:page', eventsRoutes.getAll);
+  app.get('/portfolio/live-visuals/tags/:tag', eventsRoutes.getTag); */
 
   /* app.get('/portfolio/learning/', learningRoutes.getAll);
-  app.get('/portfolio/learning/(:learning)', learningRoutes.get);
-  app.get('/portfolio/learning/page/(:page)', learningRoutes.getAll);
+  app.get('/portfolio/learning/:learning', learningRoutes.get);
+  app.get('/portfolio/learning/page/:page', learningRoutes.getAll);
 
   app.get('/portfolio/lab/', labRoutes.getAll);
-  app.get('/portfolio/lab/(:lab)', labRoutes.get);
-  app.get('/portfolio/lab/page/(:page)', labRoutes.getAll); */
+  app.get('/portfolio/lab/:lab', labRoutes.get);
+  app.get('/portfolio/lab/page/:page', labRoutes.getAll); */
 
   /* app.get('/extra/', newsRoutes.getAll);
-  app.get('/extra/(:new)', newsRoutes.get);
-  app.get('/extra/page/(:page)', newsRoutes.getAll); */
+  app.get('/extra/:new', newsRoutes.get);
+  app.get('/extra/page/:page', newsRoutes.getAll); */
 
   /* app.get('/portfolio/awards-and-grants/', awardsRoutes.getAll);
-  app.get('/portfolio/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/portfolio/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+  app.get('/portfolio/awards-and-grants/:award', awardsRoutes.get);
+  app.get('/portfolio/awards-and-grants/page/:page', awardsRoutes.getAll);
 
   app.get('/people', usersRoutes.getUsers);
-  app.get('/people/(:user)', usersRoutes.get);
+  app.get('/people/:user', usersRoutes.get);
   app.get('/customers', usersRoutes.getUsers);
-  app.get('/customers/(:user)', usersRoutes.get); */
-  //app.get('/users/(:user)', usersRoutes.getUser);
+  app.get('/customers/:user', usersRoutes.get); */
+  //app.get('/users/:user', usersRoutes.getUser);
   /*
    app.use('/controlpanel', controlpanelRoutes);
    app.use('/api', apiRoutes);
 
-   app.get('/performers/(:filter)/(:sorting)/(:page)', performersRoutes.get);
-   app.get('/performers(*)', performersRoutes.get);
+   app.get('/performers/:filter/:sorting/:page', performersRoutes.get);
+   app.get('/performers(*', performersRoutes.get);
 
-   app.get('/live-visuals/(:filter)/(:sorting)/(:page)', eventsRoutes.get);
-   app.get('/events(*)', eventsRoutes.get);
+   app.get('/live-visuals/:filter/:sorting/:page', eventsRoutes.get);
+   app.get('/events(*', eventsRoutes.get);
 
-   app.get('/performances/(:filter)/(:sorting)/(:page)', performancesRoutes.get);
-   app.get('/performances(*)', performancesRoutes.get);
+   app.get('/performances/:filter/:sorting/:page', performancesRoutes.get);
+   app.get('/performances(*', performancesRoutes.get);
 
-   app.get('/tvshows/(:filter)/(:sorting)/(:page)', tvshowsRoutes.get);
-   app.get('/tvshows(*)', tvshowsRoutes.get);
+   app.get('/tvshows/:filter/:sorting/:page', tvshowsRoutes.get);
+   app.get('/tvshows(*', tvshowsRoutes.get);
 
-   app.get('/footage/(:filter)/(:sorting)/(:page)', footagesRoutes.get);
-   app.get('/footage(*)', footagesRoutes.get);
+   app.get('/footage/:filter/:sorting/:page', footagesRoutes.get);
+   app.get('/footage(*', footagesRoutes.get);
 
-   app.get('/playlists/(:filter)/(:sorting)/(:page)', playlistsRoutes.get);
-   app.get('/playlists(*)', playlistsRoutes.get);
+   app.get('/playlists/:filter/:sorting/:page', playlistsRoutes.get);
+   app.get('/playlists(*', playlistsRoutes.get);
 
-   app.get('/galleries/(:filter)/(:sorting)/(:page)', galleriesRoutes.get);
-   app.get('/galleries(*)', galleriesRoutes.get);
+   app.get('/galleries/:filter/:sorting/:page', galleriesRoutes.get);
+   app.get('/galleries(*', galleriesRoutes.get);
 
    app.get('/search', searchRoutes.get);
 
-   app.get('/swfdata/(:user)/footage/(:footage)', swfdataRoutes.get);
-   app.get('/embed/(:user)/footage/(:footage)', swfdataRoutes.get);
-   app.get('/download/(:user)/footage/(:footage)', swfdataRoutes.get);
-   app.get('/endpage/(:user)/footage/(:footage)', swfdataRoutes.get);
+   app.get('/swfdata/:user/footage/:footage', swfdataRoutes.get);
+   app.get('/embed/:user/footage/:footage', swfdataRoutes.get);
+   app.get('/download/:user/footage/:footage', swfdataRoutes.get);
+   app.get('/endpage/:user/footage/:footage', swfdataRoutes.get);
 
    app.get('/image', imageRoutes.get);
 
-   app.get('/(:user)/live-visuals/(:event)/participate', userRoutes.participateAtUserEvent);
-   app.get('/(:user)/live-visuals/(:event)', userRoutes.getUserEvent);
-   app.get('/(:user)/performances/(:performance)', userRoutes.getUserPerformance);
-   app.get('/(:user)/tvshows/(:tvshow)', userRoutes.getUserTvshow);
+   app.get('/:user/live-visuals/:event/participate', userRoutes.participateAtUserEvent);
+   app.get('/:user/live-visuals/:event', userRoutes.getUserEvent);
+   app.get('/:user/performances/:performance', userRoutes.getUserPerformance);
+   app.get('/:user/tvshows/:tvshow', userRoutes.getUserTvshow);
 
-   app.get('/(:user)/playlists/(:playlist)', userRoutes.getUserPlaylist);
-   app.get('/(:user)/footage/(:footage)', userRoutes.getUserFootage);
-   app.get('/(:user)/galleries/(:gallery)', userRoutes.getUserGallery);
-   //app.get('/(:user)/crews/(:crew)', userRoutes.getUserCrew);
+   app.get('/:user/playlists/:playlist', userRoutes.getUserPlaylist);
+   app.get('/:user/footage/:footage', userRoutes.getUserFootage);
+   app.get('/:user/galleries/:gallery', userRoutes.getUserGallery);
+   //app.get('/:user/crews/:crew', userRoutes.getUserCrew);
 
-   app.get('/(:user)/events', userRoutes.getUserEvents);
-   app.get('/(:user)/performances', userRoutes.getUserPerformances);
-   app.get('/(:user)/tvshows',  userRoutes.getUserTvshows);
-   app.get('/(:user)/playlists', userRoutes.getUserPlaylists);
-   app.get('/(:user)/footage', userRoutes.getUserFootages);
-   app.get('/(:user)/galleries', userRoutes.getUserGalleries);
-   app.get('/(:user)/crews', userRoutes.getUserCrews);
+   app.get('/:user/events', userRoutes.getUserEvents);
+   app.get('/:user/performances', userRoutes.getUserPerformances);
+   app.get('/:user/tvshows',  userRoutes.getUserTvshows);
+   app.get('/:user/playlists', userRoutes.getUserPlaylists);
+   app.get('/:user/footage', userRoutes.getUserFootages);
+   app.get('/:user/galleries', userRoutes.getUserGalleries);
+   app.get('/:user/crews', userRoutes.getUserCrews);
 
-   app.get('/(:user)', userRoutes.getUser);
+   app.get('/:user', userRoutes.getUser);
    */
