@@ -3,7 +3,7 @@ article(itemscope, itemtype='http://schema.org/'+itemtype)
     .col-md-9
       .main-cnt
         header.post_title.mb-4
-          h1(itemprop="name")=page_data.title
+          h1(itemprop="name")!=page_data.title
         .rientro
           div(itemprop='description')!=result.post_content
           if (form == "contacts")
