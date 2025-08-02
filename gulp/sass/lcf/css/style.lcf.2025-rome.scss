@@ -217,7 +217,25 @@ footer.navbar-inverse {
     border:none;
   }
 
+	.itemListElement.col-md-12 {
+		max-width: none;
+	}
 
+	.itemListElement.col-md-12 a:first-child{
+		max-width: 45%;
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 10%;
+	}
+
+	.itemListElement.col-md-12 .caption{
+		max-width: 45%;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.itemListElement.col-md-12 .caption-type{
+		padding: 0;
+	}
 	#wpID89079 .sameheight .grid-title, #wpID89088 .sameheight .grid-title{
     padding-top: 3rem !important;
     

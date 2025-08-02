@@ -108,7 +108,7 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
   var shortcode = require('shortcode-parser');
   var jade = require("pug");
   shortcode.add('avnode', function(buf, opts) {
-    if (opts.view === "performances" || opts.view === "performances_inverse") {
+    if (opts.view === "performances" || opts.view === "performances_inverse" || opts.view === "performances_inverse_nofloat") {
       /* if (strpos($shortcode_atts['source'], "flxer.net")>0) {
         $sourceA = explode("/",str_replace(array("flxer.net/api"), array("api.avnode.net"), $shortcode_atts['source']));
         $shortcode_atts['source'] = "https://".$sourceA[2]."/".$sourceA[4]."/".$sourceA[5]."/";
