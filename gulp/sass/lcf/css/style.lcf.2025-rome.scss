@@ -220,7 +220,7 @@ footer.navbar-inverse {
 	.itemListElement.col-md-12 {
 		max-width: none;
 	}
-
+@media (min-width: 1199px) {
 	.itemListElement.col-md-12 a:first-child{
 		max-width: 45%;
 		display: inline-block;
@@ -233,8 +233,16 @@ footer.navbar-inverse {
 		display: inline-block;
 		vertical-align: top;
 	}
+}
+@media (max-width: 1200px) {
+	header>h1 {
+		font-size: 4rem;
+	}
+}
 	.itemListElement.col-md-12 .caption-type{
 		padding: 0;
+		font-size: 14px;
+		margin-bottom: 50px;
 	}
 	#wpID89079 .sameheight .grid-title, #wpID89088 .sameheight .grid-title{
     padding-top: 3rem !important;
