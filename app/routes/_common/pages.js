@@ -76,7 +76,8 @@ exports.get = function get(req, res) {
             basepath = "/performances/" +req.params.subpage+"/videos/" +req.params.subsubsubpage+"/";
           }            
         }
-        console.log(pug)
+        //console.log("pug: "+pug)
+        //console.log("basepath:"+basepath)
         var check = pug.split("/")[1];
         if (check == "page_newsletter"/*  || check == "page_contacts" */ || check == "page_join") {
           result.countries = require('../../helpers/country-list');

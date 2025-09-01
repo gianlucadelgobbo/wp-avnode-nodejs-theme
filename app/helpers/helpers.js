@@ -156,15 +156,17 @@ exports.getPage = function getPage(req,callback) {
           if (response.statusCode==200) {
             data.avnode = body;
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
+            //console.log("basepath", basepath);
             if (body.pages) {
-              //console.log(body.pages)
+              console.log(body.pages)
               for (var item in body.pages) {
                 body.pages[item].link = body.pages[item].link.split("/");
-                body.pages[item].link.splice(0, body.pages[item].link.indexOf("page")-1);
+                body.pages[item].link.splice(0, body.pages[item].link.indexOf("page"));
                 body.pages[item].link.unshift(basepath);
-                body.pages[item].link = body.pages[item].link.join("/");
+                body.pages[item].link = "/"+body.pages[item].link.join("/");
               };
             }
+            //console.log(body.pages)
             /* if (A.indexOf(req.params.page) !== -1 && A.indexOf(req.params.subsubpage) !== -1 && req.params.subsubsubpage) {
               if (req.params.subsubpage == "galleries") data.gallery = body;
               if (req.params.subsubpage == "videos") data.video = body;
