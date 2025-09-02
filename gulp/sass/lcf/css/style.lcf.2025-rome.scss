@@ -28,6 +28,12 @@ footer.navbar-inverse {
 .modal-fullscreen .modal-content a:hover {
 	text-decoration: underline;
 }
+.caption-paypal {
+	width: 300px;
+	margin-top: 15px;
+	text-align: right;
+}
+
 @media (min-width: 1200px){
   #wpID89079 .sameheight .grid-title, #wpID89088 .sameheight .grid-title, #wpID89076 .sameheight .grid-title{
     float: left;
@@ -220,12 +226,20 @@ footer.navbar-inverse {
 	.itemListElement.col-md-12 {
 		max-width: none;
 	}
+
 @media (min-width: 1199px) {
 	.itemListElement.col-md-12 a:first-child{
 		max-width: 45%;
 		display: inline-block;
 		vertical-align: top;
 		margin-right: 10%;
+	}
+
+	.itemListElement.col-md-12 .caption-paypal a:first-child{
+		margin-right: 0;
+    width: 300px;
+    margin-bottom: 15px;
+    text-align: right;
 	}
 
 	.itemListElement.col-md-12 .caption{
