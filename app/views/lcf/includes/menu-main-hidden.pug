@@ -10,7 +10,7 @@
     .text-right!=config.meta.editions[sessions.current_edition]['wpcf-sub-title'].replace(" | ", "<br />")
     div.d-none.d-sm-block
       if (config.last_edition_status == "selling")
-        a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/editions/2023-rome/tickets/") TICKETS
+        a.btn.btn-primary(title="TICKETS" href=lang_preurl + "/tickets/") TICKETS
       //-else 
         a.btn.btn-primary.disabled(title="TICKETS" href="#") TICKETS
     div
@@ -29,8 +29,8 @@
           a(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
       ul.list-inline.m-0
         li.list-inline-item
-          //-a(title="TICKETS" href=lang_preurl + "/editions/2022-rome/tickets/") TICKETS
-          a.disabled(title="TICKETS" href=lang_preurl + "#") TICKETS
+          if (config.last_edition_status == "selling")
+            a(title="TICKETS" href=lang_preurl + "/tickets/") TICKETS
       ul.list-inline.m-0
         li.list-inline-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
           a#searchModalButton(href="/search/")

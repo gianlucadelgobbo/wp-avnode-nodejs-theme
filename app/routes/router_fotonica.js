@@ -10,7 +10,7 @@ var metaRoutes = require('./_common/meta');
 //var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
 
 module.exports = function(app) {
-  app.get('/tickets', function(req, res) {res.redirect(301, '/editions/2024-rome/tickets/')});
+  app.get('/tickets', function(req, res) {res.redirect(301, '/editions/2025-rome/tickets/')});
   app.get('/it', function(req, res) {res.redirect(301, '/')});
   app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
 
