@@ -14,8 +14,8 @@ module.exports = function(app) {
   app.post('/*.php', pagesRoutes.get404);
 
   app.get('/ar', pagesRoutes.getAR);
-  app.get('/tickets', function(req, res) {res.redirect(301, '/editions/2025-rome/tickets/')});
-  app.get('/en/tickets', function(req, res) {res.redirect(301, '/en/editions/2025-rome/tickets/')});
+  app.get('/tickets', function(req, res) {res.redirect(301, '/editions/'+config.last_edition+'/tickets/')});
+  app.get('/en/tickets', function(req, res) {res.redirect(301, '/en/editions/'+config.last_edition+'/tickets/')});
 
   app.get('/news/lpm-2018-rome-call-to-partecipate/', function(req, res) {res.redirect(301, req.url.replace('/news/lpm-2018-rome-call-to-partecipate/','/news/lpm-2018-rome-call-to-participate/'))});
   app.get('/editions/2017-rome/artists/AshKoosha/performances/live-vr-show/', function(req, res) {res.redirect(301, '/editions/2017-rome/artists/AshKoosha/performances/live-av-show/')});
