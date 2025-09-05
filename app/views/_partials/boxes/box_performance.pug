@@ -39,7 +39,9 @@ li.itemListElement(class=css, itemprop='itemListElement', itemscope='', itemtype
     if performance.schedule.paypal && performance.schedule.paypal!="soldout" && new Date(performance.schedule.endtime)>=new Date()
       .caption-paypal
         a(href=performance.schedule.paypal)
-          if performance.schedule.price
+          if performance.schedule.price && config.prefix=="visualsound"
+            !=global.__('FREE WITH SCHOLARSHIP')
+          else if performance.schedule.price
             !=global.__('BUY NOW')
           else
             !=global.__('BOOK NOW')

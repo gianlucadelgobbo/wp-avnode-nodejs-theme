@@ -51,7 +51,9 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                               !=global.__('SOLD OUT')
                           if schedule.paypal && schedule.paypal!="soldout" && new Date(schedule.endtime)>=new Date()
                             a.btn.btn-lg.btn-primary(href=schedule.paypal target="_blank")
-                              if schedule.price
+                              if schedule.price && config.prefix=="visualsound"
+                                b!="<s>"+schedule.price+",00</s> € | "+ global.__('FREE WITH SCHOLARSHIP')
+                              else if schedule.price
                                 b=schedule.price+",00 € | "+ global.__('BUY NOW')
                               else
                                 b=global.__('BOOK NOW')
