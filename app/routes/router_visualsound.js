@@ -15,6 +15,8 @@ module.exports = function(app) {
   //app.get('/en/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
 
   app.get('/', indexRoutes.get);
+  app.get('/tickets', function(req, res) {res.redirect(301, '/editions/'+config.last_edition+'/tickets/')});
+  app.get('/en/tickets', function(req, res) {res.redirect(301, '/en/editions/'+config.last_edition+'/tickets/')});
 
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);
