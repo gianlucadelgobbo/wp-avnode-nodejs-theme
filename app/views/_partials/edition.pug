@@ -16,7 +16,7 @@ article#container
     header.post_title.mb-4
       h1(itemprop='name')=page_data.title
   if (sessions.current_edition == config.last_edition && page_data.url.indexOf("/program/")!==-1)
-    if(config.last_edition_status == "call")
+    if (config.last_edition_status == "call")
       style.
         .schedule {
           display: none
@@ -27,27 +27,33 @@ article#container
       else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
         br
         .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The list of acts include ONLY the submissions approved till today and their schedule will be available soon.<br /><b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/"+sessions.current_edition+"/call-to-participate/\">PARTICIPATE</a>"
-    if (config.last_edition_status == "approving")
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "approving")
       style.
         .schedule {
           display: none
         }
       if (page_data.url.indexOf("/artists/") == page_data.url.length - 9)
         br
-        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
       else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
-        br
-        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
-    if (config.last_edition_status == "programming")
+      br
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "programming")
+      //- console.log(config.last_edition_status)
       style.
         .schedule {
           display: none
         }
-      if (page_data.url.indexOf("/program/")==page_data.url.length-9)
-        .alert.alert-danger!=__("<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!")
-    if (config.last_edition_status == "selling")
+      if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
         br
-        .alert.alert-success!="<b>ATTENTION LAST TICKETS AVAILABES</b> &nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
+        .alert.alert-danger!=__("<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!")
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "selling")
+      br
+      if(config.prefix=="visualsound")
+        .alert.alert-success!="<b>"+global.__("FINAL SCHOLARSHIP PLACES AVAILABLE")+"</b> &nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/join/\">"+global.__("APPLY NOW!!!")+"</a>"
+      else
+        .alert.alert-success!="<b>"+global.__("ATTENTION LAST TICKETS AVAILABES")+"</b> &nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/tickets/\">"+global.__("BUY A TICKET")+"</a>"
+
   .pt-3
     if page_data.wpID == 89079
       .filters.p-4
