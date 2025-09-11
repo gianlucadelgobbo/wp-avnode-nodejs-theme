@@ -34,7 +34,6 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
                             b=schedule.price+",00 € | "+ global.__('BUY NOW')
                     
                     if booking.schedule.length && schedule.paypal && new Date(schedule.endtime)>=new Date() && (schedule.alleventschedulewithoneprice && index2==booking.schedule.length-1 || !schedule.alleventschedulewithoneprice)
-                      !="eccomi"
                       .row
                         .col(class=(schedule.alleventschedulewithoneprice && index2==booking.schedule.length-1) ? "mt-3" : null)
                           p
