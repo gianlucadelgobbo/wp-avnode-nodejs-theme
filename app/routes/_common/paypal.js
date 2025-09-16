@@ -68,8 +68,8 @@ const generateClientToken = async () => {
  */
 const createOrder = async (cart, buyer) => {
   try {
-    console.log("Shopping cart information from the frontend:", cart);
-    console.log("Buyer information from the frontend:", buyer);
+    //console.log("Shopping cart information from the frontend:", cart);
+    //console.log("Buyer information from the frontend:", buyer);
 
     if (!buyer || !buyer.name || !buyer.email) {
       throw new Error("Buyer information is missing.");
@@ -125,8 +125,8 @@ const createOrder = async (cart, buyer) => {
       },
     ];
 
-    console.log("Calculated Item Total:", totalValue.toFixed(2));
-    console.log("Payload Sent to PayPal:", JSON.stringify(purchase_units, null, 2));
+    //console.log("Calculated Item Total:", totalValue.toFixed(2));
+    //console.log("Payload Sent to PayPal:", JSON.stringify(purchase_units, null, 2));
 
     const accessToken = await generateAccessToken();
     const response = await fetch(`${base}/v2/checkout/orders`, {

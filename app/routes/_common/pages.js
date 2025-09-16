@@ -101,7 +101,7 @@ exports.get = function get(req, res) {
 exports.post = function post(req, res) {
   var request = require("request");
   if (req.body.formtype == "join") {
-    console.log("recaptcha.verify")
+    //console.log("recaptcha.verify")
     if(!req.recaptcha.error) {
       var mailer = require('../../helpers/mailer');
       var message = {
@@ -222,7 +222,7 @@ exports.post = function post(req, res) {
     }
   );
   } else if (req.body.formtype == "newsletter") {
-    console.log("recaptcha.verify")
+    //console.log("recaptcha.verify")
     if(!req.recaptcha.error) {
       helpers.validateFormNewsletter(req.body, function(e, o) {
         if (req.body.ajax) {
@@ -241,7 +241,7 @@ exports.post = function post(req, res) {
             formData.api_key = config.accounts.newsletter.api_key;
             formData.SiteFrom = config.prefix;
             formData.boolean = true;
-            console.log(formData)
+            //console.log(formData)
             var querystring = require('querystring');
             
             // form data
@@ -343,7 +343,7 @@ exports.post = function post(req, res) {
       res.status(200).send({type:"danger", message: estr});
     }
   } else {
-    console.log("recaptcha.verify")
+    //console.log("recaptcha.verify")
     if(!req.recaptcha.error) {
       var mailer = require('../../helpers/mailer');
       var message = {

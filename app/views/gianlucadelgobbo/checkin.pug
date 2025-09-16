@@ -52,8 +52,8 @@ html(lang='en')
               .invalid-feedback
           .col-md-6
             .mb-3
-              - console.log(myget.nights)
-              - console.log(parseInt(myget.nights))
+              - //console.log(myget.nights)
+              - //console.log(parseInt(myget.nights))
               label.form-label(for="days")="Numero Giorni di Permanenza"
               select#days.form-select(name="days" disabled=(myget.nights && parseInt(myget.nights)>0 ? "disabled" : undefined))
                 option(value="0")="Numero Giorni di Permanenzae"
@@ -218,14 +218,14 @@ html(lang='en')
             $(".comune select")  
             .change(function () {
               $(this).parent().find("input").val(comuni[comuni.map(function(item) {return item.code}).indexOf($(this).val())].province)
-              console.log(comuni[comuni.map(function(item) {return item.code}).indexOf($(this).val())].province)
+              //console.log(comuni[comuni.map(function(item) {return item.code}).indexOf($(this).val())].province)
             });
           }
       }
       $(function() {
         maybeClone();
         $( ".is-invalid" ).focus(function() {
-          console.log(this)
+          //console.log(this)
           $(this).removeClass("is-invalid")
           $(this).parent().find(".invalid-feedback").html("")
         });
@@ -239,9 +239,9 @@ html(lang='en')
               method: "post",
               data: data
             }).fail(function(err) {
-              console.log(err)
+              //console.log(err)
             }).done(function(doc) {
-              console.log(doc);
+              //console.log(doc);
               if (doc.errors) {
                 for(var item in doc.errors) {
                   var select = item;
@@ -249,14 +249,14 @@ html(lang='en')
 
                   $("[name='"+select+"']").addClass("is-invalid")
                   $("[name='"+select+"']").parent().find(".invalid-feedback").text(doc.errors[item].message);
-                  console.log($("[name='"+select+"']"));
-                  console.log(select);
-                  console.log(item);
-                  console.log(item.indexOf("."));
-                  console.log(doc.errors[item].message);
+                  //console.log($("[name='"+select+"']"));
+                  //console.log(select);
+                  //console.log(item);
+                  //console.log(item.indexOf("."));
+                  //console.log(doc.errors[item].message);
                 }
                 $( ".is-invalid" ).focus(function() {
-                  console.log(this)
+                  //console.log(this)
                   $(this).removeClass("is-invalid")
                   $(this).parent().find(".invalid-feedback").html("")
                 });
@@ -275,7 +275,7 @@ html(lang='en')
           $(".clone .guesttype").val($(this).val())
           if ($(this).val()=="16") $("#guestsnumber").val(1)
           maybeClone()
-          console.log($(this).val())
+          //console.log($(this).val())
         });
 
         $("#guestsnumber")  

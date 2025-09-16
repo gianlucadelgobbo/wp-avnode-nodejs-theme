@@ -11,9 +11,9 @@ exports.facebookSender = (req, res) => {
     }, */
     json: true
   }, function(error, response, data) {
-    console.log(error)
-    console.log("https://graph.facebook.com/oauth/access_token?client_id="+config.accounts.facebook.client_id+"&client_secret="+config.accounts.facebook.client_secret+"&redirect_uri=http://vjtelevision.com/facebookSender")
-    console.log(data)
+    //console.log(error)
+    //console.log("https://graph.facebook.com/oauth/access_token?client_id="+config.accounts.facebook.client_id+"&client_secret="+config.accounts.facebook.client_secret+"&redirect_uri=http://vjtelevision.com/facebookSender")
+    //console.log(data)
     //callback(data);
   });
 }

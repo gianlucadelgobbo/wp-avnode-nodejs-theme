@@ -37,7 +37,7 @@ function cli_show_cookiebar(p) {
 		json_payload = p.settings;
 	
 	if (typeof JSON.parse !== "function") {
-		console.log("CookieLawInfo requires JSON.parse but your browser doesn't support it");
+		//console.log("CookieLawInfo requires JSON.parse but your browser doesn't support it");
 		return;
 	}
 	var settings = JSON.parse(json_payload);

@@ -83,17 +83,17 @@ exports.get = function get(req, res) {
   res.render('gianlucadelgobbo/checkin', {comuni:comuni, nazioni,nazioni, docs: docs, type: type, myget: req.query});
 }
 exports.post = function post(req, res) {
-  console.log(req.body);
+  //console.log(req.body);
   req.body.guests.forEach(function(guest) {
-    console.log(guest)
+    //console.log(guest)
   });
   const newguest = new Reservation(req.body);
   newguest.save().then((bho) => {
-    console.log('meow')
-    console.log(bho)
+    //console.log('meow')
+    //console.log(bho)
     res.json(bho)
   }).catch(error =>{
-    console.log(error);
+    //console.log(error);
     res.json(error);
   }); 
 }

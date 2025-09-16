@@ -158,7 +158,7 @@ exports.getPage = function getPage(req,callback) {
             var basepath = req.params.page && config.sez.pages.conf[req.params.page] && config.sez.pages.conf[req.params.page].basepath ? config.sez.pages.conf[req.params.page].basepath : "";
             //console.log("basepath", basepath);
             if (body.pages) {
-              console.log(body.pages)
+              //console.log(body.pages)
               for (var item in body.pages) {
                 body.pages[item].link = body.pages[item].link.split("/");
                 body.pages[item].link.splice(0, body.pages[item].link.indexOf("page"));
@@ -425,7 +425,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      console.log("avnodeurl "+avnodeurl);
+      //console.log("avnodeurl "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
