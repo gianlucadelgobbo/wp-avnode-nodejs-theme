@@ -14,6 +14,24 @@ nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
         a.nav-link(href=lang_preurl+'/concept/') Concept
       li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
         a.nav-link(href=lang_preurl+'/news/') News
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2025-academy/gallery/') 2025 Academy
+          a.dropdown-item(href=lang_preurl+'/editions/2025-villa-deste/gallery/') 2025 Villa d'Este
+          a.dropdown-item(href=lang_preurl+'/editions/2024-rome/gallery/') 2024 Rome
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Videos"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2025-academy/videos/') 2025 Academy
+          a.dropdown-item(href=lang_preurl+'/editions/2025-villa-deste/videos/') 2025 Villa d'Este
+          a.dropdown-item(href=lang_preurl+'/editions/2024-rome/videos/') 2024 Rome
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Editions"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2025-academy/') 2025 Academy
+          a.dropdown-item(href=lang_preurl+'/editions/2025-villa-deste/') 2025 Villa d'Este
+          a.dropdown-item(href=lang_preurl+'/editions/2024-rome/') 2024 Rome
       li.nav-item(class=page_data.url.indexOf(lang_preurl+'/press') == 0 ? "active" : undefined)
         a.nav-link(href=lang_preurl+'/press/') Press
       li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)

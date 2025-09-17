@@ -18,26 +18,26 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
+  app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   app.get('/en/', indexRoutes.get);
-  app.get('/en/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/en/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/en/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/en/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/en/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/en/(:page)', pagesRoutes.get);
+  app.get('/en/:page/page/:paging', pagesRoutes.get);
+  app.get('/en/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/en/:page/:subpage/:subsubpage/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/en/:page/:subpage/:subsubpage/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/en/:page/:subpage', pagesRoutes.get);
+  app.get('/en/:page', pagesRoutes.get);
   
 
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
-  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/:page/page/:paging', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/:page/:subpage', pagesRoutes.get);
+  app.get('/:page', pagesRoutes.get);
+  //app.get('/:page', recaptcha.middleware.render, pagesRoutes.get);
   
-  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  //app.post('/:page', recaptcha.middleware.verify, pagesRoutes.post);
 
   app.get('*', pagesRoutes.get404);
 };

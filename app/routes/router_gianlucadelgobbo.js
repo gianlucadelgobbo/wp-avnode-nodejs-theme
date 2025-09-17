@@ -25,45 +25,45 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
+  app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   app.get('/it/coding/', codingRoutes.getAll);
   app.get('/it/coding/tags/', codingRoutes.getAllTags);
   app.get('/it/coding/(:web)', codingRoutes.get);
-  app.get('/it/coding/page/(:page)', codingRoutes.getAll);
+  app.get('/it/coding/page/:page', codingRoutes.getAll);
   app.get('/it/coding/tags/(:tag)', codingRoutes.getTag);
 
   app.get('/it/awards-and-grants/', awardsRoutes.getAll);
   app.get('/it/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/it/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+  app.get('/it/awards-and-grants/page/:page', awardsRoutes.getAll);
 
   app.get('/it/', indexRoutes.get);
-  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/it/(:page)', pagesRoutes.get);
+  app.get('/it/:page/page/:paging', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/it/:page/:subpage', pagesRoutes.get);
+  app.get('/it/:page', pagesRoutes.get);
   
   app.get('/coding/', codingRoutes.getAll);
   app.get('/coding/tags/', codingRoutes.getAllTags);
   app.get('/coding/(:web)', codingRoutes.get);
-  app.get('/coding/page/(:page)', codingRoutes.getAll);
+  app.get('/coding/page/:page', codingRoutes.getAll);
   app.get('/coding/tags/(:tag)', codingRoutes.getTag);
 
   app.get('/awards-and-grants/', awardsRoutes.getAll);
   app.get('/awards-and-grants/(:award)', awardsRoutes.get);
-  app.get('/awards-and-grants/page/(:page)', awardsRoutes.getAll);
+  app.get('/awards-and-grants/page/:page', awardsRoutes.getAll);
 
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)/(:subsubsubpage)/img/:img', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
-  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/:page/page/:paging', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage/(:subsubsubpage)', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage/(:subsubsubpage)/img/:img', pagesRoutes.get);
+  app.get('/:page/:subpage', pagesRoutes.get);
+  app.get('/:page', pagesRoutes.get);
+  //app.get('/:page', recaptcha.middleware.render, pagesRoutes.get);
   
-  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  //app.post('/:page', recaptcha.middleware.verify, pagesRoutes.post);
 
   app.post('/signup', signupRoutes.post);
 

@@ -17,24 +17,24 @@ module.exports = function(app) {
   //app.get('/sitemap-editions.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
+  app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);
 
-  app.get('/it/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/it/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/it/(:page)', pagesRoutes.get);
+  app.get('/it/:page/page/:paging', pagesRoutes.get);
+  app.get('/it/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/it/:page/:subpage', pagesRoutes.get);
+  app.get('/it/:page', pagesRoutes.get);
 
   app.post('/it/signup', signupRoutes.post);
 
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
-  //app.get('/(:page)', recaptcha.middleware.render, pagesRoutes.get);
+  app.get('/:page/page/:paging', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage', pagesRoutes.get);
+  app.get('/:page', pagesRoutes.get);
+  //app.get('/:page', recaptcha.middleware.render, pagesRoutes.get);
   
-  //app.post('/(:page)', recaptcha.middleware.verify, pagesRoutes.post);
+  //app.post('/:page', recaptcha.middleware.verify, pagesRoutes.post);
   
   app.post('/signup', signupRoutes.post);
 

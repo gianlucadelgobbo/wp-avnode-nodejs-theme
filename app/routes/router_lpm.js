@@ -69,63 +69,63 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get("/sitemap-home.xml", sitemapRoutes.get);
   app.get("/sitemap-pages.xml", sitemapRoutes.get);
-  app.get("/sitemap-(:avnode).xml", sitemapRoutes.get);
+  app.get("/sitemap-:avnode.xml", sitemapRoutes.get);
 
   /* app.get('/events/', eventsRoutes.getAll);
-  app.get('/events/page/(:page)', eventsRoutes.getAll);
-  app.get('/events/(:event)', eventsRoutes.get); */
+  app.get('/events/page/:page', eventsRoutes.getAll);
+  app.get('/events/(:event', eventsRoutes.get); */
 /*  app.get('/news/', newsRoutes.getAll);
-  app.get('/news/page/(:page)', newsRoutes.getAll);
-  app.get('/news/(:new)', newsRoutes.get);
+  app.get('/news/page/:page', newsRoutes.getAll);
+  app.get('/news/(:new', newsRoutes.get);
    app.get('/team', usersRoutes.getUsers);
-  app.get('/team/(:user)', usersRoutes.get);
+  app.get('/team/(:user', usersRoutes.get);
   app.get('/partners', usersRoutes.getUsers);
-  app.get('/partners/(:user)', usersRoutes.get);
+  app.get('/partners/(:user', usersRoutes.get);
    */
-  app.get('/editions/(:edition)', editionsRoutes.get); 
-  //app.get('/editions/(:edition)/artists', editionsRoutes.get);
-  app.get('/editions/(:edition)/artists/(:artist)', editionsRoutes.get);
-  app.get('/editions/(:edition)/(:subedition)', editionsRoutes.get);
-  app.get('/editions/(:edition)/program/detail/(:performance)', editionsRoutes.get);
-  app.get('/editions/(:edition)/(:subedition)/(:subsubedition)', editionsRoutes.get);
-  app.get('/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', editionsRoutes.get);
+  app.get('/editions/:edition', editionsRoutes.get); 
+  //app.get('/editions/:edition/artists', editionsRoutes.get);
+  app.get('/editions/:edition/artists/:artist', editionsRoutes.get);
+  app.get('/editions/:edition/:subedition', editionsRoutes.get);
+  app.get('/editions/:edition/program/detail/:performance', editionsRoutes.get);
+  app.get('/editions/:edition/:subedition/:subsubedition', editionsRoutes.get);
+  app.get('/editions/:edition/:subedition/:subsubedition/:artist', editionsRoutes.get);
 
-  app.get('/it/editions/(:edition)', function(req, res) {
+  app.get('/it/editions/:edition', function(req, res) {
     if (req.params.edition!="videomapping-pasolini-corviale") {
       res.redirect(301, req.url.replace('/it',''))
     } else {
       editionsRoutes.get(req, res); 
     }
   });
-  app.get('/it/editions/(:edition)/artists/(:artist)', function(req, res) {
+  app.get('/it/editions/:edition/artists/:artist', function(req, res) {
     if (req.params.edition!="videomapping-pasolini-corviale") {
       res.redirect(301, req.url.replace('/it',''))
     } else {
       editionsRoutes.get(req, res); 
     }
   });
-  app.get('/it/editions/(:edition)/(:subedition)', function(req, res) {
+  app.get('/it/editions/:edition/:subedition', function(req, res) {
     if (req.params.edition!="videomapping-pasolini-corviale") {
       res.redirect(301, req.url.replace('/it',''))
     } else {
       editionsRoutes.get(req, res); 
     }
   });
-  app.get('/it/editions/(:edition)/program/detail/(:performance)', function(req, res) {
+  app.get('/it/editions/:edition/program/detail/:performance', function(req, res) {
     if (req.params.edition!="videomapping-pasolini-corviale") {
       res.redirect(301, req.url.replace('/it',''))
     } else {
       editionsRoutes.get(req, res); 
     }
   });
-  app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)', function(req, res) {
+  app.get('/it/editions/:edition/:subedition/:subsubedition', function(req, res) {
     if (req.params.edition!="videomapping-pasolini-corviale") {
       res.redirect(301, req.url.replace('/it',''))
     } else {
       editionsRoutes.get(req, res); 
     }
   });
-  app.get('/it/editions/(:edition)/(:subedition)/(:subsubedition)/(:image)', function(req, res) {
+  app.get('/it/editions/:edition/:subedition/:subsubedition/:image', function(req, res) {
     if (req.params.edition!="videomapping-pasolini-corviale") {
       res.redirect(301, req.url.replace('/it',''))
     } else {
@@ -138,10 +138,10 @@ module.exports = function(app) {
   app.get('/timeline/(:year)/', timelinemapRoutes.getTimeline);
   app.get('/map', timelinemapRoutes.getMap); 
   app.get('/signup', signupRoutes.get);*/
-  app.get('/(:page)/page/:paging', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)/(:subsubpage)', pagesRoutes.get);
-  app.get('/(:page)/(:subpage)', pagesRoutes.get);
-  app.get('/(:page)', pagesRoutes.get);
+  app.get('/:page/page/:paging', pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage', pagesRoutes.get);
+  app.get('/:page', pagesRoutes.get);
 
   app.post('/signup', signupRoutes.post);
 
