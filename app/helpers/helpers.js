@@ -61,10 +61,10 @@ exports.validateFormJoin = function validateFormJoin(o,callback) {
   callback(e, o);
 };
 
-//////// NETWORK
+//////// NETWORK Buttare?
 
 exports.getNetwork = function getNetwork(req,callback) {
-  //console.log("//// Eventoooo");
+  console.log("//// NETWORK");
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/posts/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.network).get(function( err, data ) {
@@ -81,7 +81,7 @@ exports.getPostType = function getPostType(req,posttype,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_type/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(posttype).get(function( err, data ) {
-    //console.log("//// PostType "+posttype);
+    console.log("//// PostType "+posttype);
     //console.log(err || data);
     //if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
@@ -90,7 +90,8 @@ exports.getPostType = function getPostType(req,posttype,callback) {
 
 exports.getContainerPage = function getContainerPage(req,slug,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json' });
-  //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
+  console.log("//// ContainerPage "+slug);
+  console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/container_pages/'+config.prefix+'/'+ slug);
   wp.myCustomResource = wp.registerRoute('wp/v2', '/container_pages/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(config.prefix+'/'+ slug).get(function( err, data ) {
     if (data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
@@ -120,11 +121,11 @@ exports.getContainerPage = function getContainerPage(req,slug,callback) {
  //////// PAGES
 
 exports.getPage = function getPage(req,callback) {
-  //console.log("avnodeurl");
   var A = ["performances","workshops","installations","lectures","gallery","videos","news","extra","events","members","partnerships","partnerships-management","exhibitions","cultural-productions"];
   if (A.indexOf(req.params.page) === -1 && req.params.subpage) req.params.page = req.params.page+"/"+req.params.subpage;
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.page;
-  //console.log(url);
+  console.log("getPage WP URL:");
+  console.log(url);
   request({
     url: url,
     json: true
@@ -206,7 +207,8 @@ exports.getPage = function getPage(req,callback) {
 exports.getXMLlist = function getXMLlist(req,callback) {
   if (config.prefix=="flyer" && req.params.avnode=="news") req.params.avnode="extra";
   const url = config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json/wp/v2/mypages/'+config.prefix+'/'+req.params.avnode;
-  //console.log(url);
+  console.log("getXMLlist WP URL:");
+  console.log(url);
   request({
     url: url,
     json: true
@@ -271,13 +273,15 @@ exports.getAll = function getAll(req, sez, limit, page, callback) {
 exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback) {
   var trgt = this;
   var previousdata = p;
-  //console.log("getAll "+sez.post_type);
+  console.log("getAll "+sez.post_type);
+  console.log("getAllReturn WP URL:");
+  console.log(config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' );
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', sez.post_type == "editions" ? "/"+sez.post_type+'/'+config.prefix : '/'+sez.post_type );
   var mylimit =  limit>0 ? limit : 50;
   if (sez.site_tax && sez.post_type != "posts") {
     wp.myCustomResource().param('site', config.site_tax_id ).param( 'parent', 0 ).param( 'filter[order]', 'meta_value_num' ).param( 'filter[meta_key]', 'wpcf-startdate' ).perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
+      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type+"?site="+config.site_tax_id);
       //console.log("//// AllFilterTax "+sez.post_type+" "+config.site_tax_id);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -295,8 +299,8 @@ exports.getAllReturn = function getAllReturn(req, sez, limit, page, p, callback)
     });
   } else {
     wp.myCustomResource().param( 'parent', 0 )/*.param( 'filter[taxonomy]', 'site' ).param( 'filter[term]', config.site_tax_id )*/.perPage(mylimit).page(page).get(function( err, data ) {
-      //console.log("//// All "+config.data_domain);
-      //console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
+      console.log("//// All "+config.data_domain);
+      console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2' + '/'+sez.post_type);
       //console.log("//// All "+sez.post_type);
       //console.log(err || data);
       data = fnz.fixResults(data);
@@ -320,14 +324,16 @@ exports.getWeb = function getWeb(req,callback) {
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/web-and-mobile/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.web).get(function( err, data ) {
-    //console.log("//// Web "+config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/web-and-mobile/'+req.params.web);
+    console.log("getWeb WP URL:");
+    console.log(config.data_domain+(req.session.sessions.current_lang!=config.default_lang ? '/'+req.session.sessions.current_lang : '')+'/wp-json/wp/v2/web-and-mobile/'+req.params.web);
     if (data && data.ID) data = fnz.fixResult(data);
     callback(data);
   });
 };
 
 exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
-  //console.log("getAllWebByTag "+req.params.tag);
+  console.log("getWeb WP URL:");
+  console.log("getAllWebByTag "+req.params.tag);
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/post_tag/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.tag).param( 'parent', 0 ).perPage(limit).page(page).get(function( err, data ) {
@@ -342,6 +348,7 @@ exports.getAllWebByTag = function getAllWebByTag(req, limit, page, callback) {
 //////// LEARNING
 
 exports.getLearning = function getLearning(req,callback) {
+  console.log("getLearning WP URL:");
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/learning/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.learning).get(function( err, data ) {
@@ -354,6 +361,7 @@ exports.getLearning = function getLearning(req,callback) {
 //////// VIDEOS
 
 exports.getVideo = function getVideo(req,callback) {
+  console.log("getVideo WP URL:");
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/videos/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.video).get(function( err, data ) {
@@ -366,6 +374,7 @@ exports.getVideo = function getVideo(req,callback) {
 //////// AWARDS
 
 exports.getAward = function getAward(req,callback) {
+  console.log("getAward WP URL:");
   var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
   wp.myCustomResource = wp.registerRoute('wp/v2', '/awards-and-grants/(?P<sluggg>)' );
   wp.myCustomResource().sluggg(req.params.award). get(function( err, data ) {
@@ -395,7 +404,8 @@ exports.getEdition = function getEdition(req,callback) {
   if (req.params.artist)        endpoint+="artists/";
   if (req.params.subedition)    endpoint+=req.params.subedition+'/';
   if (req.params.subsubedition) endpoint+=req.params.subsubedition+'/';
-  //console.log("endpoint "+endpoint);
+  console.log("getEdition WP URL:");
+  console.log(endpoint);
   request({
     url: endpoint,
     json: true
@@ -468,8 +478,8 @@ exports.setSessions = function setSessions(req,callback) {
     require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
     global.setLocale(lang);
   }
-  //console.log("sessions.current_lang: "+req.session.sessions.current_lang);
-  //console.log(req.params.edition);
+  console.log("sessions.current_lang: "+req.session.sessions.current_lang);
+  console.log(req.params.edition);
   if (config.last_edition) {
     req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
     //console.log(req.session.sessions.current_edition);

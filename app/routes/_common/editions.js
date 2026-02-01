@@ -8,6 +8,7 @@ var clientToken = "";
 
 exports.get = function get(req, res) {
   //console.log(req.params.subedition)
+  //console.log("STOCAZZO")
   helpers.setSessions(req, function() {
     //console.log(req.params)
     //console.log(req.session)

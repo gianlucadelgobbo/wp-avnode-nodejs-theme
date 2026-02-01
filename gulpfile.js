@@ -12,7 +12,8 @@ var tasklist = [
   'fonts_bs',
   'css_digitalatium_bs',
   'css_visualsound_bs',
-  'css_chromosphere_bs',
+   'css_visualsoundacademy_bs',
+ 'css_chromosphere_bs',
   'css_fotonica_bs',
   'css_flyer_bs',
   'css_lcf_bs',
@@ -26,6 +27,7 @@ var tasklist = [
   'css_pac_bs',
   'compress_js_digitalatium',
   'compress_js_visualsound',
+  'compress_js_visualsoundacademy',
   'compress_js_chromosphere',
   'compress_js_fotonica',
   'compress_js_flyer',
@@ -70,6 +72,15 @@ const css_visualsound_bs = () => {
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/visualsound/css'));
+}
+
+const css_visualsoundacademy_bs = () => {
+  return gulp.src('./gulp/sass/visualsoundacademy/*.scss')
+      .pipe(sass({
+        outputStyle: 'compressed',
+        includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+      }))
+      .pipe(gulp.dest(config.publicDir + '/visualsoundacademy/css'));
 }
 
 const css_electrokids_bs = () => {
@@ -237,6 +248,30 @@ const compress_js_visualsound = () => {
   .pipe(concat('combo.min.js'))
   .pipe(uglify({mangle: { reserved: ['glink'] } }))
   .pipe(gulp.dest(config.publicDir + '/visualsound/js/'));
+}
+
+const compress_js_visualsoundacademy = () => {
+  return gulp.src([
+    config.npmDir + '/jquery/dist/jquery.min.js',
+    config.npmDir + '/popper.js/dist/umd/popper.min.js',
+    config.npmDir + '/bootstrap/dist/js/bootstrap.min.js',
+    './gulp/js/_common/jquery.isotope.min.js',
+    './gulp/js/_common/imagesloaded.pkgd.min.js',
+    './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
+    './gulp/js/_common/swiper.js',
+    './gulp/js/_common/script.js',
+    './gulp/js/visualsoundacademy/script.js',
+  ])
+  .pipe(concat('combo.min.js'))
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
+  .pipe(gulp.dest(config.publicDir + '/visualsoundacademy/js/'));
 }
 
 const compress_js_chromosphere = () => {
@@ -561,7 +596,7 @@ const compress_js_pac = () => {
     .pipe(gulp.dest(config.publicDir + '/pac/js/'));
 }
 
-//gulp.task('default', gulp.series(compress_js,css_digitalatium_bs,css_visualsound_bs,css_pac_bs,css_chromosphere_bs,css_electrokids_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_chromosphere, compress_js_electrokids, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, compress_js_digitalatium, compress_js_visualsound));
+//gulp.task('default', gulp.series(compress_js,css_digitalatium_bs,css_visualsound_bs,css_visualsoundacademy_bs,css_pac_bs,css_chromosphere_bs,css_electrokids_bs, css_fotonica_bs, css_flyer_bs, css_lcf_bs, css_linuxclub_bs, css_lpm_bs, css_shockart_bs, css_vjtelevision_bs, css_wam_bs, css_flxer_bs, css_gianlucadelgobbo_bs, compress_js_pac, compress_js_chromosphere, compress_js_electrokids, compress_js_fotonica, compress_js_flyer, compress_js_lcf, compress_js_linuxclub, compress_js_lpm, compress_js_shockart, compress_js_vjtelevision, compress_js_wam, compress_js_flxer, compress_js_gianlucadelgobbo, compress_js_digitalatium, compress_js_visualsound, compress_js_visualsoundacademy));
 //gulp.task('default', gulp.series(compress_js, compress_js_gianlucadelgobbo,css_gianlucadelgobbo_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flyer,css_flyer_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_flxer,css_flxer_bs));
@@ -572,6 +607,7 @@ const compress_js_pac = () => {
 //gulp.task('default', gulp.series(compress_js, compress_js_electrokids,css_electrokids_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_chromosphere,css_chromosphere_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_digitalatium,css_digitalatium_bs));
-gulp.task('default', gulp.series(compress_js, compress_js_visualsound,css_visualsound_bs));
+gulp.task('default', gulp.series(compress_js, compress_js_visualsoundacademy,css_visualsoundacademy_bs));
 //gulp.task('default', gulp.series(compress_js_fotonica,css_fotonica_bs));
+//gulp.task('default', gulp.series(compress_js, compress_js_visualsound,css_visualsound_bs));
 //gulp.task('default', gulp.series(css_lcf_bs, compress_js_lcf));

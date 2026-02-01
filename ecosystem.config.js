@@ -28,33 +28,6 @@ module.exports = {
       NODE_ENV: "production"
     }
   },
-/*   {
-    "name": "avnode",
-    max_memory_restart: "100M",
-    "script": "app.js",
-    "log_file": "/sites/logs/node_avnode-combined.log",
-    "out_file": "/sites/logs/node_avnode-out.log",
-    "error_file": "/sites/logs/node_avnode-err.log",
-    "args": "-site avnode",
-    ignore_watch: [
-        ".git",
-        "node_modules",
-        "public",
-        "cache",
-        "locales"
-    ],
-    time: true,
-    instances: 1,
-    exec_mode: "fork",
-    autorestart: true,
-    watch: true,
-    watch_options: {
-      followSymlinks: false
-    },
-    env: {
-      NODE_ENV: "production"
-    }
-  }, */
   {
     "name": "lpm",
     max_memory_restart: "600M",
@@ -225,6 +198,33 @@ module.exports = {
     "out_file": "/sites/logs/node_visualsound-out.log",
     "error_file": "/sites/logs/node_visualsound-err.log",
     "args": "-site visualsound",
+    ignore_watch: [
+        ".git",
+        "node_modules",
+        "public",
+        "cache",
+        "locales"
+    ],
+    time: true,
+    instances: 1,
+    exec_mode: "fork",
+    autorestart: true,
+    watch: true,
+    watch_options: {
+      followSymlinks: false
+    },
+    env: {
+      NODE_ENV: "production"
+    }
+  },
+  {
+    "name": "visualsoundacademy",
+    max_memory_restart: "300M",
+    "script": "app.js",
+    "log_file": "/sites/logs/node_visualsoundacademy-combined.log",
+    "out_file": "/sites/logs/node_visualsoundacademy-out.log",
+    "error_file": "/sites/logs/node_visualsoundacademy-err.log",
+    "args": "-site visualsoundacademy",
     ignore_watch: [
         ".git",
         "node_modules",

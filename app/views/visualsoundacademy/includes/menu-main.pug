@@ -1,0 +1,50 @@
+nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+  // Brand and toggle get grouped for better mobile display
+  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
+    span.navbar-toggler-icon
+    i.icon-bar
+    i.icon-bar
+    i.icon-bar
+  a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
+    i(class="icon-"+(config.prefix=="fotonica" ? "f" : config.prefix+(config.prefix=="lcf" ? "-fill" : "")), itemprop='logo')
+    .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+  #menu-main.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/concept') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/concept/') Concept
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/news/') News
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Gallery"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2025-academy/gallery/') 2025 Academy
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Videos"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2025-academy/videos/') 2025 Academy
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Editions"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2025-academy/') 2025 Academy
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/press') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/press/') Press
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+        a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
+      //-li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')!="Past Editions"
+        .dropdown-menu(role='menu')
+          a.dropdown-item(href=lang_preurl+'/editions/2024-tour/') 2024 Tour
+          a.dropdown-item.disabled(href=lang_preurl+'/2024-tour/') Festival
+      li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
+        a.nav-link#searchModalButton(href="/search/")
+          i.icon-search
+          .sr-only=global.__("Search")
+
+      //-li.nav-item
+        include ../../_partials/components/newsletter-navbar
+
+    ul.navbar-nav
+      li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+        a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+      li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+        a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT

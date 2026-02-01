@@ -1,0 +1,175 @@
+extends layout
+block content
+  article#container(itemprop='performer', itemscope, itemtype='http://schema.org/Person')
+    if result.avnode.advanced.programmebydayvenue
+      - var programmebydayvenue = []
+      each day in result.avnode.advanced.programmebydayvenue
+        - var day_rooms = []
+        each venueroom in day.rooms
+          if venueroom.performances
+            //- console.log("venueroom")
+            //- console.log(venueroom.room)
+            - var performances_new = []
+            each item in venueroom.performances
+              if item.performance && item.performance.users.map(user =>{return user._id}).indexOf(result.avnode.performer._id)!=-1
+                - performances_new.push(item)
+                //- venueroom.performances.splice(a, 1)
+            - venueroom.performances = performances_new
+            if venueroom.performances.length
+              //- console.log("pusha")
+              //- console.log(venueroom)
+              - day_rooms.push(venueroom)
+        - day.rooms = day_rooms
+        if day.rooms.length
+          //- console.log("pusha")
+          //- console.log(venueroom)
+          - programmebydayvenue.push(day)
+    header
+      h1.entry-title.d-none
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "call")
+      style.
+        .schedule {
+          display: none
+        }
+      if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The artists list include the submissions submitted, confirmed and not confirmed. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/"+sessions.current_edition+"/call-to-participate/\">PARTICIPATE</a>"
+      else if (result.post_content.indexOf('<p class="type">Workshop</p>')==-1)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> The call for proposal is still open. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/"+sessions.current_edition+"/call-to-participate/\">PARTICIPATE</a>"
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "approving")
+      style.
+        .schedule {
+          display: none
+        }
+      if (page_data.url.indexOf("/artists/") == page_data.url.length - 9)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The artists list include the submissions submitted, confirmed and not confirmed. The schedule of the acts will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
+      else if (result.post_content.indexOf('<p class="type">Workshop</p>') == -1)
+        .alert.alert-danger!="<b>ATTENTION!!!</b> We are still approving the proposals sent with the call. The schedule of the act will be available soon. <b>Do you want to be in?</b> click here&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/tickets/\">BUY A TICKET</a>"
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "programming")
+      //- console.log(config.last_edition_status)
+      style.
+        .schedule {
+          display: none
+        }
+      if (page_data.url.indexOf("/artists/")==page_data.url.length-9)
+        .alert.alert-danger!=__("<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!")
+    if (sessions.current_edition == config.last_edition && config.last_edition_status == "selling")
+      br
+      if(config.prefix=="visualsoundacademy")
+        .alert.alert-success!="<b>"+global.__("FINAL SCHOLARSHIP PLACES AVAILABLE")+"</b> &nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/join/\">"+global.__("APPLY NOW!!!")+"</a>"
+      else
+        .alert.alert-success!="<b>"+global.__("ATTENTION LAST TICKETS AVAILABES")+"</b> &nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btm-inline\" href=\""+lang_preurl+"/editions/" + sessions.current_edition + "/tickets/\">"+global.__("BUY A TICKET")+"</a>"
+    .row.artist-dett
+      .col-sm-9
+        .row
+          .col-sm-3
+            img.img-fluid(class=result.avnode.performer.imageFormats.large.substring(result.avnode.performer.imageFormats.large.lastIndexOf(".")+1), itemprop='image', alt=result.avnode.performer.stagename, src=result.avnode.performer.imageFormats.large)
+          .col-sm-9
+            h1.mt-3.mt-xl-0.entry-title(itemprop='name')!=result.avnode.performer.stagename
+            .rientro
+              p!=result.avnode.performer.addressesFormatted
+              .d-none
+                each address in result.avnode.performer.addresses
+                  span(itemprop='workLocation', itemscope='', itemtype='http://schema.org/Place')
+                    span(itemprop='address', itemscope='', itemtype='http://schema.org/PostalAddress')
+                      b(itemprop='addressCountry')=address.country
+                      !=", "
+                      span(itemprop='addressLocality')=address.locality
+              .mb-3(itemprop='description')!=result.avnode.performer.aboutFull ? result.avnode.performer.aboutFull : result.avnode.performer.about
+              if result.avnode.performer.web && result.avnode.performer.web.length && result.avnode.performer.web[0].url
+                p
+                  strong LINKS
+                ul.squared10
+                  each web in result.avnode.performer.web
+                    li
+                      a(itemprop='url', target='_blank', href=web.url)=web.url
+              if result.avnode.performer.social && result.avnode.performer.social.length && result.avnode.performer.social[0].url
+                p
+                  strong SOCIAL
+                ul.squared10
+                  each social in result.avnode.performer.social
+                    li
+                      a(itemprop='url', target='_blank', href=social.url)=social.url
+                    ul.lists(itemscope itemtype="http://schema.org/ItemList")
+        - addtit = false;
+        each day, index in programmebydayvenue
+          if (day.day=='2024-05-01')
+            .h3.mt-4 ROSTER
+            .row(style='margin-bottom: 10px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+              each venueroom in day.rooms
+                if venueroom.performances
+                  each item in venueroom.performances
+                    .col-sm-3
+                      if venueroom.room && venueroom.performances.length
+                        - if (config.siae_on_off=="on") venueroom.room = venueroom.room.replace(new RegExp("DJ Sets", "g"), "Live Sets")
+                        h4.program_category_title(class="schedule-"+venueroom.room.replace(RegExp(" ", 'g'), "-"))=item.schedule.starttimeTime +" // "+ venueroom.venue+" // "+venueroom.room                      
+                      //if item.performance.users.map(user =>{return user._id}).indexOf(data.performer._id)!=-1
+                      //include ../partials/boxPerformanceScheduled
+                      //- console.log(item)
+                      meta(itemprop='position', content=i)
+                      div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+                        a(itemprop='url', href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+item.performance.slug+"/", title=item.performance.title)
+                          img.img-fluid(itemprop='image', src=item.performance.imageFormats.small, alt=item.performance.title)
+                        p
+                        h3(itemprop='name')
+                          a(href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+item.performance.slug+"/", title=item.performance.title)!=item.performance.title
+                        - if (config.siae_on_off=="on") item.performance.type.name = item.performance.type.name.replace(new RegExp("DJ Set", "g"), "Live Set")
+                        p.type=item.performance.type.name
+                        //each booking in item.performance.bookings
+                          each schedule in booking.schedule
+                            p.stit.schedule
+                              span(itemprop='contentLocation')=schedule.venue.room
+                            p.stit.schedule
+                              !=schedule.boxDateFull
+
+
+      .col-sm-3(itemprop='owns', itemscope='', itemtype='http://schema.org/ItemList')
+
+
+          h2.mt-3.mt-xl-0.grid-title(itemprop='name')!=global.__('Program')
+          div
+            ul.lists(itemscope itemtype="http://schema.org/ItemList")
+              - addtit = false;
+              if (programmebydayvenue.length ==0)
+                .date_schedule_title=global.__('TO BE SCHEDULED')
+              else 
+                each day, index in programmebydayvenue
+                  if (day.day!='2024-05-01')
+
+                    li.rientro(style='margin-bottom: 10px;', itemprop='itemListElement', itemscope='', itemtype='http://schema.org/ListItem')
+                      if programmebydayvenue[index+1] && JSON.stringify(programmebydayvenue[index].rooms) == JSON.stringify(programmebydayvenue[index+1].rooms)
+                        - if (!addtit) titstart = day.date
+                        - addtit = true;
+                      else
+                        if (day.day=='2024-05-01')
+                          h3.date_schedule_title="ROSTER"
+                          - addtit = false;
+                        else 
+                          h3.date_schedule_title=addtit ? titstart+" // "+day.date : day.date
+                          - addtit = false;
+                        .data_program_divider
+                        each venueroom in day.rooms
+                          .owl-carousel.loop.owl-theme
+                            if venueroom.performances
+                              each item in venueroom.performances
+                                if venueroom.room && venueroom.performances.length
+                                  - if (config.siae_on_off=="on") venueroom.room = venueroom.room.replace(new RegExp("DJ Sets", "g"), "Live Sets")
+                                  h4.program_category_title(class="schedule-"+venueroom.room.replace(RegExp(" ", 'g'), "-"))=item.schedule.starttimeTime +" // "+ venueroom.venue+" // "+venueroom.room                      
+                                //if item.performance.users.map(user =>{return user._id}).indexOf(data.performer._id)!=-1
+                                //include ../partials/boxPerformanceScheduled
+                                //- console.log(item)
+                                meta(itemprop='position', content=i)
+                                div(itemprop='item', itemscope='', itemtype='http://schema.org/CreativeWork')
+                                  a(itemprop='url', href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+item.performance.slug+"/", title=item.performance.title)
+                                    img.img-fluid(itemprop='image', src=item.performance.imageFormats.small, alt=item.performance.title)
+                                  p
+                                  h3(itemprop='name')
+                                    a(href=lang_preurl+(config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'+item.performance.slug+"/", title=item.performance.title)!=item.performance.title
+                                  - if (config.siae_on_off=="on") item.performance.type.name = item.performance.type.name.replace(new RegExp("DJ Set", "g"), "Live Set")
+                                  p.type=item.performance.type.name
+                                  //each booking in item.performance.bookings
+                                    each schedule in booking.schedule
+                                      p.stit.schedule
+                                        span(itemprop='contentLocation')=schedule.venue.room
+                                      p.stit.schedule
+                                        !=schedule.boxDateFull
+

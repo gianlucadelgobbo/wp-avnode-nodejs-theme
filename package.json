@@ -58,6 +58,7 @@
     "lcf": "NODE_ENV=dev nodemon app -site lcf",
     "digitalatium": "NODE_ENV=dev nodemon app -site digitalatium",
     "visualsound": "NODE_ENV=dev nodemon app -site visualsound",
+    "visualsoundacademy": "NODE_ENV=dev nodemon app -site visualsoundacademy",
     "chromosphere": "NODE_ENV=dev nodemon app -site chromosphere",
     "electrokids": "NODE_ENV=dev nodemon app -site electrokids",
     "vjtelevision": "NODE_ENV=dev nodemon app -site vjtelevision",
