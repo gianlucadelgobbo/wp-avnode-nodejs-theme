@@ -1,5 +1,7 @@
 if body.pages
   ul.pagination.pagination-sm.justify-content-center
+    - console.log("lang_preurl+page.link")
+    - console.log(req_params)
     each page in body.pages
       li(class="page-item"+(page.active ? " active" : ""))
-        a(class="page-link", href=lang_preurl+page.link)=page.index
+        a(class="page-link", href=(lang_preurl ? lang_preurl+"/" : "/")+req_params.page+page.link.replace(/^\//, ''))=page.index
