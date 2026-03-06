@@ -10,4 +10,26 @@ ul.pl-0
           each child in menu.childs
             li(class=child.post_status == 'publish' ? undefined : "disabled")
               a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
-
+ul.pl-0
+  - const permalinks = config.meta.editions[sessions.current_edition].menu[sessions.current_lang].map(item => item.permalink);
+  if permalinks.some(p => p.includes("2026"))
+    li.btn-group.mb-5
+      a.btn.btn-primary.btn-lg.ml-3(title="Visual Sound International" href="/editions/visual-sound-international/")
+        !="Visual Sound International"
+    li.btn-group.mb-5
+      a.btn.btn-primary.btn-lg.ml-3(title="Visual Sound Wednesdays" href="/editions/visual-sound-wednesdays/")
+        !="Visual Sound Wednesdays"
+  if permalinks.some(p => p.includes("visual-sound-international"))
+    li.btn-group.mb-5
+      a.btn.btn-primary.btn-lg.ml-3(title="Visual Sound 2026" href="/editions/2026/")
+        !="Visual Sound 2026"
+    li.btn-group.mb-5
+      a.btn.btn-primary.btn-lg.ml-3(title="Visual Sound Wednesdays" href="/editions/visual-sound-wednesdays/")
+        !="Visual Sound Wednesdays"
+  if permalinks.some(p => p.includes("visual-sound-wednesdays"))
+    li.btn-group.mb-5
+      a.btn.btn-primary.btn-lg.ml-3(title="Visual Sound 2026" href="/editions/2026/")
+        !="Visual Sound 2026"
+    li.btn-group.mb-5
+      a.btn.btn-primary.btn-lg.ml-3(title="Visual Sound International" href="/editions/visual-sound-international/")
+        !="Visual Sound International"
