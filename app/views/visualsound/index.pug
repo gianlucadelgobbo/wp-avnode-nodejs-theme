@@ -1,6 +1,16 @@
 extends layout
 block content
-  #mycarousel.carousel.slide(data-ride='carousel')
+  .container-fluid
+    .row 
+      .col-4
+        img.img-fluid(src='https://visualsound.org/files/2026/03/Visual-Sound-2026-480x270.jpg', alt=global.__('Image for') + ': ' + 'Visual Sound Festival 2025')
+      .col-4
+        img.img-fluid(src='https://visualsound.org/files/2026/03/Visual-Sound-International-MAIN-480x270.jpg', alt=global.__('Image for') + ': ' + 'Visual Sound Wednesdays')
+      .col-4
+        img.img-fluid(src='https://visualsound.org/files/2026/03/Visual-Sound-Wednesdays-1-480x270.jpg', alt=global.__('Image for') + ': ' + 'Visual Sound Wednesdays')
+
+      
+  //-#mycarousel.carousel.slide(data-ride='carousel')
       //-
         Indicators
         <ol class="carousel-indicators">
