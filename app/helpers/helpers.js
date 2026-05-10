@@ -148,7 +148,8 @@ exports.getPage = function getPage(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        //console.log("avnodeurl "+avnodeurl);
+        avnodeurl = avnodeurl.replace("avnode.net","admin.avnode.net");
+        console.log("avnodeurl [1] "+avnodeurl);
         
         request({
           url: avnodeurl,
@@ -232,7 +233,10 @@ exports.getXMLlist = function getXMLlist(req,callback) {
           avnodeurl = "https://"+avnodeurl.split("/")[2]+"/"+(req.params.avnode == "members" ? req.params.subpage : (req.params.avnode == "partnerships" ? "events"+"/"+req.params.subpage : req.params.avnode+"/"+req.params.subpage));
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
-        //console.log("avnodeurl "+avnodeurl);
+        
+        avnodeurl = avnodeurl.replace("avnode.net","admin.avnode.net");
+        console.log("avnodeurl [2] "+avnodeurl);
+        
         request({
           url: avnodeurl,
           json: true
@@ -435,7 +439,8 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      //console.log("avnodeurl "+avnodeurl);
+      avnodeurl = avnodeurl.replace("avnode.net","admin.avnode.net");
+      console.log("avnodeurl [3] "+avnodeurl);
       request({
         url: avnodeurl,
         json: true
