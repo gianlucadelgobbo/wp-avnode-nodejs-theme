@@ -13,8 +13,8 @@ var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
 
 module.exports = function(app) {
-  app.get('/*.php', pagesRoutes.get404);
-  app.post('/*.php', pagesRoutes.get404);
+  app.get('/*{path}.php', pagesRoutes.get404)
+  app.post('/*{path}.php', pagesRoutes.get404)
   app.get('/test', function(req, res) {
     res.render(config.prefix+'/layout', {});
   });

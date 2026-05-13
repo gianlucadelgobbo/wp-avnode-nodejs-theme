@@ -10,8 +10,8 @@ var metaRoutes = require('./_common/meta');
 //var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
 
 module.exports = function(app) {
-  app.get('/*.php', pagesRoutes.get404);
-  app.post('/*.php', pagesRoutes.get404);
+  app.get('/*{path}.php', pagesRoutes.get404)
+  app.post('/*{path}.php', pagesRoutes.get404)
 
   app.get('/ar', pagesRoutes.getAR);
   app.get('/tickets', function(req, res) {res.redirect(301, '/editions/'+config.last_edition+'/tickets/')});
