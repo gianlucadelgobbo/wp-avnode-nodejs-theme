@@ -3,6 +3,7 @@ var indexRoutes = require('./index_shockart');
 var sitemapRoutes = require('./_common/sitemap');
 var signupRoutes = require('./_common/signup');
 var editionsRoutes = require('./_common/editions');
+var avnodeProxy = require('./_common/avnode_proxy');
 /* var eventsRoutes = require('./_common/events');
 var usersRoutes = require('./_common/users');
 var newsRoutes = require('./_common/news'); */
@@ -13,6 +14,7 @@ var metaRoutes = require('./_common/meta');
 //var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
 
 module.exports = function(app) {
+  avnodeProxy(app);
   app.get('/', indexRoutes.get);
 
   app.get('/meta/', metaRoutes.get);

@@ -3,6 +3,7 @@ var indexRoutes = require('./index_fotonica');
 var sitemapRoutes = require('./_common/sitemap');
 var signupRoutes = require('./_common/signup');
 var editionsRoutes = require('./_common/editions');
+var avnodeProxy = require('./_common/avnode_proxy');
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
@@ -10,6 +11,7 @@ var metaRoutes = require('./_common/meta');
 //var recaptcha = new Recaptcha(config.accounts.recaptcha.site_key, config.accounts.recaptcha.secret_key, { callback: 'cb' })
 
 module.exports = function(app) {
+  avnodeProxy(app);
   app.get('/tickets', function(req, res) {res.redirect(301, '/editions/'+config.last_edition+'/tickets/')});
   app.get('/it/tickets', function(req, res) {res.redirect(301, '/it/editions/'+config.last_edition+'/tickets/')});
   app.get('/it', function(req, res) {res.redirect(301, '/')});

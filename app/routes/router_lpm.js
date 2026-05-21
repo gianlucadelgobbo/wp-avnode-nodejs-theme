@@ -11,8 +11,10 @@ var pagesRoutes = require('./_common/pages');
 var paypalRoutes = require('./_common/paypal');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
+var avnodeProxy = require('./_common/avnode_proxy');
 
 module.exports = function(app) {
+  avnodeProxy(app);
   app.get('/*{path}.php', pagesRoutes.get404)
   app.post('/*{path}.php', pagesRoutes.get404)
   app.get('/test', function(req, res) {

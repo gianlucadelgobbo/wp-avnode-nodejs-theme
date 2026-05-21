@@ -3,6 +3,7 @@ var indexRoutes = require('./index_chromosphere');
 var sitemapRoutes = require('./_common/sitemap');
 var signupRoutes = require('./_common/signup');
 var editionsRoutes = require('./_common/editions');
+var avnodeProxy = require('./_common/avnode_proxy');
 var pagesRoutes = require('./_common/pages');
 var robotsRoutes = require('./_common/robots');
 var metaRoutes = require('./_common/meta');
@@ -11,6 +12,7 @@ var metaRoutes = require('./_common/meta');
 
 
 module.exports = function(app) {
+  avnodeProxy(app);
   app.get('/it', function(req, res) {res.redirect(301, '/')});
   app.get('/it/*', function(req, res) {res.redirect(301, req.url.replace('/it',''))});
 

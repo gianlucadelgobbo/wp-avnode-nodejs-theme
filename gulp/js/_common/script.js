@@ -134,7 +134,7 @@ $(function() {
       event.preventDefault();
       if (LG) LG.destroy();
       $.ajax({
-        url: "https://api.admin.avnode.net/galleries/"+$(this).attr("href").split("gallery/")[1],
+        url: "/api/avnode/galleries/"+$(this).attr("href").split("gallery/")[1],
         method: "get"
       })
       .done(function(data) {
