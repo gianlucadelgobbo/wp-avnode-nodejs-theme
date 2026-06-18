@@ -3,7 +3,7 @@ node_modules
 bower_components
 files
 localLogs
-config/*
+.env
 package-lock.json
 logs/*
 *.mp4

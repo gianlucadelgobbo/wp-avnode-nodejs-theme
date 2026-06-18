@@ -1,0 +1,2534 @@
+{
+  "lpm": {
+    "project_name": "LPM Live Performers Meeting",
+    "project_email": "info@liveperformersmeeting.net",
+    "port": 3001,
+    "host": "localhost",
+    "domain": "https://liveperformersmeeting.net",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "lpm",
+    "site_tax": "liveperformersmeeting-net",
+    "site_tax_id": 460,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_lpm",
+    "last_edition": "2026-rome",
+    "last_edition_status": "call",
+    "siae_on_off": "off",
+    "current_edition": "2026-rome",
+    "PAYPAL_CLIENT_ID_SANDBOX": "",
+    "PAYPAL_CLIENT_SECRET_SANDBOX": "",
+    "PAYPAL_CLIENT_ID": "",
+    "PAYPAL_CLIENT_SECRET": "",
+    "editions": [
+      "2026-rome",
+      "2025-morocco",
+      "2024-morocco",
+      "2023-muenster",
+      "videomapping-pasolini-corviale",
+      "2022-rome",
+      "2021-apulia",
+      "2020-rome",
+      "2019-rome",
+      "2018-rome",
+      "2017-amsterdam",
+      "2016-amsterdam",
+      "2015-rome",
+      "2014-eindhoven",
+      "2013-cape-town",
+      "2013-rome",
+      "2013-mex",
+      "2012-rome",
+      "2011-minsk",
+      "2011-rome",
+      "2010-rome",
+      "2009-rome",
+      "2008-mex",
+      "2008-rome",
+      "2007-rome",
+      "2006-rome",
+      "2005-rome",
+      "2004-rome"
+    ],
+    "events_to_editions": [
+      "lpm-2024-morocco",
+      "lpm-2023-muenster",
+      "videomapping-pasolini-corviale",
+      "lpm-2022-rome",
+      "lpm-2021-apulia",
+      "lpm-2020-rome",
+      "lpm-2019-rome",
+      "lpm-2018-rome",
+      "lpm-2017-amsterdam",
+      "lpm-2016-amsterdam",
+      "lpm-2015-rome",
+      "lpm-2014-eindhoven",
+      "lpm-2013-cape-town",
+      "lpm-2013-rome",
+      "lpm-2013-mex",
+      "lpm-2012-rome",
+      "lpm-2011-minsk",
+      "lpm-2011-live-performers-meeting",
+      "lpm-2010-live-performers-meeting",
+      "lpm-2009-live-performers-meeting",
+      "lpm-2008-mex-live-performers-meeting",
+      "lpm-2008-live-performers-meeting",
+      "lpm-2007-live-performers-meeting",
+      "lpm-2006-live-performers-meeting",
+      "lpm-2005-live-performers-meeting",
+      "lpm-2004-live-performers-meeting"
+    ],
+    "meta": {
+      "headline": {
+        "en": "Audio Visual Performing Artists Meeting",
+        "it": "Audio Visual Performing Artists Meeting"
+      },
+      "description": {
+        "en": "LPM Live Performers Meeting October 22 - 25, international meeting of audio visual performing artists",
+        "it": "LPM Live Performers Meeting 22 - 25 Ottobre, international meeting of audio visual performing artists"
+      },
+      "keywords": "LPM,International Meeting,live video performers, visual artists,vj,vjs,mapping,video mapping,vj torna,av performances",
+      "favicon": "/lpm/images/favicon.ico",
+      "icon57": "/lpm/images/apple-touch-icon-57x57.png",
+      "icon72": "/lpm/images/apple-touch-icon-72x72.png",
+      "icon114": "/lpm/images/apple-touch-icon-114x114.png",
+      "icon120": "/lpm/images/apple-touch-icon-120x120.png",
+      "icon144": "/lpm/images/apple-touch-icon-144x144.png",
+      "icon152": "/lpm/images/apple-touch-icon-152x152.png",
+      "icon180": "/lpm/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2026/05/LPM_2026.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "687959921226620",
+      "google_analytics": "G-Q7XM8NY7VZ",
+      "google_webmasterstools": "CZjepuGGnFzsu6ofBzkdy7bCLtqb6IBXob8G76Etpis",
+      "google_search": "008270153029254647808:kpxu5mmks70",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2021-05-29T19:48:29+01:00",
+      "pages": [
+        "idea",
+        "events",
+        "partnerships",
+        "news",
+        "press",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "paypal_client_id": "",
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "iFGjCQsv1kUc1fk57uYf5A",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "AV Performances": "AV Performances",
+          "VJing": "VJing",
+          "Videomapping": "Videomapping",
+          "AV Installations": "AV Installations",
+          "Interaction Design": "Interaction Design",
+          "Lectures": "Lectures",
+          "Workshops": "Workshops"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "LPM Live Performers Meeting",
+            "to_email": "info@liveperformersmeeting.net",
+            "from_name": "LPM Live Performers Meeting",
+            "from_email": "info@liveperformersmeeting.net",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 8
+        },
+        "editions": {
+          "limit": 8
+        }
+      },
+      "pages": {
+        "conf": {
+          "idea": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "lcf": {
+    "project_name": "Live Cinema Festival",
+    "blog_id": 44,
+    "project_email": "info@livecinemafestival.com",
+    "port": 3002,
+    "host": "localhost",
+    "domain": "https://livecinemafestival.com",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "lcf",
+    "site_tax": "livecinemafestival-com",
+    "site_tax_id": 459,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_lcf",
+    "last_edition": "2025-rome",
+    "last_edition_status": "selling",
+    "current_edition": "2025-rome",
+    "editions": [
+      "2026-rome",
+      "2025-rome",
+      "2024-rome",
+      "2023-rome",
+      "2022-rome",
+      "2021-rome",
+      "2020-rome",
+      "2019-rome",
+      "2018-rome",
+      "2017-rome",
+      "2016-rome",
+      "2015-rome",
+      "2014-rome"
+    ],
+    "events_to_editions": [
+      "live-cinema-festival-2023",
+      "live-cinema-festival-2022",
+      "live-cinema-festival-2021",
+      "live-cinema-festival-2020",
+      "live-cinema-festival-2019",
+      "live-cinema-festival-2018",
+      "live-cinema-festival-2017",
+      "live-cinema-festival-2016",
+      "live-cinema-festival-2015",
+      "live-cinema-festival-2014"
+    ],
+    "meta": {
+      "headline": {
+        "en": "Audio Visuals Real Time Performances Festival",
+        "it": "Audio Visuals Real Time Performances Festival"
+      },
+      "description": {
+        "en": "LCF is a live performing exhibition that explores and promotes all the artistic trends whom is attributed the term Live Cinema",
+        "it": "LCF  è una rassegna di cinema dal vivo che indaga e promuove tutti i fenomeni artistici cui si attribuisce il termine Live Cinema"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances",
+      "favicon": "/lcf/images/favicon.ico",
+      "icon57": "/lcf/images/apple-touch-icon-57x57.png",
+      "icon72": "/lcf/images/apple-touch-icon-72x72.png",
+      "icon114": "/lcf/images/apple-touch-icon-114x114.png",
+      "icon120": "/lcf/images/apple-touch-icon-120x120.png",
+      "icon144": "/lcf/images/apple-touch-icon-144x144.png",
+      "icon152": "/lcf/images/apple-touch-icon-152x152.png",
+      "icon180": "/lcf/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2024/08/lcf24_grafica2_1920x1080.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "843488995808825",
+      "google_analytics": "G-WJ8L2ZW4WB",
+      "google_webmasterstools": "fKFjnrSHxpnFL4-zfwGxmZvCcHHg6qkj-_pv5-ZhkTI",
+      "google_search": "006376263216181099211:zscctxnfwxg",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "events",
+        "partnerships",
+        "news",
+        "press",
+        "the-app",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "TmQBkISKQN6ppZxDzf7gpQ",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Live Cinema Festival",
+            "to_email": "info@livecinemafestival.com",
+            "from_name": "Live Cinema Festival",
+            "from_email": "info@livecinemafestival.com",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "chromosphere": {
+    "project_name": "Chromosphere",
+    "project_email": "info@chromosphere.eu",
+    "port": 3003,
+    "host": "localhost",
+    "domain": "https://chromosphere.eu",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "chromosphere",
+    "site_tax": "chromosphere-eu",
+    "site_tax_id": 452,
+    "locales": [
+      "en"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_chromosphere",
+    "last_edition": "2024-2025",
+    "last_edition_status": "active",
+    "current_edition": "2024-2025",
+    "editions": [
+      "nye-2016-rome",
+      "2024-2025",
+      "2024-krakow",
+      "2024-lyon",
+      "2024-rome",
+      "2025-athens"
+    ],
+    "events_to_editions": [
+      "2024-2025",
+      "chromosphere-nye-2016-rome"
+    ],
+    "meta": {
+      "headline": {
+        "en": "Fulldome Festival",
+        "it": "Fulldome Festival"
+      },
+      "description": {
+        "en": "Chromosphere is conceived to be an itinerant festival focused on Fulldome projections.",
+        "it": "L’evento Chromosphere è pensato per essere un festival itinerante basato sulle proiezioni Fulldome."
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances",
+      "favicon": "/chromosphere/images/favicon.ico",
+      "icon57": "/chromosphere/images/apple-touch-icon-57x57.png",
+      "icon72": "/chromosphere/images/apple-touch-icon-72x72.png",
+      "icon114": "/chromosphere/images/apple-touch-icon-114x114.png",
+      "icon120": "/chromosphere/images/apple-touch-icon-120x120.png",
+      "icon144": "/chromosphere/images/apple-touch-icon-144x144.png",
+      "icon152": "/chromosphere/images/apple-touch-icon-152x152.png",
+      "icon180": "/chromosphere/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2024/02/cromosphere-main.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "155576171671209",
+      "google_analytics": "G-KSGJCTB5KF",
+      "google_webmasterstools": "PKyAMvwrt7_LpGOrdL4HhLLAT8jflQCYV7G5_gZlLts",
+      "google_search": "006376263216181099211:fpv4f9rltkg",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "2024-2025",
+        "press",
+        "events",
+        "partnerships",
+        "news",
+        "past-editions",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "Uc763fpVy763rBRrE0HPQkXWAA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Chromosphere",
+            "to_email": "info@chromosphere.eu",
+            "from_name": "Chromosphere",
+            "from_email": "info@chromosphere.eu",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "editions": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "vjtelevision": {
+    "project_name": "VJ Television",
+    "project_email": "info@vjtelevision.com",
+    "port": 3004,
+    "host": "localhost",
+    "domain": "https://vjtelevision.com",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "vjtelevision",
+    "site_tax": "vjtelevision-com",
+    "site_tax_id": 462,
+    "locales": [
+      "en"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_vjtelevision",
+    "meta": {
+      "headline": {
+        "en": "The first Audio Visuals Arts channel"
+      },
+      "description": {
+        "en": "The first Audio Visuals Arts channel"
+      },
+      "keywords": "",
+      "favicon": "/vjtelevision/images/favicon.ico",
+      "icon57": "/vjtelevision/images/apple-touch-icon-57x57.png",
+      "icon72": "/vjtelevision/images/apple-touch-icon-72x72.png",
+      "icon114": "/vjtelevision/images/apple-touch-icon-114x114.png",
+      "icon120": "/vjtelevision/images/apple-touch-icon-120x120.png",
+      "icon144": "/vjtelevision/images/apple-touch-icon-144x144.png",
+      "icon152": "/vjtelevision/images/apple-touch-icon-152x152.png",
+      "icon180": "/vjtelevision/images/apple-touch-icon-180x180.png",
+      "image_src": "/vjtelevision/images/main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "174405599260914",
+      "google_analytics": "G-HF12RF2RQL",
+      "google_webmasterstools": "60CO0EWGd_Q9r5Lz6sSbkYThLLfa1DS5EZM4m2qx8rA",
+      "google_search": "006376263216181099211:afbehd0rjok"
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "project",
+        "events",
+        "partnerships",
+        "news",
+        "contacts",
+        "contents-programming",
+        "programming"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "NafaOG9oim2R9cwyL3CdEQ",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "facebook": {
+        "client_id": "174405599260914",
+        "client_secret": ""
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "VJ Television",
+            "to_email": "info@vjtelevision.com",
+            "from_name": "VJ Television",
+            "from_email": "info@vjtelevision.com",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 10
+        },
+        "news": {
+          "limit": 3
+        }
+      },
+      "pages": {
+        "conf": {
+          "project": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "programming": {
+            "itemtype": "CollectionPage",
+            "pugpage": "programming"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "newsletter": {
+            "itemtype": "ContactPage",
+            "pugpage": "page_newsletter"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page",
+            "subpage": "subpage"
+          }
+        }
+      }
+    }
+  },
+  "shockart": {
+    "project_name": "Shockart.net",
+    "project_email": "info@shockart.net",
+    "port": 3005,
+    "host": "localhost",
+    "domain": "https://shockart.net",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "shockart",
+    "site_tax": "shockart-net",
+    "site_tax_id": 461,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_shockart",
+    "last_edition": "visual-bridge",
+    "last_edition_status": "active",
+    "current_edition": "visual-bridge",
+    "editions": [
+      "visual-bridge",
+      "greenbox-at-fdc",
+      "greenbox-on-fire",
+      "greenbox-at-wam",
+      "net-paintings",
+      "peam-web-art-section",
+      "artecnologie",
+      "flash-forward-nyc",
+      "flash-forward-sf",
+      "net-chisel",
+      "el-mundo-nuevo-at-bluecheese",
+      "el-mundo-nuevo-at-snia",
+      "el-mundo-nuevo-at-gnam",
+      "el-mundo-nuevo",
+      "kwart-smau-event",
+      "kwart-smau",
+      "kwart-smau-preview",
+      "shockart-at-bluecheese"
+    ],
+    "events_to_editions": [
+      "lpm-2006-peam",
+      "greenbox-fdc",
+      "greenbox-on-fire",
+      "greenbox-wam",
+      "peam-2005",
+      "peam-web-art-section",
+      "artecnologie",
+      "flash-forward-nyc",
+      "flash-forward-sf",
+      "net-chisel",
+      "el-mundo-nuevo-bc",
+      "el-mundo-nuevo-snia",
+      "el-mundo-nuevo-gnam",
+      "el-mundo-nuevo",
+      "kwart-smau-event",
+      "kwart-smau",
+      "kwart-smau-preview",
+      "shockart-bluecheese"
+    ],
+    "meta": {
+      "headline": {
+        "en": "Web Art Movement",
+        "it": "Web Art Movement"
+      },
+      "description": {
+        "en": "Shockart.net aim is to be recognized as a worldwide reference able to spread and to increase the value of webart and digital art",
+        "it": "Shockart.net nasce con l’idea di creare il primo riferimento culturale per la valorizzazione e la divulgazione dell’arte digitale e della web art"
+      },
+      "keywords": "",
+      "favicon": "/shockart/images/favicon.ico",
+      "icon57": "/shockart/images/apple-touch-icon-57x57.png",
+      "icon72": "/shockart/images/apple-touch-icon-72x72.png",
+      "icon114": "/shockart/images/apple-touch-icon-114x114.png",
+      "icon120": "/shockart/images/apple-touch-icon-120x120.png",
+      "icon144": "/shockart/images/apple-touch-icon-144x144.png",
+      "icon152": "/shockart/images/apple-touch-icon-152x152.png",
+      "icon180": "/shockart/images/apple-touch-icon-180x180.png",
+      "image_src": "/shockart/images/main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "490975371241568",
+      "google_analytics": "G-SPHVYQ40FQ",
+      "google_webmasterstools": "a-bbpiqDz7-oPsvrjtltpwRkEL5ffcN2gwrKyZyXstg",
+      "google_search": "006376263216181099211:mnto3l7bvg0"
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "project",
+        "exhibitions",
+        "news",
+        "partnerships",
+        "backstage",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "yUBqNOpNv0xPXRXrb763r0Sg",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Shockart.net",
+            "to_email": "info@shockart.net",
+            "from_name": "Shockart.net",
+            "from_email": "info@shockart.net",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "exhibitions": {
+          "limit": 5
+        }
+      },
+      "pages": {
+        "conf": {
+          "project": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "exhibitions": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "newsletter": {
+            "itemtype": "ContactPage",
+            "pugpage": "page_newsletter"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page",
+            "subpage": "subpage"
+          }
+        }
+      }
+    }
+  },
+  "linuxclub": {
+    "project_name": "Linux Club Italia",
+    "project_email": "info@linuxclub.it",
+    "port": 3006,
+    "host": "localhost",
+    "domain": "https://linux-club.org",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "linuxclub",
+    "site_tax": "linux-club-org",
+    "site_tax_id": 458,
+    "locales": [
+      "it"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_linuxclub",
+    "meta": {
+      "headline": {
+        "it": "Promozione e diffusione del software libero"
+      },
+      "description": {
+        "it": "Promozione e diffusione del software libero"
+      },
+      "keywords": "",
+      "favicon": "/linuxclub/images/favicon.ico",
+      "icon57": "/linuxclub/images/apple-touch-icon-57x57.png",
+      "icon72": "/linuxclub/images/apple-touch-icon-72x72.png",
+      "icon114": "/linuxclub/images/apple-touch-icon-114x114.png",
+      "icon120": "/linuxclub/images/apple-touch-icon-120x120.png",
+      "icon144": "/linuxclub/images/apple-touch-icon-144x144.png",
+      "icon152": "/linuxclub/images/apple-touch-icon-152x152.png",
+      "icon180": "/linuxclub/images/apple-touch-icon-180x180.png",
+      "image_src": "/linuxclub/images/main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "202330140298003",
+      "google_analytics": "G-Z5PZ9D8PFJ",
+      "google_webmasterstools": "6ju0BiOHRjDQG1-qaNCEzq0Qafi0Crww7tq-nZJJv00",
+      "google_search": "006376263216181099211:ev57sceir7a"
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "linux-club-italia",
+        "news",
+        "events",
+        "network",
+        "contatti",
+        "join",
+        "amici",
+        "newsletter"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "uiPW8PHZ4mHhCdAglVhqUQ",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals",
+          "Open Source": "Open Source"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Linux Club Italia",
+            "to_email": "info@linuxclub.it",
+            "from_name": "Linux Club Italia",
+            "from_email": "info@linuxclub.it",
+            "subject": "xxx",
+            "message": "xxx"
+          },
+          "join": {
+            "to_name": "Linux Club Italia",
+            "to_email": "info@linuxclub.it",
+            "from_name": "Linux Club Italia",
+            "from_email": "info@linuxclub.it",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 3
+        },
+        "network": {
+          "limit": 6
+        }
+      },
+      "pages": {
+        "conf": {
+          "linux-club-italia": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "join": {
+            "itemtype": "ContactPage",
+            "pugpage": "page_join"
+          },
+          "newsletter": {
+            "itemtype": "ContactPage",
+            "pugpage": "page_newsletter"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page",
+            "subpage": "subpage"
+          }
+        }
+      },
+      "network": {
+        "title": "Network News",
+        "site_tax": true,
+        "post_type": "posts",
+        "baseurl": "network",
+        "limit": 20,
+        "puglist": "networks",
+        "pugdett": "network"
+      }
+    }
+  },
+  "wam": {
+    "project_name": "WAM Web Art Mouseum",
+    "project_email": "wam@flyer.it",
+    "port": 3008,
+    "host": "localhost",
+    "domain": "https://wam.flyer.it",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "wam",
+    "site_tax": "wam-flyer-it",
+    "site_tax_id": 463,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_wam",
+    "meta": {
+      "headline": {
+        "en": "Web Art Mouseum",
+        "it": "Web Art Mouseum"
+      },
+      "description": {
+        "en": "WAM aim is to be recognized as a worldwide reference able to spread and to increase the value of webart and digital art",
+        "it": "WAM nasce con l’idea di creare il primo riferimento culturale per la valorizzazione e la divulgazione dell’arte digitale e della web art"
+      },
+      "keywords": "",
+      "favicon": "/wam/images/favicon.ico",
+      "icon57": "/wam/images/apple-touch-icon-57x57.png",
+      "icon72": "/wam/images/apple-touch-icon-72x72.png",
+      "icon114": "/wam/images/apple-touch-icon-114x114.png",
+      "icon120": "/wam/images/apple-touch-icon-120x120.png",
+      "icon144": "/wam/images/apple-touch-icon-144x144.png",
+      "icon152": "/wam/images/apple-touch-icon-152x152.png",
+      "icon180": "/wam/images/apple-touch-icon-180x180.png",
+      "image_src": "/wam/images/main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "110239255688099",
+      "google_analytics": "G-66J8SG43XM",
+      "google_webmasterstools": "a-bbpiqDz7-oPsvrjtltpwRkEL5ffcN2gwrKyZyXstg",
+      "google_search": "006376263216181099211:ki5zbydnoxe"
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "project",
+        "presentation-to-the-city",
+        "partnerships",
+        "news",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "z2I0KLVe1pDLjPjNftR3bA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "WAM Web Art Mouseum",
+            "to_email": "wam@flyer.it",
+            "from_name": "WAM Web Art Mouseum",
+            "from_email": "wam@flyer.it",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 10
+        },
+        "news": {
+          "limit": 3
+        },
+        "prenatal": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "project": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page",
+            "subpage": "subpage"
+          }
+        }
+      }
+    }
+  },
+  "fotonica": {
+    "project_name": "FOTONICA",
+    "project_email": "info@fotonicafestival.com",
+    "port": 3009,
+    "host": "localhost",
+    "domain": "https://fotonicafestival.com",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "fotonica",
+    "site_tax": "fotonica-com",
+    "site_tax_id": 588,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_fotonica",
+    "last_edition": "2025-rome",
+    "last_edition_status": "active",
+    "siae_on_off": "on",
+    "current_edition": "2025-rome",
+    "editions": [
+      "2026-rome",
+      "2025-rome",
+      "2024-rome",
+      "2023-rome",
+      "2022-rome",
+      "2021-rome",
+      "2020-rome",
+      "2019-rome",
+      "summer-2019-noto",
+      "2018-rome",
+      "2017-rome"
+    ],
+    "events_to_editions": [],
+    "meta": {
+      "headline": {
+        "en": "Audio Visual Digital Art Festival",
+        "it": "Audio Visual Digital Art Festival"
+      },
+      "description": {
+        "en": "FOTONICA from photon, historically as light, from Greek φωτός (photòs), is a festival that investigates art forms related to the light element, in particular digital light",
+        "it": "FOTONICA da fotone, storicamente quanto di luce, dal greco φωτός (photòs), è un festival che indaga le forme d’arte legate all’elemento luce nel contesto contemporaneo"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances, Audio Video Performances, Video Mappings, Light Installations, DJ-VJ Sets, NetArt, Workshops, Lectures",
+      "favicon": "/fotonica/images/favicon.ico",
+      "icon57": "/fotonica/images/apple-touch-icon-57x57.png",
+      "icon72": "/fotonica/images/apple-touch-icon-72x72.png",
+      "icon114": "/fotonica/images/apple-touch-icon-114x114.png",
+      "icon120": "/fotonica/images/apple-touch-icon-120x120.png",
+      "icon144": "/fotonica/images/apple-touch-icon-144x144.png",
+      "icon152": "/fotonica/images/apple-touch-icon-152x152.png",
+      "icon180": "/fotonica/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2025/11/F2025.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "1841738729187008",
+      "google_analytics": "G-F4CVPF90NT",
+      "google_webmasterstools": "mWfnXdPcRZ6FMOabrEuEdFwqhW4GVtJfGVmzjQxRP6k",
+      "google_search": "006376263216181099211;bcpt-dmcbm0",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "events",
+        "partnerships",
+        "news",
+        "press",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "IHb09oaXpFmdIxHaMS13cQ",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Fotonica",
+            "to_email": "info@fotonicafestival.com",
+            "from_name": "Fotonica",
+            "from_email": "info@fotonicafestival.com",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "editions": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "flxer": {
+    "project_name": "FLxER",
+    "project_email": "info@flxer.net",
+    "port": 3010,
+    "host": "localhost",
+    "domain": "https://flxer.net",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "flxer",
+    "site_tax": "flxer-com",
+    "site_tax_id": 454,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_flxer",
+    "meta": {
+      "headline": {
+        "en": "Audio Visual Creative Collective",
+        "it": "Audio Visual Creative Collective"
+      },
+      "description": {
+        "en": "FLxER produces AV Performances, Video Mappings, Interactive Installations, Workshops, Lectures, Kids Laboratories and some of the most important AV events in the world",
+        "it": "FLxER produce Performance AV, Video Mapping, Installazioni Interattive, Workshop, Conferenze, Laboratori per bambini e alcuni degli eventi AV più importanti del mondo"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances, Audio Video Performances, Video Mappings, Light Installations, DJ-VJ Sets, NetArt, Workshops, Lectures",
+      "favicon": "/flxer/images/favicon.ico",
+      "icon57": "/flxer/images/apple-touch-icon-57x57.png",
+      "icon72": "/flxer/images/apple-touch-icon-72x72.png",
+      "icon76": "/flxer/images/apple-touch-icon-76x76.png",
+      "icon114": "/flxer/images/apple-touch-icon-114x114.png",
+      "icon120": "/flxer/images/apple-touch-icon-120x120.png",
+      "icon144": "/flxer/images/apple-touch-icon-144x144.png",
+      "icon152": "/flxer/images/apple-touch-icon-152x152.png",
+      "icon180": "/flxer/images/apple-touch-icon-180x180.png",
+      "image_src": "/flxer/images/main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "1841738729187008",
+      "google_analytics": "G-99W1DD6MS4",
+      "google_webmasterstools": "mWfnXdPcRZ6FMOabrEuEdFwqhW4GVtJfGVmzjQxRP6k",
+      "google_search": "006376263216181099211:fxmv7_h_uxk",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "project",
+        "software",
+        "performances",
+        "installations",
+        "workshops",
+        "events",
+        "news",
+        "members",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "SffW3wtJGanmjOW892YCv5DQ",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "FLxER",
+            "to_email": "info@flxer.net",
+            "from_name": "FLxER",
+            "from_email": "info@flxer.net",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "editions": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "project": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "software/downloads": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_downloads"
+          },
+          "performances": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "performances"
+          },
+          "workshops": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "workshops"
+          },
+          "installations": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "performances"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "events"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "members": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "members"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      },
+      "members": {
+        "title": "Team",
+        "site_tax": false,
+        "baseurl": "members",
+        "limit": 100,
+        "puglist": "members",
+        "pugdett": "member"
+      }
+    }
+  },
+  "gianlucadelgobbo": {
+    "project_name": "Gianluca Del Gobbo",
+    "project_email": "me@gianlucadelgobbo.net",
+    "port": 3011,
+    "host": "localhost",
+    "domain": "https://gianlucadelgobbo.net",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "github": "https://api.github.com/users/gianlucadelgobbo/repos",
+    "prefix": "gianlucadelgobbo",
+    "site_tax": "gianlucadelgobbo-net",
+    "site_tax_id": 610,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_gianlucadelgobbo",
+    "meta": {
+      "headline": {
+        "en": "Audio Visuals Performing Arts | promoter, producer, coder, networks enthusiast",
+        "it": "Audio Visuals Performing Arts | promoter, producer, coder, networks enthusiast"
+      },
+      "description": {
+        "en": "Promoter, producer, coder, networks enthusiast is considered a guru of the new media and the digital arts world as well as a pioneer in the Audio Visual Performing Arts",
+        "it": "Promoter, producer, coder, networks enthusiast è considerato un guru dei nuovi media e del mondo delle arti digitali nonché pioniere nel mondo delle Audio Visual Performing Arts"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances, Audio Video Performances, Video Mappings, Light Installations, DJ-VJ Sets, NetArt, Workshops, Lectures",
+      "favicon": "/gianlucadelgobbo/images/favicon.ico",
+      "icon57": "/gianlucadelgobbo/images/apple-touch-icon-57x57.png",
+      "icon72": "/gianlucadelgobbo/images/apple-touch-icon-72x72.png",
+      "icon114": "/gianlucadelgobbo/images/apple-touch-icon-114x114.png",
+      "icon120": "/gianlucadelgobbo/images/apple-touch-icon-120x120.png",
+      "icon144": "/gianlucadelgobbo/images/apple-touch-icon-144x144.png",
+      "icon152": "/gianlucadelgobbo/images/apple-touch-icon-152x152.png",
+      "icon180": "/gianlucadelgobbo/images/apple-touch-icon-180x180.png",
+      "image_src": "/gianlucadelgobbo/images/gianlucadelgobbo.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "1841738729187008",
+      "google_analytics": "G-W9BP0M6RYD",
+      "google_webmasterstools": "mWfnXdPcRZ6FMOabrEuEdFwqhW4GVtJfGVmzjQxRP6k",
+      "google_search": "006376263216181099211:hfv1srmv8yq",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "about",
+        "cultural-productions",
+        "partnerships-management",
+        "coding",
+        "performances",
+        "installations",
+        "workshops",
+        "lectures",
+        "awards-and-grants",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "xEHR63EbvwLRLZem0u3IzA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Gianluca Del Gobbo",
+            "to_email": "me@gianlucadelgobbo.net",
+            "from_name": "Gianluca Del Gobbo",
+            "from_email": "me@gianlucadelgobbo.net",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "cultural-productions": {
+          "limit": 8
+        }
+      },
+      "pages": {
+        "conf": {
+          "about": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "cultural-productions": {
+            "itemtype": "CollectionPage",
+            "basepath": "cultural-productions",
+            "pugpage": "page_full_width"
+          },
+          "partnerships-management": {
+            "itemtype": "CollectionPage",
+            "basepath": "partnerships-management",
+            "pugpage": "page_full_width"
+          },
+          "performances": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "performances"
+          },
+          "coding": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "coding"
+          },
+          "installations": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "installations"
+          },
+          "workshops": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "workshops"
+          },
+          "lectures": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width",
+            "basepath": "lectures"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      },
+      "awards-and-grants": {
+        "title": "Awards and Grants",
+        "site_tax": false,
+        "post_type": "awards-and-grants",
+        "baseurl": "awards-and-grants",
+        "limit": 50,
+        "puglist": "awards",
+        "pugdett": "award"
+      },
+      "coding": {
+        "title": "Coding",
+        "site_tax": false,
+        "post_type": "web-and-mobile",
+        "baseurl": "coding",
+        "limit": 100,
+        "puglist": "codings",
+        "pugdett": "coding"
+      }
+    }
+  },
+  "pac": {
+    "project_name": "PAC",
+    "project_email": "info@pacnetwork.org",
+    "port": 3012,
+    "host": "localhost",
+    "domain": "https://pacnetwork.org",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "pac",
+    "site_tax": "pac-org",
+    "site_tax_id": 610,
+    "locales": [
+      "it"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_pac",
+    "meta": {
+      "headline": {
+        "it": "PAC - Performing Arts Contemporanee"
+      },
+      "description": {
+        "it": "PAC è il network delle organizzazioni attive nelle Performing Arts Contemporanee"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances, Audio Video Performances, Video Mappings, Light Installations, DJ-VJ Sets, NetArt, Workshops, Lectures",
+      "favicon": "/pac/images/favicon.ico",
+      "icon57": "/pac/images/apple-touch-icon-57x57.png",
+      "icon72": "/pac/images/apple-touch-icon-72x72.png",
+      "icon114": "/pac/images/apple-touch-icon-114x114.png",
+      "icon120": "/pac/images/apple-touch-icon-120x120.png",
+      "icon144": "/pac/images/apple-touch-icon-144x144.png",
+      "icon152": "/pac/images/apple-touch-icon-152x152.png",
+      "icon180": "/pac/images/apple-touch-icon-180x180.png",
+      "image_src": "/pac/images/pac.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "1841738729187008",
+      "google_analytics": "G-794QSQYY03",
+      "google_webmasterstools": "mWfnXdPcRZ6FMOabrEuEdFwqhW4GVtJfGVmzjQxRP6k",
+      "google_search": "006376263216181099211:nrxv-0dsefs",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "manifesto",
+        "members",
+        "partnerships",
+        "videos",
+        "join",
+        "newsletter",
+        "contacts",
+        "lista-fornitori"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "oz8pjBlaoY7cpD3vsM9PtA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "PAC"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "PAC Network",
+            "to_email": "info@pacnetwork.org",
+            "from_name": "PAC Network",
+            "from_email": "info@pacnetwork.org",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "videos": {
+          "limit": 3
+        },
+        "events": {
+          "limit": 8
+        }
+      },
+      "pages": {
+        "conf": {
+          "manifesto": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "members": {
+            "itemtype": "CollectionPage",
+            "basepath": "members",
+            "pugpage": "members"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "videos": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "newsletter": {
+            "itemtype": "ContactPage",
+            "pugpage": "page_newsletter"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      },
+      "partnerships": {
+        "title": "Eventi",
+        "site_tax": false,
+        "baseurl": "partnerships",
+        "limit": 100,
+        "puglist": "events",
+        "pugdett": "event"
+      },
+      "members": {
+        "title": "Membri",
+        "site_tax": false,
+        "baseurl": "members",
+        "limit": 100,
+        "puglist": "members",
+        "pugdett": "member"
+      },
+      "videos": {
+        "title": "Video",
+        "site_tax": false,
+        "baseurl": "videos",
+        "limit": 100,
+        "puglist": "videos",
+        "pugdett": "video"
+      }
+    }
+  },
+  "electrokids": {
+    "project_name": "ElectroKids",
+    "project_email": "info@electrokids.net",
+    "port": 3013,
+    "host": "localhost",
+    "domain": "https://electrokids.net",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "electrokids",
+    "site_tax": "electrokids-net",
+    "site_tax_id": 452,
+    "locales": [
+      "it"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_electrokids",
+    "last_edition": "2024-rome",
+    "last_edition_status": "active",
+    "current_edition": "2024-rome",
+    "editions": [
+      "2024-rome"
+    ],
+    "events_to_editions": [],
+    "meta": {
+      "headline": {
+        "en": "Digital Art Festival for Kids",
+        "it": "Digital Art Festival per i più giovani"
+      },
+      "description": {
+        "en": "Lights, sounds, images, and creativity: these are the keywords of ElectroKids, the first digital art and videomapping festival entirely dedicated to children, teenagers, and their families.",
+        "it": "Luci, suoni, immagini e creatività: sono queste le parole chiave di ElectroKids, il primo festival di arte digitale e videomapping interamente dedicato a bambini, ragazzi e alle loro famiglie."
+      },
+      "keywords": "Videomapping, immersive art,vr,ar,audio visuals performing arts,av performances",
+      "favicon": "/electrokids/images/favicon.ico",
+      "icon57": "/electrokids/images/apple-touch-icon-57x57.png",
+      "icon72": "/electrokids/images/apple-touch-icon-72x72.png",
+      "icon114": "/electrokids/images/apple-touch-icon-114x114.png",
+      "icon120": "/electrokids/images/apple-touch-icon-120x120.png",
+      "icon144": "/electrokids/images/apple-touch-icon-144x144.png",
+      "icon152": "/electrokids/images/apple-touch-icon-152x152.png",
+      "icon180": "/electrokids/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2024/02/electrokids-2024-main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "155576171671209",
+      "google_analytics": "G-2ZG6XX36H8",
+      "google_webmasterstools": "PKyAMvwrt7_LpGOrdL4HhLLAT8jflQCYV7G5_gZlLts",
+      "google_search": "83a5e94b1bad840d5",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "press",
+        "our-productions",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "Uc763fpVy763rBRrE0HPQkXWAA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "ElectroKids",
+            "to_email": "info@electrokids.net",
+            "from_name": "ElectroKids",
+            "from_email": "info@electrokids.net",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        }
+      },
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "our-productions": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "program": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "digitalatium": {
+    "project_name": "Digitalatium",
+    "project_email": "digitalatium@fotonicafestival.com",
+    "port": 3014,
+    "host": "localhost",
+    "domain": "https://digitalatium.fotonicafestival.com",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "digitalatium",
+    "site_tax": "digitalatium",
+    "site_tax_id": 452,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_digitalatium",
+    "last_edition": "2024-tour-festival",
+    "last_edition_status": "active",
+    "current_edition": "2024-tour-festival",
+    "editions": [
+      "2024-tour-festival"
+    ],
+    "events_to_editions": [],
+    "meta": {
+      "headline": {
+        "en": "Digitalatium Tour + Festival",
+        "it": "Digitalatium Tour + Festival"
+      },
+      "description": {
+        "en": "Digitalatium is a tour of artists under 36 from the Lazio region, in events accross Europe and the Mediterranean, culminating in a final festival in Rome",
+        "it": "Digitalatium è un tour di artisti under 36 provenienti dalla regione Lazio in eventi in tutta Europa e nel Mediterraneo, con un festival finale a Roma"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances,videomapping",
+      "favicon": "/digitalatium/images/favicon.ico",
+      "icon57": "/digitalatium/images/apple-touch-icon-57x57.png",
+      "icon72": "/digitalatium/images/apple-touch-icon-72x72.png",
+      "icon114": "/digitalatium/images/apple-touch-icon-114x114.png",
+      "icon120": "/digitalatium/images/apple-touch-icon-120x120.png",
+      "icon144": "/digitalatium/images/apple-touch-icon-144x144.png",
+      "icon152": "/digitalatium/images/apple-touch-icon-152x152.png",
+      "icon180": "/digitalatium/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2024/05/digitalatium-main.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "155576171671209",
+      "google_analytics": "G-1N7NKGVJTJ",
+      "google_webmasterstools": "PKyAMvwrt7_LpGOrdL4HhLLAT8jflQCYV7G5_gZlLts",
+      "google_search": "663fb7475e7094b55",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "2024-2025",
+        "press",
+        "events",
+        "partnerships",
+        "news",
+        "past-editions",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "Uc763fpVy763rBRrE0HPQkXWAA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Digitalatium",
+            "to_email": "digitalatium@fotonicafestival.com",
+            "from_name": "Digitalatium",
+            "from_email": "digitalatium@fotonicafestival.com",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "editions": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "visualsound": {
+    "project_name": "VisualSound",
+    "project_email": "info@visualsound.org",
+    "port": 3015,
+    "host": "localhost",
+    "domain": "https://visualsound.org",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "visualsound",
+    "site_tax": "visualsound",
+    "site_tax_id": 452,
+    "locales": [
+      "it",
+      "en"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_visualsound",
+    "last_edition": "2026",
+    "last_edition_status": "archived",
+    "current_edition": "2026",
+    "editions": [
+      "2026",
+      "visual-sound-international",
+      "visual-sound-wednesdays",
+      "2025-villa-deste",
+      "2024-rome"
+    ],
+    "events_to_editions": [],
+    "meta": {
+      "headline": {
+        "en": "Visual Sound Festival",
+        "it": "Visual Sound Festival"
+      },
+      "description": {
+        "en": "Visual Sound is a festival in Rome of Audio Visual Performing Artists under 35 wo lives Latium region",
+        "it": "Visual Sound è un festival a Roma di Audio Visual Performing Artists under 35 che vivono nel Lazio."
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances,videomapping",
+      "favicon": "/visualsound/images/favicon.ico",
+      "icon57": "/visualsound/images/apple-touch-icon-57x57.png",
+      "icon72": "/visualsound/images/apple-touch-icon-72x72.png",
+      "icon114": "/visualsound/images/apple-touch-icon-114x114.png",
+      "icon120": "/visualsound/images/apple-touch-icon-120x120.png",
+      "icon144": "/visualsound/images/apple-touch-icon-144x144.png",
+      "icon152": "/visualsound/images/apple-touch-icon-152x152.png",
+      "icon180": "/visualsound/images/apple-touch-icon-180x180.png",
+      "image_src": "/files/2025/09/16-9_VisualSound.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "155576171671209",
+      "google_analytics": "G-1N7NKGVJTJ",
+      "google_webmasterstools": "PKyAMvwrt7_LpGOrdL4HhLLAT8jflQCYV7G5_gZlLts",
+      "google_search": "663fb7475e7094b55",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "2024-2025",
+        "press",
+        "events",
+        "partnerships",
+        "news",
+        "past-editions",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "Uc763fpVy763rBRrE0HPQkXWAA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "VisualSound",
+            "to_email": "info@visualsound.org",
+            "from_name": "VisualSound",
+            "from_email": "info@visualsound.org",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "editions": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "visualsoundacademy": {
+    "project_name": "VisualSoundAcademy",
+    "project_email": "info@visualsoundacademy.com",
+    "port": 3016,
+    "host": "localhost",
+    "domain": "https://visualsoundacademy.com",
+    "data_domain": "https://admin.visualsoundacademy.com",
+    "prefix": "visualsoundacademy",
+    "site_tax": "visualsoundacademy",
+    "site_tax_id": 452,
+    "locales": [
+      "it",
+      "en"
+    ],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_visualsoundacademy",
+    "last_edition": "2025-academy",
+    "last_edition_status": "archived",
+    "current_edition": "2025-academy",
+    "editions": [
+      "2026-academy",
+      "2025-academy"
+    ],
+    "events_to_editions": [],
+    "meta": {
+      "headline": {
+        "en": "Visual Sound Academy",
+        "it": "Visual Sound Academy"
+      },
+      "description": {
+        "en": "Visual Sound Academy is a learning project of Audio Visual Arts",
+        "it": "Visual Sound Academy è un progetto di formazione in Audio Visual Arts"
+      },
+      "keywords": "Live Cinema,audio visuals performing arts,av performances,videomapping",
+      "favicon": "/visualsoundacademy/images/favicon.ico",
+      "icon57": "/visualsoundacademy/images/apple-touch-icon-57x57.png",
+      "icon72": "/visualsoundacademy/images/apple-touch-icon-72x72.png",
+      "icon114": "/visualsoundacademy/images/apple-touch-icon-114x114.png",
+      "icon120": "/visualsoundacademy/images/apple-touch-icon-120x120.png",
+      "icon144": "/visualsoundacademy/images/apple-touch-icon-144x144.png",
+      "icon152": "/visualsoundacademy/images/apple-touch-icon-152x152.png",
+      "icon180": "/visualsoundacademy/images/apple-touch-icon-180x180.png",
+      "image_src": "https://admin.visualsoundacademy.com/wp-content/uploads/2026/01/VisualSoundAcademy2025.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "155576171671209",
+      "google_analytics": "G-Z5TJE62XF2",
+      "google_webmasterstools": "AjpYSAqHfNa9nNZ-R8Gb7WuQLCoHncB0i4VRqOo5F2w",
+      "google_search": "663fb7475e7094b55",
+      "editions": {}
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "concept",
+        "2024-2025",
+        "press",
+        "events",
+        "partnerships",
+        "news",
+        "past-editions",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {
+        "api_key": "",
+        "list": "Uc763fpVy763rBRrE0HPQkXWAA",
+        "url": "https://ml.avnode.net",
+        "interests": {
+          "Live Visuals": "Live Visuals"
+        }
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "VisualSoundAcademy",
+            "to_email": "info@visualsoundacademy.com",
+            "from_name": "VisualSound",
+            "from_email": "info@visualsoundacademy.com",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "editions": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "concept": {
+            "itemtype": "AboutPage",
+            "pugpage": "page"
+          },
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "partnerships": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "press": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page"
+          }
+        }
+      }
+    }
+  },
+  "flyer": {
+    "project_name": "Flyer new media",
+    "project_email": "info@flyer.it",
+    "port": 3017,
+    "host": "localhost",
+    "domain": "https://flyer.it",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "flyer",
+    "site_tax": "flyer-it",
+    "site_tax_id": 455,
+    "locales": [
+      "en",
+      "it"
+    ],
+    "default_lang": "en",
+    "current_lang": "en",
+    "router": "router_flyer",
+    "meta": {
+      "headline": {
+        "en": "Creativity and tools for cutting edge events",
+        "it": "Creatività e strumenti per eventi all'avanguardia"
+      },
+      "description": {
+        "en": "Flyer is an all media agency that develops services and solutions between technology and communication in the web, live video and performances.",
+        "it": "Flyer, all media agency che sviluppa servizi e soluzioni all'incrocio tra tecnologia e comunicazione nei settori del web, del live video."
+      },
+      "keywords": "",
+      "favicon": "/flyer/images/favicon.ico",
+      "icon57": "/flyer/images/apple-touch-icon-57x57.png",
+      "icon72": "/flyer/images/apple-touch-icon-72x72.png",
+      "icon114": "/flyer/images/apple-touch-icon-114x114.png",
+      "icon120": "/flyer/images/apple-touch-icon-120x120.png",
+      "icon144": "/flyer/images/apple-touch-icon-144x144.png",
+      "icon152": "/flyer/images/apple-touch-icon-152x152.png",
+      "icon180": "/flyer/images/apple-touch-icon-180x180.png",
+      "image_src": "/flyer/images/main-img.jpg",
+      "fb_admin": "100002214976086",
+      "fb_appId": "110239255688099",
+      "google_analytics": "G-W69JDDNWGH",
+      "google_webmasterstools": "CZjepuGGnFzsu6ofBzkdy7bCLtqb6IBXob8G76Etpis",
+      "google_search": "006376263216181099211:uechy7kpoa4"
+    },
+    "sitemap": {
+      "lastmod": "2025-01-15T09:48:29+01:00",
+      "pages": [
+        "profile",
+        "profile/cultural-productions",
+        "profile/web-and-apps",
+        "cultural-productions",
+        "web-and-apps",
+        "partnerships-management",
+        "awards-and-grants",
+        "extra",
+        "contacts"
+      ]
+    },
+    "accounts": {
+      "recaptcha": {
+        "site_key": "",
+        "secret_key": ""
+      },
+      "newsletter": {},
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "Flyer new media",
+            "to_email": "info@flyer.it",
+            "from_name": "Flyer new media",
+            "from_email": "info@flyer.it",
+            "subject": "xxx",
+            "message": "xxx"
+          },
+          "join": {
+            "to_name": "Flyer new media",
+            "to_email": "info@flyer.it",
+            "from_name": "Flyer new media",
+            "from_email": "info@flyer.it",
+            "subject": "xxx",
+            "message": "xxx"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": {
+          "limit": 8
+        },
+        "news": {
+          "limit": 4
+        },
+        "web": {
+          "limit": 4
+        },
+        "lab": {
+          "limit": 8
+        },
+        "award": {
+          "limit": 4
+        },
+        "videos": {
+          "limit": 4
+        },
+        "learning": {
+          "limit": 4
+        }
+      },
+      "pages": {
+        "conf": {
+          "profile": {
+            "itemtype": "AboutPage",
+            "pugpage": "page_profile"
+          },
+          "profile/cultural-productions": {
+            "itemtype": "AboutPage",
+            "pugpage": "page_profile_grid"
+          },
+          "profile/web-and-apps": {
+            "itemtype": "AboutPage",
+            "pugpage": "page_profile_grid"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "cultural-productions": {
+            "itemtype": "CollectionPage",
+            "basepath": "cultural-productions",
+            "pugpage": "page_full_width"
+          },
+          "partnerships-management": {
+            "itemtype": "CollectionPage",
+            "basepath": "partnerships-management",
+            "pugpage": "page_full_width"
+          },
+          "extra": {
+            "itemtype": "CollectionPage",
+            "basepath": "extra",
+            "pugpage": "page_full_width"
+          },
+          "avnode-lpm-2015-2018": {
+            "itemtype": "AboutPage",
+            "basepath": "partnerships-management",
+            "pugpage": "page_grid"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page",
+            "subpage": "subpage"
+          }
+        }
+      },
+      "awards-and-grants": {
+        "title": "Awards and Grants",
+        "site_tax": false,
+        "post_type": "awards-and-grants",
+        "baseurl": "awards-and-grants",
+        "limit": 50,
+        "puglist": "awards",
+        "pugdett": "award"
+      },
+      "web-and-apps": {
+        "title": "Web Sites & Apps",
+        "site_tax": false,
+        "post_type": "web-and-mobile",
+        "baseurl": "web-and-apps",
+        "limit": 20,
+        "puglist": "webs",
+        "pugdett": "web"
+      }
+    }
+  }
+}
