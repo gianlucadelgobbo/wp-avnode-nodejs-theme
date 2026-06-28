@@ -148,7 +148,7 @@ exports.getPage = function getPage(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        avnodeurl = avnodeurl.replace("avnode.net","admin.avnode.net");
+        avnodeurl = avnodeurl.replace("api.avnode.net","api.admin.avnode.net");
         console.log("avnodeurl [1] "+avnodeurl);
         
         request({
@@ -234,7 +234,7 @@ exports.getXMLlist = function getXMLlist(req,callback) {
         }
         if (req.params.paging) avnodeurl+= "page/"+req.params.paging;
         
-        avnodeurl = avnodeurl.replace("avnode.net","admin.avnode.net");
+        avnodeurl = avnodeurl.replace("api.avnode.net","api.admin.avnode.net");
         console.log("avnodeurl [2] "+avnodeurl);
         
         request({
@@ -439,7 +439,7 @@ exports.getEdition = function getEdition(req,callback) {
     if (data && data.ID) data = fnz.fixResult(data);
     if (data && data['wpcf-rows'] && data['wpcf-columns']) data.grid = fnz.getGrid(data);
     if (avnodeurl) {
-      avnodeurl = avnodeurl.replace("avnode.net","admin.avnode.net");
+      avnodeurl = avnodeurl.replace("api.avnode.net","api.admin.avnode.net");
       avnodeurl = avnodeurl.replace(/\/events\/([^/]+)\/galleries\/$/, "/events/$1/")
                            .replace(/\/events\/([^/]+)\/videos\/$/, "/events/$1/");
       console.log("avnodeurl [3] "+avnodeurl);

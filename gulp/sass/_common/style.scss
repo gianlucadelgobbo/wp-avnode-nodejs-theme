@@ -51,6 +51,14 @@ a:hover {
   padding-left: 0;
   list-style: none;
 }
+.itemListElement a:has(img[src$=".svg"]) {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.itemListElement img[src$=".svg"] {
+  width: 100%;
+}
 #subscribe .alert {
   padding: 0.5rem 1rem;
 }
