@@ -32,7 +32,7 @@ exports.setPageData = function setPageData(req, result) {
     //console.log(result)
     page_data.wpID = result['ID']
     page_data.title = (result.post_title ? result.post_title : "");
-    page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : config.domain + config.meta.image_src;
+    page_data.image_src = result.featured && result.featured.full ? result.featured.full : result.featured ? result.featured : (config.meta.image_src.startsWith('http') ? config.meta.image_src : config.domain + config.meta.image_src);
     page_data.description = result.post_content ? this.makeExcerpt(result.post_content, 160) : config.meta.description[req.session.sessions.current_lang];
     if (result.avnode) {
       if(result.avnode.performer && result.avnode.performer.stagename) {
