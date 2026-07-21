@@ -13,8 +13,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -31,8 +30,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -49,8 +47,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -67,8 +64,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -85,8 +81,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -103,8 +98,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -121,8 +115,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -139,8 +132,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -157,8 +149,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -175,8 +166,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -193,8 +183,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -211,8 +200,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -229,8 +217,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -247,8 +234,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -265,8 +251,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
@@ -283,8 +268,7 @@ module.exports = {
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
-    watch: true,
-    ignore_watch: [".git", "node_modules", "public", "cache", "locales", "warehouse", "files"],
+    watch: false,
     env: {
       NODE_ENV: "production"
     }
