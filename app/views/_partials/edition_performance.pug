@@ -18,7 +18,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
             p.type=result.avnode.performance.type.name
             p.stit
               if result.avnode.performance.duration > 0
-                !="Duration: "+result.avnode.performance.humanDuration
+                !=global.__("Duration")+": "+result.avnode.performance.humanDuration
               each booking,index in result.avnode.performance.bookings
                 p.stit
                   each schedule,index2 in booking.schedule

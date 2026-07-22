@@ -160,5 +160,6 @@
   "Your Name": "Your Name",
   "Your name is required": "Your name is required",
   "example@foo.bar": "example@foo.bar",
-  "supports HTML5 video": "supports HTML5 video"
+  "supports HTML5 video": "supports HTML5 video",
+  "Duration": "Durata"
 }

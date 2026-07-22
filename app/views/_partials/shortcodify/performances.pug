@@ -6,7 +6,7 @@ if opts.params && body
           if !opts.rooms || (opts.rooms && opts.rooms.indexOf(room.room)!=-1)
             each performance in room.performances
               //- console.log(performance.performance.title)
-              if opts.params.indexOf(performance.performance.type.name)!=-1
+              if performance.performance.type && opts.params.indexOf(performance.performance.type.name)!=-1
                 - performance.performance.schedule = performance.schedule
                 - var performance = performance.performance
                 - var basepath = (config.prefix=="shockart" ? "/exhibitions/" : "/editions/")+req_params.edition+'/program/detail/'
