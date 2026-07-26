@@ -18,7 +18,10 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
             p.type=result.avnode.performance.type.name
             p.stit
               if result.avnode.performance.duration > 0
-                !=global.__("Duration")+": "+result.avnode.performance.humanDuration
+                - var _s = result.avnode.performance.bookings && result.avnode.performance.bookings[0] && result.avnode.performance.bookings[0].schedule && result.avnode.performance.bookings[0].schedule[0]
+                - var _durLabel = result.avnode.performance.humanDuration
+                - if (_s && _s.starttime && _s.endtime) { var _ms=new Date(_s.endtime)-new Date(_s.starttime); if(_ms>=86400000){var _d=Math.ceil(_ms/86400000);_durLabel=_d+' days'}else{var _h=Math.floor(_ms/3600000);var _m=Math.floor((_ms%3600000)/60000);_durLabel=(_h>0?_h+'h':'')+(_h>0&&_m>0?' ':'')+(_m>0?_m+'min':'')} }
+                !=global.__("Duration")+": "+_durLabel
               each booking,index in result.avnode.performance.bookings
                 p.stit
                   each schedule,index2 in booking.schedule
