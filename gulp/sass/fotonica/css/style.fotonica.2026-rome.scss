@@ -46,3 +46,38 @@ body{color:#FFFFFF;background-color:#000000;background-size: cover;}
   margin-left: -2px;
   border-left: 0;
 }
+
+.gradient-ghost-btn-lg.gradient-color-palette2 {
+  border-radius: 2px;
+  border-left: 4px solid $primary;
+  border-right: 4px solid #000000;
+  background-size: 200% 4px;
+  background-position: 0 100%, 0 0;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(to right, $primary 0%, #000000 50%, $primary 100%),
+    linear-gradient(to right, $primary 0%, #000000 50%, $primary 100%);
+  transition: background-position .7s ease-in-out, border-color .7s ease-in-out;
+}
+.gradient-ghost-btn-lg.gradient-color-palette2 > .btn {
+  background: none !important;
+  border: none !important;
+  margin-left: 0 !important;
+}
+.gradient-ghost-btn-lg.gradient-color-palette2 > .btn:hover {
+  opacity: .7;
+  border: none !important;
+}
+.gradient-ghost-btn-lg.gradient-color-palette2:hover {
+  background-position: 100% 100%, 100% 0;
+  border-left-color: #000000;
+  border-right-color: $primary;
+}
+.gradient-ghost-btn-lg.live.gradient-color-palette2 {
+  animation: fotonica-2026-anim-palette2 3s ease infinite;
+}
+@keyframes fotonica-2026-anim-palette2 {
+  0%   { background-position: 0 100%, 0 0;       border-left-color: $primary;  border-right-color: #000000; }
+  50%  { background-position: 100% 100%, 100% 0; border-left-color: #000000;   border-right-color: $primary; }
+  100% { background-position: 0 100%, 0 0;       border-left-color: $primary;  border-right-color: #000000; }
+}
