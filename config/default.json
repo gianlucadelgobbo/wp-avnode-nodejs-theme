@@ -5,6 +5,7 @@
     "port": 3001,
     "host": "localhost",
     "domain": "https://liveperformersmeeting.net",
+    "local_domain": "http://liveperformersmeeting.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "lpm",
     "site_tax": "liveperformersmeeting-net",
@@ -215,6 +216,7 @@
     "port": 3002,
     "host": "localhost",
     "domain": "https://livecinemafestival.com",
+    "local_domain": "http://livecinemafestival.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "lcf",
     "site_tax": "livecinemafestival-com",
@@ -371,6 +373,7 @@
     "port": 3003,
     "host": "localhost",
     "domain": "https://chromosphere.eu",
+    "local_domain": "http://chromosphere.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "chromosphere",
     "site_tax": "chromosphere-eu",
@@ -523,6 +526,7 @@
     "port": 3004,
     "host": "localhost",
     "domain": "https://vjtelevision.com",
+    "local_domain": "http://vjtelevision.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "vjtelevision",
     "site_tax": "vjtelevision-com",
@@ -662,6 +666,7 @@
     "port": 3005,
     "host": "localhost",
     "domain": "https://shockart.net",
+    "local_domain": "http://shockart.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "shockart",
     "site_tax": "shockart-net",
@@ -841,6 +846,7 @@
     "port": 3006,
     "host": "localhost",
     "domain": "https://linux-club.org",
+    "local_domain": "http://linux-club.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "linuxclub",
     "site_tax": "linux-club-org",
@@ -1002,6 +1008,7 @@
     "port": 3008,
     "host": "localhost",
     "domain": "https://wam.flyer.it",
+    "local_domain": "http://wam.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "wam",
     "site_tax": "wam-flyer-it",
@@ -1129,6 +1136,7 @@
     "port": 3009,
     "host": "localhost",
     "domain": "https://fotonicafestival.com",
+    "local_domain": "http://fotonicafestival.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "fotonica",
     "site_tax": "fotonica-com",
@@ -1283,6 +1291,7 @@
     "port": 3010,
     "host": "localhost",
     "domain": "https://flxer.net",
+    "local_domain": "http://flxer.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "flxer",
     "site_tax": "flxer-com",
@@ -1452,6 +1461,7 @@
     "port": 3011,
     "host": "localhost",
     "domain": "https://gianlucadelgobbo.net",
+    "local_domain": "http://gianlucadelgobbo.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "github": "https://api.github.com/users/gianlucadelgobbo/repos",
     "prefix": "gianlucadelgobbo",
@@ -1624,6 +1634,7 @@
     "port": 3012,
     "host": "localhost",
     "domain": "https://pacnetwork.org",
+    "local_domain": "http://pacnetwork.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "pac",
     "site_tax": "pac-org",
@@ -1781,6 +1792,7 @@
     "port": 3013,
     "host": "localhost",
     "domain": "https://electrokids.net",
+    "local_domain": "http://electrokids.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "electrokids",
     "site_tax": "electrokids-net",
@@ -1915,6 +1927,7 @@
     "port": 3014,
     "host": "localhost",
     "domain": "https://digitalatium.fotonicafestival.com",
+    "local_domain": "http://digitalatium.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "digitalatium",
     "site_tax": "digitalatium",
@@ -2060,6 +2073,7 @@
     "port": 3015,
     "host": "localhost",
     "domain": "https://visualsound.org",
+    "local_domain": "http://visualsound.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "visualsound",
     "site_tax": "visualsound",
@@ -2209,6 +2223,7 @@
     "port": 3016,
     "host": "localhost",
     "domain": "https://visualsoundacademy.com",
+    "local_domain": "http://visualsoundacademy.local",
     "data_domain": "https://admin.visualsoundacademy.com",
     "prefix": "visualsoundacademy",
     "site_tax": "visualsoundacademy",
@@ -2355,6 +2370,7 @@
     "port": 3017,
     "host": "localhost",
     "domain": "https://flyer.it",
+    "local_domain": "http://flyer.local",
     "data_domain": "https://flyer.dev.flyer.it",
     "prefix": "flyer",
     "site_tax": "flyer-it",
@@ -2537,11 +2553,15 @@
     "port": 3018,
     "host": "localhost",
     "domain": "https://dev.mediaartmuseum.org",
+    "local_domain": "http://mediaartmuseum.local",
     "data_domain": "https://admin.mediaartmuseum.org",
     "prefix": "mam",
     "site_tax": "mam-it",
     "site_tax_id": 0,
-    "locales": ["en", "it"],
+    "locales": [
+      "en",
+      "it"
+    ],
     "default_lang": "it",
     "current_lang": "it",
     "router": "router_mam",
@@ -2579,7 +2599,12 @@
     },
     "sitemap": {
       "lastmod": "2026-07-27T00:00:00+01:00",
-      "pages": ["events", "calendar", "news", "contacts"]
+      "pages": [
+        "events",
+        "calendar",
+        "news",
+        "contacts"
+      ]
     },
     "accounts": {
       "newsletter": {
@@ -2609,17 +2634,40 @@
     },
     "sez": {
       "home": {
-        "events": { "limit": 6 },
-        "news": { "limit": 3 }
+        "events": {
+          "limit": 6
+        },
+        "news": {
+          "limit": 3
+        }
       },
       "pages": {
         "conf": {
-          "events": { "itemtype": "CollectionPage", "pugpage": "page_events" },
-          "calendar": { "itemtype": "CollectionPage", "pugpage": "page_calendar" },
-          "news": { "itemtype": "CollectionPage", "pugpage": "page_full_width" },
-          "contacts": { "itemtype": "ContactPage", "pugpage": "page" },
-          "search": { "itemtype": "SearchResultsPage", "pugpage": "page_search" },
-          "default": { "itemtype": "ItemPage", "pugpage": "page", "subpage": "subpage" }
+          "events": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_events"
+          },
+          "calendar": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_calendar"
+          },
+          "news": {
+            "itemtype": "CollectionPage",
+            "pugpage": "page_full_width"
+          },
+          "contacts": {
+            "itemtype": "ContactPage",
+            "pugpage": "page"
+          },
+          "search": {
+            "itemtype": "SearchResultsPage",
+            "pugpage": "page_search"
+          },
+          "default": {
+            "itemtype": "ItemPage",
+            "pugpage": "page",
+            "subpage": "subpage"
+          }
         }
       }
     }

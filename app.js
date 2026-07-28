@@ -120,31 +120,22 @@ SITES.forEach(function(site) {
   });
 });
 
-// ── Site detection maps ───────────────────────────────────────────────────────
+// ── Site detection map (production hostname + local_domain for dev) ────────────
 const hostnameMap = {};
-const portMap = {};
 SITES.forEach(function(site) {
   const cfg = allConfigs[site];
-  if (cfg.domain) {
+  [cfg.domain, cfg.local_domain].forEach(function(domainStr) {
+    if (!domainStr) return;
     try {
-      const h = new URL(cfg.domain).hostname;
+      const h = new URL(domainStr).hostname;
       hostnameMap[h] = site;
       hostnameMap['www.' + h] = site;
     } catch(e) {}
-  }
-  if (cfg.port) portMap[String(cfg.port)] = site;
+  });
 });
 
-// Backward compat: -site <name> forces single-site mode (keeps dev npm scripts working)
-const forcedSite = process.argv[2] === '-site' ? process.argv[3] : null;
-
 function detectSite(req) {
-  if (forcedSite && allConfigs[forcedSite]) return forcedSite;
-  if (hostnameMap[req.hostname]) return hostnameMap[req.hostname];
-  const host = req.headers.host || '';
-  const m = host.match(/:(\d+)$/);
-  if (m && portMap[m[1]]) return portMap[m[1]];
-  return null;
+  return hostnameMap[req.hostname] || null;
 }
 
 // ── Express app ───────────────────────────────────────────────────────────────
@@ -186,17 +177,10 @@ app.use(function(req, res, next) {
 });
 
 // ── Start server ──────────────────────────────────────────────────────────────
-const PORT = (forcedSite && allConfigs[forcedSite])
-  ? allConfigs[forcedSite].port
-  : parseInt(process.env.PORT || '3000', 10);
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 const server = app.listen(PORT, function() {
-  if (forcedSite) {
-    const cfg = allConfigs[forcedSite];
-    console.log('Express server listening on (' + cfg.prefix + ') http://' + cfg.host + ':' + PORT + ' in ' + process.env.NODE_ENV + ' mode');
-  } else {
-    console.log('Single-instance server on port ' + PORT + ' [' + SITES.length + ' sites] in ' + process.env.NODE_ENV + ' mode');
-  }
+  console.log('Single-instance server on port ' + PORT + ' [' + SITES.length + ' sites] in ' + process.env.NODE_ENV + ' mode');
 });
 
 if (process.env.NODE_ENV === 'dev') server.timeout = 480000;
