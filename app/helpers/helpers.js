@@ -475,23 +475,21 @@ exports.getEdition = function getEdition(req,callback) {
 //////// GLOBAL
 
 exports.setSessions = function setSessions(req,callback) {
-  //if (!req.session.meta) req.session.meta = require('util')._extend({}, config.meta);
-  if (!req.session.sessions) req.session.sessions = {};
-  req.session.sessions = {};
+  var prefix = config.prefix;
+  if (!req.session[prefix]) req.session[prefix] = {};
+  req.session[prefix] = {};
+  // alias so all existing code (routes + pug) continues to work unchanged
+  req.session.sessions = req.session[prefix];
+
   var urlA = req.url.split("/");
   var lang = urlA.length>1 && config.locales.indexOf(urlA[1])!=-1 ? urlA[1] : config.default_lang;
-  if(req.session.sessions.current_lang != lang) {
-    req.session.sessions.current_lang = lang;
-    require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
-    global.setLocale(lang);
-  }
-  console.log("sessions.current_lang: "+req.session.sessions.current_lang);
-  console.log(req.params.edition);
+  req.session[prefix].current_lang = lang;
+  require('moment/locale/'+(lang=="en" ? "en-gb" : lang));
+  global.setLocale(lang);
+
   if (config.last_edition) {
-    req.session.sessions.current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
-    //console.log(req.session.sessions.current_edition);
-    //console.log(config.meta.editions[req.session.sessions.current_edition]);
-    if (config.meta.editions && config.meta.editions[req.session.sessions.current_edition] && !config.meta.editions[req.session.sessions.current_edition].startdateISO) config.meta.editions[req.session.sessions.current_edition] = fnz.fixResult(config.meta.editions[req.session.sessions.current_edition]);
+    req.session[prefix].current_edition = req.params.edition && config.meta.editions[req.params.edition] ? req.params.edition : config.last_edition;
+    if (config.meta.editions && config.meta.editions[req.session[prefix].current_edition] && !config.meta.editions[req.session[prefix].current_edition].startdateISO) config.meta.editions[req.session[prefix].current_edition] = fnz.fixResult(config.meta.editions[req.session[prefix].current_edition]);
   }
   callback();
 };
