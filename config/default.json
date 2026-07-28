@@ -2206,7 +2206,7 @@
   "visualsoundacademy": {
     "project_name": "VisualSoundAcademy",
     "project_email": "info@visualsoundacademy.com",
-    "port": a,
+    "port": 3016,
     "host": "localhost",
     "domain": "https://visualsoundacademy.com",
     "data_domain": "https://admin.visualsoundacademy.com",
@@ -2533,11 +2533,11 @@
   },
   "mam": {
     "project_name": "MAM Media Art Museum",
-    "project_email": "info@mam.it",
+    "project_email": "info@mediaartmuseum.org",
     "port": 3018,
     "host": "localhost",
-    "domain": "https://mam.it",
-    "data_domain": "https://flyer.dev.flyer.it",
+    "domain": "https://dev.mediaartmuseum.org",
+    "data_domain": "https://admin.mediaartmuseum.org",
     "prefix": "mam",
     "site_tax": "mam-it",
     "site_tax_id": 0,

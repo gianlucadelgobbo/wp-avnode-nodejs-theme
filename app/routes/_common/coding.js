@@ -1,7 +1,7 @@
 var helpers = require('../../helpers/helpers');
 var fnz = require('../../helpers/functions');
 
-var sez = config.sez["coding"];
+var sez = new Proxy({}, { get: function(_, p) { return config.sez && config.sez["coding"] ? config.sez["coding"][p] : undefined; } });
 
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {

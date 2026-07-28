@@ -292,6 +292,24 @@ module.exports = {
   }
 ],
 
+  {
+    "name": "avnode-single",
+    max_memory_restart: "1G",
+    "script": "app.js",
+    "log_file": "/sites/logs/node_avnode-single-combined.log",
+    "out_file": "/sites/logs/node_avnode-single-out.log",
+    "error_file": "/sites/logs/node_avnode-single-err.log",
+    instances: 1,
+    exec_mode: "fork",
+    autorestart: true,
+    watch: false,
+    env: {
+      NODE_ENV: "production",
+      PORT: "3000"
+    }
+  }
+  ],
+
   deploy : {
     production : {
       user : "hyo",

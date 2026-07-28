@@ -5,17 +5,7 @@ var MongoStore = require('connect-mongo');
 //var methodOverride = require('method-override');
 var helmet = require('helmet');
 
-var i18n = require('i18n');
-i18n.configure({
-  locales: config.locales,
-  defaultLocale: config.default_lang,
-  cookie: config.prefix,
-  directory: config.root + '/locales/'+config.prefix,
-  register: global
-});
-
-
-//global.i18n = i18n;
+// i18n is now configured per-request via AsyncLocalStorage in app.js
 
 module.exports = function(app, exp) {
 
@@ -37,8 +27,7 @@ module.exports = function(app, exp) {
   app.use(bodyParser.json()); // for parsing application/json
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
   //app.use(cookieParser());
-  //app.use(methodOverride());
-  app.use(i18n.init);
+  //app.use(methodOverride())
   const csp = require('helmet-csp')
 
   app.use(csp({

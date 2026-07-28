@@ -6,13 +6,15 @@ block content
   section.home.mt-3(itemscope itemtype='http://schema.org/ItemList')
     h2.entry-title(itemprop="name")=global.__('Events')
     .swiper-container
-      !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      if results && results.events
+        !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .text-right.mt-2
       a.btn.btn-primary.btn-sm(href=lang_preurl+'/events/')=global.__('See all Events')
 
   section.home.mt-5(itemscope itemtype='http://schema.org/ItemList')
     h2.entry-title(itemprop="name")=global.__('News')
     .swiper-container
-      !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
+      if results && results.news
+        !=results.news.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
     .text-right.mt-2
       a.btn.btn-primary.btn-sm(href=lang_preurl+'/news/')=global.__('See all News')
