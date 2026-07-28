@@ -1,0 +1,34 @@
+extends layout
+block content
+  section(itemscope itemtype='http://schema.org/ItemList')
+    h1.entry-title(itemprop="name")=global.__('Events')
+    #mam-events-list.mt-3
+      .text-center.py-5
+        .spinner-border(role='status')
+          span.sr-only=global.__('Loading...')
+
+  script.
+    fetch('/api/mam/events?lang=#{sessions.current_lang}')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var list = document.getElementById('mam-events-list');
+        if (!data || !data.length) {
+          list.innerHTML = '<p>#{global.__("Content NOT found")}</p>';
+          return;
+        }
+        var html = '<ul class="list-unstyled row">';
+        data.forEach(function(item){
+          html += '<li class="col-md-4 mb-4">';
+          html += '<div class="card bg-dark">';
+          if (item.image) html += '<img class="card-img-top" src="'+item.image+'" alt="'+item.title+'">';
+          html += '<div class="card-body">';
+          html += '<h2 class="card-title h5">'+item.title+'</h2>';
+          if (item.date) html += '<p class="card-text"><small>'+item.date+'</small></p>';
+          if (item.description) html += '<p class="card-text">'+item.description+'</p>';
+          if (item.url) html += '<a class="btn btn-primary btn-sm" href="'+item.url+'">#{global.__("Read More")}</a>';
+          html += '</div></div></li>';
+        });
+        html += '</ul>';
+        list.innerHTML = html;
+      })
+      .catch(function(e){ document.getElementById('mam-events-list').innerHTML = '<p class="text-danger">Error loading events</p>'; });

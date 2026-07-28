@@ -1,0 +1,18 @@
+ul.navbar-nav.mr-auto
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/events/')=global.__('Events')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/calendar') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/calendar/')=global.__('Calendar')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/news/')=global.__('News')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
+    a.nav-link#searchModalButton(href="/search/")
+      i.icon-search
+      .sr-only=global.__("Search")
+ul.navbar-nav
+  li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+    a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
+  li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
+    a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT

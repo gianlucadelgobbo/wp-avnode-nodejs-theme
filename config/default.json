@@ -2206,7 +2206,7 @@
   "visualsoundacademy": {
     "project_name": "VisualSoundAcademy",
     "project_email": "info@visualsoundacademy.com",
-    "port": 3016,
+    "port": a,
     "host": "localhost",
     "domain": "https://visualsoundacademy.com",
     "data_domain": "https://admin.visualsoundacademy.com",
@@ -2528,6 +2528,99 @@
         "limit": 20,
         "puglist": "webs",
         "pugdett": "web"
+      }
+    }
+  },
+  "mam": {
+    "project_name": "MAM Media Art Museum",
+    "project_email": "info@mam.it",
+    "port": 3018,
+    "host": "localhost",
+    "domain": "https://mam.it",
+    "data_domain": "https://flyer.dev.flyer.it",
+    "prefix": "mam",
+    "site_tax": "mam-it",
+    "site_tax_id": 0,
+    "locales": ["en", "it"],
+    "default_lang": "it",
+    "current_lang": "it",
+    "router": "router_mam",
+    "mam_api": {
+      "base_url": "https://api.mam.it"
+    },
+    "meta": {
+      "headline": {
+        "en": "Media Art Museum",
+        "it": "Media Art Museum"
+      },
+      "description": {
+        "en": "MAM Media Art Museum",
+        "it": "MAM Media Art Museum"
+      },
+      "keywords": "",
+      "favicon": "/mam/images/favicon.ico",
+      "icon57": "/mam/images/apple-touch-icon-57x57.png",
+      "icon72": "/mam/images/apple-touch-icon-72x72.png",
+      "icon114": "/mam/images/apple-touch-icon-114x114.png",
+      "icon120": "/mam/images/apple-touch-icon-120x120.png",
+      "icon144": "/mam/images/apple-touch-icon-144x144.png",
+      "icon152": "/mam/images/apple-touch-icon-152x152.png",
+      "icon180": "/mam/images/apple-touch-icon-180x180.png",
+      "image_src": "/mam/images/main-img.jpg",
+      "fb_admin": "",
+      "fb_appId": "",
+      "google_analytics": "",
+      "google_webmasterstools": "",
+      "google_search": "",
+      "social": {
+        "facebook": "",
+        "instagram": ""
+      }
+    },
+    "sitemap": {
+      "lastmod": "2026-07-27T00:00:00+01:00",
+      "pages": ["events", "calendar", "news", "contacts"]
+    },
+    "accounts": {
+      "newsletter": {
+        "api_key": "",
+        "list": "",
+        "url": "https://ml.avnode.net",
+        "interests": {}
+      },
+      "emails": {
+        "gmail": {
+          "host": "smtp.gmail.com",
+          "user": "",
+          "password": "",
+          "ssl": true
+        },
+        "defaults": {
+          "contacts": {
+            "to_name": "MAM Media Art Museum",
+            "to_email": "info@mam.it",
+            "from_name": "MAM Media Art Museum",
+            "from_email": "info@mam.it",
+            "subject": "Contatto dal sito",
+            "message": "Messaggio"
+          }
+        }
+      }
+    },
+    "sez": {
+      "home": {
+        "events": { "limit": 6 },
+        "news": { "limit": 3 }
+      },
+      "pages": {
+        "conf": {
+          "events": { "itemtype": "CollectionPage", "pugpage": "page_events" },
+          "calendar": { "itemtype": "CollectionPage", "pugpage": "page_calendar" },
+          "news": { "itemtype": "CollectionPage", "pugpage": "page_full_width" },
+          "contacts": { "itemtype": "ContactPage", "pugpage": "page" },
+          "search": { "itemtype": "SearchResultsPage", "pugpage": "page_search" },
+          "default": { "itemtype": "ItemPage", "pugpage": "page", "subpage": "subpage" }
+        }
       }
     }
   }

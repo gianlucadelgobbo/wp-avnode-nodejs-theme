@@ -182,6 +182,15 @@ const css_gianlucadelgobbo_bs = () => {
     .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/css'));
 }
 
+const css_mam_bs = () => {
+  return gulp.src('./gulp/sass/mam/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
+    }))
+    .pipe(gulp.dest(config.publicDir + '/mam/css'));
+}
+
 const css_pac_bs = () => {
   return gulp.src('./gulp/sass/pac/*.scss')
     .pipe(sass({
@@ -568,6 +577,29 @@ const compress_js_gianlucadelgobbo = () => {
   .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/js/'));
 }
 
+const compress_js_mam = () => {
+  return gulp.src([
+    config.npmDir + '/jquery/dist/jquery.min.js',
+    config.npmDir + '/popper.js/dist/umd/popper.min.js',
+    config.npmDir + '/bootstrap/dist/js/bootstrap.min.js',
+    './gulp/js/_common/jquery.isotope.min.js',
+    './gulp/js/_common/imagesloaded.pkgd.min.js',
+    './gulp/js/_common/cookielawinfo.min.js',
+    config.npmDir + '/lightgallery/lightgallery.min.js',
+    config.npmDir + '/lightgallery/plugins/video/lg-video.min.js',
+    config.npmDir + '/lightgallery/plugins/thumbnail/lg-thumbnail.min.js',
+    config.npmDir + '/lightgallery/plugins/zoom/lg-zoom.min.js',
+    config.npmDir + '/lightgallery/plugins/autoplay/lg-autoplay.min.js',
+    config.npmDir + '/lightgallery/plugins/fullscreen/lg-fullscreen.min.js',
+    './gulp/js/_common/swiper.js',
+    './gulp/js/_common/script.js',
+    './gulp/js/mam/script.js',
+  ])
+  .pipe(concat('combo.min.js'))
+  .pipe(uglify({mangle: { reserved: ['glink'] } }))
+  .pipe(gulp.dest(config.publicDir + '/mam/js/'));
+}
+
 const compress_js_pac = () => {
   return gulp.src([
       config.npmDir + '/jquery/dist/jquery.min.js',
@@ -609,5 +641,6 @@ const compress_js_pac = () => {
 //gulp.task('default', gulp.series(compress_js, compress_js_digitalatium,css_digitalatium_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_visualsoundacademy,css_visualsoundacademy_bs));
 gulp.task('default', gulp.series(compress_js_fotonica,css_fotonica_bs));
+//gulp.task('default', gulp.series(compress_js_mam, css_mam_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_visualsound,css_visualsound_bs));
 //gulp.task('default', gulp.series(css_lcf_bs, compress_js_lcf));

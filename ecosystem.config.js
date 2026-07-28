@@ -272,6 +272,23 @@ module.exports = {
     env: {
       NODE_ENV: "production"
     }
+  },
+  {
+    "name": "mam",
+    max_memory_restart: "300M",
+    "script": "app.js",
+    "log_file": "/sites/logs/node_mam-combined.log",
+    "out_file": "/sites/logs/node_mam-out.log",
+    "error_file": "/sites/logs/node_mam-err.log",
+    "args": "-site mam",
+    time: true,
+    instances: 1,
+    exec_mode: "fork",
+    autorestart: true,
+    watch: false,
+    env: {
+      NODE_ENV: "production"
+    }
   }
 ],
 

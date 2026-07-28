@@ -1,0 +1,41 @@
+body { color: #ffffff; background-color: #111111; }
+body, h1, h2, h3, h4, h5, h6 { font-family: 'Helvetica', 'Arial', sans-serif; }
+
+.body-common { padding-top: 70px; }
+
+.btn-primary { color: #ffffff; background-color: #000000; border-color: #333333; }
+.btn-primary:hover { background-color: #222222; border-color: #555555; }
+
+.navbar-brand { font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+
+.entry-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+
+.card { border: 1px solid #333; }
+.card-img-top { object-fit: cover; height: 200px; }
+
+.table-dark { background-color: #1a1a1a; }
+
+footer a { color: #aaaaaa; }
+footer a:hover { color: #ffffff; }
+
+.logofooter { margin: -20px 0 -20px -18px; }
+
+.itemListElement {
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.caption {
+  position: absolute;
+  pointer-events: none;
+  color: #fff;
+  left: 0; top: 0; bottom: 0; right: 0;
+  overflow: hidden;
+}
+.caption-body {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  text-shadow: 0 2px 4px black;
+}
+.caption-title { font-size: 18px; margin-top: 0; }

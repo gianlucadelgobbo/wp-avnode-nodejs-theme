@@ -1,0 +1,31 @@
+extends layout
+block content
+  section(itemscope itemtype='http://schema.org/ItemList')
+    h1.entry-title(itemprop="name")=global.__('Calendar')
+    #mam-calendar.mt-3
+      .text-center.py-5
+        .spinner-border(role='status')
+          span.sr-only=global.__('Loading...')
+
+  script.
+    fetch('/api/mam/calendar?lang=#{sessions.current_lang}')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var cal = document.getElementById('mam-calendar');
+        if (!data || !data.length) {
+          cal.innerHTML = '<p>#{global.__("Content NOT found")}</p>';
+          return;
+        }
+        var html = '<div class="table-responsive"><table class="table table-dark table-hover">';
+        html += '<thead><tr><th>#{global.__("Date")}</th><th>#{global.__("Events")}</th><th>#{global.__("Location")}</th></tr></thead><tbody>';
+        data.forEach(function(item){
+          html += '<tr>';
+          html += '<td>'+(item.date||'')+'</td>';
+          html += '<td>'+(item.title||'')+'</td>';
+          html += '<td>'+(item.location||'')+'</td>';
+          html += '</tr>';
+        });
+        html += '</tbody></table></div>';
+        cal.innerHTML = html;
+      })
+      .catch(function(e){ document.getElementById('mam-calendar').innerHTML = '<p class="text-danger">Error loading calendar</p>'; });
