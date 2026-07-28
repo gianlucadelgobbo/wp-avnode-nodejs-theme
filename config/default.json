@@ -2,7 +2,6 @@
   "lpm": {
     "project_name": "LPM Live Performers Meeting",
     "project_email": "info@liveperformersmeeting.net",
-    "port": 3001,
     "host": "localhost",
     "domain": "https://liveperformersmeeting.net",
     "local_domain": "http://liveperformersmeeting.local",
@@ -213,7 +212,6 @@
     "project_name": "Live Cinema Festival",
     "blog_id": 44,
     "project_email": "info@livecinemafestival.com",
-    "port": 3002,
     "host": "localhost",
     "domain": "https://livecinemafestival.com",
     "local_domain": "http://livecinemafestival.local",
@@ -370,7 +368,6 @@
   "chromosphere": {
     "project_name": "Chromosphere",
     "project_email": "info@chromosphere.eu",
-    "port": 3003,
     "host": "localhost",
     "domain": "https://chromosphere.eu",
     "local_domain": "http://chromosphere.local",
@@ -523,7 +520,6 @@
   "vjtelevision": {
     "project_name": "VJ Television",
     "project_email": "info@vjtelevision.com",
-    "port": 3004,
     "host": "localhost",
     "domain": "https://vjtelevision.com",
     "local_domain": "http://vjtelevision.local",
@@ -663,7 +659,6 @@
   "shockart": {
     "project_name": "Shockart.net",
     "project_email": "info@shockart.net",
-    "port": 3005,
     "host": "localhost",
     "domain": "https://shockart.net",
     "local_domain": "http://shockart.local",
@@ -843,7 +838,6 @@
   "linuxclub": {
     "project_name": "Linux Club Italia",
     "project_email": "info@linuxclub.it",
-    "port": 3006,
     "host": "localhost",
     "domain": "https://linux-club.org",
     "local_domain": "http://linux-club.local",
@@ -1005,7 +999,6 @@
   "wam": {
     "project_name": "WAM Web Art Mouseum",
     "project_email": "wam@flyer.it",
-    "port": 3008,
     "host": "localhost",
     "domain": "https://wam.flyer.it",
     "local_domain": "http://wam.local",
@@ -1133,7 +1126,6 @@
   "fotonica": {
     "project_name": "FOTONICA",
     "project_email": "info@fotonicafestival.com",
-    "port": 3009,
     "host": "localhost",
     "domain": "https://fotonicafestival.com",
     "local_domain": "http://fotonicafestival.local",
@@ -1288,7 +1280,6 @@
   "flxer": {
     "project_name": "FLxER",
     "project_email": "info@flxer.net",
-    "port": 3010,
     "host": "localhost",
     "domain": "https://flxer.net",
     "local_domain": "http://flxer.local",
@@ -1458,7 +1449,6 @@
   "gianlucadelgobbo": {
     "project_name": "Gianluca Del Gobbo",
     "project_email": "me@gianlucadelgobbo.net",
-    "port": 3011,
     "host": "localhost",
     "domain": "https://gianlucadelgobbo.net",
     "local_domain": "http://gianlucadelgobbo.local",
@@ -1631,7 +1621,6 @@
   "pac": {
     "project_name": "PAC",
     "project_email": "info@pacnetwork.org",
-    "port": 3012,
     "host": "localhost",
     "domain": "https://pacnetwork.org",
     "local_domain": "http://pacnetwork.local",
@@ -1789,7 +1778,6 @@
   "electrokids": {
     "project_name": "ElectroKids",
     "project_email": "info@electrokids.net",
-    "port": 3013,
     "host": "localhost",
     "domain": "https://electrokids.net",
     "local_domain": "http://electrokids.local",
@@ -1924,7 +1912,6 @@
   "digitalatium": {
     "project_name": "Digitalatium",
     "project_email": "digitalatium@fotonicafestival.com",
-    "port": 3014,
     "host": "localhost",
     "domain": "https://digitalatium.fotonicafestival.com",
     "local_domain": "http://digitalatium.local",
@@ -2070,7 +2057,6 @@
   "visualsound": {
     "project_name": "VisualSound",
     "project_email": "info@visualsound.org",
-    "port": 3015,
     "host": "localhost",
     "domain": "https://visualsound.org",
     "local_domain": "http://visualsound.local",
@@ -2220,7 +2206,6 @@
   "visualsoundacademy": {
     "project_name": "VisualSoundAcademy",
     "project_email": "info@visualsoundacademy.com",
-    "port": 3016,
     "host": "localhost",
     "domain": "https://visualsoundacademy.com",
     "local_domain": "http://visualsoundacademy.local",
@@ -2367,7 +2352,6 @@
   "flyer": {
     "project_name": "Flyer new media",
     "project_email": "info@flyer.it",
-    "port": 3017,
     "host": "localhost",
     "domain": "https://flyer.it",
     "local_domain": "http://flyer.local",
@@ -2550,7 +2534,6 @@
   "mam": {
     "project_name": "MAM Media Art Museum",
     "project_email": "info@mediaartmuseum.org",
-    "port": 3018,
     "host": "localhost",
     "domain": "https://dev.mediaartmuseum.org",
     "local_domain": "http://mediaartmuseum.local",
