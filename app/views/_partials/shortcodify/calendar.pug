@@ -1,8 +1,9 @@
 - var events = body.events || []
+- var basepage = req_params.page || 'calendar'
 .row.avnode-calendar
   each event in events
     .col-md-6.col-lg-4.mb-4
-      a(href='/' + (opts.basepage || 'calendar') + '/' + event.slug)
+      a(href=lang_preurl + '/' + basepage + '/' + event.slug)
         .card.h-100
           if event.imageFormats && event.imageFormats.large
             img.card-img-top(src=event.imageFormats.large alt=event.title)
