@@ -1,0 +1,18 @@
+extends layout
+block content
+  article#container
+    if artist.imageFormats && artist.imageFormats.large
+      img.img-fluid.mb-3(src=artist.imageFormats.large alt=artist.stagename)
+    h1.entry-title=artist.stagename
+    if artist.addressesFormatted
+      each addr in artist.addressesFormatted
+        p.text-muted!=addr
+    if artist.about
+      .rientro.mb-4!=artist.about
+    if artist.web && artist.web.length
+      ul.list-inline
+        each w in artist.web
+          if w.is_public
+            li.list-inline-item
+              a(href=w.url target='_blank' rel='noopener')=w.label
+    a.btn.btn-outline-secondary.mt-3(href='/' + basepage + '/' + event.slug + '/artists') ← #{global.__('Artists')}

@@ -2653,6 +2653,10 @@
           }
         }
       }
-    }
+    },
+    "avnode_sections": [
+      "calendar",
+      "artists"
+    ]
   }
 }

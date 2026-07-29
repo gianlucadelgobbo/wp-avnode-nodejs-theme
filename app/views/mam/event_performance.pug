@@ -1,0 +1,26 @@
+extends layout
+block content
+  article#container
+    if perf.imageFormats && perf.imageFormats.large
+      img.img-fluid.mb-3(src=perf.imageFormats.large alt=perf.title)
+    h1.entry-title=perf.title
+    if perf.type && perf.type.name
+      p.text-muted=perf.type.name
+    if perf.humanDuration
+      p.text-muted #{global.__('Duration')}: #{perf.humanDuration}
+    if perf.users && perf.users.length
+      .mb-3
+        each u in perf.users
+          a.badge.badge-secondary.mr-1(href='/' + basepage + '/' + event.slug + '/artists/' + u.slug)=u.stagename
+    if perf.about
+      .rientro.mb-4!=perf.about
+    if perf.bookings && perf.bookings.length && perf.bookings[0].schedule && perf.bookings[0].schedule.length
+      - var s = perf.bookings[0].schedule[0]
+      p
+        if s.starttime
+          | #{new Date(s.starttime).toLocaleString()}
+        if s.venue && s.venue.name
+          |  — #{s.venue.name}
+          if s.venue.room
+            |, #{s.venue.room}
+    a.btn.btn-outline-secondary.mt-3(href='/' + basepage + '/' + event.slug + '/program') ← #{global.__('Program')}

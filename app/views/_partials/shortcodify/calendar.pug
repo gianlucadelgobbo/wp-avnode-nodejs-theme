@@ -1,0 +1,14 @@
+- var events = body.events || []
+.row.avnode-calendar
+  each event in events
+    .col-md-6.col-lg-4.mb-4
+      a(href='/' + (opts.basepage || 'calendar') + '/' + event.slug)
+        .card.h-100
+          if event.imageFormats && event.imageFormats.large
+            img.card-img-top(src=event.imageFormats.large alt=event.title)
+          .card-body
+            h5.card-title=event.title
+            if event.boxDate
+              p.card-text.text-muted=event.boxDate
+            if event.boxVenue
+              p.card-text.small.text-muted=event.boxVenue

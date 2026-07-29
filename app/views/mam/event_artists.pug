@@ -1,0 +1,11 @@
+extends layout
+block content
+  article#container
+    h1.entry-title=event.title + ' — ' + global.__('Artists')
+    .row
+      each artist in artists
+        .col-6.col-md-3.mb-4
+          a(href='/' + basepage + '/' + event.slug + '/artists/' + artist.slug)
+            if artist.imageFormats && artist.imageFormats.small
+              img.img-fluid.mb-2(src=artist.imageFormats.small alt=artist.stagename)
+            p.text-center=artist.stagename

@@ -1,0 +1,50 @@
+extends layout
+block content
+  article#container
+    h1.entry-title=event.title + ' — ' + global.__('Program')
+
+    if event.advanced && event.advanced.menu && event.advanced.menu.length
+      ul.nav.nav-tabs.mb-4
+        each item in event.advanced.menu
+          li.nav-item
+            a.nav-link(href='/' + basepage + '/' + event.slug + '/' + item.slug)=item.name
+
+    if event.advanced && event.advanced.programmebydayvenue && event.advanced.programmebydayvenue.length
+      each dayData in event.advanced.programmebydayvenue
+        h3.mt-4=dayData.date || dayData.day
+        each room in (dayData.rooms || [])
+          h5.text-muted=room.venue + (room.room ? ' — ' + room.room : '')
+          .row
+            each item in (room.performances || [])
+              - var perf = item.performance || item
+              .col-md-6.mb-3
+                .card
+                  if perf.imageFormats && perf.imageFormats.small
+                    a(href='/' + basepage + '/' + event.slug + '/program/' + perf.slug)
+                      img.card-img-top(src=perf.imageFormats.small alt=perf.title)
+                  .card-body
+                    h6.card-title
+                      a(href='/' + basepage + '/' + event.slug + '/program/' + perf.slug)=perf.title
+                    if perf.humanDuration
+                      small.text-muted=perf.humanDuration
+                    if perf.users && perf.users.length
+                      p.small
+                        each u in perf.users
+                          span=u.stagename + ' '
+    else if event.advanced && event.advanced.programmenotscheduled && event.advanced.programmenotscheduled.length
+      .row
+        each perf in event.advanced.programmenotscheduled
+          .col-md-4.mb-3
+            .card
+              if perf.imageFormats && perf.imageFormats.small
+                a(href='/' + basepage + '/' + event.slug + '/program/' + perf.slug)
+                  img.card-img-top(src=perf.imageFormats.small alt=perf.title)
+              .card-body
+                h6.card-title
+                  a(href='/' + basepage + '/' + event.slug + '/program/' + perf.slug)=perf.title
+                if perf.type && perf.type.name
+                  small.text-muted=perf.type.name
+    else if event.fullSchedule && event.fullSchedule.length
+      ul.list-unstyled
+        each s in event.fullSchedule
+          li.mb-1=s

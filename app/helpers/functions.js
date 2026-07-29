@@ -174,7 +174,10 @@ exports.shortcodify = function shortcodify(prefix, lang_preurl, data, body, req_
       var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
     }
     if (opts.view === "members") {
-      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});      
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/'+opts.view+'.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});
+    }
+    if (opts.view === "calendar") {
+      var html = jade.renderFile(__dirname+'/../views/_partials/shortcodify/calendar.pug', {basepath:basepath, prefix: prefix, lang_preurl: lang_preurl, opts: opts, req_params:req_params, result:data, body:body});
     }
     return html;
   });

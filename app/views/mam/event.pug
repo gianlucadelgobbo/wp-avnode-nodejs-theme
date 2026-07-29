@@ -1,0 +1,25 @@
+extends layout
+block content
+  article#container
+    if event.imageFormats && event.imageFormats.large
+      img.img-fluid.mb-3(src=event.imageFormats.large alt=event.title)
+    h1.entry-title=event.title
+    if event.boxDate
+      p.text-muted=event.boxDate
+    if event.boxVenue
+      p.text-muted=event.boxVenue
+    if event.description
+      .rientro.mb-4!=event.description
+
+    nav.event-subnav.mb-4
+      - var base = '/' + basepage + '/' + event.slug
+      a.btn.btn-outline-secondary.mr-2(href=base) Overview
+      if event.users && event.users.length
+        a.btn.btn-outline-secondary.mr-2(href=base+'/artists') Artists
+      a.btn.btn-outline-secondary(href=base+'/program') Program
+
+    if event.fullSchedule && event.fullSchedule.length
+      h3=global.__('Schedule')
+      ul.list-unstyled
+        each s in event.fullSchedule
+          li=s
