@@ -105,10 +105,49 @@ function handleEvent(req, res) {
   });
 }
 
+// ── API handlers ──────────────────────────────────────────────────────────────
+
+function mamOrgUrl(lang) {
+  return lang && lang !== 'en'
+    ? 'https://' + lang + '.api.admin.avnode.net/mam-media-art-museum/'
+    : 'https://api.admin.avnode.net/mam-media-art-museum/';
+}
+
+function handleApiCalendar(req, res) {
+  var lang = req.query.lang || 'en';
+  avnodeMam.getMamOrg(mamOrgUrl(lang), function(err, org) {
+    if (err) return res.status(502).json({ error: err.message });
+    var events = (org && (org.events || org.data)) || [];
+    res.json(events.map(function(e) {
+      return { date: e.boxDate || '', title: e.title || '', location: e.boxVenue || '', slug: e.slug, url: '/calendar/' + e.slug };
+    }));
+  });
+}
+
+function handleApiEvents(req, res) {
+  var lang = req.query.lang || 'en';
+  avnodeMam.getMamOrg(mamOrgUrl(lang), function(err, org) {
+    if (err) return res.status(502).json({ error: err.message });
+    var events = (org && (org.events || org.data)) || [];
+    res.json(events.map(function(e) {
+      return {
+        image: e.imageFormats && e.imageFormats.large ? e.imageFormats.large : '',
+        title: e.title || '',
+        date: e.boxDate || '',
+        description: e.description || '',
+        url: '/calendar/' + e.slug
+      };
+    }));
+  });
+}
+
 // ── router ────────────────────────────────────────────────────────────────────
 
 module.exports = function(app) {
   app.get('/', indexRoutes.get);
+
+  app.get('/api/mam/calendar', handleApiCalendar);
+  app.get('/api/mam/events',   handleApiEvents);
 
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);
