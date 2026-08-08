@@ -19,9 +19,9 @@ block content
         var html = '<div class="table-responsive"><table class="table table-dark table-hover">';
         html += '<thead><tr><th>#{global.__("Date")}</th><th>#{global.__("Events")}</th><th>#{global.__("Location")}</th></tr></thead><tbody>';
         data.forEach(function(item){
-          html += '<tr>';
+          html += '<tr style="cursor:pointer" onclick="window.location=\''+item.url+'\'">';
           html += '<td>'+(item.date||'')+'</td>';
-          html += '<td>'+(item.title||'')+'</td>';
+          html += '<td><a href="'+item.url+'">'+(item.title||'')+'</a></td>';
           html += '<td>'+(item.location||'')+'</td>';
           html += '</tr>';
         });

@@ -118,9 +118,16 @@ function handleApiCalendar(req, res) {
   avnodeMam.getMamOrg(mamOrgUrl(lang), function(err, org) {
     if (err) return res.status(502).json({ error: err.message });
     var events = (org && (org.events || org.data)) || [];
-    res.json(events.map(function(e) {
-      return { date: e.boxDate || '', title: e.title || '', location: e.boxVenue || '', slug: e.slug, url: '/calendar/' + e.slug };
-    }));
+    var mapped = events.map(function(e) {
+      var starttime = e.schedule && e.schedule[0] && e.schedule[0].starttime ? e.schedule[0].starttime : null;
+      return { starttime: starttime, date: e.boxDate || '', title: e.title || '', location: e.boxVenue || '', slug: e.slug, url: '/calendar/' + e.slug };
+    });
+    mapped.sort(function(a, b) {
+      if (!a.starttime) return 1;
+      if (!b.starttime) return -1;
+      return a.starttime < b.starttime ? -1 : a.starttime > b.starttime ? 1 : 0;
+    });
+    res.json(mapped);
   });
 }
 
