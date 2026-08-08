@@ -2548,8 +2548,30 @@
     "default_lang": "it",
     "current_lang": "it",
     "router": "router_mam",
-    "mam_api": {
-      "base_url": "https://api.mam.it"
+    "last_edition": "hypermedia",
+    "last_edition_status": "programming",
+    "current_edition": "hypermedia",
+    "events": {
+      "fotonica-2026": {
+        "data_domain": "https://flyer.dev.flyer.it",
+        "prefix": "fotonica",
+        "edition": "2026-rome"
+      },
+      "hypermedia": {
+        "data_domain": "https://admin.mediaartmuseum.org",
+        "prefix": "mam",
+        "edition": "hypermedia"
+      },
+      "visual-sound-academy-2026": {
+        "data_domain": "https://admin.mediaartmuseum.org",
+        "prefix": "mam",
+        "edition": "visual-sound-academy-2026"
+      },
+      "lpm-2026-rome": {
+        "data_domain": "https://flyer.dev.flyer.it",
+        "prefix": "lpm",
+        "edition": "2026-rome"
+      }
     },
     "meta": {
       "headline": {

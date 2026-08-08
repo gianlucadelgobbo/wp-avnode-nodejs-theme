@@ -8,6 +8,11 @@ var metaRoutes    = require('./_common/meta');
 var helpers       = require('../../app/helpers/helpers');
 var fnz           = require('../../app/helpers/functions');
 
+// Look up per-event config from config.events, falling back to MAM defaults
+function getEventConf(slug) {
+  return (config.events && config.events[slug]) || { data_domain: config.data_domain, prefix: config.prefix, edition: slug };
+}
+
 // Only proceed if the page slug is an avnode section (calendar, artists, …)
 function ifAvnodeSection(req, res, next) {
   var sections = config.avnode_sections || [];
@@ -25,16 +30,18 @@ function send404(req, res) {
 
 function handlePerfSlug(req, res) {
   helpers.setSessions(req, function() {
+    var evConf = getEventConf(req.params.eventSlug);
     avnodeMam.getPerformance(req.params.perfSlug, function(err, perf) {
       if (err || !perf) return send404(req, res);
       avnodeMam.getEvent(req.params.eventSlug, function(err2, event) {
-        res.render('mam/event_performance', {
-          sessions:  req.session.sessions,
-          page_data: fnz.setPageData(req, { title: perf.title }),
-          event:     event || {},
-          perf:      perf,
-          basepage:  req.params.page,
-          basepath:  '/' + req.params.page + '/' + req.params.eventSlug + '/program/' + req.params.perfSlug
+        res.render(config.prefix + '/event_performance', {
+          sessions:    req.session.sessions,
+          page_data:   fnz.setPageData(req, { title: perf.title }),
+          event:       event || {},
+          perf:        perf,
+          basepage:    req.params.page,
+          basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/program/' + req.params.perfSlug,
+          event_conf:  evConf
         });
       });
     });
@@ -43,16 +50,18 @@ function handlePerfSlug(req, res) {
 
 function handleArtistSlug(req, res) {
   helpers.setSessions(req, function() {
+    var evConf = getEventConf(req.params.eventSlug);
     avnodeMam.getArtist(req.params.artistSlug, function(err, artist) {
       if (err || !artist) return send404(req, res);
       avnodeMam.getEvent(req.params.eventSlug, function(err2, event) {
-        res.render('mam/event_artist', {
-          sessions:  req.session.sessions,
-          page_data: fnz.setPageData(req, { title: artist.stagename }),
-          event:     event || {},
-          artist:    artist,
-          basepage:  req.params.page,
-          basepath:  '/' + req.params.page + '/' + req.params.eventSlug + '/artists/' + req.params.artistSlug
+        res.render(config.prefix + '/event_artist', {
+          sessions:    req.session.sessions,
+          page_data:   fnz.setPageData(req, { title: artist.stagename }),
+          event:       event || {},
+          artist:      artist,
+          basepage:    req.params.page,
+          basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/artists/' + req.params.artistSlug,
+          event_conf:  evConf
         });
       });
     });
@@ -61,14 +70,16 @@ function handleArtistSlug(req, res) {
 
 function handleProgram(req, res) {
   helpers.setSessions(req, function() {
+    var evConf = getEventConf(req.params.eventSlug);
     avnodeMam.getEventProgram(req.params.eventSlug, function(err, data) {
       if (err || !data) return send404(req, res);
-      res.render('mam/event_program', {
-        sessions:  req.session.sessions,
-        page_data: fnz.setPageData(req, { title: data.title }),
-        event:     data,
-        basepage:  req.params.page,
-        basepath:  '/' + req.params.page + '/' + req.params.eventSlug + '/program'
+      res.render(config.prefix + '/event_program', {
+        sessions:    req.session.sessions,
+        page_data:   fnz.setPageData(req, { title: data.title }),
+        event:       data,
+        basepage:    req.params.page,
+        basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/program',
+        event_conf:  evConf
       });
     });
   });
@@ -76,15 +87,17 @@ function handleProgram(req, res) {
 
 function handleArtists(req, res) {
   helpers.setSessions(req, function() {
+    var evConf = getEventConf(req.params.eventSlug);
     avnodeMam.getEvent(req.params.eventSlug, function(err, event) {
       if (err || !event) return send404(req, res);
-      res.render('mam/event_artists', {
-        sessions:  req.session.sessions,
-        page_data: fnz.setPageData(req, { title: event.title }),
-        event:     event,
-        artists:   event.users || [],
-        basepage:  req.params.page,
-        basepath:  '/' + req.params.page + '/' + req.params.eventSlug + '/artists'
+      res.render(config.prefix + '/event_artists', {
+        sessions:    req.session.sessions,
+        page_data:   fnz.setPageData(req, { title: event.title }),
+        event:       event,
+        artists:     event.users || [],
+        basepage:    req.params.page,
+        basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/artists',
+        event_conf:  evConf
       });
     });
   });
@@ -92,14 +105,16 @@ function handleArtists(req, res) {
 
 function handleEvent(req, res) {
   helpers.setSessions(req, function() {
+    var evConf = getEventConf(req.params.eventSlug);
     avnodeMam.getEvent(req.params.eventSlug, function(err, event) {
       if (err || !event) return send404(req, res);
-      res.render('mam/event', {
-        sessions:  req.session.sessions,
-        page_data: fnz.setPageData(req, { title: event.title }),
-        event:     event,
-        basepage:  req.params.page,
-        basepath:  '/' + req.params.page + '/' + req.params.eventSlug
+      res.render(config.prefix + '/event', {
+        sessions:    req.session.sessions,
+        page_data:   fnz.setPageData(req, { title: event.title }),
+        event:       event,
+        basepage:    req.params.page,
+        basepath:    '/' + req.params.page + '/' + req.params.eventSlug,
+        event_conf:  evConf
       });
     });
   });
