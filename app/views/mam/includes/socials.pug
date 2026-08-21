@@ -1,7 +1,10 @@
-ul.list-unstyled
-  if config.meta.social && config.meta.social.facebook
-    li
-      a(href=config.meta.social.facebook, target='_blank', rel='noopener') Facebook
+ul.list-inline.mb-0
   if config.meta.social && config.meta.social.instagram
-    li
-      a(href=config.meta.social.instagram, target='_blank', rel='noopener') Instagram
+    li.list-inline-item
+      a.text-white(href=config.meta.social.instagram, target='_blank', rel='noopener', title='Instagram') IG
+  if config.meta.social && config.meta.social.tiktok
+    li.list-inline-item
+      a.text-white(href=config.meta.social.tiktok, target='_blank', rel='noopener', title='TikTok') TT
+  if config.meta.social && config.meta.social.facebook
+    li.list-inline-item
+      a.text-white(href=config.meta.social.facebook, target='_blank', rel='noopener', title='Facebook') FB

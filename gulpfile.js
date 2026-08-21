@@ -51,6 +51,8 @@ const css_chromosphere_bs = () => {
   return gulp.src('./gulp/sass/chromosphere/*.scss')
       .pipe(sass({
         outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/chromosphere/css'));
@@ -60,6 +62,8 @@ const css_digitalatium_bs = () => {
   return gulp.src('./gulp/sass/digitalatium/*.scss')
       .pipe(sass({
         outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/digitalatium/css'));
@@ -69,6 +73,8 @@ const css_visualsound_bs = () => {
   return gulp.src('./gulp/sass/visualsound/*.scss')
       .pipe(sass({
         outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/visualsound/css'));
@@ -78,6 +84,8 @@ const css_visualsoundacademy_bs = () => {
   return gulp.src('./gulp/sass/visualsoundacademy/*.scss')
       .pipe(sass({
         outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/visualsoundacademy/css'));
@@ -87,6 +95,8 @@ const css_electrokids_bs = () => {
   return gulp.src('./gulp/sass/electrokids/*.scss')
       .pipe(sass({
         outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/electrokids/css'));
@@ -96,6 +106,8 @@ const css_fotonica_bs = () => {
   return gulp.src('./gulp/sass/fotonica/*.scss')
       .pipe(sass({
         outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
         includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
       }))
       .pipe(gulp.dest(config.publicDir + '/fotonica/css'));
@@ -105,6 +117,8 @@ const css_flyer_bs = () => {
   return gulp.src('./gulp/sass/flyer/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/flyer/css'));
@@ -114,6 +128,8 @@ const css_lcf_bs = () => {
   return gulp.src('./gulp/sass/lcf/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/lcf/css'));
@@ -123,6 +139,8 @@ const css_linuxclub_bs = () => {
   return gulp.src('./gulp/sass/linuxclub/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/linuxclub/css'));
@@ -132,6 +150,8 @@ const css_lpm_bs = () => {
   return gulp.src('./gulp/sass/lpm/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/lpm/css'));
@@ -141,6 +161,8 @@ const css_shockart_bs = () => {
   return gulp.src('./gulp/sass/shockart/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/shockart/css'));
@@ -150,6 +172,8 @@ const css_vjtelevision_bs = () => {
   return gulp.src('./gulp/sass/vjtelevision/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/vjtelevision/css'));
@@ -159,6 +183,8 @@ const css_wam_bs = () => {
   return gulp.src('./gulp/sass/wam/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/wam/css'));
@@ -168,6 +194,8 @@ const css_flxer_bs = () => {
   return gulp.src('./gulp/sass/flxer/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/flxer/css'));
@@ -177,6 +205,8 @@ const css_gianlucadelgobbo_bs = () => {
   return gulp.src('./gulp/sass/gianlucadelgobbo/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/gianlucadelgobbo/css'));
@@ -186,6 +216,8 @@ const css_mam_bs = () => {
   return gulp.src('./gulp/sass/mam/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/mam/css'));
@@ -195,6 +227,8 @@ const css_pac_bs = () => {
   return gulp.src('./gulp/sass/pac/*.scss')
     .pipe(sass({
       outputStyle: 'compressed',
+      quietDeps: true,
+      silenceDeprecations: ['legacy-js-api', 'import', 'abs-percent', 'global-builtin', 'if-function', 'color-functions'],
       includePaths: [config.bowerDir + '/bootstrap-sass/assets/stylesheets'],
     }))
     .pipe(gulp.dest(config.publicDir + '/pac/css'));
@@ -640,7 +674,7 @@ const compress_js_pac = () => {
 //gulp.task('default', gulp.series(compress_js, compress_js_chromosphere,css_chromosphere_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_digitalatium,css_digitalatium_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_visualsoundacademy,css_visualsoundacademy_bs));
-gulp.task('default', gulp.series(compress_js_fotonica,css_fotonica_bs));
-//gulp.task('default', gulp.series(compress_js_mam, css_mam_bs));
+//gulp.task('default', gulp.series(compress_js_fotonica,css_fotonica_bs));
+gulp.task('default', gulp.series(compress_js_mam, css_mam_bs));
 //gulp.task('default', gulp.series(compress_js, compress_js_visualsound,css_visualsound_bs));
 //gulp.task('default', gulp.series(css_lcf_bs, compress_js_lcf));

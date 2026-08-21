@@ -2551,28 +2551,9 @@
     "last_edition": "hypermedia",
     "last_edition_status": "programming",
     "current_edition": "hypermedia",
-    "events": {
-      "fotonica-2026": {
-        "data_domain": "https://flyer.dev.flyer.it",
-        "prefix": "fotonica",
-        "edition": "2026-rome"
-      },
-      "hypermedia": {
-        "data_domain": "https://admin.mediaartmuseum.org",
-        "prefix": "mam",
-        "edition": "hypermedia"
-      },
-      "visual-sound-academy-2026": {
-        "data_domain": "https://admin.mediaartmuseum.org",
-        "prefix": "mam",
-        "edition": "visual-sound-academy-2026"
-      },
-      "lpm-2026-rome": {
-        "data_domain": "https://flyer.dev.flyer.it",
-        "prefix": "lpm",
-        "edition": "2026-rome"
-      }
-    },
+    "editions": [
+      "hypermedia"
+    ],
     "meta": {
       "headline": {
         "en": "Media Art Museum",
@@ -2676,8 +2657,13 @@
         }
       }
     },
+    "events": {
+      "hypermedia": { "data_domain": "https://admin.mediaartmuseum.org", "prefix": "mam", "edition": "hypermedia" },
+      "visual-sound-academy-2026": { "data_domain": "https://admin.visualsoundacademy.com", "prefix": "visualsoundacademy", "edition": "2026-academy", "link": "https://visualsoundacademy.com" },
+      "fotonica-2026": { "data_domain": "https://flyer.dev.flyer.it", "prefix": "fotonica", "edition": "2026-rome", "link": "https://fotonicafestival.com" },
+      "lpm-2026-rome": { "data_domain": "https://flyer.dev.flyer.it", "prefix": "lpm", "edition": "2026-rome", "link": "https://liveperformersmeeting.net" }
+    },
     "avnode_sections": [
-      "calendar",
       "artists"
     ]
   }

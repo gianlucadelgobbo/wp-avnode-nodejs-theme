@@ -94,7 +94,7 @@ SITES.forEach(function(site) {
 });
 
 // ── Load editions cache ────────────────────────────────────────────────────────
-['lpm','lcf','chromosphere','digitalatium','visualsound','visualsoundacademy','fotonica','shockart','electrokids'].forEach(function(site) {
+['lpm','lcf','chromosphere','digitalatium','visualsound','visualsoundacademy','fotonica','shockart','electrokids','mam'].forEach(function(site) {
   if (!allConfigs[site] || !allConfigs[site].meta) return;
   const file = __dirname + '/cache/' + site + '_editions.json';
   if (fs.existsSync(file)) {

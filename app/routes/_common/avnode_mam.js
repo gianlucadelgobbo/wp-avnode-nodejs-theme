@@ -36,3 +36,4 @@ exports.getArtist = function(slug, cb) {
 exports.getPerformance = function(slug, cb) {
   fetch(AVNODE_BASE + 'performances/' + slug + '/', cb);
 };
+

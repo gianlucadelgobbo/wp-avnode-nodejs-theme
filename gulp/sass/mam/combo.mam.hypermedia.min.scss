@@ -1,4 +1,7 @@
-$primary:         #000000  !default;
+$primary:                 #9a1915 !default;
+$border-radius:           0 !default;
+$border-radius-lg:        0 !default;
+$border-radius-sm:        0 !default;
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -15,12 +18,14 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1570px
 );
+.embed-responsive-9by16::before{padding-top:177.78%}
 @import "../_common/fontello";
 @import "../_common/fontello-animation";
 @import "../../../node_modules/lightgallery/scss/lightgallery-bundle";
 @import "../_common/cookielawinfo";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
+//
 @import "../_common/swiper";
 @import "../_common/style";
 @import "./css/style.mam";
+@import "./css/style.mam.hypermedia";

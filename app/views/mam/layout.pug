@@ -18,20 +18,63 @@ html(lang=sessions.current_lang)
     meta(name='keywords', content=config.meta.keywords)
     meta(name='google-site-verification', content=config.meta.google_webmasterstools)
     link(rel='shortcut icon', href=config.meta['favicon'])
-    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.min.css', type='text/css')
+    link(rel='apple-touch-icon', sizes='57x57', href=config.meta['icon57'])
+    link(rel='apple-touch-icon', sizes='72x72', href=config.meta['icon72'])
+    link(rel='apple-touch-icon', sizes='114x114', href=config.meta['icon114'])
+    link(rel='apple-touch-icon', sizes='120x120', href=config.meta['icon120'])
+    link(rel='apple-touch-icon', sizes='144x144', href=config.meta['icon144'])
+    link(rel='apple-touch-icon', sizes='152x152', href=config.meta['icon152'])
+    // CSS
+    link(rel='stylesheet', href='/' + config.prefix + '/css/combo.' + config.prefix + '.' + sessions.current_edition + '.min.css', type='text/css')
+
+    if config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]
+      style(type='text/css').
+        body {
+          background-image: url(#{config.meta.editions[sessions.current_edition][ 'wpcf-background-image' ]});
+          background-position: top center;
+          background-attachment:fixed;
+        }
   body.body-common
-    nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
-        span.navbar-toggler-icon
-      a.navbar-brand(href=lang_preurl + '/', title=config.project_name)
-        .sr-only(itemprop='name')=config.project_name
-        =config.project_name
-      #menu-main.collapse.navbar-collapse
-        include includes/menu-main
-    .container
-      #result
-        block content
-      include includes/footer
+    .cnt(itemscope, itemtype='http://schema.org/Event')
+      nav#navbar-top.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+        // Brand and toggle get grouped for better mobile display
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#menu-main')
+          span.navbar-toggler-icon
+          i.icon-bar
+          i.icon-bar
+          i.icon-bar
+        a.navbar-brand(href=lang_preurl + '/', title=config.meta.editions[sessions.current_edition].title)
+          i.icon-wam(itemprop='logo')
+          .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+        #menu-main.collapse.navbar-collapse
+          include includes/menu-main
+      //div(class=page_data.url == "/" ? "container-fluid" : "container")
+      .container
+        header.mt-4
+          .row
+            .col-md-4
+              #logo
+                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
+                  img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
+                  .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
+            .col-md-4
+            .col-md-4.date-cnt.text-right(itemprop='disambiguatingDescription')
+              if config.meta.editions[sessions.current_edition]['wpcf-sub-title-image']
+                img.img-fluid.pull-right(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-sub-title-image'], alt=config.meta.editions[sessions.current_edition]['wpcf-sub-title'])
+                .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition]['wpcf-sub-title']
+                .sr-only
+                  include ../_partials/components/eventdateplace_meta
+              else
+                include ../_partials/components/eventdateplace_meta
+        //if page_data.url != "/" && page_data.url != "/en/" 
+        nav.text-right.mt-3.mb-3.mt-md-5.mb-md-5
+          include includes/menu-edition
+
+        #result
+          block content
+        include includes/footer
+    #twCnt
+      #tw
     #lightGallery
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search
@@ -40,4 +83,5 @@ html(lang=sessions.current_lang)
     if form
       script(type='text/javascript', src='/_js/validator.js')
     include ../_partials/components/cookielawinfo
+
     include ../_partials/components/analytics

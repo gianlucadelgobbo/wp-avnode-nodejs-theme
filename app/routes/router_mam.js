@@ -1,12 +1,13 @@
-var indexRoutes   = require('./index_mam');
-var avnodeMam     = require('./_common/avnode_mam');
-var sitemapRoutes = require('./_common/sitemap');
-var signupRoutes  = require('./_common/signup');
-var pagesRoutes   = require('./_common/pages');
-var robotsRoutes  = require('./_common/robots');
-var metaRoutes    = require('./_common/meta');
-var helpers       = require('../../app/helpers/helpers');
-var fnz           = require('../../app/helpers/functions');
+var indexRoutes    = require('./index_mam');
+var avnodeMam      = require('./_common/avnode_mam');
+var sitemapRoutes  = require('./_common/sitemap');
+var signupRoutes   = require('./_common/signup');
+var pagesRoutes    = require('./_common/pages');
+var robotsRoutes   = require('./_common/robots');
+var metaRoutes     = require('./_common/meta');
+var editionsRoutes = require('./_common/editions');
+var helpers        = require('../../app/helpers/helpers');
+var fnz            = require('../../app/helpers/functions');
 
 // Look up per-event config from config.events, falling back to MAM defaults
 function getEventConf(slug) {
@@ -190,6 +191,20 @@ module.exports = function(app) {
   app.get('/:page/:eventSlug/program',              ifAvnodeSection, handleProgram);
   app.get('/:page/:eventSlug/artists',              ifAvnodeSection, handleArtists);
   app.get('/:page/:eventSlug',                      ifAvnodeSection, handleEvent);
+
+  // editions routes (same as LPM)
+  app.get('/editions/:edition',                                              editionsRoutes.get);
+  app.get('/editions/:edition/artists/:artist',                              editionsRoutes.get);
+  app.get('/editions/:edition/:subedition',                                  editionsRoutes.get);
+  app.get('/editions/:edition/program/detail/:performance',                  editionsRoutes.get);
+  app.get('/editions/:edition/:subedition/:subsubedition',                   editionsRoutes.get);
+  app.get('/editions/:edition/:subedition/:subsubedition/:artist',           editionsRoutes.get);
+  app.get('/en/editions/:edition',                                           editionsRoutes.get);
+  app.get('/en/editions/:edition/artists/:artist',                           editionsRoutes.get);
+  app.get('/en/editions/:edition/:subedition',                               editionsRoutes.get);
+  app.get('/en/editions/:edition/program/detail/:performance',               editionsRoutes.get);
+  app.get('/en/editions/:edition/:subedition/:subsubedition',                editionsRoutes.get);
+  app.get('/en/editions/:edition/:subedition/:subsubedition/:artist',        editionsRoutes.get);
 
   // generic WP pages
   app.get('/:page/page/:paging',                   pagesRoutes.get);

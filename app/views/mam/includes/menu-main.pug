@@ -1,18 +1,20 @@
 ul.navbar-nav.mr-auto
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/events') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/events/')=global.__('Events')
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/calendar') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/calendar/')=global.__('Calendar')
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/news') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/news/')=global.__('News')
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/contacts') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl+'/contacts/')=global.__('Contacts')
-  li.nav-item(class=page_data.url.indexOf(lang_preurl+'/search') == 0 ? "active" : undefined)
-    a.nav-link#searchModalButton(href="/search/")
-      i.icon-search
-      .sr-only=global.__("Search")
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/concept') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/mam/')=global.__('Concept')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/calendar') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/calendar/')=global.__('Calendar')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/hypermedia') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/hypermedia/') HyperMedia
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/academy') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/academy/')=global.__('Academy')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/education') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/education/')=global.__('Education')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/collection') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/collection/')=global.__('Collection')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/visit') == 0 ? "active" : undefined)
+    a.nav-link(href=lang_preurl + '/visit/')=global.__('Visit')
 ul.navbar-nav
-  li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
-    a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN
   li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
     a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT
+  li.nav-item.lang-en(class=page_data.langSwitcher["en"] == page_data.url ? 'active' : '')
+    a.nav-link(href=page_data.langSwitcher["en"], hreflang='en', title='English') EN

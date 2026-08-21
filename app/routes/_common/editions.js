@@ -23,25 +23,25 @@ exports.get = function get(req, res) {
      if (result.post_title) {
         let template;
         if (req.params.performance) {
-          if (result.avnode.performance && result.avnode.performance.title) {
+          if (result.avnode && result.avnode.performance && result.avnode.performance.title) {
             template = config.prefix+'/'+'edition_performance';
             include_gallery = true;
           }
         } else if (req.params.subedition == "artists") {
-          if (result.avnode.advanced && result.avnode.advanced.performers) {
+          if (result.avnode && result.avnode.advanced && result.avnode.advanced.performers) {
             template = config.prefix+'/'+'edition_artists';
           }
         } else if (req.params.artist) {
-          if (result.avnode.performer && result.avnode.performer.stagename) {
+          if (result.avnode && result.avnode.performer && result.avnode.performer.stagename) {
             template = config.prefix+'/'+'edition_artist';
           }
         } else if (req.params.subedition == "gallery") {
-          if (result.avnode.galleries || result.avnode.medias) {
+          if (result.avnode && (result.avnode.galleries || result.avnode.medias)) {
             include_gallery = true;
             template = config.prefix+'/'+'edition_medias';
           }
         } else if (req.params.subedition == "videos") {
-          if (result.avnode.videos || result.avnode.media) {
+          if (result.avnode && (result.avnode.videos || result.avnode.media)) {
             include_gallery = true;
             template = config.prefix+'/'+'edition_medias';
           }
