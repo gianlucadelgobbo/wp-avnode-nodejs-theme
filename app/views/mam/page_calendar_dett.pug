@@ -1,0 +1,23 @@
+extends layout
+block content
+  article.edition-dett(itemscope itemtype='http://schema.org/Event')
+    if item.image
+      .header-image
+        img.img-fluid.w-100(src=item.image, alt!=item.title, itemprop='image')
+    .container
+      header.mt-4.mb-4
+        if item.subtitle
+          p.supText.text-muted=item.subtitle
+        h1.entry-title(itemprop='name')!=item.title
+        if item.data_evento
+          p.event-dates=item.data_evento
+        if item.location && item.location.length
+          p.event-location=Array.isArray(item.location) ? item.location[0].split(';')[0] : item.location
+      if item.content
+        .row
+          .col-md-8
+            .post-content!= item.content
+      .mt-4.mb-5
+        a.btn.btn-primary.btn-lg(href=item.link, target='_blank', rel='noopener noreferrer')
+          | #{global.__('Visit website')}
+          i.icon-right.ml-2

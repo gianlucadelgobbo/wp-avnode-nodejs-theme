@@ -1,31 +1,91 @@
 extends layout
 block content
+  mixin calCard(item)
+    - var href = item.link ? '/calendar/'+item.slug+'/' : '/editions/'+item.slug+'/'
+    .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
+      .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+        .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
+          .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+            .thumb-cnt-cnt
+              a(href=href, rel='bookmark', title!=item.title, itemprop='url')
+                img.img-fluid(src=item.image, alt!=item.title, itemprop='contentUrl')
+          .box-list
+            .text-center
+              .text-muted.supText=item.data_evento
+              h3.list_title(itemprop='name')!=item.title
+            .read-more-box
+              a(href=href, rel='bookmark', title!=item.title, itemprop='url')
+                .sr-only=global.__("Read More")
+                i.icon-right
+
   section(itemscope itemtype='http://schema.org/ItemList')
     h1.entry-title(itemprop="name")=global.__('Calendar')
-    #mam-calendar.mt-3
-      .text-center.py-5
-        .spinner-border(role='status')
-          span.sr-only=global.__('Loading...')
+
+    .calendar-datepicker.mb-4
+      input#cal-date-picker(type='date', class='form-control')
+
+    h2.section-title#cal-today-title=global.__('Today')
+    #cal-today-content
+      if today && today.length
+        .row.isotope.results
+          each item in today
+            +calCard(item)
+      else
+        p.text-muted=global.__('Nessun evento in programma oggi')
+
+    if thisWeek && thisWeek.length
+      h2.section-title=global.__('This Week')
+      .row.isotope.results
+        each item in thisWeek
+          +calCard(item)
+
+    if upcoming && upcoming.length
+      h2.section-title=global.__('Upcoming')
+      .row.isotope.results
+        each item in upcoming
+          +calCard(item)
+
+    if archive && archive.length
+      h2.section-title=global.__('Archive')
+      .row.isotope.results
+        each item in archive
+          +calCard(item)
 
   script.
-    fetch('/api/mam/calendar?lang=#{sessions.current_lang}')
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        var cal = document.getElementById('mam-calendar');
-        if (!data || !data.length) {
-          cal.innerHTML = '<p>#{global.__("Content NOT found")}</p>';
-          return;
-        }
-        var html = '<div class="table-responsive"><table class="table table-dark table-hover">';
-        html += '<thead><tr><th>#{global.__("Date")}</th><th>#{global.__("Events")}</th><th>#{global.__("Location")}</th></tr></thead><tbody>';
-        data.forEach(function(item){
-          html += '<tr style="cursor:pointer" onclick="window.location=\''+item.url+'\'">';
-          html += '<td>'+(item.date||'')+'</td>';
-          html += '<td><a href="'+item.url+'">'+(item.title||'')+'</a></td>';
-          html += '<td>'+(item.location||'')+'</td>';
-          html += '</tr>';
-        });
-        html += '</tbody></table></div>';
-        cal.innerHTML = html;
-      })
-      .catch(function(e){ document.getElementById('mam-calendar').innerHTML = '<p class="text-danger">Error loading calendar</p>'; });
+    var calItems = !{JSON.stringify(allItems)};
+    var picker = document.getElementById('cal-date-picker');
+    var todayTitle = document.getElementById('cal-today-title');
+    var todayContent = document.getElementById('cal-today-content');
+    var todayOriginal = todayContent.innerHTML;
+
+    picker.addEventListener('change', function() {
+      var val = this.value;
+      if (!val) {
+        todayTitle.textContent = '#{global.__("Today")}';
+        todayContent.innerHTML = todayOriginal;
+        return;
+      }
+      var ts = Math.floor(new Date(val).getTime() / 1000);
+      var matches = calItems.filter(function(item) {
+        var end = item.enddate || item.startdate;
+        return item.startdate && item.startdate <= ts && end >= ts;
+      });
+      todayTitle.textContent = val;
+      if (!matches.length) {
+        todayContent.innerHTML = '<p class="text-muted">Nessun evento in programma</p>';
+      } else {
+        todayContent.innerHTML = '<div class="row isotope results">' + matches.map(function(item) {
+          var href = item.link ? '/calendar/' + item.slug + '/' : '/editions/' + item.slug + '/';
+          return '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 isotopeitem">' +
+            '<div class="boxItem"><div class="Event">' +
+            '<div class="thumb-cnt"><div class="thumb-cnt-cnt">' +
+            '<a href="' + href + '"><img class="img-fluid" src="' + item.image + '" alt="' + item.title + '"></a>' +
+            '</div></div>' +
+            '<div class="box-list"><div class="text-center">' +
+            '<div class="text-muted supText">' + (item.data_evento || '') + '</div>' +
+            '<h3 class="list_title">' + item.title + '</h3>' +
+            '</div><div class="read-more-box"><a href="' + href + '"><i class="icon-right"></i></a></div>' +
+            '</div></div></div></div>';
+        }).join('') + '</div>';
+      }
+    });

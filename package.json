@@ -51,7 +51,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=dev PORT=3000 nodemon app",
-    "prod": "NODE_ENV=production pm2 reload ecosystem.config.js --only avnode-single --env production"
+    "prod": "NODE_ENV=production pm2 reload ecosystem.config.js --env production"
   },
   "repository": {
     "type": "git",

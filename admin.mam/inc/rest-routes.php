@@ -346,7 +346,46 @@ function edition_by_slug($request) {
     return $out;
 }
 
+function mam_calendar_editions($request) {
+  $site = sanitize_title($request->get_param('site'));
+  $parent = get_page_by_path($site, OBJECT, 'editions');
+  if (!$parent) return [];
+
+  $posts = get_posts([
+    'post_type'      => 'editions',
+    'post_parent'    => $parent->ID,
+    'posts_per_page' => 100,
+    'post_status'    => 'publish',
+    'orderby'        => 'meta_value_num',
+    'meta_key'       => 'wpcf-startdate',
+    'order'          => 'ASC',
+  ]);
+
+  $results = [];
+  foreach ($posts as $p) {
+    $featured = function_exists('avnode_api_get_image') ? avnode_api_get_image(['id' => $p->ID]) : ['thumbnail' => '', 'full' => ''];
+    $results[] = [
+      'slug'        => $p->post_name,
+      'title'       => html_entity_decode(apply_filters('the_title', $p->post_title)),
+      'subtitle'    => get_post_meta($p->ID, 'wpcf-sub-title', true),
+      'startdate'   => get_post_meta($p->ID, 'wpcf-startdate', true),
+      'enddate'     => get_post_meta($p->ID, 'wpcf-enddate', true),
+      'data_evento' => get_post_meta($p->ID, 'data_evento', true),
+      'link'        => get_post_meta($p->ID, 'wpcf-link', true),
+      'location'    => get_post_meta($p->ID, 'wpcf-location', false),
+      'image'       => $featured['thumbnail'] ?? '',
+    ];
+  }
+  return $results;
+}
+
 add_action('rest_api_init', function () {
+
+  register_rest_route('wp/v2', '/calendar/(?P<site>[a-zA-Z0-9-_]+)', [
+	'methods'             => 'GET',
+	'callback'            => 'mam_calendar_editions',
+	'permission_callback' => '__return_true',
+  ]);
 
   register_rest_route('wp/v2', '/meta_data/(?P<posttype>[a-zA-Z0-9-_]+)/(?P<basepath>[a-zA-Z0-9-_]+)/(?P<slug>[a-zA-Z0-9-_]+)', [
 	'methods'  => 'GET',

@@ -1,176 +1,14 @@
 var indexRoutes    = require('./index_mam');
-var avnodeMam      = require('./_common/avnode_mam');
 var sitemapRoutes  = require('./_common/sitemap');
 var signupRoutes   = require('./_common/signup');
 var pagesRoutes    = require('./_common/pages');
 var robotsRoutes   = require('./_common/robots');
 var metaRoutes     = require('./_common/meta');
 var editionsRoutes = require('./_common/editions');
-var helpers        = require('../../app/helpers/helpers');
-var fnz            = require('../../app/helpers/functions');
-
-// Look up per-event config from config.events, falling back to MAM defaults
-function getEventConf(slug) {
-  return (config.events && config.events[slug]) || { data_domain: config.data_domain, prefix: config.prefix, edition: slug };
-}
-
-// Only proceed if the page slug is an avnode section (calendar, artists, …)
-function ifAvnodeSection(req, res, next) {
-  var sections = config.avnode_sections || [];
-  if (sections.indexOf(req.params.page) === -1) return next('route');
-  next();
-}
-
-function send404(req, res) {
-  helpers.setSessions(req, function() {
-    res.status(404).render('mam/404', { sessions: req.session.sessions, page_data: fnz.setPageData(req, {}) });
-  });
-}
-
-// ── avnode sub-route handlers ─────────────────────────────────────────────────
-
-function handlePerfSlug(req, res) {
-  helpers.setSessions(req, function() {
-    var evConf = getEventConf(req.params.eventSlug);
-    avnodeMam.getPerformance(req.params.perfSlug, function(err, perf) {
-      if (err || !perf) return send404(req, res);
-      avnodeMam.getEvent(req.params.eventSlug, function(err2, event) {
-        res.render(config.prefix + '/event_performance', {
-          sessions:    req.session.sessions,
-          page_data:   fnz.setPageData(req, { title: perf.title }),
-          event:       event || {},
-          perf:        perf,
-          basepage:    req.params.page,
-          basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/program/' + req.params.perfSlug,
-          event_conf:  evConf
-        });
-      });
-    });
-  });
-}
-
-function handleArtistSlug(req, res) {
-  helpers.setSessions(req, function() {
-    var evConf = getEventConf(req.params.eventSlug);
-    avnodeMam.getArtist(req.params.artistSlug, function(err, artist) {
-      if (err || !artist) return send404(req, res);
-      avnodeMam.getEvent(req.params.eventSlug, function(err2, event) {
-        res.render(config.prefix + '/event_artist', {
-          sessions:    req.session.sessions,
-          page_data:   fnz.setPageData(req, { title: artist.stagename }),
-          event:       event || {},
-          artist:      artist,
-          basepage:    req.params.page,
-          basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/artists/' + req.params.artistSlug,
-          event_conf:  evConf
-        });
-      });
-    });
-  });
-}
-
-function handleProgram(req, res) {
-  helpers.setSessions(req, function() {
-    var evConf = getEventConf(req.params.eventSlug);
-    avnodeMam.getEventProgram(req.params.eventSlug, function(err, data) {
-      if (err || !data) return send404(req, res);
-      res.render(config.prefix + '/event_program', {
-        sessions:    req.session.sessions,
-        page_data:   fnz.setPageData(req, { title: data.title }),
-        event:       data,
-        basepage:    req.params.page,
-        basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/program',
-        event_conf:  evConf
-      });
-    });
-  });
-}
-
-function handleArtists(req, res) {
-  helpers.setSessions(req, function() {
-    var evConf = getEventConf(req.params.eventSlug);
-    avnodeMam.getEvent(req.params.eventSlug, function(err, event) {
-      if (err || !event) return send404(req, res);
-      res.render(config.prefix + '/event_artists', {
-        sessions:    req.session.sessions,
-        page_data:   fnz.setPageData(req, { title: event.title }),
-        event:       event,
-        artists:     event.users || [],
-        basepage:    req.params.page,
-        basepath:    '/' + req.params.page + '/' + req.params.eventSlug + '/artists',
-        event_conf:  evConf
-      });
-    });
-  });
-}
-
-function handleEvent(req, res) {
-  helpers.setSessions(req, function() {
-    var evConf = getEventConf(req.params.eventSlug);
-    avnodeMam.getEvent(req.params.eventSlug, function(err, event) {
-      if (err || !event) return send404(req, res);
-      res.render(config.prefix + '/event', {
-        sessions:    req.session.sessions,
-        page_data:   fnz.setPageData(req, { title: event.title }),
-        event:       event,
-        basepage:    req.params.page,
-        basepath:    '/' + req.params.page + '/' + req.params.eventSlug,
-        event_conf:  evConf
-      });
-    });
-  });
-}
-
-// ── API handlers ──────────────────────────────────────────────────────────────
-
-function mamOrgUrl(lang) {
-  return lang && lang !== 'en'
-    ? 'https://' + lang + '.api.admin.avnode.net/mam-media-art-museum/'
-    : 'https://api.admin.avnode.net/mam-media-art-museum/';
-}
-
-function handleApiCalendar(req, res) {
-  var lang = req.query.lang || 'en';
-  avnodeMam.getMamOrg(mamOrgUrl(lang), function(err, org) {
-    if (err) return res.status(502).json({ error: err.message });
-    var events = (org && (org.events || org.data)) || [];
-    var mapped = events.map(function(e) {
-      var starttime = e.schedule && e.schedule[0] && e.schedule[0].starttime ? e.schedule[0].starttime : null;
-      return { starttime: starttime, date: e.boxDate || '', title: e.title || '', location: e.boxVenue || '', slug: e.slug, url: '/calendar/' + e.slug };
-    });
-    mapped.sort(function(a, b) {
-      if (!a.starttime) return 1;
-      if (!b.starttime) return -1;
-      return a.starttime < b.starttime ? -1 : a.starttime > b.starttime ? 1 : 0;
-    });
-    res.json(mapped);
-  });
-}
-
-function handleApiEvents(req, res) {
-  var lang = req.query.lang || 'en';
-  avnodeMam.getMamOrg(mamOrgUrl(lang), function(err, org) {
-    if (err) return res.status(502).json({ error: err.message });
-    var events = (org && (org.events || org.data)) || [];
-    res.json(events.map(function(e) {
-      return {
-        image: e.imageFormats && e.imageFormats.large ? e.imageFormats.large : '',
-        title: e.title || '',
-        date: e.boxDate || '',
-        description: e.description || '',
-        url: '/calendar/' + e.slug
-      };
-    }));
-  });
-}
-
-// ── router ────────────────────────────────────────────────────────────────────
+var calendarRoutes = require('./_common/calendar');
 
 module.exports = function(app) {
   app.get('/', indexRoutes.get);
-
-  app.get('/api/mam/calendar', handleApiCalendar);
-  app.get('/api/mam/events',   handleApiEvents);
 
   app.get('/meta/', metaRoutes.get);
   app.get('/robots.txt', robotsRoutes.get);
@@ -179,38 +17,34 @@ module.exports = function(app) {
   app.get('/sitemap-pages.xml', sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);
-  app.get('/it/:page/page/:paging',        pagesRoutes.get);
+  app.get('/it/:page/page/:paging',         pagesRoutes.get);
   app.get('/it/:page/:subpage/:subsubpage', pagesRoutes.get);
-  app.get('/it/:page/:subpage',            pagesRoutes.get);
-  app.get('/it/:page',                     pagesRoutes.get);
-  app.post('/it/signup', signupRoutes.post);
+  app.get('/it/:page/:subpage',             pagesRoutes.get);
+  app.get('/it/:page',                      pagesRoutes.get);
+  app.post('/it/signup',                    signupRoutes.post);
 
-  // avnode sub-routes — checked BEFORE generic WP page routes
-  app.get('/:page/:eventSlug/program/:perfSlug',    ifAvnodeSection, handlePerfSlug);
-  app.get('/:page/:eventSlug/artists/:artistSlug',  ifAvnodeSection, handleArtistSlug);
-  app.get('/:page/:eventSlug/program',              ifAvnodeSection, handleProgram);
-  app.get('/:page/:eventSlug/artists',              ifAvnodeSection, handleArtists);
-  app.get('/:page/:eventSlug',                      ifAvnodeSection, handleEvent);
+  app.get('/calendar/',            calendarRoutes.get);
+  app.get('/calendar/:calendar',   calendarRoutes.getDett);
+  app.get('/en/calendar/',         calendarRoutes.get);
+  app.get('/en/calendar/:calendar',calendarRoutes.getDett);
 
-  // editions routes (same as LPM)
-  app.get('/editions/:edition',                                              editionsRoutes.get);
-  app.get('/editions/:edition/artists/:artist',                              editionsRoutes.get);
-  app.get('/editions/:edition/:subedition',                                  editionsRoutes.get);
-  app.get('/editions/:edition/program/detail/:performance',                  editionsRoutes.get);
-  app.get('/editions/:edition/:subedition/:subsubedition',                   editionsRoutes.get);
-  app.get('/editions/:edition/:subedition/:subsubedition/:artist',           editionsRoutes.get);
-  app.get('/en/editions/:edition',                                           editionsRoutes.get);
-  app.get('/en/editions/:edition/artists/:artist',                           editionsRoutes.get);
-  app.get('/en/editions/:edition/:subedition',                               editionsRoutes.get);
-  app.get('/en/editions/:edition/program/detail/:performance',               editionsRoutes.get);
-  app.get('/en/editions/:edition/:subedition/:subsubedition',                editionsRoutes.get);
-  app.get('/en/editions/:edition/:subedition/:subsubedition/:artist',        editionsRoutes.get);
+  app.get('/editions/:edition',                                        editionsRoutes.get);
+  app.get('/editions/:edition/artists/:artist',                        editionsRoutes.get);
+  app.get('/editions/:edition/:subedition',                            editionsRoutes.get);
+  app.get('/editions/:edition/program/detail/:performance',            editionsRoutes.get);
+  app.get('/editions/:edition/:subedition/:subsubedition',             editionsRoutes.get);
+  app.get('/editions/:edition/:subedition/:subsubedition/:artist',     editionsRoutes.get);
+  app.get('/en/editions/:edition',                                     editionsRoutes.get);
+  app.get('/en/editions/:edition/artists/:artist',                     editionsRoutes.get);
+  app.get('/en/editions/:edition/:subedition',                         editionsRoutes.get);
+  app.get('/en/editions/:edition/program/detail/:performance',         editionsRoutes.get);
+  app.get('/en/editions/:edition/:subedition/:subsubedition',          editionsRoutes.get);
+  app.get('/en/editions/:edition/:subedition/:subsubedition/:artist',  editionsRoutes.get);
 
-  // generic WP pages
-  app.get('/:page/page/:paging',                   pagesRoutes.get);
-  app.get('/:page/:subpage/:subsubpage',            pagesRoutes.get);
-  app.get('/:page/:subpage',                        pagesRoutes.get);
-  app.get('/:page',                                 pagesRoutes.get);
+  app.get('/:page/page/:paging',        pagesRoutes.get);
+  app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/:page/:subpage',            pagesRoutes.get);
+  app.get('/:page',                     pagesRoutes.get);
 
   app.post('/signup', signupRoutes.post);
   app.get('*', pagesRoutes.get404);
