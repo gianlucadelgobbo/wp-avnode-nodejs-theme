@@ -4,12 +4,12 @@
   <defs>
 <style>
   .st0 {
-    fill: #000;
+    fill: #fff;
   }
 
-  @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: light) {
     .st0 {
-      fill: #fff;
+      fill: #000;
     }
   }
 </style>
