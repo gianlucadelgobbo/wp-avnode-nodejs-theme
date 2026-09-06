@@ -29,13 +29,41 @@ global.config = new Proxy({}, {
 });
 
 // ── i18n globals: per-request context, safe under async concurrency ───────────
+const _i18nDirty = {};  // { "prefix:lang": Set<key> } — pending writes in dev
+const _i18nFlush = {};  // timers per "prefix:lang"
+
+function _i18nAutoAdd(ctx, key) {
+  if (process.env.NODE_ENV === 'production') return;
+  const { localeData, prefix, locales } = ctx;
+  locales.forEach(function(lang) {
+    if (!localeData[lang]) localeData[lang] = {};
+    if (key in localeData[lang]) return;
+    localeData[lang][key] = key;
+    const slot = prefix + ':' + lang;
+    if (!_i18nDirty[slot]) _i18nDirty[slot] = new Set();
+    _i18nDirty[slot].add(key);
+    clearTimeout(_i18nFlush[slot]);
+    _i18nFlush[slot] = setTimeout(function() {
+      const path = __dirname + '/locales/' + prefix + '/' + lang + '.json';
+      try {
+        const existing = JSON.parse(fs.readFileSync(path, 'utf8'));
+        _i18nDirty[slot].forEach(function(k) { if (!(k in existing)) existing[k] = k; });
+        fs.writeFileSync(path, JSON.stringify(existing, null, 2) + '\n');
+        _i18nDirty[slot].clear();
+      } catch(e) {}
+    }, 500);
+  });
+}
+
 global.__ = function(key) {
   const ctx = i18nCtxALS.getStore();
   if (!ctx) return key;
   const { localeData, lang, defaultLang } = ctx;
-  return (localeData[lang] && localeData[lang][key]) ||
-         (lang !== defaultLang && localeData[defaultLang] && localeData[defaultLang][key]) ||
-         key;
+  const val = (localeData[lang] && localeData[lang][key]) ||
+              (lang !== defaultLang && localeData[defaultLang] && localeData[defaultLang][key]) ||
+              null;
+  if (!val) _i18nAutoAdd(ctx, key);
+  return val || key;
 };
 
 global.__n = function(singular, plural, count) {
@@ -166,7 +194,9 @@ app.use(function(req, res, next) {
   const i18nCtx = {
     localeData:  localeData[site] || {},
     lang:        siteConfig.default_lang || 'en',
-    defaultLang: siteConfig.default_lang || 'en'
+    defaultLang: siteConfig.default_lang || 'en',
+    prefix:      siteConfig.prefix,
+    locales:     siteConfig.locales || [siteConfig.default_lang || 'en']
   };
 
   configALS.run(siteConfig, function() {

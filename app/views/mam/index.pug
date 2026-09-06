@@ -1,17 +1,77 @@
 extends layout
 block content
-  .mt-4
-    h1.entry-title=config.project_name
+  mixin calCard(item)
+    - var href = item.link ? '/calendar/'+item.slug+'/' : '/editions/'+item.slug+'/'
+    .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
+      .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+        .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
+          .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
+            .thumb-cnt-cnt
+              a(href=href, rel='bookmark', title!=item.title, itemprop='url')
+                img.img-fluid(src=item.image, alt!=item.title, itemprop='contentUrl')
+          .box-list
+            .text-center
+              .text-muted.supText=item.data_evento
+              h3.list_title(itemprop='name')!=item.title
+            .read-more-box
+              a(href=href, rel='bookmark', title!=item.title, itemprop='url')
+                .sr-only=global.__("Read More")
+                i.icon-right
 
-  section.home.mt-3(itemscope itemtype='http://schema.org/ItemList')
-    h2.entry-title(itemprop="name")=global.__('Events')
-    .swiper-container
-      if results && results.events
-        !=results.events.replace(new RegExp("col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 isotopeitem", 'g'), "swiper-slide").replace(new RegExp("row isotope results", 'g'), "swiper-wrapper").replace(new RegExp("pagination pagination-sm justify-content-center", 'g'), "pagination pagination-sm justify-content-center d-none")
-    .text-right.mt-2
-      a.btn.btn-primary.btn-sm(href=lang_preurl+'/events/')=global.__('See all Events')
+  #mycarousel.carousel.slide(data-ride='carousel', data-interval="false")
+    .carousel-inner
+      .carousel-item.active
+        a(href=lang_preurl+"/editions/2026-rome/call-to-participate/", title="LPM 2026 Rome")
+          img.d-block.w-100(src='https://liveperformersmeeting.net/files/2026/05/LPM_2026.jpg', alt=global.__('Image for') + ': ' + 'LPM 2026 Rome')
+      .carousel-item
+        a(href=lang_preurl+"/editions/2026-rome/call-to-participate/", title="LPM 2026 Rome")
+          img.d-block.w-100(src='https://liveperformersmeeting.net/files/2026/05/LPM_Call_2026.jpg', alt=global.__('Image for') + ': ' + 'LPM 2026 Rome')
 
-  section.home.mt-5(itemscope itemtype='http://schema.org/ItemList')
+  if today && today.length
+    section.home-section.mt-5(itemscope itemtype='http://schema.org/ItemList')
+      h2.entry-title(itemprop="name")=global.__('Today at MAM')
+      .row.isotope.results
+        each item in today
+          +calCard(item)
+
+  if upcoming && upcoming.length
+    section.home-section.mt-5(itemscope itemtype='http://schema.org/ItemList')
+      h2.entry-title(itemprop="name")=global.__('Upcoming Events')
+      .row.isotope.results
+        each item in upcoming.slice(0,4)
+          +calCard(item)
+      .text-right.mt-2
+        a.btn.btn-outline-primary.btn-sm(href=lang_preurl+'/calendar/')=global.__('See all events')
+
+  section.home-section.mt-5
+    h2.entry-title=global.__('Explore MAM')
+    .row
+      .col-md-3.col-sm-6.mb-4
+        .card.h-100
+          .card-body
+            h5.card-title=global.__('Academy')
+            p.card-text=global.__('Training, workshops and artistic residencies.')
+            a.btn.btn-primary.btn-sm(href=lang_preurl+'/academy/')=global.__('Discover')
+      .col-md-3.col-sm-6.mb-4
+        .card.h-100
+          .card-body
+            h5.card-title=global.__('Education')
+            p.card-text=global.__('Educational programs for schools and families.')
+            a.btn.btn-primary.btn-sm(href=lang_preurl+'/education/')=global.__('Discover')
+      .col-md-3.col-sm-6.mb-4
+        .card.h-100
+          .card-body
+            h5.card-title=global.__('Collection')
+            p.card-text=global.__('Explore the permanent collection.')
+            a.btn.btn-primary.btn-sm(href=lang_preurl+'/collection/')=global.__('Discover')
+      .col-md-3.col-sm-6.mb-4
+        .card.h-100
+          .card-body
+            h5.card-title=global.__('Visit')
+            p.card-text=global.__('Plan your visit, opening hours and services.')
+            a.btn.btn-primary.btn-sm(href=lang_preurl+'/visit/')=global.__('Discover')
+
+  section.home-section.mt-5(itemscope itemtype='http://schema.org/ItemList')
     h2.entry-title(itemprop="name")=global.__('News')
     .swiper-container
       if results && results.news

@@ -31,7 +31,7 @@ block content
           each item in today
             +calCard(item)
       else
-        p.text-muted=global.__('Nessun evento in programma oggi')
+        p.text-muted=global.__('No events scheduled today')
 
     if thisWeek && thisWeek.length
       h2.section-title=global.__('This Week')

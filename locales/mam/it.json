@@ -1,6 +1,8 @@
 {
   "Home": "Home",
   "Events": "Eventi",
+  "Education": "Scuole",
+  "Collection": "Collezione",
   "Calendar": "Calendario",
   "News": "News",
   "Contacts": "Contatti",
@@ -35,5 +37,21 @@
   "Gallery": "Galleria",
   "Videos": "Video",
   "Previous slide": "Diapositiva precedente",
-  "Nexts slide": "Diapositiva successiva"
+  "Nexts slide": "Diapositiva successiva",
+  "Today at MAM": "Oggi al MAM",
+  "Upcoming Events": "Prossimi eventi",
+  "See all events": "Vedi tutti gli eventi",
+  "Explore MAM": "Esplora il MAM",
+  "Academy": "Academy",
+  "Training, workshops and artistic residencies.": "Formazione, workshop e residenze artistiche.",
+  "Discover": "Scopri",
+  "Educational programs for schools and families.": "Programmi educativi per scuole e famiglie.",
+  "Explore the permanent collection.": "Esplora la collezione permanente.",
+  "Visit": "Visita",
+  "Plan your visit, opening hours and services.": "Pianifica la tua visita, orari e servizi.",
+  "Today": "Oggi",
+  "This Week": "Questa settimana",
+  "Upcoming": "Prossimi",
+  "Archive": "Archivio",
+  "No events scheduled today": "Nessun evento in programma oggi"
 }
