@@ -304,10 +304,6 @@ exports.fixResult = function fixResult(data) {
   }
    */
   //console.log(moment.locale());
-  if (data.featured && !data.featured.thumbnail && data.attachments && data.attachments[0] && data.attachments[0].file) {
-    data.featured.thumbnail = data.attachments[0].file;
-    data.featured.full      = data.attachments[0].file;
-  }
   if (data.date) {
     data.date = moment(data.date).utc().format();
     data.datetimeHR = moment(data.date).utc().format("MMMM, Do YYYY, h:mm a");
