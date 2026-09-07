@@ -1,8 +1,8 @@
 extends layout
 block content
-  mixin calCard(item)
+  mixin calCardSwiper(item)
     - var href = item.link ? '/calendar/'+item.slug+'/' : '/editions/'+item.slug+'/'
-    .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12.isotopeitem
+    .swiper-slide
       .boxItem(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
         .Event(itemprop="item", itemscope, itemtype='http://schema.org/Event')
           .thumb-cnt(itemprop='image', itemscope, itemtype="http://schema.org/ImageObject")
@@ -19,6 +19,11 @@ block content
                 i.icon-right
 
   #mycarousel.carousel.slide(data-ride='carousel', data-interval="3000")
+    ol.carousel-indicators
+      li.active(data-target='#mycarousel', data-slide-to='0')
+      li(data-target='#mycarousel', data-slide-to='1')
+      li(data-target='#mycarousel', data-slide-to='2')
+      li(data-target='#mycarousel', data-slide-to='3')
     .carousel-inner
       .carousel-item.active
         a(href=lang_preurl+"/editions/hypermedia/", title="HyperMedia")
@@ -32,20 +37,28 @@ block content
       .carousel-item
         a(href=lang_preurl+"/calendar/fotonica-2026/", title="FOTONICA 2026")
           img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/TEASER-16_9-Gian.jpg', alt=global.__('Image for') + ': ' + 'FOTONICA 2026')
+    a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only=global.__('Previous slide')
+    a.carousel-control-next(href='#mycarousel', role='button', data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only=global.__('Nexts slide')
 
   if today && today.length
     section.home-section.mt-5(itemscope itemtype='http://schema.org/ItemList')
       h2.entry-title(itemprop="name")=global.__('Today at MAM')
-      .row.isotope.results
-        each item in today
-          +calCard(item)
+      .swiper-container
+        .swiper-wrapper
+          each item in today
+            +calCardSwiper(item)
 
   if upcoming && upcoming.length
     section.home-section.mt-5(itemscope itemtype='http://schema.org/ItemList')
       h2.entry-title(itemprop="name")=global.__('Upcoming Events')
-      .row.isotope.results
-        each item in upcoming.slice(0,4)
-          +calCard(item)
+      .swiper-container
+        .swiper-wrapper
+          each item in upcoming
+            +calCardSwiper(item)
       .text-right.mt-2
         a.btn.btn-outline-primary.btn-sm(href=lang_preurl+'/calendar/')=global.__('See all events')
 
