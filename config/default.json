@@ -2549,7 +2549,7 @@
     "current_lang": "it",
     "router": "router_mam",
     "last_edition": "hypermedia",
-    "last_edition_status": "programming",
+    "last_edition_status": "none",
     "current_edition": "hypermedia",
     "editions": [
       "hypermedia"

@@ -51,7 +51,7 @@ html(lang=sessions.current_lang)
           .row
             .col-md-4
               #logo
-                a(href='/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
+                a(href=lang_preurl + '/editions/hypermedia/', title=config.meta.editions[sessions.current_edition].title, itemprop='url')
                   img.img-fluid(itemprop='image', src=config.meta.editions[sessions.current_edition]['wpcf-header-image'], alt=config.meta.editions[sessions.current_edition].title)
                   .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
             .col-md-4
