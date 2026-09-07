@@ -109,6 +109,12 @@
 
 // FOOTER
 
+footer .nav-link.active,
+footer .nav-pills .nav-link.active {
+  background-color: transparent;
+  color: inherit;
+}
+
 .logofooter {
     font-size: 90px;
     margin: -33px 0 -42px -28px;
