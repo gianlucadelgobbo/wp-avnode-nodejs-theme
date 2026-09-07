@@ -1,6 +1,4 @@
 extends layout
 block content
-  article#container(itemprop='mainEntity' itemscope itemtype='http://schema.org/#{page_data.itemtype}')
-    h1.entry-title(itemprop="name")=page_data.title
-    .rientro
-      !=page_data.post_content
+  include ../_partials/page
+

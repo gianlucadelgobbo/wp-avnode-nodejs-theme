@@ -1,27 +1,15 @@
-footer.bg-dark.text-white.pt-4.pb-4
-  .container
-    .row.mb-3
-      .col-12
-        ul.list-inline.mb-0
-          li.list-inline-item
-            a.text-white-50(href=lang_preurl + '/press/')=global.__('Press')
-          li.list-inline-item.text-white-50 |
-          li.list-inline-item
-            a.text-white-50(href=lang_preurl + '/model-231/') Model 231
-          li.list-inline-item.text-white-50 |
-          li.list-inline-item
-            a.text-white-50(href=lang_preurl + '/privacy-policy/')=global.__('Privacy Policy')
-          li.list-inline-item.text-white-50 |
-          li.list-inline-item
-            a.text-white-50(href=lang_preurl + '/cookies-policy/')=global.__('Cookies Policy')
-          li.list-inline-item.text-white-50 |
-          li.list-inline-item
-            a.text-white-50(href=lang_preurl + '/transparency/')=global.__('Transparency')
-          li.list-inline-item.text-white-50 |
-          li.list-inline-item
-            a.text-white-50(href=lang_preurl + '/contacts/')=global.__('Contacts')
-    .row.align-items-center
-      .col-sm-6.mb-2.mb-sm-0
-        include socials
-      .col-sm-6.text-sm-right
-        include ../../_partials/components/copy-and-flyer
+footer.bg-dark.text-white.pt-3.pr-3.pb-3.pl-3.mb-5.mt-3
+  .row.links-horizontal
+    .col-sm-3
+      include ../../_partials/components/address
+    .col-sm-2.d-print-none
+      p.mt-3.mt-md-0=global.__("Corporate")
+      include menu-corporate
+    .col-sm-2.d-print-none
+      p.mt-3.mt-md-0=global.__("Social Networks")
+      include socials
+    .col-sm-5.d-print-none
+      p.mt-3.mt-md-0=global.__("Projects")
+      include ../../_partials/components/projects
+  br
+  include ../../_partials/components/copy-and-flyer

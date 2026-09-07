@@ -3,25 +3,26 @@
 body {
   font-family: 'Work Sans', sans-serif;
   font-size: 16px;
-  background: rgba(0,0,0,1);
+  background: $mam-background;
   background-attachment: fixed;
-  color: #FFF;
+  color: #F5F5F5;
 }
 .News.box-list {
   background: rgba(0,0,0,.6);
 }
 table.table {
-  color: #FFF;
+  color: $mam-text;
 }
 .navbar-nav {
   font-weight: bold;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: white;
+  color: $mam-text;
 }
 ol,
 .grid-title {
-  background-color: $primary;
+  background-color: $hypermedia-primary;
+  color: #000;
   padding: 5px 8px;
   letter-spacing: -1px;
 }
@@ -41,7 +42,7 @@ ol,
 }
 .home h1 {
     text-transform: uppercase;
-    color: $primary;
+    color: $hypermedia-primary;
 }
 .grid-title .text-muted {
   color: #333 !important;

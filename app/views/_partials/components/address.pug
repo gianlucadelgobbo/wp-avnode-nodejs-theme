@@ -1,7 +1,7 @@
 div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
   .logofooter
     a(href=lang_preurl + '/', title=config.project_name)
-      i(class="icon-"+(config.prefix=="fotonica" ? "f" : (config.prefix=="linuxclub" ? "linux" : config.prefix+(config.prefix=="lcf" ? "-fill" : ""))), itemprop='logo')
+      i(class="icon-"+(config.prefix=="mam" ? "wam" : config.prefix=="fotonica" ? "f" : (config.prefix=="linuxclub" ? "linux" : config.prefix+(config.prefix=="lcf" ? "-fill" : ""))), itemprop='logo')
       .sr-only=config.project_name
   br
   strong(itemprop='name')=config.project_name
@@ -10,19 +10,19 @@ div(itemprop="organizer", itemscope, itemtype='http://schema.org/Organization')
   br
   span(itemprop='location', itemscope, itemtype='http://schema.org/Place')
     span(itemprop='address', itemscope, itemtype='http://schema.org/PostalAddress')
-      span(itemprop='streetAddress') Via del Verano 39
+      span(itemprop='streetAddress') Corso d'Italia 37/D
       br
-      span(itemprop='postalCode') 00185
+      span(itemprop='postalCode') 00198
       !=" "
       span(itemprop='addressLocality')=global.__('Rome')
       !=" "
       span(itemprop='addressCountry')=global.__('Italy')
     br
     span.d-none(itemprop='geo', itemscope, itemtype='http://schema.org/GeoCoordinates')
-      span(itemprop='latitude') 41.899316
+      span(itemprop='latitude') 41.9113921
       | ,
-      span(itemprop='longitude') 12.520403
-    a(itemprop='url', title=global.__('map'), href='https://www.google.com/maps/place/Flyer+Communication+Srl/@41.899316,12.520403,963m/data=!3m2!1e3!4b1!4m2!3m1!1s0x132f618364bd1e11:0x4bbf08536c8fc4c9?hl=en', target='_blank')=global.__('map')
+      span(itemprop='longitude') 12.4926342
+    a(itemprop='url', title=global.__('map'), href='https://maps.app.goo.gl/JiaXTbMg9aKsib1R8', target='_blank')=global.__('map')
     br
   |    Tel.
   !=" "
