@@ -25,8 +25,6 @@ module.exports = function(app) {
 
   app.get('/calendar/',            calendarRoutes.get);
   app.get('/calendar/:calendar',   calendarRoutes.getDett);
-  app.get('/en/calendar/',         calendarRoutes.get);
-  app.get('/en/calendar/:calendar',calendarRoutes.getDett);
 
   app.get('/editions/:edition',                                        editionsRoutes.get);
   app.get('/editions/:edition/artists/:artist',                        editionsRoutes.get);
@@ -34,12 +32,21 @@ module.exports = function(app) {
   app.get('/editions/:edition/program/detail/:performance',            editionsRoutes.get);
   app.get('/editions/:edition/:subedition/:subsubedition',             editionsRoutes.get);
   app.get('/editions/:edition/:subedition/:subsubedition/:artist',     editionsRoutes.get);
+
+  app.get('/en/', indexRoutes.get);
+  app.get('/en/calendar/',         calendarRoutes.get);
+  app.get('/en/calendar/:calendar',calendarRoutes.getDett);
   app.get('/en/editions/:edition',                                     editionsRoutes.get);
   app.get('/en/editions/:edition/artists/:artist',                     editionsRoutes.get);
   app.get('/en/editions/:edition/:subedition',                         editionsRoutes.get);
   app.get('/en/editions/:edition/program/detail/:performance',         editionsRoutes.get);
   app.get('/en/editions/:edition/:subedition/:subsubedition',          editionsRoutes.get);
   app.get('/en/editions/:edition/:subedition/:subsubedition/:artist',  editionsRoutes.get);
+  app.get('/en/:page/page/:paging',         pagesRoutes.get);
+  app.get('/en/:page/:subpage/:subsubpage', pagesRoutes.get);
+  app.get('/en/:page/:subpage',             pagesRoutes.get);
+  app.get('/en/:page',                      pagesRoutes.get);
+  app.post('/en/signup',                    signupRoutes.post);
 
   app.get('/:page/page/:paging',        pagesRoutes.get);
   app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
