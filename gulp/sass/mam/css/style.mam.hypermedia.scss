@@ -40,6 +40,11 @@ ol,
   color: $mam-text-secondary !important;
 }
 
+// CARDS
+.card-title {
+  font-weight: bold;
+}
+
 // EDITION NAV – parallelogram buttons
 nav .btn-group .btn {
   transform: skewX(-20deg);
