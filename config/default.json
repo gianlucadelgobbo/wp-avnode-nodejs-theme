@@ -2653,6 +2653,9 @@
           }
         }
       }
+    },
+    "edition_templates": {
+      "hypermedia": "edition_hypermedia"
     }
   }
 }

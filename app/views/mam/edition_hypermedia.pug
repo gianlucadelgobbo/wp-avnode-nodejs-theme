@@ -1,0 +1,106 @@
+extends layout
+block content
+  - var ticketsUrl = lang_preurl+'/editions/hypermedia/tickets/'
+
+  section.hy-hero
+    .hy-hero__bg
+      if result.featured && result.featured.full
+        img.hy-hero__bg-img(src=result.featured.full, alt=page_data.title)
+      else if result.featured && result.featured.thumbnail
+        img.hy-hero__bg-img(src=result.featured.thumbnail, alt=page_data.title)
+    .hy-hero__overlay
+    .hy-hero__content.container
+      h1.hy-hero__title!=page_data.title
+      if result['wpcf-subtitle']
+        p.hy-hero__subtitle!=result['wpcf-subtitle']
+      a.btn.btn-primary.btn-lg.hy-hero__cta(href=ticketsUrl)=global.__('Buy Tickets')
+      .hy-hero__icons
+        .hy-hero__icon
+          i.icon-videocam
+          span=global.__('Video Mapping')
+        .hy-hero__icon
+          i.icon-music
+          span=global.__('Live Music')
+        .hy-hero__icon
+          i.icon-picture
+          span=global.__('Interactive Art')
+
+  section.hy-intro
+    .container
+      .row.justify-content-center
+        .col-lg-9
+          if result.post_content
+            .hy-intro__content!=result.post_content
+          else
+            h2.hy-intro__title!=page_data.title
+
+  section.hy-experience
+    .container
+      h2.hy-section-title=global.__('The Experience')
+      .row
+        .col-md-4.mb-4
+          .hy-exp-card
+            if result.featured && result.featured.thumbnail
+              img.hy-exp-card__img(src=result.featured.thumbnail, alt=global.__('Video Mapping'))
+            .hy-exp-card__title=global.__('Video Mapping')
+            p.hy-exp-card__desc=global.__('Monumental projections that transform architecture into living art.')
+        .col-md-4.mb-4
+          .hy-exp-card
+            if result.featured && result.featured.thumbnail
+              img.hy-exp-card__img(src=result.featured.thumbnail, alt=global.__('Live Music'))
+            .hy-exp-card__title=global.__('Live Music')
+            p.hy-exp-card__desc=global.__('An original soundtrack that immerses you in the narrative.')
+        .col-md-4.mb-4
+          .hy-exp-card
+            if result.featured && result.featured.thumbnail
+              img.hy-exp-card__img(src=result.featured.thumbnail, alt=global.__('Interactive Art'))
+            .hy-exp-card__title=global.__('Interactive Art')
+            p.hy-exp-card__desc=global.__('Works that respond to your presence and invite participation.')
+
+  section.hy-info
+    .container
+      .hy-info__block
+        .hy-info__content
+          h2.hy-section-title=global.__('Info')
+          ul.hy-info__list
+            if result.avnode && result.avnode.performances && result.avnode.performances[0] && result.avnode.performances[0].bookings && result.avnode.performances[0].bookings[0] && result.avnode.performances[0].bookings[0].schedule && result.avnode.performances[0].bookings[0].schedule[0]
+              - var s = result.avnode.performances[0].bookings[0].schedule[0]
+              li.hy-info__item
+                i.icon-calendar
+                span
+                  strong=global.__('Date')+': '
+                  =s.boxDateFull
+            if result['wpcf-orari']
+              li.hy-info__item
+                i.icon-clock
+                span
+                  strong=global.__('Opening Hours')+': '
+                  !=result['wpcf-orari']
+            if result.avnode && result.avnode.performances && result.avnode.performances[0] && result.avnode.performances[0].humanDuration
+              li.hy-info__item
+                i.icon-hourglass
+                span
+                  strong=global.__('Duration')+': '
+                  =result.avnode.performances[0].humanDuration
+            if result['wpcf-venue'] || (result.avnode && result.avnode.performances && result.avnode.performances[0] && result.avnode.performances[0].bookings && result.avnode.performances[0].bookings[0] && result.avnode.performances[0].bookings[0].schedule && result.avnode.performances[0].bookings[0].schedule[0] && result.avnode.performances[0].bookings[0].schedule[0].venue)
+              - var venueStr = result['wpcf-venue'] || (result.avnode.performances[0].bookings[0].schedule[0].venue && result.avnode.performances[0].bookings[0].schedule[0].venue.name) || ''
+              if venueStr
+                li.hy-info__item
+                  i.icon-location
+                  span
+                    strong=global.__('Location')+': '
+                    =venueStr
+            if result['wpcf-price']
+              li.hy-info__item
+                i.icon-money
+                span
+                  strong=global.__('Price')+': '
+                  !=result['wpcf-price']
+          a.btn.btn-primary.btn-lg.mt-4(href=ticketsUrl)=global.__('Buy Tickets')
+        if result.featured && result.featured.full
+          .hy-info__visual
+            img.hy-info__img(src=result.featured.full, alt=page_data.title)
+
+  section.hy-program.container.mt-5
+    h2.hy-section-title=global.__('Program')
+    include ../_partials/inc_grid

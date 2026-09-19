@@ -52,7 +52,8 @@ exports.get = function get(req, res) {
           clientToken = jsonResponse.client_token,
           template = config.prefix+'/'+'edition';
         } else {
-          template = config.prefix+'/'+'edition';
+          var editionTemplates = config.edition_templates || {};
+          template = config.prefix+'/'+(editionTemplates[req.params.edition] || 'edition');
         }
         if (template) {
           res.render(template, {result: result, req_params:req.params, page_data:page_data, sessions:req.session.sessions,rientro:rientro, include_gallery: include_gallery,include_paypal: include_paypal, clientToken:clientToken, clientId:clientId});
