@@ -14,7 +14,8 @@ block content
               img.hy-hero__bg-img(src=heroBase+img+'.jpg', alt=page_data.title+' '+img)
     .hy-hero__overlay
     .hy-hero__content.container
-      h1.hy-hero__title!=page_data.title
+      h1.hy-hero__title
+        img.img-fluid(itemprop='image', src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/08/HyperMedia-logo-web.svg', alt='HyperMedia')
       if result['wpcf-subtitle']
         p.hy-hero__subtitle!=result['wpcf-subtitle']
       a.btn.btn-primary.btn-lg.hy-hero__cta(href=ticketsUrl)=global.__('Buy Tickets')

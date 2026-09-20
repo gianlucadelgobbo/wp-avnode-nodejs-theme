@@ -102,11 +102,8 @@ nav .btn-group .dropdown-toggle {
     color: #fff;
   }
   &__title {
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: -1px;
     margin-bottom: 1rem;
+    img { max-width: 400px; width: 60%; }
   }
   &__subtitle {
     font-size: 1.25rem;
