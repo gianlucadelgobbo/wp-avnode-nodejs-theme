@@ -11,8 +11,8 @@ ul.navbar-nav.mr-auto
     a.nav-link(href=lang_preurl + '/education/')=global.__('Education')
   li.nav-item(class=page_data.url.indexOf(lang_preurl + '/collection') == 0 ? "active" : undefined)
     a.nav-link(href=lang_preurl + '/collection/')=global.__('Collection')
-  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/visit') == 0 ? "active" : undefined)
-    a.nav-link(href=lang_preurl + '/visit/')=global.__('Visit')
+  li.nav-item(class=page_data.url.indexOf(lang_preurl + '/tickets') == 0 ? "active" : undefined)
+    a.nav-link.hy-nav-cta(href=lang_preurl + '/tickets/')=global.__('Tickets')
 ul.navbar-nav
   li.nav-item.lang-it(class=page_data.langSwitcher["it"] == page_data.url ? 'active' : '')
     a.nav-link(href=page_data.langSwitcher["it"], hreflang='it', title='Italiano') IT

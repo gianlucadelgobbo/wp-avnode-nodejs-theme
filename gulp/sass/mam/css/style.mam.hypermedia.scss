@@ -45,6 +45,19 @@ ol,
   font-weight: bold;
 }
 
+// MAIN NAV CTA
+.nav-item .hy-nav-cta {
+  background: $hypermedia-primary;
+  color: $mam-background !important;
+  font-weight: 700;
+  border-radius: 2px;
+  margin-left: .5rem;
+  &:hover {
+    opacity: .85;
+    color: $mam-background !important;
+  }
+}
+
 // EDITION NAV – parallelogram buttons
 nav .btn-group .btn {
   transform: skewX(-20deg);
@@ -204,8 +217,12 @@ nav .btn-group .dropdown-toggle {
 
 // INFO
 .hy-info {
-  padding: 5rem 0;
+  padding: 2rem;
+  background: #000;
 
+  .row {
+    align-items: stretch;
+  }
   &__block {
     display: flex;
     flex-wrap: wrap;
@@ -215,13 +232,17 @@ nav .btn-group .dropdown-toggle {
   &__content {
     flex: 1 1 380px;
   }
-  &__visual {
-    flex: 0 0 340px;
-    max-width: 100%;
-    img {
-      width: 100%;
-      object-fit: cover;
-    }
+  &__img-col {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  &__img {
+    flex: 1;
+    width: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    display: block;
   }
 }
 
@@ -260,9 +281,78 @@ nav .btn-group .dropdown-toggle {
   }
 }
 
+// LOCATION
+.hy-location {
+  background: #0a0a0a;
+
+  .row {
+    align-items: stretch;
+  }
+  &__map-col {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+  }
+  &__map {
+    flex: 1;
+    width: 100%;
+    border: 0;
+    display: block;
+    filter: grayscale(100%) invert(90%) contrast(90%);
+  }
+  &__info {
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__address {
+    font-style: normal;
+    color: $mam-text;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    strong {
+      display: block;
+      font-size: 1.1rem;
+      color: $hypermedia-primary;
+      margin-bottom: .25rem;
+    }
+  }
+}
+
 // PROGRAM
 .hy-program {
   padding-bottom: 4rem;
+}
+
+// ARTISTS
+.hy-artists {
+  padding: 5rem 0;
+  background: $mam-surface;
+
+  &__grid {
+    columns: 3;
+    column-gap: 2rem;
+    @media (max-width: 991px) { columns: 2; }
+    @media (max-width: 575px) { columns: 1; }
+  }
+}
+.hy-artist-item {
+  break-inside: avoid;
+  padding: .5rem 0;
+  border-bottom: 1px solid $mam-border;
+  font-size: .9rem;
+  line-height: 1.5;
+
+  strong {
+    color: $hypermedia-primary;
+    font-weight: 700;
+  }
+  span {
+    color: $mam-text-secondary;
+  }
 }
 
 @media (max-width: 767px) {

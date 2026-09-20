@@ -26,90 +26,237 @@ block content
 
   section.hy-intro
     .container
-      .text-center!=result.post_content
+      .row
+        .col-md-3.mb-4
+        .col-md-6.mb-4
+          .text-center!=result.post_content
 
   section.hy-experience
     .container
-      h2.hy-section-title=global.__('The Experience')
+      h2.hy-section-title.text-center=global.__('The Experience')
       .row
         .col-md-4.mb-4
           .hy-exp-card
             if result.featured && result.featured.thumbnail
-              img.hy-exp-card__img(src=result.featured.thumbnail, alt=global.__('Immersive Art'))
+              img.hy-exp-card__img(src="https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/SELECTA-HM-immersive.jpg", alt=global.__('Immersive Art'))
             .hy-exp-card__title=global.__('Immersive Art')
             p.hy-exp-card__desc=global.__('Monumental projections that transform architecture into living art.')
         .col-md-4.mb-4
           .hy-exp-card
             if result.featured && result.featured.thumbnail
-              img.hy-exp-card__img(src=result.featured.thumbnail, alt=global.__('AI Art'))
+              img.hy-exp-card__img(src="https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/SELECTA-HM-ai.jpg", alt=global.__('AI Art'))
             .hy-exp-card__title=global.__('AI Art')
             p.hy-exp-card__desc=global.__('Artificial intelligence creating immersive experiences.')
         .col-md-4.mb-4
           .hy-exp-card
             if result.featured && result.featured.thumbnail
-              img.hy-exp-card__img(src=result.featured.thumbnail, alt=global.__('Net Art'))
+              img.hy-exp-card__img(src="https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/SELECTA-HM-net-art.jpg", alt=global.__('Net Art'))
             .hy-exp-card__title=global.__('Net Art')
             p.hy-exp-card__desc=global.__('Interactive digital installations that explore the relationship between technology and art.')
 
-  section.hy-info
+  section
     .container
-      .hy-info__block
-        .hy-info__content
-          h2.hy-section-title=global.__('Info')
-          ul.how-to-buy
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 448 512')
-                  path(fill='currentColor' d='M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336z')
-                span.how-to-buy__title=global.__('Date')+':'
-              span=result.data_evento
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 384 512')
-                  path(fill='currentColor' d='M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32z')
-                span.how-to-buy__title=global.__('Opening Hours')+':'
-              span —
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 384 512')
-                  path(fill='currentColor' d='M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32z')
-                span.how-to-buy__title=global.__('Duration')+':'
-              span —
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 384 512')
-                  path(fill='currentColor' d='M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z')
-                span.how-to-buy__title=global.__('Location')+':'
-              span —
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 576 512')
-                  path(fill='currentColor' d='M0 112.5V422.3c0 18 10.1 35 27 41.3c87 32.5 174 10.3 261-11.9c79.8-20.3 159.6-40.7 239.3-18.9c23 6.3 48.7-9.5 48.7-33.4V89.7c0-18-10.1-35-27-41.3C462 15.9 375 38.1 288 60.3C208.2 80.6 128.4 100.9 48.7 79.1C25.6 72.8 0 88.6 0 112.5zM288 352c-44.2 0-80-43-80-96s35.8-96 80-96s80 43 80 96s-35.8 96-80 96z')
-                span.how-to-buy__title=global.__('Price')+':'
-              span —
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 512 512')
-                  path(fill='currentColor' d='M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM120.5 247.2c12.4-4.7 18.7-18.5 14-30.9s-18.5-18.7-30.9-14C43.1 225.1 0 283.5 0 352c0 88.4 71.6 160 160 160c61.2 0 114.3-34.3 141.2-84.7c6.2-11.7 1.8-26.2-9.9-32.5s-26.2-1.8-32.5 9.9C240 440 202.8 464 160 464C98.1 464 48 413.9 48 352c0-47.9 30.1-88.8 72.5-104.8z')
-                span.how-to-buy__title=global.__('Minimum age')+':'
-              span —
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 512 512')
-                  path(fill='currentColor' d='M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM120.5 247.2c12.4-4.7 18.7-18.5 14-30.9s-18.5-18.7-30.9-14C43.1 225.1 0 283.5 0 352c0 88.4 71.6 160 160 160c61.2 0 114.3-34.3 141.2-84.7c6.2-11.7 1.8-26.2-9.9-32.5s-26.2-1.8-32.5 9.9C240 440 202.8 464 160 464C98.1 464 48 413.9 48 352c0-47.9 30.1-88.8 72.5-104.8z')
-                span.how-to-buy__title=global.__('Accessibility')+':'
-              span —
-            li.how-to-buy__item
-              .how-to-buy__item--container
-                svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 576 512')
-                  path(fill='currentColor' d='M64 64C28.7 64 0 92.7 0 128v64c0 8.8 7.4 15.7 15.7 18.6C34.5 217.1 48 235 48 256s-13.5 38.9-32.3 45.4C7.4 304.3 0 311.2 0 320v64c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V320c0-8.8-7.4-15.7-15.7-18.6C541.5 294.9 528 277 528 256s13.5-38.9 32.3-45.4c8.3-2.9 15.7-9.8 15.7-18.6V128c0-35.3-28.7-64-64-64H64z')
-                span.how-to-buy__title=global.__('Ticket types')+':'
-              span —
-          a.btn.btn-primary.btn-lg.mt-4(href=ticketsUrl)=global.__('Buy Tickets')
-        if result.featured && result.featured.full
-          .hy-info__visual
-            img.hy-info__img(src=result.featured.full, alt=page_data.title)
+      .row
+        .col-md-1.mb-4
+        .col-md-10.mb-4
+          .hy-info
+            .container
+              .row
+                .col-md-6.mb-4
+                  .hy-info__block
+                    .hy-info__content
+                      h2.hy-section-title=global.__('Info')
+                      ul.how-to-buy
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 448 512')
+                              path(fill='currentColor' d='M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336z')
+                            span.how-to-buy__title=global.__('Date')+': '
+                            span=global.__('dal 9 ottobre')
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 384 512')
+                              path(fill='currentColor' d='M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32z')
+                            span.how-to-buy__title=global.__('Opening Hours')+': '
+                            span=global.__('dalle 11:00 alle 19:00')
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 384 512')
+                              path(fill='currentColor' d='M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32z')
+                            span.how-to-buy__title=global.__('Duration')+': '
+                            span=global.__('2 ora circa')
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 384 512')
+                              path(fill='currentColor' d='M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z')
+                            span.how-to-buy__title=global.__('Location')+': '
+                            span!="MAM - Media Art Museum, Corso d'Italia 37/D, 00198 Roma"
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 576 512')
+                              path(fill='currentColor' d='M0 112.5V422.3c0 18 10.1 35 27 41.3c87 32.5 174 10.3 261-11.9c79.8-20.3 159.6-40.7 239.3-18.9c23 6.3 48.7-9.5 48.7-33.4V89.7c0-18-10.1-35-27-41.3C462 15.9 375 38.1 288 60.3C208.2 80.6 128.4 100.9 48.7 79.1C25.6 72.8 0 88.6 0 112.5zM288 352c-44.2 0-80-43-80-96s35.8-96 80-96s80 43 80 96s-35.8 96-80 96z')
+                            span.how-to-buy__title=global.__('Price')+': '
+                            span=global.__('Intero € 20,00')
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 512 512')
+                              path(fill='currentColor' d='M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM120.5 247.2c12.4-4.7 18.7-18.5 14-30.9s-18.5-18.7-30.9-14C43.1 225.1 0 283.5 0 352c0 88.4 71.6 160 160 160c61.2 0 114.3-34.3 141.2-84.7c6.2-11.7 1.8-26.2-9.9-32.5s-26.2-1.8-32.5 9.9C240 440 202.8 464 160 464C98.1 464 48 413.9 48 352c0-47.9 30.1-88.8 72.5-104.8z')
+                            span.how-to-buy__title=global.__('Minimum age')+': '
+                            span=global.__('Anche minori se accompagnati da un adulto')
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 512 512')
+                              path(fill='currentColor' d='M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM120.5 247.2c12.4-4.7 18.7-18.5 14-30.9s-18.5-18.7-30.9-14C43.1 225.1 0 283.5 0 352c0 88.4 71.6 160 160 160c61.2 0 114.3-34.3 141.2-84.7c6.2-11.7 1.8-26.2-9.9-32.5s-26.2-1.8-32.5 9.9C240 440 202.8 464 160 464C98.1 464 48 413.9 48 352c0-47.9 30.1-88.8 72.5-104.8z')
+                            span.how-to-buy__title=global.__('Accessibility')+': '
+                            span=global.__('Piena accessibilità per persone con disabilità motoria')
+                        li.how-to-buy__item
+                          .how-to-buy__item--container
+                            svg(xmlns='http://www.w3.org/2000/svg' role='img' aria-hidden='true' focusable='false' viewBox='0 0 576 512')
+                              path(fill='currentColor' d='M64 64C28.7 64 0 92.7 0 128v64c0 8.8 7.4 15.7 15.7 18.6C34.5 217.1 48 235 48 256s-13.5 38.9-32.3 45.4C7.4 304.3 0 311.2 0 320v64c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V320c0-8.8-7.4-15.7-15.7-18.6C541.5 294.9 528 277 528 256s13.5-38.9 32.3-45.4c8.3-2.9 15.7-9.8 15.7-18.6V128c0-35.3-28.7-64-64-64H64z')
+                            span.how-to-buy__title=global.__('Ticket types')+': '
+                            span=global.__('Intero, Ridotto, Ridotto Gruppi, Ridotto Scuole')
+                      a.btn.btn-primary.btn-lg.mt-4(href=ticketsUrl)=global.__('Buy Tickets')
+                .col-md-6.hy-info__img-col
+                  img.hy-info__img(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/SELECTA-HM-02.jpg', alt=global.__('Info HyperMedia'))
 
-  section.hy-program.container.mt-5
-    h2.hy-section-title=global.__('Program')
-    include ../_partials/inc_grid
+  section
+    .container
+      .row
+        .col-md-1.mb-4
+        .col-md-10.mb-4
+          .hy-location
+            .container
+              .row.align-items-stretch
+                .col-md-6.hy-location__map-col
+                  iframe.hy-location__map(src="https://maps.google.com/maps?q=Corso+d%27Italia+37%2FD%2C+00198+Roma&output=embed&z=16&hl=it", frameborder='0', allowfullscreen='', loading='lazy', referrerpolicy='no-referrer-when-downgrade')
+                .col-md-6.hy-location__info
+                  h2.hy-section-title=global.__('Come arrivare')
+                  address.hy-location__address
+                    strong MAM - Media Art Museum
+                    br
+                    | Corso d'Italia 37/D
+                    br
+                    | 00198 Roma
+                  ul.how-to-buy
+                    li.how-to-buy__item
+                      .how-to-buy__item--container
+                        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512' role='img' aria-hidden='true' focusable='false')
+                          path(fill='currentColor' d='M384 112v96H192v-96c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48zM576 208v240c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V208c0-26.5 21.5-48 48-48h16v-48C64 50.1 114.1 0 176 0h224c61.9 0 112 50.1 112 112v48h16c26.5 0 48 21.5 48 48z')
+                        span.how-to-buy__title Metro:
+                        span=global.__('Metro A — Fermata Policlinico o Spagna')
+                    li.how-to-buy__item
+                      .how-to-buy__item--container
+                        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' role='img' aria-hidden='true' focusable='false')
+                          path(fill='currentColor' d='M176 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h16V98.4C92.3 113.8 16 200 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-104-76.3-190.2-176-205.6V64h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H224 176zm72 192c0-13.3-10.7-24-24-24s-24 10.7-24 24V320c0 13.3 10.7 24 24 24s24-10.7 24-24V192z')
+                        span.how-to-buy__title Bus:
+                        span=global.__('Linee 52, 53, 63, 83, 217, 360, 910')
+                    li.how-to-buy__item
+                      .how-to-buy__item--container
+                        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512' role='img' aria-hidden='true' focusable='false')
+                          path(fill='currentColor' d='M171.3 96H224v96H111.3l30.4-75.9C146.5 104 158.2 96 171.3 96zM272 192V96h81.2c9.7 0 18.9 4.4 25 12l67.2 84H272zm256.2 1L428.2 68c-18.2-22.8-45.8-36-75-36H171.3c-39.3 0-74.6 23.9-89.1 60.3L40.6 196.4C16.8 205.8 0 228.9 0 256V368c0 17.7 14.3 32 32 32H65.3c7.6 45.4 47.1 80 94.7 80s87.1-34.6 94.7-80H385.3c7.6 45.4 47.1 80 94.7 80s87.1-34.6 94.7-80H608c17.7 0 32-14.3 32-32V320c0-65.2-48.8-119-111.8-127zM160 432a48 48 0 1 1 0-96 48 48 0 1 1 0 96zm336 0a48 48 0 1 1 0-96 48 48 0 1 1 0 96z')
+                        span.how-to-buy__title Parcheggio:
+                        span=global.__('Villa Borghese parcheggio sotterraneo')
+
+  section.hy-artists
+    .container.text-center
+      h2.hy-section-title=global.__('Artisti')
+      .hy-artists__grid
+        .hy-artist-item
+          strong Agostino Maria Ticino
+          span  · Italy Rome, Foligno
+        .hy-artist-item
+          strong Alice Felloni
+          span  · Italy Roma
+        .hy-artist-item
+          strong Andrea Sztojánovits
+          span  · Hungary Budapest
+        .hy-artist-item
+          strong Angela D'Onghia
+          span  · Italia Roma
+        .hy-artist-item
+          strong Anna Bacheva
+          span  · France Paris
+        .hy-artist-item
+          strong Benjamin Jantzen
+          span  · Germany Mannheim
+        .hy-artist-item
+          strong Bruno Tripodi
+          span  · Germany Berlin, Chile Santiago
+        .hy-artist-item
+          strong Carlo Alfano
+          span  · Italy Rome, Genoa
+        .hy-artist-item
+          strong Dario Buratti
+          span  · Italy Milan
+        .hy-artist-item
+          strong David Szauder
+          span  · Hungary Budapest, Germany Berlin
+        .hy-artist-item
+          strong Deliriouniversale.com
+          span  · Italy Roma, United Kingdom London
+        .hy-artist-item
+          strong Digital Experience Collective
+          span  · Switzerland Geneva, France Paris, Turkey Istanbul, Izmir, Estonia Tallinn
+        .hy-artist-item
+          strong FLxER
+          span  · Italy Roma, Rome, Bologna, Bergamo, Hungary Budapest
+        .hy-artist-item
+          strong Francesca Fini
+          span  · Italy Roma
+        .hy-artist-item
+          strong Gmunk
+          span  · United States New York
+        .hy-artist-item
+          strong Infratonal
+          span  · France Paris
+        .hy-artist-item
+          strong Jaromil
+          span  · Netherlands Amsterdam
+        .hy-artist-item
+          strong Joshua Davis
+          span  · United States New York
+        .hy-artist-item
+          strong Kati Katona
+          span  · Hungary Budapest
+        .hy-artist-item
+          strong Konx-om-Pax
+          span  · United Kingdom Glasgow
+        .hy-artist-item
+          strong Lake Heckaman
+          span  · United States New York
+        .hy-artist-item
+          strong liz
+          span  · Italy Roma
+        .hy-artist-item
+          strong martae
+          span  · Italia Roma
+        .hy-artist-item
+          strong Pandelis Diamantides
+          span  · Netherlands Amsterdam
+        .hy-artist-item
+          strong Perfectloop
+          span  · United States Denver
+        .hy-artist-item
+          strong Ross Mawdsley
+          span  · United Kingdom Manchester
+        .hy-artist-item
+          strong Sarv
+          span  · Germany Berlin, France Tours
+        .hy-artist-item
+          strong Sergey Prokofyev
+          span  · Germany
+        .hy-artist-item
+          strong Simona Vacca
+          span  · Italia Roma
+        .hy-artist-item
+          strong Stanislav Glazov
+          span  · Germany Berlin
+        .hy-artist-item
+          strong Susan Kosti
+          span  · Australia Sydney
+        .hy-artist-item
+          strong V3rbo
+          span  · Italy Bergamo
+        .hy-artist-item
+          strong MAM Media Art Museum
+
