@@ -1,6 +1,6 @@
 extends layout
 block content
-  - var ticketsUrl = lang_preurl+'/editions/hypermedia/tickets/'
+  - var ticketsUrl = lang_preurl+'/tickets/'
 
   - var heroImgs = ['SELECTA-HM-00','SELECTA-HM-01','SELECTA-HM-02','SELECTA-HM-03','SELECTA-HM-04','SELECTA-HM-05','SELECTA-HM-06','SELECTA-HM-07']
   - var heroBase = 'https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/'
@@ -19,16 +19,10 @@ block content
       if result['wpcf-subtitle']
         p.hy-hero__subtitle!=result['wpcf-subtitle']
       a.btn.btn-primary.btn-lg.hy-hero__cta(href=ticketsUrl)=global.__('Buy Tickets')
-      .hy-hero__icons
-        .hy-hero__icon
-          i.icon-videocam
-          span=global.__('Video Mapping')
-        .hy-hero__icon
-          i.icon-music
-          span=global.__('Live Music')
-        .hy-hero__icon
-          i.icon-picture
-          span=global.__('Interactive Art')
+      .hy-hero__tags
+        span.hy-hero__tag Immersive Experience
+        span.hy-hero__tag AI Art
+        span.hy-hero__tag Net Art
 
   section.hy-intro
     .container
