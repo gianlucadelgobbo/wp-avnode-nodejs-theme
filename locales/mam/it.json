@@ -70,10 +70,10 @@
   "Satellite Events": "Satellite Events",
   "Model 231": "Model 231",
   "Downloads": "Downloads",
-  "performers": "performers",
-  "peoples": "peoples",
-  "from": "from",
-  "playing": "playing",
+  "performers": "performer",
+  "people": "persone",
+  "from": "da",
+  "playing": "con",
   "<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!": "<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!",
   "ATTENTION LAST TICKETS AVAILABES": "ATTENTION LAST TICKETS AVAILABES",
   "BUY A TICKET": "BUY A TICKET",
@@ -117,5 +117,6 @@
   "Media partner": "Media partner",
   "Sponsored by": "Sponsored by",
   "Network": "Network",
-  "More": "More"
+  "More": "More",
+  "artists": "artisti"
 }

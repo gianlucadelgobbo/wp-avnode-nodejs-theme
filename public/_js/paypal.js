@@ -289,11 +289,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
         if (mode === "by-people") {
           const total = cost * numPeople;
-          row.querySelector(".peoples").innerText = numPeople;
+          row.querySelector(".people").innerText = numPeople;
           row.querySelector(".total").innerText = `€ ${total.toFixed(2)}`;
         } else if (mode === "by-people-by-day") {
           const total = cost * numPeople * days;
-          row.querySelector(".peoples").innerText = numPeople;
+          row.querySelector(".people").innerText = numPeople;
           row.querySelector(".days").innerText = days;
           row.querySelector(".total").innerText = `€ ${total.toFixed(2)}`;
         }

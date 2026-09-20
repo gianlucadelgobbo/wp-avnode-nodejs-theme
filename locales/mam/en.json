@@ -71,7 +71,7 @@
   "Model 231": "Model 231",
   "Downloads": "Downloads",
   "performers": "performers",
-  "peoples": "peoples",
+  "people": "people",
   "from": "from",
   "playing": "playing",
   "<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!": "<b>ATTENTION!!!</b> The programming is not yet final. Please come back!!!",
@@ -117,5 +117,6 @@
   "Media partner": "Media partner",
   "Sponsored by": "Sponsored by",
   "Network": "Network",
-  "More": "More"
+  "More": "More",
+  "artists": "artists"
 }
