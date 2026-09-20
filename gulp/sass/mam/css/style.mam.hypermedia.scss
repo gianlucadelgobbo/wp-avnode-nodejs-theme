@@ -7,6 +7,9 @@ body {
   background-attachment: fixed;
   color: $mam-text;
 }
+.performance-dett .perf-schedule {
+  display: none;
+}
 .tickets {
   color: #FFF;
   font-weight: 700;
@@ -160,7 +163,7 @@ nav .btn-group .dropdown-toggle {
 
 // INTRO
 .hy-intro {
-  padding: 5rem 0;
+  padding: 3rem 0 0 0;
   background: linear-gradient(180deg, $mam-background 0%, rgba(21,21,21,0) 100%);
 
   &__content {
@@ -196,7 +199,7 @@ nav .btn-group .dropdown-toggle {
 
 // EXPERIENCE
 .hy-experience {
-  padding: 5rem 0;
+  padding: 3rem 0;
   background: $mam-surface;
 }
 .hy-exp-card {
