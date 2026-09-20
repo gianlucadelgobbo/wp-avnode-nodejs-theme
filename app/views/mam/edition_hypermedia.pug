@@ -2,12 +2,16 @@ extends layout
 block content
   - var ticketsUrl = lang_preurl+'/editions/hypermedia/tickets/'
 
+  - var heroImgs = ['SELECTA-HM-00','SELECTA-HM-01','SELECTA-HM-02','SELECTA-HM-03','SELECTA-HM-04','SELECTA-HM-05','SELECTA-HM-06','SELECTA-HM-07']
+  - var heroBase = 'https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/'
+
   section.hy-hero
     .hy-hero__bg
-      if result.featured && result.featured.full
-        img.hy-hero__bg-img(src=result.featured.full, alt=page_data.title)
-      else if result.featured && result.featured.thumbnail
-        img.hy-hero__bg-img(src=result.featured.thumbnail, alt=page_data.title)
+      #hyCarousel.carousel.slide(data-ride='carousel', data-interval='4000', data-pause='false')
+        .carousel-inner
+          each img, i in heroImgs
+            .carousel-item(class=i===0?'active':'')
+              img.hy-hero__bg-img(src=heroBase+img+'.jpg', alt=page_data.title+' '+img)
     .hy-hero__overlay
     .hy-hero__content.container
       h1.hy-hero__title!=page_data.title
