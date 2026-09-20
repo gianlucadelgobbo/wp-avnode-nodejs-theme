@@ -80,7 +80,7 @@
   "Buy Tickets": "Buy Tickets",
   "The Experience": "The Experience",
   "Video Mapping": "Video Mapping",
-  "Monumental projections that transform architecture into living art.": "Monumental projections that transform architecture into living art.",
+  "The artwork expands beyond the screen, transforming image, sound, code and space into an environment the audience can enter.": "The artwork expands beyond the screen, transforming image, sound, code and space into an environment the audience can enter.",
   "Live Music": "Live Music",
   "An original soundtrack that immerses you in the narrative.": "An original soundtrack that immerses you in the narrative.",
   "Interactive Art": "Interactive Art",
@@ -92,8 +92,8 @@
   "Immersive Art": "Immersive Art",
   "AI Art": "AI Art",
   "Net Art": "Net Art",
-  "Artificial intelligence creating immersive experiences.": "Artificial intelligence creating immersive experiences.",
-  "Interactive digital installations that explore the relationship between technology and art.": "Interactive digital installations that explore the relationship between technology and art.",
+  "Artificial intelligence as an artistic tool for generating, transforming and performing images, as part of a practice that spans decades.": "Artificial intelligence as an artistic tool for generating, transforming and performing images, as part of a practice that spans decades.",
+  "The network becomes the medium and the space of the artwork, connecting code, images, links and interaction.": "The network becomes the medium and the space of the artwork, connecting code, images, links and interaction.",
   "Minimum age": "Minimum age",
   "Accessibility": "Accessibility",
   "Ticket types": "Ticket types",
@@ -110,5 +110,11 @@
   "Metro A — Fermata Policlinico o Spagna": "Metro A — Fermata Policlinico o Spagna",
   "Linee 52, 53, 63, 83, 217, 360, 910": "Linee 52, 53, 63, 83, 217, 360, 910",
   "Villa Borghese parcheggio sotterraneo": "Villa Borghese parcheggio sotterraneo",
-  "Artisti": "Artisti"
+  "Artisti": "Artisti",
+  "Prodotto da": "Produced by",
+  "In collaborazione con": "In collaboration with",
+  "Con il patrocinio di": "With the support of",
+  "Media partner": "Media partner",
+  "Sponsored by": "Sponsored by",
+  "Network": "Network"
 }

@@ -80,7 +80,7 @@
   "Buy Tickets": "Acquista biglietti",
   "The Experience": "L'Esperienza",
   "Video Mapping": "Video Mapping",
-  "Monumental projections that transform architecture into living art.": "Proiezioni monumentali che trasformano l architettura in arte vivente.",
+  "The artwork expands beyond the screen, transforming image, sound, code and space into an environment the audience can enter.": "L'opera supera i confini dello schermo e trasforma immagini, suono, codice e spazio in un ambiente nel quale il pubblico può entrare.",
   "Live Music": "Musica dal vivo",
   "An original soundtrack that immerses you in the narrative.": "Una colonna sonora originale che ti immerge nella narrazione.",
   "Interactive Art": "Arte interattiva",
@@ -92,8 +92,8 @@
   "Immersive Art": "Immersive Art",
   "AI Art": "AI Art",
   "Net Art": "Net Art",
-  "Artificial intelligence creating immersive experiences.": "Artificial intelligence creating immersive experiences.",
-  "Interactive digital installations that explore the relationship between technology and art.": "Interactive digital installations that explore the relationship between technology and art.",
+  "Artificial intelligence as an artistic tool for generating, transforming and performing images, as part of a practice that spans decades.": "L'intelligenza artificiale come strumento artistico per generare, trasformare e performare immagini, all'interno di una pratica che attraversa ormai diversi decenni.",
+  "The network becomes the medium and the space of the artwork, connecting code, images, links and interaction.": "La rete diventa medium e spazio dell'opera, mettendo in relazione codice, immagini, link e interazione.",
   "Minimum age": "Età minima",
   "Accessibility": "Accessibilità",
   "Ticket types": "Tipi di biglietti",
@@ -110,5 +110,11 @@
   "Metro A — Fermata Policlinico o Spagna": "Metro A — Fermata Policlinico o Spagna",
   "Linee 52, 53, 63, 83, 217, 360, 910": "Linee 52, 53, 63, 83, 217, 360, 910",
   "Villa Borghese parcheggio sotterraneo": "Villa Borghese parcheggio sotterraneo",
-  "Artisti": "Artisti"
+  "Artisti": "Artisti",
+  "Prodotto da": "Prodotto da",
+  "In collaborazione con": "In collaborazione con",
+  "Con il patrocinio di": "Con il patrocinio di",
+  "Media partner": "Media partner",
+  "Sponsored by": "Sponsored by",
+  "Network": "Network"
 }

@@ -7,6 +7,12 @@ body {
   background-attachment: fixed;
   color: $mam-text;
 }
+.tickets {
+  color: #FFF;
+  font-weight: 700;
+  background-color: #FF0000;
+  border-color: #FF0000;
+}
 .News.box-list {
   background: $mam-surface;
 }
@@ -355,10 +361,100 @@ nav .btn-group .dropdown-toggle {
   }
 }
 
+.hy-partners {
+  padding: 5rem 0 4rem;
+  background: $mam-background;
+  border-top: 1px solid $mam-border;
+  text-align: center;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__header-logo {
+    height: 60px;
+    width: auto;
+    max-width: 300px;
+    filter: brightness(0) invert(1);
+  }
+
+  &__main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 3rem;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 3rem;
+
+    & + & {
+      border-left: 1px solid $mam-border;
+    }
+  }
+
+  &__label {
+    margin: 0;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: $mam-text-secondary;
+    white-space: nowrap;
+  }
+
+  &__logo {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+  }
+
+  &__sponsored-title {
+    text-align: center;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: $mam-text-secondary;
+    margin-bottom: 2rem;
+  }
+
+  &__sponsors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem 3rem;
+  }
+
+  &__sponsor-logo {
+    height: 40px;
+    width: auto;
+    max-width: 100px;
+  }
+}
+
 @media (max-width: 767px) {
   .hy-hero {
     min-height: 70vh;
     &__icons { gap: 1.25rem; }
   }
   .hy-info__visual { flex-basis: 100%; }
+  .hy-partners {
+    &__main { flex-direction: column; align-items: center; gap: 1.5rem; }
+    &__group {
+      padding: 1rem 0;
+      & + & {
+        border-left: none;
+        border-top: 1px solid $mam-border;
+        padding-top: 1rem;
+      }
+    }
+  }
 }

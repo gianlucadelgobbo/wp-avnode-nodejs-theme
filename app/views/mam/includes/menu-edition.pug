@@ -12,3 +12,6 @@ ul.pl-0
             li(class=child.post_status == 'publish' ? undefined : "disabled")
               a(href=child.post_status == 'publish' ? lang_preurl+child.permalink : "#", title=child.post_title)=child.post_title
 
+  li.btn-group(class=page_data.url === lang_preurl+"tickets" ? "active" : undefined)
+    a.btn.btn-primary.btn-lg.ml-3.tickets(title=global.__('Tickets'), href=lang_preurl+"tickets")
+      span!=global.__('Tickets')
