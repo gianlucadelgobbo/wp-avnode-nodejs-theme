@@ -45,6 +45,7 @@ html(lang=sessions.current_lang)
           .sr-only(itemprop='name')=config.meta.editions[sessions.current_edition].title
         #menu-main.collapse.navbar-collapse
           include includes/menu-main
+      block banner
       //div(class=page_data.url == "/" ? "container-fluid" : "container")
       .container
         header.mt-5
@@ -63,7 +64,7 @@ html(lang=sessions.current_lang)
                   include ../_partials/components/eventdateplace_meta
               else
                 include ../_partials/components/eventdateplace_meta
-        //if page_data.url != "/" && page_data.url != "/en/" 
+        //if page_data.url != "/" && page_data.url != "/en/"
         nav.text-right.mt-3.mb-3.mt-md-5.mb-md-5
           include includes/menu-edition
 

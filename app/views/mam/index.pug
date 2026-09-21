@@ -1,4 +1,14 @@
 extends layout
+block banner
+  .container
+    .hy-banner
+      h2.hy-banner__name!=global.__('promo-title')
+      .hy-banner__text
+        !=global.__('promo-l1')
+        br
+        !=global.__('promo-l2')
+        br
+        !=global.__('promo-l3')
 block content
   mixin calCardSwiper(item)
     - var href = item.link ? '/calendar/'+item.slug+'/' : '/editions/'+item.slug+'/'
