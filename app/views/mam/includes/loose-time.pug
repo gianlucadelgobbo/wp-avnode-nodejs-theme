@@ -104,7 +104,19 @@ script.
   function init(){if(inited)return;inited=true;build();window.addEventListener("resize",function(){if(running)resize();});cv.addEventListener("pointermove",function(e){var r=cv.getBoundingClientRect(),nx=e.clientX-r.left,ny=e.clientY-r.top,now=performance.now();if(mouse.on&&lastMove){var dt2=Math.max((now-lastMove)/1000,0.004),v=Math.hypot(nx-mouse.x,ny-mouse.y)/dt2;speed+=(v-speed)*0.35;}lastMove=now;mouse.x=nx;mouse.y=ny;mouse.on=true;});cv.addEventListener("pointerdown",function(e){var r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.on=true;var lx=(mouse.x-ox)/scale,ly=(mouse.y-oy)/scale,merged=false,tol=(P.R/scale)*0.35;for(var q=0;q<pulses.length;q++){var ddx=pulses[q].x-lx,ddy=pulses[q].y-ly;if(ddx*ddx+ddy*ddy<tol*tol){pulses[q].e=Math.min(pulses[q].e+1,8);pulses[q].x=(pulses[q].x+lx)/2;pulses[q].y=(pulses[q].y+ly)/2;merged=true;break;}}if(!merged)pulses.push({x:lx,y:ly,e:1});});cv.addEventListener("pointerleave",function(){mouse.on=false;});}
   function show(){init();cv.classList.add("is-active");btn.classList.add("is-active");panel.removeAttribute("hidden");resize();running=true;last2=0;raf=requestAnimationFrame(loop);}
   function hide(){cv.classList.remove("is-active");btn.classList.remove("is-active");panel.setAttribute("hidden","");running=false;cancelAnimationFrame(raf);}
-  toggleEl.addEventListener("click",function(){if(running)hide();else show();});
+  var barsEl=btn.querySelector(".mam-loose-btn__bars");
+  var labelEl=btn.querySelector(".mam-loose-btn__label");
+  // burger/X: canvas chiuso → apre canvas+panel; canvas aperto → togogla solo il panel
+  barsEl.addEventListener("click",function(e){
+    e.stopPropagation();
+    if(!running){show();}
+    else{if(panel.hidden)panel.removeAttribute("hidden");else panel.setAttribute("hidden","");}
+  });
+  // label: canvas chiuso → apre; canvas aperto → chiude canvas+panel
+  labelEl.addEventListener("click",function(e){
+    e.stopPropagation();
+    if(!running)show();else hide();
+  });
   window.addEventListener("keydown",function(e){if(e.key==="Escape"&&running)hide();});
   // drag on wrap
   var dragging=false,dragOffX=0,dragOffY=0;
