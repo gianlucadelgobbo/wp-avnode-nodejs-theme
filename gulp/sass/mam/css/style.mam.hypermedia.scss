@@ -503,6 +503,7 @@ nav .btn-group .dropdown-toggle {
   &.is-active {
     display: block;
     pointer-events: auto;
+    touch-action: none;
   }
 }
 .mam-loose-wrap {
