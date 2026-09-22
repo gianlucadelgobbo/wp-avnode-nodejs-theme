@@ -118,10 +118,10 @@ script.
     if(!running)show();else hide();
   });
   window.addEventListener("keydown",function(e){if(e.key==="Escape"&&running)hide();});
-  // mobile: swipe-down sul canvas per chiudere
-  var swipeStartY=0;
-  cv.addEventListener("touchstart",function(e){swipeStartY=e.touches[0].clientY;},{passive:true});
-  cv.addEventListener("touchend",function(e){if(e.changedTouches[0].clientY-swipeStartY>80)hide();},{passive:true});
+  // mobile: swipe-down rapido sul canvas per chiudere (>80px in <400ms)
+  var swipeStartY=0,swipeStartT=0;
+  cv.addEventListener("touchstart",function(e){swipeStartY=e.touches[0].clientY;swipeStartT=Date.now();},{passive:true});
+  cv.addEventListener("touchend",function(e){var dy=e.changedTouches[0].clientY-swipeStartY,dt=Date.now()-swipeStartT;if(dy>80&&dt<400)hide();},{passive:true});
   // drag on wrap
   var dragging=false,dragOffX=0,dragOffY=0;
   dragHandle.addEventListener("pointerdown",function(e){
