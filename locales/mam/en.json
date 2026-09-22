@@ -122,5 +122,13 @@
   "Sponsored by": "Sponsored by",
   "Network": "Network",
   "More": "More",
-  "artists": "artists"
+  "artists": "artists",
+  "Interference area": "Interference area",
+  "Repulsion force": "Repulsion force",
+  "Return": "Return",
+  "Damping": "Damping",
+  "Buoyancy": "Buoyancy",
+  "Subdivisions": "Subdivisions",
+  "Gap": "Gap",
+  "Move the mouse over the logo. Repeated clicks = cumulative energy. Esc closes.": "Move the mouse over the logo. Repeated clicks = cumulative energy. Esc closes."
 }
