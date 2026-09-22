@@ -525,6 +525,14 @@ nav .btn-group .dropdown-toggle {
   border-top: none;
   padding: 12px 14px 10px;
   width: 240px;
+  overscroll-behavior: contain;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+  touch-action: pan-y;
+
+  @media (max-width: 767px) {
+    width: 80vw;
+  }
 
   &__row {
     display: grid;

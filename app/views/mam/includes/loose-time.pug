@@ -118,6 +118,13 @@ script.
     if(!running)show();else hide();
   });
   window.addEventListener("keydown",function(e){if(e.key==="Escape"&&running)hide();});
+  // mobile: blocca scroll pagina dietro canvas; swipe-down sul canvas per chiudere
+  function onBodyTouch(e){if(running)e.preventDefault();}
+  document.body.addEventListener("touchmove",onBodyTouch,{passive:false});
+  panel.addEventListener("touchmove",function(e){e.stopPropagation();},{passive:true});
+  var swipeStartY=0;
+  cv.addEventListener("touchstart",function(e){swipeStartY=e.touches[0].clientY;},{passive:true});
+  cv.addEventListener("touchend",function(e){if(e.changedTouches[0].clientY-swipeStartY>80)hide();},{passive:true});
   // drag on wrap
   var dragging=false,dragOffX=0,dragOffY=0;
   dragHandle.addEventListener("pointerdown",function(e){
