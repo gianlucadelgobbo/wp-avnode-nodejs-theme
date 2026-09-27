@@ -16,7 +16,7 @@ article#container(itemprop='performer', itemscope='', itemtype='http://schema.or
           .rientro
             - if (config.siae_on_off=="on") result.avnode.performance.type.name = result.avnode.performance.type.name.replace(new RegExp("DJ Set", "g"), "Live Set")
             p.type=result.avnode.performance.type.name
-            if result.avnode.performance.duration > 0
+            if result.avnode.performance.humanDuration
               p.stit!=global.__("Duration")+": "+result.avnode.performance.humanDuration
             - var _s = result.avnode.performance.bookings && result.avnode.performance.bookings[0] && result.avnode.performance.bookings[0].schedule && result.avnode.performance.bookings[0].schedule[0]
             - var _spanMs = (_s && _s.starttime && _s.endtime) ? (new Date(_s.endtime) - new Date(_s.starttime)) : 0
