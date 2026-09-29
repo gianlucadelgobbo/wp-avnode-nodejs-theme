@@ -2535,7 +2535,7 @@
     "project_name": "MAM Media Art Museum",
     "project_email": "info@mediaartmuseum.org",
     "host": "localhost",
-    "domain": "https://dev.mediaartmuseum.org",
+    "domain": "https://mediaartmuseum.org",
     "local_domain": "http://mediaartmuseum.local",
     "data_domain": "https://admin.mediaartmuseum.org",
     "prefix": "mam",
