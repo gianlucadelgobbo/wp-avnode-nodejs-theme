@@ -5,7 +5,7 @@ const type = require('../includes/type.js');
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost:27017/checkins');
+mongoose.connect('mongodb://localhost:27017/checkins').catch(() => {});
 
 const Guest = new Schema({
   guesttype: String,

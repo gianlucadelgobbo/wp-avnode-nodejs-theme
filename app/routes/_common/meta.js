@@ -4,8 +4,8 @@ exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var WPAPI = require( 'wpapi' );
     //console.log("getMeta");
-    meta = {};
-    conta = [];
+    var meta = {};
+    var conta = [];
     if (!req.query.generate){
       res.render("_partials/meta_test", {meta:config.meta.editions});
     } else {
@@ -16,6 +16,7 @@ exports.get = function get(req, res) {
         var wp = new WPAPI({ endpoint: config.data_domain+'/'+req.session.sessions.current_lang+'/wp-json' });
         wp.myCustomResource = wp.registerRoute( 'wp/v2', '/meta_data/(?P<sez>)/(?P<edition>)' );
         wp.myCustomResource().edition(config.prefix+'/'+val).sez("editions").get(function( err, data ) {
+          if (err || !data || !data.meta) { console.error("meta error", val, err); return res.status(500).send("meta error: "+val); }
           meta[val] = data.meta.edition;
           conta.push(val);
           if (conta.length==config.editions.length) {

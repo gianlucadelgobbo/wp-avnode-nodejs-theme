@@ -1,0 +1,12 @@
+diff --git a/node_modules/superagent/lib/utils.js b/node_modules/superagent/lib/utils.js
+index d75f5c4..275e99e 100644
+--- a/node_modules/superagent/lib/utils.js
++++ b/node_modules/superagent/lib/utils.js
+@@ -52,6 +52,7 @@ exports.parseLinks = str => str.split(/ *, */).reduce((obj, str) => {
+  */
+ 
+ exports.cleanHeader = (header, changesOrigin) => {
++  if (!header) return {};
+   delete header['content-type'];
+   delete header['content-length'];
+   delete header['transfer-encoding'];
