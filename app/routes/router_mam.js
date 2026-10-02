@@ -6,8 +6,10 @@ var robotsRoutes   = require('./_common/robots');
 var metaRoutes     = require('./_common/meta');
 var editionsRoutes = require('./_common/editions');
 var calendarRoutes = require('./_common/calendar');
+var avnodeProxy    = require('./_common/avnode_proxy');
 
 module.exports = function(app) {
+  avnodeProxy(app);
   app.get('/', indexRoutes.get);
 
   app.get('/meta/', metaRoutes.get);
