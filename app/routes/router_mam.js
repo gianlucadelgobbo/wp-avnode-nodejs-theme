@@ -7,6 +7,8 @@ var metaRoutes     = require('./_common/meta');
 var editionsRoutes = require('./_common/editions');
 var calendarRoutes = require('./_common/calendar');
 var avnodeProxy    = require('./_common/avnode_proxy');
+var helpers        = require('../helpers/helpers');
+var fnz            = require('../helpers/functions');
 
 module.exports = function(app) {
   avnodeProxy(app);
@@ -49,6 +51,13 @@ module.exports = function(app) {
   app.get('/en/:page/:subpage',             pagesRoutes.get);
   app.get('/en/:page',                      pagesRoutes.get);
   app.post('/en/signup',                    signupRoutes.post);
+
+  app.get('/slideshow/', function(req, res) {
+    helpers.setSessions(req, function() {
+      var page_data = fnz.setPageData(req, {'ID':'100'});
+      res.render('mam/slideshow', { page_data: page_data, sessions: req.session.sessions, no_loose_time: true });
+    });
+  });
 
   app.get('/:page/page/:paging',        pagesRoutes.get);
   app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);

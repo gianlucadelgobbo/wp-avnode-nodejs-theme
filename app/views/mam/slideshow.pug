@@ -1,0 +1,28 @@
+extends layout
+block content
+  style.
+    #navbar-top, header, nav.text-right { display: none !important; }
+    .cnt { padding: 0 !important; }
+    .container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+    .carousel, .carousel-inner, .carousel-item { height: 100vh; }
+    .carousel-item img { width: 100vw; height: 100vh; object-fit: cover; }
+  #mycarousel.carousel.slide(data-ride='carousel', data-interval='5000')
+    .carousel-inner
+      .carousel-item.active
+        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/HyperMedia-Main.jpg', alt='HyperMedia')
+      .carousel-item
+        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/08/LPM_2026.jpg', alt='LPM 2026 Rome')
+      .carousel-item
+        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/08/VSA_Web.jpg', alt='Visual Sound Academy 2026')
+      .carousel-item
+        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/TEASER-16_9-Gian.jpg', alt='FOTONICA 2026')
+    a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+    a.carousel-control-next(href='#mycarousel', role='button', data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+    script.
+      document.addEventListener('click', function() {
+        var el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      }, { once: true });

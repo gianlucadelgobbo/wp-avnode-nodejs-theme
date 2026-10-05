@@ -74,7 +74,8 @@ html(lang=sessions.current_lang)
     #twCnt
       #tw
     #lightGallery
-    include includes/loose-time
+    if !no_loose_time
+      include includes/loose-time
     include ../_partials/components/modal-full
     include ../_partials/components/modal-search
 
