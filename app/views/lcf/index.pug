@@ -133,9 +133,9 @@ block content
     // Wrapper for slides
     .carousel-inner
       .carousel-item.active
-        img.w-100.d-none.d-sm-block(src='https://livecinemafestival.com/files/2025/06/LCF-ICIAP-2025.jpg', alt=global.__('Image for') + ': ' + 'LCF 2025')
-        img.w-100.d-block.d-sm-none(src='https://livecinemafestival.com/files/2025/06/LCF-ICIAP-2025-9-16.jpg', alt=global.__('Image for') + ': ' + 'LCF 2025')
-      .carousel-item
+        img.w-100.d-none.d-sm-block(src='https://livecinemafestival.com/files/2026/05/LCF2026-main.jpg', alt=global.__('Image for') + ': ' + 'LCF 2026')
+        img.w-100.d-block.d-sm-none(src='https://livecinemafestival.com/files/2026/05/LCF2026-main-v.jpg', alt=global.__('Image for') + ': ' + 'LCF 2025')
+      //.carousel-item
         .embed-responsive.embed-responsive-16by9
           iframe.embed-responsive-item(width="560" height="315" src="https://www.youtube.com/embed/HUnmdsDFbVc?controls=0" title="LCF 2022 REPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen")
         //-img.d-none.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
@@ -172,22 +172,22 @@ block content
 
 
     // Indicators
-    ol.carousel-indicators
-      li.active(data-target='#mycarousel', data-slide-to='0')
-      li(data-target='#mycarousel', data-slide-to='1')
-      //-li(data-target='#mycarousel', data-slide-to='2')
-        li(data-target='#mycarousel', data-slide-to='3')
-        li(data-target='#mycarousel', data-slide-to='4')
-        li(data-target='#mycarousel', data-slide-to='5')
-        li(data-target='#mycarousel', data-slide-to='6')
+      ol.carousel-indicators
+        li.active(data-target='#mycarousel', data-slide-to='0')
+        li(data-target='#mycarousel', data-slide-to='1')
+        //-li(data-target='#mycarousel', data-slide-to='2')
+          li(data-target='#mycarousel', data-slide-to='3')
+          li(data-target='#mycarousel', data-slide-to='4')
+          li(data-target='#mycarousel', data-slide-to='5')
+          li(data-target='#mycarousel', data-slide-to='6')
 
     // Controls
-    a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
-      span.carousel-control-prev-icon(aria-hidden='true')
-      span.sr-only Previous
-    a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
-      span.carousel-control-next-icon(aria-hidden='true')
-      span.sr-only Next
+      a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+      a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
       
   //-
     section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
