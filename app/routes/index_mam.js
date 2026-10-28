@@ -45,7 +45,7 @@ exports.get = function get(req, res) {
       obj.page_data.url = obj.page_data.url.replace("?createcache=1","");
       for(var item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
 
-      var calUrl = config.data_domain + '/wp-json/wp/v2/calendar/' + config.prefix;
+      var calUrl = config.data_domain + '/wp-json/wp/v2/calendar/' + config.prefix + '?per_page=100';
       request({ url: calUrl, json: true, timeout: 5000 }, function(err, response, body) {
         var items = (Array.isArray(body) ? body : []).map(function(i) {
           return {

@@ -59,6 +59,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/gallery/:slug', function(req, res) {
+    helpers.setSessions(req, function() {
+      var request = require('request');
+      request({ url: 'https://api.admin.avnode.net/galleries/' + req.params.slug, json: true }, function(error, response, body) {
+        var page_data = fnz.setPageData(req, {'ID':'100'});
+        if (error || !body || !body.medias) return pagesRoutes.get404(req, res);
+        res.render('mam/gallery', { page_data: page_data, sessions: req.session.sessions, gallery: body });
+      });
+    });
+  });
+
   app.get('/:page/page/:paging',        pagesRoutes.get);
   app.get('/:page/:subpage/:subsubpage', pagesRoutes.get);
   app.get('/:page/:subpage',            pagesRoutes.get);

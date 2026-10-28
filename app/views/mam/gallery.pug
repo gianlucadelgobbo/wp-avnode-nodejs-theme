@@ -1,0 +1,31 @@
+extends layout
+block content
+  if gallery && gallery.title
+    h1.entry-title=gallery.title
+  if gallery && gallery.medias && gallery.medias.length
+    ul.listItems.row#lightGalleryInline
+      each media, i in gallery.medias
+        li.col-md-3.itemListElement
+          a.gallerythumbnail-single(href=media.imageFormats.large, data-src=media.imageFormats.large, data-sub-html='<h4>'+media.title+'</h4>')
+            img.img-fluid(src=media.imageFormats.small, alt=media.title)
+  script.
+    (function() {
+      var items = !{JSON.stringify(gallery && gallery.medias ? gallery.medias.map(function(m){ return { src: m.imageFormats.large, thumb: m.imageFormats.small, subHtml: '<h4>'+m.title+'</h4>' }; }) : [])};
+      if (!items.length) return;
+      var $el = document.getElementById('lightGallery');
+      if (typeof lightGallery === 'undefined' || !$el) return;
+      var LG = lightGallery($el, {
+        dynamic: true,
+        download: false,
+        licenseKey: '0000-0000-000-0000',
+        plugins: [lgZoom, lgThumbnail],
+        dynamicEl: items
+      });
+      document.getElementById('lightGalleryInline').addEventListener('click', function(e) {
+        var a = e.target.closest('a.gallerythumbnail-single');
+        if (!a) return;
+        e.preventDefault();
+        var idx = Array.from(document.querySelectorAll('a.gallerythumbnail-single')).indexOf(a);
+        LG.openGallery(idx >= 0 ? idx : 0);
+      });
+    })();
