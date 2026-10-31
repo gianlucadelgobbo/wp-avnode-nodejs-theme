@@ -19,6 +19,7 @@ module.exports = function(app) {
   app.get('/sitemap.xml', sitemapRoutes.get);
   app.get('/sitemap-home.xml', sitemapRoutes.get);
   app.get('/sitemap-pages.xml', sitemapRoutes.get);
+  app.get('/sitemap-:edition.xml', sitemapRoutes.get);
 
   app.get('/it/', indexRoutes.get);
   app.get('/it/:page/page/:paging',         pagesRoutes.get);

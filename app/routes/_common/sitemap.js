@@ -34,13 +34,16 @@ exports.get = function get(req, res) {
 
     } else if (req.params.edition) {
         var result = config.meta.editions[req.params.edition];
+        if (!result) return res.status(404).send('edition not found');
         var now = new Date();
         var date = new Date(result["wpcf-startdate"]*1000);
         var timeDiff = (date.getTime() - now.getTime());
         var diffDays = (timeDiff / (1000 * 3600 * 24));
         var lastmod = diffDays < 0 ? fnz.ISODateString(date) : fnz.ISODateString(now);
         var changefreq = diffDays < 0 ? "yearly" : "daily";
-        res.header('Content-Type', 'text/xml').render('_common/sitemap-edition', {result:result, lastmod:lastmod, changefreq:changefreq});
+        var menu = Array.isArray(result.menu) ? result.menu : (result.menu && result.menu[config.default_lang] ? result.menu[config.default_lang] : []);
+        var resultForSitemap = Object.assign({}, result, { menu: menu });
+        res.header('Content-Type', 'text/xml').render('_sitemaps/sitemap-edition', {result:resultForSitemap, lastmod:lastmod, changefreq:changefreq});
 
     } else if (req.params.avnode) {
       helpers.getXMLlist(req, function( results ) {
