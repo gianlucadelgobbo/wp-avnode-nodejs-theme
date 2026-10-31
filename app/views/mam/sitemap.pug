@@ -1,0 +1,12 @@
+doctype xml
+sitemapindex(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+  sitemap
+    loc=config.domain+"/sitemap-home.xml"
+    lastmod=isodate
+  sitemap
+    loc=config.domain+"/sitemap-pages.xml"
+    lastmod=isodate
+  each edition in config.editions
+    sitemap
+      loc=config.domain+"/sitemap-"+edition+".xml"
+      lastmod=isodate
