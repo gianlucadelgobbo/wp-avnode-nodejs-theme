@@ -17,8 +17,22 @@ block content
       .carousel-item
         img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/TEASER-16_9-Gian.jpg', alt='FOTONICA 2026')
     script.
-      document.addEventListener('click', function() {
-        var el = document.documentElement;
-        if (el.requestFullscreen) el.requestFullscreen();
-        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-      }, { once: true });
+      function goFullscreen() {
+        if (document.fullscreenElement || document.webkitFullscreenElement) return;
+
+        const el = document.documentElement;
+        const request = el.requestFullscreen || el.webkitRequestFullscreen;
+
+        if (request) {
+          try {
+            const result = request.call(el);
+            if (result && result.catch) result.catch(() => {});
+          } catch (e) {}
+        }
+      }
+
+      // Clic reale: attiva o ripristina il fullscreen
+      document.addEventListener('click', goFullscreen);
+
+      // Ogni 30 secondi: tenta di ripristinarlo
+      setInterval(goFullscreen, 30000);
