@@ -45,7 +45,9 @@ exports.get = function get(req, res) {
       obj.page_data.url = obj.page_data.url.replace("?createcache=1","");
       for(var item in obj.page_data.langSwitcher) obj.page_data.langSwitcher[item] = obj.page_data.langSwitcher[item].replace("?createcache=1","");
 
-      var calUrl = config.data_domain + '/wp-json/wp/v2/calendar/' + config.prefix + '?per_page=100';
+      var calUrl    = config.data_domain + '/wp-json/wp/v2/calendar/' + config.prefix + '?per_page=100';
+      var mediaUrl  = config.data_domain + '/wp-json/wp/v2/media?parent=' + config.home_page_id + '&orderby=date&order=asc&per_page=20';
+
       request({ url: calUrl, json: true, timeout: 5000 }, function(err, response, body) {
         var items = (Array.isArray(body) ? body : []).map(function(i) {
           return {
@@ -63,7 +65,21 @@ exports.get = function get(req, res) {
         var groups = groupHomeEvents(items);
         obj.today    = groups.today;
         obj.upcoming = groups.upcoming;
-        res.render(config.prefix+'/'+'index', obj);
+
+        if (config.home_page_id) {
+          request({ url: mediaUrl, json: true, timeout: 5000 }, function(err2, res2, media) {
+            obj.carousel = (Array.isArray(media) ? media : []).map(function(m) {
+              return {
+                src:   m.source_url,
+                alt:   m.alt_text || (m.title && m.title.rendered) || '',
+                link:  m.caption && m.caption.rendered ? m.caption.rendered.replace(/<[^>]+>/g,'').trim() : ''
+              };
+            });
+            res.render(config.prefix+'/'+'index', obj);
+          });
+        } else {
+          res.render(config.prefix+'/'+'index', obj);
+        }
       });
     }
   });

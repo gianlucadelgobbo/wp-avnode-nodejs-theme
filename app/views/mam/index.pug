@@ -28,27 +28,25 @@ block content
                 .sr-only=global.__("Read More")
                 i.icon-right
 
-  #mycarousel.carousel.slide(data-ride='carousel', data-interval="3000")
-    ol.carousel-indicators
-      li.active(data-target='#mycarousel', data-slide-to='0')
-      li(data-target='#mycarousel', data-slide-to='1')
-      li(data-target='#mycarousel', data-slide-to='2')
-    .carousel-inner
-      .carousel-item.active
-        a(href=lang_preurl+"/editions/hypermedia/", title="HyperMedia")
-          img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/HyperMedia-Main.jpg', alt=global.__('Image for') + ': ' + 'HyperMedia')
-      .carousel-item
-        a(href=lang_preurl+"/calendar/wudrome-2026/", title="Ethical AI")
-          img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/10/wudr.jpg', alt='Ethical AI')
-      .carousel-item
-        a(href=lang_preurl+"/calendar/fotonica-2026/", title="FOTONICA 2026")
-          img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/TEASER-16_9-Gian.jpg', alt=global.__('Image for') + ': ' + 'FOTONICA 2026')
-    a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
-      span.carousel-control-prev-icon(aria-hidden='true')
-      span.sr-only=global.__('Previous slide')
-    a.carousel-control-next(href='#mycarousel', role='button', data-slide='next')
-      span.carousel-control-next-icon(aria-hidden='true')
-      span.sr-only=global.__('Nexts slide')
+  if carousel && carousel.length
+    #mycarousel.carousel.slide(data-ride='carousel', data-interval="3000")
+      ol.carousel-indicators
+        each item, i in carousel
+          li(data-target='#mycarousel', data-slide-to=i, class=i===0?'active':'')
+      .carousel-inner
+        each item, i in carousel
+          .carousel-item(class=i===0?'active':'')
+            if item.link
+              a(href=item.link, title=item.alt)
+                img.d-block.w-100(src=item.src, alt=item.alt)
+            else
+              img.d-block.w-100(src=item.src, alt=item.alt)
+      a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only=global.__('Previous slide')
+      a.carousel-control-next(href='#mycarousel', role='button', data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only=global.__('Nexts slide')
 
   if today && today.length
     section.home-section.mt-5(itemscope itemtype='http://schema.org/ItemList')

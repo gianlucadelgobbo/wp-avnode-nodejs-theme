@@ -8,14 +8,9 @@ block content
     .carousel-item img { width: 100vw; height: 100vh; object-fit: cover; }
   #mycarousel.carousel.slide(data-ride='carousel', data-interval='5000')
     .carousel-inner
-      .carousel-item.active
-        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/HyperMedia-Main.jpg', alt='HyperMedia')
-      .carousel-item
-        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/10/wudr.jpg', alt='Ethical AI')
-      .carousel-item
-        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/10/LCF2026-main.jpg', alt='LCF 2026 Rome')
-      .carousel-item
-        img.d-block.w-100(src='https://admin.mediaartmuseum.org/wp-content/uploads/2026/09/TEASER-16_9-Gian.jpg', alt='FOTONICA 2026')
+      each item, i in carousel
+        .carousel-item(class=i===0?'active':'')
+          img.d-block.w-100(src=item.src, alt=item.alt)
     script.
       function goFullscreen() {
         if (document.fullscreenElement || document.webkitFullscreenElement) return;

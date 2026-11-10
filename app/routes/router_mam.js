@@ -55,8 +55,23 @@ module.exports = function(app) {
 
   app.get('/slideshow/', function(req, res) {
     helpers.setSessions(req, function() {
+      var request = require('request');
       var page_data = fnz.setPageData(req, {'ID':'100'});
-      res.render('mam/slideshow', { page_data: page_data, sessions: req.session.sessions, no_loose_time: true });
+      var mediaUrl = config.data_domain + '/wp-json/wp/v2/media?parent=' + config.home_page_id + '&orderby=date&order=asc&per_page=20';
+      if (config.home_page_id) {
+        request({ url: mediaUrl, json: true, timeout: 5000 }, function(err, r, media) {
+          var carousel = (Array.isArray(media) ? media : []).map(function(m) {
+            return {
+              src:  m.source_url,
+              alt:  m.alt_text || (m.title && m.title.rendered) || '',
+              link: m.caption && m.caption.rendered ? m.caption.rendered.replace(/<[^>]+>/g,'').trim() : ''
+            };
+          });
+          res.render('mam/slideshow', { page_data: page_data, sessions: req.session.sessions, no_loose_time: true, carousel: carousel });
+        });
+      } else {
+        res.render('mam/slideshow', { page_data: page_data, sessions: req.session.sessions, no_loose_time: true, carousel: [] });
+      }
     });
   });
 
