@@ -57,7 +57,7 @@ module.exports = function(app) {
     helpers.setSessions(req, function() {
       var request = require('request');
       var page_data = fnz.setPageData(req, {'ID':'100'});
-      var mediaUrl = config.data_domain + '/wp-json/wp/v2/media?parent=' + config.home_page_id + '&orderby=date&order=asc&per_page=20';
+      var mediaUrl = config.data_domain + '/wp-json/wp/v2/media?parent=' + config.home_page_id + '&orderby=menu_order&order=asc&per_page=20';
       if (config.home_page_id) {
         request({ url: mediaUrl, json: true, timeout: 5000 }, function(err, r, media) {
           var carousel = (Array.isArray(media) ? media : []).map(function(m) {
