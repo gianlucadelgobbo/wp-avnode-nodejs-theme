@@ -1,54 +1,24 @@
 extends layout
 block content
-  .d-sm-block.d-md-none.d-lg-none.d-xl-none
-    img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img-vert.jpg', alt='ElectroKids 2024')
-  .d-none.d-sm-none.d-md-block.d-lg-block.d-xl-block
-    img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img.jpg', alt='ElectroKids 2024')
-  //- 
-    script(type='text/javascript', src='/' + config.prefix + '/js/p5.js')
-    script(type='text/javascript', src='/' + config.prefix + '/js/p5.sound.min.js')
-    main
-    script(type='text/javascript', src='/' + config.prefix + '/js/sketch.js')
-  //- Carousel
-    #mycarousel.carousel.slide(data-ride='carousel')
-    //- Indicators
-      <ol class="carousel-indicators">
-        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#mycarousel" data-slide-to="1"></li>
-        <li data-target="#mycarousel" data-slide-to="2"></li>
-        <li data-target="#mycarousel" data-slide-to="3"></li>
-        <li data-target="#mycarousel" data-slide-to="4"></li>
-        <li data-target="#mycarousel" data-slide-to="5"></li>
-        <li data-target="#mycarousel" data-slide-to="6"></li>
-        <li data-target="#mycarousel" data-slide-to="7"></li>
-        <li data-target="#mycarousel" data-slide-to="8"></li>
-        <li data-target="#mycarousel" data-slide-to="9"></li>
-        <li data-target="#mycarousel" data-slide-to="10"></li>
-      </ol>
-    //- Wrapper for slides
+  if carousel && carousel.length
+    #mycarousel.carousel.slide(data-ride='carousel', data-interval='4000')
       .carousel-inner
-        .carousel-item.active
-        //-
-          .carousel-item
-            img.img-fluid(src='https://electrokids.net/files/2024/02/electrokids-2024-main-img.jpg', alt='ElectroKids 2024')
-          .carousel-item
-            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-02.jpg', alt='ElectroKids 2016')
-          .carousel-item
-            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-03.jpg', alt='ElectroKids 2016')
-          .carousel-item
-            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-04.jpg', alt='ElectroKids 2016')
-          .carousel-item
-            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-05.jpg', alt='ElectroKids 2016')
-          .carousel-item
-            img.img-fluid(src='/electrokids/images/carusel_img_2016/chromosphere_slide-06.jpg', alt='ElectroKids 2016')
-        //- Controls
-          a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
-            span.carousel-control-prev-icon(aria-hidden='true')
-            span.sr-only Previous
-          a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
-            span.carousel-control-next-icon(aria-hidden='true')
-            span.sr-only Next
-        
+        each item, i in carousel
+          .carousel-item(class=i===0?'active':'')
+            if item.link
+              a(href=(item.link.startsWith('http') ? item.link : lang_preurl+item.link), title=item.alt)
+                if item.src_v
+                  img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                  img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+                else
+                  img.d-block.w-100(src=item.src, alt=item.alt)
+            else
+              if item.src_v
+                img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+              else
+                img.d-block.w-100(src=item.src, alt=item.alt)
+
   //-section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
     .container-fluid
       h1.entry-title(itemprop="name") News
