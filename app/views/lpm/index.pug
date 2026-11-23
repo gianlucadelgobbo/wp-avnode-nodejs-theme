@@ -5,7 +5,7 @@ block home
       !=">>> CALL TO PARTICIPATE <<<"
   if carousel && carousel.length
     #mycarousel.carousel.slide(data-ride='carousel', data-interval='4000')
-      ol.carousel-indicators
+      //ol.carousel-indicators
         each item, i in carousel
           li(data-target='#mycarousel', data-slide-to=i, class=i===0?'active':'')
       .carousel-inner
