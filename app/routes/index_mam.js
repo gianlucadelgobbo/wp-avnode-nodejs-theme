@@ -54,17 +54,18 @@ function getCarousel(items, cb, retry) {
       if (end && end < now) ended[i.slug] = true;
     });
     var list = Array.isArray(media) ? media : [];
-    // raccoglie le versioni -v indicizzate per base url (es. nome-v.jpg → nome.jpg)
+    // indicizzo le -v per filename (senza path) in modo che directory WP diverse non rompano il match
     var vMap = {};
     list.forEach(function(m) {
-      var vMatch = m.source_url.match(/^(.*)-v(\.(jpe?g|png|webp))$/i);
+      var fname = m.source_url.split('/').pop();
+      var vMatch = fname.match(/^(.*)-v(\.(jpe?g|png|webp))$/i);
       if (vMatch) vMap[vMatch[1] + vMatch[2]] = m.source_url;
     });
     var carousel = list.filter(function(m) {
-      // esclude le -v dalla lista slide
-      return !/-v\.(jpe?g|png|webp)$/i.test(m.source_url);
+      return !/-v\.(jpe?g|png|webp)$/i.test(m.source_url.split('/').pop());
     }).map(function(m) {
-      var hMatch = m.source_url.match(/^(.*)-h(\.(jpe?g|png|webp))$/i);
+      var fname  = m.source_url.split('/').pop();
+      var hMatch = fname.match(/^(.*)-h(\.(jpe?g|png|webp))$/i);
       var base   = hMatch ? (hMatch[1] + hMatch[2]) : null;
       return {
         src:   m.source_url,
