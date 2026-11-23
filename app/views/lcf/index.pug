@@ -129,65 +129,24 @@ block content
     //-iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F626116682118550%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
       //iframe.embed-responsive-item(src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Flivecinemafestival%2Fvideos%2F286073986690677%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true")
       iframe.embed-responsive-item(width="560" height="315" src="https://www.youtube.com/embed/HUnmdsDFbVc?controls=0" title="LCF 2022 REPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen")
-  #mycarousel.carousel(data-ride='carousel', data-interval="false", style="z-index: 0;margin-top:65px")
-    // Wrapper for slides
-    .carousel-inner
-      .carousel-item.active
-        img.w-100.d-none.d-sm-block(src='https://livecinemafestival.com/files/2026/05/LCF2026-main.jpg', alt=global.__('Image for') + ': ' + 'LCF 2026')
-        img.w-100.d-block.d-sm-none(src='https://livecinemafestival.com/files/2026/05/LCF2026-main-v.jpg', alt=global.__('Image for') + ': ' + 'LCF 2025')
-      //.carousel-item
-        .embed-responsive.embed-responsive-16by9
-          iframe.embed-responsive-item(width="560" height="315" src="https://www.youtube.com/embed/HUnmdsDFbVc?controls=0" title="LCF 2022 REPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen")
-        //-img.d-none.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //script.
-            document.onload = function(){$("#mycarousel").pause()}
-      //-.carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/LPM2019-visual-1.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-        .carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/AV-Performances_09.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-        .carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/AV-Performances_14.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-        .carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/Installations_03.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-        .carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/Mapping_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-        .carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/Talks_01.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-        .carousel-item
-          img.d-block.w-100(src='/lpm/images/slider/Talks_04.jpg', alt=global.__('Image for') + ': ' + 'LPM 2019 Rome | CALL TO PARTICIPATE')
-          //.carousel-caption
-            a(href=lang_preurl+"/editions/2018-rome/call-to-participate/", title="LPM 2019 Rome | CALL TO PARTICIPATE") Bella
-
-
-    // Indicators
-      ol.carousel-indicators
-        li.active(data-target='#mycarousel', data-slide-to='0')
-        li(data-target='#mycarousel', data-slide-to='1')
-        //-li(data-target='#mycarousel', data-slide-to='2')
-          li(data-target='#mycarousel', data-slide-to='3')
-          li(data-target='#mycarousel', data-slide-to='4')
-          li(data-target='#mycarousel', data-slide-to='5')
-          li(data-target='#mycarousel', data-slide-to='6')
-
-    // Controls
-      a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev', title=global.__("Previous slide"))
-        span.carousel-control-prev-icon(aria-hidden='true')
-        span.sr-only Previous
-      a.carousel-control-next(href='#mycarousel', role='button', data-slide='next', title=global.__("Nexts slide"))
-        span.carousel-control-next-icon(aria-hidden='true')
-        span.sr-only Next
+  if carousel && carousel.length
+    #mycarousel.carousel(data-ride='carousel', data-interval='4000', style='z-index: 0;margin-top:65px')
+      .carousel-inner
+        each item, i in carousel
+          .carousel-item(class=i===0?'active':'')
+            if item.link
+              a(href=(item.link.startsWith('http') ? item.link : lang_preurl+item.link), title=item.alt)
+                if item.src_v
+                  img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                  img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+                else
+                  img.d-block.w-100(src=item.src, alt=item.alt)
+            else
+              if item.src_v
+                img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+              else
+                img.d-block.w-100(src=item.src, alt=item.alt)
       
   //-
     section.home.mt-3(itemscope, itemtype='http://schema.org/ItemList')
