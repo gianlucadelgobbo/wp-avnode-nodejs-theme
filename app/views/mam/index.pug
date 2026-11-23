@@ -39,14 +39,14 @@ block content
             if item.link
               a(href=item.link, title=item.alt)
                 if item.src_v
-                  img.d-block.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
-                  img.d-block.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+                  img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                  img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
                 else
                   img.d-block.w-100(src=item.src, alt=item.alt)
             else
               if item.src_v
-                img.d-block.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
-                img.d-block.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+                img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
               else
                 img.d-block.w-100(src=item.src, alt=item.alt)
       a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
