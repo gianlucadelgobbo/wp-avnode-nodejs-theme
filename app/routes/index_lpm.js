@@ -33,6 +33,10 @@ function getCarousel(cb, retry) {
   });
 }
 
+exports.getCarousel = function(cb) {
+  getCarousel(cb);
+};
+
 exports.get = function get(req, res) {
   helpers.setSessions(req, function() {
     var file = config.root+'/cache/'+config.prefix+'_home_'+req.session.sessions.current_lang+'.json';

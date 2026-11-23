@@ -1,4 +1,6 @@
 var indexRoutes = require('./index_lpm');
+var helpers     = require('../helpers/helpers');
+var fnz         = require('../helpers/functions');
 /* var timelinemapRoutes = require('./routes/lpm/timeline-map');
 var usersRoutes = require('./routes/_common/users'); */
 
@@ -63,6 +65,15 @@ module.exports = function(app) {
   app.get('/edition/*', function(req, res) {res.redirect(301, req.url.replace('/edition/','/editions/'))});
 
   app.get('/event/*', function(req, res) {res.redirect(301, req.url.replace('/event/','/events/'))});
+
+  app.get('/slideshow/', function(req, res) {
+    helpers.setSessions(req, function() {
+      var page_data = fnz.setPageData(req, {'ID':'100'});
+      indexRoutes.getCarousel(function(carousel) {
+        res.render('lpm/slideshow', { page_data: page_data, sessions: req.session.sessions, no_loose_time: true, carousel: carousel });
+      });
+    });
+  });
 
   app.get('/', indexRoutes.get);
 
