@@ -10,7 +10,11 @@ block content
     .carousel-inner
       each item, i in carousel
         .carousel-item(class=i===0?'active':'')
-          img.d-block.w-100(src=item.src, alt=item.alt)
+          if item.src_v
+            img.d-block.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+            img.d-block.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+          else
+            img.d-block.w-100(src=item.src, alt=item.alt)
     script.
       function goFullscreen() {
         if (document.fullscreenElement || document.webkitFullscreenElement) return;

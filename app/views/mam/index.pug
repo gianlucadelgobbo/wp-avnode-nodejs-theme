@@ -38,9 +38,17 @@ block content
           .carousel-item(class=i===0?'active':'')
             if item.link
               a(href=item.link, title=item.alt)
-                img.d-block.w-100(src=item.src, alt=item.alt)
+                if item.src_v
+                  img.d-block.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                  img.d-block.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+                else
+                  img.d-block.w-100(src=item.src, alt=item.alt)
             else
-              img.d-block.w-100(src=item.src, alt=item.alt)
+              if item.src_v
+                img.d-block.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
+                img.d-block.w-100.d-sm-none(src=item.src_v, alt=item.alt)
+              else
+                img.d-block.w-100(src=item.src, alt=item.alt)
       a.carousel-control-prev(href='#mycarousel', role='button', data-slide='prev')
         span.carousel-control-prev-icon(aria-hidden='true')
         span.sr-only=global.__('Previous slide')

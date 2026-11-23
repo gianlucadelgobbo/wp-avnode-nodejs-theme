@@ -53,11 +53,24 @@ function getCarousel(items, cb, retry) {
       var end = i.enddate || i.startdate;
       if (end && end < now) ended[i.slug] = true;
     });
-    var carousel = (Array.isArray(media) ? media : []).map(function(m) {
+    var list = Array.isArray(media) ? media : [];
+    // raccoglie le versioni -v indicizzate per base url (es. nome-v.jpg → nome.jpg)
+    var vMap = {};
+    list.forEach(function(m) {
+      var vMatch = m.source_url.match(/^(.*)-v(\.(jpe?g|png|webp))$/i);
+      if (vMatch) vMap[vMatch[1] + vMatch[2]] = m.source_url;
+    });
+    var carousel = list.filter(function(m) {
+      // esclude le -v dalla lista slide
+      return !/-v\.(jpe?g|png|webp)$/i.test(m.source_url);
+    }).map(function(m) {
+      var hMatch = m.source_url.match(/^(.*)-h(\.(jpe?g|png|webp))$/i);
+      var base   = hMatch ? (hMatch[1] + hMatch[2]) : null;
       return {
-        src:  m.source_url,
-        alt:  m.alt_text || (m.title && m.title.rendered) || '',
-        link: m.caption && m.caption.rendered ? m.caption.rendered.replace(/<[^>]+>/g,'').trim() : ''
+        src:   m.source_url,
+        src_v: (base && vMap[base]) ? vMap[base] : '',
+        alt:   m.alt_text || (m.title && m.title.rendered) || '',
+        link:  m.caption && m.caption.rendered ? m.caption.rendered.replace(/<[^>]+>/g,'').trim() : ''
       };
     }).filter(function(slide) {
       var match = slide.link.match(/\/calendar\/([^\/?#]+)/);
