@@ -37,7 +37,7 @@ block content
         each item, i in carousel
           .carousel-item(class=i===0?'active':'')
             if item.link
-              a(href=item.link, title=item.alt)
+              a(href=(item.link.startsWith('http') ? item.link : lang_preurl+item.link), title=item.alt)
                 if item.src_v
                   img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
                   img.w-100.d-sm-none(src=item.src_v, alt=item.alt)

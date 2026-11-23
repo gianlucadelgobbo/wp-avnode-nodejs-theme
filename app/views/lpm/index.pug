@@ -1,5 +1,8 @@
 extends layout
 block home
+  .text-center.mt-2.mb-2.d-block.d-sm-none
+    a.btn.btn-primary.embed-responsive-item(href=lang_preurl+"/editions/2026-rome/call-to-participate/", title="LPM 2026 Rome | CALL TO PARTICIPATE")
+      !=">>> CALL TO PARTICIPATE <<<"
   if carousel && carousel.length
     #mycarousel.carousel.slide(data-ride='carousel', data-interval='4000')
       ol.carousel-indicators
@@ -9,7 +12,7 @@ block home
         each item, i in carousel
           .carousel-item(class=i===0?'active':'')
             if item.link
-              a(href=item.link, title=item.alt)
+              a(href=(item.link.startsWith('http') ? item.link : lang_preurl+item.link), title=item.alt)
                 if item.src_v
                   img.w-100.d-none.d-sm-block(src=item.src, alt=item.alt)
                   img.w-100.d-sm-none(src=item.src_v, alt=item.alt)
