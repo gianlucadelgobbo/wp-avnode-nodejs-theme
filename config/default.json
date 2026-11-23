@@ -2224,6 +2224,7 @@
     ],
     "default_lang": "it",
     "current_lang": "it",
+    "home_page_id": 2,
     "router": "router_visualsoundacademy",
     "last_edition": "2026-academy",
     "last_edition_status": "archived",
